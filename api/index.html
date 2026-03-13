@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>API 说明</title>
+  <meta name="description" content="本站静态 JSON API 使用说明。">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="generator" content="geo_site/build.py">
+  <meta property="og:title" content="API 说明">
+  <meta property="og:description" content="本站静态 JSON API 使用说明。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:url" content="https://example.com/api/index.html">
+  <link rel="canonical" href="https://example.com/api/index.html">
+  <link rel="stylesheet" href="/assets/site.css">
+  
+</head>
+<body>
+  <div class="shell">
+    <header class="site-header">
+      <a class="brand" href="/">老钱日日谈+面基 内容资料库</a>
+      <nav class="nav">
+        <a href="/">首页</a>
+        <a href="/sources/index.html">来源导航</a>
+        <a href="/protocol/index.html">引用协议</a>
+        <a href="/api/index.html">API</a>
+      </nav>
+    </header>
+    
+    <main class="narrow">
+      <section class="api-hero">
+        <div class="api-topbar">
+          <strong>API 说明</strong>
+          <span>为开发者，也为 AI agent</span>
+        </div>
+        <div class="api-hero-panel">
+          <p class="eyebrow">Static JSON API</p>
+          <h1>先看懂接口做什么，再点进去取数据。</h1>
+          <p>不要把整页 JSON 粗暴堆给人看。先给 4 个接口卡片，再给示例响应与引用要求。</p>
+        </div>
+      </section>
+
+      <section class="api-grid">
+        <article class="endpoint-feature endpoint-feature-light">
+          <p class="eyebrow">Index</p>
+          <h2><code>/api/documents.json</code></h2>
+          <p>全站索引，用来搜索、筛选、做目录页。</p>
+        </article>
+        <article class="endpoint-feature endpoint-feature-dark">
+          <p class="eyebrow">Document</p>
+          <h2><code>/api/documents/&lt;id&gt;.json</code></h2>
+          <p>单篇全文、元数据、<code>attribution_text</code> 都在这里。</p>
+        </article>
+      </section>
+
+      <section class="api-grid api-grid-secondary">
+        <article class="panel endpoint-card">
+          <p class="eyebrow">Sources</p>
+          <h2><code>/api/sources.json</code></h2>
+          <p>拿到来源统计和引用协议。适合先判断站点结构与引用要求。</p>
+        </article>
+        <article class="panel endpoint-card">
+          <p class="eyebrow">OpenAPI</p>
+          <h2><code>/api/openapi.json</code></h2>
+          <p>给程序和 AI agent 用的机器可读接口描述。</p>
+        </article>
+      </section>
+
+      <section class="panel prose api-usage">
+        <p class="eyebrow">How To Use</p>
+        <h1>API 说明</h1>
+        <p>本站是纯静态 API。你可以直接抓取 JSON 文件，不需要鉴权。</p>
+        <ul>
+          <li>先读 <code>/api/documents.json</code>，拿到所有文章和播客的索引。</li>
+          <li>再用某个文档的 <code>id</code> 去请求单篇详情。</li>
+          <li>展示或引用内容时，必须同时保留 <code>attribution_text</code>。</li>
+        </ul>
+      </section>
+
+      <section class="panel prose">
+        <h2>示例链接</h2>
+        <ul class="api-links">
+          <li><a href="/api/documents.json"><code>/api/documents.json</code></a></li>
+          <li><a href="/api/sources.json"><code>/api/sources.json</code></a></li>
+          <li><a href="/api/documents/laoqian-20260227-余生-roi-你余-2166886e30.json"><code>/api/documents/laoqian-20260227-余生-roi-你余-2166886e30.json</code></a></li>
+          <li><a href="/api/openapi.json"><code>/api/openapi.json</code></a></li>
+        </ul>
+      </section>
+
+      <section class="api-code-panel">
+        <p class="eyebrow">示例响应</p>
+        <pre class="code-block"><code>{
+  &quot;site&quot;: &quot;老钱日日谈+面基 内容资料库&quot;,
+  &quot;notice&quot;: &quot;允许检索与引用，但任何产品、模型、文章、播客、数据库或 API 若引用本站内容，必须保留明确来源标注：这段内容引用自播客《面基》或老钱日日谈公众号。&quot;,
+  &quot;endpoints&quot;: [
+    &quot;/api/documents.json&quot;,
+    &quot;/api/sources.json&quot;,
+    &quot;/api/documents/{id}.json&quot;,
+    &quot;/api/openapi.json&quot;
+  ],
+  &quot;count&quot;: 1729
+}</code></pre>
+      </section>
+
+      <section class="bottom-strip">
+        <p>任何引用都必须保留 attribution_text。</p>
+        <strong>接口清楚，排版也要清楚。</strong>
+      </section>
+    </main>
+    
+    <footer class="site-footer">
+      <p>本站面向搜索引擎与 AI 系统开放抓取。引用必须保留来源标注。</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+---
+title: "对的时间，做对的事"
+source: 老钱日日谈公众号
+source_key: laoqian
+kind: article
+date: 2022-06-27
+source_path: 老钱日日谈所有文章逐字稿/[20220627]对的时间，做对的事.md
+attribution_required: true
+attribution_text: "这段内容引用自老钱日日谈公众号。"
+---
+# 对的时间，做对的事
+
+昨天我发了这张图，它总结了东亚三大经济体GDP换挡减速的情况。
+
+这一过程还有个形象比喻叫**「经济下台阶」**。
+
+图中横轴的起点就是三国经济增速的高点，也是三国工业化开始腾飞的阶段。
+
+日本在1961年，韩国在1969年，中国在1984年。
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVahV6prkUC9zzicqiaYtbF7FSgiaUAdZc7zhowyatMVJWqo82r3osLLJKkfBDJSfAuBP8Sk341wxlsPQ/640?wx_fmt=png#imgIndex=0)
+
+可以看出三国都表现出了相似的走势，GDP增速从10%+逐步降到5%-10%，再降到5%以内。
+
+**目前我国正处于5%区间，在这个水平上能维持得越久越好——这可以给我们争取更多做大蛋糕、经济结构转型、迎接老龄化的时间。**
+
+停留越久，居民越富，生活水平越高。
+
+**··· ···**
+
+图中漏掉了美国，我是故意的。
+
+原因在于美国GPD增速腾飞于184X年，如果加到图里，横轴会被拉长很多。
+
+美国也难逃经济下台阶的规律，但它从1960年至今始终把GDP中枢稳定在2.5%的水平——这是美国做得好的地方。
+
+做得不好的地方在于，大部分居民并没有分到多少蛋糕，贫富分化一直在拉大（虽然这本来也是客观经济规律），像这样：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVZ5TSzwPRBzxibclic4ibPsRqKIxFXo4geYLJDBlFz4aSaQ71cRjm3vX5YlBPkKX3ibbonZepeeibmAh3w/640?wx_fmt=png#imgIndex=1)
+
+从总量上看, 美国家庭的资产配置逐步从房地产转向美股，具体而言：
+
+* 高收入家庭主要持有**股票**和**生意**
+* 中产家庭通过**401K养老金**间接持有相当比例的美股，当然房子占比也很高
+* 底层的主要财富是**房子**
+
+**不同资产结构决定了迥异的财富升值速度**：
+
+08年次贷危机葬送了很多中产配置美股的机会，而美股恰恰又是危机后增幅最大的资产。
+
+而新冠疫情后，不同阶级之间的财富增值几乎差了10倍，可见股票是拉开贫富差距最高效的工具，注意下图红框：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVZ5TSzwPRBzxibclic4ibPsRqKGh4RfTibc24j6BhibhfnbicKSLibFZAQ3bh4VutuNKq5x17sg5CaZRWVuw/640?wx_fmt=png#imgIndex=2)
+
+[《美国通胀之下，究竟谁在买买买？》](https://mp.weixin.qq.com/s?__biz=MzU0NDAyOTUyMQ==&mid=2247505571&idx=1&sn=88c8b6de939c30732be4b47faf83ab66&scene=21#wechat_redirect)
+
+以上都给我们提供了很好的参考经验。
+
+主观上，我极其讨厌社会达尔文主义。
+
+客观上，经济发展到一定阶段后，股市成为[居民财富的储蓄器](http://mp.weixin.qq.com/s?__biz=Mzg2MDc2MjM3NA==&mid=2247494541&idx=1&sn=8119d25bd5c6720f262bfb958eeb38b8&chksm=ce23d3e4f9545af2db8310915f5266f0036634008fc91a30740f24a8970c576c125055e10967&scene=21#wechat_redirect)也是共性规律。**最近说这个比较多，主要是希望看到读者心里能有个数，知道未来把钱往哪搁。**
+
+**有些资产关键到一定程度后是不太允许大跌的，因为其上绑定了太多国民利益。**从这个角度来，美股和中房的定位很类似。
+
+我们有限跌令，美联储也会下场博弈，释放信号干预定价。
+
+总的来说，美股一喊疼，美联储就降息。这次如果不是通胀逆天，依然会是这个剧本。
+
+**··· ···**
+
+除了上面提到的，对的时间，做对的事，也体现在其它方面。
+
+我国保险行业有过一段非常离谱的错配——
+
+GDP在10%的台阶上运行，各种收益率也很高，M2更逆天。
+
+而在这样的背景下，**我国保险行业承诺给投资人的利率上限只有匪夷所思的****2.5%**，如下图：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVZ5TSzwPRBzxibclic4ibPsRqKkDMe5S8Nzy9QOpjthrRYib45nueLxHpibhdT6p7iaoeNiaEsBWbRberJdg/640?wx_fmt=png#imgIndex=3)
+
+很抱歉，这些年里，谁买谁亏。
+
+再看第一张图，目前我国经济增速在5%平台上运行，未来还会进一步走低。
+
+而现在的产品还能给到**3.5%**的预定利率上限，这个收益已经不输很多同期的理财产品，而且未来还会一直保持同水平，你怎么想？
+
+熟悉我的读者此时已经能猜到了——这小子又要推荐增额终身寿了...
+
+对！推荐保险容易没朋友，像这样：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVZ5TSzwPRBzxibclic4ibPsRqKUGrr5NkqRhgMhicJhGlKP9TD0V9OzzwuuOwDcoFrAOR3gFwo6gTAVTA/640?wx_fmt=png#imgIndex=4)
+
+说实话，上图的吐槽也是我的心理障碍，后来我给自己做了好久的工作，才卸下了包袱。
+
+几点原因吧：
+
+第一，**公众号****读者是不是以中产家庭为主？是的。**
+
+第二，**保险是不是中产家庭的刚需？是的。**
+
+第三，这是坑人吗？每次有读者出险，齐欣都会把保险公司的审核结果**（包括得了什么病，赔了报了多少额度）**发给我，我看后是很有成就感的，我想他们也庆幸当初自己买了保险。
+
+第四，我做的还不错。只写文章，客户不主动问，不留联系方式的话，绝不会主动联系客户。一副爱买不买的架势，没有过度销售，一切都在合规框架内。相比保险销售员，业务水平和道德水平都高出很多。
+
+还是给大家推荐下**金满意足**增额终身寿，长期复利能达到****3.5%****，6月30号将会下架15/20年的交费版本。
+
+保险和投资的区别是：**保险能够保障、保证、保全，不惧波动和黑天鹅，没有意外。**
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVY9ARNzP3znjvK4AllEnw3L6JfOJc2ITUpYsJ4ibjkB83XF1QmsIiaR6IibulPQkqIfM8gs7T8LNjKicg/640?wx_fmt=png#imgIndex=5)
+
+需要顾问协助才可购买。不建议拖到最后一天哈！好多人都喜欢临门一脚，结果顾问忙不过来...
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVY9ARNzP3znjvK4AllEnw3L9zXFdcpw3bShCae31se4ticibcicEO3jlfdbSlB6rDxXW5VP4lEr9Vqfg/640?wx_fmt=png#imgIndex=6)
+
+**识别二维码**
+
+**直达👉 极速咨询通道**
+
+我帮大家演示了2W保费的结果，如果你想看其它金额，在公众号底部对话框回复：**算**   即可收到《金满意足的收益演示.excel》。
+
+自己填数就能看到完整的现金价值，一目了然。
+
+---
+
+⚠️ 「老钱日日谈」只是机械地记录作者每天的胡思乱想，因此每篇文章可能会同时说好几个完全不相干的事。所有内容皆仅以交流个人想法和分享知识为目的，完全不构成任何投资建议或参考。请读者注意判断其中风险，结合个人投资目标、财务状况和需求，独立思考，谨慎决策。your money your decision.

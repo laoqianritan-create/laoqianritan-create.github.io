@@ -1,0 +1,107 @@
+---
+title: "25年前的神操作，1万元吃一辈子"
+source: 老钱日日谈公众号
+source_key: laoqian
+kind: article
+date: 2021-12-19
+source_path: 老钱日日谈所有文章逐字稿/[20211219]25年前的神操作，1万元吃一辈子.md
+attribution_required: true
+attribution_text: "这段内容引用自老钱日日谈公众号。"
+---
+# 25年前的神操作，1万元吃一辈子
+
+**一段有趣的历史**
+
+这是我国历年的寿险预定利率上限：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2MaJ3D02MSGWb9R4ibLGMbFWVZMGE6KDXtrDHv3WGSLYWrKxENXIt1rPLzySibLLjNt5GjVyy2p4rBQ/640?wx_fmt=png#imgIndex=0)
+
+预定利率上限的意思是，所有寿险产品的收益定价都不能超过它。
+
+从图中能看出来，这个「天花板」可以分为三个阶段：
+
+阶段一，90年代末，这个定价肯定是错的，高得离谱，当时银行定期存款利率也是这个水平。谁要是在那时买了年金或者储蓄险，那可以真是薅了大羊毛了。
+
+结果还真有！这是我在网上看到的：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2MaJ3D02MSGWb9R4ibLGMbFWaWUB5UKFrFNDeld9WpB2bsZyMWBriaBh24c04C6yaLCEibHB7y8t8NtQ/640?wx_fmt=png#imgIndex=1)
+
+这是某网友的母亲在1996年给他买的，参考前面的图，我估计利率在9%左右。一次性趸交1万元，2049年开始每月领取7095元，活一个月领一个月。
+
+网友忍不住在朋友圈凡尔赛了起来：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2MaJ3D02MSGWb9R4ibLGMbFWLa4kDCvtRsmYr4gJhYyNSatc5OI7ibYkPBkyurAG8dpgTDXDia1uhaTQ/640?wx_fmt=png#imgIndex=2)
+
+这可真是窗口期超短的时代红利——
+
+如果买的是当时老百姓的主流理财产品「银行存款」，那利率每年都会下降。但保险是一份合同，所有约定都是写死的。
+
+如果再晚一年，黑天鹅来了，97年亚洲金融风暴，为了刺激经济连续降息，寿险预定利率上限也跟着一路连降。
+
+而且我估计保监会也意识到，90年代末卖出去的保险产品为了抢客户胡乱定价，约定的利率太高了，几乎全部亏本。但没办法，保险就是这样，卖了就得认，毁约的话全行业的信誉就没了。
+
+于是就有了1999年~2013年这段诡异的超低定价——预定利率上限2.5%。
+
+**而这个阶段恰好沧海桑田，我国同期的GDP增速、M2增速、无风险利率、房价永远涨的通胀幻觉、保险代理人大扩张...**
+
+可以说这期间的年金/储蓄险每一单都是大赚的，也足够覆盖90年代那批产品的亏损。
+
+但代价也同样巨大——老百姓对保险产品的印象很不好，认为都是坑货（确实坑）。对保险代理人的印象也很不好，在国外明明是高端人才干的高大上生意，在我们这被硬生生玩成了忽悠和杀熟的套路。
+
+直到2013年保监会放开定价管制，保险公司才可以根据市场情况自行定价。
+
+说这么多就是想告诉大家，保险已经过了坑货的阶段，中国经济换挡减速，现在的无风险利率也低于3.5%——**现在锁定这个水平虽然不会复制1996年那种神级操作，但未来大概率会挺香的。**
+
+**··· ···**
+
+**年金险/增额终身寿险应该放入怎样的大框架中看待？**
+
+这是我做的一张图，信息量挺大的：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2MaJ3D02MSGWb9R4ibLGMbFWDCqvh0kbSsCfTksyjiaJQ7qVdMxr7Xo1PticMHLyuSfuHrE1eTjmDuEQ/640?wx_fmt=png#imgIndex=3)
+
+养老不能靠国家，蓝框基本是国家在养老方面能帮我们做的全部了——
+
+用医保对冲大部分治疗费用，用逐年提高的退休金保障基本温饱。
+
+如果你想体面养老，就需要用表格里的金融产品给未来的自己补充现金流——
+
+这就是我对金融产品的理解，**它像一辆时光高铁，把我现在不用的钱送到未来，同时再附赠「波动」和「收益」两样东西。**
+
+说到底，年金险和增额终身寿都是一种超长期的理财产品而已，与之对应的是超长期不用的闲钱。
+
+那么，当然就有优先级比它高的东西：
+
+比如帮你对冲医疗支出的健康险都买好没？自己的电梯房解决没？
+
+如果以上资产都有了，每年还有闲钱，确实可以把拿来一些出来去买这类年金/储蓄险。
+
+相比固收理财、基金股票这些资产，保险最大的优势有两点：
+
+一次配置，终身省心，完全按照合同约定来，不需要再花精力，也对长期理财能力没有任何要求，可以应对一切变数。这里的变数既包括市场的，也包括个人和家庭的。
+
+锁定当下，有了前面1996年神操作的介绍，这里就不赘述了。
+
+**··· ···**
+
+目前大家都在疯狂安利的这款「金满意足臻享版」最大的三个特点如下：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2NPu2VGDCQ7iaLqKNAvlcxjniakp9oMPeTXFGqIW81Mod1pAcJH0GKyViayRicYE7E2heTlKbCMFzQXmA/640?wx_fmt=png#imgIndex=4)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2NPu2VGDCQ7iaLqKNAvlcxjnycUMLV9mUbaqkfFUndvbxeQSZAAXHUm4fHMIFicyicQuJcbm63h34Gcw/640?wx_fmt=png#imgIndex=5)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2NPu2VGDCQ7iaLqKNAvlcxjn8Xcyn0aeYbmJ6G9Ut3N1GN35pGEsAuDxUxUWm6t3OEWsPUibFMXyRcg/640?wx_fmt=png#imgIndex=6)
+
+市面上按照3.5%上限设计的产品很多，**大家不约而同都选择了「金满意足臻享版」的根本原因在于****它的现金价值可以最先达到约定的复利水平****。**
+
+比如我30岁购买，复利滚到60岁退休，就持有了一款6%收益的理财产品。哪怕是现在，6%的无风险收益都找不到了。**放到30年后，你们想想那种延迟满足了30年的最终兑现得多爽！**
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2MaJ3D02MSGWb9R4ibLGMbFWdgJFK530gUcOOKBHMXcAZl1fX0PicNXL2zRj6iaudHT8Zn0EjEk4YJiaA/640?wx_fmt=png#imgIndex=7)
+
+点击图片查看产品详情
+
+这款产品将在今年12月31日前也要下架。
+
+看完本文后觉得自己有需求的读者，可以根据自己的个人资产情况，约个顾问帮你做下收益测算，有什么想要了解的细节方面的问题都可以自己去咨询，顾问都会帮助给出专业的解答。
+
+预约了的同学，记得注意接听0755开头的来电哈，别直接给挂了...

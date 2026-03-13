@@ -1,0 +1,170 @@
+---
+title: "招行和胡润财富年报中的经济和富裕阶层"
+source: 老钱日日谈公众号
+source_key: laoqian
+kind: article
+date: 2024-03-28
+source_path: 老钱日日谈所有文章逐字稿/[20240328]招行和胡润财富年报中的经济和富裕阶层.md
+attribution_required: true
+attribution_text: "这段内容引用自老钱日日谈公众号。"
+---
+# 招行和胡润财富年报中的经济和富裕阶层
+
+《招商银行年报》和《胡润财富报告》是本号每年都会做的选题，前者是中国零售业务做得最好的银行，后者出于商业目的热衷于研究中国富裕群体，通过这两份报告中的数据和讨论，我们得以一窥中国富裕群体的生态。
+
+本文旨在分享两份报告中的一些亮点数据，以及笔者个人的主观解读。
+
+**1** 下图为**「净资产」**视角下的中国富裕家庭数量变化情况：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhZKsMog6Kf0emQjSPs2lsr9iceubWchjeMicHibSk8jyvUlFDSATFibcvQw/640?wx_fmt=png&from=appmsg#imgIndex=0)
+
+家庭净资产 = 家庭总资产 - 家庭负债额度
+
+家庭总资产包括房产、存款、股票和债券的投资净值、保险单的现金价值、专利等无形资产的估计价值等等。
+
+**2** 下图是剔除房产和低流动性资产后的**「可投资资产」**视角下的中国富裕家庭数量变化情况：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMh1SBibquhhicwbmz4U2uPZoibwicBEtV1hO1fW4icUoeibm2YrrRbYNEzGo8g/640?wx_fmt=png&from=appmsg#imgIndex=1)
+
+**3** 高净值家庭**（千万净资产）**分布城市排名前20分别是：
+
+京、沪、港、深、广、杭州、宁波、台北、佛山、天津、东莞、苏州、温州、绍兴、重庆、无锡、南京、嘉兴、台州、成都。
+
+**4** 高净值家庭画像仍是老四类：
+
+* 52%企业主 **↑2%**
+* 30%金领 **→**
+* 8%房东 **↓2%**
+* 10%股民 **→**
+
+**5** 高净值人群未来3年最青睐的境外投资地点分别如下：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMh6DLAz9uB5u2cIzVapHXCZ0APhGeVSECTiao5BBXiaHFibVX5zYAxfrQBw/640?wx_fmt=png&from=appmsg#imgIndex=2)
+
+最有趣的变化当然是香港和新加坡的此消彼长。
+
+需要认清的一个现实是：随着财富体量的增长，富裕人群对国籍的概念越越发淡漠。某种程度而言，买保险、多生娃、家庭成员移民换国籍本质上都是在分散配置。
+
+而本文中的两份报告所揭示的财富分布决定了，如果能够通过某种手段**（光环、文化、制度、媒体、战乱）**吸引来一小部分高净值人群，就可以带来大量财富流入。
+
+类似的，用同样的手段吸引来低端劳动力，就可以完成金字塔底座的替换，从而降低服务价格，压低通胀。
+
+不管大家是否接受，这就是世界的现实。
+
+下图是我从一家海外专门做移民服务的机构网站截的图，抛开2020和2021年两个异常值，全球每年的移民数量都在增长，去年的高净值润士规模大概在12.5万人。
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMh0KJ8UCP46FdCzFTyJlicicZ8YKxzbXSiahRVwfcGwy3180sMqibNxXqalA/640?wx_fmt=png&from=appmsg#imgIndex=3)
+
+整个财富管理行业也构建在这样的现实之上，招行金葵花已经说得很清楚了：筛选并服务好少数人。
+
+「增长成瘾」是个特别有悖于个体幸福的概念，但财富管理行业的要义就是「增长成瘾」。
+
+复利同样如此，数学层面看，公式如此简洁。
+
+现实层面看，复利增长意味着一直吸。
+
+这是我去年一再给大家安利👉[《金钱世界》](http://mp.weixin.qq.com/s?__biz=Mzg2MDc2MjM3NA==&mid=2247498365&idx=1&sn=24ef956cbd64e77fa6fef07eceb75683&chksm=ce23c214f9544b02c61bb076b0fdf5f318a16c80a729bd122fb024ad6c9bbb9a00363e3fc751&scene=21#wechat_redirect)这篇文章的原因。
+
+我并非想反对什么**（这太痴人说梦了）**，只是想大家认清游戏规则，毕竟我们都在参与其中。
+
+我也向经济学家请教过、求证过，但是，咋说呢，也许是我水平不够逼问不出来什么...
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhhcHibFfu8Pvdib9krNiclfuzQ9BAicxvj7aIejpkNS6NqWbstPNMDHzVHQ/640?wx_fmt=png&from=appmsg#imgIndex=4)
+
+**6** 高净值群体分别靠什么赚到现金流？很有意思，一目了然。
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhQxfWtW6nxpFRvJe8K3hYydCurp2VQMpvEnmlwEWtfg9YY2CnLysMIQ/640?wx_fmt=png&from=appmsg#imgIndex=5)
+
+**7** 由于《2024胡润财富报告》有保险公司赞助**（你看，大家都要恰饭）**，今年的报告还提到了很多保险方面的内容——养老、保险、现金流规划等。
+
+这是富裕阶层买的保险：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhcCKW3jZxYKNjkUbnGLmnQ4KKdmcXPL9VQ4Jl5KQt0AldfH6Y6chFEw/640?wx_fmt=png&from=appmsg#imgIndex=6)
+
+这是富裕阶层的保费支出占比：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhcYT7bHUfJslIoUH8YBRFthdDhTlt2VLRO2Z60TmdenibEz3c6FRauDA/640?wx_fmt=png&from=appmsg#imgIndex=7)
+
+这是富裕阶层对养老的规划和打算：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhAgzTl63JUIYysEU7sAEXevpTvJOsshJibKm9wp47vDFkFeJ7eDPPpXA/640?wx_fmt=png&from=appmsg#imgIndex=8)
+
+这是他们对应急准备金的规划：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMh0Xl9ho44HZ2YY5ic0KibianVT3w368ltTlasKLGV9wy1LjZvR7L0Z7JEw/640?wx_fmt=png&from=appmsg#imgIndex=9)
+
+**8** 这是富裕阶层的烦恼和担忧：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhw4iczrBcicFPLY8U75ABOPEFa48p4OAZ9PuBQnofKuzRkG8PdprBsNpA/640?wx_fmt=png&from=appmsg#imgIndex=10)
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMh4DAfn6SEVibqY9NdEBn8fqfELsqlldUOAg0VCRa32t2x4syePq9DbKw/640?wx_fmt=png&from=appmsg#imgIndex=11)
+
+**9** 引用报告里的一段话：
+
+**「我曾拜访过一些海外家族基金会，他们通过运营慈善基金会的方式，覆盖了家庭几代人生活所需的现金流。而在国内，有些企业主通过家族信托，类似为自己设立了一个现金企业。」**
+
+避税就避税，非说基金会。这种道貌岸然，让人学不会。
+
+类似的，普通家庭，其实每个人也在经营两家企业：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhfAHWBGicQtoxYfzafiao9uEaPRtvCwrSiaf5BrzWRrXqVyMIJlmdYG7Fg/640?wx_fmt=png&from=appmsg#imgIndex=12)
+
+人力资本公司，就是上逼班兑现人力资本的你我。
+
+金融资产公司，就是家庭资产几张表，像这样：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVYibsu8349bEZ1aAQo6n4XcjicicIc9SUh1LbYFNHj3kBAmcw90TcH70Q0kCthuTv7cF6fEC31XZffLg/640?wx_fmt=png&from=appmsg&wxfrom=13#imgIndex=13)
+
+**10** 此外，报告还披露了一些富人高端消费项目在2023年的通胀速度：
+
+手表珠宝**+6.5%**、配饰和护肤品**+9.4%**、高档烟酒茶**+8.1%**、K12+EMBA等名校教育**+****6.4%**、房产**-0.2%**、休闲生活**+****1.6%**、奢华旅游**+****2.3%**、飞机游艇**+14.8%**、高档汽车**+****1****%**、大健康**+****3.7%**
+
+知道你们爱看房子，单独放一张图：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhwPZ5I3vGic8ESvAkN1ICut7H3HKHusjMmX258mA6xTZSs2GQdRCcyTQ/640?wx_fmt=png&from=appmsg#imgIndex=14)
+
+如果用几个关键词来形容奢侈品生意，大概是：
+
+凝结时间、稀缺性、共识、货币符号、价本利、坐庄盘**（牛股的股东人数一定少）**。
+
+**11** 下图是招商银行金葵花的人数变化：
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhLR8zPPyQxiavf888AvsLRre2WPeBHVv9hoSC3IaSLibaEouA8UKicSaCw/640?wx_fmt=png&from=appmsg#imgIndex=15)
+
+我一直说上图更多展示了财富分布以及财富走向集中的过程。
+
+**12** 招行的营收下滑了，两块收入大头，一是赚息差的净息收入，二是卖各种产品的非息收入，都在负增长。
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhpKD6TFzJUn9epQG97zJr7Cj2YfqFSXuN2M4HoHYQHAmqlCfoibheIgA/640?wx_fmt=png&from=appmsg#imgIndex=16)
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMhDvGQosAJvQsVicp7ibkP186IibwpD2afQL4stQYicjjvahHniahWHOJYjBA/640?wx_fmt=png&from=appmsg#imgIndex=17)
+
+![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/M7fHtGOlzVaWcANBPOsa0tviaRTZ1QlMh3LdoqgoCWQhE5vt1Fb2TTfVTshEOCte3fmrETyWWsCIa37LjeOKIUg/640?wx_fmt=png&from=appmsg#imgIndex=18)
+
+净息收入下降，核心是银行息差在降低，资产端要降低社会融资成本，降房贷利率。负债端，老百姓太爱存钱了**（这点去年写过好几篇[文章](http://mp.weixin.qq.com/s?__biz=Mzg2MDc2MjM3NA==&mid=2247498772&idx=1&sn=ab9d2029b3e5d5c95f128ab6f64114f0&chksm=ce23c47df9544d6b726ea524ad4402f358dee2d0e250335158492438baf11b47b9b8c75f0b35&scene=21#wechat_redirect)）**，而且都在存定期...
+
+对应到宏观经济指标，就是M1和M2的剪刀差在扩大。
+
+非息收入是我的重点关注对象，原因很简单，看数据便可一窥中国理财市场的年度偏好：
+
+✔️代销保险收入同比**+9.3%**，随着银保渠道降费和报行合一，所有保险的收入都会锐减**（包括我）**，再加上保险破刚兑这添乱的小作文，估计明年这块的同比数据会绿到发光。
+
+✔️代销理财收入同比**-18.37%**，核心是含权的理财卖不动，佣金收入降低；
+
+别问为啥含权卖不动？前线保卫3000点的战士们已经尽力了。
+
+✔️代销基金收入同比**-21.52%**，呵呵呵呵呵呵呵呵呵呵呵...
+
+注意，2022年的代销基金收入同比是-46.4%。
+
+对比一下：2020年卖基金收入同比+177%，2021年同比+36%。
+
+不怪招行，A股负全责！不涨谁买？越涨越买！
+
+✔️代销信托收入同比**-19.43%**，主要是信托抱有规模在快速降低，2022年也是腰斩级别的变化。
+
+以上。
+
+---
+
+⚠️ 风险提示：「老钱日日谈」只是机械地记录作者每天的胡思乱想，因此每篇文章可能会同时说好几个完全不相干的事。所有内容皆仅以交流个人想法和分享知识为目的，完全不构成任何投资建议或参考。请读者注意判断其中风险，结合个人投资目标、财务状况和需求，独立思考，谨慎决策。your money your decision.

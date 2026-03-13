@@ -1,0 +1,81 @@
+---
+title: "奔三的路上，很多事儿都触不及防"
+source: 老钱日日谈公众号
+source_key: laoqian
+kind: article
+date: 2017-06-10
+source_path: 老钱日日谈所有文章逐字稿/[20170610]奔三的路上，很多事儿都触不及防.md
+attribution_required: true
+attribution_text: "这段内容引用自老钱日日谈公众号。"
+---
+# 奔三的路上，很多事儿都触不及防
+
+![图片](http://mmbiz.qpic.cn/mmbiz_gif/ibw8b04QVx2M7PTAr8JHoc98wCJlkDyXxsA0LtNpBgqhicVxmxOENpDia40416PMnQfU6BgCLN0bVtwGJS9LMhIJQ/0?wx_fmt=gif#imgIndex=0)
+
+![图片](http://mmbiz.qpic.cn/mmbiz/ibw8b04QVx2Mic6PGWVNqAFHDdX4tZUk02qCgMvYKH34MxWobzPkRicErYCnJAM2HX32tJ2v7qzrH2kuNv18iaGNcQ/0?wx_fmt=png#imgIndex=1)
+
+聊聊最近的一些感想。
+
+第一个事儿，过两天就要过生日了，不要脸地跟大伙儿要个礼物—把老钱说钱置顶吧！举手之劳的事儿。这样每次推送，都能第一时间看到。
+
+这人情算我欠大伙儿的，无以为报，只能好好写文章，帮各位赚些小钱。
+
+如果不知道怎么操作，文末有具体的步骤。
+
+![图片](http://mmbiz.qpic.cn/mmbiz/ibw8b04QVx2Mic6PGWVNqAFHDdX4tZUk02b6ic60tUu5mmkiaW840DDlQZbpDx6FrKZw80myPXshlIiamrskPzvYEwg/0?wx_fmt=png#imgIndex=2)
+
+我妈在沈阳的一家小房地产公司当会计，去年退休。但她觉得自己还没那么老（50岁），公司也有返聘的打算，于是就接着上班。
+
+前两天突然给我转了几万块钱，说是公司在打官司，大领导的银行账户都被冻结了，她怕她的工资卡也被冻。
+
+我逗她说，你还挺拿自己当个角儿啊，如果你的卡没被冻，岂不是很没面子哈哈哈。太可爱了。
+
+像我妈在的这种公司，二三线城市的小开发商，真的很难活，想拿银行贷款比登天还难。其它渠道的借钱成本又很高，资金周转不上，工期一拖，很多业主不满，就打了官司。
+
+我妈已经两个月没发工资了，又把所有老底都给了我。给她寄了一张信用卡过去。
+
+我们家小老太太特别厉害。其实我除了会把文章在公众号发出来，还有今日头条、一点资讯、四大新闻客户端、知乎、雪球、蚂蚁聚宝社区、百度百家... 等等都需要同步。
+
+但是除了微信公众号，其它都是老妈一个人在打理，我从来就没管过。有点儿不可思议吧，我自己都不太敢相信！一个连微信都不太会用的老太太，为了我能干出这么牛逼的事儿来。
+
+这些天，我总是忍不住寻思她养老的事儿，要不要给她上个重疾险，她真不工作了是接过来还是留在老家...
+
+以前总觉得她老了是件遥远的事儿，但我越长一岁就越知道，这事儿很快会来。奔三的路上，很多事儿都猝不及防。需要给父母兜底，需要给伴侣一个交待。
+
+二十出头会觉得这些遥不可及，可总有某件事儿在某个时间点打得我们措手不及。
+
+我想，当这些事发生时，都能从容面对，这才是理财最大的意义。
+
+![图片](http://mmbiz.qpic.cn/mmbiz/ibw8b04QVx2Mic6PGWVNqAFHDdX4tZUk02SKtRicicWjqyGd1G1CXibXVdldbmBCbPIwYRwr3etQhdBp2A37X2Nl4OQ/0?wx_fmt=png#imgIndex=3)
+
+昨天下午陪记者拜访了和我司合作的财富管理公司，晚上又接待了一位在香港渣打银行做财富管理的朋友。也有跟他们请教关于不同阶段的财务规划这种问题。
+
+他们的答案很一致，其实这些完全属于“财富管理”的范畴。财富管理不同于单纯追求收益最大化的资产管理。它分为两大部分：
+
+![图片](http://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2MZadN44S3HncDanQoxfPFMibRMAF4ic41VkdTVYuf7AF9V0Mt7tpNad8Y7ibfdBpN287372B7ohibDtA/0?wx_fmt=png#imgIndex=4)
+
+他们说我的顾虑不算啥了，父母养老只是普遍且简单的需求。
+
+那些富人的烦恼可以这个多了去了：财富传承、财产分割、资产隐藏和转移、婚前资产明确等等...
+
+搏取高额回报只是很小的一部分，风险和不确定性极大***。真正长期且确定的人生目标，都是通过低风险的稳健的投资，靠可持续的复利来实现。***
+
+养老基金，子女的信托基金就是典型例子，需要大类资产配合和保险这种花小钱办大事的手段来配合。
+
+这也才是财富管理的奥义，为什么银行能活几百年，因为他们稳健到保守。
+
+---
+
+本文是财商改造系列第28篇文章，点击***［阅读原文］***可以查看整个系列。
+
+置顶的步骤是这样的：
+
+![图片](http://mmbiz.qpic.cn/mmbiz_gif/ibw8b04QVx2MZadN44S3HncDanQoxfPFMJqiaGicica3ZWpeIIhnxxBT5FIydZ9ogbEpUt8mpibqfibIBEXu2C7w2UqA/0?wx_fmt=gif#imgIndex=5)
+
+今天不开赞赏了，愿意置顶比什么都好！
+
+再推荐一本很喜欢的书，叫《山居岁月》，作者是滨斌，他辞去了工作，一个人去乡下过起了晴耕雨读的生活。书中也有很多朴实的菜谱，让人看了很舒服。心烦意乱时，可以拿来看看。
+
+回复：***估值***   查看12支主要指数的最新估值；
+
+今天的排版是新做的，背景有一些网格。喜欢么？不喜欢我就瞎搞了。

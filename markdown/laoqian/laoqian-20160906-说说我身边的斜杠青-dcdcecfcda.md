@@ -1,0 +1,77 @@
+---
+title: "说说我身边的斜杠青年，以及一些建议"
+source: 老钱日日谈公众号
+source_key: laoqian
+kind: article
+date: 2016-09-06
+source_path: 老钱日日谈所有文章逐字稿/[20160906]说说我身边的斜杠青年，以及一些建议.md
+attribution_required: true
+attribution_text: "这段内容引用自老钱日日谈公众号。"
+---
+# 说说我身边的斜杠青年，以及一些建议
+
+![图片](http://mmbiz.qpic.cn/mmbiz/xWYL70wczZo9JcpJ7PZyEIXEFquhtJKs89LzJWT8oM9KZWYCDZhAwzSWHd1HcwsJicfpUz4bGRCKng9I8nzHmhQ/0?wx_fmt=gif#imgIndex=0)
+
+![图片](http://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2PLVsNDsnwbF74fNwzKSpvzTGMhIHfEUB4Qic5xiahBdKtENykTicIuiaxm67Fvv2juehgdcZCTHyyXAA/0?wx_fmt=png#imgIndex=1)
+
+不知何时起，鸡汤奋斗者们都好以***“斜杠青年”***自居了。我挺讨厌这个词的。就像小时候讨厌尖子生那样，你丫装什么上进！就像讨厌那些地中海发型老干部的名片那样，又是XX理事、又是XX协会会员的，你丫装什么逼！
+
+但我不讨厌那些有趣的人，那些可以长期坚持某项爱好的人，那些有一技之长的人，那些能把工作和生活分开的人。我理解，这些才是所谓“斜杠青年”的本质。这是，现在这个词被炒的太功利了，充满了成功学的味道。
+
+老钱更愿意称这些人为，***机智有趣的年轻人***。聊聊我身边的这类人。
+
+![图片](http://mmbiz.qpic.cn/mmbiz/ibw8b04QVx2Mic6PGWVNqAFHDdX4tZUk02qCgMvYKH34MxWobzPkRicErYCnJAM2HX32tJ2v7qzrH2kuNv18iaGNcQ/0?wx_fmt=png#imgIndex=2)
+
+朋友A，财经编辑，因为对设计感兴趣，凭着PS的功底，自学了制作信息图。有次去某门户面试，做准备工作时，他发现这家门户的不少信息图是外包给EG365做的。
+
+面试时，朋友A问考官，你们每张图给EG365多少钱？后来，面试没过，但他以每张图比EG365便宜200元的价格，接下了这家门户的大部分信息图外包。
+
+---
+
+朋友B，记者，码字速度快且文笔流畅。偶然地机会，接了几次外包写稿的活儿，结果凭着稿子质量和良好的沟通，慢慢地，找上门来约稿的机会越来越多。有时一个月的稿费甚至比工资还多。
+
+---
+
+朋友C，销售，人精口活儿好。一个跟他合作过的渠道方，沟通时如沐春风，干脆把朋友发成了自己的一个销售，每个月底薪+提成。朋友遂又注册了一套联系方式，包括手机号、微信、邮箱。一个人成了两家公司的销售，拿双份工资。
+
+什么都好，就是约他吃饭，老是低头微信聊业务...
+
+---
+
+朋友D...的爸爸，和老伴儿来北京，照顾初为人父的他，和刚出生的儿子。老伴儿包揽了大部分工作，老爷子在家闲极无聊。朋友突发奇想，申请了公司的无息贷款，给老爸买了一辆电动汽车。老爷子机灵，滴滴、UBER都玩得溜儿，承包了所有家人的出行，平时没事儿就在外趴活儿，中午回家吃饭。难为天下父母心呐！
+
+---
+
+朋友E，以前是三本院校学生。痴迷摄影，平时把照片传到人人网上去，点赞者众。还认识了个小迷妹，后来成了他妻子。巧的是，姑娘化妆是一把好手。两个人岁理成章地开了夫妻店，主做婚礼摄影，从到新娘化妆、写真到婚礼现场拍摄，打包服务。两人在唐山活得潇洒又有趣，钱还没少赚。
+
+---
+
+我自己，一直想帮老爸在他住的小区招儿小朋友，平时周末跟他学学书法啥的。老爷子就好写字和刻印，一直自娱自乐，也没啥成就感。我想，帮他招三五个小朋友就够，在家里教，他也开心。无奈一直没什么好办法，有想法的朋友欢迎留言...
+
+![图片](http://mmbiz.qpic.cn/mmbiz/ibw8b04QVx2Mic6PGWVNqAFHDdX4tZUk02b6ic60tUu5mmkiaW840DDlQZbpDx6FrKZw80myPXshlIiamrskPzvYEwg/0?wx_fmt=png#imgIndex=3)
+
+举了几个身边的例子，老钱自己的感悟是，一定要出于兴趣，干自己喜欢的事儿，如果没有利益刺激，很难坚持。
+
+***还有，别老想着变现，不然容易变味儿！***这也是我讨厌市面上那么多写斜杠青年文章的原因。如果爱好能让你的生活变得充实而有趣，那已经赚到了，一开始就奔着钱去，很难坚持下去。
+
+与人为善，如果友人找你合作，注意维护关系，指不定人家就成了你的长期客户了。
+
+![图片](http://mmbiz.qpic.cn/mmbiz/ibw8b04QVx2Mic6PGWVNqAFHDdX4tZUk02SKtRicicWjqyGd1G1CXibXVdldbmBCbPIwYRwr3etQhdBp2A37X2Nl4OQ/0?wx_fmt=png#imgIndex=4)
+
+对于职场人士，斜杠只是辅助，想当斜杠青年前提是你得有本职工作，且有闲暇时间。***斜杠绝不能影响本职工作。***因此，职场新人想成为斜杠青年，还是要谨慎些，孰轻孰重得分得清。
+
+斜杠也意味着，你的时间会变少，所以提高工作效率，做好任务管理和时间管理尤其重要。至于要不要让老板知道，还是看你的兴趣和本职工作有没有关联，如果没有，还是低调点儿吧！
+
+![图片](http://mmbiz.qpic.cn/mmbiz/ibw8b04QVx2Mic6PGWVNqAFHDdX4tZUk025pDtF6Iibat2Nbl4lRtsCwDCmVxgzMbHS0my1mRT5NG6wy0y3OyHvsA/0?wx_fmt=png#imgIndex=5)
+
+对于那些晓代码、善设计、懂营销、精文案、会新媒体，空有一技之长，却怀才不遇没有兼职接项目机会的人，推荐一个软件：***自客***。
+
+一不小心就打广告了，这是老钱一个朋友的创业项目，专门自由职业者和斜杠青年而生，满足公司人下班了还想加班的需求😂。
+
+上面会很多短期的兼职项目等待认领。如果你想成为斜杠青年，不妨拿这个练练手。
+
+扫描二维码就可以认领项目啦～
+
+👇
+
+![图片](http://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2PLVsNDsnwbF74fNwzKSpvzGs9icw4vYV1aw16LibQwSGwmFicvSeFydMibOtwIxsjVyEjXlRM4cfl9cQ/0?wx_fmt=png#imgIndex=6)

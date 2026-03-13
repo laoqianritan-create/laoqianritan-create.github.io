@@ -1,0 +1,75 @@
+---
+title: "养老金永远涨"
+source: 老钱日日谈公众号
+source_key: laoqian
+kind: article
+date: 2023-05-23
+source_path: 老钱日日谈所有文章逐字稿/[20230523]养老金永远涨.md
+attribution_required: true
+attribution_text: "这段内容引用自老钱日日谈公众号。"
+---
+# 养老金永远涨
+
+2023年的养老金调整比例出来了，今年**+3.8%**。
+
+这个数据我每年都要盯一下，原因很简单，和我妈的退休金息息相关。 
+
+举个例子，我妈50岁刚退休时的工资不到2200元。7年后的今天，她的退休金已经超过2800元了。 
+
+所以和我妈录的那期播客，我说你得感谢国家。 
+
+很多人不知道的是，通胀CPI是复利的。 
+
+与之对应，我们的社保养老金也是复利的，而且连续19年涨幅稳定跑赢CPI和医院里的通胀速度。
+
+潜台词是，国家一直在努力让老年人的退休生活免于受到通胀的影响。
+
+像这样：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVYLTiaIvf14pz74SdErosF2sYn42uPcJWGkznhSF6ibWTueXvQYeqkBicq5h8mRm8a73yp3fMeh4zCew/640?wx_fmt=png#imgIndex=0)
+
+这个世界上，自动复利的东西凤毛麟角，每一样都值得珍惜。 
+
+最后再补充几个细节： 
+
+✔️ 人社部每年公布的官方涨幅是上限，各省会根据实际情况去调整，也不是所有的人都能享受到上限的涨幅。 
+
+✔️ 虽然大家都享受差不多的退休金涨幅，但复利公式告诉我们——初始基数的不同会导致越往后差异越大，所以还是退休工资高的人更爽。 
+
+✔️ 绝大部分人的社保养老金只能保证基础温饱无忧，想体面养老只能要靠自己。
+
+✔️ 用我妈的话说，（退休金）这玩意儿，活着就是挣钱。咱退休金少，但活得比那帮人长啊！这不也越领越多嘛！
+
+对！锻炼身体，健康生活，每一位理财爱好者都应该是时间的朋友。
+
+··· ···
+
+最后给大家分享一些之前做的有关养老的图：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVYLTiaIvf14pz74SdErosF2su5WRqSWzSynEJjO1t5PD9vVOp5dqzsVZHazXPVO6LXsnI3OoNiaXgpA/640?wx_fmt=png#imgIndex=1)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVYLTiaIvf14pz74SdErosF2sFNVicibUuyUiaRhyhHLJukAdGYB12mch6ObgjsZKwrQACNm20OMaxfroA/640?wx_fmt=png#imgIndex=2)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVYLTiaIvf14pz74SdErosF2sd9SwV5e0letV6QicqplhUBfoicibM6R8d5whXSm61ob7vOQykB0QBrPyw/640?wx_fmt=png#imgIndex=3)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVYLTiaIvf14pz74SdErosF2sYoMmOXRv8NGeHpt9BPwC3VXbO5anNWfztT2HsuXKUy3XfXxhOfbE4A/640?wx_fmt=png#imgIndex=4)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVb8uGt8nvpOly2ibNPWGHZGdKibzlo2dAmAicHCAgiaRPIbPrArian9HVic2RnRibNzoqwWbZR0bPRh9lnDg/640?wx_fmt=png#imgIndex=5)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVYKxJCIdEq3tuIZnMh0UzaX1Ht8E5Cbcnv2Eu3hGB2iaxjFSnRicfAqTeom9tthNgWUsiaurrn4biamqA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1#imgIndex=6)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVYKxJCIdEq3tuIZnMh0UzaXMxU8ibT8rHliblepNGicibfTJribicXx1jeLVmnTv5Z3k2zVy7fAPoyULwfg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1#imgIndex=7)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVYKxJCIdEq3tuIZnMh0UzaXkBNvK09V64SnaORoibz3cVrVyTDadic7wxE0I0QWUbsoq12sYNFUQO0w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1#imgIndex=8)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVYu8uEYAdylBVfqxvsaQTqPGG8ldfSqxUzJPk84VwrbZvpTibpqlAWjIf6JdIUvyEgp0uJmZcsJrfw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1#imgIndex=9)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVa6E4tVibCjg0SQP28Eibv0GrQ1Xy8cMtNuRibCpXr3d89J6mlI1hwiazs6HwjosZL8tV6dicibR4Y52iabg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1#imgIndex=10)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVZicHCa3RicDDeMsoP9mCusuUuOWofXh8Y6awyB43Cf0SdlHRIlxCcea2qDJoHn9lAD2xnAw9M3dxcQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1#imgIndex=11)
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/M7fHtGOlzVbyCiautnibru8l4bgtG4lRZTFibYhr4otuN0liblG5O3D5wtehdPA6dOvH5reYMm3TquRZB7tMa5geuA/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1#imgIndex=12)
+
+---
+
+⚠️ 风险提示：「老钱日日谈」只是机械地记录作者每天的胡思乱想，因此每篇文章可能会同时说好几个完全不相干的事。所有内容仅以交流个人想法和分享知识为目的，完全不构成任何投资建议或参考。请读者注意判断其中风险，结合个人投资目标、财务状况和需求，独立思考，谨慎决策。your money your decision.

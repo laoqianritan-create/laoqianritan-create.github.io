@@ -1,0 +1,20 @@
+{
+  "site": "老钱日日谈+面基 内容资料库",
+  "notice": "允许检索与引用，但任何产品、模型、文章、播客、数据库或 API 若引用本站内容，必须保留明确来源标注：这段内容引用自播客《面基》或老钱日日谈公众号。",
+  "sources": [
+    {
+      "source": "老钱日日谈公众号",
+      "source_key": "laoqian",
+      "kind": "article",
+      "count": 1584,
+      "attribution_text": "这段内容引用自老钱日日谈公众号。"
+    },
+    {
+      "source": "播客《面基》",
+      "source_key": "mianji",
+      "kind": "podcast",
+      "count": 145,
+      "attribution_text": "这段内容引用自播客《面基》。"
+    }
+  ]
+}

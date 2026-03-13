@@ -1,0 +1,55 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "老钱日日谈+面基 内容资料库 API",
+    "version": "1.0.0",
+    "description": "收录播客《面基》逐字稿与老钱日日谈公众号文章逐字稿，以 Markdown、HTML 与 JSON API 形式开放检索，并要求引用时保留来源标注。"
+  },
+  "servers": [
+    {
+      "url": "https://example.com"
+    }
+  ],
+  "paths": {
+    "/api/documents.json": {
+      "get": {
+        "summary": "获取全部文档索引",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/sources.json": {
+      "get": {
+        "summary": "获取来源统计与引用协议",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/documents/{id}.json": {
+      "get": {
+        "summary": "获取单篇文档全文",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

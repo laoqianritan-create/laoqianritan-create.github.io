@@ -1,0 +1,89 @@
+---
+title: "今年最看重的投资标的"
+source: 老钱日日谈公众号
+source_key: laoqian
+kind: article
+date: 2018-05-17
+source_path: 老钱日日谈所有文章逐字稿/[20180517]今年最看重的投资标的.md
+attribution_required: true
+attribution_text: "这段内容引用自老钱日日谈公众号。"
+---
+# 今年最看重的投资标的
+
+![图片](https://mmbiz.qpic.cn/mmbiz_gif/ibw8b04QVx2M7PTAr8JHoc98wCJlkDyXxsA0LtNpBgqhicVxmxOENpDia40416PMnQfU6BgCLN0bVtwGJS9LMhIJQ/640#imgIndex=0)
+
+![图片](https://mmbiz.qpic.cn/mmbiz/ibw8b04QVx2Mic6PGWVNqAFHDdX4tZUk02qCgMvYKH34MxWobzPkRicErYCnJAM2HX32tJ2v7qzrH2kuNv18iaGNcQ/640#imgIndex=1)
+
+扛着铁锹来填坑：
+
+和朋友见面时，有一个问题总会被问到：最近有什么好的投资机会？
+
+我今年回答的都是「港股打新」。
+
+之前梳理过一个「A股低风险投资工具」汇总，回复：**低风险**  可以收到。
+
+在我看来，「港股打新」就是一种「港股低风险投资工具」。
+
+它有几个明显的好处：
+
+***1***本金不高，最少1万港币就能参与；
+
+***2***收益确定性较大，年化收益超过50%不是什么难事儿；
+
+***3***出手次数不多，且交易时间最多一个半小时，快进快出，难度小；
+
+***4***相比炒股，港股打新的学习难度真的不高，且非常容易指导；
+
+***5***港股打新应该是门槛最低的海外投资方式了；
+
+相信大家也能感受到，我今年对这事儿的热情很高。
+
+晒下我今年港股打新的实盘：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2OWFkxvTc0ialIGvHM7Eo1ht8gDnxokqd0ibZcsmgibNltAUqZeTLbfmBusHKZMosg25D4U8VTROUC1A/640?wx_fmt=png#imgIndex=2)
+
+这还是没太上心，漏掉了很多新股的情况下取得的收益。
+
+图中红框想说明的是：港股打新，20%的新股贡献了80%+的回报。
+
+![图片](https://mmbiz.qpic.cn/mmbiz/ibw8b04QVx2Mic6PGWVNqAFHDdX4tZUk02b6ic60tUu5mmkiaW840DDlQZbpDx6FrKZw80myPXshlIiamrskPzvYEwg/640#imgIndex=3)
+
+之前想在「跟投club」上直接给出每个新股的申购建议，我们小范围内测了一下，体验非常不好，就停掉了。
+
+最终还是选择在「知识星球」上建个群，其实这个做法对我来说是最省事儿的，之前不愿意做是因为担心打开率不好。
+
+好在港股打新在申购和上市两个时间节点上，参与者都很渴望交流，想看看别人是怎么做的。
+
+这是我做的第一个群，已经试运营了一段时间，现在准备好开门接客了。
+
+我来介绍一下：
+
+群名叫「11点港股打新」，之所以叫这个个名字，是想大家牢记港股打新最重要的原则：11点之前卖出，结束战斗。
+
+群里只有我和「群值班」可以发言。「群值班」是个小哥哥，我前同事，目前在一家券商投研部工作。
+
+群里只提供3种服务：
+
+***1***有框架的知识才有价值，我们会用不超过40个帖子把港股打新成体系地说透。目前已经发了8个帖子。
+
+***2***针对每支即将上市的新股，会给出一个新股档案+明确的申购建议，像这样：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_jpg/ibw8b04QVx2OWFkxvTc0ialIGvHM7Eo1htLe1Nia98DzqibBCiakfBJF4ZFElq1YiaEL8t7F3ARSg5M9FjJbHUdOaRGA/640?wx_fmt=jpeg#imgIndex=4)
+
+***3***提供几家低佣开户渠道，可以尝试多账户打新。
+
+目前的群成员都是互联网从业者，都有不错的投资经验。
+
+为了保证质量，减少噪音，我把嘉宾以外的人都设置了禁言。大家可以在帖子下面评论，但不能发帖。有代表性的问题，我会做成帖子发出来。
+
+关于收费：我看了市面上几家的收费标准，都比较贵，最便宜也得一年几百块。我们暂定收66元/年，大概是一次打新申购费的价格。
+
+长按识别下方的二维码，就可以加入我们的港股打新群了：
+
+![图片](https://mmbiz.qpic.cn/mmbiz_png/ibw8b04QVx2OWFkxvTc0ialIGvHM7Eo1ht11Z9ZH3M8J9E8BcWFSzxLWSnUV9KacbmDdDwnmTbtVjavrDWGwVttQ/640?wx_fmt=png#imgIndex=5)
+
+---
+
+点击**［阅读原文］**，可以查看港股打新的相关文章。
+
+回复：**估值**  可以查看25支主要指数的估值；
