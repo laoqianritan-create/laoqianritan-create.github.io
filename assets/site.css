@@ -475,6 +475,56 @@ code {
   font-family: "SFMono-Regular", "Menlo", monospace;
   font-size: 0.94em;
 }
+.tl-dr {
+  background: rgba(214, 196, 168, 0.28);
+  border-left: 3px solid var(--accent-soft);
+  padding: 14px 18px;
+  border-radius: 4px;
+  font-size: 0.97em;
+  line-height: 1.7;
+}
+.entity-block {
+  margin-bottom: 16px;
+}
+.entity-block h2 {
+  font-size: 1em;
+  font-family: "Baskerville", "STSong", serif;
+  margin: 0 0 4px 0;
+}
+.entity-block p {
+  margin: 0;
+  font-size: 0.9em;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.faq-section {
+  margin-top: 24px;
+}
+.faq-section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-family: "Baskerville", "STSong", serif;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+.faq-list {
+  margin: 0;
+}
+.faq-list dt {
+  font-weight: 600;
+  margin-bottom: 6px;
+  margin-top: 20px;
+  color: var(--ink);
+}
+.faq-list dt:first-child {
+  margin-top: 0;
+}
+.faq-list dd {
+  margin: 0 0 4px 0;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-size: 0.95em;
+}
 @media (max-width: 900px) {
   .shell { padding: 18px; }
   .site-header, .site-footer, .overview-strip, .sources-topbar, .api-topbar, .bottom-strip {

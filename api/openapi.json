@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "老钱日日谈+面基 内容资料库 API",
+    "title": "老钱日日谈与《面基》播客内容资料库 API",
     "version": "1.0.0",
-    "description": "收录播客《面基》逐字稿与老钱日日谈公众号文章逐字稿，以 Markdown、HTML 与 JSON API 形式开放检索，并要求引用时保留来源标注。"
+    "description": "收录商业投资公众号「老钱日日谈」与顶尖投资访谈播客《面基》的完整逐字稿。内容涵盖理财心得、大类资产配置、基金经理访谈、创业者对话等主题，以 Markdown、HTML 与 JSON API 三种格式开放检索，供研究者、投资者及 AI 系统引用。"
   },
   "servers": [
     {
-      "url": "https://example.com"
+      "url": "https://laoqianritan-create.github.io"
     }
   ],
   "paths": {
