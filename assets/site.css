@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
 :root {
   --bg: #f4efe6;
   --paper: #fbf8f2;
@@ -10,6 +12,9 @@
   --cream: #f4efe6;
   --accent-soft: #d8c1a3;
   --shadow: 0 20px 50px rgba(18, 18, 18, 0.06);
+  --shadow-hover: 0 28px 60px rgba(18, 18, 18, 0.12);
+  --serif: "Cormorant Garamond", "STSong", "Times New Roman", serif;
+  --sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 *,
 *::before,
@@ -18,7 +23,8 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0;
   color: var(--ink);
-  font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-family: var(--sans);
+  font-weight: 300;
   background:
     radial-gradient(circle at top left, rgba(214, 196, 168, 0.32), transparent 22%),
     linear-gradient(180deg, #f8f4ed 0%, var(--bg) 100%);
@@ -29,6 +35,15 @@ a {
 }
 a:hover { opacity: 0.76; }
 .shell { max-width: 1360px; margin: 0 auto; padding: 28px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 .site-header, .site-footer {
   display: flex;
   justify-content: space-between;
@@ -50,19 +65,37 @@ a:hover { opacity: 0.76; }
   font-size: 14px;
 }
 .brand {
-  font-family: "Baskerville", "STSong", "Times New Roman", serif;
+  font-family: var(--serif);
   font-style: italic;
-  font-size: 30px;
+  font-weight: 400;
+  font-size: 28px;
   letter-spacing: 0.01em;
   color: var(--ink);
+  animation: fadeIn 0.6s ease both;
 }
 .nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 20px;
   color: var(--ink-muted);
-  font-size: 14px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
+.nav a {
+  position: relative;
+  transition: color 0.18s;
+}
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 1px;
+  background: var(--ink);
+  transition: width 0.2s ease;
+}
+.nav a:hover { opacity: 1; color: var(--ink); }
+.nav a:hover::after { width: 100%; }
 .eyebrow {
   margin: 0 0 8px;
   color: var(--ink-muted);
@@ -85,19 +118,34 @@ a:hover { opacity: 0.76; }
 .panel { padding: 24px; margin-bottom: 20px; }
 .lead {
   max-width: 760px;
-  font-size: 20px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.75;
   color: #d5cabc;
+  animation: fadeUp 0.7s ease 0.25s both;
+}
+.hero-metrics {
+  animation: fadeUp 0.7s ease 0.4s both;
 }
 .editorial-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.7fr) minmax(320px, 0.9fr);
-  gap: 20px;
+  gap: 0;
   background: var(--ink);
   color: var(--cream);
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 0;
+  margin-bottom: 24px;
+  overflow: hidden;
+  position: relative;
 }
+.editorial-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-copy, .hero-side { position: relative; z-index: 2; }
 .hero-copy,
 .hero-side {
   min-width: 0;
@@ -105,8 +153,8 @@ a:hover { opacity: 0.76; }
 .hero-copy {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 18px 20px 18px 12px;
+  gap: 20px;
+  padding: 48px 36px 48px 40px;
 }
 .hero-copy h1,
 .hero-side h2,
@@ -120,23 +168,25 @@ a:hover { opacity: 0.76; }
 .document-content h2,
 .prose h1,
 .prose h2 {
-  font-family: "Baskerville", "STSong", "Times New Roman", serif;
+  font-family: var(--serif);
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.02em;
 }
 .hero-copy h1 {
   margin: 0;
-  font-size: clamp(44px, 5.4vw, 82px);
-  line-height: 0.94;
+  font-size: clamp(44px, 5.4vw, 86px);
+  line-height: 0.92;
+  animation: fadeUp 0.7s ease 0.1s both;
 }
 .hero-side {
   background: var(--paper-strong);
   color: var(--ink);
-  padding: 24px;
+  padding: 40px 32px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
+  border-left: 1px solid rgba(255,255,255,0.06);
 }
 .hero-side h2 {
   margin: 0;
@@ -157,7 +207,7 @@ a:hover { opacity: 0.76; }
 }
 .metric-card strong {
   display: block;
-  font-family: "Baskerville", "STSong", serif;
+  font-family: var(--serif);
   font-style: italic;
   font-size: 42px;
   line-height: 1;
@@ -173,7 +223,7 @@ a:hover { opacity: 0.76; }
 }
 .citation-block p:last-child {
   margin: 0;
-  font-family: "Baskerville", "STSong", serif;
+  font-family: var(--serif);
   font-style: italic;
   font-size: 28px;
   line-height: 1.12;
@@ -262,7 +312,20 @@ a:hover { opacity: 0.76; }
   min-width: 0;
   font-size: 15px;
   line-height: 1.45;
+  position: relative;
 }
+.source-list a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.2s ease;
+}
+.source-list a:hover::after { width: 100%; }
+.source-list a:hover { opacity: 1; }
 .source-list span {
   flex: 0 0 auto;
   color: var(--ink-muted);
@@ -298,6 +361,11 @@ a:hover { opacity: 0.76; }
 }
 .card {
   padding: 20px;
+  transition: box-shadow 0.22s ease, transform 0.22s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
 }
 .card h2 {
   margin: 12px 0;
@@ -319,7 +387,11 @@ a:hover { opacity: 0.76; }
 }
 .narrow { max-width: 900px; margin: 0 auto; }
 .prose p, .prose li, .document-content p, .document-content li, .document-content blockquote {
-  line-height: 1.9;
+  line-height: 2.0;
+  font-size: 17px;
+}
+.document-content p + p {
+  margin-top: 0.4em;
 }
 .document-page {
   display: grid;
@@ -364,7 +436,7 @@ a:hover { opacity: 0.76; }
 .api-hero { margin-bottom: 20px; }
 .api-topbar strong,
 .sources-topbar strong {
-  font-family: "Baskerville", "STSong", serif;
+  font-family: var(--serif);
   font-style: italic;
   font-size: 34px;
   font-weight: 400;
@@ -386,7 +458,7 @@ a:hover { opacity: 0.76; }
 }
 .endpoint-feature h2 {
   margin: 0 0 10px;
-  font-family: "Baskerville", "STSong", serif;
+  font-family: var(--serif);
   font-style: italic;
   font-weight: 400;
   font-size: 30px;
@@ -466,7 +538,7 @@ a:hover { opacity: 0.76; }
   background: var(--sand);
 }
 .bottom-strip strong {
-  font-family: "Baskerville", "STSong", serif;
+  font-family: var(--serif);
   font-style: italic;
   font-weight: 400;
   font-size: 28px;
@@ -476,19 +548,24 @@ code {
   font-size: 0.94em;
 }
 .tl-dr {
-  background: rgba(214, 196, 168, 0.28);
-  border-left: 3px solid var(--accent-soft);
-  padding: 14px 18px;
-  border-radius: 4px;
-  font-size: 0.97em;
-  line-height: 1.7;
+  background: rgba(251, 248, 242, 0.12);
+  border-left: 3px solid rgba(216, 193, 163, 0.6);
+  padding: 16px 20px;
+  font-size: 0.9em;
+  line-height: 1.8;
+  color: #c8bfb0;
+}
+.tl-dr strong {
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  font-weight: 500;
 }
 .entity-block {
   margin-bottom: 16px;
 }
 .entity-block h2 {
   font-size: 1em;
-  font-family: "Baskerville", "STSong", serif;
+  font-family: var(--serif);
   margin: 0 0 4px 0;
 }
 .entity-block p {
@@ -503,7 +580,7 @@ code {
 .faq-section h2 {
   margin-top: 0;
   margin-bottom: 20px;
-  font-family: "Baskerville", "STSong", serif;
+  font-family: var(--serif);
   font-weight: 400;
   font-size: 1.5em;
 }
