@@ -613,21 +613,32 @@ code {
 /* ── 品牌色：老钱日日谈（黄）── */
 .source-preview-laoqian,
 .source-column-laoqian {
-  background: var(--laoqian-yellow-bg);
-  border-top: 4px solid var(--laoqian-yellow);
+  background: var(--laoqian-yellow);
   color: var(--ink);
-}
-.source-preview-laoqian .eyebrow,
-.source-column-laoqian .eyebrow {
-  color: var(--laoqian-yellow-dark);
 }
 .source-preview-laoqian .source-head strong,
 .source-column-laoqian .source-head strong {
   color: var(--laoqian-yellow-dark);
 }
+.source-preview-laoqian .eyebrow,
+.source-column-laoqian .eyebrow {
+  color: var(--laoqian-yellow-dark);
+}
 .source-preview-laoqian .source-intro,
 .source-column-laoqian .source-intro {
-  color: #5A4B00;
+  color: #3A2E00;
+}
+.source-preview-laoqian .source-list li,
+.source-column-laoqian .source-list li {
+  border-color: rgba(0, 0, 0, 0.14);
+}
+.source-preview-laoqian .source-list span,
+.source-column-laoqian .source-list span {
+  color: var(--laoqian-yellow-dark);
+}
+.source-preview-laoqian .source-cta,
+.source-column-laoqian .source-cta {
+  color: var(--laoqian-yellow-dark);
 }
 .entity-laoqian {
   border-left: 3px solid var(--laoqian-yellow);
@@ -645,6 +656,7 @@ code {
 .source-column-mianji {
   background: var(--mianji-red);
   color: #fff;
+  border-bottom: 5px solid var(--mianji-green);
 }
 .source-preview-mianji .eyebrow,
 .source-column-mianji .eyebrow {
