@@ -15,6 +15,13 @@
   --shadow-hover: 0 28px 60px rgba(18, 18, 18, 0.12);
   --serif: "Cormorant Garamond", "STSong", "Times New Roman", serif;
   --sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  /* 品牌色 */
+  --laoqian-yellow: #F5C200;
+  --laoqian-yellow-bg: #FFFAE8;
+  --laoqian-yellow-dark: #9A7800;
+  --mianji-red: #C8243C;
+  --mianji-green: #1A7A1A;
+  --mianji-green-accent: #3DAA3D;
 }
 *,
 *::before,
@@ -145,6 +152,14 @@ a:hover { opacity: 0.76; }
   pointer-events: none;
   z-index: 1;
 }
+.editorial-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--laoqian-yellow) 50%, var(--mianji-red) 50%);
+  z-index: 3;
+}
 .hero-copy, .hero-side { position: relative; z-index: 2; }
 .hero-copy,
 .hero-side {
@@ -271,7 +286,6 @@ a:hover { opacity: 0.76; }
 .source-column {
   padding: 24px;
 }
-.source-preview-dark,
 .sources-topbar,
 .api-topbar,
 .endpoint-feature-dark {
@@ -288,11 +302,6 @@ a:hover { opacity: 0.76; }
   font-size: 16px;
   line-height: 1.6;
   color: var(--ink-soft);
-}
-.source-preview-dark .source-intro,
-.source-preview-dark .source-list span,
-.source-preview-dark .meta {
-  color: #cdbfae;
 }
 .source-list {
   list-style: none;
@@ -527,8 +536,6 @@ a:hover { opacity: 0.76; }
   font-size: 14px;
   color: var(--ink-muted);
 }
-.source-preview-dark .source-head strong,
-.source-preview-dark .eyebrow,
 .sources-topbar span,
 .api-topbar span,
 .endpoint-feature-dark .eyebrow {
@@ -602,6 +609,82 @@ code {
   line-height: 1.7;
   font-size: 0.95em;
 }
+
+/* ── 品牌色：老钱日日谈（黄）── */
+.source-preview-laoqian,
+.source-column-laoqian {
+  background: var(--laoqian-yellow-bg);
+  border-top: 4px solid var(--laoqian-yellow);
+  color: var(--ink);
+}
+.source-preview-laoqian .eyebrow,
+.source-column-laoqian .eyebrow {
+  color: var(--laoqian-yellow-dark);
+}
+.source-preview-laoqian .source-head strong,
+.source-column-laoqian .source-head strong {
+  color: var(--laoqian-yellow-dark);
+}
+.source-preview-laoqian .source-intro,
+.source-column-laoqian .source-intro {
+  color: #5A4B00;
+}
+.entity-laoqian {
+  border-left: 3px solid var(--laoqian-yellow);
+  padding-left: 12px;
+}
+.doc-source-laoqian .doc-sidebar .panel {
+  border-top: 4px solid var(--laoqian-yellow);
+}
+.archive-card[data-source="laoqian"] {
+  border-left: 4px solid var(--laoqian-yellow);
+}
+
+/* ── 品牌色：播客《面基》（红 + 绿）── */
+.source-preview-mianji,
+.source-column-mianji {
+  background: var(--mianji-red);
+  color: #fff;
+}
+.source-preview-mianji .eyebrow,
+.source-column-mianji .eyebrow {
+  color: var(--mianji-green-accent);
+}
+.source-preview-mianji .source-head strong,
+.source-column-mianji .source-head strong {
+  color: var(--mianji-green-accent);
+}
+.source-preview-mianji .source-intro,
+.source-column-mianji .source-intro {
+  color: rgba(255, 255, 255, 0.78);
+}
+.source-preview-mianji .source-list span,
+.source-column-mianji .source-list span {
+  color: rgba(255, 255, 255, 0.6);
+}
+.source-preview-mianji .source-list li,
+.source-column-mianji .source-list li {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+.source-preview-mianji .source-cta,
+.source-column-mianji .source-cta {
+  color: rgba(255, 255, 255, 0.65);
+}
+.source-preview-mianji .source-list a,
+.source-column-mianji .source-list a {
+  color: rgba(255, 255, 255, 0.92);
+}
+.entity-mianji {
+  border-left: 3px solid var(--mianji-red);
+  padding-left: 12px;
+}
+.doc-source-mianji .doc-sidebar .panel {
+  border-top: 4px solid var(--mianji-red);
+}
+.archive-card[data-source="mianji"] {
+  border-left: 4px solid var(--mianji-red);
+}
+
 @media (max-width: 900px) {
   .shell { padding: 18px; }
   .site-header, .site-footer, .overview-strip, .sources-topbar, .api-topbar, .bottom-strip {
