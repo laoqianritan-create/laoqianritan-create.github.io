@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分析框架 · 黄金看板</title>
+<style>
+:root {
+  --gold: #d4a853;
+  --gold-light: #f5e6c4;
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #666;
+  --border: #e8e8e8;
+  --layer1: #8b5e3c;
+  --layer2: #c4873a;
+  --layer3: #d4a853;
+  --layer4: #2c2c2c;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.header {
+  background: var(--card-bg);
+  border-bottom: 2px solid var(--gold);
+  padding: 20px;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.back {
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 14px;
+}
+.back:hover { text-decoration: underline; }
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+.intro {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 30px;
+  max-width: 700px;
+}
+.intro strong { color: var(--text); }
+
+/* ── 拓扑图容器 ── */
+.topology {
+  position: relative;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 20px;
+}
+.topo-canvas {
+  min-width: 960px;
+  position: relative;
+}
+
+/* ── SVG 连线层 ── */
+.topo-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.topo-svg line {
+  stroke: #ddd;
+  stroke-width: 1.5;
+  transition: stroke 0.3s, stroke-width 0.3s;
+}
+.topo-svg line.highlighted {
+  stroke: var(--gold);
+  stroke-width: 2.5;
+}
+
+/* ── 层级行 ── */
+.layer-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+}
+.layer-row:last-child { margin-bottom: 0; }
+
+.layer-badge {
+  width: 100px;
+  flex-shrink: 0;
+  text-align: center;
+  padding: 10px 8px;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.layer-badge.l1 { background: var(--layer1); }
+.layer-badge.l2 { background: var(--layer2); }
+.layer-badge.l3 { background: var(--layer3); color: var(--text); }
+.layer-badge.l4 { background: var(--layer4); }
+
+.layer-nodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  flex: 1;
+}
+
+/* ── 节点 ── */
+.node {
+  padding: 8px 16px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  white-space: nowrap;
+}
+.node:hover {
+  border-color: var(--gold);
+  box-shadow: 0 2px 8px rgba(212,168,83,0.2);
+}
+.node.highlighted {
+  border-color: var(--gold);
+  background: var(--gold-light);
+  font-weight: 600;
+}
+.node.has-data::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+/* ── 图例 ── */
+.legend {
+  margin-top: 30px;
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.legend-dot.gold { background: var(--gold); }
+.legend-dot.gray { background: var(--border); }
+
+/* ── Tooltip ── */
+.node-tooltip {
+  display: none;
+  position: fixed;
+  max-width: 320px;
+  padding: 8px 12px;
+  background: rgba(26, 26, 26, 0.5);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.6;
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 1000;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.node-tooltip strong {
+  color: var(--gold-light);
+}
+
+/* ── 框架说明 ── */
+.framework-text {
+  margin-top: 40px;
+  padding: 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--text-secondary);
+}
+.framework-text h3 {
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.footer {
+  max-width: 1200px;
+  margin: 40px auto 20px;
+  padding: 20px;
+  font-size: 12px;
+  color: #999;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <a class="back" href="index.html">← 返回看板</a>
+    <div class="page-title">黄金分析框架</div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="intro">
+    黄金价格不是随机波动的结果，它是<strong>制度信用、宏观组合、市场流动性</strong>三层力量叠加的投影。
+    这张拓扑图展示了影响金价的全部要素，以及它们之间的传导路径。
+    <br>悬停查看指标解读。标黄指标点击跳转看板；其他节点点击高亮上下游关系。
+  </div>
+
+  <div class="topology">
+    <div class="topo-canvas" id="topoCanvas">
+      <svg class="topo-svg" id="topoSvg"></svg>
+
+      <!-- 长期制度层 -->
+      <div class="layer-row" id="row-layer1">
+        <div class="layer-badge l1">长期<br>制度层</div>
+        <div class="layer-nodes">
+          <div class="node" data-id="A1">财政赤字/GDP</div>
+          <div class="node" data-id="A2">债务/GDP</div>
+          <div class="node" data-id="A3">净利息支出/收入</div>
+          <div class="node" data-id="A4">央行净购金</div>
+          <div class="node" data-id="A5">美元储备占比</div>
+        </div>
+      </div>
+
+      <!-- 中期宏观层 -->
+      <div class="layer-row" id="row-layer2">
+        <div class="layer-badge l2">中期<br>宏观层</div>
+        <div class="layer-nodes">
+          <div class="node" data-id="B1">10Y TIPS</div>
+          <div class="node" data-id="B2">5Y TIPS</div>
+          <div class="node" data-id="B3">10Y Breakeven</div>
+          <div class="node" data-id="B4">DXY</div>
+          <div class="node" data-id="B5">金融条件指数</div>
+          <div class="node" data-id="B6">核心PCE</div>
+          <div class="node" data-id="B7">ISM PMI</div>
+          <div class="node" data-id="B8">失业率</div>
+        </div>
+      </div>
+
+      <!-- 短期市场层 -->
+      <div class="layer-row" id="row-layer3">
+        <div class="layer-badge l3">短期<br>市场层</div>
+        <div class="layer-nodes">
+          <div class="node" data-id="C1">黄金ETF持仓</div>
+          <div class="node" data-id="C2">CFTC净多头</div>
+          <div class="node" data-id="C3">GVZ</div>
+          <div class="node" data-id="C4">20/60/200日动量</div>
+        </div>
+      </div>
+
+      <!-- 黄金结果层 -->
+      <div class="layer-row" id="row-layer4">
+        <div class="layer-badge l4">黄金<br>结果层</div>
+        <div class="layer-nodes">
+          <div class="node" data-id="D1">价格中枢</div>
+          <div class="node" data-id="D2">趋势强弱</div>
+          <div class="node" data-id="D3">波动率</div>
+          <div class="node" data-id="D4">配置价值</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot gold"></div>已接入数据（点击跳转看板）</div>
+    <div class="legend-item"><div class="legend-dot gray"></div>框架展示，后续接入</div>
+  </div>
+
+  <div class="framework-text">
+    <h3>如何阅读这张图</h3>
+    <strong>长期制度层</strong>——决定黄金价格中枢会不会抬升。主权信用磨损、货币体系碎片化，推动央行和私人部门增加黄金储备。<br>
+    <strong>中期宏观层</strong>——决定黄金趋势能不能走出来。通胀粘性 × 增长方向 × 美元强弱 × 流动性松紧，四个变量的组合决定黄金的中期方向。<br>
+    <strong>短期市场层</strong>——决定黄金短期怎么走。资金流、仓位、波动率和技术动量，影响黄金的短期节奏和幅度。<br>
+    <strong>黄金结果层</strong>——最终输出。所有上游力量汇聚后，体现为价格中枢的移动、趋势的强弱、波动率的高低和配置价值的变化。<br><br>
+    箭头代表传导路径：上游指标变化会沿箭头方向影响下游。一个指标可能同时影响多个下游节点。
+  </div>
+</div>
+
+<div class="footer">
+  黄金看板 · 分析框架 · 框架来源：老钱日日谈
+</div>
+
+<div class="node-tooltip" id="nodeTooltip"></div>
+
+<script>
+// ── 拓扑连接定义 ──
+const EDGES = [
+  ['A1', 'B1'], ['A2', 'B4'], ['A3', 'B1'],
+  ['A4', 'D1'], ['A5', 'D4'],
+  ['B1', 'D2'], ['B2', 'D2'], ['B3', 'D2'], ['B4', 'D2'],
+  ['B5', 'C1'], ['B6', 'D4'], ['B7', 'D2'], ['B8', 'D2'],
+  ['C1', 'D2'], ['C2', 'D3'], ['C3', 'D3'], ['C4', 'D2'],
+];
+
+// MVP 已接入数据的节点
+const HAS_DATA = ['A1', 'A2', 'A3', 'A4', 'A5', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B8', 'C1', 'C3', 'C4'];
+
+// 节点 → 看板板块映射
+const NODE_TO_SECTION = {
+  'A1': 'fiscal-credit',
+  'A2': 'fiscal-credit',
+  'A3': 'fiscal-credit',
+  'A4': 'fiscal-credit',
+  'A5': 'fiscal-credit',
+  'B1': 'opportunity-cost',
+  'B2': 'opportunity-cost',
+  'B3': 'opportunity-cost',
+  'B4': 'dollar-liquidity',
+  'B5': 'dollar-liquidity',
+  'B6': 'inflation-growth',
+  'B8': 'inflation-growth',
+  'C1': 'risk-temp',
+  'C3': 'risk-temp',
+  'C4': 'risk-temp',
+};
+
+// ── 节点解释（悬停显示）──
+const NODE_TOOLTIPS = {
+  'A1': '赤字越大，政府越依赖发债融资，稀释货币购买力的压力越大，黄金的长期锚就越高',
+  'A2': '债务堆积到临界点，市场开始怀疑主权信用能否维持，黄金作为「无对手方资产」的吸引力上升',
+  'A3': '当政府收入的大头用来还利息，财政空间收窄，货币化压力升温，黄金嗅到远处的通胀',
+  'A4': '央行用真金白银投票——持续增持说明对现行货币体系的信任正在松动',
+  'A5': '美元储备份额下降意味着货币体系正在碎片化，黄金作为中性储备资产的地位上升',
+  'B1': '持有黄金的核心机会成本——实际利率越高，持有零息的黄金越「贵」',
+  'B2': '中期实际利率的风向标，对黄金趋势的敏感度比 10 年期更高',
+  'B3': '市场对未来通胀的定价——通胀预期升温时，黄金的抗通胀叙事被激活',
+  'B4': '黄金以美元计价，美元走弱直接抬升金价；同时反映全球资本对美元资产的信心',
+  'B5': '流动性的总开关——条件宽松时资金更容易流入黄金，收紧时黄金承压',
+  'B6': '美联储最看重的通胀指标，决定货币政策方向，间接影响实际利率和黄金趋势',
+  'B7': '制造业景气度的温度计——经济走弱时降息预期升温，黄金受益',
+  'B8': '劳动力市场的滞后信号，一旦拐头上升，衰退叙事启动，黄金进入避险定价',
+  'C1': '西方机构资金的投票器——持仓增加说明配置资金在流入，是趋势的燃料',
+  'C2': '投机资金的拥挤度——极端多头意味着短期回调风险，极端空头则是反转信号',
+  'C3': '黄金的恐惧指数——波动率飙升往往对应大幅震荡，是趋势加速或反转的前兆',
+  'C4': '技术面的骨架——均线多头排列确认趋势，死叉和偏离率提示超买超卖',
+  'D1': '所有长期力量的沉淀——制度信用越弱，黄金的价格中枢越高',
+  'D2': '中期宏观组合的输出——实际利率、美元、增长的方向共同决定黄金能不能走出趋势',
+  'D3': '短期市场情绪的放大器——仓位拥挤和恐慌情绪推高波动，影响交易节奏',
+  'D4': '长期持有黄金的性价比——信用周期位置、通胀前景和估值水平的综合判断',
+};
+
+// 标记已有数据的节点
+HAS_DATA.forEach(function(id) {
+  var node = document.querySelector('[data-id="' + id + '"]');
+  if (node) node.classList.add('has-data');
+});
+
+// ── Tooltip + 悬停高亮 ──
+var tooltip = document.getElementById('nodeTooltip');
+
+function positionTooltip(e) {
+  // 先临时定位以获取尺寸
+  tooltip.style.left = (e.clientX + 12) + 'px';
+  tooltip.style.top = '0px';
+  var rect = tooltip.getBoundingClientRect();
+
+  // 默认显示在鼠标上方
+  var top = e.clientY - rect.height - 12;
+  var left = e.clientX + 12;
+
+  // 上方空间不够则翻到下方
+  if (top < 8) top = e.clientY + 12;
+  // 右侧溢出则左移
+  if (left + rect.width > window.innerWidth - 8) left = e.clientX - rect.width - 12;
+
+  tooltip.style.left = left + 'px';
+  tooltip.style.top = top + 'px';
+}
+
+function clearHoverHighlights() {
+  document.querySelectorAll('.node.highlighted').forEach(function(n) { n.classList.remove('highlighted'); });
+  document.querySelectorAll('.topo-svg line.highlighted').forEach(function(l) {
+    l.classList.remove('highlighted');
+    l.setAttribute('marker-end', 'url(#arrowGray)');
+  });
+}
+
+document.querySelectorAll('.node').forEach(function(node) {
+  var id = node.dataset.id;
+  var tip = NODE_TOOLTIPS[id];
+
+  node.addEventListener('mouseenter', function(e) {
+    // Tooltip
+    if (tip) {
+      var name = this.textContent.trim();
+      tooltip.innerHTML = '<strong>' + name + '</strong><br>' + tip;
+      tooltip.style.display = 'block';
+      positionTooltip(e);
+    }
+
+    // 高亮当前节点 + 关联上下游节点 + 连线
+    this.classList.add('highlighted');
+    var relatedNodes = new Set([id]);
+    document.querySelectorAll('.topo-svg line').forEach(function(line) {
+      if (line.dataset.from === id || line.dataset.to === id) {
+        line.classList.add('highlighted');
+        line.setAttribute('marker-end', 'url(#arrowGold)');
+        relatedNodes.add(line.dataset.from);
+        relatedNodes.add(line.dataset.to);
+      }
+    });
+    relatedNodes.forEach(function(nid) {
+      var el = document.querySelector('[data-id="' + nid + '"]');
+      if (el) el.classList.add('highlighted');
+    });
+  });
+
+  node.addEventListener('mousemove', function(e) {
+    if (tip) positionTooltip(e);
+  });
+
+  node.addEventListener('mouseleave', function() {
+    tooltip.style.display = 'none';
+    clearHoverHighlights();
+  });
+});
+
+// ── 绘制连线（带方向箭头）──
+function drawEdges() {
+  var svg = document.getElementById('topoSvg');
+  var canvas = document.getElementById('topoCanvas');
+  var canvasRect = canvas.getBoundingClientRect();
+
+  svg.style.width = canvas.scrollWidth + 'px';
+  svg.style.height = canvas.scrollHeight + 'px';
+  svg.setAttribute('viewBox', '0 0 ' + canvas.scrollWidth + ' ' + canvas.scrollHeight);
+
+  svg.innerHTML = '';
+
+  // 箭头 marker 定义（灰色 + 高亮金色）
+  var defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+  [['arrowGray', '#ccc'], ['arrowGold', '#d4a853']].forEach(function(pair) {
+    var id = pair[0], color = pair[1];
+    var marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+    marker.setAttribute('id', id);
+    marker.setAttribute('viewBox', '0 0 6 4');
+    marker.setAttribute('refX', '6');
+    marker.setAttribute('refY', '2');
+    marker.setAttribute('markerWidth', '6');
+    marker.setAttribute('markerHeight', '4');
+    marker.setAttribute('orient', 'auto');
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M0,0 L6,2 L0,4');
+    path.setAttribute('fill', color);
+    marker.appendChild(path);
+    defs.appendChild(marker);
+  });
+  svg.appendChild(defs);
+
+  // 预算每个目标节点的入边，用于分散箭头端点避免重叠
+  var targetSlots = {};
+  EDGES.forEach(function(edge) {
+    var t = edge[1];
+    if (!targetSlots[t]) targetSlots[t] = [];
+    targetSlots[t].push(edge[0]);
+  });
+
+  EDGES.forEach(function(edge) {
+    var fromId = edge[0], toId = edge[1];
+    var fromEl = document.querySelector('[data-id="' + fromId + '"]');
+    var toEl = document.querySelector('[data-id="' + toId + '"]');
+    if (!fromEl || !toEl) return;
+
+    var fromRect = fromEl.getBoundingClientRect();
+    var toRect = toEl.getBoundingClientRect();
+
+    // 起点：节点底部中心
+    var x1 = fromRect.left + fromRect.width / 2 - canvasRect.left;
+    var y1 = fromRect.top + fromRect.height - canvasRect.top;
+
+    // 终点：沿目标节点顶边分散，多条入边不重叠
+    var siblings = targetSlots[toId];
+    var idx = siblings.indexOf(fromId);
+    var count = siblings.length;
+    var x2;
+    if (count <= 1) {
+      x2 = toRect.left + toRect.width / 2 - canvasRect.left;
+    } else {
+      var pad = Math.min(toRect.width * 0.1, 10);
+      var span = toRect.width - 2 * pad;
+      x2 = toRect.left + pad + (idx / (count - 1)) * span - canvasRect.left;
+    }
+    var y2 = toRect.top - canvasRect.top - 2;
+
+    var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', x1);
+    line.setAttribute('y1', y1);
+    line.setAttribute('x2', x2);
+    line.setAttribute('y2', y2);
+    line.setAttribute('marker-end', 'url(#arrowGray)');
+    line.dataset.from = fromId;
+    line.dataset.to = toId;
+    svg.appendChild(line);
+  });
+}
+
+// ── 节点点击：已接入数据的指标跳转看板 ──
+document.querySelectorAll('.node').forEach(function(node) {
+  node.addEventListener('click', function() {
+    var id = this.dataset.id;
+    if (this.classList.contains('has-data') && NODE_TO_SECTION[id]) {
+      window.open('index.html#' + NODE_TO_SECTION[id], '_blank');
+    }
+  });
+});
+
+// 初始绘制 + 窗口变化时重绘
+window.addEventListener('load', function() { setTimeout(drawEdges, 100); });
+window.addEventListener('resize', drawEdges);
+</script>
+</body>
+</html>

@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄金看板 · 不预测金价，只帮你看清黄金正在反映什么</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root {
+  --gold: #d4a853;
+  --gold-light: #f5e6c4;
+  --bg: #f8f9fa;
+  --card-bg: #ffffff;
+  --text: #1a1a1a;
+  --text-secondary: #666;
+  --border: #e8e8e8;
+  --red: #cf1322;
+  --green: #389e0d;
+  --gray: #999;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ── 顶部区域 ── */
+.header {
+  background: var(--card-bg);
+  border-bottom: 2px solid var(--gold);
+  padding: 20px 0 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.site-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.site-title span { color: var(--gold); }
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+.gold-bar {
+  margin-top: 12px;
+  padding: 10px 0;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.gold-price {
+  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-size: 22px;
+  font-weight: 700;
+}
+.gold-changes {
+  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-size: 13px;
+  display: flex;
+  gap: 12px;
+}
+
+/* ── 导航 ── */
+.nav {
+  display: flex;
+  gap: 0;
+  margin-top: 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.nav-item {
+  padding: 10px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+.nav-item:hover { color: var(--text); }
+.nav-item.active {
+  color: var(--text);
+  font-weight: 600;
+  border-bottom-color: var(--gold);
+}
+.nav-link {
+  margin-left: auto;
+  padding: 10px 18px;
+  font-size: 14px;
+  color: var(--gold);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-link:hover { text-decoration: underline; }
+
+/* ── 内容区 ── */
+.main {
+  max-width: 1200px;
+  margin: 24px auto;
+  padding: 0 20px;
+}
+.section { display: none; }
+.section.active { display: block; }
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-left: 12px;
+  border-left: 4px solid var(--gold);
+}
+
+/* ── 指标卡片 ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 20px;
+}
+@media (max-width: 560px) {
+  .cards { grid-template-columns: 1fr; }
+}
+.card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.card-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+.card-date {
+  font-size: 12px;
+  color: var(--gray);
+}
+.card-value {
+  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.card-unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-left: 4px;
+}
+
+/* ── 变化方向 ── */
+.changes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-bottom: 16px;
+}
+.change-item {
+  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-size: 13px;
+}
+.change-label { color: var(--text-secondary); margin-right: 4px; }
+.change-up { color: var(--red); }
+.change-down { color: var(--green); }
+.change-flat { color: var(--gray); }
+
+/* ── 分位条 ── */
+.percentiles {
+  margin-bottom: 16px;
+}
+.pct-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+.pct-label {
+  width: 60px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+.pct-bar {
+  flex: 1;
+  height: 8px;
+  background: #eee;
+  border-radius: 4px;
+  position: relative;
+}
+.pct-dot {
+  position: absolute;
+  top: -3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+.pct-dot.low { background: var(--green); }
+.pct-dot.mid { background: var(--gold); }
+.pct-dot.high { background: var(--red); }
+.pct-value {
+  width: 36px;
+  text-align: right;
+  font-family: "Roboto Mono", "SF Mono", monospace;
+  color: var(--text-secondary);
+}
+
+/* ── 图表 ── */
+.chart-container {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 16px;
+}
+
+/* ── 人话解读 ── */
+.interpretation {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding: 12px;
+  background: var(--bg);
+  border-radius: 6px;
+}
+
+/* ── 板块解读 ── */
+.section-summary {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+.section-summary strong { color: var(--text); }
+
+/* ── 底部 ── */
+.footer {
+  max-width: 1200px;
+  margin: 40px auto 20px;
+  padding: 20px;
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.8;
+  border-top: 1px solid var(--border);
+}
+
+/* ── 金价走势图 ── */
+.gold-chart-wrap {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+.gold-chart-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.gold-chart {
+  width: 100%;
+  height: 280px;
+}
+
+/* ── 卡片预警态 ── */
+.card.card-alert {
+  border-color: #faad14;
+  border-width: 2px;
+  position: relative;
+}
+.card.card-alert::before {
+  content: '注意';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background: #faad14;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 0 7px 0 6px;
+}
+
+/* ── 信号标签 ── */
+.signal-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+.signal-badge.bullish { background: #f6ffed; color: #389e0d; border: 1px solid #b7eb8f; }
+.signal-badge.bearish { background: #fff1f0; color: #cf1322; border: 1px solid #ffa39e; }
+.signal-badge.neutral { background: #f5f5f5; color: #666; border: 1px solid #d9d9d9; }
+.signal-badge.warning { background: #fffbe6; color: #ad6800; border: 1px solid #ffe58f; }
+
+/* ── 宏观象限矩阵 ── */
+.macro-matrix-wrap {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 4px;
+}
+.macro-matrix-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.macro-matrix {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  grid-template-rows: 36px 1fr 1fr;
+  gap: 0;
+  max-width: 560px;
+}
+.matrix-corner { }
+.matrix-col-label {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.matrix-row-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: horizontal-tb;
+}
+.matrix-cell {
+  border: 1px solid var(--border);
+  padding: 14px 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  position: relative;
+  min-height: 80px;
+}
+.matrix-cell strong {
+  display: block;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.matrix-cell.active {
+  background: var(--gold-light);
+  border-color: var(--gold);
+  border-width: 2px;
+}
+.matrix-cell.active::after {
+  content: '● 当前';
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 700;
+}
+.matrix-note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+/* ── 时间范围按钮 ── */
+.range-btn {
+  padding: 4px 12px;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.range-btn:hover { border-color: var(--gold); color: var(--text); }
+.range-btn.active {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+
+/* ── 均线卡片 ── */
+.ma-grid {
+  margin-bottom: 16px;
+}
+.ma-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 0;
+  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-size: 14px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.ma-row:last-child { border-bottom: none; }
+.ma-label {
+  width: 90px;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.ma-val {
+  flex: 1;
+  font-weight: 600;
+}
+
+/* ── 加载态 ── */
+.loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+</style>
+</head>
+<body>
+
+<!-- 顶部 -->
+<div class="header">
+  <div class="header-inner">
+    <div class="site-title"><span>■</span> 黄金看板</div>
+    <div class="subtitle">不预测金价，只帮你看清黄金正在反映什么</div>
+    <div class="gold-bar" id="goldBar">
+      <span style="color:var(--text-secondary);font-size:14px">国际金价</span>
+      <span class="gold-price" id="goldPrice">--</span>
+      <div class="gold-changes" id="goldChanges"></div>
+    </div>
+    <div class="nav" id="nav">
+      <div class="nav-item active" data-section="opportunity-cost">机会成本</div>
+      <div class="nav-item" data-section="dollar-liquidity">美元与流动性</div>
+      <div class="nav-item" data-section="inflation-growth">通胀与增长</div>
+      <div class="nav-item" data-section="fiscal-credit">财政与信用</div>
+      <div class="nav-item" data-section="risk-temp">风险温度</div>
+      <a class="nav-link" href="framework.html">分析框架 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- 内容区 -->
+<div class="main" id="main">
+  <div class="loading" id="loading">正在加载数据...</div>
+
+  <!-- 金价走势图 -->
+  <div class="gold-chart-wrap" id="goldChartWrap" style="display:none">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div class="gold-chart-title" style="margin-bottom:0">国际金价走势</div>
+      <div style="display:flex;gap:6px" id="goldChartRange">
+        <button class="range-btn" data-range="1y">1年</button>
+        <button class="range-btn" data-range="5y">5年</button>
+        <button class="range-btn" data-range="20y">20年</button>
+        <button class="range-btn active" data-range="all">1915至今</button>
+      </div>
+    </div>
+    <div class="gold-chart" id="goldChart"></div>
+  </div>
+
+  <!-- 板块一：机会成本 -->
+  <div class="section active" id="sec-opportunity-cost">
+    <div class="cards" id="cards-opportunity-cost"></div>
+    <div class="section-summary" id="summary-opportunity-cost"></div>
+  </div>
+
+  <!-- 板块二：美元与流动性 -->
+  <div class="section" id="sec-dollar-liquidity">
+    <div class="cards" id="cards-dollar-liquidity"></div>
+    <div class="section-summary" id="summary-dollar-liquidity"></div>
+  </div>
+
+  <!-- 板块三：通胀与增长 -->
+  <div class="section" id="sec-inflation-growth">
+    <div class="cards" id="cards-inflation-growth"></div>
+    <div class="macro-matrix-wrap" id="macroMatrixWrap" style="display:none">
+      <div class="macro-matrix-title">宏观象限：增长 × 通胀</div>
+      <div class="macro-matrix" id="macroMatrix">
+        <div class="matrix-corner"></div>
+        <div class="matrix-col-label">通胀低（≤2.5%）</div>
+        <div class="matrix-col-label">通胀高（>2.5%）</div>
+        <div class="matrix-row-label">增长强</div>
+        <div class="matrix-cell" id="cell-strong-low"><strong>利空黄金</strong>实际利率容易维持高位，压制金价</div>
+        <div class="matrix-cell" id="cell-strong-high"><strong>中性偏空</strong>要看实际利率和美元方向</div>
+        <div class="matrix-row-label">增长弱</div>
+        <div class="matrix-cell" id="cell-weak-low"><strong>中性偏多</strong>看降息预期能否兑现</div>
+        <div class="matrix-cell" id="cell-weak-high"><strong>最利多黄金</strong>滞胀环境，黄金保险价值凸显</div>
+      </div>
+      <div class="matrix-note" id="matrixNote"></div>
+    </div>
+    <div class="section-summary" id="summary-inflation-growth"></div>
+  </div>
+
+  <!-- 板块四：财政与信用 -->
+  <div class="section" id="sec-fiscal-credit">
+    <div class="cards" id="cards-fiscal-credit"></div>
+    <div class="section-summary" id="summary-fiscal-credit"></div>
+  </div>
+
+  <!-- 板块六：风险温度 -->
+  <div class="section" id="sec-risk-temp">
+    <div class="cards" id="cards-risk-temp"></div>
+    <div class="section-summary" id="summary-risk-temp"></div>
+  </div>
+</div>
+
+<!-- 底部 -->
+<div class="footer">
+  数据来源：FRED (Federal Reserve Economic Data)、Chicago Fed、Yahoo Finance<br>
+  最后更新：<span id="lastUpdate">--</span><br>
+  更新频率：日频指标每日更新，月频指标每月更新<br><br>
+  ⚠ 免责声明：本看板仅供学习和研究参考，不构成任何投资建议。黄金投资有风险，决策需自行判断。
+</div>
+
+<script>
+// ── 配置 ──
+const SECTION_MAP = {
+  '机会成本': 'opportunity-cost',
+  '美元与流动性': 'dollar-liquidity',
+  '通胀与增长': 'inflation-growth',
+  '财政与信用': 'fiscal-credit',
+  '风险温度': 'risk-temp',
+};
+
+const SECTION_ORDER = {
+  'opportunity-cost': ['DFII10', 'DFII5', 'T10YIE'],
+  'dollar-liquidity': ['DTWEXBGS', 'NFCI'],
+  'inflation-growth': ['PCE_YOY', 'IPMAN', 'UNRATE'],
+  'fiscal-credit': ['GFDEBTN', 'GFDEGDQ188S', 'FYFSGDA188S', 'INTEREST_RATIO', 'CB_GOLD_NET', 'USD_RESERVE_SHARE'],
+  'risk-temp': ['GVZCLS', 'GOLD_MA', 'GLD_HOLDINGS'],
+};
+
+// ── 工具函数 ──
+function formatValue(val, unit) {
+  if (unit === '美元/盎司') return '$' + val.toLocaleString('en-US', { maximumFractionDigits: 0 });
+  if (unit === '%') return val.toFixed(2) + '%';
+  if (unit === '万亿美元') return '$' + val.toFixed(2) + '万亿';
+  if (unit === '标准差') return val.toFixed(2);
+  if (unit === '吨/年') return val.toLocaleString('en-US', { maximumFractionDigits: 0 }) + ' 吨';
+  if (unit.includes('GLD价格代理')) return '$' + val.toFixed(2);
+  if (unit.includes('指数')) return val.toFixed(1);
+  return val.toFixed(2);
+}
+
+function changeClass(val) {
+  if (val > 0.005) return 'change-up';
+  if (val < -0.005) return 'change-down';
+  return 'change-flat';
+}
+
+function changeArrow(val) {
+  if (val > 0.005) return '▲';
+  if (val < -0.005) return '▼';
+  return '—';
+}
+
+function formatChange(val) {
+  if (val === null || val === undefined) return '--';
+  const sign = val > 0 ? '+' : '';
+  return sign + val.toFixed(2);
+}
+
+const CHANGE_LABELS = { '5d': '5日', '20d': '20日', '3m': '3月', 'yoy': '同比' };
+
+// ── 创建指标卡片 ──
+function createCard(data) {
+  const card = document.createElement('div');
+  card.className = 'card';
+  const chartId = 'chart-' + data.id;
+
+  // 变化方向 HTML
+  let changesHtml = '';
+  for (const [key, label] of Object.entries(CHANGE_LABELS)) {
+    const val = data.changes[key];
+    if (val !== null && val !== undefined) {
+      const cls = changeClass(val);
+      changesHtml += `<span class="change-item"><span class="change-label">${label}</span><span class="${cls}">${changeArrow(val)} ${formatChange(val)}</span></span>`;
+    }
+  }
+
+  // 分位 HTML（低估绿 / 平均金 / 高估红）
+  let pctHtml = '';
+  for (const [key, val] of Object.entries(data.percentiles || {})) {
+    const label = key.replace('y', '年');
+    const dotClass = val < 33 ? 'low' : val < 67 ? 'mid' : 'high';
+    pctHtml += `
+      <div class="pct-row">
+        <span class="pct-label">${label}分位</span>
+        <div class="pct-bar"><div class="pct-dot ${dotClass}" style="left:${val}%"></div></div>
+        <span class="pct-value">${val}%</span>
+      </div>`;
+  }
+
+  // GOLD_MA 专属卡片布局
+  if (data.id === 'GOLD_MA' && data.ma20) {
+    const ma20 = data.ma20, ma60 = data.ma60, ma200 = data.ma200;
+    const bc = data.bullish_count;
+    const statusText = bc >= 3 ? '多头排列' : bc >= 2 ? '偏多' : bc >= 1 ? '偏弱' : '空头排列';
+    const statusCls = bc >= 3 ? 'bullish' : bc >= 2 ? 'bullish' : bc <= 1 ? 'bearish' : 'neutral';
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-name">${data.name_zh}</span>
+        <span class="card-date">${data.latest.date}</span>
+      </div>
+      <div class="card-value">$${data.latest.value.toLocaleString('en-US', {maximumFractionDigits:0})}<span class="card-unit"> <span class="signal-badge ${statusCls}">${bc}/3 ${statusText}</span></span></div>
+      <div class="ma-grid">
+        <div class="ma-row">
+          <span class="ma-label" style="color:#ff6b6b">● 20日均线</span>
+          <span class="ma-val">$${ma20.value.toLocaleString()}</span>
+          <span class="${ma20.above ? 'change-up' : 'change-down'}">${ma20.above ? '▲' : '▼'} ${Math.abs(ma20.dev).toFixed(1)}%</span>
+        </div>
+        <div class="ma-row">
+          <span class="ma-label" style="color:#4ecdc4">● 60日均线</span>
+          <span class="ma-val">$${ma60.value.toLocaleString()}</span>
+          <span class="${ma60.above ? 'change-up' : 'change-down'}">${ma60.above ? '▲' : '▼'} ${Math.abs(ma60.dev).toFixed(1)}%</span>
+        </div>
+        <div class="ma-row">
+          <span class="ma-label" style="color:#a78bfa">● 200日均线</span>
+          <span class="ma-val">$${ma200.value.toLocaleString()}</span>
+          <span class="${ma200.above ? 'change-up' : 'change-down'}">${ma200.above ? '▲' : '▼'} ${Math.abs(ma200.dev).toFixed(1)}%</span>
+        </div>
+      </div>
+      <div class="chart-container" id="${chartId}" style="height:260px"></div>
+      <div class="interpretation">${data.interpretation || ''}</div>
+    `;
+    return card;
+  }
+
+  card.innerHTML = `
+    <div class="card-header">
+      <span class="card-name">${data.name_zh}</span>
+      <span class="card-date">${data.latest.date}</span>
+    </div>
+    <div class="card-value">${formatValue(data.latest.value, data.unit)}<span class="card-unit">${data.unit === '%' ? '' : data.unit}</span></div>
+    <div class="changes">${changesHtml}</div>
+    <div class="percentiles">${pctHtml}</div>
+    <div class="chart-container" id="${chartId}"></div>
+    <div class="interpretation">${data.interpretation || ''}</div>
+  `;
+  return card;
+}
+
+// ── 初始化图表 ──
+function initChart(data, containerId, height) {
+  const chartId = containerId || ('chart-' + data.id);
+  const dom = document.getElementById(chartId);
+  if (!dom) return;
+  const chart = echarts.init(dom);
+
+  // 转为 [日期, 值] 对，供 time 轴使用
+  const chartData = data.series.map(d => [d.date, d.value]);
+
+  // GOLD_MA 专属：多线叠加图
+  if (data.id === 'GOLD_MA' && data.ma_series) {
+    const ma20Data = data.ma_series['20'].map(d => [d.date, d.value]);
+    const ma60Data = data.ma_series['60'].map(d => [d.date, d.value]);
+    const ma200Data = data.ma_series['200'].map(d => [d.date, d.value]);
+    const option = {
+      grid: { left: 60, right: 20, top: 20, bottom: 36 },
+      legend: {
+        data: ['金价', 'MA20', 'MA60', 'MA200'],
+        top: 0, right: 0,
+        textStyle: { fontSize: 11, color: '#999' },
+        itemWidth: 16, itemHeight: 2,
+      },
+      xAxis: {
+        type: 'time',
+        axisLabel: { fontSize: 11, color: '#999' },
+        axisLine: { lineStyle: { color: '#eee' } },
+        axisTick: { show: false },
+        splitLine: { show: false },
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: {
+          fontSize: 11, color: '#999',
+          formatter: v => v >= 1000 ? '$' + (v/1000).toFixed(1) + 'k' : '$' + v,
+        },
+        splitLine: { lineStyle: { color: '#f0f0f0' } },
+        scale: true,
+      },
+      series: [
+        { name: '金价', type: 'line', data: chartData, symbol: 'none', lineStyle: { width: 2, color: '#d4a853' },
+          areaStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'rgba(212,168,83,0.08)'},{offset:1,color:'rgba(212,168,83,0.01)'}]) },
+        },
+        { name: 'MA20', type: 'line', data: ma20Data, symbol: 'none', lineStyle: { width: 1.5, color: '#ff6b6b' } },
+        { name: 'MA60', type: 'line', data: ma60Data, symbol: 'none', lineStyle: { width: 1.5, color: '#4ecdc4' } },
+        { name: 'MA200', type: 'line', data: ma200Data, symbol: 'none', lineStyle: { width: 1.5, color: '#a78bfa' } },
+      ],
+      tooltip: {
+        trigger: 'axis',
+        formatter: function(params) {
+          const date = new Date(params[0].value[0]).toISOString().substring(0, 10);
+          let html = date;
+          params.forEach(p => {
+            html += `<br/>${p.marker}${p.seriesName}: <b>$${p.value[1].toLocaleString()}</b>`;
+          });
+          return html;
+        },
+      },
+      dataZoom: [{ type: 'inside', start: 60, end: 100 }],
+    };
+    chart.setOption(option);
+    chartInstances.push(chart);
+    window.addEventListener('resize', () => chart.resize());
+    return chart;
+  }
+
+  const option = {
+    grid: { left: 55, right: 20, top: 16, bottom: 36 },
+    xAxis: {
+      type: 'time',
+      axisLabel: {
+        fontSize: 11,
+        color: '#999',
+      },
+      axisLine: { lineStyle: { color: '#eee' } },
+      axisTick: { show: false },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: { fontSize: 11, color: '#999' },
+      splitLine: { lineStyle: { color: '#f0f0f0' } },
+      scale: true,
+    },
+    series: [{
+      type: 'line',
+      data: chartData,
+      smooth: false,
+      symbol: 'none',
+      lineStyle: { width: 1.5, color: '#d4a853' },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: 'rgba(212,168,83,0.12)' },
+          { offset: 1, color: 'rgba(212,168,83,0.01)' },
+        ]),
+      },
+    }],
+    tooltip: {
+      trigger: 'axis',
+      formatter: function(params) {
+        const p = params[0];
+        const date = new Date(p.value[0]);
+        const dateStr = date.toISOString().substring(0, 10);
+        return `${dateStr}<br/>${data.name_zh}: <b>${p.value[1]}</b>`;
+      },
+    },
+    dataZoom: [{
+      type: 'inside',
+      start: 0,
+      end: 100,
+    }],
+  };
+  chart.setOption(option);
+  chartInstances.push(chart);
+  window.addEventListener('resize', () => chart.resize());
+  return chart;
+}
+
+// ── 金价历史走势图（111年） ──
+let goldHistoryChart = null;
+let goldFullSeries = [];
+
+function initGoldHistoryChart(seriesData) {
+  goldFullSeries = seriesData;
+  const dom = document.getElementById('goldChart');
+  if (!dom) return;
+  goldHistoryChart = echarts.init(dom);
+
+  const option = {
+    grid: { left: 60, right: 20, top: 20, bottom: 40 },
+    xAxis: {
+      type: 'time',
+      axisLabel: { fontSize: 11, color: '#999' },
+      axisLine: { lineStyle: { color: '#eee' } },
+      axisTick: { show: false },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        fontSize: 11, color: '#999',
+        formatter: v => v >= 1000 ? '$' + (v/1000).toFixed(1) + 'k' : '$' + v,
+      },
+      splitLine: { lineStyle: { color: '#f0f0f0' } },
+      scale: true,
+    },
+    series: [{
+      type: 'line',
+      data: seriesData,
+      smooth: false,
+      symbol: 'none',
+      lineStyle: { width: 1.5, color: '#d4a853' },
+      areaStyle: {
+        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          { offset: 0, color: 'rgba(212,168,83,0.15)' },
+          { offset: 1, color: 'rgba(212,168,83,0.01)' },
+        ]),
+      },
+    }],
+    tooltip: {
+      trigger: 'axis',
+      formatter: function(params) {
+        const p = params[0];
+        const date = new Date(p.value[0]);
+        const dateStr = date.toISOString().substring(0, 7);
+        return `${dateStr}<br/>金价: <b>$${p.value[1].toLocaleString()}</b>`;
+      },
+    },
+    dataZoom: [{ type: 'inside', start: 0, end: 100 }],
+  };
+  goldHistoryChart.setOption(option);
+  chartInstances.push(goldHistoryChart);
+  window.addEventListener('resize', () => goldHistoryChart.resize());
+
+  // 范围按钮事件
+  document.querySelectorAll('.range-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      setGoldChartRange(this.dataset.range);
+    });
+  });
+}
+
+function setGoldChartRange(range) {
+  if (!goldHistoryChart || !goldFullSeries.length) return;
+  const now = new Date();
+  let startDate;
+  switch(range) {
+    case '1y': startDate = new Date(now.getFullYear() - 1, now.getMonth(), 1); break;
+    case '5y': startDate = new Date(now.getFullYear() - 5, now.getMonth(), 1); break;
+    case '20y': startDate = new Date(now.getFullYear() - 20, now.getMonth(), 1); break;
+    default: startDate = null;
+  }
+  const filtered = startDate
+    ? goldFullSeries.filter(d => new Date(d[0]) >= startDate)
+    : goldFullSeries;
+  goldHistoryChart.setOption({ series: [{ data: filtered }] });
+}
+
+// ── 宏观象限矩阵 ──
+function updateMacroMatrix(data) {
+  const pce = data['PCE_YOY'];
+  const mfg = data['IPMAN'];
+  if (!pce || !mfg) return;
+  document.getElementById('macroMatrixWrap').style.display = 'block';
+
+  const inflHigh = pce.latest.value > 2.5;
+  // 制造业指数：用同比或3月变化判断增长方向（上行=增长强）
+  const growthChange = mfg.changes['3m'] || mfg.changes['yoy'] || 0;
+  const growthStrong = growthChange > 0;
+
+  // 清除之前的高亮
+  document.querySelectorAll('.matrix-cell').forEach(c => c.classList.remove('active'));
+
+  let cellId;
+  if (growthStrong && !inflHigh) cellId = 'cell-strong-low';
+  else if (growthStrong && inflHigh) cellId = 'cell-strong-high';
+  else if (!growthStrong && !inflHigh) cellId = 'cell-weak-low';
+  else cellId = 'cell-weak-high';
+
+  document.getElementById(cellId).classList.add('active');
+
+  const note = document.getElementById('matrixNote');
+  note.textContent = `依据：核心 PCE ${pce.latest.value}%（${inflHigh ? '>2.5% 通胀偏高' : '≤2.5% 通胀温和'}），制造业指数近 3 月${growthChange > 0 ? '上行' : '下行'}（${growthStrong ? '增长尚可' : '增长偏弱'}）`;
+}
+
+// ── 信号标签 HTML ──
+function signalBadge(verdict) {
+  if (verdict.includes('利多') || verdict.includes('利多')) {
+    const cls = verdict.includes('强利多') ? 'bullish' : 'bullish';
+    return `<span class="signal-badge bullish">${verdict}</span>`;
+  }
+  if (verdict.includes('利空')) return `<span class="signal-badge bearish">${verdict}</span>`;
+  if (verdict.includes('关注') || verdict.includes('警惕')) return `<span class="signal-badge warning">${verdict}</span>`;
+  return `<span class="signal-badge neutral">${verdict}</span>`;
+}
+
+// ── 给极端值卡片加预警标记 ──
+function checkAlerts(data) {
+  const gvz = data['GVZCLS'];
+  if (gvz && gvz.latest.value > 25) {
+    const el = document.getElementById('chart-GVZCLS');
+    if (el) el.closest('.card').classList.add('card-alert');
+  }
+  const ratio = data['INTEREST_RATIO'];
+  if (ratio && ratio.latest.value > 15) {
+    const el = document.getElementById('chart-INTEREST_RATIO');
+    if (el) el.closest('.card').classList.add('card-alert');
+  }
+  const debt = data['GFDEBTN'];
+  if (debt && debt.latest.value > 35) {
+    const el = document.getElementById('chart-GFDEBTN');
+    if (el) el.closest('.card').classList.add('card-alert');
+  }
+  const debtGdp = data['GFDEGDQ188S'];
+  if (debtGdp && debtGdp.latest.value > 120) {
+    const el = document.getElementById('chart-GFDEGDQ188S');
+    if (el) el.closest('.card').classList.add('card-alert');
+  }
+}
+
+// ── 板块解读生成 ──
+function generateSectionSummary(sectionKey, indicators) {
+  const summaries = {
+    'opportunity-cost': function(inds) {
+      const tips10 = inds['DFII10'];
+      const tips5 = inds['DFII5'];
+      const bie = inds['T10YIE'];
+      if (!tips10 || !bie) return '';
+      const tipsDir = (tips10.changes['20d'] || tips10.changes['3m'] || 0) < 0 ? '下行' : '上行';
+      const bieDir = (bie.changes['20d'] || bie.changes['3m'] || 0) > 0 ? '回升' : '下行';
+      const verdict = tipsDir === '下行' ? '偏利多' : '偏利空';
+      let tips5Text = '';
+      if (tips5) tips5Text = `5 年实际利率 ${tips5.latest.value.toFixed(2)}%。`;
+      return `<strong>机会成本 · 当前状态</strong>${signalBadge(verdict)}<br>10 年实际利率${tipsDir}（${tips10.latest.value.toFixed(2)}%），${tips5Text}通胀预期${bieDir}。持有黄金的机会成本在${tipsDir === '下行' ? '降低' : '升高'}。`;
+    },
+    'dollar-liquidity': function(inds) {
+      const dxy = inds['DTWEXBGS'];
+      const nfci = inds['NFCI'];
+      if (!dxy) return '';
+      const dir = (dxy.changes['20d'] || dxy.changes['3m'] || 0) < 0 ? '走弱' : '走强';
+      let verdict = dir === '走弱' ? '偏利多' : '偏利空';
+      let nfciText = '';
+      if (nfci) {
+        const nfciVal = nfci.latest.value;
+        const nfciDir = (nfci.changes['3m'] || nfci.changes['yoy'] || 0) < 0 ? '趋松' : '趋紧';
+        nfciText = `金融条件${nfciDir}（NFCI ${nfciVal.toFixed(2)}）。`;
+        if (dir === '走弱' && nfciDir === '趋松') verdict = '偏利多';
+        else if (dir === '走强' && nfciDir === '趋紧') verdict = '偏利空';
+        else verdict = '中性';
+      }
+      return `<strong>美元与流动性 · 当前状态</strong>${signalBadge(verdict)}<br>广义美元${dir}。${nfciText}美元${dir}通常意味着黄金${dir === '走弱' ? '受益' : '承压'}。`;
+    },
+    'inflation-growth': function(inds) {
+      const pce = inds['PCE_YOY'];
+      const mfg = inds['IPMAN'];
+      const ue = inds['UNRATE'];
+      if (!pce) return '';
+      const inflHigh = pce.latest.value > 2.5;
+      const growthWeak = mfg && (mfg.changes['3m'] || mfg.changes['yoy'] || 0) < 0;
+      let verdict = '中性';
+      if (inflHigh && growthWeak) verdict = '偏利多（类滞胀组合）';
+      else if (!inflHigh && !growthWeak) verdict = '偏利空';
+      else if (inflHigh) verdict = '中性偏多';
+      return `<strong>通胀与增长 · 当前状态</strong>${signalBadge(verdict)}<br>核心通胀 ${pce.latest.value}%，${inflHigh ? '高于' : '接近'}美联储 2% 目标。制造业活动${growthWeak ? '走弱' : '尚可'}。`;
+    },
+    'fiscal-credit': function(inds) {
+      const debt = inds['GFDEBTN'];
+      const debtGdp = inds['GFDEGDQ188S'];
+      const deficit = inds['FYFSGDA188S'];
+      const ratio = inds['INTEREST_RATIO'];
+      const cbGold = inds['CB_GOLD_NET'];
+      const usdShare = inds['USD_RESERVE_SHARE'];
+      if (!deficit) return '';
+      const severe = deficit.latest.value < -5;
+      const ratioHigh = ratio && ratio.latest.value > 15;
+      const debtGdpHigh = debtGdp && debtGdp.latest.value > 100;
+      const verdict = (severe || ratioHigh || debtGdpHigh) ? '偏利多' : '中性';
+      let parts = [];
+      if (debt) parts.push(`国债 $${debt.latest.value.toFixed(1)} 万亿`);
+      if (debtGdp) parts.push(`占 GDP ${debtGdp.latest.value.toFixed(0)}%`);
+      parts.push(`赤字率 ${deficit.latest.value.toFixed(1)}%`);
+      if (ratio) parts.push(`付息比 ${ratio.latest.value.toFixed(0)}%${ratioHigh ? '（沉重）' : ''}`);
+      let extra = '';
+      if (cbGold) extra += `央行年购金 ${cbGold.latest.value.toLocaleString()} 吨。`;
+      if (usdShare) extra += `美元储备占比 ${usdShare.latest.value.toFixed(1)}%。`;
+      return `<strong>财政与信用 · 当前状态</strong>${signalBadge(verdict)}<br>${parts.join('，')}。${extra}`;
+    },
+    'risk-temp': function(inds) {
+      const gvz = inds['GVZCLS'];
+      const ma = inds['GOLD_MA'];
+      if (!gvz) return '';
+      const level = gvz.latest.value < 15 ? '低' : gvz.latest.value < 25 ? '正常' : '偏高';
+      const verdict = gvz.latest.value > 25 ? '需关注——波动率偏高可能预示短期颠簸' : '中性';
+      let maText = '';
+      if (ma) {
+        const bc = ma.bullish_count;
+        maText = `均线动量：${bc}/3 条均线之上（${bc >= 3 ? '强势' : bc >= 2 ? '偏强' : bc >= 1 ? '偏弱' : '弱势'}）。`;
+      }
+      return `<strong>风险温度 · 当前状态</strong>${signalBadge(verdict)}<br>黄金波动率 ${gvz.latest.value.toFixed(1)}，处于${level}水平。${maText}`;
+    },
+  };
+  return (summaries[sectionKey] || (() => ''))(indicators);
+}
+
+// ── 存储所有图表实例，用于 Tab 切换时 resize ──
+const chartInstances = [];
+
+// ── Tab 切换 ──
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', function() {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('sec-' + this.dataset.section).classList.add('active');
+    // 切换 Tab 后让该板块内的图表重新计算尺寸
+    setTimeout(() => { chartInstances.forEach(c => c.resize()); }, 50);
+  });
+});
+
+// ── 加载数据 ──
+async function loadData() {
+  try {
+    const resp = await fetch('data/all_indicators.json');
+    const data = await resp.json();
+
+    document.getElementById('loading').style.display = 'none';
+
+    // 金价条
+    const gold = data['GOLD_USD'];
+    if (gold) {
+      document.getElementById('goldPrice').textContent = '$' + gold.latest.value.toLocaleString('en-US', { maximumFractionDigits: 0 });
+      const goldChanges = document.getElementById('goldChanges');
+      for (const [key, label] of Object.entries(CHANGE_LABELS)) {
+        const val = gold.changes[key];
+        if (val !== null && val !== undefined) {
+          const cls = changeClass(val);
+          goldChanges.innerHTML += `<span class="${cls}">${label} ${changeArrow(val)}${formatChange(val)}</span>`;
+        }
+      }
+      document.getElementById('lastUpdate').textContent = gold.updated;
+    }
+
+    // 金价走势图（优先加载 111 年月度数据）
+    document.getElementById('goldChartWrap').style.display = 'block';
+    try {
+      const histResp = await fetch('data/gold_history_monthly.json');
+      const histData = await histResp.json();
+      const allSeries = histData.series.map(d => [d.date, d.value]);
+      initGoldHistoryChart(allSeries);
+    } catch(e) {
+      // 降级到 FRED 短期数据
+      if (gold) initChart(gold, 'goldChart');
+    }
+
+    // 按板块填充卡片
+    for (const [sectionKey, ids] of Object.entries(SECTION_ORDER)) {
+      const container = document.getElementById('cards-' + sectionKey);
+      const sectionIndicators = {};
+
+      for (const id of ids) {
+        const ind = data[id];
+        if (!ind) continue;
+        sectionIndicators[id] = ind;
+        container.appendChild(createCard(ind));
+      }
+
+      // 初始化图表
+      for (const id of ids) {
+        if (data[id]) initChart(data[id]);
+      }
+
+      // 板块解读
+      const summaryEl = document.getElementById('summary-' + sectionKey);
+      if (summaryEl) {
+        summaryEl.innerHTML = generateSectionSummary(sectionKey, sectionIndicators);
+      }
+    }
+    // 宏观象限矩阵
+    updateMacroMatrix(data);
+
+    // 极端值预警
+    checkAlerts(data);
+
+  } catch (err) {
+    document.getElementById('loading').textContent = '数据加载失败：' + err.message;
+    console.error(err);
+  }
+}
+
+loadData();
+
+// ── URL hash 跳转支持 ──
+function handleHash() {
+  const hash = window.location.hash.replace('#', '');
+  if (!hash) return;
+  const navItem = document.querySelector(`.nav-item[data-section="${hash}"]`);
+  if (navItem) navItem.click();
+}
+window.addEventListener('load', () => setTimeout(handleHash, 200));
+</script>
+</body>
+</html>
