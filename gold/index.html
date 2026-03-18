@@ -326,6 +326,9 @@ body {
 @media (max-width: 560px) {
   .cards { grid-template-columns: 1fr; }
 }
+.card.card-full-width {
+  grid-column: 1 / -1;
+}
 .card {
   background: var(--card-bg);
   border-radius: 10px;
@@ -333,6 +336,16 @@ body {
   padding: 20px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.03);
   transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.card .macro-matrix-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card .macro-matrix {
+  flex: 1;
 }
 .card:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.06);
@@ -534,10 +547,10 @@ body {
 }
 .macro-matrix {
   display: grid;
-  grid-template-columns: 80px 1fr 1fr;
+  grid-template-columns: 56px 1fr 1fr;
   grid-template-rows: 36px 1fr 1fr;
   gap: 0;
-  max-width: 560px;
+  width: 100%;
 }
 .matrix-corner { }
 .matrix-col-label {
@@ -560,16 +573,19 @@ body {
 }
 .matrix-cell {
   border: 1px solid var(--border);
-  padding: 14px 12px;
-  font-size: 13px;
-  line-height: 1.6;
+  padding: 20px 16px;
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--text-secondary);
   position: relative;
-  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 .matrix-cell strong {
   display: block;
-  font-size: 13px;
+  font-size: 17px;
   color: var(--text);
   margin-bottom: 4px;
 }
@@ -839,7 +855,8 @@ body {
       <div class="gold-changes" id="goldChanges"></div>
     </div>
     <div class="nav" id="nav">
-      <div class="nav-item active" data-section="opportunity-cost">机会成本</div>
+      <div class="nav-item active" data-section="gold-price">金价走势</div>
+      <div class="nav-item" data-section="opportunity-cost">机会成本</div>
       <div class="nav-item" data-section="dollar-liquidity">美元与流动性</div>
       <div class="nav-item" data-section="inflation-growth">通胀与增长</div>
       <div class="nav-item" data-section="fiscal-credit">财政与信用</div>
@@ -853,22 +870,6 @@ body {
 <!-- 内容区 -->
 <div class="main" id="main">
   <div class="loading" id="loading">正在加载数据...</div>
-
-  <!-- 金价走势图 -->
-  <div class="gold-chart-wrap" id="goldChartWrap" style="display:none">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-      <div class="gold-chart-title" style="margin-bottom:0" id="goldChartTitle">国际金价走势</div>
-      <div style="display:flex;gap:6px;align-items:center" id="goldChartRange">
-        <button class="range-btn" data-range="1y">1年</button>
-        <button class="range-btn" data-range="5y">5年</button>
-        <button class="range-btn" data-range="20y">20年</button>
-        <button class="range-btn active" data-range="all">1915至今</button>
-        <span style="width:1px;height:16px;background:#ddd;margin:0 4px"></span>
-        <button class="range-btn" id="logToggle">对数</button>
-      </div>
-    </div>
-    <div class="gold-chart" id="goldChart"></div>
-  </div>
 
   <!-- 分析框架入口 -->
   <a class="framework-entry" href="framework.html" id="frameworkEntry">
@@ -898,8 +899,26 @@ body {
     <span class="framework-arrow">→</span>
   </a>
 
+  <!-- 板块零：金价走势 -->
+  <div class="section active" id="sec-gold-price">
+    <div class="gold-chart-wrap" id="goldChartWrap" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+        <div class="gold-chart-title" style="margin-bottom:0" id="goldChartTitle">国际金价走势</div>
+        <div style="display:flex;gap:6px;align-items:center" id="goldChartRange">
+          <button class="range-btn" data-range="1y">1年</button>
+          <button class="range-btn" data-range="5y">5年</button>
+          <button class="range-btn" data-range="20y">20年</button>
+          <button class="range-btn active" data-range="all">1915至今</button>
+          <span style="width:1px;height:16px;background:#ddd;margin:0 4px"></span>
+          <button class="range-btn" id="logToggle">对数</button>
+        </div>
+      </div>
+      <div class="gold-chart" id="goldChart"></div>
+    </div>
+  </div>
+
   <!-- 板块一：机会成本 -->
-  <div class="section active" id="sec-opportunity-cost">
+  <div class="section" id="sec-opportunity-cost">
     <div class="cards" id="cards-opportunity-cost"></div>
     <div class="section-summary" id="summary-opportunity-cost"></div>
   </div>
@@ -913,21 +932,6 @@ body {
   <!-- 板块三：通胀与增长 -->
   <div class="section" id="sec-inflation-growth">
     <div class="cards" id="cards-inflation-growth"></div>
-    <div class="macro-matrix-wrap" id="macroMatrixWrap" style="display:none">
-      <div class="macro-matrix-title">宏观象限：增长 × 通胀</div>
-      <div class="macro-matrix" id="macroMatrix">
-        <div class="matrix-corner"></div>
-        <div class="matrix-col-label">通胀低（≤2.5%）</div>
-        <div class="matrix-col-label">通胀高（>2.5%）</div>
-        <div class="matrix-row-label">增长强</div>
-        <div class="matrix-cell" id="cell-strong-low"><strong>利空黄金</strong>实际利率容易维持高位，压制金价</div>
-        <div class="matrix-cell" id="cell-strong-high"><strong>中性偏空</strong>要看实际利率和美元方向</div>
-        <div class="matrix-row-label">增长弱</div>
-        <div class="matrix-cell" id="cell-weak-low"><strong>中性偏多</strong>看降息预期能否兑现</div>
-        <div class="matrix-cell" id="cell-weak-high"><strong>最利多黄金</strong>滞胀环境，黄金保险价值凸显</div>
-      </div>
-      <div class="matrix-note" id="matrixNote"></div>
-    </div>
     <div class="section-summary" id="summary-inflation-growth"></div>
   </div>
 
@@ -1053,6 +1057,7 @@ function createCard(data) {
         <span class="card-name">${data.name_zh}</span>
         <span class="card-date">${data.latest.date}</span>
       </div>
+      <div class="interpretation">${data.interpretation || ''}</div>
       <div class="card-value">$${data.latest.value.toLocaleString('en-US', {maximumFractionDigits:0})}<span class="card-unit"> <span class="signal-badge ${statusCls}">${bc}/3 ${statusText}</span></span></div>
       <div class="ma-grid">
         <div class="ma-row">
@@ -1072,7 +1077,6 @@ function createCard(data) {
         </div>
       </div>
       <div class="chart-container" id="${chartId}" style="height:260px"></div>
-      <div class="interpretation">${data.interpretation || ''}</div>
     `;
     return card;
   }
@@ -1082,11 +1086,11 @@ function createCard(data) {
       <span class="card-name">${data.name_zh}</span>
       <span class="card-date">${data.latest.date}</span>
     </div>
+    <div class="interpretation">${data.interpretation || ''}</div>
     <div class="card-value">${formatValue(data.latest.value, data.unit)}<span class="card-unit">${data.unit === '%' ? '' : data.unit}</span></div>
     <div class="changes">${changesHtml}</div>
     <div class="percentiles">${pctHtml}</div>
     <div class="chart-container" id="${chartId}"${data.id === 'CB_GOLD_NET' ? ' style="height:220px"' : ''}></div>
-    <div class="interpretation">${data.interpretation || ''}</div>
   `;
   return card;
 }
@@ -1382,31 +1386,47 @@ function setGoldChartRange(range) {
   goldHistoryChart.setOption({ series: [{ data: filtered }] });
 }
 
-// ── 宏观象限矩阵 ──
+// ── 宏观象限矩阵（作为卡片插入通胀与增长板块） ──
 function updateMacroMatrix(data) {
   const pce = data['PCE_YOY'];
   const mfg = data['IPMAN'];
   if (!pce || !mfg) return;
-  document.getElementById('macroMatrixWrap').style.display = 'block';
 
   const inflHigh = pce.latest.value > 2.5;
-  // 制造业指数：用同比或3月变化判断增长方向（上行=增长强）
   const growthChange = mfg.changes['3m'] || mfg.changes['yoy'] || 0;
   const growthStrong = growthChange > 0;
 
-  // 清除之前的高亮
-  document.querySelectorAll('.matrix-cell').forEach(c => c.classList.remove('active'));
+  let activeCell;
+  if (growthStrong && !inflHigh) activeCell = 'strong-low';
+  else if (growthStrong && inflHigh) activeCell = 'strong-high';
+  else if (!growthStrong && !inflHigh) activeCell = 'weak-low';
+  else activeCell = 'weak-high';
 
-  let cellId;
-  if (growthStrong && !inflHigh) cellId = 'cell-strong-low';
-  else if (growthStrong && inflHigh) cellId = 'cell-strong-high';
-  else if (!growthStrong && !inflHigh) cellId = 'cell-weak-low';
-  else cellId = 'cell-weak-high';
+  const noteText = `依据：核心 PCE ${pce.latest.value}%（${inflHigh ? '>2.5% 通胀偏高' : '≤2.5% 通胀温和'}），制造业指数近 3 月${growthChange > 0 ? '上行' : '下行'}（${growthStrong ? '增长尚可' : '增长偏弱'}）`;
 
-  document.getElementById(cellId).classList.add('active');
-
-  const note = document.getElementById('matrixNote');
-  note.textContent = `依据：核心 PCE ${pce.latest.value}%（${inflHigh ? '>2.5% 通胀偏高' : '≤2.5% 通胀温和'}），制造业指数近 3 月${growthChange > 0 ? '上行' : '下行'}（${growthStrong ? '增长尚可' : '增长偏弱'}）`;
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="card-header">
+      <span class="card-name">宏观象限：增长 × 通胀</span>
+      <span class="card-date">${pce.latest.date}</span>
+    </div>
+    <div class="interpretation">${noteText}</div>
+    <div class="macro-matrix-wrap" style="margin:0;border:none;box-shadow:none;padding:0">
+      <div class="macro-matrix" id="macroMatrix">
+        <div class="matrix-corner"></div>
+        <div class="matrix-col-label">通胀低（≤2.5%）</div>
+        <div class="matrix-col-label">通胀高（>2.5%）</div>
+        <div class="matrix-row-label">增长强</div>
+        <div class="matrix-cell ${activeCell === 'strong-low' ? 'active' : ''}"><strong>利空黄金</strong>实际利率容易维持高位，压制金价</div>
+        <div class="matrix-cell ${activeCell === 'strong-high' ? 'active' : ''}"><strong>中性偏空</strong>要看实际利率和美元方向</div>
+        <div class="matrix-row-label">增长弱</div>
+        <div class="matrix-cell ${activeCell === 'weak-low' ? 'active' : ''}"><strong>中性偏多</strong>看降息预期能否兑现</div>
+        <div class="matrix-cell ${activeCell === 'weak-high' ? 'active' : ''}"><strong>最利多黄金</strong>滞胀环境，黄金保险价值凸显</div>
+      </div>
+    </div>
+  `;
+  document.getElementById('cards-inflation-growth').appendChild(card);
 }
 
 // ── 信号标签 HTML ──
