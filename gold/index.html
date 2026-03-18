@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>黄金看板 · 不预测金价，只帮你看清黄金正在反映什么</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
 :root {
   --gold: #d4a853;
   --gold-light: #f5e6c4;
-  --bg: #f8f9fa;
+  --gold-dark: #b8942e;
+  --bg: #f5f5f0;
   --card-bg: #ffffff;
   --text: #1a1a1a;
   --text-secondary: #666;
@@ -20,55 +23,245 @@
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
-  font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  font-family: "Inter", -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
 }
 
-/* ── 顶部区域 ── */
+/* ── Hero Banner（深色，不粘顶）── */
+.banner {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2318 60%, #33291c 100%);
+  padding: 40px 0 36px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(212,168,83,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+.banner-text { flex: 1; }
+.site-title {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.gold-mark {
+  display: inline-block;
+  width: 6px;
+  height: 26px;
+  background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.subtitle {
+  font-size: 15px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+/* ── Gold Cube（WGC 分层风格）── */
+/* 分层色带：金饰44% / 投资23% / 央行18% / 其他15%（从下到上）*/
+.cube-area {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.cube-scene {
+  width: 84px;
+  height: 84px;
+  perspective: 280px;
+  filter: drop-shadow(0 4px 12px rgba(212,168,83,0.3));
+}
+.cube {
+  width: 84px;
+  height: 84px;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-18deg) rotateY(-35deg);
+  animation: cube-spin 40s linear infinite;
+}
+@keyframes cube-spin {
+  from { transform: rotateX(-18deg) rotateY(-35deg); }
+  to { transform: rotateX(-18deg) rotateY(325deg); }
+}
+.cube .face {
+  position: absolute;
+  width: 84px;
+  height: 84px;
+  border: 1px solid rgba(255,255,255,0.08);
+  filter: url(#gold-grain);
+}
+/*
+  四层分色（从上到下）：
+  金饰 44% → 0%-44%   #f0d88a → #e8c874（最亮暖金）
+  投资 23% → 44%-67%  #d4a853 → #c49a3a（标准金）
+  央行 18% → 67%-85%  #b8942e → #a68426（深琥珀）
+  其他 15% → 85%-100% #8a6b1a → #7a5e14（暗金）
+*/
+.face.front {
+  transform: translateZ(42px);
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,248,210,0.18) 0%, transparent 50%),
+    linear-gradient(180deg,
+      #f0d88a 0%, #e8c874 44%,
+      #d4a853 44%, #c49a3a 67%,
+      #b8942e 67%, #a68426 85%,
+      #8a6b1a 85%, #7a5e14 100%);
+}
+.face.back {
+  transform: rotateY(180deg) translateZ(42px);
+  background: linear-gradient(180deg,
+    #e2bf6a 0%, #dab358 44%,
+    #c8a040 44%, #b89430 67%,
+    #a68426 67%, #96760e 85%,
+    #7a5e14 85%, #6b5010 100%);
+}
+.face.right {
+  transform: rotateY(90deg) translateZ(42px);
+  background:
+    radial-gradient(ellipse at 25% 30%, rgba(255,240,180,0.12) 0%, transparent 45%),
+    linear-gradient(180deg,
+      #ecd480 0%, #e2c06a 44%,
+      #d0a44e 44%, #c09838 67%,
+      #b08a28 67%, #9e7c20 85%,
+      #846618 85%, #705510 100%);
+}
+.face.left {
+  transform: rotateY(-90deg) translateZ(42px);
+  background: linear-gradient(180deg,
+    #ecd480 0%, #e2c06a 44%,
+    #d0a44e 44%, #c09838 67%,
+    #b08a28 67%, #9e7c20 85%,
+    #846618 85%, #705510 100%);
+}
+.face.top {
+  transform: rotateX(90deg) translateZ(42px);
+  background:
+    radial-gradient(ellipse at 40% 40%, rgba(255,248,210,0.4) 0%, transparent 45%),
+    linear-gradient(150deg, #f0d88a 0%, #e8c874 40%, #d4a853 100%);
+}
+.face.bottom {
+  transform: rotateX(-90deg) translateZ(42px);
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(100,80,20,0.15) 0%, transparent 60%),
+    linear-gradient(150deg, #8a6b1a 0%, #7a5e14 50%, #6b5010 100%);
+}
+/* 前面叠加的分类标签 */
+.face.front .layer-labels {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+.face.front .layer-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.face.front .layer-label.lbl-jewelry  { height: 44%; }
+.face.front .layer-label.lbl-invest   { height: 23%; font-size: 7px; }
+.face.front .layer-label.lbl-central  { height: 18%; font-size: 7px; }
+.face.front .layer-label.lbl-other    { height: 15%; font-size: 6.5px; color: rgba(255,255,255,0.65); }
+/* 侧栏图例 */
+.cube-caption { text-align: right; }
+.cube-number {
+  display: block;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1.2;
+}
+.cube-unit {
+  display: block;
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  margin-top: 2px;
+}
+.cube-legend {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.cube-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1;
+}
+.cube-legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.cube-legend-pct {
+  font-family: "JetBrains Mono", "SF Mono", monospace;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  min-width: 24px;
+}
+
+/* ── Sticky Header（价格 + 导航）── */
 .header {
   background: var(--card-bg);
-  border-bottom: 2px solid var(--gold);
-  padding: 20px 0 0;
+  border-bottom: 1px solid var(--border);
+  padding: 0;
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
 }
 .header-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
-}
-.site-title {
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.site-title span { color: var(--gold); }
-.subtitle {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-top: 4px;
+  padding: 0 24px;
 }
 .gold-bar {
-  margin-top: 12px;
-  padding: 10px 0;
+  padding: 10px 0 0;
   display: flex;
   align-items: baseline;
   gap: 16px;
   flex-wrap: wrap;
 }
 .gold-price {
-  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
   font-size: 22px;
   font-weight: 700;
 }
 .gold-changes {
-  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
   font-size: 13px;
   display: flex;
   gap: 12px;
@@ -78,13 +271,13 @@ body {
 .nav {
   display: flex;
   gap: 0;
-  margin-top: 12px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
 .nav-item {
   padding: 10px 18px;
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
   border-bottom: 3px solid transparent;
@@ -101,6 +294,7 @@ body {
   margin-left: auto;
   padding: 10px 18px;
   font-size: 14px;
+  font-weight: 500;
   color: var(--gold);
   text-decoration: none;
   white-space: nowrap;
@@ -111,7 +305,7 @@ body {
 .main {
   max-width: 1200px;
   margin: 24px auto;
-  padding: 0 20px;
+  padding: 0 24px;
 }
 .section { display: none; }
 .section.active { display: block; }
@@ -134,9 +328,14 @@ body {
 }
 .card {
   background: var(--card-bg);
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid var(--border);
   padding: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  transition: box-shadow 0.2s;
+}
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
 }
 .card-header {
   display: flex;
@@ -153,7 +352,7 @@ body {
   color: var(--gray);
 }
 .card-value {
-  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 12px;
@@ -173,7 +372,7 @@ body {
   margin-bottom: 16px;
 }
 .change-item {
-  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
   font-size: 13px;
 }
 .change-label { color: var(--text-secondary); margin-right: 4px; }
@@ -218,7 +417,7 @@ body {
 .pct-value {
   width: 36px;
   text-align: right;
-  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
   color: var(--text-secondary);
 }
 
@@ -244,12 +443,13 @@ body {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-left: 4px solid var(--gold);
-  border-radius: 0 8px 8px 0;
+  border-radius: 0 10px 10px 0;
   padding: 16px 20px;
   margin-top: 20px;
   font-size: 14px;
   line-height: 1.8;
   color: var(--text-secondary);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
 }
 .section-summary strong { color: var(--text); }
 
@@ -257,7 +457,7 @@ body {
 .footer {
   max-width: 1200px;
   margin: 40px auto 20px;
-  padding: 20px;
+  padding: 20px 24px;
   font-size: 12px;
   color: var(--gray);
   line-height: 1.8;
@@ -268,9 +468,10 @@ body {
 .gold-chart-wrap {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 20px;
   margin-bottom: 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
 }
 .gold-chart-title {
   font-size: 15px;
@@ -298,7 +499,7 @@ body {
   font-size: 11px;
   font-weight: 600;
   padding: 2px 10px;
-  border-radius: 0 7px 0 6px;
+  border-radius: 0 9px 0 6px;
 }
 
 /* ── 信号标签 ── */
@@ -320,10 +521,11 @@ body {
 .macro-matrix-wrap {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 20px;
   margin-top: 20px;
   margin-bottom: 4px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
 }
 .macro-matrix-title {
   font-size: 15px;
@@ -418,7 +620,7 @@ body {
   align-items: center;
   gap: 12px;
   padding: 6px 0;
-  font-family: "Roboto Mono", "SF Mono", monospace;
+  font-family: "JetBrains Mono", "SF Mono", monospace;
   font-size: 14px;
   border-bottom: 1px solid #f5f5f5;
 }
@@ -433,6 +635,75 @@ body {
   font-weight: 600;
 }
 
+/* ── 分析框架入口卡片 ── */
+.framework-entry {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(135deg, #2a2318 0%, #1a1a1a 50%, #2a2318 100%);
+  border: 1px solid rgba(212,168,83,0.25);
+  border-radius: 10px;
+  padding: 18px 24px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.framework-entry::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: radial-gradient(ellipse at 85% 50%, rgba(212,168,83,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.framework-entry:hover {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(212,168,83,0.15);
+  transform: translateY(-1px);
+}
+.framework-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.framework-icon svg {
+  width: 40px;
+  height: 40px;
+}
+.framework-body {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+.framework-body .fw-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 3px;
+}
+.framework-body .fw-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+}
+.framework-arrow {
+  font-size: 20px;
+  color: var(--gold);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.framework-entry:hover .framework-arrow {
+  transform: translateX(4px);
+}
+
 /* ── 加载态 ── */
 .loading {
   text-align: center;
@@ -440,15 +711,71 @@ body {
   color: var(--text-secondary);
   font-size: 15px;
 }
+
+/* ── 响应式：小屏隐藏立方体 ── */
+@media (max-width: 640px) {
+  .cube-area { display: none; }
+  .site-title { font-size: 24px; }
+  .banner { padding: 28px 0 24px; }
+}
 </style>
 </head>
 <body>
 
-<!-- 顶部 -->
+<!-- SVG 噪声纹理（隐藏，供 CSS 滤镜引用）-->
+<svg style="position:absolute;width:0;height:0">
+  <filter id="gold-grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch" result="noise"/>
+    <feColorMatrix type="saturate" values="0" in="noise" result="gray-noise"/>
+    <feBlend in="SourceGraphic" in2="gray-noise" mode="multiply" result="blended"/>
+    <feComponentTransfer in="blended">
+      <feFuncA type="linear" slope="1"/>
+    </feComponentTransfer>
+  </filter>
+</svg>
+
+<!-- Hero Banner -->
+<div class="banner">
+  <div class="banner-inner">
+    <div class="banner-text">
+      <div class="site-title"><span class="gold-mark"></span>黄金看板</div>
+      <div class="subtitle">不预测金价，只帮你看清黄金正在反映什么</div>
+    </div>
+    <div class="cube-area">
+      <div class="cube-scene">
+        <div class="cube">
+          <div class="face front">
+            <div class="layer-labels">
+              <div class="layer-label lbl-jewelry">金饰 44%</div>
+              <div class="layer-label lbl-invest">投资 23%</div>
+              <div class="layer-label lbl-central">央行 18%</div>
+              <div class="layer-label lbl-other">其他 15%</div>
+            </div>
+          </div>
+          <div class="face back"></div>
+          <div class="face right"></div>
+          <div class="face left"></div>
+          <div class="face top"></div>
+          <div class="face bottom"></div>
+        </div>
+      </div>
+      <div class="cube-caption">
+        <span class="cube-number">201,296</span>
+        <span class="cube-unit">吨 · 全球地上存量</span>
+        <div class="cube-legend">
+          <div class="cube-legend-item"><span class="cube-legend-dot" style="background:#ecd480"></span><span class="cube-legend-pct">44%</span>金饰</div>
+          <div class="cube-legend-item"><span class="cube-legend-dot" style="background:#d4a853"></span><span class="cube-legend-pct">23%</span>投资</div>
+          <div class="cube-legend-item"><span class="cube-legend-dot" style="background:#a68426"></span><span class="cube-legend-pct">18%</span>央行</div>
+          <div class="cube-legend-item"><span class="cube-legend-dot" style="background:#7a5e14"></span><span class="cube-legend-pct">15%</span>其他</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sticky Header: 金价 + 导航 -->
 <div class="header">
   <div class="header-inner">
-    <div class="site-title"><span>■</span> 黄金看板</div>
-    <div class="subtitle">不预测金价，只帮你看清黄金正在反映什么</div>
     <div class="gold-bar" id="goldBar">
       <span style="color:var(--text-secondary);font-size:14px">国际金价</span>
       <span class="gold-price" id="goldPrice">--</span>
@@ -482,6 +809,34 @@ body {
     </div>
     <div class="gold-chart" id="goldChart"></div>
   </div>
+
+  <!-- 分析框架入口 -->
+  <a class="framework-entry" href="framework.html" id="frameworkEntry">
+    <div class="framework-icon">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="10" cy="8" r="4" fill="rgba(212,168,83,0.9)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+        <circle cx="30" cy="8" r="4" fill="rgba(212,168,83,0.7)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+        <circle cx="6" cy="22" r="4" fill="rgba(212,168,83,0.6)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+        <circle cx="20" cy="22" r="4" fill="rgba(212,168,83,0.8)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+        <circle cx="34" cy="22" r="4" fill="rgba(212,168,83,0.5)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+        <circle cx="14" cy="35" r="4" fill="rgba(212,168,83,0.4)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+        <circle cx="28" cy="35" r="4" fill="rgba(212,168,83,0.6)" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+        <line x1="10" y1="12" x2="6" y2="18" stroke="rgba(212,168,83,0.35)" stroke-width="1"/>
+        <line x1="10" y1="12" x2="20" y2="18" stroke="rgba(212,168,83,0.35)" stroke-width="1"/>
+        <line x1="30" y1="12" x2="20" y2="18" stroke="rgba(212,168,83,0.35)" stroke-width="1"/>
+        <line x1="30" y1="12" x2="34" y2="18" stroke="rgba(212,168,83,0.35)" stroke-width="1"/>
+        <line x1="6" y1="26" x2="14" y2="31" stroke="rgba(212,168,83,0.35)" stroke-width="1"/>
+        <line x1="20" y1="26" x2="14" y2="31" stroke="rgba(212,168,83,0.35)" stroke-width="1"/>
+        <line x1="20" y1="26" x2="28" y2="31" stroke="rgba(212,168,83,0.35)" stroke-width="1"/>
+        <line x1="34" y1="26" x2="28" y2="31" stroke="rgba(212,168,83,0.35)" stroke-width="1"/>
+      </svg>
+    </div>
+    <div class="framework-body">
+      <div class="fw-title">黄金分析框架 · 四层拓扑图</div>
+      <div class="fw-desc">从宏观驱动到市场信号，21 个节点看清黄金定价逻辑的全貌</div>
+    </div>
+    <span class="framework-arrow">→</span>
+  </a>
 
   <!-- 板块一：机会成本 -->
   <div class="section active" id="sec-opportunity-cost">
@@ -522,7 +877,7 @@ body {
     <div class="section-summary" id="summary-fiscal-credit"></div>
   </div>
 
-  <!-- 板块六：风险温度 -->
+  <!-- 板块五：风险温度 -->
   <div class="section" id="sec-risk-temp">
     <div class="cards" id="cards-risk-temp"></div>
     <div class="section-summary" id="summary-risk-temp"></div>
@@ -534,10 +889,15 @@ body {
   数据来源：FRED (Federal Reserve Economic Data)、Chicago Fed、Yahoo Finance<br>
   最后更新：<span id="lastUpdate">--</span><br>
   更新频率：日频指标每日更新，月频指标每月更新<br><br>
-  ⚠ 免责声明：本看板仅供学习和研究参考，不构成任何投资建议。黄金投资有风险，决策需自行判断。
+  免责声明：本看板仅供学习和研究参考，不构成任何投资建议。黄金投资有风险，决策需自行判断。
 </div>
 
 <script>
+// ── ECharts 全局字体 ──
+// 所有图表统一使用 JetBrains Mono（数字）+ Inter（文字），与页面一致
+const CHART_FONT = '"JetBrains Mono", "SF Mono", "Inter", -apple-system, "PingFang SC", sans-serif';
+const CHART_LABEL_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
+
 // ── 配置 ──
 const SECTION_MAP = {
   '机会成本': 'opportunity-cost',
@@ -685,12 +1045,12 @@ function initChart(data, containerId, height) {
       legend: {
         data: ['金价', 'MA20', 'MA60', 'MA200'],
         top: 0, right: 0,
-        textStyle: { fontSize: 11, color: '#999' },
+        textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_LABEL_FONT },
         itemWidth: 16, itemHeight: 2,
       },
       xAxis: {
         type: 'time',
-        axisLabel: { fontSize: 11, color: '#999' },
+        axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
         axisLine: { lineStyle: { color: '#eee' } },
         axisTick: { show: false },
         splitLine: { show: false },
@@ -738,6 +1098,7 @@ function initChart(data, containerId, height) {
       axisLabel: {
         fontSize: 11,
         color: '#999',
+        fontFamily: CHART_FONT,
       },
       axisLine: { lineStyle: { color: '#eee' } },
       axisTick: { show: false },
@@ -745,7 +1106,7 @@ function initChart(data, containerId, height) {
     },
     yAxis: {
       type: 'value',
-      axisLabel: { fontSize: 11, color: '#999' },
+      axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
       splitLine: { lineStyle: { color: '#f0f0f0' } },
       scale: true,
     },
@@ -764,6 +1125,7 @@ function initChart(data, containerId, height) {
     }],
     tooltip: {
       trigger: 'axis',
+      textStyle: { fontFamily: CHART_FONT, fontSize: 13 },
       formatter: function(params) {
         const p = params[0];
         const date = new Date(p.value[0]);
@@ -797,7 +1159,7 @@ function initGoldHistoryChart(seriesData) {
     grid: { left: 60, right: 20, top: 20, bottom: 40 },
     xAxis: {
       type: 'time',
-      axisLabel: { fontSize: 11, color: '#999' },
+      axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
       axisLine: { lineStyle: { color: '#eee' } },
       axisTick: { show: false },
       splitLine: { show: false },
@@ -826,6 +1188,7 @@ function initGoldHistoryChart(seriesData) {
     }],
     tooltip: {
       trigger: 'axis',
+      textStyle: { fontFamily: CHART_FONT, fontSize: 13 },
       formatter: function(params) {
         const p = params[0];
         const date = new Date(p.value[0]);
@@ -1034,17 +1397,36 @@ async function loadData() {
 
     document.getElementById('loading').style.display = 'none';
 
-    // 金价条
+    // Banner 全球已开采黄金总量（动态更新）
+    if (data['_meta'] && data['_meta'].above_ground_gold_tonnes) {
+      const tonnes = data['_meta'].above_ground_gold_tonnes;
+      const cubeNum = document.querySelector('.cube-number');
+      if (cubeNum) cubeNum.textContent = tonnes.toLocaleString('en-US');
+    }
+
+    // 金价条（改用百分比显示变化）
     const gold = data['GOLD_USD'];
     if (gold) {
       document.getElementById('goldPrice').textContent = '$' + gold.latest.value.toLocaleString('en-US', { maximumFractionDigits: 0 });
       const goldChanges = document.getElementById('goldChanges');
-      for (const [key, label] of Object.entries(CHANGE_LABELS)) {
-        const val = gold.changes[key];
-        if (val !== null && val !== undefined) {
-          const cls = changeClass(val);
-          goldChanges.innerHTML += `<span class="${cls}">${label} ${changeArrow(val)}${formatChange(val)}</span>`;
-        }
+      // 从序列中计算各时段的百分比变化
+      const series = gold.series || [];
+      const latestPrice = gold.latest.value;
+      const periods = {
+        '5d': { label: '5日', days: 5 },
+        '20d': { label: '20日', days: 20 },
+        '3m': { label: '3月', days: 90 },
+        'yoy': { label: '同比', days: 365 },
+      };
+      for (const [key, cfg] of Object.entries(periods)) {
+        const absChange = gold.changes[key];
+        if (absChange === null || absChange === undefined) continue;
+        const basePrice = latestPrice - absChange;
+        const pctChange = basePrice > 0 ? (absChange / basePrice * 100) : 0;
+        const cls = changeClass(absChange);
+        const arrow = changeArrow(absChange);
+        const sign = pctChange > 0 ? '+' : '';
+        goldChanges.innerHTML += `<span class="${cls}">${cfg.label} ${arrow}${sign}${pctChange.toFixed(1)}%</span>`;
       }
       document.getElementById('lastUpdate').textContent = gold.updated;
     }
