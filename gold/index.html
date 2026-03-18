@@ -86,12 +86,14 @@ body {
   align-items: center;
   gap: 20px;
   flex-shrink: 0;
+  margin-right: 16px;
 }
 .cube-scene {
   width: 84px;
   height: 84px;
   perspective: 280px;
   filter: drop-shadow(0 4px 12px rgba(212,168,83,0.3));
+  margin-right: 12px;
 }
 .cube {
   width: 84px;
@@ -109,8 +111,6 @@ body {
   position: absolute;
   width: 84px;
   height: 84px;
-  border: 1px solid rgba(255,255,255,0.08);
-  filter: url(#gold-grain);
 }
 /*
   四层分色（从上到下）：
@@ -712,6 +712,75 @@ body {
   font-size: 15px;
 }
 
+/* ── 历史洞察板块 ── */
+.hi-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+.hi-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.hi-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px 24px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+.hi-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+.hi-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+.hi-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+.hi-card-range {
+  font-size: 12px;
+  color: var(--gray);
+}
+.hi-card-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.hi-chart {
+  width: 100%;
+  height: 360px;
+}
+.hi-card-latest {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.hi-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.hi-stat-label {
+  font-size: 12px;
+  color: var(--gray);
+}
+.hi-stat-value {
+  font-family: "Inter", -apple-system, "PingFang SC", sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 18px;
+  font-weight: 700;
+}
+
 /* ── 响应式：小屏隐藏立方体 ── */
 @media (max-width: 640px) {
   .cube-area { display: none; }
@@ -721,18 +790,6 @@ body {
 </style>
 </head>
 <body>
-
-<!-- SVG 噪声纹理（隐藏，供 CSS 滤镜引用）-->
-<svg style="position:absolute;width:0;height:0">
-  <filter id="gold-grain">
-    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch" result="noise"/>
-    <feColorMatrix type="saturate" values="0" in="noise" result="gray-noise"/>
-    <feBlend in="SourceGraphic" in2="gray-noise" mode="multiply" result="blended"/>
-    <feComponentTransfer in="blended">
-      <feFuncA type="linear" slope="1"/>
-    </feComponentTransfer>
-  </filter>
-</svg>
 
 <!-- Hero Banner -->
 <div class="banner">
@@ -787,6 +844,7 @@ body {
       <div class="nav-item" data-section="inflation-growth">通胀与增长</div>
       <div class="nav-item" data-section="fiscal-credit">财政与信用</div>
       <div class="nav-item" data-section="risk-temp">风险温度</div>
+      <div class="nav-item" data-section="historical-insights">历史洞察</div>
       <a class="nav-link" href="framework.html">分析框架 →</a>
     </div>
   </div>
@@ -799,12 +857,14 @@ body {
   <!-- 金价走势图 -->
   <div class="gold-chart-wrap" id="goldChartWrap" style="display:none">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-      <div class="gold-chart-title" style="margin-bottom:0">国际金价走势</div>
-      <div style="display:flex;gap:6px" id="goldChartRange">
+      <div class="gold-chart-title" style="margin-bottom:0" id="goldChartTitle">国际金价走势</div>
+      <div style="display:flex;gap:6px;align-items:center" id="goldChartRange">
         <button class="range-btn" data-range="1y">1年</button>
         <button class="range-btn" data-range="5y">5年</button>
         <button class="range-btn" data-range="20y">20年</button>
         <button class="range-btn active" data-range="all">1915至今</button>
+        <span style="width:1px;height:16px;background:#ddd;margin:0 4px"></span>
+        <button class="range-btn" id="logToggle">对数</button>
       </div>
     </div>
     <div class="gold-chart" id="goldChart"></div>
@@ -882,11 +942,17 @@ body {
     <div class="cards" id="cards-risk-temp"></div>
     <div class="section-summary" id="summary-risk-temp"></div>
   </div>
+
+  <!-- 板块六：历史洞察 -->
+  <div class="section" id="sec-historical-insights">
+    <div class="hi-loading" id="hiLoading">正在加载历史数据...</div>
+    <div class="hi-cards" id="hiCards" style="display:none"></div>
+  </div>
 </div>
 
 <!-- 底部 -->
 <div class="footer">
-  数据来源：FRED (Federal Reserve Economic Data)、Chicago Fed、Yahoo Finance<br>
+  数据来源：FRED (Federal Reserve Economic Data)、Chicago Fed、Yahoo Finance、Macrotrends、有知有行SBBI-China报告<br>
   最后更新：<span id="lastUpdate">--</span><br>
   更新频率：日频指标每日更新，月频指标每月更新<br><br>
   免责声明：本看板仅供学习和研究参考，不构成任何投资建议。黄金投资有风险，决策需自行判断。
@@ -1019,7 +1085,7 @@ function createCard(data) {
     <div class="card-value">${formatValue(data.latest.value, data.unit)}<span class="card-unit">${data.unit === '%' ? '' : data.unit}</span></div>
     <div class="changes">${changesHtml}</div>
     <div class="percentiles">${pctHtml}</div>
-    <div class="chart-container" id="${chartId}"></div>
+    <div class="chart-container" id="${chartId}"${data.id === 'CB_GOLD_NET' ? ' style="height:220px"' : ''}></div>
     <div class="interpretation">${data.interpretation || ''}</div>
   `;
   return card;
@@ -1091,6 +1157,79 @@ function initChart(data, containerId, height) {
     return chart;
   }
 
+  // CB_GOLD_NET 专属：柱状图（净购金量）+ 折线图（同比变化）
+  if (data.id === 'CB_GOLD_NET') {
+    const years = data.series.map(d => d.date.substring(0, 4));
+    const values = data.series.map(d => d.value);
+    // 计算同比变化率
+    const yoyPct = values.map((v, i) => {
+      if (i === 0 || values[i-1] === 0) return null;
+      return Math.round((v - values[i-1]) / values[i-1] * 1000) / 10;
+    });
+
+    const cbOption = {
+      grid: { left: 50, right: 50, top: 30, bottom: 36 },
+      legend: {
+        data: ['净购金量', '同比变化'],
+        top: 0, right: 0,
+        textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+        itemWidth: 16, itemHeight: 2,
+      },
+      xAxis: {
+        type: 'category',
+        data: years,
+        axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+        axisLine: { lineStyle: { color: '#eee' } },
+        axisTick: { show: false },
+      },
+      yAxis: [
+        {
+          type: 'value', position: 'left',
+          axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT, formatter: v => v + ' 吨' },
+          splitLine: { lineStyle: { color: '#f0f0f0' } },
+        },
+        {
+          type: 'value', position: 'right',
+          axisLabel: { fontSize: 11, color: '#ED7D31', fontFamily: CHART_FONT, formatter: v => v + '%' },
+          splitLine: { show: false },
+        },
+      ],
+      series: [
+        {
+          name: '净购金量', type: 'bar', yAxisIndex: 0,
+          data: values,
+          barMaxWidth: 24,
+          itemStyle: { color: '#d4a853' },
+        },
+        {
+          name: '同比变化', type: 'line', yAxisIndex: 1,
+          data: yoyPct,
+          symbol: 'circle', symbolSize: 5,
+          lineStyle: { width: 2, color: '#ED7D31' },
+          itemStyle: { color: '#ED7D31' },
+        },
+      ],
+      tooltip: {
+        trigger: 'axis',
+        textStyle: { fontFamily: CHART_FONT, fontSize: 13 },
+        formatter: params => {
+          let html = params[0].name + '年';
+          params.forEach(p => {
+            if (p.value === null || p.value === undefined) return;
+            const unit = p.seriesName === '净购金量' ? ' 吨' : '%';
+            const sign = p.seriesName === '同比变化' && p.value > 0 ? '+' : '';
+            html += `<br/>${p.marker}${p.seriesName}: <b>${sign}${p.value}${unit}</b>`;
+          });
+          return html;
+        },
+      },
+    };
+    chart.setOption(cbOption);
+    chartInstances.push(chart);
+    window.addEventListener('resize', () => chart.resize());
+    return chart;
+  }
+
   const option = {
     grid: { left: 55, right: 20, top: 16, bottom: 36 },
     xAxis: {
@@ -1150,7 +1289,7 @@ let goldHistoryChart = null;
 let goldFullSeries = [];
 
 function initGoldHistoryChart(seriesData) {
-  goldFullSeries = seriesData;
+  goldFullSeries = seriesData.filter(d => d[1] > 0);
   const dom = document.getElementById('goldChart');
   if (!dom) return;
   goldHistoryChart = echarts.init(dom);
@@ -1175,7 +1314,7 @@ function initGoldHistoryChart(seriesData) {
     },
     series: [{
       type: 'line',
-      data: seriesData,
+      data: goldFullSeries,
       smooth: false,
       symbol: 'none',
       lineStyle: { width: 1.5, color: '#d4a853' },
@@ -1203,11 +1342,26 @@ function initGoldHistoryChart(seriesData) {
   window.addEventListener('resize', () => goldHistoryChart.resize());
 
   // 范围按钮事件
-  document.querySelectorAll('.range-btn').forEach(btn => {
+  document.querySelectorAll('.range-btn[data-range]').forEach(btn => {
     btn.addEventListener('click', function() {
-      document.querySelectorAll('.range-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.range-btn[data-range]').forEach(b => b.classList.remove('active'));
       this.classList.add('active');
       setGoldChartRange(this.dataset.range);
+    });
+  });
+
+  // 对数切换
+  let isLog = false;
+  document.getElementById('logToggle').addEventListener('click', function() {
+    isLog = !isLog;
+    this.classList.toggle('active', isLog);
+    document.getElementById('goldChartTitle').textContent = isLog ? '国际金价走势（对数）' : '国际金价走势';
+    goldHistoryChart.setOption({
+      yAxis: {
+        type: isLog ? 'log' : 'value',
+        min: isLog ? 'dataMin' : null,
+        scale: !isLog,
+      },
     });
   });
 }
@@ -1223,7 +1377,7 @@ function setGoldChartRange(range) {
     default: startDate = null;
   }
   const filtered = startDate
-    ? goldFullSeries.filter(d => new Date(d[0]) >= startDate)
+    ? goldFullSeries.filter(d => new Date(d[0]) >= startDate && d[1] > 0)
     : goldFullSeries;
   goldHistoryChart.setOption({ series: [{ data: filtered }] });
 }
@@ -1479,6 +1633,606 @@ async function loadData() {
 }
 
 loadData();
+
+// ── 历史洞察板块 ──
+const HI_CHART_META = {
+  gold_inflation_adjusted: {
+    title: '通胀调整后金价 vs 名义金价',
+    desc: '以最新月份 CPI 为基准的实际购买力金价（蓝线）与名义金价（金线）对比。实际金价剔除了通胀影响，能看出黄金真实回报。1980 年峰值经通胀调整后远高于名义价格，说明当时的购买力极强。',
+    type: 'dual',
+    s1: 'inflation_adjusted', s1Name: '通胀调整金价',
+    s2: 'nominal',            s2Name: '名义金价',
+    s1Unit: '$', s2Unit: '$',
+    s1Color: '#5B9BD5', s2Color: '#d4a853',
+  },
+  gold_vs_oil: {
+    title: '金价 vs 油价',
+    desc: '黄金与原油长期正相关（都受美元和通胀预期驱动），但阶段性会脱钩。脱钩时段往往揭示哪个因子主导了定价——是通胀预期、地缘风险还是美元走势。',
+    type: 'dual',
+    s1: 'gold', s1Name: '金价（美元/盎司）',
+    s2: 'oil',  s2Name: '油价（美元/桶）',
+    s1Unit: '$', s2Unit: '$',
+    s1Color: '#d4a853', s2Color: '#5B9BD5',
+  },
+  sp500_gold_ratio: {
+    title: '标普500 / 黄金比率',
+    desc: '用标普500指数除以每盎司金价。比率上升意味着股票跑赢黄金，下降意味着黄金跑赢股票。这是衡量「风险资产 vs 避险资产」相对强弱的经典指标。2000年互联网泡沫和2021年后均出现趋势性转折。',
+    type: 'single', series: 'ratio',
+    color: '#d4a853',
+  },
+  xau_gold_ratio: {
+    title: 'XAU / 黄金比率（金矿股 vs 金价）',
+    desc: 'Philadelphia Gold & Silver Index（XAU）除以金价。反映金矿股相对于黄金本身的表现。比率持续走低说明金矿股跑输金价，可能因成本上升、资本纪律差或市场偏好实物黄金/ETF。',
+    type: 'single', series: 'ratio',
+    color: '#d4a853',
+  },
+  hui_gold_ratio: {
+    title: 'HUI / 黄金比率（未对冲金矿股 vs 金价）',
+    desc: 'NYSE Arca Gold BUGS Index（HUI，未对冲金矿股指数）除以金价。与 XAU 类似但只包含未做套保的矿企，对金价弹性更大。比率长期走低是2013年以来金矿股投资者的核心痛点。',
+    type: 'single', series: 'ratio',
+    color: '#d4a853',
+  },
+  gold_silver_ratio: {
+    title: '金银比',
+    desc: '买一盎司黄金需要多少盎司白银。长期均值约 60，超过 80 通常被视为白银相对低估或经济衰退信号（2020年3月曾飙至 120+）。低于 50 则暗示工业需求旺盛或投机热情高涨。',
+    type: 'single', series: 'ratio',
+    color: '#d4a853',
+  },
+  gold_vs_silver: {
+    title: '金价 vs 银价',
+    desc: '黄金与白银价格走势对比。白银兼具贵金属和工业金属属性，波动率更大。牛市后期白银往往加速追赶黄金（「穷人的黄金」效应），是判断贵金属牛市阶段的参考。',
+    type: 'dual',
+    s1: 'gold',   s1Name: '金价（美元/盎司）',
+    s2: 'silver', s2Name: '银价（美元/盎司）',
+    s1Unit: '$', s2Unit: '$',
+    s1Color: '#d4a853', s2Color: '#999',
+  },
+  fed_balance_sheet_vs_gold: {
+    title: '美联储资产负债表 vs 金价',
+    desc: '美联储总资产（蓝线）与金价走势对比。2008年后每轮QE扩表都伴随金价上涨，2022年缩表期间金价却创新高（央行购金对冲）。这张图是理解「货币超发 → 黄金重估」逻辑的核心证据。',
+    type: 'dual',
+    s1: 'fed_assets', s1Name: '美联储总资产（百万美元）',
+    s2: 'gold',       s2Name: '金价（美元/盎司）',
+    s1Unit: '', s2Unit: '$',
+    s1Color: '#5B9BD5', s2Color: '#d4a853',
+    s1Formatter: v => v >= 1e6 ? (v/1e6).toFixed(1) + '万亿' : (v/1e3).toFixed(0) + '亿',
+  },
+};
+
+// 图表渲染顺序
+const HI_ORDER = [
+  'gold_inflation_adjusted', 'gold_vs_oil', 'sp500_gold_ratio',
+  'gold_silver_ratio', 'gold_vs_silver',
+  'xau_gold_ratio', 'hui_gold_ratio',
+  'fed_balance_sheet_vs_gold',
+];
+
+// ── 金价年度涨跌幅（柱状图）──
+function createAnnualChangeCard() {
+  const card = document.createElement('div');
+  card.className = 'hi-card';
+  card.innerHTML = `
+    <div class="hi-card-header">
+      <span class="hi-card-title">金价年度涨跌幅</span>
+      <span class="hi-card-range">1916 – 至今</span>
+    </div>
+    <div class="hi-card-desc">每年最后交易日收盘价相对前一年的百分比变化。金色柱子代表上涨年份，灰色代表下跌年份。111 年中黄金上涨年份约占 55%，但大涨年份（>20%）的收益远超大跌年份的损失。</div>
+    <div class="hi-chart" id="hi-chart-annual-change" style="height:350px"></div>
+  `;
+  return card;
+}
+
+function initAnnualChangeChart(data) {
+  const dom = document.getElementById('hi-chart-annual-change');
+  if (!dom) return;
+  const chart = echarts.init(dom);
+
+  const years = data.map(d => d.year);
+  const values = data.map(d => d.pct_change);
+  const colors = values.map(v => v >= 0 ? '#d4a853' : '#999');
+
+  chart.setOption({
+    grid: { left: 50, right: 20, top: 20, bottom: 50 },
+    xAxis: {
+      type: 'category',
+      data: years,
+      axisLabel: { fontSize: 10, color: '#999', fontFamily: CHART_FONT, interval: 9, rotate: 45 },
+      axisLine: { lineStyle: { color: '#eee' } },
+      axisTick: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: {
+        fontSize: 11, color: '#999', fontFamily: CHART_FONT,
+        formatter: v => v + '%',
+      },
+      splitLine: { lineStyle: { color: '#f0f0f0' } },
+    },
+    series: [{
+      type: 'bar',
+      data: values.map((v, i) => ({
+        value: v,
+        itemStyle: { color: colors[i] },
+      })),
+      barMaxWidth: 8,
+    }],
+    tooltip: {
+      trigger: 'axis',
+      textStyle: { fontFamily: CHART_FONT, fontSize: 13 },
+      formatter: params => {
+        const p = params[0];
+        const sign = p.value > 0 ? '+' : '';
+        return `${p.name}年<br/>涨跌幅: <b>${sign}${p.value.toFixed(1)}%</b>`;
+      },
+    },
+    dataZoom: [{ type: 'inside', start: 0, end: 100 }],
+  });
+  chartInstances.push(chart);
+  window.addEventListener('resize', () => chart.resize());
+}
+
+// ── 金价 vs 比特币（双轴 + 对数切换）──
+function createGoldBtcCard() {
+  const card = document.createElement('div');
+  card.className = 'hi-card';
+  card.innerHTML = `
+    <div class="hi-card-header">
+      <span class="hi-card-title" id="goldBtcTitle">金价 vs 比特币</span>
+      <span style="display:flex;align-items:center;gap:6px">
+        <span class="hi-card-range">2010 – 至今</span>
+        <button class="range-btn" id="goldBtcLogToggle" style="font-size:11px;padding:2px 8px">对数</button>
+      </span>
+    </div>
+    <div class="hi-card-desc">比特币与黄金的价格走势对比。两者都是「去中心化」的价值存储叙事，但波动率差异巨大。对数视角下能更清晰地看到两者的长期走势结构。比特币数据来自 Blockchain.com（周频），金价为日频/月频混合。</div>
+    <div class="hi-chart" id="hi-chart-gold-btc"></div>
+  `;
+  return card;
+}
+
+function initGoldBtcChart(btcSeries, goldSeries) {
+  const dom = document.getElementById('hi-chart-gold-btc');
+  if (!dom) return;
+  const chart = echarts.init(dom);
+
+  const btcData = btcSeries.map(d => [d.date, d.value]);
+  const goldData = goldSeries.filter(d => d.date >= '2010-01-01').map(d => [d.date, d.value]);
+
+  function buildOption(isLog) {
+    return {
+      grid: { left: 70, right: 70, top: 36, bottom: 40 },
+      legend: {
+        data: ['比特币', '金价'],
+        top: 0, right: 0,
+        textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+        itemWidth: 16, itemHeight: 2,
+      },
+      xAxis: {
+        type: 'time',
+        axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+        axisLine: { lineStyle: { color: '#eee' } },
+        axisTick: { show: false },
+        splitLine: { show: false },
+      },
+      yAxis: [
+        {
+          type: isLog ? 'log' : 'value', position: 'left',
+          axisLabel: {
+            fontSize: 11, color: '#ED7D31', fontFamily: CHART_FONT,
+            formatter: v => v >= 1000 ? '$' + (v/1000).toFixed(0) + 'k' : '$' + v,
+          },
+          splitLine: { lineStyle: { color: '#f0f0f0' } },
+          min: isLog ? 'dataMin' : null,
+          scale: !isLog,
+        },
+        {
+          type: isLog ? 'log' : 'value', position: 'right',
+          axisLabel: {
+            fontSize: 11, color: '#d4a853', fontFamily: CHART_FONT,
+            formatter: v => v >= 1000 ? '$' + (v/1000).toFixed(1) + 'k' : '$' + v,
+          },
+          splitLine: { show: false },
+          min: isLog ? 'dataMin' : null,
+          scale: !isLog,
+        },
+      ],
+      series: [
+        {
+          name: '比特币', type: 'line', data: btcData,
+          yAxisIndex: 0, symbol: 'none',
+          lineStyle: { width: 1.5, color: '#ED7D31' },
+        },
+        {
+          name: '金价', type: 'line', data: goldData,
+          yAxisIndex: 1, symbol: 'none',
+          lineStyle: { width: 1.5, color: '#d4a853' },
+        },
+      ],
+      tooltip: {
+        trigger: 'axis',
+        textStyle: { fontFamily: CHART_FONT, fontSize: 13 },
+        formatter: params => {
+          const d = new Date(params[0].value[0]).toISOString().substring(0,10);
+          let html = d;
+          params.forEach(p => {
+            html += `<br/>${p.marker}${p.seriesName}: <b>$${p.value[1].toLocaleString('en-US', {maximumFractionDigits:0})}</b>`;
+          });
+          return html;
+        },
+      },
+      dataZoom: [{ type: 'inside', start: 0, end: 100 }],
+    };
+  }
+
+  chart.setOption(buildOption(false));
+  chartInstances.push(chart);
+  window.addEventListener('resize', () => chart.resize());
+
+  // 对数切换
+  let isLog = false;
+  document.getElementById('goldBtcLogToggle').addEventListener('click', function() {
+    isLog = !isLog;
+    this.classList.toggle('active', isLog);
+    document.getElementById('goldBtcTitle').textContent = isLog ? '金价 vs 比特币（对数）' : '金价 vs 比特币';
+    chart.setOption(buildOption(isLog), true);
+  });
+}
+
+// ── 伦敦金年化收益率与滚动收益率（热力图）──
+function createRollingReturnsCard() {
+  const card = document.createElement('div');
+  card.className = 'hi-card';
+  card.innerHTML = `
+    <div class="hi-card-header">
+      <span class="hi-card-title">伦敦金年化收益率</span>
+      <span class="hi-card-range">1969 – 2024</span>
+    </div>
+    <div class="hi-card-desc">每个单元格显示从横轴年份买入、持有到纵轴年份的年化收益率。红色越深代表亏损越大，白色为正收益。对角线为单年涨跌幅。数据来源：陈鹏、有知有行、Roger G. Ibbotson（SBBI-China）。</div>
+    <div class="hi-chart" id="hi-chart-rolling-returns" style="height:700px"></div>
+  `;
+  return card;
+}
+
+function initRollingReturnsChart(data) {
+  const dom = document.getElementById('hi-chart-rolling-returns');
+  if (!dom) return;
+  const chart = echarts.init(dom);
+
+  const years = data.years;
+  const matrix = data.matrix;
+
+  // 构建热力图数据
+  const heatData = [];
+  for (let y = 0; y < matrix.length; y++) {
+    for (let x = 0; x < matrix[y].length; x++) {
+      heatData.push([x, y, matrix[y][x]]);
+    }
+  }
+
+  // 颜色映射：负值红色渐变，正值白色
+  function getColor(val) {
+    if (val >= 0) return '#ffffff';
+    const t = Math.min(Math.abs(val) / 30, 1);
+    const r = 255;
+    const g = Math.round(255 - t * 110);
+    const b = Math.round(255 - t * 130);
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+  }
+
+  const coloredData = heatData.map(d => ({
+    value: d,
+    itemStyle: { color: getColor(d[2]) },
+  }));
+
+  chart.setOption({
+    tooltip: {
+      formatter: function(params) {
+        if (!params.value || params.value[2] === undefined) return '';
+        const startYear = years[params.value[0]];
+        const endYear = years[params.value[1]];
+        const holdYears = endYear - startYear + 1;
+        const ret = params.value[2];
+        const sign = ret >= 0 ? '+' : '';
+        const c = ret >= 0 ? '#389e0d' : '#cf1322';
+        return startYear + ' → ' + endYear + '（持有 ' + holdYears + ' 年）<br/>年化收益率: <b style="color:' + c + '">' + sign + ret.toFixed(2) + '%</b>';
+      },
+    },
+    grid: { left: 45, right: 10, top: 10, bottom: 55 },
+    xAxis: {
+      type: 'category',
+      data: years,
+      position: 'bottom',
+      axisLabel: { interval: 4, rotate: 45, fontSize: 10, color: '#999', fontFamily: CHART_FONT },
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: '#eee' } },
+      splitLine: { show: false },
+      splitArea: { show: false },
+    },
+    yAxis: {
+      type: 'category',
+      data: years,
+      inverse: true,
+      axisLabel: { interval: 4, fontSize: 10, color: '#999', fontFamily: CHART_FONT },
+      axisTick: { show: false },
+      axisLine: { lineStyle: { color: '#eee' } },
+      splitLine: { show: false },
+      splitArea: { show: false },
+    },
+    series: [{
+      type: 'heatmap',
+      data: coloredData,
+      label: {
+        show: true,
+        fontSize: 7,
+        fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
+        fontWeight: 300,
+        color: '#555',
+        formatter: function(p) { return p.value[2].toFixed(1); },
+      },
+      itemStyle: {
+        borderColor: '#f5f5f0',
+        borderWidth: 0.5,
+      },
+      emphasis: {
+        itemStyle: {
+          borderColor: '#d4a853',
+          borderWidth: 2,
+          shadowBlur: 6,
+          shadowColor: 'rgba(212,168,83,0.3)',
+        },
+      },
+    }],
+  });
+  chartInstances.push(chart);
+  window.addEventListener('resize', () => chart.resize());
+}
+
+function createHiCard(key, chartData, meta) {
+  const card = document.createElement('div');
+  card.className = 'hi-card';
+  const chartId = 'hi-chart-' + key;
+
+  // 计算最新值和时间范围
+  let latestHtml = '';
+  const seriesKeys = Object.keys(chartData.series);
+  const firstSeries = chartData.series[seriesKeys[0]] || [];
+  const dateRange = firstSeries.length > 0
+    ? `${firstSeries[0].date.substring(0,4)} – ${firstSeries[firstSeries.length-1].date.substring(0,7)}`
+    : '';
+
+  if (meta.type === 'single') {
+    const s = chartData.series[meta.series] || [];
+    if (s.length) {
+      const v = s[s.length - 1].value;
+      latestHtml = `<div class="hi-stat"><span class="hi-stat-label">最新</span><span class="hi-stat-value">${v.toFixed(2)}</span></div>`;
+    }
+  } else {
+    for (const sk of [meta.s1, meta.s2]) {
+      const s = chartData.series[sk] || [];
+      if (!s.length) continue;
+      const v = s[s.length - 1].value;
+      const name = sk === meta.s1 ? meta.s1Name : meta.s2Name;
+      const unit = sk === meta.s1 ? meta.s1Unit : meta.s2Unit;
+      const fmtVal = (meta.s1Formatter && sk === meta.s1)
+        ? meta.s1Formatter(v)
+        : (unit === '$' ? '$' + v.toLocaleString('en-US', {maximumFractionDigits: 2}) : v.toFixed(2) + (unit === '%' ? '%' : ''));
+      latestHtml += `<div class="hi-stat"><span class="hi-stat-label">${name.split('（')[0]}</span><span class="hi-stat-value">${fmtVal}</span></div>`;
+    }
+  }
+
+  card.innerHTML = `
+    <div class="hi-card-header">
+      <span class="hi-card-title">${meta.title}</span>
+      <span class="hi-card-range">${dateRange}</span>
+    </div>
+    <div class="hi-card-latest">${latestHtml}</div>
+    <div class="hi-card-desc">${meta.desc}</div>
+    <div class="hi-chart" id="${chartId}"></div>
+  `;
+  return card;
+}
+
+function initHiChart(key, chartData, meta) {
+  const chartId = 'hi-chart-' + key;
+  const dom = document.getElementById(chartId);
+  if (!dom) return;
+  const chart = echarts.init(dom);
+
+  let option;
+
+  if (meta.type === 'single') {
+    const s = chartData.series[meta.series] || [];
+    const data = s.map(d => [d.date, d.value]);
+    option = {
+      grid: { left: 60, right: 20, top: 20, bottom: 40 },
+      xAxis: {
+        type: 'time',
+        axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+        axisLine: { lineStyle: { color: '#eee' } },
+        axisTick: { show: false },
+        splitLine: { show: false },
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+        splitLine: { lineStyle: { color: '#f0f0f0' } },
+        scale: true,
+      },
+      series: [{
+        type: 'line', data, symbol: 'none',
+        lineStyle: { width: 1.5, color: meta.color },
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0,0,0,1,[
+            {offset:0, color: meta.color + '1A'},
+            {offset:1, color: meta.color + '03'},
+          ]),
+        },
+      }],
+      tooltip: {
+        trigger: 'axis',
+        textStyle: { fontFamily: CHART_FONT, fontSize: 13 },
+        formatter: p => {
+          const d = new Date(p[0].value[0]).toISOString().substring(0,10);
+          return `${d}<br/>${meta.title}: <b>${p[0].value[1].toFixed(2)}</b>`;
+        },
+      },
+      dataZoom: [{ type: 'inside', start: 0, end: 100 }],
+    };
+  } else {
+    // 双轴图
+    const s1 = (chartData.series[meta.s1] || []).map(d => [d.date, d.value]);
+    const s2 = (chartData.series[meta.s2] || []).map(d => [d.date, d.value]);
+
+    const s1Fmt = meta.s1Formatter || (v => meta.s1Unit === '$' ? '$' + v.toLocaleString() : v.toFixed(1));
+    const s2Fmt = v => meta.s2Unit === '$' ? '$' + v.toLocaleString() : v.toFixed(2) + (meta.s2Unit === '%' ? '%' : '');
+
+    option = {
+      grid: { left: 65, right: 65, top: 36, bottom: 40 },
+      legend: {
+        data: [meta.s1Name.split('（')[0], meta.s2Name.split('（')[0]],
+        top: 0, right: 0,
+        textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+        itemWidth: 16, itemHeight: 2,
+      },
+      xAxis: {
+        type: 'time',
+        axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+        axisLine: { lineStyle: { color: '#eee' } },
+        axisTick: { show: false },
+        splitLine: { show: false },
+      },
+      yAxis: [
+        {
+          type: 'value', position: 'left',
+          axisLabel: {
+            fontSize: 11, color: meta.s1Color, fontFamily: CHART_FONT,
+            formatter: meta.s1Formatter || (v => v >= 1e6 ? (v/1e6).toFixed(1)+'M' : v >= 1e3 ? (v/1e3).toFixed(0)+'k' : v.toFixed(0)),
+          },
+          splitLine: { lineStyle: { color: '#f0f0f0' } },
+          scale: true,
+        },
+        {
+          type: 'value', position: 'right',
+          axisLabel: {
+            fontSize: 11, color: meta.s2Color, fontFamily: CHART_FONT,
+            formatter: v => meta.s2Unit === '%' ? v.toFixed(1)+'%' : (meta.s2Unit === '$' ? '$'+v.toLocaleString() : v.toFixed(0)),
+          },
+          splitLine: { show: false },
+          scale: true,
+        },
+      ],
+      series: [
+        {
+          name: meta.s1Name.split('（')[0], type: 'line', data: s1,
+          yAxisIndex: 0, symbol: 'none',
+          lineStyle: { width: 1.5, color: meta.s1Color },
+        },
+        {
+          name: meta.s2Name.split('（')[0], type: 'line', data: s2,
+          yAxisIndex: 1, symbol: 'none',
+          lineStyle: { width: 1.5, color: meta.s2Color },
+        },
+      ],
+      tooltip: {
+        trigger: 'axis',
+        textStyle: { fontFamily: CHART_FONT, fontSize: 13 },
+        formatter: params => {
+          const d = new Date(params[0].value[0]).toISOString().substring(0,10);
+          let html = d;
+          params.forEach(p => {
+            html += `<br/>${p.marker}${p.seriesName}: <b>${p.value[1].toLocaleString('en-US', {maximumFractionDigits:2})}</b>`;
+          });
+          return html;
+        },
+      },
+      dataZoom: [{ type: 'inside', start: 0, end: 100 }],
+    };
+  }
+
+  chart.setOption(option);
+  chartInstances.push(chart);
+  window.addEventListener('resize', () => chart.resize());
+}
+
+async function loadHistoricalInsights() {
+  const container = document.getElementById('hiCards');
+  const loading = document.getElementById('hiLoading');
+  if (!container) return;
+
+  try {
+    // 并行加载四个数据源
+    const [hiResp, annualResp, btcResp, rollingResp] = await Promise.all([
+      fetch('data/historical_insights.json'),
+      fetch('data/history_gold_annual_change.json').catch(() => null),
+      fetch('data/history_gold_vs_bitcoin.json').catch(() => null),
+      fetch('data/history_gold_rolling_returns.json').catch(() => null),
+    ]);
+    const data = await hiResp.json();
+    const annualData = annualResp ? await annualResp.json().catch(() => null) : null;
+    const btcData = btcResp ? await btcResp.json().catch(() => null) : null;
+    const rollingData = rollingResp ? await rollingResp.json().catch(() => null) : null;
+
+    loading.style.display = 'none';
+    container.style.display = 'flex';
+
+    // 1. 金价年度涨跌幅（排第一）
+    if (annualData && annualData.data) {
+      container.appendChild(createAnnualChangeCard());
+    }
+
+    // 2. 伦敦金年化收益率与滚动收益率（排第二）
+    if (rollingData && rollingData.matrix) {
+      container.appendChild(createRollingReturnsCard());
+    }
+
+    // 3. 金价 vs 比特币（排第三）
+    if (btcData && btcData.series) {
+      container.appendChild(createGoldBtcCard());
+    }
+
+    // 4. 原有 Macrotrends 图表
+    for (const key of HI_ORDER) {
+      const chartData = data[key];
+      const meta = HI_CHART_META[key];
+      if (!chartData || !meta) continue;
+      container.appendChild(createHiCard(key, chartData, meta));
+    }
+
+    // 延迟初始化图表（等 DOM 渲染完成）
+    setTimeout(() => {
+      if (annualData && annualData.data) {
+        initAnnualChangeChart(annualData.data);
+      }
+      if (rollingData && rollingData.matrix) {
+        initRollingReturnsChart(rollingData);
+      }
+      if (btcData && btcData.series) {
+        initGoldBtcChart(btcData.series.bitcoin || [], btcData.series.gold || []);
+      }
+      for (const key of HI_ORDER) {
+        const chartData = data[key];
+        const meta = HI_CHART_META[key];
+        if (!chartData || !meta) continue;
+        initHiChart(key, chartData, meta);
+      }
+    }, 100);
+
+  } catch (err) {
+    loading.textContent = '历史数据加载失败：' + err.message;
+    console.error('Historical insights load error:', err);
+  }
+}
+
+// 切换到历史洞察 tab 时按需加载
+let hiLoaded = false;
+const origTabHandler = null;
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', function() {
+    if (this.dataset.section === 'historical-insights' && !hiLoaded) {
+      hiLoaded = true;
+      loadHistoricalInsights();
+    }
+  });
+});
 
 // ── URL hash 跳转支持 ──
 function handleHash() {
