@@ -1637,8 +1637,19 @@ let logYoyFullSeries = [];
 function initLogYoyChart(series) {
   const dom = document.getElementById('logYoyChart');
   if (!dom) return;
-  logYoyFullSeries = series.map(d => [d.date, d.value]);
+  // 从1969年开始
+  logYoyFullSeries = series.filter(d => d.date >= '1969-01').map(d => [d.date, d.value]);
   logYoyChart = echarts.init(dom);
+
+  // 拆成两条系列：正值（红）和负值（绿），用 areaStyle 填充
+  const posData = logYoyFullSeries.map(d => d[1] >= 0 ? d[1] : null);
+  const negData = logYoyFullSeries.map(d => d[1] < 0 ? d[1] : null);
+  // 在正负交界处补连接点，避免断线
+  for (let i = 1; i < logYoyFullSeries.length; i++) {
+    const prev = logYoyFullSeries[i-1][1], curr = logYoyFullSeries[i][1];
+    if (prev >= 0 && curr < 0) { negData[i-1] = 0; }
+    if (prev < 0 && curr >= 0) { posData[i-1] = 0; }
+  }
 
   logYoyChart.setOption({
     grid: { left: 50, right: 20, top: 10, bottom: 40 },
@@ -1658,34 +1669,37 @@ function initLogYoyChart(series) {
       splitLine: { lineStyle: { color: '#f0f0f0' } },
     },
     series: [{
+      name: '上涨周期',
       type: 'line',
-      data: logYoyFullSeries.map(d => d[1]),
+      data: posData,
       showSymbol: false,
-      lineStyle: { width: 1.5 },
-      areaStyle: {
-        color: {
-          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
-          colorStops: [
-            { offset: 0, color: 'rgba(212,168,83,0.3)' },
-            { offset: 0.5, color: 'rgba(212,168,83,0.05)' },
-            { offset: 1, color: 'rgba(150,150,150,0.1)' },
-          ],
-        },
-      },
-      itemStyle: { color: '#d4a853' },
+      lineStyle: { width: 1.5, color: '#cf1322' },
+      areaStyle: { color: 'rgba(207,19,34,0.2)' },
+      itemStyle: { color: '#cf1322' },
+      connectNulls: false,
       markLine: {
         silent: true,
         data: [{ yAxis: 0 }],
-        lineStyle: { color: '#999', type: 'dashed', width: 1 },
+        lineStyle: { color: '#666', type: 'solid', width: 1 },
         label: { show: false },
         symbol: 'none',
       },
+    }, {
+      name: '下跌周期',
+      type: 'line',
+      data: negData,
+      showSymbol: false,
+      lineStyle: { width: 1.5, color: '#3f8600' },
+      areaStyle: { color: 'rgba(63,134,0,0.2)' },
+      itemStyle: { color: '#3f8600' },
+      connectNulls: false,
     }],
     tooltip: {
       trigger: 'axis',
       textStyle: { fontFamily: CHART_FONT, fontSize: 13 },
       formatter: params => {
-        const p = params[0];
+        const p = params.find(x => x.value != null) || params[0];
+        if (!p || p.value == null) return '';
         const sign = p.value > 0 ? '+' : '';
         const color = p.value > 0 ? '#cf1322' : '#3f8600';
         return `${p.name}<br/>对数同比: <b style="color:${color}">${sign}${p.value.toFixed(1)}%</b>`;
@@ -1718,9 +1732,16 @@ function setLogYoyRange(range) {
   const filtered = startDate
     ? logYoyFullSeries.filter(d => new Date(d[0]) >= startDate)
     : logYoyFullSeries;
+  const fp = filtered.map(d => d[1] >= 0 ? d[1] : null);
+  const fn = filtered.map(d => d[1] < 0 ? d[1] : null);
+  for (let i = 1; i < filtered.length; i++) {
+    const prev = filtered[i-1][1], curr = filtered[i][1];
+    if (prev >= 0 && curr < 0) { fn[i-1] = 0; }
+    if (prev < 0 && curr >= 0) { fp[i-1] = 0; }
+  }
   logYoyChart.setOption({
     xAxis: { data: filtered.map(d => d[0]) },
-    series: [{ data: filtered.map(d => d[1]) }],
+    series: [{ data: fp }, { data: fn }],
   });
 }
 
@@ -2436,53 +2457,6 @@ function createAssetReturnsCard(data) {
   return card;
 }
 
-// ── 金价驱动归因 ──
-function createFactorCard(data) {
-  const card = document.createElement('div');
-  card.className = 'hi-card';
-
-  // 相关系数条形图 + R² 概览
-  let barItems = '';
-  data.factors.forEach(f => {
-    const width = Math.abs(f.correlation) * 100;
-    const color = f.correlation < 0 ? '#5470c6' : '#d4a853';
-    const sign = f.correlation > 0 ? '+' : '';
-    const matchIcon = (f.correlation < 0 && f.direction === '负相关') || (f.correlation > 0 && f.direction === '正相关') ? '✓' : '✗';
-    const matchColor = matchIcon === '✓' ? '#3f8600' : '#cf1322';
-    barItems += `
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-        <span style="width:130px;font-size:12px;text-align:right;flex-shrink:0;color:#666">${f.name}</span>
-        <div style="flex:1;background:#f5f5f5;border-radius:3px;height:20px;position:relative;overflow:hidden">
-          <div style="width:${width}%;height:100%;background:${color};border-radius:3px;transition:width 0.5s"></div>
-        </div>
-        <span style="width:60px;font-size:12px;font-weight:600;color:${color}">${sign}${f.correlation.toFixed(2)}</span>
-        <span style="width:20px;font-size:12px;color:${matchColor}" title="预期${f.direction}">${matchIcon}</span>
-      </div>`;
-  });
-
-  const r2pct = data.r_squared ? (data.r_squared * 100).toFixed(1) : '—';
-
-  card.innerHTML = `
-    <div class="hi-card-header">
-      <span class="hi-card-title">金价驱动归因</span>
-      <span class="hi-card-range">${data.period}</span>
-    </div>
-    <div class="hi-card-desc">各宏观因子月度变动与金价月度回报的相关系数。R² = ${r2pct}%（${data.n_months} 个月数据），即这 ${data.factors.length} 个因子合计解释金价波动的 ${r2pct}%。<b>✓ = 方向符合预期，✗ = 方向偏离预期</b>。</div>
-    <div style="padding:8px 0">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-        <div style="background:linear-gradient(90deg,#d4a853,#d4a853);width:60px;height:8px;border-radius:4px"></div>
-        <span style="font-size:11px;color:#999">R² = ${r2pct}%</span>
-        <div style="flex:1;background:#f0f0f0;border-radius:4px;height:8px;position:relative">
-          <div style="width:${r2pct}%;height:100%;background:linear-gradient(90deg,#d4a853,#e6953d);border-radius:4px"></div>
-        </div>
-      </div>
-      ${barItems}
-      <div style="font-size:11px;color:#bbb;margin-top:8px">蓝色 = 负相关（因子↑ 金价↓），金色 = 正相关（因子↑ 金价↑）</div>
-    </div>
-  `;
-  return card;
-}
-
 // ── 三轮牛熊市对比 ──
 function createCyclesCard() {
   const card = document.createElement('div');
@@ -2510,8 +2484,12 @@ function initCyclesChart(cycles) {
   const series = cycles.map(c => {
     const isBull = c.type === 'bull';
     const color = isBull ? bullColors[bullIdx++] : bearColors[bearIdx++];
+    // 名称带年份：如 "牛市 1969-1980"
+    const endYear = c.end ? c.end.slice(0,4) : '至今';
+    const label = (isBull ? '牛市' : '熊市') + ' ' + c.start.slice(0,4) + '-' + endYear;
+    const legendName = label;
     return {
-      name: c.name,
+      name: legendName,
       type: 'line',
       showSymbol: false,
       lineStyle: { width: isBull ? 2 : 1.5, type: isBull ? 'solid' : 'dashed' },
@@ -2519,16 +2497,16 @@ function initCyclesChart(cycles) {
       data: c.series.map(d => [d.month, d.pct]),
       endLabel: {
         show: true,
-        formatter: p => c.name.replace('第', '').replace('轮', ''),
+        formatter: () => label,
         fontSize: 10, color, fontFamily: CHART_FONT,
       },
     };
   });
 
   chart.setOption({
-    grid: { left: 60, right: 90, top: 20, bottom: 50 },
+    grid: { left: 60, right: 110, top: 20, bottom: 50 },
     legend: {
-      data: cycles.map(c => c.name),
+      data: series.map(s => s.name),
       bottom: 0,
       textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
       itemWidth: 20, itemHeight: 2,
@@ -2543,6 +2521,7 @@ function initCyclesChart(cycles) {
     },
     yAxis: {
       type: 'value',
+      min: -80,
       axisLabel: {
         fontSize: 11, color: '#999', fontFamily: CHART_FONT,
         formatter: v => v + '%',
@@ -2578,7 +2557,7 @@ function createRealYieldsCard() {
       <span class="hi-card-range">1970 – 至今</span>
     </div>
     <div class="hi-card-desc">实际联邦基金利率 = 联邦基金利率 − CPI 同比。实际利率为负时（灰色阴影区域），持有现金的机会成本为负，利好黄金。历史上黄金牛市多数发生在实际利率为负或快速下行阶段。</div>
-    <div class="hi-chart" id="hi-chart-real-yields" style="height:380px"></div>
+    <div class="hi-chart" id="hi-chart-real-yields" style="height:450px"></div>
   `;
   return card;
 }
@@ -2611,7 +2590,7 @@ function initRealYieldsChart(goldSeries, rateSeries) {
   }, { xAxis: z[1] }]);
 
   chart.setOption({
-    grid: { left: 60, right: 60, top: 20, bottom: 40 },
+    grid: { left: 60, right: 60, top: 30, bottom: 40 },
     legend: {
       data: ['金价', '实际利率'],
       bottom: 0,
@@ -2628,7 +2607,7 @@ function initRealYieldsChart(goldSeries, rateSeries) {
     yAxis: [{
       type: 'value',
       name: '美元/盎司',
-      nameTextStyle: { fontSize: 10, color: '#d4a853', fontFamily: CHART_FONT },
+      nameTextStyle: { fontSize: 10, color: '#d4a853', fontFamily: CHART_FONT, padding: [0, 0, 0, 10] },
       position: 'left',
       axisLabel: {
         fontSize: 10, color: '#d4a853', fontFamily: CHART_FONT,
@@ -2638,7 +2617,7 @@ function initRealYieldsChart(goldSeries, rateSeries) {
     }, {
       type: 'value',
       name: '实际利率 %',
-      nameTextStyle: { fontSize: 10, color: '#5470c6', fontFamily: CHART_FONT },
+      nameTextStyle: { fontSize: 10, color: '#5470c6', fontFamily: CHART_FONT, padding: [0, 10, 0, 0] },
       position: 'right',
       axisLabel: {
         fontSize: 10, color: '#5470c6', fontFamily: CHART_FONT,
@@ -2653,15 +2632,22 @@ function initRealYieldsChart(goldSeries, rateSeries) {
       lineStyle: { width: 1.5 },
       itemStyle: { color: '#d4a853' },
       data: goldData,
-      markArea: { silent: true, data: markAreas },
     }, {
       name: '实际利率',
       type: 'line',
       yAxisIndex: 1,
       showSymbol: false,
-      lineStyle: { width: 1.5 },
+      lineStyle: { width: 1.2, color: '#5470c6' },
+      areaStyle: { color: 'rgba(84,112,198,0.15)' },
       itemStyle: { color: '#5470c6' },
       data: rateData,
+      markLine: {
+        silent: true,
+        data: [{ yAxis: 0 }],
+        lineStyle: { color: '#333', type: 'solid', width: 1 },
+        label: { show: true, position: 'end', formatter: '0%', fontSize: 10, color: '#666' },
+        symbol: 'none',
+      },
     }],
     tooltip: {
       trigger: 'axis',
@@ -2745,8 +2731,9 @@ function initGoldBtcMcapChart(goldMcap, btcMcap) {
       type: 'line',
       showSymbol: false,
       lineStyle: { width: 1.5 },
-      areaStyle: { color: 'rgba(245,166,35,0.15)' },
-      itemStyle: { color: '#f5a623' },
+      areaStyle: { color: 'rgba(84,112,198,0.15)' },
+      itemStyle: { color: '#5470c6' },
+      lineStyle: { width: 1.5, color: '#5470c6' },
       data: btcData,
     }],
     tooltip: {
@@ -2940,7 +2927,7 @@ async function loadHistoricalInsights() {
 
   try {
     // 并行加载所有数据源
-    const [hiResp, annualResp, btcResp, rollingResp, cyclesResp, realYieldsResp, btcMcapResp, assetResp, factorResp] = await Promise.all([
+    const [hiResp, annualResp, btcResp, rollingResp, cyclesResp, realYieldsResp, btcMcapResp, assetResp] = await Promise.all([
       fetch('data/historical_insights.json'),
       fetch('data/history_gold_annual_change.json').catch(() => null),
       fetch('data/history_gold_vs_bitcoin.json').catch(() => null),
@@ -2949,7 +2936,6 @@ async function loadHistoricalInsights() {
       fetch('data/history_gold_real_yields.json').catch(() => null),
       fetch('data/history_gold_btc_marketcap.json').catch(() => null),
       fetch('data/history_asset_returns.json').catch(() => null),
-      fetch('data/history_gold_factors.json').catch(() => null),
     ]);
     const data = await hiResp.json();
     const annualData = annualResp ? await annualResp.json().catch(() => null) : null;
@@ -2959,7 +2945,6 @@ async function loadHistoricalInsights() {
     const realYieldsData = realYieldsResp ? await realYieldsResp.json().catch(() => null) : null;
     const btcMcapData = btcMcapResp ? await btcMcapResp.json().catch(() => null) : null;
     const assetData = assetResp ? await assetResp.json().catch(() => null) : null;
-    const factorData = factorResp ? await factorResp.json().catch(() => null) : null;
 
     loading.style.display = 'none';
     container.style.display = 'flex';
@@ -2979,12 +2964,7 @@ async function loadHistoricalInsights() {
       container.appendChild(createAssetReturnsCard(assetData));
     }
 
-    // 4. 金价驱动归因（排第四）
-    if (factorData && factorData.factors) {
-      container.appendChild(createFactorCard(factorData));
-    }
-
-    // 5. 金价 vs 比特币（排第五）
+    // 4. 金价 vs 比特币
     if (btcData && btcData.series) {
       container.appendChild(createGoldBtcCard());
     }
