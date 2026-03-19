@@ -2436,6 +2436,53 @@ function createAssetReturnsCard(data) {
   return card;
 }
 
+// ── 金价驱动归因 ──
+function createFactorCard(data) {
+  const card = document.createElement('div');
+  card.className = 'hi-card';
+
+  // 相关系数条形图 + R² 概览
+  let barItems = '';
+  data.factors.forEach(f => {
+    const width = Math.abs(f.correlation) * 100;
+    const color = f.correlation < 0 ? '#5470c6' : '#d4a853';
+    const sign = f.correlation > 0 ? '+' : '';
+    const matchIcon = (f.correlation < 0 && f.direction === '负相关') || (f.correlation > 0 && f.direction === '正相关') ? '✓' : '✗';
+    const matchColor = matchIcon === '✓' ? '#3f8600' : '#cf1322';
+    barItems += `
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="width:130px;font-size:12px;text-align:right;flex-shrink:0;color:#666">${f.name}</span>
+        <div style="flex:1;background:#f5f5f5;border-radius:3px;height:20px;position:relative;overflow:hidden">
+          <div style="width:${width}%;height:100%;background:${color};border-radius:3px;transition:width 0.5s"></div>
+        </div>
+        <span style="width:60px;font-size:12px;font-weight:600;color:${color}">${sign}${f.correlation.toFixed(2)}</span>
+        <span style="width:20px;font-size:12px;color:${matchColor}" title="预期${f.direction}">${matchIcon}</span>
+      </div>`;
+  });
+
+  const r2pct = data.r_squared ? (data.r_squared * 100).toFixed(1) : '—';
+
+  card.innerHTML = `
+    <div class="hi-card-header">
+      <span class="hi-card-title">金价驱动归因</span>
+      <span class="hi-card-range">${data.period}</span>
+    </div>
+    <div class="hi-card-desc">各宏观因子月度变动与金价月度回报的相关系数。R² = ${r2pct}%（${data.n_months} 个月数据），即这 ${data.factors.length} 个因子合计解释金价波动的 ${r2pct}%。<b>✓ = 方向符合预期，✗ = 方向偏离预期</b>。</div>
+    <div style="padding:8px 0">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+        <div style="background:linear-gradient(90deg,#d4a853,#d4a853);width:60px;height:8px;border-radius:4px"></div>
+        <span style="font-size:11px;color:#999">R² = ${r2pct}%</span>
+        <div style="flex:1;background:#f0f0f0;border-radius:4px;height:8px;position:relative">
+          <div style="width:${r2pct}%;height:100%;background:linear-gradient(90deg,#d4a853,#e6953d);border-radius:4px"></div>
+        </div>
+      </div>
+      ${barItems}
+      <div style="font-size:11px;color:#bbb;margin-top:8px">蓝色 = 负相关（因子↑ 金价↓），金色 = 正相关（因子↑ 金价↑）</div>
+    </div>
+  `;
+  return card;
+}
+
 // ── 三轮牛熊市对比 ──
 function createCyclesCard() {
   const card = document.createElement('div');
@@ -2893,7 +2940,7 @@ async function loadHistoricalInsights() {
 
   try {
     // 并行加载所有数据源
-    const [hiResp, annualResp, btcResp, rollingResp, cyclesResp, realYieldsResp, btcMcapResp, assetResp] = await Promise.all([
+    const [hiResp, annualResp, btcResp, rollingResp, cyclesResp, realYieldsResp, btcMcapResp, assetResp, factorResp] = await Promise.all([
       fetch('data/historical_insights.json'),
       fetch('data/history_gold_annual_change.json').catch(() => null),
       fetch('data/history_gold_vs_bitcoin.json').catch(() => null),
@@ -2902,6 +2949,7 @@ async function loadHistoricalInsights() {
       fetch('data/history_gold_real_yields.json').catch(() => null),
       fetch('data/history_gold_btc_marketcap.json').catch(() => null),
       fetch('data/history_asset_returns.json').catch(() => null),
+      fetch('data/history_gold_factors.json').catch(() => null),
     ]);
     const data = await hiResp.json();
     const annualData = annualResp ? await annualResp.json().catch(() => null) : null;
@@ -2911,6 +2959,7 @@ async function loadHistoricalInsights() {
     const realYieldsData = realYieldsResp ? await realYieldsResp.json().catch(() => null) : null;
     const btcMcapData = btcMcapResp ? await btcMcapResp.json().catch(() => null) : null;
     const assetData = assetResp ? await assetResp.json().catch(() => null) : null;
+    const factorData = factorResp ? await factorResp.json().catch(() => null) : null;
 
     loading.style.display = 'none';
     container.style.display = 'flex';
@@ -2930,7 +2979,12 @@ async function loadHistoricalInsights() {
       container.appendChild(createAssetReturnsCard(assetData));
     }
 
-    // 4. 金价 vs 比特币（排第四）
+    // 4. 金价驱动归因（排第四）
+    if (factorData && factorData.factors) {
+      container.appendChild(createFactorCard(factorData));
+    }
+
+    // 5. 金价 vs 比特币（排第五）
     if (btcData && btcData.series) {
       container.appendChild(createGoldBtcCard());
     }
