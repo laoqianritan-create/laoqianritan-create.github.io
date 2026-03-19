@@ -1011,22 +1011,149 @@ body {
 const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
 const CHART_LABEL_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
 
-// ── 图表导出工具栏（所有图表统一注入） ──
-const CHART_TOOLBOX = {
-  show: true, right: 10, top: 0,
-  feature: {
-    saveAsImage: {
-      title: '保存为图片',
-      pixelRatio: 2,
-      backgroundColor: '#fff',
-      name: '黄金看板',
+// ── 图表导出（高清 PNG，含标题/注释/日期/图例） ──
+function exportChartAsPng(chartInstance) {
+  const dom = chartInstance.getDom();
+  const card = dom.closest('.card') || dom.closest('.hi-card');
+
+  // 提取卡片元信息
+  let title = '黄金看板';
+  let desc = '';
+  let dateStr = new Date().toISOString().substring(0, 10);
+
+  if (card) {
+    const titleEl = card.querySelector('.card-name') || card.querySelector('.hi-card-title');
+    const dateEl = card.querySelector('.card-date') || card.querySelector('.hi-card-range');
+    const descEl = card.querySelector('.interpretation') || card.querySelector('.hi-card-desc');
+    if (titleEl) title = titleEl.textContent.trim();
+    if (dateEl) dateStr = dateEl.textContent.trim();
+    if (descEl) desc = descEl.textContent.trim();
+  }
+
+  // 高清导出参数
+  const EXPORT_W = 2400;
+  const PAD = 60;
+  const TITLE_SIZE = 48;
+  const DESC_SIZE = 26;
+  const DATE_SIZE = 26;
+  const LINE_H = 1.6;
+  const FONT = '"Inter", "PingFang SC", sans-serif';
+
+  // 获取图表图像（4倍像素比确保高清）
+  const chartImg = new Image();
+  const chartDataUrl = chartInstance.getDataURL({
+    type: 'png',
+    pixelRatio: 4,
+    backgroundColor: '#fff',
+    excludeComponents: ['toolbox'],
+  });
+  chartImg.onload = function () {
+    // 计算图表在画布中的宽高（保持比例）
+    const chartDrawW = EXPORT_W - PAD * 2;
+    const chartDrawH = Math.round(chartImg.height * (chartDrawW / chartImg.width));
+
+    // 预算文本高度
+    const tmpCvs = document.createElement('canvas');
+    const tmpCtx = tmpCvs.getContext('2d');
+
+    // 计算 desc 换行
+    tmpCtx.font = `${DESC_SIZE}px ${FONT}`;
+    const descLines = desc ? wrapText(tmpCtx, desc, chartDrawW) : [];
+
+    let textBlockH = PAD + TITLE_SIZE + 12; // padding-top + title + gap
+    if (dateStr) textBlockH += DATE_SIZE + 8;
+    if (descLines.length) textBlockH += descLines.length * Math.round(DESC_SIZE * LINE_H) + 16;
+    textBlockH += 24; // gap before chart
+
+    const EXPORT_H = textBlockH + chartDrawH + PAD;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = EXPORT_W;
+    canvas.height = EXPORT_H;
+    const ctx = canvas.getContext('2d');
+
+    // 白底
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, EXPORT_W, EXPORT_H);
+
+    let y = PAD;
+
+    // 标题
+    ctx.fillStyle = '#1a1a1a';
+    ctx.font = `bold ${TITLE_SIZE}px ${FONT}`;
+    ctx.fillText(title, PAD, y + TITLE_SIZE * 0.85);
+    y += TITLE_SIZE + 12;
+
+    // 日期
+    if (dateStr) {
+      ctx.fillStyle = '#999';
+      ctx.font = `${DATE_SIZE}px ${FONT}`;
+      ctx.fillText(dateStr, PAD, y + DATE_SIZE * 0.85);
+      y += DATE_SIZE + 8;
     }
-  },
-  iconStyle: { borderColor: '#bbb' },
-  emphasis: { iconStyle: { borderColor: '#d4a853' } },
-};
+
+    // 描述文字（自动换行）
+    if (descLines.length) {
+      ctx.fillStyle = '#666';
+      ctx.font = `${DESC_SIZE}px ${FONT}`;
+      const dLineH = Math.round(DESC_SIZE * LINE_H);
+      y += 8;
+      descLines.forEach(line => {
+        ctx.fillText(line, PAD, y + DESC_SIZE * 0.85);
+        y += dLineH;
+      });
+      y += 8;
+    }
+
+    y += 24; // gap
+
+    // 绘制图表
+    ctx.drawImage(chartImg, PAD, y, chartDrawW, chartDrawH);
+
+    // 下载
+    const a = document.createElement('a');
+    a.download = title.replace(/[\/\\:*?"<>|]/g, '_') + '.png';
+    a.href = canvas.toDataURL('image/png');
+    a.click();
+  };
+  chartImg.src = chartDataUrl;
+}
+
+function wrapText(ctx, text, maxWidth) {
+  const lines = [];
+  let line = '';
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    const test = line + ch;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      lines.push(line);
+      line = ch;
+    } else {
+      line = test;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
 function injectExportButton() {
-  chartInstances.forEach(c => c.setOption({ toolbox: CHART_TOOLBOX }));
+  chartInstances.forEach(c => {
+    c.setOption({
+      toolbox: {
+        show: true, right: 10, top: 0,
+        feature: {
+          myExport: {
+            show: true,
+            title: '保存为图片',
+            icon: 'path://M4.7,22.9L29.3,45.5L54.7,23.4M4.6,43.6L4.6,58L53.8,58L53.8,43.6M29.2,45.1L29.2,0',
+            onclick: function () { exportChartAsPng(c); },
+          },
+        },
+        iconStyle: { borderColor: '#bbb' },
+        emphasis: { iconStyle: { borderColor: '#d4a853' } },
+      },
+    });
+  });
 }
 
 // ── 配置 ──
