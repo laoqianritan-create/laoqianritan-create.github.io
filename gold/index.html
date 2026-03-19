@@ -2377,6 +2377,65 @@ function initRollingReturnsChart(data) {
   window.addEventListener('resize', () => chart.resize());
 }
 
+// ── 黄金 vs 大类资产回报对比 ──
+function createAssetReturnsCard(data) {
+  const card = document.createElement('div');
+  card.className = 'hi-card';
+
+  const windowLabels = {1: '1年', 3: '3年', 5: '5年', 10: '10年', 20: '20年'};
+  const windows = data.windows || [1, 3, 5, 10, 20];
+
+  let thead = '<tr><th style="text-align:left;padding:8px 12px;border-bottom:2px solid #e0d5c0;font-size:13px;color:#666">资产</th>';
+  windows.forEach(w => {
+    thead += `<th style="text-align:right;padding:8px 12px;border-bottom:2px solid #e0d5c0;font-size:13px;color:#666">${windowLabels[w] || w+'年'} 年化</th>`;
+  });
+  thead += '</tr>';
+
+  let tbody = '';
+  // 找每个窗口的最大值用于高亮
+  const maxByWindow = {};
+  windows.forEach(w => {
+    let max = -Infinity;
+    data.data.forEach(row => { if (row['ann_'+w+'y'] != null && row['ann_'+w+'y'] > max) max = row['ann_'+w+'y']; });
+    maxByWindow[w] = max;
+  });
+
+  data.data.forEach((row, idx) => {
+    const isGold = row.ticker === 'GC=F';
+    const bg = isGold ? 'background:rgba(212,168,83,0.08);font-weight:600' : (idx % 2 === 0 ? 'background:#fafafa' : '');
+    tbody += `<tr style="${bg}">`;
+    tbody += `<td style="padding:7px 12px;font-size:13px;border-bottom:1px solid #f0f0f0;white-space:nowrap">${isGold ? '🥇 ' : ''}${row.name}</td>`;
+    windows.forEach(w => {
+      const val = row['ann_'+w+'y'];
+      if (val == null) {
+        tbody += '<td style="text-align:right;padding:7px 12px;font-size:13px;border-bottom:1px solid #f0f0f0;color:#ccc">—</td>';
+      } else {
+        const color = val > 0 ? '#cf1322' : val < 0 ? '#3f8600' : '#666';
+        const sign = val > 0 ? '+' : '';
+        const bold = val === maxByWindow[w] ? 'font-weight:700' : '';
+        const underline = val === maxByWindow[w] ? 'text-decoration:underline' : '';
+        tbody += `<td style="text-align:right;padding:7px 12px;font-size:13px;border-bottom:1px solid #f0f0f0;color:${color};${bold};${underline}">${sign}${val.toFixed(1)}%</td>`;
+      }
+    });
+    tbody += '</tr>';
+  });
+
+  card.innerHTML = `
+    <div class="hi-card-header">
+      <span class="hi-card-title">黄金 vs 大类资产回报</span>
+      <span class="hi-card-range">年化收益率（%）</span>
+    </div>
+    <div class="hi-card-desc">各时间窗口下黄金与主要资产类别的年化回报对比。数据基于各 ETF 的调整后收盘价计算（SPY=标普500, QQQ=纳斯达克100, TLT=20年+国债, IEF=7-10年国债, SHV=短期国债/现金代理）。<b>下划线 = 该窗口表现最佳</b>。</div>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-family:${CHART_FONT}">
+        <thead>${thead}</thead>
+        <tbody>${tbody}</tbody>
+      </table>
+    </div>
+  `;
+  return card;
+}
+
 // ── 三轮牛熊市对比 ──
 function createCyclesCard() {
   const card = document.createElement('div');
@@ -2834,7 +2893,7 @@ async function loadHistoricalInsights() {
 
   try {
     // 并行加载所有数据源
-    const [hiResp, annualResp, btcResp, rollingResp, cyclesResp, realYieldsResp, btcMcapResp] = await Promise.all([
+    const [hiResp, annualResp, btcResp, rollingResp, cyclesResp, realYieldsResp, btcMcapResp, assetResp] = await Promise.all([
       fetch('data/historical_insights.json'),
       fetch('data/history_gold_annual_change.json').catch(() => null),
       fetch('data/history_gold_vs_bitcoin.json').catch(() => null),
@@ -2842,6 +2901,7 @@ async function loadHistoricalInsights() {
       fetch('data/history_gold_cycles.json').catch(() => null),
       fetch('data/history_gold_real_yields.json').catch(() => null),
       fetch('data/history_gold_btc_marketcap.json').catch(() => null),
+      fetch('data/history_asset_returns.json').catch(() => null),
     ]);
     const data = await hiResp.json();
     const annualData = annualResp ? await annualResp.json().catch(() => null) : null;
@@ -2850,6 +2910,7 @@ async function loadHistoricalInsights() {
     const cyclesData = cyclesResp ? await cyclesResp.json().catch(() => null) : null;
     const realYieldsData = realYieldsResp ? await realYieldsResp.json().catch(() => null) : null;
     const btcMcapData = btcMcapResp ? await btcMcapResp.json().catch(() => null) : null;
+    const assetData = assetResp ? await assetResp.json().catch(() => null) : null;
 
     loading.style.display = 'none';
     container.style.display = 'flex';
@@ -2864,7 +2925,12 @@ async function loadHistoricalInsights() {
       container.appendChild(createRollingReturnsCard());
     }
 
-    // 3. 金价 vs 比特币（排第三）
+    // 3. 大类资产回报对比表（排第三）
+    if (assetData && assetData.data) {
+      container.appendChild(createAssetReturnsCard(assetData));
+    }
+
+    // 4. 金价 vs 比特币（排第四）
     if (btcData && btcData.series) {
       container.appendChild(createGoldBtcCard());
     }
