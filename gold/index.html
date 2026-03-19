@@ -1012,25 +1012,52 @@ const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
 const CHART_LABEL_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
 
 // ── 图表导出（高清 PNG，含标题/注释/日期/图例） ──
-function exportChartAsPng(chartInstance) {
-  const dom = chartInstance.getDom();
-  const card = dom.closest('.card') || dom.closest('.hi-card');
-
-  // 提取卡片元信息
-  let title = '黄金看板';
-  let desc = '';
-  let dateStr = new Date().toISOString().substring(0, 10);
-
-  if (card) {
-    const titleEl = card.querySelector('.card-name') || card.querySelector('.hi-card-title');
-    const dateEl = card.querySelector('.card-date') || card.querySelector('.hi-card-range');
-    const descEl = card.querySelector('.interpretation') || card.querySelector('.hi-card-desc');
-    if (titleEl) title = titleEl.textContent.trim();
-    if (dateEl) dateStr = dateEl.textContent.trim();
-    if (descEl) desc = descEl.textContent.trim();
+function getCardMeta(chartDom) {
+  // 三种卡片类型：gold-chart-wrap / card / hi-card
+  const wrap = chartDom.closest('.gold-chart-wrap');
+  if (wrap) {
+    const titleEl = wrap.querySelector('.gold-chart-title');
+    // 描述文字是 inline-styled div（无 class），取第二个或第三个子 div
+    const descDivs = wrap.querySelectorAll(':scope > div');
+    let desc = '';
+    for (const d of descDivs) {
+      if (d.style.fontSize === '13px' || (d.textContent.length > 20 && !d.querySelector('.gold-chart-title') && !d.querySelector('button') && !d.querySelector('.gold-chart'))) {
+        desc = d.textContent.trim();
+        break;
+      }
+    }
+    return {
+      title: titleEl ? titleEl.textContent.trim() : '黄金看板',
+      date: new Date().toISOString().substring(0, 10),
+      desc,
+    };
   }
 
-  // 高清导出参数
+  const hiCard = chartDom.closest('.hi-card');
+  if (hiCard) {
+    return {
+      title: (hiCard.querySelector('.hi-card-title') || {}).textContent?.trim() || '黄金看板',
+      date: (hiCard.querySelector('.hi-card-range') || {}).textContent?.trim() || '',
+      desc: (hiCard.querySelector('.hi-card-desc') || {}).textContent?.trim() || '',
+    };
+  }
+
+  const card = chartDom.closest('.card');
+  if (card) {
+    return {
+      title: (card.querySelector('.card-name') || {}).textContent?.trim() || '黄金看板',
+      date: (card.querySelector('.card-date') || {}).textContent?.trim() || '',
+      desc: (card.querySelector('.interpretation') || {}).textContent?.trim() || '',
+    };
+  }
+
+  return { title: '黄金看板', date: new Date().toISOString().substring(0, 10), desc: '' };
+}
+
+function exportChartAsPng(chartInstance) {
+  const dom = chartInstance.getDom();
+  const meta = getCardMeta(dom);
+
   const EXPORT_W = 2400;
   const PAD = 60;
   const TITLE_SIZE = 48;
@@ -1048,31 +1075,26 @@ function exportChartAsPng(chartInstance) {
     excludeComponents: ['toolbox'],
   });
   chartImg.onload = function () {
-    // 计算图表在画布中的宽高（保持比例）
     const chartDrawW = EXPORT_W - PAD * 2;
     const chartDrawH = Math.round(chartImg.height * (chartDrawW / chartImg.width));
 
     // 预算文本高度
     const tmpCvs = document.createElement('canvas');
     const tmpCtx = tmpCvs.getContext('2d');
-
-    // 计算 desc 换行
     tmpCtx.font = `${DESC_SIZE}px ${FONT}`;
-    const descLines = desc ? wrapText(tmpCtx, desc, chartDrawW) : [];
+    const descLines = meta.desc ? wrapText(tmpCtx, meta.desc, chartDrawW) : [];
 
-    let textBlockH = PAD + TITLE_SIZE + 12; // padding-top + title + gap
-    if (dateStr) textBlockH += DATE_SIZE + 8;
+    let textBlockH = PAD + TITLE_SIZE + 12;
+    if (meta.date) textBlockH += DATE_SIZE + 8;
     if (descLines.length) textBlockH += descLines.length * Math.round(DESC_SIZE * LINE_H) + 16;
-    textBlockH += 24; // gap before chart
+    textBlockH += 24;
 
     const EXPORT_H = textBlockH + chartDrawH + PAD;
-
     const canvas = document.createElement('canvas');
     canvas.width = EXPORT_W;
     canvas.height = EXPORT_H;
     const ctx = canvas.getContext('2d');
 
-    // 白底
     ctx.fillStyle = '#fff';
     ctx.fillRect(0, 0, EXPORT_W, EXPORT_H);
 
@@ -1081,18 +1103,18 @@ function exportChartAsPng(chartInstance) {
     // 标题
     ctx.fillStyle = '#1a1a1a';
     ctx.font = `bold ${TITLE_SIZE}px ${FONT}`;
-    ctx.fillText(title, PAD, y + TITLE_SIZE * 0.85);
+    ctx.fillText(meta.title, PAD, y + TITLE_SIZE * 0.85);
     y += TITLE_SIZE + 12;
 
     // 日期
-    if (dateStr) {
+    if (meta.date) {
       ctx.fillStyle = '#999';
       ctx.font = `${DATE_SIZE}px ${FONT}`;
-      ctx.fillText(dateStr, PAD, y + DATE_SIZE * 0.85);
+      ctx.fillText(meta.date, PAD, y + DATE_SIZE * 0.85);
       y += DATE_SIZE + 8;
     }
 
-    // 描述文字（自动换行）
+    // 描述
     if (descLines.length) {
       ctx.fillStyle = '#666';
       ctx.font = `${DESC_SIZE}px ${FONT}`;
@@ -1105,14 +1127,14 @@ function exportChartAsPng(chartInstance) {
       y += 8;
     }
 
-    y += 24; // gap
+    y += 24;
 
-    // 绘制图表
+    // 绘制图表（含图例）
     ctx.drawImage(chartImg, PAD, y, chartDrawW, chartDrawH);
 
     // 下载
     const a = document.createElement('a');
-    a.download = title.replace(/[\/\\:*?"<>|]/g, '_') + '.png';
+    a.download = meta.title.replace(/[\/\\:*?"<>|]/g, '_') + '.png';
     a.href = canvas.toDataURL('image/png');
     a.click();
   };
