@@ -856,12 +856,12 @@ body {
     </div>
     <div class="nav" id="nav">
       <div class="nav-item active" data-section="gold-price">金价走势</div>
+      <div class="nav-item" data-section="historical-insights">历史洞察</div>
       <div class="nav-item" data-section="opportunity-cost">机会成本</div>
       <div class="nav-item" data-section="dollar-liquidity">美元与流动性</div>
       <div class="nav-item" data-section="inflation-growth">通胀与增长</div>
       <div class="nav-item" data-section="fiscal-credit">财政与信用</div>
       <div class="nav-item" data-section="risk-temp">风险温度</div>
-      <div class="nav-item" data-section="historical-insights">历史洞察</div>
       <a class="nav-link" href="framework.html">分析框架 →</a>
     </div>
   </div>
@@ -2909,7 +2909,7 @@ function createGoldBtcMcapCard() {
   card.className = 'hi-card';
   card.innerHTML = `
     <div class="hi-card-header">
-      <span class="hi-card-title">黄金 vs 比特币 市值</span>
+      <span class="hi-card-title">黄金 vs 比特币 vs 美债市值</span>
       <span class="hi-card-range">2010 – 至今</span>
     </div>
     <div class="hi-card-desc">黄金地上存量市值（约 21.99 万吨 × 金价）、比特币总市值与美国国债总规模的对比。黄金市值约 $20-35 万亿，比特币市值波动剧烈，美债规模持续攀升已超 $38 万亿。三者并列展现「价值存储」与「信用扩张」的体量关系。</div>
@@ -2931,6 +2931,18 @@ function initGoldBtcMcapChart(goldMcap, btcMcap, debtSeries) {
   const goldByDate = {}; goldData.forEach(d => goldByDate[d[0]] = d[1]);
   const btcByDate = {}; btcData.forEach(d => btcByDate[d[0]] = d[1]);
   const debtByDate = {}; debtData.forEach(d => debtByDate[d[0]] = d[1]);
+  // 美债数据是季度频率，预填充到所有日期（取最近已知值）
+  const debtDates = debtData.map(d => d[0]).sort();
+  function nearestDebt(date) {
+    if (debtByDate[date] != null) return debtByDate[date];
+    // 二分查找最近的较早日期
+    let lo = 0, hi = debtDates.length - 1;
+    while (lo <= hi) {
+      const mid = (lo + hi) >> 1;
+      if (debtDates[mid] <= date) lo = mid + 1; else hi = mid - 1;
+    }
+    return hi >= 0 ? debtByDate[debtDates[hi]] : null;
+  }
 
   const allDates = [...new Set([...goldData.map(d => d[0]), ...btcData.map(d => d[0]), ...debtData.map(d => d[0])])].sort();
 
@@ -2996,7 +3008,7 @@ function initGoldBtcMcapChart(goldMcap, btcMcap, debtSeries) {
         const date = params[0].axisValue;
         const gv = goldByDate[date];
         const bv = btcByDate[date];
-        const dv = debtByDate[date];
+        const dv = nearestDebt(date);
         let s = date + '<br/>';
         s += `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#d4a853;margin-right:4px"></span>黄金市值: <b>${gv != null ? '$'+gv.toFixed(2)+' 万亿' : '—'}</b><br/>`;
         s += `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#5470c6;margin-right:4px"></span>比特币市值: <b>${bv != null ? '$'+bv.toFixed(2)+' 万亿' : '—'}</b>`;
