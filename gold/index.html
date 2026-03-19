@@ -920,9 +920,9 @@ body {
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
         <div class="gold-chart-title" style="margin-bottom:0">上海金 vs 伦敦金价差</div>
         <div style="display:flex;gap:6px;align-items:center">
-          <button class="range-btn sp-range" data-range="1y">1年</button>
+          <button class="range-btn sp-range active" data-range="1y">1年</button>
           <button class="range-btn sp-range" data-range="3y">3年</button>
-          <button class="range-btn sp-range active" data-range="all">全部</button>
+          <button class="range-btn sp-range" data-range="all">全部</button>
         </div>
       </div>
       <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">SGE Au9999（华安黄金 ETF 代理）相对于国际金价（COMEX × 汇率）的溢价百分比。正值 = 中国买家愿意支付更高价格，反映国内需求强度。</div>
@@ -938,6 +938,8 @@ body {
           <button class="range-btn cny-range" data-range="5y">5年</button>
           <button class="range-btn cny-range" data-range="20y">20年</button>
           <button class="range-btn cny-range active" data-range="all">全部</button>
+          <span style="width:1px;height:16px;background:#ddd;margin:0 4px"></span>
+          <button class="range-btn" id="cnyLogToggle">对数</button>
         </div>
       </div>
       <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:12px" id="cnyGoldStats"></div>
@@ -949,8 +951,8 @@ body {
         <div class="gold-chart-title" style="margin-bottom:0">金价对数同比（%）</div>
         <div style="display:flex;gap:6px;align-items:center">
           <button class="range-btn logyoy-range" data-range="20y">20年</button>
-          <button class="range-btn logyoy-range" data-range="50y">50年</button>
-          <button class="range-btn logyoy-range active" data-range="all">全部</button>
+          <button class="range-btn logyoy-range active" data-range="50y">50年</button>
+          <button class="range-btn logyoy-range" data-range="all">全部</button>
         </div>
       </div>
       <div style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">对金价取自然对数后计算同比变化率（ln(P_t) - ln(P_{t-12})），更好地展现周期节奏。正值区间 = 上涨周期，负值区间 = 下跌周期。</div>
@@ -1515,6 +1517,9 @@ function initShanghaiPremiumChart(premiumData) {
   chartInstances.push(spChart);
   window.addEventListener('resize', () => spChart.resize());
 
+  // 默认1年视角
+  setShanghaiPremiumRange('1y');
+
   // 范围按钮
   document.querySelectorAll('.range-btn.sp-range').forEach(btn => {
     btn.addEventListener('click', function() {
@@ -1603,6 +1608,25 @@ function initCnyGoldChart(cnyData) {
   cnyGoldChart.setOption(option);
   chartInstances.push(cnyGoldChart);
   window.addEventListener('resize', () => cnyGoldChart.resize());
+
+  // 对数坐标切换
+  let cnyIsLog = false;
+  const cnyLogBtn = document.getElementById('cnyLogToggle');
+  if (cnyLogBtn) {
+    cnyLogBtn.addEventListener('click', () => {
+      cnyIsLog = !cnyIsLog;
+      cnyLogBtn.classList.toggle('active', cnyIsLog);
+      cnyGoldChart.setOption({
+        yAxis: {
+          type: cnyIsLog ? 'log' : 'value',
+          axisLabel: {
+            fontSize: 11, color: '#999', fontFamily: CHART_FONT,
+            formatter: v => '¥' + v.toFixed(0),
+          },
+        },
+      });
+    });
+  }
 
   // 范围按钮
   document.querySelectorAll('.range-btn.cny-range').forEach(btn => {
@@ -1709,6 +1733,9 @@ function initLogYoyChart(series) {
   });
   chartInstances.push(logYoyChart);
   window.addEventListener('resize', () => logYoyChart.resize());
+
+  // 默认50年视角
+  setLogYoyRange('50y');
 
   // 范围按钮
   document.querySelectorAll('.logyoy-range').forEach(btn => {
@@ -2098,6 +2125,8 @@ const HI_CHART_META = {
     s2: 'silver', s2Name: '银价（美元/盎司）',
     s1Unit: '$', s2Unit: '$',
     s1Color: '#d4a853', s2Color: '#999',
+    legendBottom: true,
+    logToggle: true,
   },
   fed_balance_sheet_vs_gold: {
     title: '美联储资产负债表 vs 金价',
@@ -2466,7 +2495,7 @@ function createCyclesCard() {
       <span class="hi-card-title">三轮牛熊市对比</span>
       <span class="hi-card-range">1969 – 至今</span>
     </div>
-    <div class="hi-card-desc">三轮黄金牛市和两轮熊市的累计涨跌幅对比。所有周期均从 0% 起点出发，横轴为持续月数，展现各轮行情的节奏与幅度差异。</div>
+    <div class="hi-card-desc">三轮黄金牛市和两轮熊市的累计涨跌幅对比。所有周期均从 0% 起点出发，横轴为持续月数。<b>注意：纵轴经过变形处理</b>——负值区间被等比拉伸（-80% 的高度 = +300% 的高度），以便清晰看到熊市的回撤幅度。</div>
     <div class="hi-chart" id="hi-chart-cycles" style="height:400px"></div>
   `;
   return card;
@@ -2477,24 +2506,29 @@ function initCyclesChart(cycles) {
   if (!dom) return;
   const chart = echarts.init(dom);
 
+  // Y轴变形：负值区间拉伸，使 -80% 的高度 = +300% 的高度
+  // 变换: 正值不变，负值 × (300/80) = 3.75
+  const STRETCH = 300 / 80;
+  function transform(v) { return v >= 0 ? v : v * STRETCH; }
+  function inverse(v) { return v >= 0 ? v : v / STRETCH; }
+
   const bullColors = ['#d4a853', '#e6953d', '#b8860b'];
-  const bearColors = ['#666', '#999'];
+  const bearColors = ['#1890ff', '#69c0ff'];
   let bullIdx = 0, bearIdx = 0;
 
   const series = cycles.map(c => {
     const isBull = c.type === 'bull';
     const color = isBull ? bullColors[bullIdx++] : bearColors[bearIdx++];
-    // 名称带年份：如 "牛市 1969-1980"
     const endYear = c.end ? c.end.slice(0,4) : '至今';
     const label = (isBull ? '牛市' : '熊市') + ' ' + c.start.slice(0,4) + '-' + endYear;
-    const legendName = label;
     return {
-      name: legendName,
+      name: label,
       type: 'line',
       showSymbol: false,
       lineStyle: { width: isBull ? 2 : 1.5, type: isBull ? 'solid' : 'dashed' },
       itemStyle: { color },
-      data: c.series.map(d => [d.month, d.pct]),
+      data: c.series.map(d => [d.month, transform(d.pct)]),
+      _rawData: c.series,  // 保存原始数据用于 tooltip
       endLabel: {
         show: true,
         formatter: () => label,
@@ -2502,6 +2536,9 @@ function initCyclesChart(cycles) {
       },
     };
   });
+
+  // Y轴刻度：正值用实际值，负值区间的刻度做逆映射
+  const yTicks = [1500, 1200, 900, 600, 300, 0, -20, -40, -60, -80].map(v => transform(v));
 
   chart.setOption({
     grid: { left: 60, right: 110, top: 20, bottom: 50 },
@@ -2521,10 +2558,13 @@ function initCyclesChart(cycles) {
     },
     yAxis: {
       type: 'value',
-      min: -80,
+      min: transform(-80),
       axisLabel: {
         fontSize: 11, color: '#999', fontFamily: CHART_FONT,
-        formatter: v => v + '%',
+        formatter: v => {
+          const real = inverse(v);
+          return (real >= 0 ? '+' : '') + Math.round(real) + '%';
+        },
       },
       splitLine: { lineStyle: { color: '#f0f0f0' } },
     },
@@ -2535,8 +2575,9 @@ function initCyclesChart(cycles) {
       formatter: params => {
         let s = `第 ${params[0].value[0]} 个月<br/>`;
         params.forEach(p => {
-          const sign = p.value[1] > 0 ? '+' : '';
-          s += `${p.marker}${p.seriesName}: <b>${sign}${p.value[1].toFixed(1)}%</b><br/>`;
+          const realVal = inverse(p.value[1]);
+          const sign = realVal > 0 ? '+' : '';
+          s += `${p.marker}${p.seriesName}: <b>${sign}${realVal.toFixed(1)}%</b><br/>`;
         });
         return s;
       },
@@ -2695,6 +2736,10 @@ function initGoldBtcMcapChart(goldMcap, btcMcap) {
   const goldData = goldMcap.filter(d => d.date >= '2010-01-01').map(d => [d.date, d.value]);
   const btcData = btcMcap.map(d => [d.date, d.value]);
 
+  // 构建查找表，用于tooltip始终显示两者
+  const goldByDate = {}; goldData.forEach(d => goldByDate[d[0]] = d[1]);
+  const btcByDate = {}; btcData.forEach(d => btcByDate[d[0]] = d[1]);
+
   chart.setOption({
     grid: { left: 60, right: 20, top: 20, bottom: 50 },
     legend: {
@@ -2740,10 +2785,12 @@ function initGoldBtcMcapChart(goldMcap, btcMcap) {
       trigger: 'axis',
       textStyle: { fontFamily: CHART_FONT, fontSize: 12 },
       formatter: params => {
-        let s = params[0].axisValue + '<br/>';
-        params.forEach(p => {
-          s += `${p.marker}${p.seriesName}: <b>$${Number(p.value[1]).toFixed(2)} 万亿</b><br/>`;
-        });
+        const date = params[0].axisValue;
+        const gv = goldByDate[date];
+        const bv = btcByDate[date];
+        let s = date + '<br/>';
+        s += `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#d4a853;margin-right:4px"></span>黄金市值: <b>${gv != null ? '$'+gv.toFixed(2)+' 万亿' : '—'}</b><br/>`;
+        s += `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#5470c6;margin-right:4px"></span>比特币市值: <b>${bv != null ? '$'+bv.toFixed(2)+' 万亿' : '—'}</b>`;
         return s;
       },
     },
@@ -2786,6 +2833,10 @@ function createHiCard(key, chartData, meta) {
     }
   }
 
+  const logBtnHtml = meta.logToggle
+    ? `<div style="text-align:right;margin-bottom:4px"><button class="range-btn" id="${chartId}-logToggle">对数坐标</button></div>`
+    : '';
+
   card.innerHTML = `
     <div class="hi-card-header">
       <span class="hi-card-title">${meta.title}</span>
@@ -2793,6 +2844,7 @@ function createHiCard(key, chartData, meta) {
     </div>
     <div class="hi-card-latest">${latestHtml}</div>
     <div class="hi-card-desc">${meta.desc}</div>
+    ${logBtnHtml}
     <div class="hi-chart" id="${chartId}"></div>
   `;
   return card;
@@ -2853,13 +2905,15 @@ function initHiChart(key, chartData, meta) {
     const s2Fmt = v => meta.s2Unit === '$' ? '$' + v.toLocaleString() : v.toFixed(2) + (meta.s2Unit === '%' ? '%' : '');
 
     option = {
-      grid: { left: 65, right: 65, top: 36, bottom: 40 },
-      legend: {
+      grid: { left: 65, right: 65, top: meta.legendBottom ? 20 : 36, bottom: meta.legendBottom ? 56 : 40 },
+      legend: Object.assign({
         data: [meta.s1Name.split('（')[0], meta.s2Name.split('（')[0]],
-        top: 0, right: 0,
         textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
         itemWidth: 16, itemHeight: 2,
-      },
+      }, meta.legendBottom
+        ? { bottom: 0, left: 'center' }
+        : { top: 0, right: 0 }
+      ),
       xAxis: {
         type: 'time',
         axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
@@ -2918,6 +2972,25 @@ function initHiChart(key, chartData, meta) {
   chart.setOption(option);
   chartInstances.push(chart);
   window.addEventListener('resize', () => chart.resize());
+
+  // 对数坐标切换
+  if (meta.logToggle) {
+    const chartId = 'hi-chart-' + key;
+    const logBtn = document.getElementById(chartId + '-logToggle');
+    if (logBtn) {
+      let isLog = false;
+      logBtn.addEventListener('click', () => {
+        isLog = !isLog;
+        logBtn.classList.toggle('active', isLog);
+        const yType = isLog ? 'log' : 'value';
+        if (meta.type === 'dual') {
+          chart.setOption({ yAxis: [{ type: yType }, { type: yType }] });
+        } else {
+          chart.setOption({ yAxis: { type: yType } });
+        }
+      });
+    }
+  }
 }
 
 async function loadHistoricalInsights() {
