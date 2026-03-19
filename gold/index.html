@@ -1192,7 +1192,7 @@ const SECTION_ORDER = {
   'dollar-liquidity': ['DTWEXBGS', 'NFCI'],
   'inflation-growth': ['PCE_YOY', 'IPMAN', 'UNRATE'],
   'fiscal-credit': ['GFDEBTN', 'GFDEGDQ188S', 'FYFSGDA188S', 'INTEREST_RATIO', 'CB_GOLD_NET', 'USD_RESERVE_SHARE'],
-  'risk-temp': ['GVZCLS', 'GOLD_MA', 'GLD_HOLDINGS'],
+  'risk-temp': ['GVZCLS', 'GOLD_MA', 'GLD_HOLDINGS', 'GOLD_COT'],
 };
 
 // ── 工具函数 ──
@@ -1286,6 +1286,38 @@ function createCard(data) {
           <span class="${ma200.above ? 'change-up' : 'change-down'}">${ma200.above ? '▲' : '▼'} ${Math.abs(ma200.dev).toFixed(1)}%</span>
         </div>
       </div>
+      <div class="chart-container" id="${chartId}" style="height:260px"></div>
+    `;
+    return card;
+  }
+
+  // GOLD_COT 专属卡片布局
+  if (data.id === 'GOLD_COT' && data.latest.mm_net !== undefined) {
+    const mm = data.latest.mm_net;
+    const sw = data.latest.swap_net;
+    const mmCls = mm > 0 ? 'change-up' : 'change-down';
+    const swCls = sw > 0 ? 'change-up' : 'change-down';
+    card.innerHTML = `
+      <div class="card-header">
+        <span class="card-name">${data.name_zh}</span>
+        <span class="card-date">${data.latest.date}</span>
+      </div>
+      <div class="interpretation">${data.interpretation || ''}</div>
+      <div class="card-value">${mm.toLocaleString()}<span class="card-unit"> 手（MM 净多）</span></div>
+      <div class="ma-grid">
+        <div class="ma-row">
+          <span class="ma-label" style="color:#d4a853">● Managed Money</span>
+          <span class="ma-val ${mmCls}">净 ${mm > 0 ? '+' : ''}${mm.toLocaleString()}</span>
+          <span style="color:#999;font-size:12px">多 ${data.latest.mm_long.toLocaleString()} / 空 ${data.latest.mm_short.toLocaleString()}</span>
+        </div>
+        <div class="ma-row">
+          <span class="ma-label" style="color:#5B9BD5">● Swap Dealers</span>
+          <span class="ma-val ${swCls}">净 ${sw > 0 ? '+' : ''}${sw.toLocaleString()}</span>
+          <span style="color:#999;font-size:12px">多 ${data.latest.swap_long.toLocaleString()} / 空 ${data.latest.swap_short.toLocaleString()}</span>
+        </div>
+      </div>
+      <div class="changes">${changesHtml}</div>
+      <div class="percentiles">${pctHtml}</div>
       <div class="chart-container" id="${chartId}" style="height:260px"></div>
     `;
     return card;
@@ -1439,6 +1471,67 @@ function initChart(data, containerId, height) {
       },
     };
     chart.setOption(cbOption);
+    chartInstances.push(chart);
+    window.addEventListener('resize', () => chart.resize());
+    return chart;
+  }
+
+  // GOLD_COT 专属：双线图（Managed Money + Swap Dealers 净头寸）
+  if (data.id === 'GOLD_COT' && data.series.length > 0 && data.series[0].mm_net !== undefined) {
+    const mmData = data.series.map(d => [d.date, d.mm_net]);
+    const swapData = data.series.map(d => [d.date, d.swap_net]);
+    const cotOption = {
+      grid: { left: 60, right: 20, top: 20, bottom: 50 },
+      legend: {
+        data: ['Managed Money 净多', 'Swap Dealers 净头寸'],
+        bottom: 0, left: 'center',
+        textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+        itemWidth: 16, itemHeight: 2,
+      },
+      xAxis: {
+        type: 'time',
+        axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+        axisLine: { lineStyle: { color: '#eee' } },
+        axisTick: { show: false },
+        splitLine: { show: false },
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: {
+          fontSize: 11, color: '#999', fontFamily: CHART_FONT,
+          formatter: v => v >= 1000 ? (v/1000).toFixed(0) + 'k' : v,
+        },
+        splitLine: { lineStyle: { color: '#f0f0f0' } },
+      },
+      series: [
+        {
+          name: 'Managed Money 净多', type: 'line', data: mmData,
+          symbol: 'none', lineStyle: { width: 1.5, color: '#d4a853' },
+          areaStyle: { color: new echarts.graphic.LinearGradient(0,0,0,1,[
+            {offset:0, color:'rgba(212,168,83,0.15)'},{offset:1, color:'rgba(212,168,83,0.02)'}
+          ])},
+        },
+        {
+          name: 'Swap Dealers 净头寸', type: 'line', data: swapData,
+          symbol: 'none', lineStyle: { width: 1.5, color: '#5B9BD5' },
+        },
+      ],
+      tooltip: {
+        trigger: 'axis',
+        textStyle: { fontFamily: CHART_FONT, fontSize: 12 },
+        formatter: params => {
+          const d = new Date(params[0].value[0]).toISOString().substring(0, 10);
+          let html = d;
+          params.forEach(p => {
+            const sign = p.value[1] > 0 ? '+' : '';
+            html += `<br/>${p.marker}${p.seriesName}: <b>${sign}${p.value[1].toLocaleString()} 手</b>`;
+          });
+          return html;
+        },
+      },
+      dataZoom: [{ type: 'inside', start: 0, end: 100 }],
+    };
+    chart.setOption(cotOption);
     chartInstances.push(chart);
     window.addEventListener('resize', () => chart.resize());
     return chart;
@@ -2077,7 +2170,13 @@ function generateSectionSummary(sectionKey, indicators) {
         const bc = ma.bullish_count;
         maText = `均线动量：${bc}/3 条均线之上（${bc >= 3 ? '强势' : bc >= 2 ? '偏强' : bc >= 1 ? '偏弱' : '弱势'}）。`;
       }
-      return `<strong>风险温度 · 当前状态</strong>${signalBadge(verdict)}<br>黄金波动率 ${gvz.latest.value.toFixed(1)}，处于${level}水平。${maText}`;
+      let cotText = '';
+      const cot = inds['GOLD_COT'];
+      if (cot && cot.latest.mm_net !== undefined) {
+        const mmNet = cot.latest.mm_net;
+        cotText = `CFTC 投机净多 ${(mmNet/1000).toFixed(1)}k 手（${mmNet > 200000 ? '拥挤' : mmNet < 50000 ? '清淡' : '正常'}）。`;
+      }
+      return `<strong>风险温度 · 当前状态</strong>${signalBadge(verdict)}<br>黄金波动率 ${gvz.latest.value.toFixed(1)}，处于${level}水平。${maText}${cotText}`;
     },
   };
   return (summaries[sectionKey] || (() => ''))(indicators);
