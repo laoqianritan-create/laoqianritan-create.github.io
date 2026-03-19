@@ -244423,6 +244423,6 @@
         "open_interest": 413956
       }
     ],
-    "interpretation": "Managed Money 净多头 98,399 手，Swap Dealers 净头寸 -183,280 手（2026-03-10）。投机头寸处于正常区间。数据来源：CFTC Disaggregated COT Report（COMEX 黄金期货）。"
+    "interpretation": "Managed Money（对冲基金等投机资金）净多头 98,399 手，Swap Dealers（投行/做市商，通常站在对冲基金的对手方）净头寸 -183,280 手。投机头寸处于正常区间。MM 大幅做多时 Swap Dealers 通常大幅做空（提供流动性），两者呈镜像关系。"
   }
 }
