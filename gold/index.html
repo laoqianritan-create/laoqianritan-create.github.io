@@ -1321,10 +1321,10 @@ function initChart(data, containerId, height) {
     const ma60Data = data.ma_series['60'].map(d => [d.date, d.value]);
     const ma200Data = data.ma_series['200'].map(d => [d.date, d.value]);
     const option = {
-      grid: { left: 60, right: 20, top: 20, bottom: 36 },
+      grid: { left: 60, right: 20, top: 20, bottom: 50 },
       legend: {
         data: ['金价', 'MA20', 'MA60', 'MA200'],
-        top: 0, right: 0,
+        bottom: 0, left: 'center',
         textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_LABEL_FONT },
         itemWidth: 16, itemHeight: 2,
       },
@@ -1382,10 +1382,10 @@ function initChart(data, containerId, height) {
     });
 
     const cbOption = {
-      grid: { left: 50, right: 50, top: 30, bottom: 36 },
+      grid: { left: 50, right: 50, top: 20, bottom: 50 },
       legend: {
         data: ['净购金量', '同比变化'],
-        top: 0, right: 0,
+        bottom: 0, left: 'center',
         textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
         itemWidth: 16, itemHeight: 2,
       },
@@ -2274,7 +2274,6 @@ const HI_CHART_META = {
     s2: 'silver', s2Name: '银价（美元/盎司）',
     s1Unit: '$', s2Unit: '$',
     s1Color: '#d4a853', s2Color: '#999',
-    legendBottom: true,
     logToggle: true,
   },
   fed_balance_sheet_vs_gold: {
@@ -2389,10 +2388,10 @@ function initGoldBtcChart(btcSeries, goldSeries) {
 
   function buildOption(isLog) {
     return {
-      grid: { left: 70, right: 70, top: 36, bottom: 40 },
+      grid: { left: 70, right: 70, top: 20, bottom: 56 },
       legend: {
         data: ['比特币', '金价'],
-        top: 0, right: 0,
+        bottom: 0, left: 'center',
         textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
         itemWidth: 16, itemHeight: 2,
       },
@@ -2665,23 +2664,65 @@ function initCyclesChart(cycles) {
   const bearColors = ['#1890ff', '#69c0ff'];
   let bullIdx = 0, bearIdx = 0;
 
+  // 收集每条线末点的变形后 y 值，用于标签防重叠
+  const endPoints = [];
+  cycles.forEach(c => {
+    const last = c.series[c.series.length - 1];
+    endPoints.push({ pct: last.pct, transformed: transform(last.pct) });
+  });
+  // 按变形后 y 排序，间距小于阈值时偏移
+  const MIN_GAP = 30; // 变形坐标空间中的最小间距
+  const sorted = endPoints.map((p, i) => ({ ...p, idx: i })).sort((a, b) => b.transformed - a.transformed);
+  const labelOffsets = new Array(cycles.length).fill(0);
+  for (let i = 1; i < sorted.length; i++) {
+    const gap = sorted[i - 1].transformed - sorted[i].transformed;
+    if (gap < MIN_GAP) {
+      labelOffsets[sorted[i].idx] = 18; // 向下偏移
+    }
+  }
+
+  let sIdx = 0;
   const series = cycles.map(c => {
+    const ci = sIdx++;
     const isBull = c.type === 'bull';
     const color = isBull ? bullColors[bullIdx++] : bearColors[bearIdx++];
     const endYear = c.end ? c.end.slice(0,4) : '至今';
     const label = (isBull ? '牛市' : '熊市') + ' ' + c.start.slice(0,4) + '-' + endYear;
+    const seriesData = c.series.map(d => [d.month, transform(d.pct)]);
+    const last = c.series[c.series.length - 1];
+    const lastReal = last.pct;
+    const sign = lastReal > 0 ? '+' : '';
+
     return {
       name: label,
       type: 'line',
       showSymbol: false,
       lineStyle: { width: isBull ? 2 : 1.5, type: isBull ? 'solid' : 'dashed' },
       itemStyle: { color },
-      data: c.series.map(d => [d.month, transform(d.pct)]),
-      _rawData: c.series,  // 保存原始数据用于 tooltip
+      data: seriesData,
+      _rawData: c.series,
       endLabel: {
         show: true,
         formatter: () => label,
         fontSize: 10, color, fontFamily: CHART_FONT,
+      },
+      markPoint: {
+        data: [{
+          coord: [last.month, transform(lastReal)],
+          symbol: 'circle',
+          symbolSize: 8,
+          itemStyle: { color },
+          label: {
+            show: true,
+            formatter: sign + lastReal.toFixed(1) + '%',
+            fontSize: 11,
+            fontWeight: 'bold',
+            fontFamily: CHART_FONT,
+            color,
+            position: labelOffsets[ci] > 0 ? 'bottom' : 'top',
+            distance: 6,
+          },
+        }],
       },
     };
   });
@@ -2871,35 +2912,70 @@ function createGoldBtcMcapCard() {
       <span class="hi-card-title">黄金 vs 比特币 市值</span>
       <span class="hi-card-range">2010 – 至今</span>
     </div>
-    <div class="hi-card-desc">黄金地上存量市值（约 21.99 万吨 × 金价）与比特币总市值的对比。黄金市值约 $20-35 万亿，比特币市值波动剧烈。面积图展现两者在「价值存储」叙事中的体量差距。</div>
+    <div class="hi-card-desc">黄金地上存量市值（约 21.99 万吨 × 金价）、比特币总市值与美国国债总规模的对比。黄金市值约 $20-35 万亿，比特币市值波动剧烈，美债规模持续攀升已超 $38 万亿。三者并列展现「价值存储」与「信用扩张」的体量关系。</div>
     <div class="hi-chart" id="hi-chart-gold-btc-mcap" style="height:380px"></div>
   `;
   return card;
 }
 
-function initGoldBtcMcapChart(goldMcap, btcMcap) {
+function initGoldBtcMcapChart(goldMcap, btcMcap, debtSeries) {
   const dom = document.getElementById('hi-chart-gold-btc-mcap');
   if (!dom) return;
   const chart = echarts.init(dom);
 
   const goldData = goldMcap.filter(d => d.date >= '2010-01-01').map(d => [d.date, d.value]);
   const btcData = btcMcap.map(d => [d.date, d.value]);
+  const debtData = (debtSeries || []).filter(d => d.date >= '2010-01-01').map(d => [d.date, d.value]);
 
-  // 构建查找表，用于tooltip始终显示两者
+  // 构建查找表，用于tooltip始终显示所有指标
   const goldByDate = {}; goldData.forEach(d => goldByDate[d[0]] = d[1]);
   const btcByDate = {}; btcData.forEach(d => btcByDate[d[0]] = d[1]);
+  const debtByDate = {}; debtData.forEach(d => debtByDate[d[0]] = d[1]);
+
+  const allDates = [...new Set([...goldData.map(d => d[0]), ...btcData.map(d => d[0]), ...debtData.map(d => d[0])])].sort();
+
+  const legendData = ['黄金市值', '比特币市值'];
+  const seriesArr = [{
+    name: '黄金市值',
+    type: 'line',
+    showSymbol: false,
+    lineStyle: { width: 1.5 },
+    areaStyle: { color: 'rgba(212,168,83,0.15)' },
+    itemStyle: { color: '#d4a853' },
+    data: goldData,
+  }, {
+    name: '比特币市值',
+    type: 'line',
+    showSymbol: false,
+    lineStyle: { width: 1.5 },
+    areaStyle: { color: 'rgba(84,112,198,0.15)' },
+    itemStyle: { color: '#5470c6' },
+    data: btcData,
+  }];
+
+  if (debtData.length) {
+    legendData.push('美债总规模');
+    seriesArr.push({
+      name: '美债总规模',
+      type: 'line',
+      showSymbol: false,
+      lineStyle: { width: 1.5, color: '#999', type: 'dashed' },
+      itemStyle: { color: '#999' },
+      data: debtData,
+    });
+  }
 
   chart.setOption({
     grid: { left: 60, right: 20, top: 20, bottom: 50 },
     legend: {
-      data: ['黄金市值', '比特币市值'],
-      bottom: 0,
+      data: legendData,
+      bottom: 0, left: 'center',
       textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
       itemWidth: 16, itemHeight: 2,
     },
     xAxis: {
       type: 'category',
-      data: [...new Set([...goldData.map(d => d[0]), ...btcData.map(d => d[0])])].sort(),
+      data: allDates,
       axisLabel: { fontSize: 10, color: '#999', fontFamily: CHART_FONT },
       axisLine: { lineStyle: { color: '#eee' } },
       axisTick: { show: false },
@@ -2912,24 +2988,7 @@ function initGoldBtcMcapChart(goldMcap, btcMcap) {
       },
       splitLine: { lineStyle: { color: '#f0f0f0' } },
     },
-    series: [{
-      name: '黄金市值',
-      type: 'line',
-      showSymbol: false,
-      lineStyle: { width: 1.5 },
-      areaStyle: { color: 'rgba(212,168,83,0.15)' },
-      itemStyle: { color: '#d4a853' },
-      data: goldData,
-    }, {
-      name: '比特币市值',
-      type: 'line',
-      showSymbol: false,
-      lineStyle: { width: 1.5 },
-      areaStyle: { color: 'rgba(84,112,198,0.15)' },
-      itemStyle: { color: '#5470c6' },
-      lineStyle: { width: 1.5, color: '#5470c6' },
-      data: btcData,
-    }],
+    series: seriesArr,
     tooltip: {
       trigger: 'axis',
       textStyle: { fontFamily: CHART_FONT, fontSize: 12 },
@@ -2937,9 +2996,13 @@ function initGoldBtcMcapChart(goldMcap, btcMcap) {
         const date = params[0].axisValue;
         const gv = goldByDate[date];
         const bv = btcByDate[date];
+        const dv = debtByDate[date];
         let s = date + '<br/>';
         s += `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#d4a853;margin-right:4px"></span>黄金市值: <b>${gv != null ? '$'+gv.toFixed(2)+' 万亿' : '—'}</b><br/>`;
         s += `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#5470c6;margin-right:4px"></span>比特币市值: <b>${bv != null ? '$'+bv.toFixed(2)+' 万亿' : '—'}</b>`;
+        if (debtData.length) {
+          s += `<br/><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#999;margin-right:4px"></span>美债总规模: <b>${dv != null ? '$'+dv.toFixed(2)+' 万亿' : '—'}</b>`;
+        }
         return s;
       },
     },
@@ -3054,15 +3117,13 @@ function initHiChart(key, chartData, meta) {
     const s2Fmt = v => meta.s2Unit === '$' ? '$' + v.toLocaleString() : v.toFixed(2) + (meta.s2Unit === '%' ? '%' : '');
 
     option = {
-      grid: { left: 65, right: 65, top: meta.legendBottom ? 20 : 36, bottom: meta.legendBottom ? 56 : 40 },
-      legend: Object.assign({
+      grid: { left: 65, right: 65, top: 20, bottom: 56 },
+      legend: {
         data: [meta.s1Name.split('（')[0], meta.s2Name.split('（')[0]],
+        bottom: 0, left: 'center',
         textStyle: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
         itemWidth: 16, itemHeight: 2,
-      }, meta.legendBottom
-        ? { bottom: 0, left: 'center' }
-        : { top: 0, right: 0 }
-      ),
+      },
       xAxis: {
         type: 'time',
         axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
@@ -3149,7 +3210,7 @@ async function loadHistoricalInsights() {
 
   try {
     // 并行加载所有数据源
-    const [hiResp, annualResp, btcResp, rollingResp, cyclesResp, realYieldsResp, btcMcapResp, assetResp] = await Promise.all([
+    const [hiResp, annualResp, btcResp, rollingResp, cyclesResp, realYieldsResp, btcMcapResp, assetResp, debtResp] = await Promise.all([
       fetch('data/historical_insights.json'),
       fetch('data/history_gold_annual_change.json').catch(() => null),
       fetch('data/history_gold_vs_bitcoin.json').catch(() => null),
@@ -3158,6 +3219,7 @@ async function loadHistoricalInsights() {
       fetch('data/history_gold_real_yields.json').catch(() => null),
       fetch('data/history_gold_btc_marketcap.json').catch(() => null),
       fetch('data/history_asset_returns.json').catch(() => null),
+      fetch('data/GFDEBTN.json').catch(() => null),
     ]);
     const data = await hiResp.json();
     const annualData = annualResp ? await annualResp.json().catch(() => null) : null;
@@ -3167,6 +3229,7 @@ async function loadHistoricalInsights() {
     const realYieldsData = realYieldsResp ? await realYieldsResp.json().catch(() => null) : null;
     const btcMcapData = btcMcapResp ? await btcMcapResp.json().catch(() => null) : null;
     const assetData = assetResp ? await assetResp.json().catch(() => null) : null;
+    const debtData = debtResp ? await debtResp.json().catch(() => null) : null;
 
     loading.style.display = 'none';
     container.style.display = 'flex';
@@ -3232,7 +3295,8 @@ async function loadHistoricalInsights() {
         initRealYieldsChart(realYieldsData.series.gold || [], realYieldsData.series.real_rate || []);
       }
       if (btcMcapData && btcMcapData.series) {
-        initGoldBtcMcapChart(btcMcapData.series.gold_mcap || [], btcMcapData.series.btc_mcap || []);
+        const debtSeries = (debtData && debtData.series) ? debtData.series : [];
+        initGoldBtcMcapChart(btcMcapData.series.gold_mcap || [], btcMcapData.series.btc_mcap || [], debtSeries);
       }
       for (const key of HI_ORDER) {
         const chartData = data[key];
