@@ -5,28 +5,28 @@
   "section": "风险温度",
   "direction": "context",
   "thresholds": null,
-  "updated": "2026-03-20",
+  "updated": "2026-03-23",
   "latest": {
-    "date": "2026-03-10",
-    "value": 98399,
-    "swap_net": -183280,
-    "mm_net": 98399,
-    "swap_long": 38318,
-    "swap_short": 221598,
-    "mm_long": 125077,
-    "mm_short": 26678,
-    "open_interest": 413956
+    "date": "2026-03-17",
+    "value": 102043,
+    "swap_net": -180814,
+    "mm_net": 102043,
+    "swap_long": 36975,
+    "swap_short": 217789,
+    "mm_long": 130147,
+    "mm_short": 28104,
+    "open_interest": 411388
   },
   "changes": {
-    "5d": 482,
-    "20d": 2506,
-    "3m": -25149,
-    "yoy": -68259
+    "5d": 3644,
+    "20d": 6069,
+    "3m": -30553,
+    "yoy": -65533
   },
   "percentiles": {
-    "1y": 13,
-    "3y": 28,
-    "10y": 46
+    "1y": 19,
+    "3y": 30,
+    "10y": 48
   },
   "series": [
     {
@@ -11369,7 +11369,18 @@
       "mm_long": 125077,
       "mm_short": 26678,
       "open_interest": 413956
+    },
+    {
+      "date": "2026-03-17",
+      "value": 102043,
+      "swap_net": -180814,
+      "mm_net": 102043,
+      "swap_long": 36975,
+      "swap_short": 217789,
+      "mm_long": 130147,
+      "mm_short": 28104,
+      "open_interest": 411388
     }
   ],
-  "interpretation": "Managed Money（对冲基金等投机资金）净多头 98,399 手，Swap Dealers（投行/做市商，通常站在对冲基金的对手方）净头寸 -183,280 手。投机头寸处于正常区间。MM 大幅做多时 Swap Dealers 通常大幅做空（提供流动性），两者呈镜像关系。"
+  "interpretation": "Managed Money（对冲基金等投机资金）净多头 102,043 手，Swap Dealers（投行/做市商，通常站在对冲基金的对手方）净头寸 -180,814 手。投机头寸处于正常区间。MM 大幅做多时 Swap Dealers 通常大幅做空（提供流动性），两者呈镜像关系。"
 }
