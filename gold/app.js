@@ -2230,7 +2230,7 @@ function initGoldBtcMcapChart(goldMcap, btcMcap, debtSeries) {
   const goldByDate = {}; goldData.forEach(d => goldByDate[d[0]] = d[1]);
   const btcByDate = {}; btcData.forEach(d => btcByDate[d[0]] = d[1]);
   const debtByDate = {}; debtData.forEach(d => debtByDate[d[0]] = d[1]);
-  // 美债数据是季度频率，预填充到所有日期（取最近已知值）
+  // 美债数据用日频（Treasury Fiscal Data），降级季度（GFDEBTN）时 nearestDebt 用来插值
   const debtDates = debtData.map(d => d[0]).sort();
   function nearestDebt(date) {
     if (debtByDate[date] != null) return debtByDate[date];
@@ -2606,7 +2606,10 @@ async function loadHistoricalInsights() {
         initRealYieldsChart(realYieldsData.series.gold || [], realYieldsData.series.real_rate || []);
       }
       if (btcMcapData && btcMcapData.series) {
-        const debtSeries = (debtData && debtData.series) ? debtData.series : [];
+        // 优先用 Treasury Fiscal Data 日频数据（嵌在 btcMcapData），降级用 GFDEBTN 季度数据
+        const debtSeries = (btcMcapData.series.us_debt && btcMcapData.series.us_debt.length)
+          ? btcMcapData.series.us_debt
+          : (debtData && debtData.series) ? debtData.series : [];
         initGoldBtcMcapChart(btcMcapData.series.gold_mcap || [], btcMcapData.series.btc_mcap || [], debtSeries);
       }
       for (const key of HI_ORDER) {
