@@ -1512,6 +1512,89 @@ const HI_ORDER = [
   'fed_balance_sheet_vs_gold',
 ];
 
+// ── 金价距高点回撤统计（面积图）──
+function createDrawdownCard() {
+  const card = document.createElement('div');
+  card.className = 'hi-card';
+  card.innerHTML = `
+    <div class="hi-card-header">
+      <span class="hi-card-title">金价距高点回撤统计</span>
+      <span class="hi-card-range">1915 – 至今</span>
+    </div>
+    <div class="hi-card-desc">每个时间点金价相对历史高点的回撤幅度（%）。面积越深代表跌得越惨。1980年后长达20年的熊市最深回撤达 -70%；2011年高点后回撤约 -45%；当前金价处于历史高位区间，回撤接近 0%。</div>
+    <div class="hi-chart" id="hi-chart-drawdown" style="height:300px"></div>
+  `;
+  return card;
+}
+
+function initDrawdownChart(series) {
+  const dom = document.getElementById('hi-chart-drawdown');
+  if (!dom) return;
+  const chart = echarts.init(dom);
+
+  // 计算滚动高点与回撤
+  let peak = -Infinity;
+  const drawdownData = series.map(d => {
+    if (d.value > peak) peak = d.value;
+    const dd = peak > 0 ? (d.value - peak) / peak * 100 : 0;
+    return [d.date, parseFloat(dd.toFixed(2))];
+  });
+
+  chart.setOption({
+    grid: { left: 55, right: 20, top: 20, bottom: 56 },
+    xAxis: {
+      type: 'time',
+      axisLabel: { fontSize: 11, color: '#999', fontFamily: CHART_FONT },
+      axisLine: { lineStyle: { color: '#eee' } },
+      axisTick: { show: false },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      min: v => Math.floor(v.min / 10) * 10,
+      max: 0,
+      axisLabel: {
+        fontSize: 11, color: '#999', fontFamily: CHART_FONT,
+        formatter: v => v + '%',
+      },
+      splitLine: { lineStyle: { color: '#f0f0f0' } },
+    },
+    series: [{
+      type: 'line',
+      data: drawdownData,
+      smooth: false,
+      symbol: 'none',
+      lineStyle: { color: '#c0392b', width: 1 },
+      areaStyle: {
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: 'rgba(192,57,43,0.5)' },
+            { offset: 1, color: 'rgba(192,57,43,0.05)' },
+          ],
+        },
+      },
+    }],
+    tooltip: {
+      trigger: 'axis',
+      textStyle: { fontFamily: CHART_FONT, fontSize: 13 },
+      formatter: params => {
+        const p = params[0];
+        const date = Array.isArray(p.value) ? p.value[0] : p.name;
+        const val = Array.isArray(p.value) ? p.value[1] : p.value;
+        return `${date}<br/>距高点回撤: <b>${val.toFixed(2)}%</b>`;
+      },
+    },
+    dataZoom: [
+      { type: 'inside', start: 0, end: 100 },
+      { type: 'slider', start: 0, end: 100, height: 20, bottom: 8,
+        textStyle: { fontSize: 10, color: '#999' } },
+    ],
+  });
+  chartInstances.push(chart);
+  window.addEventListener('resize', () => chart.resize());
+}
+
 // ── 金价年度涨跌幅（柱状图）──
 function createAnnualChangeCard() {
   const card = document.createElement('div');
@@ -2438,7 +2521,7 @@ async function loadHistoricalInsights() {
 
   try {
     // 并行加载所有数据源
-    const [data, annualData, btcData, rollingData, cyclesData, realYieldsData, btcMcapData, assetData, debtData] = await Promise.all([
+    const [data, annualData, btcData, rollingData, cyclesData, realYieldsData, btcMcapData, assetData, debtData, monthlyData] = await Promise.all([
       fetchJSON('data/historical_insights.json'),
       fetchJSON('data/history_gold_annual_change.json').catch(() => null),
       fetchJSON('data/history_gold_vs_bitcoin.json').catch(() => null),
@@ -2448,12 +2531,18 @@ async function loadHistoricalInsights() {
       fetchJSON('data/history_gold_btc_marketcap.json').catch(() => null),
       fetchJSON('data/history_asset_returns.json').catch(() => null),
       fetchJSON('data/GFDEBTN.json').catch(() => null),
+      fetchJSON('data/gold_history_monthly.json').catch(() => null),
     ]);
 
     loading.style.display = 'none';
     container.style.display = 'flex';
 
-    // 1. 金价年度涨跌幅（排第一）
+    // 0. 金价距高点回撤统计（排第一）
+    if (monthlyData && monthlyData.series) {
+      container.appendChild(createDrawdownCard());
+    }
+
+    // 1. 金价年度涨跌幅（排第二）
     if (annualData && annualData.data) {
       container.appendChild(createAnnualChangeCard());
     }
@@ -2498,6 +2587,9 @@ async function loadHistoricalInsights() {
 
     // 延迟初始化图表（等 DOM 渲染完成）
     setTimeout(() => {
+      if (monthlyData && monthlyData.series) {
+        initDrawdownChart(monthlyData.series);
+      }
       if (annualData && annualData.data) {
         initAnnualChangeChart(annualData.data);
       }
