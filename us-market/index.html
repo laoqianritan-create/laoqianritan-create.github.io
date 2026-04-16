@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美股复盘看板</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title">美股复盘看板</div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="sp500">
+        <a class="nav-item active" href="#panel-price" data-panel="panel-price">走势</a>
+        <a class="nav-item" href="#panel-annual" data-panel="panel-annual">年回报</a>
+        <a class="nav-item" href="#panel-annualized-matrix" data-panel="panel-annualized-matrix">年化矩阵</a>
+        <a class="nav-item" href="#panel-return-details" data-panel="panel-return-details">回报分解</a>
+        <a class="nav-item" href="#panel-drawdown" data-panel="panel-drawdown">回撤</a>
+        <a class="nav-item" href="#panel-volatility" data-panel="panel-volatility">波动率</a>
+        <a class="nav-item" href="#panel-monthly" data-panel="panel-monthly">月度涨跌</a>
+        <a class="nav-item" href="#panel-vix" data-panel="panel-vix">恐慌指数</a>
+        <a class="nav-item" href="#panel-pe" data-panel="panel-pe">席勒市盈率</a>
+        <a class="nav-item" href="#panel-eps" data-panel="panel-eps">每股收益</a>
+        <a class="nav-item" href="#panel-roe" data-panel="panel-roe">净资产收益率</a>
+        <a class="nav-item" href="#panel-rolling" data-panel="panel-rolling">5年滚动</a>
+        <a class="nav-item" href="#panel-m7" data-panel="panel-m7">七巨头指数</a>
+        <a class="nav-item" href="#panel-sectors" data-panel="panel-sectors">行业暴露</a>
+        <a class="nav-item" href="#panel-changes" data-panel="panel-changes">成分股变动</a>
+        <a class="nav-item" href="#panel-rules" data-panel="panel-rules">编制规则</a>
+        <a class="nav-item" href="#panel-scatter" data-panel="panel-scatter">成分股全景</a>
+      </div>
+      <div class="nav-group" data-category="cross">
+        <a class="nav-item active" href="#panel-nasdaq-composite" data-panel="panel-nasdaq-composite">纳指综指</a>
+        <a class="nav-item" href="#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">成分股</a>
+        <a class="nav-item" href="#panel-nasdaq100-annual" data-panel="panel-nasdaq100-annual">年回报</a>
+        <a class="nav-item" href="#panel-nasdaq100-member-returns" data-panel="panel-nasdaq100-member-returns">近1年</a>
+        <a class="nav-item" href="#panel-nasdaq100-ytd" data-panel="panel-nasdaq100-ytd">年内</a>
+        <a class="nav-item" href="#panel-nasdaq100-yield" data-panel="panel-nasdaq100-yield">股息率</a>
+        <a class="nav-item" href="#panel-nasdaq100-weights" data-panel="panel-nasdaq100-weights">权重累计</a>
+        <a class="nav-item" href="#panel-dow-century" data-panel="panel-dow-century">道指</a>
+      </div>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="切换主题">
+      <span class="theme-icon-light">&#9790;</span>
+      <span class="theme-icon-dark">&#9728;</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-curve-layer" aria-hidden="true">
+    <svg class="hero-curve" id="heroCurve" viewBox="0 0 1400 200" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="heroCurveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#52c41a" stop-opacity="0.25"/>
+          <stop offset="55%" stop-color="#52c41a" stop-opacity="0.75"/>
+          <stop offset="100%" stop-color="#95de64" stop-opacity="1"/>
+        </linearGradient>
+      </defs>
+      <path id="heroCurvePath" d="" fill="none" stroke="url(#heroCurveGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <h1 class="hero-title">Big Picture<span class="hero-title-cn">：数十年尺度下的美股</span></h1>
+    <p class="hero-subtitle">Time in the market.</p>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <button class="category-tab active" data-category="sp500">标普500</button>
+    <button class="category-tab" data-category="cross">纳斯达克100与道琼斯</button>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="panel-price" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500走势</h2>
+          <p class="panel-desc">默认对数坐标 · 日线数据（2000年起）· 月线数据（1928年起）· 蓝色趋势线可拖动，拖动时保留当前时间窗口 · 时间轴预留到 2028 年</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group" id="scaleToggle">
+            <button class="btn" data-scale="price">价格</button>
+            <button class="btn active" data-scale="log">对数</button>
+            <button class="btn" data-scale="pct">百分比</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartPrice" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero" id="chartPrice"></div>
+      <div class="metric-strip" id="sp500CenturySummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-nasdaq-composite" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">纳斯达克综指长周期走势</h2>
+          <p class="panel-desc">1971 年以来月度收盘点位 · 支持价格、对数、百分比三种视角</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group" id="nasdaqCompositeScaleToggle">
+            <button class="btn" data-scale="price">价格</button>
+            <button class="btn active" data-scale="log">对数</button>
+            <button class="btn" data-scale="pct">百分比</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartNasdaqComposite" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartNasdaqComposite"></div>
+      <div class="metric-strip" id="nasdaqCompositeSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-annual" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500年度回报</h2>
+          <p class="panel-desc">1928 年以来年度涨跌幅 · 用年度颗粒度看长期风险收益分布</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartAnnual" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-medium" id="chartAnnual"></div>
+      <div class="metric-strip" id="annualSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-annualized-matrix" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500跨年持有年化收益率</h2>
+          <p class="panel-desc">每个单元格表示从横轴年份买入、持有到纵轴年份卖出的年化收益率。红色越深代表亏损越大，白色为正收益，对角线为单年涨跌幅；按年末点位估算，不含股息再投资。</p>
+        </div>
+        <div class="panel-controls">
+          <div class="panel-date-range" id="sp500AnnualizedMatrixRange"></div>
+        </div>
+      </div>
+      <div class="annualized-matrix-container" id="sp500AnnualizedMatrix"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-return-details" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500回报分解</h2>
+          <p class="panel-desc">1999-2025 年年度拆解 · 总回报 = 价格回报 + 股息回报 + 净回购收益率</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartReturnDetails" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-medium" id="chartReturnDetails"></div>
+      <div class="metric-strip" id="returnDetailsSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-drawdown" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500自高点回撤</h2>
+          <p class="panel-desc">每个交易日距历史最高点的跌幅 · 五档回撤分类</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartDrawdown" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-medium" id="chartDrawdown"></div>
+      <div class="drawdown-table-wrap" id="drawdownTableWrap">
+        <table class="data-table" id="drawdownTable">
+          <thead>
+            <tr>
+              <th>回调区间</th>
+              <th data-sort="days">天数</th>
+              <th>标普高点</th>
+              <th>标普低点</th>
+              <th data-sort="decline">跌幅</th>
+              <th>分类</th>
+              <th>下跌原因</th>
+            </tr>
+          </thead>
+          <tbody id="drawdownTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-volatility" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500波动率</h2>
+          <p class="panel-desc">20 日与 60 日年化波动率 · 红色区间表示任一口径波动率上穿 30% 的高波动阶段</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartVolatility" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartVolatility"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-monthly" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">月度涨跌统计</h2>
+          <p class="panel-desc">2000 年至今每月涨跌幅 · 附各月上涨概率</p>
+        </div>
+      </div>
+      <div class="heatmap-container" id="monthlyHeatmap"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-vix" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">恐慌指数与标普500</h2>
+          <p class="panel-desc">恐慌定价与指数点位的同屏观察 · 标普500使用对数坐标 · 红色区间表示 VIX 持续高于 30 的恐慌阶段</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartVix" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartVix"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-pe" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500席勒市盈率走势</h2>
+          <p class="panel-desc">席勒市盈率用过去 10 年经通胀调整后的平均盈利做分母，能平滑景气波动，更适合观察长期估值冷热</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartPe" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartPe"></div>
+      <div class="metric-strip" id="peSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-eps" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500每股收益走势</h2>
+          <p class="panel-desc">TTM EPS，长期样本为主，尾部按季度补齐最新盈利变化</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartEps" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartEps"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-roe" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500净资产收益率走势</h2>
+          <p class="panel-desc">年度净资产收益率与长期均值对照 · 当前仓内数据覆盖 2000-2024 年</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartRoe" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-medium" id="chartRoe"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-rolling" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">五年滚动收益率</h2>
+          <p class="panel-desc">基于 1928 年以来月线数据，任意时点往回看 5 年的年化回报</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartRolling" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartRolling"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-m7" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">科技七巨头与自编七巨头指数</h2>
+          <p class="panel-desc">起点 2022-01-01 = 100 · 对数坐标观察七巨头与等权组合的复利斜率 · 时间轴预留到 2028 年</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartM7" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartM7"></div>
+      <div class="method-card" id="m7Method"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-sectors" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">行业暴露</h2>
+          <p class="panel-desc">按 GICS 划分的标普500 权重结构</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartSectors" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="sector-layout">
+        <div class="chart-container chart-standard" id="chartSectors"></div>
+        <div class="sector-side" id="sectorSide"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-changes" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">成分股变动</h2>
+          <p class="panel-desc">基于 S&amp;P Dow Jones Indices 官方公告整理的近期样本调整</p>
+        </div>
+      </div>
+      <div class="table-toolbar">
+        <input class="table-search" id="changesSearch" type="search" placeholder="搜索公司名、代码或原因">
+        <div class="btn-group" id="changesSort">
+          <button class="btn active" data-order="desc">最新在前</button>
+          <button class="btn" data-order="asc">最早在前</button>
+        </div>
+      </div>
+      <div class="drawdown-table-wrap">
+        <table class="data-table" id="changesTable">
+          <thead>
+            <tr>
+              <th>生效日期</th>
+              <th>新加入</th>
+              <th>被替换</th>
+              <th>触发原因</th>
+              <th>类型</th>
+            </tr>
+          </thead>
+          <tbody id="changesTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-rules" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">编制规则</h2>
+          <p class="panel-desc">标普500 的纳入、权重和调整机制</p>
+        </div>
+      </div>
+      <div class="rules-highlights" id="rulesHighlights"></div>
+      <div class="rules-grid" id="rulesSections"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-scatter" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500成分股全景</h2>
+          <p class="panel-desc">横轴市值（十亿美元） · 纵轴近一年收益率 · 下方补充权重与价格表</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartScatter" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero" id="chartScatter"></div>
+      <div class="table-toolbar">
+        <input class="table-search" id="membersSearch" type="search" placeholder="搜索公司名或代码">
+        <div class="mini-desc" id="membersMeta"></div>
+        <button class="btn" id="membersToggle">展开全部 500 只</button>
+      </div>
+      <div class="drawdown-table-wrap" id="membersTableWrap">
+        <table class="data-table" id="membersTable">
+          <thead>
+            <tr>
+              <th>公司名称</th>
+              <th>代码</th>
+              <th>权重</th>
+              <th>价格</th>
+            </tr>
+          </thead>
+          <tbody id="membersTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-nasdaq100-companies" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">纳斯达克100成分股权重分布</h2>
+          <p class="panel-desc">环形图展示前 15 大实际权重与其余成分的合计占比；完整成分股清单在下方表格中保留</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartNasdaq100Companies" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-medium" id="chartNasdaq100Companies"></div>
+      <div class="metric-strip" id="nasdaq100CompanySummary"></div>
+      <div class="table-toolbar">
+        <input class="table-search" id="nasdaq100CompaniesSearch" type="search" placeholder="搜索公司名、代码或行业">
+        <div class="mini-desc" id="nasdaq100CompaniesMeta"></div>
+        <button class="btn" id="nasdaq100CompaniesToggle">展开全部 104 只</button>
+      </div>
+      <div class="drawdown-table-wrap">
+        <table class="data-table" id="nasdaq100CompaniesTable">
+          <thead>
+            <tr>
+              <th>公司名称</th>
+              <th>代码</th>
+              <th>行业</th>
+              <th>QQQ权重</th>
+              <th>价格</th>
+              <th>近1年</th>
+              <th>股息率</th>
+            </tr>
+          </thead>
+          <tbody id="nasdaq100CompaniesTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-nasdaq100-annual" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">纳斯达克100年度回报</h2>
+          <p class="panel-desc">用 QQQ 作为纳斯达克100可交易代理，展示 1999 年以来年度涨跌分布</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartNasdaq100Annual" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-medium" id="chartNasdaq100Annual"></div>
+      <div class="metric-strip" id="nasdaq100AnnualSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-nasdaq100-member-returns" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">纳斯达克100成员近1年收益</h2>
+          <p class="panel-desc">按近 1 年收益率对全部成分股做横截面排序，可滚动浏览完整样本</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartNasdaq100MemberReturns" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero chart-ranking-tall" id="chartNasdaq100MemberReturns"></div>
+      <div class="metric-strip" id="nasdaq100MemberReturnSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-nasdaq100-ytd" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">纳斯达克100年内涨跌</h2>
+          <p class="panel-desc">按年初以来涨跌幅排序，看今年内部扩散与分化</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartNasdaq100Ytd" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero chart-ranking-tall" id="chartNasdaq100Ytd"></div>
+      <div class="metric-strip" id="nasdaq100YtdSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-nasdaq100-yield" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">纳斯达克100股息率</h2>
+          <p class="panel-desc">按股息率排序，快速定位指数内部的高分红成员</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartNasdaq100Yield" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero chart-ranking-tall" id="chartNasdaq100Yield"></div>
+      <div class="metric-strip" id="nasdaq100YieldSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-nasdaq100-weights" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">纳斯达克100权重累计</h2>
+          <p class="panel-desc">基于 QQQ 前 25 大实际持仓权重，黑线展示累计覆盖，灰柱展示单只权重</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartNasdaq100Weights" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartNasdaq100Weights"></div>
+      <div class="metric-strip" id="nasdaq100WeightSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-dow-century" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">道琼斯指数百年走势</h2>
+          <p class="panel-desc">100 年月度收盘点位 · 支持价格、对数、百分比三种视角</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group" id="dowCenturyScaleToggle">
+            <button class="btn" data-scale="price">价格</button>
+            <button class="btn active" data-scale="log">对数</button>
+            <button class="btn" data-scale="pct">百分比</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartDowCentury" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartDowCentury"></div>
+      <div class="metric-strip" id="dowCenturySummary"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">相关资源</h4>
+      <ul class="footer-link-list">
+        <li><a href="https://gold-board.betalpha.com/" target="_blank" rel="noopener">黄金看板</a></li>
+        <li><a href="https://laoqianritan-create.github.io/" target="_blank" rel="noopener">老钱日日谈</a></li>
+        <li><a href="https://www.xiaoyuzhoufm.com/podcast/6388760f22567e8ea6ad070f" target="_blank" rel="noopener">播客「面基」</a></li>
+        <li><a href="https://wxaurl.cn/l2CGydM7n4h" target="_blank" rel="noopener">趋势动物小程序</a></li>
+        <li><span class="footer-link-pending">有知有行 App</span></li>
+        <li><span class="footer-link-pending">有知有行 SBBI</span></li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · 美股复盘看板</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+// Hero banner: SP500 百年走势动态曲线（对数坐标，循环）
+(function initHeroCurve() {
+  const pathEl = document.getElementById('heroCurvePath');
+  const svgEl = document.getElementById('heroCurve');
+  if (!pathEl || !svgEl) return;
+
+  fetch('data/sp500_century.json', { cache: 'force-cache' })
+    .then(res => res.ok ? res.json() : Promise.reject(res.status))
+    .then(payload => {
+      const series = (payload?.series || [])
+        .filter(it => it && it.value != null && it.value > 0)
+        .filter(it => (it.date || '').slice(0, 4) >= '1928');
+      if (series.length < 2) return;
+
+      const VIEW_W = 1400;
+      const VIEW_H = 200;
+      const PAD_Y = 12;
+      const logs = series.map(it => Math.log10(it.value));
+      const minLog = Math.min(...logs);
+      const maxLog = Math.max(...logs);
+      const range = Math.max(maxLog - minLog, 0.001);
+      const n = series.length;
+
+      // 对数 y 翻转到 SVG 坐标（底部=低点）
+      const points = logs.map((lg, i) => {
+        const x = (i / (n - 1)) * VIEW_W;
+        const y = VIEW_H - PAD_Y - ((lg - minLog) / range) * (VIEW_H - PAD_Y * 2);
+        return [x, y];
+      });
+
+      // 平滑 cubic Bezier（相邻两点中点作控制点，形成柔和过渡）
+      let d = `M ${points[0][0].toFixed(2)} ${points[0][1].toFixed(2)}`;
+      for (let i = 1; i < points.length; i++) {
+        const [px, py] = points[i - 1];
+        const [cx, cy] = points[i];
+        const mx = (px + cx) / 2;
+        d += ` Q ${px.toFixed(2)} ${py.toFixed(2)} ${mx.toFixed(2)} ${((py + cy) / 2).toFixed(2)}`;
+      }
+      const last = points[points.length - 1];
+      d += ` T ${last[0].toFixed(2)} ${last[1].toFixed(2)}`;
+
+      pathEl.setAttribute('d', d);
+
+      // 计算真实 path 长度，喂给 CSS 动画（同步执行，避免 RAF 时序丢失）
+      try {
+        const length = pathEl.getTotalLength();
+        if (length && isFinite(length)) {
+          pathEl.style.setProperty('--path-length', length.toFixed(0));
+          // 重置动画使新长度立即生效
+          pathEl.style.animation = 'none';
+          void pathEl.offsetWidth;
+          pathEl.style.animation = '';
+        }
+      } catch (err) { /* no-op */ }
+    })
+    .catch(() => { /* silent: banner 曲线是装饰，失败不影响主内容 */ });
+})();
+</script>
+</body>
+</html>

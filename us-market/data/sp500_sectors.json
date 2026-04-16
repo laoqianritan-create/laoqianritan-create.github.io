@@ -1,0 +1,109 @@
+{
+  "updated": "2026-04-02",
+  "source": {
+    "name": "State Street SPDR S&P 500 ETF Trust",
+    "url": "https://www.ssga.com/us/en/intermediary/etfs/spdr-sp-500-etf-trust-spy",
+    "note": "Index Sector Breakdown as of 2026-04-02"
+  },
+  "sectors": [
+    {
+      "id": "information-technology",
+      "name": "信息技术",
+      "english": "Information Technology",
+      "weight": 33.27,
+      "color": "#2563eb",
+      "examples": ["NVIDIA", "Apple", "Microsoft"],
+      "note": "AI 资本开支和平台型巨头权重最高。"
+    },
+    {
+      "id": "financials",
+      "name": "金融",
+      "english": "Financials",
+      "weight": 12.55,
+      "color": "#0f766e",
+      "examples": ["Berkshire Hathaway", "JPMorgan", "Visa"],
+      "note": "保险、支付和银行共同构成第二大板块。"
+    },
+    {
+      "id": "communication-services",
+      "name": "通信服务",
+      "english": "Communication Services",
+      "weight": 10.37,
+      "color": "#7c3aed",
+      "examples": ["Alphabet", "Meta", "Netflix"],
+      "note": "广告平台和互联网媒体权重集中。"
+    },
+    {
+      "id": "consumer-discretionary",
+      "name": "可选消费",
+      "english": "Consumer Discretionary",
+      "weight": 9.76,
+      "color": "#f97316",
+      "examples": ["Amazon", "Tesla", "Home Depot"],
+      "note": "平台消费、汽车和家装是核心驱动。"
+    },
+    {
+      "id": "health-care",
+      "name": "医疗保健",
+      "english": "Health Care",
+      "weight": 9.32,
+      "color": "#dc2626",
+      "examples": ["Eli Lilly", "UnitedHealth", "Johnson & Johnson"],
+      "note": "创新药和大型医疗服务公司占比靠前。"
+    },
+    {
+      "id": "industrials",
+      "name": "工业",
+      "english": "Industrials",
+      "weight": 9.06,
+      "color": "#475569",
+      "examples": ["GE Aerospace", "Caterpillar", "RTX"],
+      "note": "航空、国防与资本品周期共同影响权重。"
+    },
+    {
+      "id": "consumer-staples",
+      "name": "必需消费",
+      "english": "Consumer Staples",
+      "weight": 5.23,
+      "color": "#65a30d",
+      "examples": ["Walmart", "Costco", "Procter & Gamble"],
+      "note": "零售龙头和日用品公司提供防御属性。"
+    },
+    {
+      "id": "energy",
+      "name": "能源",
+      "english": "Energy",
+      "weight": 3.86,
+      "color": "#b45309",
+      "examples": ["Exxon Mobil", "Chevron", "ConocoPhillips"],
+      "note": "油气价格对整体权重和盈利弹性影响大。"
+    },
+    {
+      "id": "utilities",
+      "name": "公用事业",
+      "english": "Utilities",
+      "weight": 2.52,
+      "color": "#0891b2",
+      "examples": ["NextEra Energy", "Southern", "Duke Energy"],
+      "note": "稳定分红和利率敏感属性较强。"
+    },
+    {
+      "id": "materials",
+      "name": "原材料",
+      "english": "Materials",
+      "weight": 2.08,
+      "color": "#9333ea",
+      "examples": ["Linde", "Sherwin-Williams", "Ecolab"],
+      "note": "化工、工业气体和涂料是核心权重来源。"
+    },
+    {
+      "id": "real-estate",
+      "name": "房地产",
+      "english": "Real Estate",
+      "weight": 1.97,
+      "color": "#ec4899",
+      "examples": ["Prologis", "American Tower", "Equinix"],
+      "note": "REIT 仍在利率约束下保持低权重。"
+    }
+  ]
+}

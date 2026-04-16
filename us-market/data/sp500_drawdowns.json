@@ -1,0 +1,459 @@
+{
+  "drawdowns": [
+    {
+      "period": "2026: 1月28日 - 3月30日",
+      "days": 61,
+      "high": 7002,
+      "low": 6317,
+      "decline": -0.098,
+      "category": "narrative_break",
+      "cause": "伊朗战争、原油飙升、私人信贷动荡、AI颠覆恐慌",
+      "active": false
+    },
+    {
+      "period": "2025: 10月29日 - 11月21日",
+      "days": 22,
+      "high": 6920,
+      "low": 6522,
+      "decline": -0.058,
+      "category": "mechanical_scare",
+      "cause": "AI泡沫恐慌",
+      "active": false
+    },
+    {
+      "period": "2025: 2月19日 - 4月7日",
+      "days": 47,
+      "high": 6147,
+      "low": 4835,
+      "decline": -0.213,
+      "category": "policy_shift",
+      "cause": "关税、贸易战与全球衰退恐慌",
+      "active": false
+    },
+    {
+      "period": "2024: 7月16日 - 8月5日",
+      "days": 20,
+      "high": 5670,
+      "low": 5119,
+      "decline": -0.097,
+      "category": "mechanical_scare",
+      "cause": "衰退恐慌、美联储行动滞后、日经崩盘",
+      "active": false
+    },
+    {
+      "period": "2024: 3月28日 - 4月19日",
+      "days": 22,
+      "high": 5265,
+      "low": 4954,
+      "decline": -0.059,
+      "category": "mechanical_scare",
+      "cause": "通胀顽固、美联储推迟降息、伊朗/以色列冲突",
+      "active": false
+    },
+    {
+      "period": "2022: 1月4日 - 10月13日",
+      "days": 282,
+      "high": 4819,
+      "low": 3492,
+      "decline": -0.275,
+      "category": "policy_shift",
+      "cause": "通胀、加息/美联储紧缩、俄乌战争、衰退恐慌",
+      "active": false
+    },
+    {
+      "period": "2021: 11月22日 - 12月3日",
+      "days": 11,
+      "high": 4744,
+      "low": 4495,
+      "decline": -0.052,
+      "category": "mechanical_scare",
+      "cause": "新冠奥密克戎变异株、美联储缩减购债恐慌",
+      "active": false
+    },
+    {
+      "period": "2021: 9月2日 - 10月4日",
+      "days": 32,
+      "high": 4546,
+      "low": 4279,
+      "decline": -0.059,
+      "category": "mechanical_scare",
+      "cause": "中国风险传染恐慌、美联储缩减购债恐慌、新冠德尔塔变异株",
+      "active": false
+    },
+    {
+      "period": "2021: 2月16日 - 3月4日",
+      "days": 16,
+      "high": 3950,
+      "low": 3723,
+      "decline": -0.057,
+      "category": "mechanical_scare",
+      "cause": "通胀恐慌、利率上升",
+      "active": false
+    },
+    {
+      "period": "2020: 9月2日 - 9月24日",
+      "days": 22,
+      "high": 3588,
+      "low": 3209,
+      "decline": -0.106,
+      "category": "narrative_break",
+      "cause": "新冠疫情、无新刺激方案、大选恐慌",
+      "active": false
+    },
+    {
+      "period": "2020: 2月19日 - 3月23日",
+      "days": 33,
+      "high": 3394,
+      "low": 2192,
+      "decline": -0.354,
+      "category": "exogenous_shock",
+      "cause": "新冠疫情、全球萧条恐慌",
+      "active": false
+    },
+    {
+      "period": "2019: 7月26日 - 8月5日",
+      "days": 10,
+      "high": 3028,
+      "low": 2822,
+      "decline": -0.068,
+      "category": "mechanical_scare",
+      "cause": "贸易战、关税、人民币贬值、衰退恐慌",
+      "active": false
+    },
+    {
+      "period": "2019: 5月1日 - 6月3日",
+      "days": 33,
+      "high": 2954,
+      "low": 2729,
+      "decline": -0.076,
+      "category": "narrative_break",
+      "cause": "贸易战、关税、收益率曲线倒挂、全球放缓/衰退恐慌",
+      "active": false
+    },
+    {
+      "period": "2018: 9月21日 - 12月26日",
+      "days": 96,
+      "high": 2941,
+      "low": 2347,
+      "decline": -0.202,
+      "category": "policy_shift",
+      "cause": "利率上升、中国放缓、贸易战/关税、房地产放缓",
+      "active": false
+    },
+    {
+      "period": "2018: 1月26日 - 2月9日",
+      "days": 14,
+      "high": 2873,
+      "low": 2533,
+      "decline": -0.118,
+      "category": "mechanical_scare",
+      "cause": "通胀恐慌、利率上升",
+      "active": false
+    },
+    {
+      "period": "2016: 8月15日 - 11月4日",
+      "days": 81,
+      "high": 2194,
+      "low": 2084,
+      "decline": -0.050,
+      "category": "narrative_break",
+      "cause": "大选恐慌/担忧",
+      "active": false
+    },
+    {
+      "period": "2015/16: 5月20日 - 2月11日",
+      "days": 267,
+      "high": 2135,
+      "low": 1810,
+      "decline": -0.152,
+      "category": "policy_shift",
+      "cause": "希腊违约、中国股灾、新兴市场货币、油价下跌、朝鲜",
+      "active": false
+    },
+    {
+      "period": "2014/15: 12月29日 - 2月2日",
+      "days": 35,
+      "high": 2094,
+      "low": 1981,
+      "decline": -0.054,
+      "category": "mechanical_scare",
+      "cause": "油价下跌、美元走强、盈利疲弱",
+      "active": false
+    },
+    {
+      "period": "2014: 12月5日 - 12月16日",
+      "days": 11,
+      "high": 2079,
+      "low": 1973,
+      "decline": -0.051,
+      "category": "mechanical_scare",
+      "cause": "油价下跌、美元走强",
+      "active": false
+    },
+    {
+      "period": "2014: 9月19日 - 10月15日",
+      "days": 26,
+      "high": 2019,
+      "low": 1821,
+      "decline": -0.098,
+      "category": "narrative_break",
+      "cause": "埃博拉、全球增长恐慌、油价下跌",
+      "active": false
+    },
+    {
+      "period": "2014: 1月15日 - 2月5日",
+      "days": 21,
+      "high": 1851,
+      "low": 1738,
+      "decline": -0.061,
+      "category": "mechanical_scare",
+      "cause": "美联储缩减购债、欧洲通缩恐慌、新兴市场货币动荡",
+      "active": false
+    },
+    {
+      "period": "2013: 5月22日 - 6月24日",
+      "days": 33,
+      "high": 1687,
+      "low": 1560,
+      "decline": -0.075,
+      "category": "narrative_break",
+      "cause": "美联储缩减购债恐慌",
+      "active": false
+    },
+    {
+      "period": "2012: 9月14日 - 11月16日",
+      "days": 63,
+      "high": 1475,
+      "low": 1343,
+      "decline": -0.089,
+      "category": "narrative_break",
+      "cause": "财政悬崖担忧、奥巴马连任",
+      "active": false
+    },
+    {
+      "period": "2012: 4月2日 - 6月4日",
+      "days": 63,
+      "high": 1422,
+      "low": 1267,
+      "decline": -0.109,
+      "category": "narrative_break",
+      "cause": "欧洲债务危机",
+      "active": false
+    },
+    {
+      "period": "2011: 5月2日 - 10月4日",
+      "days": 155,
+      "high": 1371,
+      "low": 1075,
+      "decline": -0.216,
+      "category": "policy_shift",
+      "cause": "欧洲债务危机、二次探底衰退恐慌、美国国债降级",
+      "active": false
+    },
+    {
+      "period": "2011: 2月18日 - 3月16日",
+      "days": 26,
+      "high": 1344,
+      "low": 1249,
+      "decline": -0.071,
+      "category": "mechanical_scare",
+      "cause": "利比亚干预（内战）、日本地震/核灾难",
+      "active": false
+    },
+    {
+      "period": "2010: 4月26日 - 7月1日",
+      "days": 66,
+      "high": 1220,
+      "low": 1011,
+      "decline": -0.171,
+      "category": "policy_shift",
+      "cause": "欧洲债务危机、闪崩、增长担忧",
+      "active": false
+    },
+    {
+      "period": "2010: 1月19日 - 2月5日",
+      "days": 17,
+      "high": 1150,
+      "low": 1045,
+      "decline": -0.092,
+      "category": "mechanical_scare",
+      "cause": "中国信贷收紧、奥巴马银行监管计划",
+      "active": false
+    },
+    {
+      "period": "2009: 10月21日 - 11月2日",
+      "days": 12,
+      "high": 1101,
+      "low": 1029,
+      "decline": -0.065,
+      "category": "mechanical_scare",
+      "cause": "对复苏的担忧",
+      "active": false
+    },
+    {
+      "period": "2009: 9月23日 - 10月2日",
+      "days": 9,
+      "high": 1080,
+      "low": 1020,
+      "decline": -0.056,
+      "category": "mechanical_scare",
+      "cause": "对复苏的担忧",
+      "active": false
+    },
+    {
+      "period": "2009: 6月11日 - 7月7日",
+      "days": 26,
+      "high": 956,
+      "low": 869,
+      "decline": -0.091,
+      "category": "mechanical_scare",
+      "cause": "世界银行负增长预测、担忧市场领先于复苏",
+      "active": false
+    },
+    {
+      "period": "2009: 5月8日 - 15日",
+      "days": 7,
+      "high": 930,
+      "low": 879,
+      "decline": -0.055,
+      "category": "mechanical_scare",
+      "cause": "担忧市场涨幅过快",
+      "active": false
+    },
+    {
+      "period": "2007: 10月9日 - 2009年3月9日",
+      "days": 517,
+      "high": 1565,
+      "low": 677,
+      "decline": -0.568,
+      "category": "credit_destruction",
+      "cause": "全球金融危机：次贷崩溃、贝尔斯登被收购、两房被接管、雷曼破产、AIG救助、全球信贷冻结、银行倒闭潮、全球衰退",
+      "active": false
+    },
+    {
+      "period": "2007: 7月19日 - 8月15日",
+      "days": 27,
+      "high": 1553,
+      "low": 1407,
+      "decline": -0.094,
+      "category": "narrative_break",
+      "cause": "次贷危机首次大规模爆发、贝尔斯登对冲基金崩盘、法国巴黎银行冻结基金",
+      "active": false
+    },
+    {
+      "period": "2007: 2月20日 - 3月5日",
+      "days": 13,
+      "high": 1460,
+      "low": 1374,
+      "decline": -0.059,
+      "category": "mechanical_scare",
+      "cause": "上证综指暴跌9%引发全球连锁抛售、格林斯潘衰退警告",
+      "active": false
+    },
+    {
+      "period": "2006: 5月5日 - 6月13日",
+      "days": 39,
+      "high": 1326,
+      "low": 1224,
+      "decline": -0.077,
+      "category": "narrative_break",
+      "cause": "通胀恐慌、美联储加息至5.0%、新兴市场大规模抛售",
+      "active": false
+    },
+    {
+      "period": "2005: 8月3日 - 10月13日",
+      "days": 71,
+      "high": 1245,
+      "low": 1177,
+      "decline": -0.055,
+      "category": "narrative_break",
+      "cause": "飓风卡特里娜重创能源基础设施、油价飙升、美联储持续加息",
+      "active": false
+    },
+    {
+      "period": "2005: 3月7日 - 4月20日",
+      "days": 44,
+      "high": 1225,
+      "low": 1138,
+      "decline": -0.072,
+      "category": "narrative_break",
+      "cause": "通用汽车/福特信用降级、经济放缓信号、油价上涨与通胀忧虑",
+      "active": false
+    },
+    {
+      "period": "2004: 2月11日 - 8月12日",
+      "days": 183,
+      "high": 1158,
+      "low": 1063,
+      "decline": -0.082,
+      "category": "narrative_break",
+      "cause": "美联储加息预期、油价飙升、马德里恐袭",
+      "active": false
+    },
+    {
+      "period": "2000: 3月24日 - 2002年10月9日",
+      "days": 929,
+      "high": 1527,
+      "low": 777,
+      "decline": -0.491,
+      "category": "credit_destruction",
+      "cause": "互联网泡沫破裂、科技股估值崩塌、9/11恐怖袭击、安然/世通财务造假丑闻",
+      "active": false
+    },
+    {
+      "period": "2000: 1月14日 - 2月25日",
+      "days": 42,
+      "high": 1465,
+      "low": 1333,
+      "decline": -0.090,
+      "category": "narrative_break",
+      "cause": "美联储连续加息、Y2K支出退潮、科技股估值极端泡沫化",
+      "active": false
+    }
+  ],
+  "summary": {
+    "totalCount": 41,
+    "medianDays": 27,
+    "medianDecline": -0.076,
+    "maxDecline": -0.568,
+    "maxDuration": 929,
+    "bearMarkets": 5
+  },
+  "categories": [
+    {
+      "id": "mechanical_scare",
+      "name": "技术性惊吓",
+      "range": "5%-10%",
+      "duration": "1-4周",
+      "color": "#faad14"
+    },
+    {
+      "id": "narrative_break",
+      "name": "叙事崩塌",
+      "range": "7%-15%",
+      "duration": "1-3个月",
+      "color": "#fa8c16"
+    },
+    {
+      "id": "policy_shift",
+      "name": "政策逆流",
+      "range": "15%-25%",
+      "duration": "3-10个月",
+      "color": "#f5222d"
+    },
+    {
+      "id": "credit_destruction",
+      "name": "信用崩塌",
+      "range": "40%-60%",
+      "duration": "1.5-2.5年",
+      "color": "#820014"
+    },
+    {
+      "id": "exogenous_shock",
+      "name": "外生冲击",
+      "range": "极深但恢复快",
+      "duration": "不确定",
+      "color": "#722ed1"
+    }
+  ]
+}
