@@ -3162,7 +3162,7 @@ function initNasdaqRankingPanel(domId, summaryId, companies, metricConfig) {
   // 动态撑高图表容器，完整展示所有行（无 dataZoom 滑动）
   const gridTop = metricConfig.gridTop ?? 20;
   const gridBottom = metricConfig.gridBottom ?? 20;
-  const rowPx = metricConfig.rowHeight ?? 14;
+  const rowPx = metricConfig.rowHeight ?? 10;
   const dynamicHeight = rows.length * rowPx + gridTop + gridBottom + 12;
   container.style.height = `${dynamicHeight}px`;
   container.style.minHeight = `${dynamicHeight}px`;
