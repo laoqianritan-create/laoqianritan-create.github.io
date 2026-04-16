@@ -29,6 +29,7 @@
         <a class="nav-item" href="#panel-eps" data-panel="panel-eps">每股收益</a>
         <a class="nav-item" href="#panel-roe" data-panel="panel-roe">净资产收益率</a>
         <a class="nav-item" href="#panel-rolling" data-panel="panel-rolling">5年滚动</a>
+        <a class="nav-item" href="#panel-sp500-logyoy" data-panel="panel-sp500-logyoy">对数同比</a>
         <a class="nav-item" href="#panel-m7" data-panel="panel-m7">七巨头指数</a>
         <a class="nav-item" href="#panel-sectors" data-panel="panel-sectors">行业暴露</a>
         <a class="nav-item" href="#panel-changes" data-panel="panel-changes">成分股变动</a>
@@ -37,6 +38,7 @@
       </div>
       <div class="nav-group" data-category="cross">
         <a class="nav-item active" href="#panel-nasdaq-composite" data-panel="panel-nasdaq-composite">纳指综指</a>
+        <a class="nav-item" href="#panel-nasdaq-logyoy" data-panel="panel-nasdaq-logyoy">对数同比</a>
         <a class="nav-item" href="#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">成分股</a>
         <a class="nav-item" href="#panel-nasdaq100-annual" data-panel="panel-nasdaq100-annual">年回报</a>
         <a class="nav-item" href="#panel-nasdaq100-member-returns" data-panel="panel-nasdaq100-member-returns">近1年</a>
@@ -119,6 +121,21 @@
       </div>
       <div class="chart-container chart-standard" id="chartNasdaqComposite"></div>
       <div class="metric-strip" id="nasdaqCompositeSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-nasdaq-logyoy" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">纳斯达克综指 对数同比</h2>
+          <p class="panel-desc">对月度收盘取自然对数后计算同比变化率（ln(P_t) − ln(P_{t-12})），更好地展现周期节奏。正值区间 = 上涨周期，负值区间 = 下跌周期。</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartNasdaqLogYoy" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartNasdaqLogYoy"></div>
     </div>
   </section>
 
@@ -300,6 +317,21 @@
         </div>
       </div>
       <div class="chart-container chart-standard" id="chartRolling"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-sp500-logyoy" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500 对数同比</h2>
+          <p class="panel-desc">对月度收盘取自然对数后计算同比变化率（ln(P_t) − ln(P_{t-12})），更好地展现周期节奏。正值区间 = 上涨周期，负值区间 = 下跌周期。</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartSp500LogYoy" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartSp500LogYoy"></div>
     </div>
   </section>
 
@@ -557,7 +589,7 @@
   </div>
 </footer>
 
-<script src="app.js?v=20260416185527"></script>
+<script src="app.js?v=20260416191706"></script>
 <script>
 // Hero banner: SP500 百年走势动态曲线（对数坐标，循环）
 (function initHeroCurve() {

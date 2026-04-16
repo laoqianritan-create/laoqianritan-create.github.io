@@ -2069,6 +2069,136 @@ function initPanelRolling(data) {
   chart._refreshTheme = () => chart.setOption(resolveMarkPointOverlaps(getOption()), true);
 }
 
+/**
+ * 把月度价格序列转换为对数同比 ln(P_t) - ln(P_{t-12})。
+ * 以 YYYY-MM 作为 key 查找 12 个月前的值，避免 index 漂移。
+ */
+function buildLogYoySeries(rawSeries) {
+  const byMonth = new Map();
+  for (const item of rawSeries || []) {
+    if (!item?.date || !(item.value > 0)) continue;
+    byMonth.set(item.date.slice(0, 7), item);
+  }
+  const ordered = Array.from(byMonth.values()).sort((a, b) => a.date.localeCompare(b.date));
+  const result = [];
+  for (const item of ordered) {
+    const d = new Date(item.date);
+    if (isNaN(d.getTime())) continue;
+    const prevY = d.getUTCFullYear() - 1;
+    const prevM = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const prev = byMonth.get(`${prevY}-${prevM}`);
+    if (!prev || !(prev.value > 0)) continue;
+    result.push({
+      date: item.date,
+      value: Math.log(item.value) - Math.log(prev.value),
+      now: item.value,
+      prev: prev.value,
+    });
+  }
+  return result;
+}
+
+/**
+ * 通用对数同比面板：美股绿涨红跌，0 线为周期分界。
+ */
+function initLogYoyPanel(containerId, data, seriesName) {
+  const dom = document.getElementById(containerId);
+  if (!dom || !data?.series?.length) return;
+  const chart = registerChart(echarts.init(dom));
+  const series = buildLogYoySeries(data.series);
+  if (!series.length) return;
+  const latest = series.at(-1);
+  const greenStroke = '#389e0d';
+  const redStroke = '#cf1322';
+
+  function getOption() {
+    const gridColor = cssVar('--chart-grid') || '#f0f0f0';
+    const grayColor = cssVar('--gray') || '#999';
+    const textColor = cssVar('--text') || '#1a1a1a';
+
+    return {
+      animation: false,
+      grid: { left: 65, right: 20, top: 24, bottom: 60 },
+      xAxis: {
+        type: 'time',
+        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        splitLine: { show: false },
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: {
+          formatter: value => `${value.toFixed(0)}%`,
+          fontSize: 11,
+          color: grayColor,
+          fontFamily: CHART_FONT,
+        },
+        splitLine: { lineStyle: { color: gridColor } },
+      },
+      series: [
+        {
+          name: '上涨周期',
+          type: 'line',
+          data: series.map(item => [item.date, item.value >= 0 ? item.value * 100 : null]),
+          showSymbol: false,
+          lineStyle: { width: 1.6, color: greenStroke },
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(56,158,13,0.45)' },
+              { offset: 1, color: 'rgba(56,158,13,0.08)' },
+            ]),
+          },
+          markLine: {
+            silent: true,
+            symbol: 'none',
+            lineStyle: { color: grayColor, type: 'dashed', width: 1 },
+            data: [{ yAxis: 0, label: { formatter: '周期分界', fontSize: 11, color: grayColor } }],
+          },
+          z: 3,
+        },
+        {
+          name: '下跌周期',
+          type: 'line',
+          data: series.map(item => [item.date, item.value < 0 ? item.value * 100 : null]),
+          showSymbol: false,
+          lineStyle: { width: 1.6, color: redStroke },
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(207,19,34,0.08)' },
+              { offset: 1, color: 'rgba(207,19,34,0.45)' },
+            ]),
+          },
+          z: 3,
+        },
+      ],
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: cssVar('--card-bg') || '#fff',
+        borderColor: cssVar('--border') || '#e8e8e8',
+        textStyle: { fontSize: 13, color: textColor, fontFamily: CHART_FONT },
+        formatter: params => {
+          const axisLabel = params?.[0]?.axisValueLabel || '';
+          // 两个 series 中总有一个是 null，另一个携带真实值
+          const active = params.find(p => Array.isArray(p.value) && p.value[1] != null);
+          const idx = active ? active.dataIndex : (params?.[0]?.dataIndex ?? -1);
+          const point = series[idx];
+          if (!point) return axisLabel;
+          const tone = point.value >= 0 ? '上涨' : '下跌';
+          return [
+            axisLabel,
+            `对数同比: <b style="color:${point.value >= 0 ? greenStroke : redStroke}">${(point.value * 100).toFixed(2)}%</b> (${tone})`,
+            `当月收盘: ${formatNumber(point.now, 2)}`,
+            `12个月前: ${formatNumber(point.prev, 2)}`,
+          ].join('<br/>');
+        },
+      },
+      dataZoom: getDataZoom(grayColor),
+    };
+  }
+
+  chart.setOption(getOption());
+  chart._refreshTheme = () => chart.setOption(getOption(), true);
+}
+
 function initLongRunIndexPanel(containerId, summaryId, data, recessionData, seriesName, toggleId) {
   const dom = document.getElementById(containerId);
   if (!dom || !data?.series?.length) {
@@ -3260,6 +3390,8 @@ async function main() {
 
     initPanelPrice(priceData, recessionData, sp500CenturyData);
     initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
+    initLogYoyPanel('chartSp500LogYoy', sp500CenturyData, '标普500 对数同比');
+    initLogYoyPanel('chartNasdaqLogYoy', nasdaqCompositeData, '纳斯达克综指 对数同比');
     initAnnualReturnsPanel(annualReturnsData);
     initPanelAnnualizedMatrix(sp500CenturyData);
     initReturnDetailsPanel(returnDetailsData);
