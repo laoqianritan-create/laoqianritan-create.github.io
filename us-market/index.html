@@ -41,7 +41,6 @@
         <a class="nav-item" href="#panel-nasdaq100-annual" data-panel="panel-nasdaq100-annual">年回报</a>
         <a class="nav-item" href="#panel-nasdaq100-member-returns" data-panel="panel-nasdaq100-member-returns">近1年</a>
         <a class="nav-item" href="#panel-nasdaq100-ytd" data-panel="panel-nasdaq100-ytd">年内</a>
-        <a class="nav-item" href="#panel-nasdaq100-yield" data-panel="panel-nasdaq100-yield">股息率</a>
         <a class="nav-item" href="#panel-nasdaq100-weights" data-panel="panel-nasdaq100-weights">权重累计</a>
         <a class="nav-item" href="#panel-dow-century" data-panel="panel-dow-century">道指</a>
       </div>
@@ -67,7 +66,7 @@
     </svg>
   </div>
   <div class="hero-inner">
-    <h1 class="hero-title">Big Picture<span class="hero-title-cn">：数十年尺度下的美股</span></h1>
+    <h1 class="hero-title">Big Picture<span class="hero-title-cn">：百年尺度下的美股</span></h1>
     <p class="hero-subtitle">Time in the market.</p>
   </div>
 </section>
@@ -501,22 +500,6 @@
     </div>
   </section>
 
-  <section class="panel" id="panel-nasdaq100-yield" data-category="cross" hidden>
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">纳斯达克100股息率</h2>
-          <p class="panel-desc">按股息率排序，快速定位指数内部的高分红成员</p>
-        </div>
-        <div class="panel-controls">
-          <button class="btn btn-export" data-chart="chartNasdaq100Yield" title="导出PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="chart-container chart-hero chart-ranking-tall" id="chartNasdaq100Yield"></div>
-      <div class="metric-strip" id="nasdaq100YieldSummary"></div>
-    </div>
-  </section>
-
   <section class="panel" id="panel-nasdaq100-weights" data-category="cross" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -565,15 +548,16 @@
         <li><a href="https://laoqianritan-create.github.io/" target="_blank" rel="noopener">老钱日日谈</a></li>
         <li><a href="https://www.xiaoyuzhoufm.com/podcast/6388760f22567e8ea6ad070f" target="_blank" rel="noopener">播客「面基」</a></li>
         <li><a href="https://wxaurl.cn/l2CGydM7n4h" target="_blank" rel="noopener">趋势动物小程序</a></li>
-        <li><span class="footer-link-pending">有知有行 App</span></li>
-        <li><span class="footer-link-pending">有知有行 SBBI</span></li>
+        <li><a href="https://youzhiyouxing.cn/" target="_blank" rel="noopener">有知有行 App</a></li>
+        <li><a href="https://youzhiyouxing.cn/materials/1890" target="_blank" rel="noopener">有知有行 SBBI</a></li>
+        <li><a href="https://www.hongsehuojian.com/red-rocket/home" target="_blank" rel="noopener">红色火箭</a></li>
       </ul>
     </div>
     <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · 美股复盘看板</p>
   </div>
 </footer>
 
-<script src="app.js"></script>
+<script src="app.js?v=20260416182054"></script>
 <script>
 // Hero banner: SP500 百年走势动态曲线（对数坐标，循环）
 (function initHeroCurve() {

@@ -157,8 +157,8 @@ function resolveMarkPointOverlaps(option, opts = {}) {
   if (!option || !Array.isArray(option.series)) return option;
 
   const isLog = opts.yAxis === 'log';
-  const CHART_HEIGHT = 600;
-  const MIN_GAP_PX = 16;
+  const CHART_HEIGHT = opts.chartHeight ?? 600;
+  const MIN_GAP_PX = opts.minGapPx ?? 16;
 
   // Collect all markPoint data entries with references for mutation
   const entries = [];
@@ -2412,15 +2412,21 @@ function initPanelM7(data) {
           type: 'solid',
         },
         markPoint: latestPoint ? {
-          data: [
-            buildSingleMarkPoint(
+          data: [(() => {
+            const mp = buildSingleMarkPoint(
               latestPoint[0],
               latestPoint[1],
               `${labelName} ${formatPercent(latestPoint[1] - 100, 1)}`,
               color,
               'right',
-            ),
-          ],
+            );
+            // META 值长期贴近 GOOGL，通用防重叠算法不够用，预先把 META 标签下推
+            if (mp && member.ticker === 'META') {
+              mp.label = mp.label || {};
+              mp.label.offset = [0, 20];
+            }
+            return mp;
+          })()],
         } : undefined,
         z: 2,
       };
@@ -2502,8 +2508,9 @@ function initPanelM7(data) {
     };
   }
 
-  chart.setOption(resolveMarkPointOverlaps(getOption(), { yAxis: 'log' }));
-  chart._refreshTheme = () => chart.setOption(resolveMarkPointOverlaps(getOption(), { yAxis: 'log' }), true);
+  const m7OverlapOpts = { yAxis: 'log', chartHeight: 420, minGapPx: 18 };
+  chart.setOption(resolveMarkPointOverlaps(getOption(), m7OverlapOpts));
+  chart._refreshTheme = () => chart.setOption(resolveMarkPointOverlaps(getOption(), m7OverlapOpts), true);
 
   const strongest = data.members.slice().sort((a, b) => b.returnPct - a.returnPct)[0];
   const weakest = data.members.slice().sort((a, b) => a.returnPct - b.returnPct)[0];
@@ -3016,19 +3023,22 @@ function initNasdaq100AnnualPanel(data) {
 }
 
 function initNasdaqRankingPanel(domId, summaryId, companies, metricConfig) {
-  const chart = registerChart(echarts.init(document.getElementById(domId)));
+  const container = document.getElementById(domId);
+  if (!container) return;
   const rows = companies
     .filter(item => item[metricConfig.key] != null)
     .slice()
     .sort((a, b) => (b[metricConfig.key] || 0) - (a[metricConfig.key] || 0));
+  // 动态撑高图表容器，完整展示所有行（无 dataZoom 滑动）
+  const gridTop = metricConfig.gridTop ?? 20;
+  const gridBottom = metricConfig.gridBottom ?? 20;
+  const rowPx = metricConfig.rowHeight ?? 14;
+  const dynamicHeight = rows.length * rowPx + gridTop + gridBottom + 12;
+  container.style.height = `${dynamicHeight}px`;
+  container.style.minHeight = `${dynamicHeight}px`;
+  const chart = registerChart(echarts.init(container));
   const minMetricValue = rows.reduce((min, item) => Math.min(min, item[metricConfig.key]), Infinity);
   const maxMetricValue = rows.reduce((max, item) => Math.max(max, item[metricConfig.key]), -Infinity);
-  const defaultVisibleCount = typeof metricConfig.defaultVisibleCount === 'function'
-    ? metricConfig.defaultVisibleCount()
-    : (metricConfig.defaultVisibleCount ?? 25);
-  const defaultEndValue = metricConfig.showAllByDefault
-    ? rows.length - 1
-    : Math.min(rows.length - 1, Math.max(defaultVisibleCount - 1, 0));
   const xAxisMin = typeof metricConfig.xAxisMin === 'function'
     ? metricConfig.xAxisMin(minMetricValue, maxMetricValue, rows)
     : metricConfig.xAxisMin;
@@ -3095,23 +3105,6 @@ function initNasdaqRankingPanel(domId, summaryId, companies, metricConfig) {
           ].filter(Boolean).join('<br/>');
         },
       },
-      dataZoom: [
-        { type: 'inside', yAxisIndex: 0, startValue: 0, endValue: defaultEndValue },
-        {
-          type: 'slider',
-          yAxisIndex: 0,
-          right: 8,
-          width: 18,
-          startValue: 0,
-          endValue: defaultEndValue,
-          borderColor: 'transparent',
-          backgroundColor: cssVar('--bg-section') || '#fafafa',
-          fillerColor: cssVar('--accent-light') || 'rgba(71,88,224,0.08)',
-          handleStyle: { color: cssVar('--accent') || '#4758e0' },
-          textStyle: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
-          moveHandleSize: 8,
-        },
-      ],
     };
   }
 
@@ -3310,19 +3303,6 @@ async function main() {
       xAxisMin: minValue => Math.min(-100, Math.floor(minValue / 10) * 10),
       xAxisMax: (_minValue, maxValue) => Math.max(100, Math.ceil(maxValue / 10) * 10),
       color: value => (value >= 0 ? (cssVar('--green') || '#389e0d') : (cssVar('--red') || '#cf1322')),
-    });
-    initNasdaqRankingPanel('chartNasdaq100Yield', 'nasdaq100YieldSummary', nasdaq100Data.companies, {
-      key: 'dividendYield',
-      label: '股息率',
-      summaryLabel: '股息率均值',
-      showAllByDefault: true,
-      gridLeft: 132,
-      gridRight: 72,
-      barMaxWidth: 8,
-      xAxisSplitNumber: 4,
-      xAxisMin: () => 0,
-      xAxisMax: (_minValue, maxValue) => Math.max(8, Math.ceil(maxValue)),
-      color: () => cssVar('--sp500-line') || '#1a1a1a',
     });
     initNasdaq100WeightsPanel(nasdaq100Data);
     initLongRunIndexPanel('chartDowCentury', 'dowCenturySummary', dowCenturyData, recessionData, '道琼斯指数', 'dowCenturyScaleToggle');
