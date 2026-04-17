@@ -100,7 +100,9 @@ export function buildRollingAnnualizedSeries(sourceSeries, windowYears = 5) {
   };
 }
 
-// 对数同比序列：ln(P_t) − ln(P_{t-12}) 按 YYYY-MM 查找 12 个月前价格
+// 同比序列：(P_t − P_{t-12}) / P_{t-12}，按 YYYY-MM 查找 12 个月前价格
+// 2026-04-17 从对数同比改为简单同比：对数同比允许 <-100%（如 1932 -120%），读者难以直觉理解；
+// 简单同比下限卡在 -100%，符合日常认知。函数名保留 buildLogYoySeries 避免跨文件改导入。
 export function buildLogYoySeries(rawSeries) {
   const byMonth = new Map();
   for (const item of rawSeries || []) {
@@ -118,7 +120,7 @@ export function buildLogYoySeries(rawSeries) {
     if (!prev || !(prev.value > 0)) continue;
     result.push({
       date: item.date,
-      value: Math.log(item.value) - Math.log(prev.value),
+      value: (item.value - prev.value) / prev.value,
       now: item.value,
       prev: prev.value,
     });

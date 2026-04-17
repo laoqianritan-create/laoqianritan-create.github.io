@@ -95,8 +95,8 @@ async function main() {
 
     initPanelPrice(priceData, recessionData, sp500CenturyData);
     initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
-    initLogYoyPanel('chartSp500LogYoy', sp500CenturyData, '标普500 对数同比');
-    initLogYoyPanel('chartNasdaqLogYoy', nasdaqCompositeData, '纳斯达克综指 对数同比');
+    initLogYoyPanel('chartSp500LogYoy', sp500CenturyData, '标普500 同比');
+    initLogYoyPanel('chartNasdaqLogYoy', nasdaqCompositeData, '纳斯达克综指 同比');
     initAnnualReturnsPanel(annualReturnsData);
     initPanelAnnualizedMatrix(sp500CenturyData);
     initReturnDetailsPanel(returnDetailsData);

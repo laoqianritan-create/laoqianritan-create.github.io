@@ -228,7 +228,7 @@ export function initLogYoyPanel(containerId, data, seriesName) {
           const tone = point.value >= 0 ? '上涨' : '下跌';
           return [
             axisLabel,
-            `对数同比: <b style="color:${point.value >= 0 ? greenStroke : redStroke}">${(point.value * 100).toFixed(2)}%</b> (${tone})`,
+            `同比: <b style="color:${point.value >= 0 ? greenStroke : redStroke}">${(point.value * 100).toFixed(2)}%</b> (${tone})`,
             `当月收盘: ${formatNumber(point.now, 2)}`,
             `12个月前: ${formatNumber(point.prev, 2)}`,
           ].join('<br/>');
