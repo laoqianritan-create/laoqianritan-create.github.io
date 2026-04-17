@@ -100,9 +100,11 @@ export function buildRollingAnnualizedSeries(sourceSeries, windowYears = 5) {
   };
 }
 
-// 同比序列：(P_t − P_{t-12}) / P_{t-12}，按 YYYY-MM 查找 12 个月前价格
-// 2026-04-17 从对数同比改为简单同比：对数同比允许 <-100%（如 1932 -120%），读者难以直觉理解；
-// 简单同比下限卡在 -100%，符合日常认知。函数名保留 buildLogYoySeries 避免跨文件改导入。
+// 12 个月滚动回撤序列：(P_t − max(P_{t-12..t-1})) / max(P_{t-12..t-1})
+// 2026-04-17 从同比改为"相对过去 12 月最高点的涨跌"：同比 (YoY) 对于 V 形崩盘（如 2020-03）只显示 -8.8%
+// 严重低估熊市幅度；改后 2020-03 约 -20%，1932-06 仍约 -70%，与"牛熊周期"名称匹配。
+// 正值 = 创过去 12 月新高（上涨周期），负值 = 回撤中（下跌周期），深度反映熊市幅度。
+// 函数名保留 buildLogYoySeries 避免跨文件改导入。
 export function buildLogYoySeries(rawSeries) {
   const byMonth = new Map();
   for (const item of rawSeries || []) {
@@ -114,15 +116,22 @@ export function buildLogYoySeries(rawSeries) {
   for (const item of ordered) {
     const d = new Date(item.date);
     if (isNaN(d.getTime())) continue;
-    const prevY = d.getUTCFullYear() - 1;
-    const prevM = String(d.getUTCMonth() + 1).padStart(2, '0');
-    const prev = byMonth.get(`${prevY}-${prevM}`);
-    if (!prev || !(prev.value > 0)) continue;
+    // 扫描过去 12 个月（不含当月）的最高收盘
+    let peak = null;
+    for (let k = 1; k <= 12; k++) {
+      const pd = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() - k, 1));
+      const pym = `${pd.getUTCFullYear()}-${String(pd.getUTCMonth() + 1).padStart(2, '0')}`;
+      const prev = byMonth.get(pym);
+      if (prev && prev.value > 0 && (peak == null || prev.value > peak)) {
+        peak = prev.value;
+      }
+    }
+    if (peak == null) continue;
     result.push({
       date: item.date,
-      value: (item.value - prev.value) / prev.value,
+      value: (item.value - peak) / peak,
       now: item.value,
-      prev: prev.value,
+      prev: peak,
     });
   }
   return result;

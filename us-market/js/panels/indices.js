@@ -225,12 +225,12 @@ export function initLogYoyPanel(containerId, data, seriesName) {
           const idx = active ? active.dataIndex : (params?.[0]?.dataIndex ?? -1);
           const point = series[idx];
           if (!point) return axisLabel;
-          const tone = point.value >= 0 ? '上涨' : '下跌';
+          const tone = point.value >= 0 ? '创新高' : '回撤中';
           return [
             axisLabel,
-            `同比: <b style="color:${point.value >= 0 ? greenStroke : redStroke}">${(point.value * 100).toFixed(2)}%</b> (${tone})`,
+            `相对 12 月高点: <b style="color:${point.value >= 0 ? greenStroke : redStroke}">${(point.value * 100).toFixed(2)}%</b> (${tone})`,
             `当月收盘: ${formatNumber(point.now, 2)}`,
-            `12个月前: ${formatNumber(point.prev, 2)}`,
+            `12 月高点: ${formatNumber(point.prev, 2)}`,
           ].join('<br/>');
         },
       },
