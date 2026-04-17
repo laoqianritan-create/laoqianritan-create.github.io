@@ -95,15 +95,26 @@ async function main() {
 
     initPanelPrice(priceData, recessionData, sp500CenturyData);
     initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
-    initLogYoyPanel('chartSp500LogYoy', sp500CenturyData, '标普500 同比');
-    // 纳指 1980s-1990s 五段密集熊市的手工坐标（用户拍板的位置）
-    // key 是段极值点的 'YYYY-MM'；force=true 让 1998 这种 < LABEL_MIN_BEAR 的段也露出
+    // ── 牛熊周期面板的手工坐标 ──
+    // 标签默认紧贴极值点（distance=10 写死）。下面 override 仅处理用户拍板的特例：
+    // - position 切换 top/bottom 用来"翻到曲线对面"（1935 例外往上）
+    // - xOff 用来左右挪动避让/避免被边界裁切
+    // - yOff 一律 0（不允许飘离曲线超过 distance）
+    initLogYoyPanel('chartSp500LogYoy', sp500CenturyData, '标普500 同比', {
+      '1935-03': { xOff: -30, yOff: 0, position: 'top' }, // 往左上角
+      '1938-03': { xOff: 0,   yOff: 0 },                   // 锁正下方
+      '1942-04': { xOff: 0,   yOff: 0 },                   // 锁正下方
+      '1974-09': { xOff: 0,   yOff: 0 },                   // 锁正下方
+      '2021-12': { xOff: 0,   yOff: 0 },                   // 锁正上方
+      '2026-04': { xOff: 0,   yOff: 0 },                   // 锁正上方
+    });
     initLogYoyPanel('chartNasdaqLogYoy', nasdaqCompositeData, '纳斯达克综指 同比', {
-      '1982-07': { xOff: -55, yOff: 0  },              // 1982 整体往左
-      '1984-07': { xOff: 25,  yOff: 60 },              // 1984 曲线下方 + 略右
-      '1987-11': { xOff: 0,   yOff: 50 },              // 1987 直接下方
-      '1990-10': { xOff: 0,   yOff: 90 },              // 1990 下方再深一档（避开 1987）
-      '1998-08': { xOff: 0,   yOff: 50, force: true }, // 1998 短熊：先 force 显示，再放下方
+      '1982-07': { xOff: -55, yOff: 0 },                  // 整体往左避开 1984
+      '1984-07': { xOff: 0,   yOff: 0 },                   // 锁正下方
+      '1987-11': { xOff: 0,   yOff: 0 },                   // 锁正下方
+      '1990-10': { xOff: 0,   yOff: 0 },                   // 锁正下方
+      '1998-08': { xOff: 0,   yOff: 0, force: true },     // 短熊强制显示 + 锁正下方
+      '2026-04': { xOff: -55, yOff: 0 },                  // 进行中牛市贴右边界，整体左移避免被裁
     });
     initAnnualReturnsPanel(annualReturnsData);
     initPanelAnnualizedMatrix(sp500CenturyData);

@@ -294,8 +294,8 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
   const LABEL_MIN_BULL = 18;   // 牛市阈值：避开 1930s 短牛扎堆
   const LABEL_MIN_BEAR = 3;    // 熊市阈值：保证 1987 / 2020 COVID 这类短暴跌有标签
   const STAGGER_GAP_MONTHS = 60;  // ~5年：覆盖 2020↔2022、1981↔1984 这类近距离同类段
-  const STAGGER_X_OFFSET = 38;    // 横向错开像素量，配合 fontSize 10 / 三行文本宽度
-  const STAGGER_Y_STEP   = 30;    // 同类段每多一个，垂直再下推（熊）/上推（牛）多少像素
+  const STAGGER_X_OFFSET = 50;    // 横向错开像素量
+  const LABEL_DISTANCE   = 10;    // 标签与极值点的固定垂直距离（写死，不做 yOff 阶梯）
 
   // 混合刻度：
   //   牛市 Y = ln(price/start)*100（对数压缩，防止百年大牛视觉独占）
@@ -342,30 +342,28 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
       return p.seg.duration_months >= (p.isBull ? LABEL_MIN_BULL : LABEL_MIN_BEAR);
     });
 
-    // stagger 策略：同类段（牛/熊各自一组）固定在 base position（牛=top / 熊=bottom），
-    // 不再翻转上下，靠"水平左右 + 垂直阶梯"避让。第 N 个挤在 60 个月内的标签：
-    //   水平：奇数右 +X / 偶数左 -X（X=38px）
-    //   垂直：tier × Y_STEP（Y_STEP=30px），熊向下、牛向上
-    // 阶梯叠加给标签拉开 30/60/90... 的高度差，连同年月前缀完全规避重叠。
+    // stagger 策略：标签的垂直距离写死（永远紧贴极值点上/下 LABEL_DISTANCE px），
+    // 只用水平 xOff 错开。同类段挤在 60 个月内时：
+    //   counter 1 → +50  counter 2 → -50  counter 3 → +100  counter 4 → -100 …
+    // 不再做 yOff 阶梯——避免标签飘离对应曲线点造成视觉错位。
     function stagger(list, basePosition) {
       list.sort((a, b) => a.extremeDate.localeCompare(b.extremeDate));
-      const ySign = basePosition === 'top' ? -1 : +1;
       let lastMs = null;
       let counter = 0;
       for (const p of list) {
         const curMs = new Date(p.extremeDate).getTime();
-        let xOff = 0, yOff = 0;
+        let xOff = 0;
         if (lastMs != null) {
           const gapMonths = (curMs - lastMs) / (30.4375 * 24 * 3600 * 1000);
           if (gapMonths < STAGGER_GAP_MONTHS) {
             counter += 1;
-            xOff = (counter % 2 === 1 ? +1 : -1) * STAGGER_X_OFFSET;
-            yOff = ySign * counter * STAGGER_Y_STEP;
+            const tier = Math.ceil(counter / 2);
+            xOff = (counter % 2 === 1 ? +1 : -1) * STAGGER_X_OFFSET * tier;
           } else {
             counter = 0;
           }
         }
-        p.placement = { position: basePosition, xOff, yOff };
+        p.placement = { position: basePosition, xOff, yOff: 0 };
         lastMs = curMs;
       }
     }
@@ -373,11 +371,12 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
     stagger(labeled.filter(p => !p.isBull), 'bottom');
 
     // 第三遍补丁：override 直接覆盖自动 stagger 的 placement
+    // ov.position 可显式指定 'top'/'bottom'，比如 1935 熊市要打到曲线上方
     for (const p of labeled) {
       const ov = labelOverrides[ovKey(p)];
       if (!ov) continue;
       p.placement = {
-        position: p.isBull ? 'top' : 'bottom',
+        position: ov.position || (p.isBull ? 'top' : 'bottom'),
         xOff: ov.xOff ?? 0,
         yOff: ov.yOff ?? 0,
       };
@@ -411,7 +410,7 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
             label: {
               show: true,
               position: placement.position,
-              distance: 6,
+              distance: LABEL_DISTANCE,
               offset: [placement.xOff, placement.yOff],
               color: isBull ? BULL_STROKE : BEAR_STROKE,
               fontSize: 10,
@@ -433,8 +432,8 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
 
     return {
       animation: false,
-      // bottom/top 留够空间给 3-4 层阶梯标签（熊下牛上，每层 30px）+ dataZoom 滑块
-      grid: { left: 60, right: 24, top: 80, bottom: 130 },
+      // 标签紧贴极值点（distance=10），不再需要超大底/顶边距
+      grid: { left: 60, right: 24, top: 60, bottom: 70 },
       xAxis: {
         type: 'time',
         axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
