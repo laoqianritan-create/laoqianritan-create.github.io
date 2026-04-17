@@ -1,0 +1,39 @@
+/* ── 主题变量 ── */
+:root {
+  --bg: #ffffff;
+  --bg-section: #fafafa;
+  --text: #1a1a1a;
+  --text-secondary: #666666;
+  --border: #e8e8e8;
+  --sp500-line: #1a1a1a;
+  --green: #389e0d;
+  --red: #cf1322;
+  --accent: #4758e0;
+  --accent-light: rgba(71,88,224,0.08);
+  --chart-grid: #f0f0f0;
+  --gray: #999999;
+  --header-bg: rgba(255,255,255,0.92);
+  --card-bg: #ffffff;
+  --table-stripe: #fafafa;
+  --table-hover: #f0f4ff;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --bg-section: #111111;
+  --text: #e0e0e0;
+  --text-secondary: #888888;
+  --border: #2a2a2a;
+  --sp500-line: #e0e0e0;
+  --green: #52c41a;
+  --red: #ff4d4f;
+  --accent: #6b7cff;
+  --accent-light: rgba(107,124,255,0.12);
+  --chart-grid: #222222;
+  --gray: #666666;
+  --header-bg: rgba(10,10,10,0.92);
+  --card-bg: #181818;
+  --table-stripe: #141414;
+  --table-hover: #1a1a2e;
+  --shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
