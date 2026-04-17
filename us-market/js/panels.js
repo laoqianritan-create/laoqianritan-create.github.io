@@ -96,7 +96,15 @@ async function main() {
     initPanelPrice(priceData, recessionData, sp500CenturyData);
     initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
     initLogYoyPanel('chartSp500LogYoy', sp500CenturyData, '标普500 同比');
-    initLogYoyPanel('chartNasdaqLogYoy', nasdaqCompositeData, '纳斯达克综指 同比');
+    // 纳指 1980s-1990s 五段密集熊市的手工坐标（用户拍板的位置）
+    // key 是段极值点的 'YYYY-MM'；force=true 让 1998 这种 < LABEL_MIN_BEAR 的段也露出
+    initLogYoyPanel('chartNasdaqLogYoy', nasdaqCompositeData, '纳斯达克综指 同比', {
+      '1982-07': { xOff: -55, yOff: 0  },              // 1982 整体往左
+      '1984-07': { xOff: 25,  yOff: 60 },              // 1984 曲线下方 + 略右
+      '1987-11': { xOff: 0,   yOff: 50 },              // 1987 直接下方
+      '1990-10': { xOff: 0,   yOff: 90 },              // 1990 下方再深一档（避开 1987）
+      '1998-08': { xOff: 0,   yOff: 50, force: true }, // 1998 短熊：先 force 显示，再放下方
+    });
     initAnnualReturnsPanel(annualReturnsData);
     initPanelAnnualizedMatrix(sp500CenturyData);
     initReturnDetailsPanel(returnDetailsData);

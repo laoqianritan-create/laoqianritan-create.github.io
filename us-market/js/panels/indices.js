@@ -274,12 +274,16 @@ function middleDate(startDate, endDate) {
   return new Date(ms).toISOString().slice(0, 10);
 }
 
-export function initLogYoyPanel(containerId, data, seriesName) {
+export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = {}) {
   const dom = document.getElementById(containerId);
   if (!dom || !data?.series?.length) return;
   const chart = registerChart(echarts.init(dom));
   const { segments, ordered } = buildBullBearSegments(data.series);
   if (!segments.length) return;
+
+  // labelOverrides 用法：键 = 段极值点的 'YYYY-MM'（合并段用 trough、其余用 anchor），
+  // 值 = { xOff, yOff, force }。
+  // 提供 override 的段会跳过 stagger 走手工坐标；force=true 还会无视 LABEL_MIN_* 阈值强制显示。
 
   const BULL_STROKE = '#389e0d';
   const BEAR_STROKE = '#cf1322';
@@ -331,8 +335,12 @@ export function initLogYoyPanel(containerId, data, seriesName) {
     });
 
     // 第二遍：筛标注 → 同类内做"距离 + 翻转"双轴错开
-    const labeled = prepared.filter(p => p.seg.duration_months >=
-      (p.isBull ? LABEL_MIN_BULL : LABEL_MIN_BEAR));
+    const ovKey = p => (p.seg.extreme || p.seg.end).date.slice(0, 7);
+    const labeled = prepared.filter(p => {
+      const ov = labelOverrides[ovKey(p)];
+      if (ov?.force) return true;
+      return p.seg.duration_months >= (p.isBull ? LABEL_MIN_BULL : LABEL_MIN_BEAR);
+    });
 
     // stagger 策略：同类段（牛/熊各自一组）固定在 base position（牛=top / 熊=bottom），
     // 不再翻转上下，靠"水平左右 + 垂直阶梯"避让。第 N 个挤在 60 个月内的标签：
@@ -363,6 +371,17 @@ export function initLogYoyPanel(containerId, data, seriesName) {
     }
     stagger(labeled.filter(p => p.isBull), 'top');
     stagger(labeled.filter(p => !p.isBull), 'bottom');
+
+    // 第三遍补丁：override 直接覆盖自动 stagger 的 placement
+    for (const p of labeled) {
+      const ov = labelOverrides[ovKey(p)];
+      if (!ov) continue;
+      p.placement = {
+        position: p.isBull ? 'top' : 'bottom',
+        xOff: ov.xOff ?? 0,
+        yOff: ov.yOff ?? 0,
+      };
+    }
 
     // 第三遍：生成 echarts series
     return prepared.map(p => {
