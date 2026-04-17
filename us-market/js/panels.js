@@ -96,25 +96,28 @@ async function main() {
     initPanelPrice(priceData, recessionData, sp500CenturyData);
     initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
     // ── 牛熊周期面板的手工坐标 ──
-    // 标签默认紧贴极值点（distance=10 写死）。下面 override 仅处理用户拍板的特例：
-    // - position 切换 top/bottom 用来"翻到曲线对面"（1935 例外往上）
-    // - xOff 用来左右挪动避让/避免被边界裁切
-    // - yOff 一律 0（不允许飘离曲线超过 distance）
+    // 标签默认 distance=10 紧贴极值点；override 用来：
+    //  - 把标签推进上下方的大片空白区（牛市 yOff 正值往下、负值往上拔；熊市相反）
+    //  - 解决边界裁切（2026 进行中段贴右边界，xOff 负值左拉）
+    //  - 修正自动 stagger 把单个标签错位的情况（1972 / 2002 / 2022）
     initLogYoyPanel('chartSp500LogYoy', sp500CenturyData, '标普500 同比', {
-      '1935-03': { xOff: -30, yOff: 0, position: 'top' }, // 往左上角
-      '1938-03': { xOff: 0,   yOff: 0 },                   // 锁正下方
-      '1942-04': { xOff: 0,   yOff: 0 },                   // 锁正下方
-      '1974-09': { xOff: 0,   yOff: 0 },                   // 锁正下方
-      '2021-12': { xOff: 0,   yOff: 0 },                   // 锁正上方
-      '2026-04': { xOff: 0,   yOff: 0 },                   // 锁正上方
+      '1935-03': { xOff: -30, yOff: 0,  position: 'top' }, // 翻到上方左侧空白区
+      '1938-03': { xOff: 0,   yOff: 0 },
+      '1942-04': { xOff: 0,   yOff: 0 },
+      '1972-12': { xOff: 0,   yOff: 0 },                    // 取消 stagger，回到正上方
+      '1974-09': { xOff: 0,   yOff: 0 },
+      '2021-12': { xOff: -30, yOff: 36 },                   // 左下方（推进 0%~+50% 空白区）
+      '2022-09': { xOff: -38, yOff: 0 },                    // 整体左移避免压住 2020.03
+      '2026-04': { xOff: -55, yOff: 0 },                    // 贴右边界，整体左移避免裁切
     });
     initLogYoyPanel('chartNasdaqLogYoy', nasdaqCompositeData, '纳斯达克综指 同比', {
-      '1982-07': { xOff: -55, yOff: 0 },                  // 整体往左避开 1984
-      '1984-07': { xOff: 0,   yOff: 0 },                   // 锁正下方
-      '1987-11': { xOff: 0,   yOff: 0 },                   // 锁正下方
-      '1990-10': { xOff: 0,   yOff: 0 },                   // 锁正下方
-      '1998-08': { xOff: 0,   yOff: 0, force: true },     // 短熊强制显示 + 锁正下方
-      '2026-04': { xOff: -55, yOff: 0 },                  // 进行中牛市贴右边界，整体左移避免被裁
+      '1982-07': { xOff: -25, yOff: 0 },                   // 减少左移幅度，往右回挪一些
+      '1984-07': { xOff: 0,   yOff: 0 },
+      '1987-11': { xOff: 0,   yOff: 0 },
+      '1990-10': { xOff: 0,   yOff: 0 },
+      '1998-08': { xOff: 0,   yOff: 0, force: true },      // 短熊强制显示
+      '2002-09': { xOff: 0,   yOff: 0 },                    // 取消 stagger，回到正下方
+      '2026-04': { xOff: -45, yOff: 0 },                   // 稍微往右（之前 -55 偏多）
     });
     initAnnualReturnsPanel(annualReturnsData);
     initPanelAnnualizedMatrix(sp500CenturyData);
