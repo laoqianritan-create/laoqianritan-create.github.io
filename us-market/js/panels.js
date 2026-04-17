@@ -101,23 +101,26 @@ async function main() {
     //  - 解决边界裁切（2026 进行中段贴右边界，xOff 负值左拉）
     //  - 修正自动 stagger 把单个标签错位的情况（1972 / 2002 / 2022）
     initLogYoyPanel('chartSp500LogYoy', sp500CenturyData, '标普500 同比', {
-      '1935-03': { xOff: -30, yOff: 0,  position: 'top' }, // 翻到上方左侧空白区
+      '1935-03': { xOff: 0,   yOff: 50 },                   // 锁下方 + 往下推进空白区
       '1938-03': { xOff: 0,   yOff: 0 },
       '1942-04': { xOff: 0,   yOff: 0 },
       '1972-12': { xOff: 0,   yOff: 0 },                    // 取消 stagger，回到正上方
       '1974-09': { xOff: 0,   yOff: 0 },
+      '2020-03': { xOff: -30, yOff: 0 },                    // 往左挪避开 2022
       '2021-12': { xOff: -30, yOff: 36 },                   // 左下方（推进 0%~+50% 空白区）
-      '2022-09': { xOff: -38, yOff: 0 },                    // 整体左移避免压住 2020.03
-      '2026-04': { xOff: -55, yOff: 0 },                    // 贴右边界，整体左移避免裁切
+      '2022-09': { xOff: 30,  yOff: 0 },                    // 往右挪避开 2020
+      '2026-04': { xOff: -40, yOff: 0 },                    // 比之前少左移 15px
     });
     initLogYoyPanel('chartNasdaqLogYoy', nasdaqCompositeData, '纳斯达克综指 同比', {
       '1982-07': { xOff: -25, yOff: 0 },                   // 减少左移幅度，往右回挪一些
+      '1983-06': { xOff: -30, yOff: -15, force: true },   // 1983 短牛 force 显示，放到左侧空白区
       '1984-07': { xOff: 0,   yOff: 0 },
       '1987-11': { xOff: 0,   yOff: 0 },
+      '1989-09': { xOff: 0,   yOff: 0 },                    // 取消 stagger，回到正上方
       '1990-10': { xOff: 0,   yOff: 0 },
       '1998-08': { xOff: 0,   yOff: 0, force: true },      // 短熊强制显示
       '2002-09': { xOff: 0,   yOff: 0 },                    // 取消 stagger，回到正下方
-      '2026-04': { xOff: -45, yOff: 0 },                   // 稍微往右（之前 -55 偏多）
+      '2026-04': { xOff: -25, yOff: 18 },                  // 稍微往下+往右
     });
     initAnnualReturnsPanel(annualReturnsData);
     initPanelAnnualizedMatrix(sp500CenturyData);
