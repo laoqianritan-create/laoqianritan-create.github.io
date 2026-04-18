@@ -307,7 +307,7 @@ export function initPanelPrice(data, recessionData, centuryData) {
 
   if (centuryData) {
     renderMetricStrip('sp500CenturySummary', [
-      buildMetricCard('数据起点', `${centuryData.start?.date || '--'} · ${centuryData.start ? formatNumber(centuryData.start.value, 2) : '--'}`, '月度数据起点'),
+      buildMetricCard('数据起点', `${centuryData.start?.date || '--'} | ${centuryData.start ? formatNumber(centuryData.start.value, 2) : '--'}`, '月度数据起点'),
       buildMetricCard('最新月度点位', centuryData.latest ? formatNumber(centuryData.latest.value, 2) : '--', centuryData.latest?.date || ''),
       buildMetricCard('长期复合增速', centuryData.cagr != null ? formatPercent(centuryData.cagr, 2) : '--', '1928年至今年化'),
       buildMetricCard('默认视图', '对数模式', '蓝色趋势线支持鼠标拖动，拖动时保留当前缩放窗口；时间轴预留到 2028 年。'),
@@ -998,37 +998,71 @@ export function initPanelPe(data, centuryData) {
 // 面板8：EPS
 // ══════════════════════════════════════════════════════
 
-export function initPanelEps(data) {
+export function initPanelEps(data, sp500CenturyData) {
   const chart = registerChart(echarts.init(document.getElementById('chartEps')));
-  const series = data.series.filter(item => item.value != null);
+  // 对数 y 轴需要正值（EPS 历史上偶有零或负值，需过滤）
+  const epsSeries = data.series.filter(item => item.value != null && item.value > 0);
+  const epsStart = epsSeries.length ? epsSeries[0].date : null;
+  // 标普500 月线对齐到 EPS 起点，用于副轴对照（对数视角）
+  const sp500Series = (sp500CenturyData?.series || [])
+    .filter(item => item.value != null && (!epsStart || item.date >= epsStart))
+    .map(item => [item.date, item.value]);
 
   function getOption() {
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
     const grayColor = cssVar('--gray') || '#999';
-    const accentColor = cssVar('--accent') || '#4758e0';
+    const epsColor = cssVar('--accent') || '#4758e0';
+    const spColor  = cssVar('--sp500-line') || '#1a1a1a';
 
     return {
       animation: false,
-      grid: { left: 70, right: 20, top: 20, bottom: 60 },
+      grid: { left: 64, right: 64, top: 36, bottom: 60 },
+      legend: getLineLegendConfig({ data: ['标普500 EPS (TTM)', '标普500 指数（对数）'] }),
       xAxis: {
         type: 'time',
         axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
         splitLine: { show: false },
       },
-      yAxis: {
-        type: 'value',
-        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
-        splitLine: { lineStyle: { color: gridColor } },
-      },
-      series: [{
-        name: 'EPS',
-        type: 'bar',
-        data: series.map(item => ({
-          value: [item.date, item.value],
-          itemStyle: { color: item.value >= 0 ? accentColor : (cssVar('--red') || '#cf1322') },
-        })),
-        barMaxWidth: 20,
-      }],
+      yAxis: [
+        {
+          type: 'log',
+          name: 'EPS ($)',
+          position: 'left',
+          nameTextStyle: { fontSize: 10, color: grayColor, fontFamily: CHART_FONT },
+          axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+          splitLine: { lineStyle: { color: gridColor } },
+        },
+        {
+          type: 'log',
+          name: '标普500',
+          position: 'right',
+          nameTextStyle: { fontSize: 10, color: grayColor, fontFamily: CHART_FONT },
+          axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+          splitLine: { show: false },
+        },
+      ],
+      series: [
+        {
+          name: '标普500 EPS (TTM)',
+          type: 'line',
+          yAxisIndex: 0,
+          showSymbol: false,
+          data: epsSeries.map(item => [item.date, item.value]),
+          color: epsColor,
+          lineStyle: { width: 2, color: epsColor },
+        },
+        {
+          name: '标普500 指数（对数）',
+          type: 'line',
+          yAxisIndex: 1,
+          showSymbol: false,
+          data: sp500Series,
+          color: spColor,
+          lineStyle: { width: 1.4, color: spColor },
+          large: true,
+          largeThreshold: 2000,
+        },
+      ],
       tooltip: {
         trigger: 'axis',
         backgroundColor: cssVar('--card-bg') || '#fff',
@@ -1039,13 +1073,17 @@ export function initPanelEps(data) {
           fontFamily: CHART_FONT,
         },
         formatter: params => {
-          const point = series[params[0].dataIndex];
-          const prev = params[0].dataIndex > 0 ? series[params[0].dataIndex - 1] : null;
-          let html = `${params[0].axisValueLabel}<br/>EPS: <b>${formatNumber(point.value, 2)}</b>`;
-          if (prev && prev.value) {
-            html += `<br/>相邻周期变化: <b>${formatPercent((point.value / prev.value - 1) * 100, 1)}</b>`;
+          const date = params?.[0]?.axisValueLabel || '';
+          const eps = params.find(p => p.seriesName.startsWith('标普500 EPS'));
+          const sp = params.find(p => p.seriesName.startsWith('标普500 指数'));
+          const lines = [date];
+          if (eps && eps.value && eps.value[1] != null) {
+            lines.push(`EPS: <b style="color:${epsColor}">${formatNumber(eps.value[1], 2)}</b>`);
           }
-          return html;
+          if (sp && sp.value && sp.value[1] != null) {
+            lines.push(`标普500: <b style="color:${spColor}">${formatNumber(sp.value[1], 0)}</b>`);
+          }
+          return lines.join('<br/>');
         },
       },
       dataZoom: getDataZoom(grayColor),
@@ -1322,8 +1360,8 @@ export function initAnnualReturnsPanel(data) {
   renderMetricStrip('annualSummary', [
     buildMetricCard('正收益年份', `${data.positiveYears}/${series.length}`, '先看长期里赚钱年份占比，再看波动的肥尾。'),
     buildMetricCard('长期均值', formatPercent(data.average || 0, 2), '全样本年度回报均值。'),
-    buildMetricCard('最好一年', data.best ? `${data.best.year} · ${formatPercent(data.best.value, 2)}` : '--', '历史最佳年度涨幅。'),
-    buildMetricCard('最差一年', data.worst ? `${data.worst.year} · ${formatPercent(data.worst.value, 2)}` : '--', '历史最大年度回撤。'),
+    buildMetricCard('最好一年', data.best ? `${data.best.year} | ${formatPercent(data.best.value, 2)}` : '--', '历史最佳年度涨幅。'),
+    buildMetricCard('最差一年', data.worst ? `${data.worst.year} | ${formatPercent(data.worst.value, 2)}` : '--', '历史最大年度回撤。'),
   ]);
 }
 

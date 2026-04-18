@@ -136,7 +136,7 @@ async function main() {
     initPanelVix(priceData, vixData, recessionData);
     initPanelPe(peData, sp500CenturyData);
     if (aiaeData) initPanelAiae(aiaeData);
-    initPanelEps(epsData);
+    initPanelEps(epsData, sp500CenturyData);
     initPanelRoe(roeData);
     initPanelRolling(sp500CenturyData);
     initPanelM7(m7Data);

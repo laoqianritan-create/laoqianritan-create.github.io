@@ -588,7 +588,7 @@ export function initLongRunIndexPanel(containerId, summaryId, data, recessionDat
   }
 
   renderMetricStrip(summaryId, [
-    buildMetricCard('起点', `${data.start?.date || '--'} · ${data.start ? formatNumber(data.start.value, 2) : '--'}`, '用起始月度点位给长周期一个基准。'),
+    buildMetricCard('起点', `${data.start?.date || '--'} | ${data.start ? formatNumber(data.start.value, 2) : '--'}`, '用起始月度点位给长周期一个基准。'),
     buildMetricCard('最新', data.latest ? formatNumber(data.latest.value, 2) : '--', data.latest ? `更新时间 ${data.latest.date}` : '等待数据'),
     buildMetricCard('复合增速', data.cagr != null ? formatPercent(data.cagr, 2) : '--', '按起点到当前月度点位计算的长期 CAGR。'),
     buildMetricCard('视角切换', '价格 / 对数 / 百分比', '价格看绝对点位，对数看复利斜率，百分比看自起点累计涨幅。'),
@@ -734,14 +734,14 @@ export function initPanelAiae(aiaeData) {
     buildMetricCard(
       '最新 AIAE',
       summary.latest_aiae != null ? `${(summary.latest_aiae * 100).toFixed(2)}%` : '--',
-      `${ymKey} · 历史百分位 ${pct}`
+      `${ymKey} | 历史百分位 ${pct}`
     ),
     buildMetricCard(
       '历史区间',
       summary.historical_min != null
         ? `${(summary.historical_min * 100).toFixed(1)}% ~ ${(summary.historical_max * 100).toFixed(1)}%`
         : '--',
-      `均值 ${summary.historical_mean != null ? (summary.historical_mean * 100).toFixed(2) : '--'}% · 1945+ 季频`
+      `均值 ${summary.historical_mean != null ? (summary.historical_mean * 100).toFixed(2) : '--'}% | 1945+ 季频`
     ),
     buildMetricCard(
       '隐含 10y 预测',
@@ -760,7 +760,7 @@ export function initPanelAiae(aiaeData) {
     ),
     buildMetricCard(
       '更新节奏',
-      `季频 · 滞后约 ${summary.release_lag_weeks || 10} 周`,
+      `季频 | 滞后约 ${summary.release_lag_weeks || 10} 周`,
       'Z.1 报告每季度发布一次，下次刷新约 7 月初'
     ),
   ]);

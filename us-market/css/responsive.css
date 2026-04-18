@@ -30,12 +30,19 @@
   .compare-grid {
     grid-template-columns: 1fr;
   }
-  /* Metric strip 手机端 2 列紧凑布局，避免单列过长占据屏幕 */
+  /* Metric strip 手机端：保持表格行式，把 note 折到第二行节省宽度 */
   .metric-strip {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
     margin-top: 12px;
   }
+  .metric-card {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "label value" "note note";
+    gap: 2px 12px;
+    padding: 8px 12px;
+  }
+  .metric-label { grid-area: label; }
+  .metric-value { grid-area: value; }
+  .metric-note  { grid-area: note; text-align: left; }
   .table-toolbar {
     align-items: stretch;
   }
@@ -103,20 +110,14 @@
     padding: 8px 12px;
   }
 
-  /* Metric cards: tighter on mobile */
-  .metric-card {
-    padding: 8px 10px;
-    border-radius: 8px;
-  }
+  /* Metric cards 手机字号 */
   .metric-label {
-    font-size: 10px;
+    font-size: 11px;
   }
   .metric-value {
-    margin-top: 2px;
     font-size: 14px;
   }
   .metric-note {
-    margin-top: 2px;
     font-size: 10px;
   }
 }

@@ -289,8 +289,8 @@ export function initNasdaq100AnnualPanel(data) {
   renderMetricStrip('nasdaq100AnnualSummary', [
     buildMetricCard('正收益年份', `${data.annualReturns.positiveYears}/${series.length}`, '先看历年盈利胜率，再看波动分布。'),
     buildMetricCard('长期均值', data.annualReturns.average != null ? formatPercent(data.annualReturns.average, 2) : '--', '基于 QQQ 代理序列计算。'),
-    buildMetricCard('最好一年', data.annualReturns.best ? `${data.annualReturns.best.year} · ${formatPercent(data.annualReturns.best.value, 2)}` : '--', '历史最佳年度表现。'),
-    buildMetricCard('最差一年', data.annualReturns.worst ? `${data.annualReturns.worst.year} · ${formatPercent(data.annualReturns.worst.value, 2)}` : '--', '历史最差年度表现。'),
+    buildMetricCard('最好一年', data.annualReturns.best ? `${data.annualReturns.best.year} | ${formatPercent(data.annualReturns.best.value, 2)}` : '--', '历史最佳年度表现。'),
+    buildMetricCard('最差一年', data.annualReturns.worst ? `${data.annualReturns.worst.year} | ${formatPercent(data.annualReturns.worst.value, 2)}` : '--', '历史最差年度表现。'),
   ]);
 }
 
@@ -390,8 +390,8 @@ export function initNasdaqRankingPanel(domId, summaryId, companies, metricConfig
 
   renderMetricStrip(summaryId, [
     buildMetricCard('样本数量', `${rows.length}`, '当前可计算的有效成员样本数。'),
-    buildMetricCard('最强', best ? `${best.ticker} · ${formatPercent(best[metricConfig.key], 2)}` : '--', best?.name || ''),
-    buildMetricCard('最弱', worst ? `${worst.ticker} · ${formatPercent(worst[metricConfig.key], 2)}` : '--', worst?.name || ''),
+    buildMetricCard('最强', best ? `${best.ticker} | ${formatPercent(best[metricConfig.key], 2)}` : '--', best?.name || ''),
+    buildMetricCard('最弱', worst ? `${worst.ticker} | ${formatPercent(worst[metricConfig.key], 2)}` : '--', worst?.name || ''),
     buildMetricCard(metricConfig.summaryLabel, formatPercent(average, 2), `正收益 ${positiveCount} / ${rows.length}`),
   ]);
 }
@@ -474,7 +474,7 @@ export function initNasdaq100WeightsPanel(data) {
     buildMetricCard('前十大权重', data.overview.top10Weight != null ? formatPercent(data.overview.top10Weight, 2) : '--', '指数权重高度集中在头部科技龙头。'),
     buildMetricCard('前25大覆盖', data.overview.top25Weight != null ? formatPercent(data.overview.top25Weight, 2) : '--', '当前免费源能拿到的实际披露权重覆盖。'),
     buildMetricCard('其余成分', data.overview.otherWeight != null ? formatPercent(data.overview.otherWeight, 2) : '--', '剩余成分被聚合为一个尾部桶。'),
-    buildMetricCard('最大持仓', data.topHoldings?.[0] ? `${data.topHoldings[0].ticker} · ${formatPercent(data.topHoldings[0].weight, 2)}` : '--', data.topHoldings?.[0]?.name || ''),
+    buildMetricCard('最大持仓', data.topHoldings?.[0] ? `${data.topHoldings[0].ticker} | ${formatPercent(data.topHoldings[0].weight, 2)}` : '--', data.topHoldings?.[0]?.name || ''),
   ]);
 }
 

@@ -283,7 +283,8 @@
       <div class="panel-header">
         <div>
           <h2 class="panel-title">AIAE · 投资者股票仓位指标</h2>
-          <p class="panel-desc">股票市值 / (股票市值 + 债券+现金供应) · 1945+ 季频 · 不看估值看供需仓位 · 论文显示长期回报预测力优于 CAPE/Tobin's Q（来源：Alpha Architect 2021）</p>
+          <p class="panel-desc">股票市值 / (股票市值 + 债券+现金供应) | 1945+ 季频 | 来源：Alpha Architect 2021</p>
+          <p class="panel-desc">通俗讲，AIAE 就是「全社会此刻有多少比例的资产押在股票上」。它和市盈率看「股票贵不贵」（价格÷盈利）不同，AIAE 看的是「大家手上股票多不多」（持仓÷总资产）——当所有人都被股票塞满的时候，未来想让仓位降回来只有两条路：要么靠加买债券、要么靠股票自己跌下来。论文实证显示它对未来 10 年股票回报的预测力优于 CAPE / Tobin's Q：1929 / 2000 / 2007 顶部 AIAE 都创新高，1932 / 1982 / 2009 底部 AIAE 都创新低。</p>
         </div>
         <div class="panel-controls">
           <button class="btn btn-export" data-chart="chartAiae" title="导出PNG">&#8681;</button>
@@ -313,7 +314,7 @@
     <div class="panel-inner">
       <div class="panel-header">
         <div>
-          <h2 class="panel-title">标普500净资产收益率走势</h2>
+          <h2 class="panel-title">标普500净资产收益率（ROE）走势</h2>
           <p class="panel-desc">年度净资产收益率与长期均值对照 · 当前仓内数据覆盖 2000-2024 年</p>
         </div>
         <div class="panel-controls">
@@ -608,7 +609,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260418180923"></script>
+<script type="module" src="js/panels.js?v=20260418183835"></script>
 <script>
 // Hero banner: SP500 百年走势动态曲线 + 历史事件标记 + 实时数据徽章
 (function initHeroCurve() {
