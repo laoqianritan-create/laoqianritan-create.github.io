@@ -434,7 +434,10 @@ export function initPanelDrawdown(priceData, drawdownData) {
   const tbody = document.getElementById('drawdownTbody');
   tbody.innerHTML = '';
 
-  drawdownData.drawdowns.forEach(item => {
+  // 过滤掉 |回撤| < 10% 的小波动，避免表格过长
+  drawdownData.drawdowns
+    .filter(item => Math.abs(item.decline) >= 0.10)
+    .forEach(item => {
     const absDecline = Math.abs(item.decline);
     const alpha = 0.18 + Math.min(absDecline / 0.6, 1) * 0.28;
     const tr = document.createElement('tr');
