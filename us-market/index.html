@@ -27,6 +27,7 @@
         <a class="nav-item" href="#panel-vix" data-panel="panel-vix">恐慌指数</a>
         <a class="nav-item" href="#panel-pe" data-panel="panel-pe">席勒市盈率</a>
         <a class="nav-item" href="#panel-aiae" data-panel="panel-aiae">AIAE 仓位</a>
+        <a class="nav-item" href="#panel-intrayear-dd" data-panel="panel-intrayear-dd">年内回撤</a>
         <a class="nav-item" href="#panel-eps" data-panel="panel-eps">每股收益</a>
         <a class="nav-item" href="#panel-roe" data-panel="panel-roe">净资产收益率</a>
         <a class="nav-item" href="#panel-rolling" data-panel="panel-rolling">5年滚动</a>
@@ -292,6 +293,20 @@
       </div>
       <div class="chart-container chart-standard" id="chartAiae"></div>
       <div class="metric-strip" id="aiaeSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-intrayear-dd" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">S&amp;P 500 年内最大回撤 vs 全年涨幅（1928+）</h2>
+          <p class="panel-desc">每年 1-12 月内最深的一次「峰到谷」回撤（DD）vs 全年涨跌幅（TR）| 1928+ 共 99 年 | 收盘价口径，不含股息</p>
+          <p class="panel-desc">这张表想传递的是：<b>年内出现 10%+ 回撤是常态，但大多数年份 TR 仍能正收益</b>。读者用它来训练"看到回撤别慌"的肌肉记忆。</p>
+        </div>
+        <div class="panel-controls"></div>
+      </div>
+      <div class="dd-grid" id="ddGrid"></div>
     </div>
   </section>
 
@@ -609,7 +624,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260418194939"></script>
+<script type="module" src="js/panels.js?v=20260418201723"></script>
 <script>
 // Hero banner: SP500 百年走势动态曲线 + 历史事件标记 + 实时数据徽章
 (function initHeroCurve() {

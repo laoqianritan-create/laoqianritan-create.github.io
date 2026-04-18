@@ -19,6 +19,7 @@ import {
   initPanelRolling,
   initAnnualReturnsPanel,
   initReturnDetailsPanel,
+  initIntrayearDdPanel,
 } from './panels/sp500.js';
 
 import {
@@ -97,6 +98,9 @@ async function main() {
     // AIAE 单独 fetch（缺失时也不影响其它面板）
     let aiaeData = null;
     try { aiaeData = await fetchJSON('data/aiae.json'); } catch (e) { console.warn('aiae.json 缺失，AIAE 面板将不渲染', e); }
+    // 年内回撤 vs 全年涨幅
+    let intrayearDdData = null;
+    try { intrayearDdData = await fetchJSON('data/sp500_intrayear_dd.json'); } catch (e) { console.warn('sp500_intrayear_dd.json 缺失，年内回撤面板将不渲染', e); }
 
     initPanelPrice(priceData, recessionData, sp500CenturyData);
     initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
@@ -136,6 +140,7 @@ async function main() {
     initPanelVix(priceData, vixData, recessionData);
     initPanelPe(peData, sp500CenturyData);
     if (aiaeData) initPanelAiae(aiaeData);
+    if (intrayearDdData) initIntrayearDdPanel(intrayearDdData);
     initPanelEps(epsData, sp500CenturyData);
     initPanelRoe(roeData);
     initPanelRolling(sp500CenturyData);

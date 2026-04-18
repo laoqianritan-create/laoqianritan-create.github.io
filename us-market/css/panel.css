@@ -342,6 +342,48 @@ html.panel-snap-enabled .panel {
   color: #ff7875;
 }
 
+/* ── 年内回撤 vs 全年涨幅 表格 ── */
+.dd-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0 40px;                /* 列间距加大，每列年份分组更分明 */
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card-bg);
+  padding: 10px 18px;
+}
+.dd-row {
+  display: grid;
+  grid-template-columns: 48px 60px 1fr;   /* DD-TR 间距收紧 */
+  align-items: center;
+  padding: 9px 0;             /* 行高加大，每年（=每组）之间区隔更清 */
+  border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+.dd-row:last-child { border-bottom: none; }
+.dd-row.dd-row-ongoing { background: rgba(250,173,20,0.10); border-radius: 4px; padding-left: 4px; padding-right: 4px; }
+.dd-row.dd-header {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border);
+  padding: 8px 0;
+}
+.dd-row.dd-header .dd-dd,
+.dd-row.dd-header .dd-tr {
+  color: var(--text-secondary);
+  font-weight: 700;
+  text-align: left;
+}
+.dd-row.dd-header .dd-tr { text-align: right; }
+.dd-year { color: var(--text-secondary); font-size: 12px; }
+.dd-dd { color: var(--red); font-size: 13px; font-weight: 600; }
+.dd-tr { font-size: 13px; font-weight: 700; text-align: right; }
+.dd-tr.dd-pos { color: var(--green, #389e0d); }
+.dd-tr.dd-neg { color: var(--red, #cf1322); }
+
 /* ── Summary Cards (表格 demo 形态) ── */
 .metric-strip {
   margin-top: 14px;

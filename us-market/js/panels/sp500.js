@@ -1492,3 +1492,35 @@ export function initReturnDetailsPanel(data) {
     buildMetricCard('最佳 / 最差', `${data.summary?.bestYear?.year || '--'} / ${data.summary?.worstYear?.year || '--'}`, `${data.summary?.bestYear ? formatPercent(data.summary.bestYear.totalReturn, 2) : '--'} / ${data.summary?.worstYear ? formatPercent(data.summary.worstYear.totalReturn, 2) : '--'}`),
   ]);
 }
+
+// ══════════════════════════════════════════════════════
+// 面板：年内最大回撤 vs 全年涨幅（Charlie Bilello 同款）
+// 数据：sp500_intrayear_dd.json (1928-至今)
+// ══════════════════════════════════════════════════════
+
+export function initIntrayearDdPanel(data) {
+  const grid = document.getElementById('ddGrid');
+  if (!grid || !data?.annual?.length) return;
+
+  const fmtPct = v => `${v > 0 ? '+' : ''}${(v * 100).toFixed(1)}%`;
+
+  // 首行 = 列标题
+  const headerHtml = `<div class="dd-row dd-header">
+    <span class="dd-year">年份</span>
+    <span class="dd-dd">年内最大回撤</span>
+    <span class="dd-tr">当年涨跌幅</span>
+  </div>`;
+
+  // 数据行
+  const rowsHtml = data.annual.map(item => {
+    const trClass = item.tr >= 0 ? 'dd-pos' : 'dd-neg';
+    const ongoingMark = item.ongoing ? '<span title="进行中">*</span>' : '';
+    return `<div class="dd-row${item.ongoing ? ' dd-row-ongoing' : ''}">
+      <span class="dd-year">${item.year}${ongoingMark}</span>
+      <span class="dd-dd">${fmtPct(item.dd)}</span>
+      <span class="dd-tr ${trClass}">${fmtPct(item.tr)}</span>
+    </div>`;
+  }).join('');
+
+  grid.innerHTML = headerHtml + rowsHtml;
+}
