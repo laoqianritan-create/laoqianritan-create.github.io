@@ -22,12 +22,12 @@
         <a class="nav-item" href="#panel-annualized-matrix" data-panel="panel-annualized-matrix">年化矩阵</a>
         <a class="nav-item" href="#panel-return-details" data-panel="panel-return-details">回报分解</a>
         <a class="nav-item" href="#panel-drawdown" data-panel="panel-drawdown">回撤</a>
+        <a class="nav-item" href="#panel-intrayear-dd" data-panel="panel-intrayear-dd">年内回撤</a>
         <a class="nav-item" href="#panel-volatility" data-panel="panel-volatility">波动率</a>
         <a class="nav-item" href="#panel-monthly" data-panel="panel-monthly">月度涨跌</a>
         <a class="nav-item" href="#panel-vix" data-panel="panel-vix">恐慌指数</a>
         <a class="nav-item" href="#panel-pe" data-panel="panel-pe">席勒市盈率</a>
         <a class="nav-item" href="#panel-aiae" data-panel="panel-aiae">AIAE 仓位</a>
-        <a class="nav-item" href="#panel-intrayear-dd" data-panel="panel-intrayear-dd">年内回撤</a>
         <a class="nav-item" href="#panel-eps" data-panel="panel-eps">每股收益</a>
         <a class="nav-item" href="#panel-roe" data-panel="panel-roe">净资产收益率</a>
         <a class="nav-item" href="#panel-rolling" data-panel="panel-rolling">5年滚动</a>
@@ -168,6 +168,7 @@
         </div>
         <div class="panel-controls">
           <div class="panel-date-range" id="sp500AnnualizedMatrixRange"></div>
+          <button class="btn btn-export" data-export-element="sp500AnnualizedMatrix" title="导出PNG">&#8681;</button>
         </div>
       </div>
       <div class="annualized-matrix-container" id="sp500AnnualizedMatrix"></div>
@@ -202,6 +203,10 @@
         </div>
       </div>
       <div class="chart-container chart-medium" id="chartDrawdown"></div>
+      <div class="table-toolbar">
+        <div style="font-size:13px;color:var(--text-secondary)">回撤 ≥ 10% 的重大事件清单</div>
+        <button class="btn btn-export" data-export-element="drawdownTableWrap" title="导出表格 PNG">&#8681;</button>
+      </div>
       <div class="drawdown-table-wrap" id="drawdownTableWrap">
         <table class="data-table" id="drawdownTable">
           <thead>
@@ -218,6 +223,22 @@
           <tbody id="drawdownTbody"></tbody>
         </table>
       </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-intrayear-dd" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">S&amp;P 500 年内最大回撤 vs 全年涨幅</h2>
+          <p class="panel-desc">每年 1-12 月内最深的一次「峰到谷」回撤（DD）vs 全年涨跌幅（TR）| 1928+ 共 99 年 | 收盘价口径，不含股息</p>
+          <p class="panel-desc">这张表想传递的是：<b>年内出现 10%+ 回撤是常态，但大多数年份 TR 仍能正收益</b>。读者用它来训练"看到回撤别慌"的肌肉记忆。</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-export-element="ddGrid" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="dd-grid" id="ddGrid"></div>
     </div>
   </section>
 
@@ -242,6 +263,9 @@
         <div>
           <h2 class="panel-title">月度涨跌统计</h2>
           <p class="panel-desc">2000 年至今每月涨跌幅 · 附各月上涨概率</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-export-element="monthlyHeatmap" title="导出PNG">&#8681;</button>
         </div>
       </div>
       <div class="heatmap-container" id="monthlyHeatmap"></div>
@@ -293,20 +317,6 @@
       </div>
       <div class="chart-container chart-standard" id="chartAiae"></div>
       <div class="metric-strip" id="aiaeSummary"></div>
-    </div>
-  </section>
-
-  <section class="panel" id="panel-intrayear-dd" data-category="sp500">
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">S&amp;P 500 年内最大回撤 vs 全年涨幅（1928+）</h2>
-          <p class="panel-desc">每年 1-12 月内最深的一次「峰到谷」回撤（DD）vs 全年涨跌幅（TR）| 1928+ 共 99 年 | 收盘价口径，不含股息</p>
-          <p class="panel-desc">这张表想传递的是：<b>年内出现 10%+ 回撤是常态，但大多数年份 TR 仍能正收益</b>。读者用它来训练"看到回撤别慌"的肌肉记忆。</p>
-        </div>
-        <div class="panel-controls"></div>
-      </div>
-      <div class="dd-grid" id="ddGrid"></div>
     </div>
   </section>
 
@@ -411,6 +421,9 @@
           <h2 class="panel-title">成分股变动</h2>
           <p class="panel-desc">基于 S&amp;P Dow Jones Indices 官方公告整理的近期样本调整</p>
         </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-export-element="changesTable" title="导出PNG">&#8681;</button>
+        </div>
       </div>
       <div class="table-toolbar">
         <input class="table-search" id="changesSearch" type="search" placeholder="搜索公司名、代码或原因">
@@ -442,6 +455,9 @@
         <div>
           <h2 class="panel-title">编制规则</h2>
           <p class="panel-desc">标普500 的纳入、权重和调整机制</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-export-element="panel-rules" title="导出PNG">&#8681;</button>
         </div>
       </div>
       <div class="rules-highlights" id="rulesHighlights"></div>
@@ -624,7 +640,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260418201810"></script>
+<script type="module" src="js/panels.js?v=20260418202902"></script>
 <script>
 // Hero banner: SP500 百年走势动态曲线 + 历史事件标记 + 实时数据徽章
 (function initHeroCurve() {
