@@ -595,3 +595,173 @@ export function initLongRunIndexPanel(containerId, summaryId, data, recessionDat
     buildMetricCard('衰退阴影', '已启用', '淡灰色区间基于 NBER / FRED 的 US recession 指标。'),
   ]);
 }
+
+// ══════════════════════════════════════════════════════
+// 面板：AIAE - Aggregate Investor Allocation to Equities
+// 论文：alphaarchitect.com/market-timing-using-aggregate-equity-allocation-signals
+// 双轴：左 AIAE %（黑线）+ 右 后续 10y 实际年化回报 %（灰柱，往左滞后 10 年对齐）
+// ══════════════════════════════════════════════════════
+export function initPanelAiae(aiaeData) {
+  const dom = document.getElementById('chartAiae');
+  if (!dom || !aiaeData?.series?.length) return;
+  const chart = registerChart(echarts.init(dom));
+  const series = aiaeData.series;
+  const summary = aiaeData.summary || {};
+
+  function getOption() {
+    const lineColor = cssVar('--sp500-line') || '#1a1a1a';
+    const gridColor = cssVar('--chart-grid') || '#f0f0f0';
+    const grayColor = cssVar('--gray') || '#999';
+    const textColor = cssVar('--text') || '#1a1a1a';
+    const futureColor = '#cf1322';
+
+    // 把"后续 10y 实际年化"按时间对齐到当下显示（即 1980 的点位 = 1980→1990 的年化）
+    const aiaeLine = series.map(p => [p.date, p.aiae * 100]);
+    const subsequent = series
+      .filter(p => p.subsequent_10y_ann != null)
+      .map(p => [p.date, p.subsequent_10y_ann * 100]);
+    const forecastLine = series
+      .filter(p => p.implied_10y_forecast != null)
+      .map(p => [p.date, p.implied_10y_forecast * 100]);
+
+    return {
+      animation: false,
+      grid: { left: 60, right: 60, top: 50, bottom: 60 },
+      legend: getLineLegendConfig({ data: ['AIAE 仓位', '后续 10y 实际年化', '回归预测 10y'] }),
+      xAxis: {
+        type: 'time',
+        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        splitLine: { show: false },
+      },
+      yAxis: [
+        {
+          type: 'value',
+          position: 'left',
+          name: 'AIAE %',
+          nameTextStyle: { fontSize: 10, color: grayColor, fontFamily: CHART_FONT },
+          axisLabel: { formatter: v => `${v.toFixed(0)}%`, fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+          splitLine: { lineStyle: { color: gridColor } },
+        },
+        {
+          type: 'value',
+          position: 'right',
+          name: '10y 年化 %',
+          nameTextStyle: { fontSize: 10, color: grayColor, fontFamily: CHART_FONT },
+          axisLabel: { formatter: v => `${v > 0 ? '+' : ''}${v.toFixed(0)}%`, fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+          splitLine: { show: false },
+        },
+      ],
+      series: [
+        {
+          name: 'AIAE 仓位',
+          type: 'line',
+          yAxisIndex: 0,
+          showSymbol: false,
+          data: aiaeLine,
+          color: lineColor,
+          lineStyle: { width: 2, color: lineColor },
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(26,26,26,0.20)' },
+              { offset: 1, color: 'rgba(26,26,26,0.02)' },
+            ]),
+          },
+        },
+        {
+          name: '后续 10y 实际年化',
+          type: 'line',
+          yAxisIndex: 1,
+          showSymbol: false,
+          data: subsequent,
+          color: futureColor,
+          lineStyle: { width: 1.6, color: futureColor, type: 'solid' },
+          markLine: {
+            silent: true,
+            symbol: 'none',
+            lineStyle: { color: grayColor, type: 'dashed', width: 1 },
+            data: [{ yAxis: 0, label: { formatter: '0%', fontSize: 10, color: grayColor } }],
+          },
+        },
+        {
+          name: '回归预测 10y',
+          type: 'line',
+          yAxisIndex: 1,
+          showSymbol: false,
+          data: forecastLine,
+          color: '#faad14',
+          lineStyle: { width: 1.2, color: '#faad14', type: 'dashed' },
+        },
+      ],
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: cssVar('--card-bg') || '#fff',
+        borderColor: cssVar('--border') || '#e8e8e8',
+        textStyle: { fontSize: 13, color: textColor, fontFamily: CHART_FONT },
+        formatter: params => {
+          const date = params?.[0]?.axisValueLabel || '';
+          const point = series.find(p => p.date === params[0].value[0]) ||
+                        series.find(p => p.date.slice(0, 7) === date.slice(0, 7));
+          if (!point) return date;
+          const lines = [
+            date.slice(0, 7),
+            `<b>AIAE 仓位</b>: ${(point.aiae * 100).toFixed(2)}%`,
+          ];
+          if (point.implied_10y_forecast != null) {
+            lines.push(`回归预测 10y 年化: <b style="color:#faad14">${(point.implied_10y_forecast * 100 > 0 ? '+' : '')}${(point.implied_10y_forecast * 100).toFixed(2)}%</b>`);
+          }
+          if (point.subsequent_10y_ann != null) {
+            lines.push(`实际后续 10y 年化: <b style="color:${futureColor}">${(point.subsequent_10y_ann * 100 > 0 ? '+' : '')}${(point.subsequent_10y_ann * 100).toFixed(2)}%</b>`);
+          } else {
+            lines.push(`<span style="color:${grayColor}">实际 10y 年化：尚未到期</span>`);
+          }
+          return lines.join('<br/>');
+        },
+      },
+      dataZoom: getDataZoom(grayColor),
+    };
+  }
+
+  chart.setOption(getOption());
+  chart._refreshTheme = () => chart.setOption(getOption(), true);
+
+  // Metric strip
+  const fmtPct = (v, digits = 2) => v == null ? '--' : `${v > 0 ? '+' : ''}${(v * 100).toFixed(digits)}%`;
+  const fmtBps = v => v == null ? '--' : `${v > 0 ? '+' : ''}${(v * 10000).toFixed(0)} bps`;
+  const ymKey = summary.latest_date ? summary.latest_date.slice(0, 7) : '--';
+  const pct = summary.historical_percentile != null ? `${(summary.historical_percentile * 100).toFixed(1)}%` : '--';
+
+  renderMetricStrip('aiaeSummary', [
+    buildMetricCard(
+      '最新 AIAE',
+      summary.latest_aiae != null ? `${(summary.latest_aiae * 100).toFixed(2)}%` : '--',
+      `${ymKey} · 历史百分位 ${pct}`
+    ),
+    buildMetricCard(
+      '历史区间',
+      summary.historical_min != null
+        ? `${(summary.historical_min * 100).toFixed(1)}% ~ ${(summary.historical_max * 100).toFixed(1)}%`
+        : '--',
+      `均值 ${summary.historical_mean != null ? (summary.historical_mean * 100).toFixed(2) : '--'}% · 1945+ 季频`
+    ),
+    buildMetricCard(
+      '隐含 10y 预测',
+      fmtPct(summary.latest_implied_10y_forecast),
+      `全样本 OLS 回归（n=${summary.regression?.n_obs || '--'}）：年化预测，仅参考`
+    ),
+    buildMetricCard(
+      '当前 10y 国债',
+      summary.current_10y_yield != null ? `${(summary.current_10y_yield * 100).toFixed(2)}%` : '--',
+      'FRED DGS10 最新值'
+    ),
+    buildMetricCard(
+      '隐含风险溢价',
+      fmtBps(summary.implied_equity_risk_premium),
+      '预测股票年化 − 10y 国债。负值 = 现金更优'
+    ),
+    buildMetricCard(
+      '更新节奏',
+      `季频 · 滞后约 ${summary.release_lag_weeks || 10} 周`,
+      'Z.1 报告每季度发布一次，下次刷新约 7 月初'
+    ),
+  ]);
+}

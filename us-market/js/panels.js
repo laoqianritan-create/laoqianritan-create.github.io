@@ -25,6 +25,7 @@ import {
   initPanelVix,
   initLogYoyPanel,
   initLongRunIndexPanel,
+  initPanelAiae,
 } from './panels/indices.js';
 
 import {
@@ -93,6 +94,10 @@ async function main() {
       fetchJSON('data/sp500_rules.json'),
     ]);
 
+    // AIAE 单独 fetch（缺失时也不影响其它面板）
+    let aiaeData = null;
+    try { aiaeData = await fetchJSON('data/aiae.json'); } catch (e) { console.warn('aiae.json 缺失，AIAE 面板将不渲染', e); }
+
     initPanelPrice(priceData, recessionData, sp500CenturyData);
     initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
     // ── 牛熊周期面板的手工坐标 ──
@@ -130,6 +135,7 @@ async function main() {
     initPanelMonthly(monthlyData);
     initPanelVix(priceData, vixData, recessionData);
     initPanelPe(peData, sp500CenturyData);
+    if (aiaeData) initPanelAiae(aiaeData);
     initPanelEps(epsData);
     initPanelRoe(roeData);
     initPanelRolling(sp500CenturyData);
