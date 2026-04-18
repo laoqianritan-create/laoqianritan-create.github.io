@@ -24,12 +24,17 @@
   .header-inner { padding: 0 12px; gap: 12px; }
   .category-inner { padding: 10px 16px; }
   .nav-item { font-size: 12px; padding: 5px 8px; }
-  .metric-strip,
   .sector-layout,
   .rules-highlights,
   .rules-grid,
   .compare-grid {
     grid-template-columns: 1fr;
+  }
+  /* Metric strip 手机端 2 列紧凑布局，避免单列过长占据屏幕 */
+  .metric-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 12px;
   }
   .table-toolbar {
     align-items: stretch;
@@ -100,9 +105,18 @@
 
   /* Metric cards: tighter on mobile */
   .metric-card {
-    padding: 12px;
+    padding: 8px 10px;
+    border-radius: 8px;
   }
-  .metric-card-value {
-    font-size: 20px;
+  .metric-label {
+    font-size: 10px;
+  }
+  .metric-value {
+    margin-top: 2px;
+    font-size: 14px;
+  }
+  .metric-note {
+    margin-top: 2px;
+    font-size: 10px;
   }
 }
