@@ -355,7 +355,7 @@ html.panel-snap-enabled .panel {
 }
 .dd-row {
   display: grid;
-  grid-template-columns: 48px 60px 1fr;   /* DD-TR 间距收紧 */
+  grid-template-columns: 48px 60px 1fr 40px;   /* 年份 / 回撤 / 涨跌幅 / ATH */
   align-items: center;
   padding: 9px 0;             /* 行高加大，每年（=每组）之间区隔更清 */
   border-bottom: 1px solid var(--border);
@@ -383,6 +383,8 @@ html.panel-snap-enabled .panel {
 .dd-tr { font-size: 13px; font-weight: 700; text-align: right; }
 .dd-tr.dd-pos { color: var(--green, #389e0d); }
 .dd-tr.dd-neg { color: var(--red, #cf1322); }
+.dd-ath { font-size: 12px; color: var(--text-secondary); text-align: right; }
+.dd-row.dd-header .dd-ath { font-weight: 700; color: var(--text-secondary); }
 
 /* ── Summary Cards (表格 demo 形态) ── */
 .metric-strip {

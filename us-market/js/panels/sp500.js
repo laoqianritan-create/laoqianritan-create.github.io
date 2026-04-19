@@ -1519,6 +1519,7 @@ export function initIntrayearDdPanel(data) {
     <span class="dd-year">年份</span>
     <span class="dd-dd">年内最大回撤</span>
     <span class="dd-tr">当年涨跌幅</span>
+    <span class="dd-ath">新高</span>
   </div>`;
 
   // 数据行
@@ -1529,6 +1530,7 @@ export function initIntrayearDdPanel(data) {
       <span class="dd-year">${item.year}${ongoingMark}</span>
       <span class="dd-dd">${fmtPct(item.dd)}</span>
       <span class="dd-tr ${trClass}">${fmtPct(item.tr)}</span>
+      <span class="dd-ath">${item.ath ?? 0}</span>
     </div>`;
   }).join('');
 
