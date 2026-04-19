@@ -369,9 +369,14 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
           min: ddMin,
         },
         {
-          type: 'value',
+          type: 'log',
           position: 'right',
-          axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+          axisLabel: {
+            fontSize: 11,
+            color: grayColor,
+            fontFamily: CHART_FONT,
+            formatter: value => formatCompactNumber(value),
+          },
           splitLine: { show: false },
         },
       ],
