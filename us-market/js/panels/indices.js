@@ -34,13 +34,17 @@ import {
   bindAnnualizedMatrixTooltip,
 } from '../chart-helpers.js';
 
-export function initPanelVix(priceData, vixData, recessionData) {
-  const chart = registerChart(echarts.init(document.getElementById('chartVix')));
+export function initPanelVix(priceData, vixData, recessionData, opts = {}) {
+  const chartId = opts.chartId || 'chartVix';
+  const indexLabel = opts.indexLabel || '标普500';
+  const volLabel = opts.volLabel || 'VIX';
+  const volThreshold = opts.volThreshold ?? 30;
+  const chart = registerChart(echarts.init(document.getElementById(chartId)));
   const vixMap = new Map(vixData.series.map(item => [item.date, item.value]));
   const series = priceData.series
     .map(item => ({ date: item.date, close: item.close, vix: vixMap.get(item.date) ?? null }))
     .filter(item => item.vix != null);
-  const highVixAreas = buildThresholdAreas(series, 30, item => item.vix);
+  const highVixAreas = buildThresholdAreas(series, volThreshold, item => item.vix);
 
   function getOption() {
     const lineColor = cssVar('--sp500-line') || '#1a1a1a';
@@ -53,7 +57,7 @@ export function initPanelVix(priceData, vixData, recessionData) {
       animation: false,
       grid: { left: 65, right: 65, top: 20, bottom: 60 },
       legend: getLineLegendConfig({
-        data: ['标普500', 'VIX'],
+        data: [indexLabel, volLabel],
       }),
       xAxis: {
         type: 'time',
@@ -77,7 +81,7 @@ export function initPanelVix(priceData, vixData, recessionData) {
       series: [
         ...(recessionSeries ? [recessionSeries] : []),
         {
-          name: '标普500',
+          name: indexLabel,
           type: 'line',
           yAxisIndex: 0,
           showSymbol: false,
@@ -89,7 +93,7 @@ export function initPanelVix(priceData, vixData, recessionData) {
           largeThreshold: 2000,
         },
         {
-          name: 'VIX',
+          name: volLabel,
           type: 'line',
           yAxisIndex: 1,
           showSymbol: false,
@@ -109,7 +113,7 @@ export function initPanelVix(priceData, vixData, recessionData) {
             silent: true,
             symbol: 'none',
             lineStyle: { color: vixColor, type: 'dashed', width: 1 },
-            data: [{ yAxis: 30, label: { formatter: 'VIX 30', fontSize: 11, color: vixColor } }],
+            data: [{ yAxis: volThreshold, label: { formatter: `${volLabel} ${volThreshold}`, fontSize: 11, color: vixColor } }],
           },
           markArea: highVixAreas.length ? {
             silent: true,
@@ -129,7 +133,7 @@ export function initPanelVix(priceData, vixData, recessionData) {
         },
         formatter: params => {
           const point = series[params[0].dataIndex];
-          return `${params[0].axisValueLabel}<br/>标普500: <b>${formatNumber(point.close, 0)}</b><br/>VIX: <b>${formatNumber(point.vix, 2)}</b>`;
+          return `${params[0].axisValueLabel}<br/>${indexLabel}: <b>${formatNumber(point.close, 0)}</b><br/>${volLabel}: <b>${formatNumber(point.vix, 2)}</b>`;
         },
       },
       dataZoom: getDataZoom(grayColor),

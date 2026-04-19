@@ -105,6 +105,24 @@ async function main() {
     // 年度总回报分布（Bilello 同款 histogram）
     let annualTrData = null;
     try { annualTrData = await fetchJSON('data/sp500_annual_tr.json'); } catch (e) { console.warn('sp500_annual_tr.json 缺失，年度回报分布面板将不渲染', e); }
+    // 纳指100 系列面板数据
+    const ndxData = {};
+    for (const [key, file] of [
+      ['annualLong',    'ndx_annual_returns_long.json'],
+      ['annualTr',      'ndx_annual_tr.json'],
+      ['daily',         'ndx_daily.json'],
+      ['price',         'ndx_price.json'],
+      ['volatility',    'ndx_volatility.json'],
+      ['monthly',       'ndx_monthly.json'],
+      ['drawdowns',     'ndx_drawdowns.json'],
+      ['rolling5y',     'ndx_rolling5y.json'],
+      ['intrayearDd',   'ndx_intrayear_dd.json'],
+      ['vxn',           'ndx_vxn.json'],
+      ['qqqDetails',    'qqq_return_details.json'],
+    ]) {
+      try { ndxData[key] = await fetchJSON(`data/${file}`); }
+      catch (e) { console.warn(`${file} 缺失`, e); }
+    }
 
     initPanelPrice(priceData, recessionData, sp500CenturyData);
     initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
@@ -155,7 +173,83 @@ async function main() {
     initPanelRules(rulesData);
     initPanelScatter(constituentsData);
     initNasdaq100CompaniesPanel(nasdaq100Data);
-    initNasdaq100AnnualPanel(nasdaq100Data);
+    // 纳指100年度回报：从 QQQ 1999+ 切到 ^NDX 1986+
+    if (ndxData.annualLong) {
+      initAnnualReturnsPanel(ndxData.annualLong, {
+        chartId: 'chartNasdaq100Annual',
+        summaryId: 'nasdaq100AnnualSummary',
+      });
+    } else {
+      initNasdaq100AnnualPanel(nasdaq100Data);
+    }
+    // 纳指100年度回报分布（histogram，价格回报）
+    if (ndxData.annualTr) {
+      initSp500AnnualDistPanel(ndxData.annualTr, {
+        wrapId: 'ndxTrDistWrap',
+        summaryId: 'ndxTrDistSummary',
+        returnKind: '价格回报口径（不含股息）',
+        sourceLabel: 'yfinance ^NDX 日线',
+        sourceDesc: '1986+ 年末收盘点位计算年度价格回报，不含股息。',
+      });
+    }
+    // 纳指100跨年持有矩阵（从 ndx_daily 1986+）
+    if (ndxData.daily) {
+      initPanelAnnualizedMatrix(ndxData.daily, {
+        containerId: 'ndxAnnualizedMatrix',
+        rangeId: 'ndxMatrixRange',
+        startYear: 1986,
+      });
+    }
+    // 纳指100回报分解（QQQ 1999+，仅价格 + 股息）
+    if (ndxData.qqqDetails) {
+      initReturnDetailsPanel(ndxData.qqqDetails, {
+        chartId: 'chartNdxReturnDetails',
+        summaryId: 'ndxReturnDetailsSummary',
+        indexLabel: 'QQQ',
+        hideBuyback: true,
+      });
+    }
+    // 纳指100回撤
+    if (ndxData.price && ndxData.drawdowns) {
+      initPanelDrawdown(ndxData.price, ndxData.drawdowns, {
+        chartId: 'chartNdxDrawdown',
+        tbodyId: 'ndxDrawdownTbody',
+        tableId: 'ndxDrawdownTable',
+        ddMin: -85,
+        hideCause: true,
+      });
+    }
+    // 纳指100年内DD
+    if (ndxData.intrayearDd) {
+      initIntrayearDdPanel(ndxData.intrayearDd, { gridId: 'ndxDdGrid' });
+    }
+    // 纳指100波动率
+    if (ndxData.volatility) {
+      initPanelVolatility(ndxData.volatility, {
+        chartId: 'chartNdxVolatility',
+        label: '纳指100',
+      });
+    }
+    // 纳指100月度涨跌
+    if (ndxData.monthly) {
+      initPanelMonthly(ndxData.monthly, { containerId: 'ndxMonthlyHeatmap' });
+    }
+    // 纳指100 VXN
+    if (ndxData.price && ndxData.vxn) {
+      initPanelVix(ndxData.price, ndxData.vxn, recessionData, {
+        chartId: 'chartNdxVxn',
+        indexLabel: '纳指100',
+        volLabel: 'VXN',
+        volThreshold: 30,
+      });
+    }
+    // 纳指100五年滚动（已预计算）
+    if (ndxData.rolling5y) {
+      initPanelRolling(ndxData.rolling5y, {
+        chartId: 'chartNdxRolling',
+        precomputed: true,
+      });
+    }
     initNasdaqRankingPanel('chartNasdaq100MemberReturns', 'nasdaq100MemberReturnSummary', nasdaq100Data.companies, {
       key: 'return1y',
       label: '近1年收益',

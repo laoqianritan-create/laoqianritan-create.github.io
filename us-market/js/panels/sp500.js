@@ -329,8 +329,13 @@ export function initPanelPrice(data, recessionData, centuryData) {
 // 面板2：回撤面积图 + 统计表格
 // ══════════════════════════════════════════════════════
 
-export function initPanelDrawdown(priceData, drawdownData) {
-  const chart = registerChart(echarts.init(document.getElementById('chartDrawdown')));
+export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
+  const chartId = opts.chartId || 'chartDrawdown';
+  const tbodyId = opts.tbodyId || 'drawdownTbody';
+  const tableId = opts.tableId || 'drawdownTable';
+  const ddMin = opts.ddMin ?? -60;
+  const hideCause = !!opts.hideCause;
+  const chart = registerChart(echarts.init(document.getElementById(chartId)));
   const series = priceData.series;
 
   function getOption() {
@@ -361,7 +366,7 @@ export function initPanelDrawdown(priceData, drawdownData) {
           },
           splitLine: { lineStyle: { color: gridColor } },
           max: 0,
-          min: -60,
+          min: ddMin,
         },
         {
           type: 'value',
@@ -431,7 +436,8 @@ export function initPanelDrawdown(priceData, drawdownData) {
     catNames[category.id] = category.name;
   });
 
-  const tbody = document.getElementById('drawdownTbody');
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
   tbody.innerHTML = '';
 
   // 过滤掉 |回撤| < 10% 的小波动，避免表格过长
@@ -462,12 +468,12 @@ export function initPanelDrawdown(priceData, drawdownData) {
       <td class="decline-cell" style="text-align:right;color:var(--red);background:rgba(207,19,34,${alpha.toFixed(2)})">${formatPercent(item.decline * 100, 1)}</td>
       <td style="text-align:right;white-space:nowrap">${recoveryCell}</td>
       <td><span class="cat-badge cat-${item.category}">${catNames[item.category] || item.category}</span></td>
-      <td class="cause-cell">${item.cause}</td>
+      ${hideCause ? '' : `<td class="cause-cell">${item.cause || ''}</td>`}
     `;
     tbody.appendChild(tr);
   });
 
-  document.querySelectorAll('#drawdownTable th[data-sort]').forEach(th => {
+  document.querySelectorAll(`#${tableId} th[data-sort]`).forEach(th => {
     th.addEventListener('click', () => {
       const key = th.dataset.sort;
       const rows = Array.from(tbody.querySelectorAll('tr'));
@@ -489,8 +495,10 @@ export function initPanelDrawdown(priceData, drawdownData) {
 // 面板3：波动率
 // ══════════════════════════════════════════════════════
 
-export function initPanelVolatility(data) {
-  const chart = registerChart(echarts.init(document.getElementById('chartVolatility')));
+export function initPanelVolatility(data, opts = {}) {
+  const chartId = opts.chartId || 'chartVolatility';
+  const indexLabel = opts.label || '标普500';
+  const chart = registerChart(echarts.init(document.getElementById(chartId)));
   const series = data.series.filter(item => item.vol20 != null || item.vol60 != null);
   const highVolAreas = buildThresholdAreas(series, 0.30, item => Math.max(item.vol20 ?? 0, item.vol60 ?? 0));
 
@@ -578,7 +586,7 @@ export function initPanelVolatility(data) {
           const point = series[params[0].dataIndex];
           let html = params[0].axisValueLabel;
           if (point?.close != null) {
-            html += `<br/>标普500: <b>${formatNumber(point.close, 0)}</b>`;
+            html += `<br/>${indexLabel}: <b>${formatNumber(point.close, 0)}</b>`;
           }
           params.forEach(item => {
             if (item.value[1] == null) {
@@ -601,8 +609,10 @@ export function initPanelVolatility(data) {
 // 面板4：月度涨跌热力图
 // ══════════════════════════════════════════════════════
 
-export function initPanelMonthly(data) {
-  const container = document.getElementById('monthlyHeatmap');
+export function initPanelMonthly(data, opts = {}) {
+  const containerId = opts.containerId || 'monthlyHeatmap';
+  const container = document.getElementById(containerId);
+  if (!container) return;
   const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
 
   let html = '<table class="heatmap-table"><thead><tr><th>年份</th>';
@@ -654,14 +664,17 @@ export function initPanelMonthly(data) {
   container.innerHTML = html;
 }
 
-export function initPanelAnnualizedMatrix(centuryData) {
-  const container = document.getElementById('sp500AnnualizedMatrix');
-  const rangeNode = document.getElementById('sp500AnnualizedMatrixRange');
+export function initPanelAnnualizedMatrix(centuryData, opts = {}) {
+  const containerId = opts.containerId || 'sp500AnnualizedMatrix';
+  const rangeId = opts.rangeId || 'sp500AnnualizedMatrixRange';
+  const startYear = opts.startYear || 1980;
+  const container = document.getElementById(containerId);
+  const rangeNode = document.getElementById(rangeId);
   if (!container) {
     return;
   }
 
-  const matrix = buildAnnualizedHoldingMatrix(centuryData?.series, 1980);
+  const matrix = buildAnnualizedHoldingMatrix(centuryData?.series, startYear);
   if (!matrix) {
     container.innerHTML = '<div class="loading-msg">暂无可用矩阵数据</div>';
     if (rangeNode) {
@@ -1188,10 +1201,14 @@ export function initPanelRoe(data) {
 // 面板10：五年滚动收益率
 // ══════════════════════════════════════════════════════
 
-export function initPanelRolling(data) {
-  const chart = registerChart(echarts.init(document.getElementById('chartRolling')));
-  const rollingData = buildRollingAnnualizedSeries(data?.series || [], 5);
-  const series = rollingData.series;
+export function initPanelRolling(data, opts = {}) {
+  const chartId = opts.chartId || 'chartRolling';
+  const lineColor = opts.lineColor || cssVar('--sp500-line') || '#1a1a1a';
+  const chart = registerChart(echarts.init(document.getElementById(chartId)));
+  // precomputed=true 时直接使用 data.series（已是 rolling 序列），否则用 buildRollingAnnualizedSeries 从月线推导
+  const series = opts.precomputed
+    ? (data?.series || [])
+    : buildRollingAnnualizedSeries(data?.series || [], 5).series;
   const latestRolling = series.at(-1) ?? null;
 
   function getOption() {
@@ -1252,14 +1269,14 @@ export function initPanelRolling(data) {
           clip: false,
           data: series.map(item => [item.date, item.value]),
           showSymbol: false,
-          lineStyle: { width: 1.8, color: cssVar('--sp500-line') || '#1a1a1a' },
+          lineStyle: { width: 1.8, color: lineColor },
           markPoint: latestRolling ? {
             data: [
               buildSingleMarkPoint(
                 latestRolling.date,
                 latestRolling.value,
                 `最新 ${formatPercent(latestRolling.value, 2)}`,
-                cssVar('--sp500-line') || '#1a1a1a',
+                lineColor,
                 'right',
               ),
             ],
@@ -1300,8 +1317,10 @@ export function initPanelRolling(data) {
  * 以 YYYY-MM 作为 key 查找 12 个月前的值，避免 index 漂移。
  */
 
-export function initAnnualReturnsPanel(data) {
-  const chart = registerChart(echarts.init(document.getElementById('chartAnnual')));
+export function initAnnualReturnsPanel(data, opts = {}) {
+  const chartId = opts.chartId || 'chartAnnual';
+  const summaryId = opts.summaryId || 'annualSummary';
+  const chart = registerChart(echarts.init(document.getElementById(chartId)));
   const series = data.series || [];
 
   function getOption() {
@@ -1370,7 +1389,7 @@ export function initAnnualReturnsPanel(data) {
   chart.setOption(getOption());
   chart._refreshTheme = () => chart.setOption(getOption(), true);
 
-  renderMetricStrip('annualSummary', [
+  renderMetricStrip(summaryId, [
     buildMetricCard('正收益年份', `${data.positiveYears}/${series.length}`, '先看长期里赚钱年份占比，再看波动的肥尾。'),
     buildMetricCard('长期均值', formatPercent(data.average || 0, 2), '全样本年度回报均值。'),
     buildMetricCard('最好一年', data.best ? `${data.best.year} | ${formatPercent(data.best.value, 2)}` : '--', '历史最佳年度涨幅。'),
@@ -1378,8 +1397,12 @@ export function initAnnualReturnsPanel(data) {
   ]);
 }
 
-export function initReturnDetailsPanel(data) {
-  const chart = registerChart(echarts.init(document.getElementById('chartReturnDetails')));
+export function initReturnDetailsPanel(data, opts = {}) {
+  const chartId = opts.chartId || 'chartReturnDetails';
+  const summaryId = opts.summaryId || 'returnDetailsSummary';
+  const indexLabel = opts.indexLabel || '标普500';
+  const hideBuyback = !!opts.hideBuyback;
+  const chart = registerChart(echarts.init(document.getElementById(chartId)));
   const series = data?.series || [];
   if (!series.length) {
     return;
@@ -1448,14 +1471,14 @@ export function initReturnDetailsPanel(data) {
           itemStyle: { color: greenColor },
           data: series.map(item => item.dividendReturn),
         },
-        {
+        ...(hideBuyback ? [] : [{
           name: '净回购收益率',
           type: 'bar',
           stack: 'return',
           barMaxWidth: 12,
           itemStyle: { color: amberColor },
           data: series.map(item => item.buybackYield),
-        },
+        }]),
         {
           name: '总回报',
           type: 'line',
@@ -1478,13 +1501,14 @@ export function initReturnDetailsPanel(data) {
         },
         formatter: params => {
           const point = series[params[0].dataIndex];
-          return [
+          const rows = [
             `<b>${point.year}</b>`,
             buildTooltipItem('价格回报', point.priceReturn, accentColor),
             buildTooltipItem('股息回报', point.dividendReturn, greenColor),
-            buildTooltipItem('净回购收益率', point.buybackYield, amberColor),
-            buildTooltipItem('总回报', point.totalReturn, totalColor, 'line'),
-          ].join('<br/>');
+          ];
+          if (!hideBuyback) rows.push(buildTooltipItem('净回购收益率', point.buybackYield, amberColor));
+          rows.push(buildTooltipItem('总回报', point.totalReturn, totalColor, 'line'));
+          return rows.join('<br/>');
         },
       },
     };
@@ -1493,14 +1517,15 @@ export function initReturnDetailsPanel(data) {
   chart.setOption(getOption());
   chart._refreshTheme = () => chart.setOption(getOption(), true);
 
-  renderMetricStrip('returnDetailsSummary', [
+  const metricCards = [
     buildMetricCard('样本区间', `${data.summary?.startYear || series[0].year}-${data.summary?.endYear || series.at(-1).year}`, data.note || '总回报口径包含价格、股息与净回购收益率。'),
     buildMetricCard('价格回报均值', data.summary?.avgPriceReturn != null ? formatPercent(data.summary.avgPriceReturn, 2) : '--', '看指数点位本身的年度涨跌。'),
     buildMetricCard('股息回报均值', data.summary?.avgDividendReturn != null ? formatPercent(data.summary.avgDividendReturn, 2) : '--', '现金分红贡献。'),
-    buildMetricCard('净回购均值', data.summary?.avgBuybackYield != null ? formatPercent(data.summary.avgBuybackYield, 2) : '--', '用净回购近似股本收缩贡献。'),
-    buildMetricCard('总回报均值', data.summary?.avgTotalReturn != null ? formatPercent(data.summary.avgTotalReturn, 2) : '--', `正收益 ${data.summary?.positiveTotalYears || 0}/${data.summary?.years || series.length} 年。`),
-    buildMetricCard('最佳 / 最差', `${data.summary?.bestYear?.year || '--'} / ${data.summary?.worstYear?.year || '--'}`, `${data.summary?.bestYear ? formatPercent(data.summary.bestYear.totalReturn, 2) : '--'} / ${data.summary?.worstYear ? formatPercent(data.summary.worstYear.totalReturn, 2) : '--'}`),
-  ]);
+  ];
+  if (!hideBuyback) metricCards.push(buildMetricCard('净回购均值', data.summary?.avgBuybackYield != null ? formatPercent(data.summary.avgBuybackYield, 2) : '--', '用净回购近似股本收缩贡献。'));
+  metricCards.push(buildMetricCard('总回报均值', data.summary?.avgTotalReturn != null ? formatPercent(data.summary.avgTotalReturn, 2) : '--', `正收益 ${data.summary?.positiveTotalYears || 0}/${data.summary?.years || series.length} 年。`));
+  metricCards.push(buildMetricCard('最佳 / 最差', `${data.summary?.bestYear?.year || '--'} / ${data.summary?.worstYear?.year || '--'}`, `${data.summary?.bestYear ? formatPercent(data.summary.bestYear.totalReturn, 2) : '--'} / ${data.summary?.worstYear ? formatPercent(data.summary.worstYear.totalReturn, 2) : '--'}`));
+  renderMetricStrip(summaryId, metricCards);
 }
 
 // ══════════════════════════════════════════════════════
@@ -1508,8 +1533,9 @@ export function initReturnDetailsPanel(data) {
 // 数据：sp500_intrayear_dd.json (1928-至今)
 // ══════════════════════════════════════════════════════
 
-export function initIntrayearDdPanel(data) {
-  const grid = document.getElementById('ddGrid');
+export function initIntrayearDdPanel(data, opts = {}) {
+  const gridId = opts.gridId || 'ddGrid';
+  const grid = document.getElementById(gridId);
   if (!grid || !data?.annual?.length) return;
 
   const fmtPct = v => `${v > 0 ? '+' : ''}${(v * 100).toFixed(1)}%`;
@@ -1542,8 +1568,10 @@ export function initIntrayearDdPanel(data) {
 // 数据：sp500_annual_tr.json · Damodaran 1928-1988 + yfinance ^SP500TR 1989+
 // ══════════════════════════════════════════════════════
 
-export function initSp500AnnualDistPanel(data) {
-  const wrap = document.getElementById('trDistWrap');
+export function initSp500AnnualDistPanel(data, opts = {}) {
+  const wrapId = opts.wrapId || 'trDistWrap';
+  const summaryId = opts.summaryId || 'trDistSummary';
+  const wrap = document.getElementById(wrapId);
   if (!wrap || !data?.buckets?.length) return;
 
   const latestYear = data.latestYear;
@@ -1573,10 +1601,10 @@ export function initSp500AnnualDistPanel(data) {
   const withinPct = Math.round((data.withinAvgPlusMinus2 / total) * 100);
   const ytdTag = data.latestIsYtd ? `（${latestYear} 为 YTD，截至 ${data.latestDate}）` : '';
 
-  renderMetricStrip('trDistSummary', [
-    buildMetricCard('长期总回报均值', formatPercent(data.average, 2), `${total} 年样本${ytdTag}，含股息再投资。`),
+  renderMetricStrip(summaryId, [
+    buildMetricCard('长期总回报均值', formatPercent(data.average, 2), `${total} 年样本${ytdTag}，${opts.returnKind || '含股息再投资'}。`),
     buildMetricCard('正收益年份', `${data.positiveYears}/${total} · ${posPct}%`, '长期视角下正年占比。'),
     buildMetricCard('接近均值的年份', `${data.withinAvgPlusMinus2}/${total} · ${withinPct}%`, `落在均值 ±2pp 区间的年份极少——说明"平均年"几乎不存在。`),
-    buildMetricCard('数据来源', 'Damodaran + ^SP500TR', '1928-1988 取自 Damodaran NYU Stern；1989+ 由 yfinance ^SP500TR 年末点位计算。'),
+    buildMetricCard('数据来源', opts.sourceLabel || 'Damodaran + ^SP500TR', opts.sourceDesc || '1928-1988 取自 Damodaran NYU Stern；1989+ 由 yfinance ^SP500TR 年末点位计算。'),
   ]);
 }
