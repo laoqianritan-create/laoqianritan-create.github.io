@@ -1,78 +1,167 @@
 // ══════════════════════════════════════════════════════
 // export-png.js · 图表 / 表格导出为高清 PNG
-// 在原始内容外加上标题、日期、页面 URL 水印
+// 标题 + 描述（panel-desc）+ 日期 + 内容居中 + footer URL 水印
 // ══════════════════════════════════════════════════════
 
 import { cssVar, getCurrentPageUrl } from './utils.js';
 import { chartInstances } from './chart-helpers.js';
 
-const EXPORT_W = 2400;
-const PAD = 60;
-const TITLE_SIZE = 48;
-const DATE_SIZE = 26;
-const FOOTER_SIZE = 24;
+const EXPORT_W = 3300;
+const PAD = 80;                    // 两侧留白
+const TITLE_SIZE = 56;
+const DATE_SIZE = 30;
+const DESC_SIZE = 28;
+const DESC_LINE_GAP = 14;          // 行间距
+const FOOTER_SIZE = 28;
 const FONT = '"Inter", "PingFang SC", sans-serif';
 
-// 把"内容图片"包上 标题/日期/Footer 框，落盘下载
-function downloadFramedImage(contentImg, contentDrawW, contentDrawH, title) {
-  const textH = PAD + TITLE_SIZE + 12 + DATE_SIZE + 36;
-  const footerH = FOOTER_SIZE + 28;
-  const exportH = textH + contentDrawH + footerH;
+// 把多段文字按宽度换行，返回行数组（中文按字符断，英文按词断）
+function wrapDescLines(descs, maxWidth, fontSize) {
+  const ctx = document.createElement('canvas').getContext('2d');
+  ctx.font = `${fontSize}px ${FONT}`;
+  const lines = [];
+  descs.forEach((desc, i) => {
+    if (!desc) return;
+    let buf = '';
+    for (const ch of desc) {
+      const test = buf + ch;
+      if (ctx.measureText(test).width > maxWidth && buf) {
+        lines.push(buf);
+        buf = ch;
+      } else {
+        buf = test;
+      }
+    }
+    if (buf) lines.push(buf);
+    if (i < descs.length - 1) lines.push('');  // 段落空行
+  });
+  return lines;
+}
+
+// 从 panel 抽出标题 + 所有 .panel-desc 文本 + metric-strip 数据
+function getPanelMeta(panelEl) {
+  if (!panelEl) return { title: '美股复盘看板', descs: [], stats: [] };
+  const title = panelEl.querySelector('.panel-title')?.textContent.trim() || '美股复盘看板';
+  const descs = [...panelEl.querySelectorAll('.panel-desc')]
+    .map(p => p.innerText.trim().replace(/\s+/g, ' '))
+    .filter(Boolean);
+  const stats = [...panelEl.querySelectorAll('.metric-card')]
+    .map(card => {
+      const label = card.querySelector('.metric-label')?.textContent.trim() || '';
+      const value = card.querySelector('.metric-value')?.textContent.trim() || '';
+      const note  = card.querySelector('.metric-note')?.textContent.trim()  || '';
+      const head  = [label, value].filter(Boolean).join('  ');
+      return note ? `${head}    ${note}` : head;
+    })
+    .filter(Boolean);
+  return { title, descs, stats };
+}
+
+// 用 contentImg + meta 拼最终图，落盘
+function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, meta) {
+  const bg = cssVar('--bg') || '#fff';
+  const textColor = cssVar('--text') || '#1a1a1a';
+  const grayColor = cssVar('--gray') || '#999';
+
+  const contentMaxW = EXPORT_W - PAD * 2;
+  // 不放大、只缩小：natural < max 时保持原尺寸居中
+  const contentW = Math.min(contentMaxW, contentNaturalW);
+  const contentH = Math.round(contentW * (contentNaturalH / contentNaturalW));
+
+  // 估算标题字号（自适应缩小如果超宽）
+  const ctxMeasure = document.createElement('canvas').getContext('2d');
+  let titleFontSize = TITLE_SIZE;
+  ctxMeasure.font = `bold ${titleFontSize}px ${FONT}`;
+  while (ctxMeasure.measureText(meta.title).width > contentMaxW && titleFontSize > 32) {
+    titleFontSize -= 2;
+    ctxMeasure.font = `bold ${titleFontSize}px ${FONT}`;
+  }
+
+  const descLines = wrapDescLines(meta.descs, contentMaxW, DESC_SIZE);
+  const descLineH = DESC_SIZE + DESC_LINE_GAP;
+  const descBlockH = descLines.length * descLineH;
+
+  // metric-strip 统计数据（图表下方）
+  const statsLines = (meta.stats?.length > 0)
+    ? wrapDescLines(meta.stats, contentMaxW, DESC_SIZE)
+    : [];
+  const statsBlockH = statsLines.length > 0 ? 32 + statsLines.length * descLineH : 0;
+
+  const headerH = PAD                  // 顶部留白
+    + titleFontSize + 18               // 标题
+    + DATE_SIZE + 30                   // 日期
+    + descBlockH                       // 描述块
+    + 36;                              // 描述与内容间隔
+  const footerH = FOOTER_SIZE + 28 + 24; // footer
+  const exportH = headerH + contentH + statsBlockH + footerH;
+
   const canvas = document.createElement('canvas');
   canvas.width = EXPORT_W;
   canvas.height = exportH;
   const ctx = canvas.getContext('2d');
-  const bg = cssVar('--bg') || '#fff';
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, EXPORT_W, exportH);
 
   let y = PAD;
-  ctx.fillStyle = cssVar('--text') || '#1a1a1a';
-  let titleFontSize = TITLE_SIZE;
+  // 标题
+  ctx.fillStyle = textColor;
   ctx.font = `bold ${titleFontSize}px ${FONT}`;
-  const titleText = title || '标普500看板';
-  while (ctx.measureText(titleText).width > EXPORT_W - PAD * 2 && titleFontSize > 28) {
-    titleFontSize -= 2;
-    ctx.font = `bold ${titleFontSize}px ${FONT}`;
-  }
-  ctx.fillText(titleText, PAD, y + titleFontSize * 0.85);
-  y += titleFontSize + 12;
-
-  ctx.fillStyle = cssVar('--gray') || '#999';
+  ctx.textAlign = 'left';
+  ctx.fillText(meta.title, PAD, y + titleFontSize * 0.85);
+  y += titleFontSize + 18;
+  // 日期
+  ctx.fillStyle = grayColor;
   ctx.font = `${DATE_SIZE}px ${FONT}`;
   ctx.fillText(new Date().toISOString().substring(0, 10), PAD, y + DATE_SIZE * 0.85);
-  y += DATE_SIZE + 36;
+  y += DATE_SIZE + 30;
+  // 描述
+  ctx.fillStyle = grayColor;
+  ctx.font = `${DESC_SIZE}px ${FONT}`;
+  for (const line of descLines) {
+    if (line) ctx.fillText(line, PAD, y + DESC_SIZE * 0.85);
+    y += descLineH;
+  }
+  y += 36;
+  // 内容居中绘制
+  const contentX = (EXPORT_W - contentW) / 2;
+  ctx.drawImage(contentImg, contentX, y, contentW, contentH);
+  y += contentH;
 
-  // 居中绘制 content
-  const contentX = (EXPORT_W - contentDrawW) / 2;
-  ctx.drawImage(contentImg, contentX, y, contentDrawW, contentDrawH);
+  // metric-strip 统计数据
+  if (statsLines.length > 0) {
+    y += 32;
+    ctx.fillStyle = grayColor;
+    ctx.font = `${DESC_SIZE}px ${FONT}`;
+    for (const line of statsLines) {
+      if (line) ctx.fillText(line, PAD, y + DESC_SIZE * 0.85);
+      y += descLineH;
+    }
+  }
 
+  // Footer
   ctx.textAlign = 'right';
-  ctx.fillStyle = cssVar('--gray') || '#999';
+  ctx.fillStyle = grayColor;
   ctx.font = `${FOOTER_SIZE}px ${FONT}`;
-  ctx.fillText(getCurrentPageUrl(), EXPORT_W - PAD, exportH - 18);
+  ctx.fillText(getCurrentPageUrl(), EXPORT_W - PAD, exportH - 24);
   ctx.textAlign = 'left';
 
   const link = document.createElement('a');
-  link.download = (title || '美股复盘看板').replace(/[\/\\:*?"<>|]/g, '_') + '.png';
+  link.download = (meta.title || '美股复盘看板').replace(/[\/\\:*?"<>|]/g, '_') + '.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
 
-export function exportChartAsPng(chartInstance, title) {
-  const chartDom = chartInstance.getDom();
-  const chartAspect = Math.max(0.5, Math.min(0.9, chartDom.clientHeight / Math.max(chartDom.clientWidth, 1)));
+export function exportChartAsPng(chartInstance, panelEl) {
   const chartImg = new Image();
   chartImg.src = chartInstance.getDataURL({
     type: 'png',
-    pixelRatio: 4,
+    pixelRatio: 5,
     backgroundColor: cssVar('--bg') || '#fff',
     excludeComponents: ['toolbox'],
   });
-  chartImg.onload = function onLoad() {
-    const drawW = EXPORT_W - PAD * 2;
-    const drawH = Math.round(drawW * chartAspect);
-    downloadFramedImage(chartImg, drawW, drawH, title);
+  chartImg.onload = () => {
+    // 传入图片实际像素尺寸（DOM宽 × pixelRatio），使图表铺满 3300px 画布宽度
+    buildFrameAndDownload(chartImg, chartImg.naturalWidth, chartImg.naturalHeight, getPanelMeta(panelEl));
   };
 }
 
@@ -92,7 +181,7 @@ function loadHtml2Canvas() {
   return html2canvasPromise;
 }
 
-export async function exportElementAsPng(element, title) {
+export async function exportElementAsPng(element, panelEl) {
   if (!element) return;
   let h2c;
   try {
@@ -103,36 +192,31 @@ export async function exportElementAsPng(element, title) {
     return;
   }
   const bg = cssVar('--bg') || '#fff';
-  // scale=2 给 hi-DPI 清晰度，宽度居中适配 EXPORT_W
+  // windowWidth=1600 强制以 desktop 视口渲染，避免 mobile 单列布局产出超长 PNG
   const sourceCanvas = await h2c(element, {
     backgroundColor: bg,
-    scale: 2,
+    scale: 4,
     useCORS: true,
-    windowWidth: element.scrollWidth,
-    windowHeight: element.scrollHeight,
+    windowWidth: 1600,
+    windowHeight: Math.max(element.scrollHeight, 900),
   });
-
-  const elemAspect = sourceCanvas.height / sourceCanvas.width;
-  const drawW = Math.min(EXPORT_W - PAD * 2, sourceCanvas.width);
-  const drawH = Math.round(drawW * elemAspect);
 
   const img = new Image();
   img.src = sourceCanvas.toDataURL('image/png');
-  img.onload = () => downloadFramedImage(img, drawW, drawH, title);
+  img.onload = () => buildFrameAndDownload(img, sourceCanvas.width, sourceCanvas.height, getPanelMeta(panelEl));
 }
 
 export function initExportButtons() {
   document.querySelectorAll('.btn-export').forEach(btn => {
     btn.addEventListener('click', () => {
       const panel = btn.closest('.panel');
-      const title = panel ? panel.querySelector('.panel-title').textContent.trim() : '美股复盘看板';
 
       // 优先 data-chart（echarts）
       const chartId = btn.dataset.chart;
       if (chartId) {
         const chart = chartInstances.find(instance => instance.getDom().id === chartId);
         if (chart) {
-          exportChartAsPng(chart, title);
+          exportChartAsPng(chart, panel);
           return;
         }
       }
@@ -142,7 +226,7 @@ export function initExportButtons() {
       if (elemId) {
         const el = document.getElementById(elemId);
         if (el) {
-          exportElementAsPng(el, title);
+          exportElementAsPng(el, panel);
           return;
         }
       }
