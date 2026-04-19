@@ -142,6 +142,24 @@ export function initPanelVix(priceData, vixData, recessionData, opts = {}) {
 
   chart.setOption(getOption());
   chart._refreshTheme = () => chart.setOption(getOption(), true);
+
+  // 可选 metric strip：最新 VXN + 样本统计
+  if (opts.summaryId) {
+    const node = document.getElementById(opts.summaryId);
+    if (node) {
+      const vals = vixData.series.map(s => s.value).filter(v => v != null);
+      const latest = vixData.series[vixData.series.length - 1];
+      const avg = vals.reduce((a, b) => a + b, 0) / Math.max(vals.length, 1);
+      const median = [...vals].sort((a, b) => a - b)[Math.floor(vals.length / 2)];
+      const maxRec = vixData.series.reduce((m, s) => (s.value > (m?.value ?? -Infinity) ? s : m), null);
+      renderMetricStrip(opts.summaryId, [
+        buildMetricCard('最新', latest ? `${formatNumber(latest.value, 2)}` : '--', latest ? `截至 ${latest.date}` : ''),
+        buildMetricCard('长期均值', formatNumber(avg, 2), `${vals.length.toLocaleString()} 个交易日的算术均值`),
+        buildMetricCard('长期中位数', formatNumber(median, 2), '样本中位数，受极端值影响较小'),
+        buildMetricCard('历史峰值', maxRec ? `${formatNumber(maxRec.value, 2)}` : '--', maxRec ? `出现于 ${maxRec.date}` : ''),
+      ]);
+    }
+  }
 }
 
 // ══════════════════════════════════════════════════════

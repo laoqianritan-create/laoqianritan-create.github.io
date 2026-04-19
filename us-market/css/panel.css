@@ -406,7 +406,7 @@ html.panel-snap-enabled .panel {
   display: flex;
   flex-direction: column-reverse;   /* 年份从底部堆叠 */
   gap: 2px;
-  min-height: 520px;
+  /* 不再硬编码 min-height：让 grid 按最高列的实际 cell 数自动撑高，避免短样本（如 NDX 41 年）出现大片留白 */
 }
 .tr-dist-cell {
   padding: 5px 4px;
@@ -440,6 +440,43 @@ html.panel-snap-enabled .panel {
 }
 .tr-dist-axis-label.tr-neg { color: var(--red); }
 .tr-dist-axis-label.tr-pos { color: var(--green); }
+
+/* ── VXN 解读说明表 ── */
+.vxn-explainer {
+  margin-top: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card-bg);
+  padding: 14px 16px 12px;
+  overflow-x: auto;
+}
+.vxn-explainer-table { width: 100%; font-size: 13px; }
+.vxn-explainer-table th {
+  text-align: left;
+  padding: 8px 10px;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.vxn-explainer-table td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.vxn-explainer-table tr:last-child td { border-bottom: none; }
+.vxn-explainer-table td:first-child { font-weight: 600; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.vxn-explainer-note {
+  margin: 10px 2px 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.vxn-explainer-note code {
+  background: var(--bg-section);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+}
 
 /* ── Summary Cards (表格 demo 形态) ── */
 .metric-strip {

@@ -200,13 +200,12 @@ async function main() {
         startYear: 1986,
       });
     }
-    // 纳指100回报分解（QQQ 1999+，仅价格 + 股息）
+    // 纳指100回报分解（QQQ 2000+，价格 + 股息 + top25 回购聚合）
     if (ndxData.qqqDetails) {
       initReturnDetailsPanel(ndxData.qqqDetails, {
         chartId: 'chartNdxReturnDetails',
         summaryId: 'ndxReturnDetailsSummary',
         indexLabel: 'QQQ',
-        hideBuyback: true,
       });
     }
     // 纳指100回撤
@@ -241,6 +240,7 @@ async function main() {
         indexLabel: '纳指100',
         volLabel: 'VXN',
         volThreshold: 30,
+        summaryId: 'ndxVxnSummary',
       });
     }
     // 纳指100五年滚动（已预计算）
