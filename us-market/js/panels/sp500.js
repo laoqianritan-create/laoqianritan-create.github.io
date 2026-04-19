@@ -445,12 +445,22 @@ export function initPanelDrawdown(priceData, drawdownData) {
       tr.classList.add('row-active');
     }
 
+    // recovery_days 显示：null = 未恢复（active 进行中）；> 365 显示带"年"换算
+    let recoveryCell;
+    if (item.recovery_days == null) {
+      recoveryCell = '<span style="color:var(--text-secondary)">进行中</span>';
+    } else if (item.recovery_days > 365) {
+      recoveryCell = `${item.recovery_days} (${(item.recovery_days / 365).toFixed(1)}年)`;
+    } else {
+      recoveryCell = `${item.recovery_days}`;
+    }
     tr.innerHTML = `
       <td style="white-space:nowrap">${item.period}</td>
-      <td style="text-align:right">${item.days}</td>
       <td style="text-align:right">${item.high}</td>
       <td style="text-align:right">${item.low}</td>
+      <td style="text-align:right">${item.days}</td>
       <td class="decline-cell" style="text-align:right;color:var(--red);background:rgba(207,19,34,${alpha.toFixed(2)})">${formatPercent(item.decline * 100, 1)}</td>
+      <td style="text-align:right;white-space:nowrap">${recoveryCell}</td>
       <td><span class="cat-badge cat-${item.category}">${catNames[item.category] || item.category}</span></td>
       <td class="cause-cell">${item.cause}</td>
     `;

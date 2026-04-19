@@ -8,7 +8,9 @@
       "decline": -0.098,
       "category": "narrative_break",
       "cause": "伊朗战争、原油飙升、私人信贷动荡、AI颠覆恐慌",
-      "active": false
+      "active": false,
+      "recovery_days": 77,
+      "recovery_date": "2026-04-15"
     },
     {
       "period": "2025: 10月29日 - 11月21日",
@@ -18,7 +20,9 @@
       "decline": -0.058,
       "category": "mechanical_scare",
       "cause": "AI泡沫恐慌",
-      "active": false
+      "active": false,
+      "recovery_days": 56,
+      "recovery_date": "2025-12-24"
     },
     {
       "period": "2025: 2月19日 - 4月7日",
@@ -28,7 +32,9 @@
       "decline": -0.213,
       "category": "policy_shift",
       "cause": "关税、贸易战与全球衰退恐慌",
-      "active": false
+      "active": false,
+      "recovery_days": 128,
+      "recovery_date": "2025-06-27"
     },
     {
       "period": "2024: 7月16日 - 8月5日",
@@ -38,7 +44,9 @@
       "decline": -0.097,
       "category": "mechanical_scare",
       "cause": "衰退恐慌、美联储行动滞后、日经崩盘",
-      "active": false
+      "active": false,
+      "recovery_days": 65,
+      "recovery_date": "2024-09-19"
     },
     {
       "period": "2024: 3月28日 - 4月19日",
@@ -48,7 +56,9 @@
       "decline": -0.059,
       "category": "mechanical_scare",
       "cause": "通胀顽固、美联储推迟降息、伊朗/以色列冲突",
-      "active": false
+      "active": false,
+      "recovery_days": 48,
+      "recovery_date": "2024-05-15"
     },
     {
       "period": "2022: 1月4日 - 10月13日",
@@ -58,7 +68,9 @@
       "decline": -0.275,
       "category": "policy_shift",
       "cause": "通胀、加息/美联储紧缩、俄乌战争、衰退恐慌",
-      "active": false
+      "active": false,
+      "recovery_days": 745,
+      "recovery_date": "2024-01-19"
     },
     {
       "period": "2021: 11月22日 - 12月3日",
@@ -68,7 +80,9 @@
       "decline": -0.052,
       "category": "mechanical_scare",
       "cause": "新冠奥密克戎变异株、美联储缩减购债恐慌",
-      "active": false
+      "active": false,
+      "recovery_days": 35,
+      "recovery_date": "2021-12-27"
     },
     {
       "period": "2021: 9月2日 - 10月4日",
@@ -78,7 +92,9 @@
       "decline": -0.059,
       "category": "mechanical_scare",
       "cause": "中国风险传染恐慌、美联储缩减购债恐慌、新冠德尔塔变异株",
-      "active": false
+      "active": false,
+      "recovery_days": 49,
+      "recovery_date": "2021-10-21"
     },
     {
       "period": "2021: 2月16日 - 3月4日",
@@ -88,7 +104,9 @@
       "decline": -0.057,
       "category": "mechanical_scare",
       "cause": "通胀恐慌、利率上升",
-      "active": false
+      "active": false,
+      "recovery_days": 27,
+      "recovery_date": "2021-03-15"
     },
     {
       "period": "2020: 9月2日 - 9月24日",
@@ -98,7 +116,9 @@
       "decline": -0.106,
       "category": "narrative_break",
       "cause": "新冠疫情、无新刺激方案、大选恐慌",
-      "active": false
+      "active": false,
+      "recovery_days": 75,
+      "recovery_date": "2020-11-16"
     },
     {
       "period": "2020: 2月19日 - 3月23日",
@@ -108,7 +128,9 @@
       "decline": -0.354,
       "category": "exogenous_shock",
       "cause": "新冠疫情、全球萧条恐慌",
-      "active": false
+      "active": false,
+      "recovery_days": 184,
+      "recovery_date": "2020-08-21"
     },
     {
       "period": "2019: 7月26日 - 8月5日",
@@ -118,7 +140,9 @@
       "decline": -0.068,
       "category": "mechanical_scare",
       "cause": "贸易战、关税、人民币贬值、衰退恐慌",
-      "active": false
+      "active": false,
+      "recovery_days": 94,
+      "recovery_date": "2019-10-28"
     },
     {
       "period": "2019: 5月1日 - 6月3日",
@@ -128,7 +152,9 @@
       "decline": -0.076,
       "category": "narrative_break",
       "cause": "贸易战、关税、收益率曲线倒挂、全球放缓/衰退恐慌",
-      "active": false
+      "active": false,
+      "recovery_days": 50,
+      "recovery_date": "2019-06-20"
     },
     {
       "period": "2018: 9月21日 - 12月26日",
@@ -138,7 +164,9 @@
       "decline": -0.202,
       "category": "policy_shift",
       "cause": "利率上升、中国放缓、贸易战/关税、房地产放缓",
-      "active": false
+      "active": false,
+      "recovery_days": 220,
+      "recovery_date": "2019-04-29"
     },
     {
       "period": "2018: 1月26日 - 2月9日",
@@ -148,17 +176,21 @@
       "decline": -0.118,
       "category": "mechanical_scare",
       "cause": "通胀恐慌、利率上升",
-      "active": false
+      "active": false,
+      "recovery_days": 210,
+      "recovery_date": "2018-08-24"
     },
     {
       "period": "2016: 8月15日 - 11月4日",
       "days": 81,
       "high": 2194,
       "low": 2084,
-      "decline": -0.050,
+      "decline": -0.05,
       "category": "narrative_break",
       "cause": "大选恐慌/担忧",
-      "active": false
+      "active": false,
+      "recovery_days": 98,
+      "recovery_date": "2016-11-21"
     },
     {
       "period": "2015/16: 5月20日 - 2月11日",
@@ -168,7 +200,9 @@
       "decline": -0.152,
       "category": "policy_shift",
       "cause": "希腊违约、中国股灾、新兴市场货币、油价下跌、朝鲜",
-      "active": false
+      "active": false,
+      "recovery_days": 418,
+      "recovery_date": "2016-07-11"
     },
     {
       "period": "2014/15: 12月29日 - 2月2日",
@@ -178,7 +212,9 @@
       "decline": -0.054,
       "category": "mechanical_scare",
       "cause": "油价下跌、美元走强、盈利疲弱",
-      "active": false
+      "active": false,
+      "recovery_days": 46,
+      "recovery_date": "2015-02-13"
     },
     {
       "period": "2014: 12月5日 - 12月16日",
@@ -188,7 +224,9 @@
       "decline": -0.051,
       "category": "mechanical_scare",
       "cause": "油价下跌、美元走强",
-      "active": false
+      "active": false,
+      "recovery_days": 18,
+      "recovery_date": "2014-12-23"
     },
     {
       "period": "2014: 9月19日 - 10月15日",
@@ -198,7 +236,9 @@
       "decline": -0.098,
       "category": "narrative_break",
       "cause": "埃博拉、全球增长恐慌、油价下跌",
-      "active": false
+      "active": false,
+      "recovery_days": 47,
+      "recovery_date": "2014-11-05"
     },
     {
       "period": "2014: 1月15日 - 2月5日",
@@ -208,7 +248,9 @@
       "decline": -0.061,
       "category": "mechanical_scare",
       "cause": "美联储缩减购债、欧洲通缩恐慌、新兴市场货币动荡",
-      "active": false
+      "active": false,
+      "recovery_days": 43,
+      "recovery_date": "2014-02-27"
     },
     {
       "period": "2013: 5月22日 - 6月24日",
@@ -218,7 +260,9 @@
       "decline": -0.075,
       "category": "narrative_break",
       "cause": "美联储缩减购债恐慌",
-      "active": false
+      "active": false,
+      "recovery_days": 57,
+      "recovery_date": "2013-07-18"
     },
     {
       "period": "2012: 9月14日 - 11月16日",
@@ -228,7 +272,9 @@
       "decline": -0.089,
       "category": "narrative_break",
       "cause": "财政悬崖担忧、奥巴马连任",
-      "active": false
+      "active": false,
+      "recovery_days": 125,
+      "recovery_date": "2013-01-17"
     },
     {
       "period": "2012: 4月2日 - 6月4日",
@@ -238,7 +284,9 @@
       "decline": -0.109,
       "category": "narrative_break",
       "cause": "欧洲债务危机",
-      "active": false
+      "active": false,
+      "recovery_days": 157,
+      "recovery_date": "2012-09-06"
     },
     {
       "period": "2011: 5月2日 - 10月4日",
@@ -248,7 +296,9 @@
       "decline": -0.216,
       "category": "policy_shift",
       "cause": "欧洲债务危机、二次探底衰退恐慌、美国国债降级",
-      "active": false
+      "active": false,
+      "recovery_days": 302,
+      "recovery_date": "2012-02-28"
     },
     {
       "period": "2011: 2月18日 - 3月16日",
@@ -258,7 +308,9 @@
       "decline": -0.071,
       "category": "mechanical_scare",
       "cause": "利比亚干预（内战）、日本地震/核灾难",
-      "active": false
+      "active": false,
+      "recovery_days": 67,
+      "recovery_date": "2011-04-26"
     },
     {
       "period": "2010: 4月26日 - 7月1日",
@@ -268,7 +320,9 @@
       "decline": -0.171,
       "category": "policy_shift",
       "cause": "欧洲债务危机、闪崩、增长担忧",
-      "active": false
+      "active": false,
+      "recovery_days": 192,
+      "recovery_date": "2010-11-04"
     },
     {
       "period": "2010: 1月19日 - 2月5日",
@@ -278,7 +332,9 @@
       "decline": -0.092,
       "category": "mechanical_scare",
       "cause": "中国信贷收紧、奥巴马银行监管计划",
-      "active": false
+      "active": false,
+      "recovery_days": 51,
+      "recovery_date": "2010-03-11"
     },
     {
       "period": "2009: 10月21日 - 11月2日",
@@ -288,7 +344,9 @@
       "decline": -0.065,
       "category": "mechanical_scare",
       "cause": "对复苏的担忧",
-      "active": false
+      "active": false,
+      "recovery_days": 26,
+      "recovery_date": "2009-11-16"
     },
     {
       "period": "2009: 9月23日 - 10月2日",
@@ -298,7 +356,9 @@
       "decline": -0.056,
       "category": "mechanical_scare",
       "cause": "对复苏的担忧",
-      "active": false
+      "active": false,
+      "recovery_days": 21,
+      "recovery_date": "2009-10-14"
     },
     {
       "period": "2009: 6月11日 - 7月7日",
@@ -308,7 +368,9 @@
       "decline": -0.091,
       "category": "mechanical_scare",
       "cause": "世界银行负增长预测、担忧市场领先于复苏",
-      "active": false
+      "active": false,
+      "recovery_days": 42,
+      "recovery_date": "2009-07-23"
     },
     {
       "period": "2009: 5月8日 - 15日",
@@ -318,7 +380,9 @@
       "decline": -0.055,
       "category": "mechanical_scare",
       "cause": "担忧市场涨幅过快",
-      "active": false
+      "active": false,
+      "recovery_days": 24,
+      "recovery_date": "2009-06-01"
     },
     {
       "period": "2007: 10月9日 - 2009年3月9日",
@@ -328,7 +392,9 @@
       "decline": -0.568,
       "category": "credit_destruction",
       "cause": "全球金融危机：次贷崩溃、贝尔斯登被收购、两房被接管、雷曼破产、AIG救助、全球信贷冻结、银行倒闭潮、全球衰退",
-      "active": false
+      "active": false,
+      "recovery_days": 1997,
+      "recovery_date": "2013-03-28"
     },
     {
       "period": "2007: 7月19日 - 8月15日",
@@ -338,7 +404,9 @@
       "decline": -0.094,
       "category": "narrative_break",
       "cause": "次贷危机首次大规模爆发、贝尔斯登对冲基金崩盘、法国巴黎银行冻结基金",
-      "active": false
+      "active": false,
+      "recovery_days": 78,
+      "recovery_date": "2007-10-05"
     },
     {
       "period": "2007: 2月20日 - 3月5日",
@@ -348,7 +416,9 @@
       "decline": -0.059,
       "category": "mechanical_scare",
       "cause": "上证综指暴跌9%引发全球连锁抛售、格林斯潘衰退警告",
-      "active": false
+      "active": false,
+      "recovery_days": 55,
+      "recovery_date": "2007-04-16"
     },
     {
       "period": "2006: 5月5日 - 6月13日",
@@ -358,7 +428,9 @@
       "decline": -0.077,
       "category": "narrative_break",
       "cause": "通胀恐慌、美联储加息至5.0%、新兴市场大规模抛售",
-      "active": false
+      "active": false,
+      "recovery_days": 143,
+      "recovery_date": "2006-09-25"
     },
     {
       "period": "2005: 8月3日 - 10月13日",
@@ -368,7 +440,9 @@
       "decline": -0.055,
       "category": "narrative_break",
       "cause": "飓风卡特里娜重创能源基础设施、油价飙升、美联储持续加息",
-      "active": false
+      "active": false,
+      "recovery_days": 107,
+      "recovery_date": "2005-11-18"
     },
     {
       "period": "2005: 3月7日 - 4月20日",
@@ -378,7 +452,9 @@
       "decline": -0.072,
       "category": "narrative_break",
       "cause": "通用汽车/福特信用降级、经济放缓信号、油价上涨与通胀忧虑",
-      "active": false
+      "active": false,
+      "recovery_days": 129,
+      "recovery_date": "2005-07-14"
     },
     {
       "period": "2004: 2月11日 - 8月12日",
@@ -388,7 +464,9 @@
       "decline": -0.082,
       "category": "narrative_break",
       "cause": "美联储加息预期、油价飙升、马德里恐袭",
-      "active": false
+      "active": false,
+      "recovery_days": 267,
+      "recovery_date": "2004-11-04"
     },
     {
       "period": "2000: 3月24日 - 2002年10月9日",
@@ -398,17 +476,21 @@
       "decline": -0.491,
       "category": "credit_destruction",
       "cause": "互联网泡沫破裂、科技股估值崩塌、9/11恐怖袭击、安然/世通财务造假丑闻",
-      "active": false
+      "active": false,
+      "recovery_days": 2623,
+      "recovery_date": "2007-05-30"
     },
     {
       "period": "2000: 1月14日 - 2月25日",
       "days": 42,
       "high": 1465,
       "low": 1333,
-      "decline": -0.090,
+      "decline": -0.09,
       "category": "narrative_break",
       "cause": "美联储连续加息、Y2K支出退潮、科技股估值极端泡沫化",
-      "active": false
+      "active": false,
+      "recovery_days": 67,
+      "recovery_date": "2000-03-21"
     }
   ],
   "summary": {
