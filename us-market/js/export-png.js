@@ -40,8 +40,8 @@ function wrapDescLines(descs, maxWidth, fontSize) {
 
 // 从 panel 抽出标题 + 所有 .panel-desc 文本 + metric-strip 数据
 function getPanelMeta(panelEl) {
-  if (!panelEl) return { title: '美股复盘看板', descs: [], stats: [] };
-  const title = panelEl.querySelector('.panel-title')?.textContent.trim() || '美股复盘看板';
+  if (!panelEl) return { title: 'Big Picture', descs: [], stats: [] };
+  const title = panelEl.querySelector('.panel-title')?.textContent.trim() || 'Big Picture';
   const descs = [...panelEl.querySelectorAll('.panel-desc')]
     .map(p => p.innerText.trim().replace(/\s+/g, ' '))
     .filter(Boolean);
@@ -57,8 +57,48 @@ function getPanelMeta(panelEl) {
   return { title, descs, stats };
 }
 
+// 找到底部"说明表格"类型的附加元素（VXN 五档解读表、其他未来 panel-explainer 等）
+// 导出 PNG 时把这些元素也渲染进画布底部
+function getPanelExtras(panelEl) {
+  if (!panelEl) return [];
+  const selectors = [
+    '.vxn-explainer',          // VXN 五档解读表
+    '.panel-explainer',        // 未来通用 explainer 容器
+    '.drawdown-table-wrap',    // 回撤事件表（chart 导出时一并带上）
+  ];
+  const seen = new Set();
+  const extras = [];
+  selectors.forEach(sel => {
+    panelEl.querySelectorAll(sel).forEach(el => {
+      if (!seen.has(el)) { seen.add(el); extras.push(el); }
+    });
+  });
+  return extras;
+}
+
+// 把 HTML 元素渲染成 canvas（统一 html2canvas 入口，供 extras / element 两条路径复用）
+async function renderElementToImage(element) {
+  const h2c = await loadHtml2Canvas();
+  const bg = cssVar('--bg') || '#fff';
+  const sourceCanvas = await h2c(element, {
+    backgroundColor: bg,
+    scale: 4,
+    useCORS: true,
+    windowWidth: 1600,
+    windowHeight: Math.max(element.scrollHeight, 900),
+  });
+  const img = await new Promise((resolve, reject) => {
+    const i = new Image();
+    i.src = sourceCanvas.toDataURL('image/png');
+    i.onload = () => resolve(i);
+    i.onerror = reject;
+  });
+  return { img, naturalW: sourceCanvas.width, naturalH: sourceCanvas.height };
+}
+
 // 用 contentImg + meta 拼最终图，落盘
-function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, meta) {
+// extraImages: [{ img, naturalW, naturalH }, ...] 可选；会等比缩放后堆叠到 stats 之下
+function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, meta, extraImages = []) {
   const bg = cssVar('--bg') || '#fff';
   const textColor = cssVar('--text') || '#1a1a1a';
   const grayColor = cssVar('--gray') || '#999';
@@ -87,13 +127,22 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
     : [];
   const statsBlockH = statsLines.length > 0 ? 32 + statsLines.length * descLineH : 0;
 
+  // 预计算 extras 缩放后高度
+  const extrasLayout = extraImages.map(ex => {
+    const w = Math.min(contentMaxW, ex.naturalW);
+    const h = Math.round(w * (ex.naturalH / ex.naturalW));
+    return { ...ex, w, h };
+  });
+  const extrasGap = 40; // 每个 extra 之间 + 与 stats 之间的间距
+  const extrasBlockH = extrasLayout.reduce((sum, ex) => sum + ex.h + extrasGap, 0);
+
   const headerH = PAD                  // 顶部留白
     + titleFontSize + 18               // 标题
     + DATE_SIZE + 30                   // 日期
     + descBlockH                       // 描述块
     + 36;                              // 描述与内容间隔
   const footerH = FOOTER_SIZE + 28 + 24; // footer
-  const exportH = headerH + contentH + statsBlockH + footerH;
+  const exportH = headerH + contentH + statsBlockH + extrasBlockH + footerH;
 
   const canvas = document.createElement('canvas');
   canvas.width = EXPORT_W;
@@ -138,6 +187,14 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
     }
   }
 
+  // 附加元素（底部说明表格等）
+  for (const ex of extrasLayout) {
+    y += extrasGap;
+    const exX = (EXPORT_W - ex.w) / 2;
+    ctx.drawImage(ex.img, exX, y, ex.w, ex.h);
+    y += ex.h;
+  }
+
   // Footer
   ctx.textAlign = 'right';
   ctx.fillStyle = grayColor;
@@ -146,23 +203,36 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
   ctx.textAlign = 'left';
 
   const link = document.createElement('a');
-  link.download = (meta.title || '美股复盘看板').replace(/[\/\\:*?"<>|]/g, '_') + '.png';
+  link.download = (meta.title || 'Big Picture').replace(/[\/\\:*?"<>|]/g, '_') + '.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
 
-export function exportChartAsPng(chartInstance, panelEl) {
-  const chartImg = new Image();
-  chartImg.src = chartInstance.getDataURL({
-    type: 'png',
-    pixelRatio: 5,
-    backgroundColor: cssVar('--bg') || '#fff',
-    excludeComponents: ['toolbox'],
+export async function exportChartAsPng(chartInstance, panelEl) {
+  const chartImg = await new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = chartInstance.getDataURL({
+      type: 'png',
+      pixelRatio: 5,
+      backgroundColor: cssVar('--bg') || '#fff',
+      excludeComponents: ['toolbox'],
+    });
+    img.onload = () => resolve(img);
+    img.onerror = reject;
   });
-  chartImg.onload = () => {
-    // 传入图片实际像素尺寸（DOM宽 × pixelRatio），使图表铺满 3300px 画布宽度
-    buildFrameAndDownload(chartImg, chartImg.naturalWidth, chartImg.naturalHeight, getPanelMeta(panelEl));
-  };
+
+  // 收集底部附加说明元素（VXN 解读表、回撤事件表等），依次 html2canvas 渲染
+  let extras = [];
+  const extraEls = getPanelExtras(panelEl);
+  for (const el of extraEls) {
+    try {
+      extras.push(await renderElementToImage(el));
+    } catch (err) {
+      console.warn('附加元素渲染失败，跳过', el, err);
+    }
+  }
+
+  buildFrameAndDownload(chartImg, chartImg.naturalWidth, chartImg.naturalHeight, getPanelMeta(panelEl), extras);
 }
 
 // ── HTML 元素（表格类面板）→ PNG ──
