@@ -1536,3 +1536,47 @@ export function initIntrayearDdPanel(data) {
 
   grid.innerHTML = headerHtml + rowsHtml;
 }
+
+// ══════════════════════════════════════════════════════
+// 面板：标普500年度回报分布（histogram，Charlie Bilello 同款）
+// 数据：sp500_annual_tr.json · Damodaran 1928-1988 + yfinance ^SP500TR 1989+
+// ══════════════════════════════════════════════════════
+
+export function initSp500AnnualDistPanel(data) {
+  const wrap = document.getElementById('trDistWrap');
+  if (!wrap || !data?.buckets?.length) return;
+
+  const latestYear = data.latestYear;
+  const gridHtml = data.buckets.map(b => {
+    const sign = b.min < 0 ? 'neg' : 'pos';
+    // 年份升序：列内自底向上堆叠（column-reverse 让数组最后一个出现在顶部）
+    const years = [...b.years].sort((a, c) => a - c);
+    const cells = years.map(yr => {
+      const isCurrent = yr === latestYear;
+      return `<div class="tr-dist-cell tr-${sign}${isCurrent ? ' tr-current' : ''}" title="${yr}">${yr}</div>`;
+    }).join('');
+    return `<div class="tr-dist-col">${cells}</div>`;
+  }).join('');
+
+  const axisHtml = data.buckets.map(b => {
+    const sign = b.min < 0 ? 'neg' : 'pos';
+    return `<div class="tr-dist-axis-label tr-${sign}">${b.label}</div>`;
+  }).join('');
+
+  wrap.innerHTML = `
+    <div class="tr-dist-grid">${gridHtml}</div>
+    <div class="tr-dist-axis">${axisHtml}</div>
+  `;
+
+  const total = data.totalYears;
+  const posPct = Math.round((data.positiveYears / total) * 100);
+  const withinPct = Math.round((data.withinAvgPlusMinus2 / total) * 100);
+  const ytdTag = data.latestIsYtd ? `（${latestYear} 为 YTD，截至 ${data.latestDate}）` : '';
+
+  renderMetricStrip('trDistSummary', [
+    buildMetricCard('长期总回报均值', formatPercent(data.average, 2), `${total} 年样本${ytdTag}，含股息再投资。`),
+    buildMetricCard('正收益年份', `${data.positiveYears}/${total} · ${posPct}%`, '长期视角下正年占比。'),
+    buildMetricCard('接近均值的年份', `${data.withinAvgPlusMinus2}/${total} · ${withinPct}%`, `落在均值 ±2pp 区间的年份极少——说明"平均年"几乎不存在。`),
+    buildMetricCard('数据来源', 'Damodaran + ^SP500TR', '1928-1988 取自 Damodaran NYU Stern；1989+ 由 yfinance ^SP500TR 年末点位计算。'),
+  ]);
+}

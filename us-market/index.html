@@ -19,6 +19,7 @@
       <div class="nav-group active" data-category="sp500">
         <a class="nav-item active" href="#panel-price" data-panel="panel-price">走势</a>
         <a class="nav-item" href="#panel-annual" data-panel="panel-annual">年回报</a>
+        <a class="nav-item" href="#panel-annual-dist" data-panel="panel-annual-dist">回报分布</a>
         <a class="nav-item" href="#panel-annualized-matrix" data-panel="panel-annualized-matrix">年化矩阵</a>
         <a class="nav-item" href="#panel-return-details" data-panel="panel-return-details">回报分解</a>
         <a class="nav-item" href="#panel-drawdown" data-panel="panel-drawdown">回撤</a>
@@ -156,6 +157,22 @@
       </div>
       <div class="chart-container chart-medium" id="chartAnnual"></div>
       <div class="metric-strip" id="annualSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-annual-dist" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500年度回报分布</h2>
+          <p class="panel-desc">把 1928 年以来每一年按总回报（含股息）装进 11 个区间 · 平均 10% 只是均值，真实年份极少落在均值附近 · 训练对"市场回报的肥尾分布"的直觉</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-export-element="trDistWrap" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="tr-dist-wrap" id="trDistWrap"></div>
+      <div class="metric-strip" id="trDistSummary"></div>
     </div>
   </section>
 
@@ -641,7 +658,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260419133450"></script>
+<script type="module" src="js/panels.js?v=20260419135725"></script>
 <script>
 // Hero banner: SP500 百年走势动态曲线 + 历史事件标记 + 实时数据徽章
 (function initHeroCurve() {

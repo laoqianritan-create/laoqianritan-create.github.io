@@ -20,6 +20,7 @@ import {
   initAnnualReturnsPanel,
   initReturnDetailsPanel,
   initIntrayearDdPanel,
+  initSp500AnnualDistPanel,
 } from './panels/sp500.js';
 
 import {
@@ -101,6 +102,9 @@ async function main() {
     // 年内回撤 vs 全年涨幅
     let intrayearDdData = null;
     try { intrayearDdData = await fetchJSON('data/sp500_intrayear_dd.json'); } catch (e) { console.warn('sp500_intrayear_dd.json 缺失，年内回撤面板将不渲染', e); }
+    // 年度总回报分布（Bilello 同款 histogram）
+    let annualTrData = null;
+    try { annualTrData = await fetchJSON('data/sp500_annual_tr.json'); } catch (e) { console.warn('sp500_annual_tr.json 缺失，年度回报分布面板将不渲染', e); }
 
     initPanelPrice(priceData, recessionData, sp500CenturyData);
     initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
@@ -132,6 +136,7 @@ async function main() {
       '2026-04': { xOff: -25, yOff: 18 },                  // 稍微往下+往右
     });
     initAnnualReturnsPanel(annualReturnsData);
+    if (annualTrData) initSp500AnnualDistPanel(annualTrData);
     initPanelAnnualizedMatrix(sp500CenturyData);
     initReturnDetailsPanel(returnDetailsData);
     initPanelDrawdown(priceData, drawdownData);
