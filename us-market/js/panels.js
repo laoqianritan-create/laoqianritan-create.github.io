@@ -21,6 +21,7 @@ import {
   initReturnDetailsPanel,
   initIntrayearDdPanel,
   initSp500AnnualDistPanel,
+  initCapitalismPanel,
 } from './panels/sp500.js';
 
 import {
@@ -125,6 +126,7 @@ async function main() {
     }
 
     initPanelPrice(priceData, recessionData, sp500CenturyData);
+    initCapitalismPanel();
     initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
     // ── 牛熊周期面板的手工坐标 ──
     // 标签默认 distance=10 紧贴极值点；override 用来：

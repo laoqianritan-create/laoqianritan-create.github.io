@@ -18,6 +18,7 @@
     <nav class="nav" id="nav">
       <div class="nav-group active" data-category="sp500">
         <a class="nav-item active" href="#panel-price" data-panel="panel-price">走势</a>
+        <a class="nav-item" href="#panel-capitalism" data-panel="panel-capitalism">增速曲线</a>
         <a class="nav-item" href="#panel-annual" data-panel="panel-annual">年回报</a>
         <a class="nav-item" href="#panel-annual-dist" data-panel="panel-annual-dist">回报分布</a>
         <a class="nav-item" href="#panel-annualized-matrix" data-panel="panel-annualized-matrix">年化矩阵</a>
@@ -114,6 +115,63 @@
       </div>
       <div class="chart-container chart-hero" id="chartPrice"></div>
       <div class="metric-strip" id="sp500CenturySummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-capitalism" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <div class="cgr-eyebrow">Big Picture · Capitalism Growth Rates</div>
+          <h2 class="panel-title">资本主义增速的几条线</h2>
+          <p class="panel-desc">从 2% 到 40%，人类经济体系里几乎所有"长期增速"都落在一条钟形带内。悬停任意一条线查看含义、典型案例与复利效应；越靠近顶端越像"短跑冲刺"，越靠近底部越接近"秩序基线"。内容来自@望岳投资</p>
+        </div>
+      </div>
+      <div class="cgr-layout">
+        <div class="cgr-chart-wrap" id="cgrChartWrap">
+          <svg id="cgrSvg" viewBox="0 0 900 720" preserveAspectRatio="xMidYMid meet" aria-label="Bell curve of capitalism growth rates">
+            <defs>
+              <linearGradient id="cgrBellGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"  stop-color="#60a5fa" stop-opacity="0.08"/>
+                <stop offset="45%" stop-color="#93c5fd" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#bfdbfe" stop-opacity="0.55"/>
+              </linearGradient>
+              <marker id="cgrArrowBlack" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+              </marker>
+              <marker id="cgrArrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6"/>
+              </marker>
+              <marker id="cgrArrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc2626"/>
+              </marker>
+            </defs>
+            <g id="cgrGridGroup"></g>
+            <g id="cgrBellGroup"></g>
+            <g id="cgrMarkerGroup"></g>
+          </svg>
+          <div class="cgr-legend">
+            <div class="cgr-legend-item"><span class="cgr-swatch cgr-swatch-blue"></span>标普500 CAGR / 富人资产</div>
+            <div class="cgr-legend-item"><span class="cgr-swatch cgr-swatch-red"></span>美元秩序真实通胀 · 斩杀线</div>
+            <div class="cgr-legend-item"><span class="cgr-swatch"></span>其他长期速度</div>
+          </div>
+        </div>
+        <aside class="cgr-detail" id="cgrDetailCard">
+          <div id="cgrDetailEmpty">
+            <div class="cgr-detail-head">
+              <div class="cgr-detail-pct">—</div>
+              <div class="cgr-detail-tag">hover to explore</div>
+            </div>
+            <div class="cgr-empty-hint">
+              <div>把鼠标移到左侧任意一条增速线 ——</div>
+              <div>• 查看含义与代表性场景</div>
+              <div>• 复利效应：<span class="cgr-k">10 年 / 20 年 / 30 年</span> 对比</div>
+              <div>• 点击后可<strong>固定</strong>该条线，再次点击或 <span class="cgr-k">Esc</span> 取消</div>
+            </div>
+          </div>
+          <div id="cgrDetailContent" style="display:none"></div>
+        </aside>
+      </div>
     </div>
   </section>
 
@@ -871,7 +929,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260419183648"></script>
+<script type="module" src="js/panels.js?v=20260421135022"></script>
 <script>
 // Hero banner: SP500 百年走势动态曲线 + 历史事件标记 + 实时数据徽章
 (function initHeroCurve() {

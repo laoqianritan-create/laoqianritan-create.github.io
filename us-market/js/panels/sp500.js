@@ -1613,3 +1613,299 @@ export function initSp500AnnualDistPanel(data, opts = {}) {
     buildMetricCard('数据来源', opts.sourceLabel || 'Damodaran + ^SP500TR', opts.sourceDesc || '1928-1988 取自 Damodaran NYU Stern；1989+ 由 yfinance ^SP500TR 年末点位计算。'),
   ]);
 }
+
+export function initCapitalismPanel() {
+  const gridGroup   = document.getElementById('cgrGridGroup');
+  const bellGroup   = document.getElementById('cgrBellGroup');
+  const markerGroup = document.getElementById('cgrMarkerGroup');
+  const chartWrap   = document.getElementById('cgrChartWrap');
+  const detailCard  = document.getElementById('cgrDetailCard');
+  const detailEmpty = document.getElementById('cgrDetailEmpty');
+  const detailContent = document.getElementById('cgrDetailContent');
+  if (!gridGroup) return;
+
+  const SPEEDS = [
+    {
+      id: 'moore', pct: 40, color: '#0f172a', marker: 'cgrArrowBlack',
+      tier: 'ceiling', tierLabel: '天花板 · Ceiling', label: '40%',
+      desc: '规模效应的摩尔速度，很难长期保持',
+      title: '摩尔速度', subtitle: 'Moore-style compounding · 晶体管级的规模红利',
+      body: [
+        '摩尔定律级别的增速——<em>每 18 个月翻一倍</em>，折算年化约 58%，实际产业层面能稳定跑出的上限大约就在 40% 一档。',
+        '依赖指数级规模效应：单位成本随产量几何下降，市场边界被硬件/算法重新定义。',
+        '极少有公司能在 10 年以上维持这种速度——一旦渗透率突破 50%，斜率几乎立刻掉到"网络效应层"。',
+      ],
+      examples: ['早期 Intel 1970s', 'NVIDIA 数据中心 2023-25', '早期互联网 1995-99', '云计算 IaaS 2010-15'],
+    },
+    {
+      id: 'network', pct: 26, color: '#0f172a', marker: 'cgrArrowBlack',
+      tier: 'ceiling', tierLabel: '天花板 · Ceiling', label: '26%',
+      desc: '网络效应货币化的长期增速上限',
+      title: '网络效应速度', subtitle: 'Network-effect monetization ceiling',
+      body: [
+        '平台型企业靠用户之间的连接创造价值——<em>节点翻一倍，连接翻四倍</em>，但货币化效率有自然天花板。',
+        '26% 左右是极少数全球性网络型公司在 10-15 年周期里能维持的"幸存者速度"。',
+        '要同时满足：用户数持续扩张 + 单用户 ARPU 上升 + 毛利不因规模而稀释——能长期三者同时成立的极少。',
+      ],
+      examples: ['Google 2004-15', 'Meta 2012-21', '腾讯 2004-18', 'Visa / Mastercard 长期'],
+    },
+    {
+      id: 'learning', pct: 18, color: '#0f172a', marker: 'cgrArrowBlack',
+      tier: 'frontier', tierLabel: '前沿 · Frontier', label: '18%',
+      desc: '人类学习曲线速度',
+      title: '学习曲线速度', subtitle: 'Human learning curve · 经验积累的边际回报',
+      body: [
+        '经典的"学习曲线"——<em>累计产量每翻一倍，单位成本下降 15-25%</em>，反映在企业营收上大约年化 18%。',
+        '它不依赖网络效应，而是靠组织沉淀的 know-how、工艺改进、员工经验。',
+        '制造业、手艺型服务业的"好公司长期速度"，常常就落在这个档位。',
+      ],
+      examples: ['丰田生产体系', '台积电制程迭代', '优秀制造业 10 年 CAGR'],
+    },
+    {
+      id: 'wright', pct: 15, color: '#0f172a', marker: 'cgrArrowBlack',
+      tier: 'frontier', tierLabel: '前沿 · Frontier', label: '15%',
+      desc: '规模效应的莱特速度，优秀实体企业的长期增速上限',
+      title: '莱特速度', subtitle: "Wright's Law · 实体企业的规模上限",
+      body: [
+        '莱特定律：<em>累计产量翻倍 → 单位成本下降约 15%</em>，这是规模制造业的"物理天花板"。',
+        '长期能把营收 CAGR 稳在 15% 的实体企业已经是全市场前 1%——超过这个档位的，多半靠品类扩张或资本开支前置。',
+        '巴菲特讲的"好公司"、茅台/可口可乐/开市客式的消费实体，长期 CAGR 大约都在这一档。',
+      ],
+      examples: ['Costco 20 年 CAGR', '贵州茅台 长期', '可口可乐 1970-95', '特斯拉 Model 成本曲线'],
+    },
+    {
+      id: 'sp500', pct: 10, color: '#3b82f6', marker: 'cgrArrowBlue',
+      tier: 'core', tierLabel: '核心 · Core', label: '10%',
+      desc: '富人资产和消费的长期增速，S&P500 cagr',
+      title: '标普500长期 CAGR', subtitle: 'S&P 500 long-run total return · 富人资产复利',
+      body: [
+        '<em>过去 100 年标普500 含股息的年化约 10%</em>——这是"被动持有资本"的报酬率。',
+        '它同时也是发达国家富人资产与高端消费的长期增速——因为这一层人的财富主要就以股票形式存在。',
+        '这条线是整张图的"参照系"：凡是高于 10% 的长期增速都需要有特殊解释，低于 10% 的资产则跑输美元计价下的资本复利。',
+      ],
+      examples: ['S&P 500 1928-2024', '巴菲特 20 年平均 20% 的一半', '美国高净值家庭净值 CAGR'],
+    },
+    {
+      id: 'ustbond', pct: 8, color: '#0f172a', marker: 'cgrArrowBlack',
+      tier: 'core', tierLabel: '核心 · Core', label: '8%',
+      desc: '美债增速',
+      title: '美债增速', subtitle: 'US Treasury debt growth rate',
+      body: [
+        '美国联邦债务近 20 年名义增速约 <em>8% 年化</em>——显著高于 GDP 名义增速。',
+        '这条线是"财政托底速度"：当民间经济跑不赢 8%，缺口就由财政赤字补上，最终体现为存量债务的快速膨胀。',
+        '它和 10% 的标普 CAGR 构成一组重要对照——股票长期仅微跑赢国债增速，杠杆才是真正的差距。',
+      ],
+      examples: ['US Public Debt 2005-24', 'QE 后的主权杠杆扩张'],
+    },
+    {
+      id: 'sp500_eps', pct: 6.5, color: '#0f172a', marker: 'cgrArrowBlack',
+      tier: 'core', tierLabel: '核心 · Core', label: '6-7%',
+      desc: '美股过去 50 年业绩增速，A 股红利低波',
+      title: '美股业绩增速 / A 股红利', subtitle: 'US earnings CAGR · A-share dividend low-vol',
+      body: [
+        '标普500 <em>EPS 长期 CAGR 约 6-7%</em>——即剥离估值扩张后，企业盈利本身的真实速度。',
+        '和 10% 的总回报之差（股息再投 + 估值扩张 + 回购）构成了"资本复利"的另一半。',
+        'A 股红利低波指数长期也在这一档——是中国市场少数能跑赢名义 GDP 的长期资产。',
+      ],
+      examples: ['S&P 500 EPS 1974-2024', '中证红利低波全收益', '港股高股息'],
+    },
+    {
+      id: 'inflation', pct: 4, color: '#dc2626', marker: 'cgrArrowRed',
+      tier: 'base', tierLabel: '基线 · Kill-line', label: '4%',
+      desc: '美元秩序的真实通胀速度，美债成本，斩杀线',
+      title: '美元秩序真实通胀 · 斩杀线', subtitle: 'True USD inflation · cost of capital',
+      body: [
+        '官方 CPI 常年显示 2-3%，但按实际生活成本、资产价格、债务成本加权的<em>"真实通胀" 长期在 4% 一档</em>。',
+        '这条线是<strong style="color:#dc2626">斩杀线 (kill-line)</strong>：任何资产长期不能跑过 4%，等于在被美元秩序慢性稀释。',
+        '它同时约等于美债长期融资成本——任何商业模式的 ROIC 若低于 4%，都是负 alpha。',
+      ],
+      examples: ['10Y UST yield 长期均值', 'Core PCE + 资产通胀', 'Shadow Stats inflation'],
+    },
+    {
+      id: 'wage', pct: 2, color: '#0f172a', marker: 'cgrArrowBlack',
+      tier: 'base', tierLabel: '基线 · Baseline', label: '2%',
+      desc: '普通人工资增速，美股回购合理速度',
+      title: '工资增速 · 回购合理速度', subtitle: 'Median wage growth · net buyback yield',
+      body: [
+        '发达国家<em>普通人实际工资年化约 2%</em>——几乎等于官方通胀目标，中位数劳动者的购买力长期停滞。',
+        '美股净回购收益率（净回购金额 / 市值）长期均值也在 2% 一档，构成了 10% 总回报里的一个关键分子。',
+        '这条线告诉你为什么"用工资攒钱"是跑输秩序的——它甚至低于斩杀线。',
+      ],
+      examples: ['US 实际工资 1973-2024', 'S&P 500 net buyback yield', 'OECD 中位数收入'],
+    },
+  ];
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const VB = { w: 900, h: 720 };
+  const M  = { top: 30, right: 30, bottom: 50, left: 70 };
+  const PLOT = { x0: M.left, x1: VB.w - M.right, y0: M.top, y1: VB.h - M.bottom };
+  const Y_MAX = 40;
+
+  const yOf = pct => PLOT.y1 - (pct / Y_MAX) * (PLOT.y1 - PLOT.y0);
+  // bell shifted left: 37% from left edge instead of center
+  const CENTER_X = PLOT.x0 + (PLOT.x1 - PLOT.x0) * 0.37;
+  // narrower bell to leave room for labels on the right
+  const MAX_WIDTH = (PLOT.x1 - PLOT.x0) * 0.32;
+
+  function bellHalfWidth(pct) {
+    const k = 1 - Math.pow(pct / 40, 0.42);
+    return MAX_WIDTH * Math.pow(k, 1.35) + 1;
+  }
+
+  function svgEl(tag, attrs) {
+    const el = document.createElementNS(NS, tag);
+    Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+    return el;
+  }
+
+  // grid lines
+  for (let v = 0; v <= Y_MAX; v++) {
+    const y = yOf(v);
+    const major = v % 5 === 0;
+    gridGroup.appendChild(svgEl('line', {
+      x1: PLOT.x0, x2: PLOT.x1, y1: y, y2: y,
+      class: 'cgr-grid' + (major ? ' cgr-grid-major' : ''),
+    }));
+    const txt = svgEl('text', {
+      x: PLOT.x0 - 8, y: y + 3,
+      'text-anchor': 'end',
+      class: 'cgr-axis-text' + (major ? ' cgr-axis-major' : ''),
+    });
+    txt.textContent = v;
+    gridGroup.appendChild(txt);
+  }
+  // y-axis title
+  const pctLabel = svgEl('text', { x: PLOT.x0 - 40, y: PLOT.y0 - 10, class: 'cgr-axis-title' });
+  pctLabel.textContent = '%';
+  gridGroup.appendChild(pctLabel);
+  // baseline + y-axis lines
+  gridGroup.appendChild(svgEl('line', { x1: PLOT.x0, x2: PLOT.x1, y1: PLOT.y1, y2: PLOT.y1, stroke: '#cbd5e1', 'stroke-width': '1' }));
+  gridGroup.appendChild(svgEl('line', { x1: PLOT.x0, x2: PLOT.x0, y1: PLOT.y0, y2: PLOT.y1, stroke: '#cbd5e1', 'stroke-width': '1' }));
+
+  // bell curve path
+  const STEPS = 160;
+  const leftPts = [], rightPts = [];
+  for (let i = 0; i <= STEPS; i++) {
+    const pct = (i / STEPS) * Y_MAX;
+    const hw = bellHalfWidth(pct);
+    const y  = yOf(pct);
+    leftPts.push([CENTER_X - hw, y]);
+    rightPts.push([CENTER_X + hw, y]);
+  }
+  let d = `M ${leftPts[0][0]} ${leftPts[0][1]}`;
+  for (let i = 1; i < leftPts.length; i++) d += ` L ${leftPts[i][0]} ${leftPts[i][1]}`;
+  for (let i = rightPts.length - 1; i >= 0; i--) d += ` L ${rightPts[i][0]} ${rightPts[i][1]}`;
+  d += ' Z';
+  bellGroup.appendChild(svgEl('path', { d, class: 'cgr-bell-fill' }));
+  [leftPts, rightPts].forEach(pts => {
+    let p = `M ${pts[0][0]} ${pts[0][1]}`;
+    for (let i = 1; i < pts.length; i++) p += ` L ${pts[i][0]} ${pts[i][1]}`;
+    bellGroup.appendChild(svgEl('path', { d: p, class: 'cgr-bell-stroke' }));
+  });
+
+  // markers
+  SPEEDS.forEach(sp => {
+    const y = yOf(sp.pct);
+    const hw = bellHalfWidth(sp.pct);
+    const arrowEndX = CENTER_X + hw + 140;
+    const descX = arrowEndX + 8;
+    const labelX = CENTER_X - hw - 12;
+
+    const g = svgEl('g', { class: 'cgr-marker', 'data-id': sp.id });
+
+    // highlight band
+    const band = svgEl('rect', { x: PLOT.x0, y: y - 10, width: PLOT.x1 - PLOT.x0, height: 20, class: 'cgr-band' });
+    g.appendChild(band);
+
+    // pct label left
+    const lbl = svgEl('text', { x: labelX, y: y + 4, 'text-anchor': 'end', class: 'cgr-marker-label', fill: sp.color });
+    lbl.textContent = sp.label;
+    g.appendChild(lbl);
+
+    // arrow line
+    const line = svgEl('line', {
+      x1: CENTER_X - hw, x2: arrowEndX, y1: y, y2: y,
+      stroke: sp.color, class: 'cgr-marker-line',
+      'marker-end': `url(#${sp.marker})`,
+    });
+    g.appendChild(line);
+
+    // description text
+    const desc = svgEl('text', { x: descX, y: y + 4, class: 'cgr-marker-desc', fill: sp.color });
+    desc.textContent = sp.desc;
+    g.appendChild(desc);
+
+    // hit-box
+    g.appendChild(svgEl('rect', { x: PLOT.x0, y: y - 14, width: PLOT.x1 - PLOT.x0, height: 28, class: 'cgr-hitbox' }));
+
+    markerGroup.appendChild(g);
+  });
+
+  // interactions
+  const groups = Array.from(markerGroup.querySelectorAll('.cgr-marker'));
+  let pinnedId = null, hoverId = null;
+
+  function applyState() {
+    const activeId = pinnedId || hoverId;
+    chartWrap.classList.toggle('cgr-has-hover', !!activeId);
+    detailCard.classList.toggle('pinned', !!pinnedId);
+    groups.forEach(g => {
+      const id = g.getAttribute('data-id');
+      const isActive = id === activeId;
+      g.classList.toggle('cgr-active', isActive);
+      g.classList.toggle('cgr-dim', !!activeId && !isActive);
+      g.querySelector('.cgr-band').classList.toggle('cgr-band-on', isActive);
+    });
+    if (activeId) {
+      detailEmpty.style.display = 'none';
+      detailContent.style.display = '';
+      renderDetail(SPEEDS.find(s => s.id === activeId));
+    } else {
+      detailEmpty.style.display = '';
+      detailContent.style.display = 'none';
+    }
+  }
+
+  function renderDetail(sp) {
+    const yrs = [10, 20, 30];
+    const tierClass = 'cgr-tag-' + sp.tier;
+    detailContent.innerHTML = `
+      <div class="cgr-detail-head">
+        <div class="cgr-detail-pct">${sp.label}</div>
+        <div class="cgr-detail-tag ${tierClass}">${sp.tierLabel}</div>
+      </div>
+      <h3 class="cgr-detail-title">${sp.title}</h3>
+      <div class="cgr-detail-subtitle">${sp.subtitle}</div>
+      <div class="cgr-detail-body">${sp.body.map(p => `<p>${p}</p>`).join('')}</div>
+      <div class="cgr-examples">
+        <div class="cgr-examples-title">典型样本 · Examples</div>
+        <div class="cgr-examples-list">${sp.examples.map(e => `<span class="cgr-chip">${e}</span>`).join('')}</div>
+      </div>
+      <div class="cgr-compound-box">
+        <div class="cgr-compound-row header"><div>年限</div><div>倍数</div><div>$1 →</div><div>vs 4% 斩杀线</div></div>
+        ${yrs.map(n => {
+          const mult = Math.pow(1 + sp.pct / 100, n);
+          const rel  = mult / Math.pow(1.04, n);
+          const relHtml = rel >= 1
+            ? `<span style="color:#059669">×${rel.toFixed(2)} 跑赢</span>`
+            : `<span style="color:#dc2626">×${rel.toFixed(2)} 跑输</span>`;
+          return `<div class="cgr-compound-row"><div class="yrs">${n}年</div><div class="val">${mult >= 100 ? mult.toFixed(0) : mult.toFixed(2)}×</div><div class="val">$${mult >= 100 ? mult.toFixed(0) : mult.toFixed(2)}</div><div class="val">${relHtml}</div></div>`;
+        }).join('')}
+      </div>`;
+  }
+
+  groups.forEach(g => {
+    const id = g.getAttribute('data-id');
+    g.addEventListener('mouseenter', () => { hoverId = id; applyState(); });
+    g.addEventListener('mouseleave', () => { if (hoverId === id) hoverId = null; applyState(); });
+    g.addEventListener('click', e => { e.stopPropagation(); pinnedId = pinnedId === id ? null : id; applyState(); });
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { pinnedId = null; applyState(); } });
+  // click outside to unpin
+  detailCard.closest('#panel-capitalism').addEventListener('click', e => {
+    if (!e.target.closest('.cgr-marker') && !e.target.closest('.cgr-detail')) {
+      pinnedId = null; applyState();
+    }
+  });
+  applyState();
+}
