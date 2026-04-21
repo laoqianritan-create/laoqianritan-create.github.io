@@ -1,292 +1,481 @@
-// panels.js · 入口文件 — 数据加载 + main()
-// 面板 init 函数按域拆分在 js/panels/ 子目录下
+// panels.js · 入口文件 — 按需初始化 + 分批数据加载
+//
+// 加载策略：
+//   Phase 1: 立即加载首屏必需数据 → 初始化 panel-price / panel-capitalism
+//   Phase 2: requestIdleCallback 分批加载其余数据（4 个文件/批）
+//
+// 初始化触发器（双保险）：
+//   A — IntersectionObserver：面板进入视口前 200px 时触发
+//   B — nav 点击：立即触发目标面板
+//
+// 每个面板只初始化一次（initialized Set 守卫）
 
 import { fetchJSON, cssVar } from './utils.js';
 import { initTheme } from './theme.js';
-import { initNav, initPanelSnapScroll } from './nav.js';
+import { initNav } from './nav.js';
 import { initExportButtons } from './export-png.js';
 
 import {
-  initPanelPrice,
-  initPanelDrawdown,
-  initPanelVolatility,
-  initPanelMonthly,
-  initPanelAnnualizedMatrix,
-  initPanelScatter,
-  initPanelPe,
-  initPanelEps,
-  initPanelRoe,
-  initPanelRolling,
-  initAnnualReturnsPanel,
-  initReturnDetailsPanel,
-  initIntrayearDdPanel,
-  initSp500AnnualDistPanel,
-  initCapitalismPanel,
+  initPanelPrice, initPanelDrawdown, initPanelVolatility, initPanelMonthly,
+  initPanelAnnualizedMatrix, initPanelScatter, initPanelPe, initPanelEps,
+  initPanelRoe, initPanelRolling, initAnnualReturnsPanel, initReturnDetailsPanel,
+  initIntrayearDdPanel, initSp500AnnualDistPanel, initCapitalismPanel,
 } from './panels/sp500.js';
 
 import {
-  initPanelVix,
-  initLogYoyPanel,
-  initLongRunIndexPanel,
-  initPanelAiae,
+  initPanelVix, initLogYoyPanel, initLongRunIndexPanel, initPanelAiae,
 } from './panels/indices.js';
 
-import {
-  initPanelM7,
-  initPanelSectors,
-} from './panels/market.js';
+import { initPanelM7, initPanelSectors } from './panels/market.js';
 
 import {
-  initNasdaq100CompaniesPanel,
-  initNasdaq100AnnualPanel,
-  initNasdaqRankingPanel,
-  initNasdaq100WeightsPanel,
+  initNasdaq100CompaniesPanel, initNasdaq100AnnualPanel,
+  initNasdaqRankingPanel, initNasdaq100WeightsPanel,
 } from './panels/nasdaq.js';
 
-import {
-  initPanelChanges,
-  initPanelRules,
-} from './panels/rules.js';
+import { initPanelChanges, initPanelRules } from './panels/rules.js';
+
+// ─────────────────────────────────────────────────────────────
+// § 1  Data store — key/value + callback notifications
+// ─────────────────────────────────────────────────────────────
+
+const D         = {};           // key → loaded value  (null = load failed)
+const fetching  = new Set();    // keys currently in-flight
+const waiting   = {};           // key → [callbacks]
+
+/** Store a value and fire all listeners waiting for that key */
+function resolve(key, val) {
+  D[key] = val;
+  fetching.delete(key);
+  (waiting[key] || []).forEach(fn => fn());
+  delete waiting[key];
+}
+
+/**
+ * Run cb once every key in `keys` has a value in D.
+ * If all are already available, cb fires synchronously.
+ */
+function whenAll(keys, cb) {
+  const missing = keys.filter(k => !(k in D));
+  if (!missing.length) { cb(); return; }
+  let left = missing.length;
+  missing.forEach(k => {
+    if (!waiting[k]) waiting[k] = [];
+    waiting[k].push(() => { if (--left === 0) cb(); });
+  });
+}
+
+/** Fetch url and store under key. No-op if already fetched or in-flight. */
+async function load(key, url) {
+  if (key in D || fetching.has(key)) return;
+  fetching.add(key);
+  try   { resolve(key, await fetchJSON(url)); }
+  catch { console.warn(`[lazy] failed to load: ${url}`); resolve(key, null); }
+}
+
+// ─────────────────────────────────────────────────────────────
+// § 2  File map  (key → relative data URL)
+// ─────────────────────────────────────────────────────────────
+
+const FILES = {
+  // SP500
+  price:          'data/sp500_price.json',
+  volatility:     'data/sp500_volatility.json',
+  monthly:        'data/sp500_monthly.json',
+  constituents:   'data/sp500_constituents.json',
+  drawdown:       'data/sp500_drawdowns.json',
+  vix:            'data/sp500_vix.json',
+  pe:             'data/sp500_pe.json',
+  eps:            'data/sp500_eps.json',
+  roe:            'data/sp500_roe.json',
+  recession:      'data/us_recessions.json',
+  century:        'data/sp500_century.json',
+  annualReturns:  'data/sp500_annual_returns_long.json',
+  returnDetails:  'data/sp500_return_details.json',
+  m7:             'data/m7_index.json',
+  sectors:        'data/sp500_sectors.json',
+  changes:        'data/sp500_changes.json',
+  rules:          'data/sp500_rules.json',
+  aiae:           'data/aiae.json',
+  intrayearDd:    'data/sp500_intrayear_dd.json',
+  annualTr:       'data/sp500_annual_tr.json',
+  // Cross / NDX
+  nasdaqComp:     'data/nasdaq_composite.json',
+  nasdaq100:      'data/nasdaq100_panels.json',
+  dowCentury:     'data/dow_jones_century.json',
+  ndxAnnualLong:  'data/ndx_annual_returns_long.json',
+  ndxAnnualTr:    'data/ndx_annual_tr.json',
+  ndxDaily:       'data/ndx_daily.json',
+  ndxPrice:       'data/ndx_price.json',
+  ndxVolatility:  'data/ndx_volatility.json',
+  ndxMonthly:     'data/ndx_monthly.json',
+  ndxDrawdowns:   'data/ndx_drawdowns.json',
+  ndxRolling5y:   'data/ndx_rolling5y.json',
+  ndxIntrayearDd: 'data/ndx_intrayear_dd.json',
+  ndxVxn:         'data/ndx_vxn.json',
+  qqqDetails:     'data/qqq_return_details.json',
+};
+
+// ─────────────────────────────────────────────────────────────
+// § 3  Panel registry  (panelId → { requires[], init() })
+// ─────────────────────────────────────────────────────────────
+
+// labelOverrides for the two log-yoy panels (extracted for readability)
+const SP500_LOG_OVERRIDES = {
+  '1935-03': { xOff: 0,   yOff: 0 },
+  '1938-03': { xOff: 0,   yOff: 0 },
+  '1942-04': { xOff: 0,   yOff: 0 },
+  '1972-12': { xOff: 0,   yOff: 0 },
+  '1974-09': { xOff: 0,   yOff: 0 },
+  '2020-03': { xOff: -30, yOff: 0 },
+  '2021-12': { xOff: -30, yOff: 36 },
+  '2022-09': { xOff: 30,  yOff: 0 },
+  '2026-04': { xOff: -25, yOff: 18 },
+};
+
+const NASDAQ_LOG_OVERRIDES = {
+  '1982-07': { xOff: -25, yOff: 0 },
+  '1983-06': { xOff: -30, yOff: 0,  force: true },
+  '1984-07': { xOff: 0,   yOff: 0 },
+  '1987-11': { xOff: 0,   yOff: 0 },
+  '1989-09': { xOff: 0,   yOff: 0 },
+  '1990-10': { xOff: 0,   yOff: 0 },
+  '1998-08': { xOff: 0,   yOff: 0, force: true },
+  '2002-09': { xOff: 0,   yOff: 0 },
+  '2026-04': { xOff: -25, yOff: 18 },
+};
+
+const PANELS = {
+  // ── SP500 ──────────────────────────────────────────────────
+  'panel-price': {
+    requires: ['price', 'recession', 'century'],
+    init() { initPanelPrice(D.price, D.recession, D.century); },
+  },
+  'panel-capitalism': {
+    requires: [],
+    init() { initCapitalismPanel(); },
+  },
+  'panel-annual': {
+    requires: ['annualReturns'],
+    init() { initAnnualReturnsPanel(D.annualReturns); },
+  },
+  'panel-annual-dist': {
+    requires: ['annualTr'],
+    init() { if (D.annualTr) initSp500AnnualDistPanel(D.annualTr); },
+  },
+  'panel-annualized-matrix': {
+    requires: ['century'],
+    init() { initPanelAnnualizedMatrix(D.century); },
+  },
+  'panel-return-details': {
+    requires: ['returnDetails'],
+    init() { initReturnDetailsPanel(D.returnDetails); },
+  },
+  'panel-drawdown': {
+    requires: ['price', 'drawdown'],
+    init() { initPanelDrawdown(D.price, D.drawdown); },
+  },
+  'panel-intrayear-dd': {
+    requires: ['intrayearDd'],
+    init() { if (D.intrayearDd) initIntrayearDdPanel(D.intrayearDd); },
+  },
+  'panel-volatility': {
+    requires: ['volatility'],
+    init() { initPanelVolatility(D.volatility); },
+  },
+  'panel-monthly': {
+    requires: ['monthly'],
+    init() { initPanelMonthly(D.monthly); },
+  },
+  'panel-vix': {
+    requires: ['price', 'vix', 'recession'],
+    init() { initPanelVix(D.price, D.vix, D.recession); },
+  },
+  'panel-pe': {
+    requires: ['pe', 'century'],
+    init() { initPanelPe(D.pe, D.century); },
+  },
+  'panel-aiae': {
+    requires: ['aiae'],
+    init() { if (D.aiae) initPanelAiae(D.aiae); },
+  },
+  'panel-eps': {
+    requires: ['eps', 'century'],
+    init() { initPanelEps(D.eps, D.century); },
+  },
+  'panel-roe': {
+    requires: ['roe'],
+    init() { initPanelRoe(D.roe); },
+  },
+  'panel-rolling': {
+    requires: ['century'],
+    init() { initPanelRolling(D.century); },
+  },
+  'panel-sp500-logyoy': {
+    requires: ['century'],
+    init() { initLogYoyPanel('chartSp500LogYoy', D.century, '标普500 同比', SP500_LOG_OVERRIDES); },
+  },
+  'panel-m7': {
+    requires: ['m7'],
+    init() { initPanelM7(D.m7); },
+  },
+  'panel-sectors': {
+    requires: ['sectors'],
+    init() { initPanelSectors(D.sectors); },
+  },
+  'panel-changes': {
+    requires: ['changes'],
+    init() { initPanelChanges(D.changes); },
+  },
+  'panel-rules': {
+    requires: ['rules'],
+    init() { initPanelRules(D.rules); },
+  },
+  'panel-scatter': {
+    requires: ['constituents'],
+    init() { initPanelScatter(D.constituents); },
+  },
+  // ── NDX / Cross ────────────────────────────────────────────
+  'panel-nasdaq-composite': {
+    requires: ['nasdaqComp', 'recession'],
+    init() {
+      initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary',
+        D.nasdaqComp, D.recession, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
+    },
+  },
+  'panel-nasdaq-logyoy': {
+    requires: ['nasdaqComp'],
+    init() { initLogYoyPanel('chartNasdaqLogYoy', D.nasdaqComp, '纳斯达克综指 同比', NASDAQ_LOG_OVERRIDES); },
+  },
+  'panel-nasdaq100-annual': {
+    requires: ['ndxAnnualLong', 'nasdaq100'],
+    init() {
+      if (D.ndxAnnualLong) {
+        initAnnualReturnsPanel(D.ndxAnnualLong, { chartId: 'chartNasdaq100Annual', summaryId: 'nasdaq100AnnualSummary' });
+      } else {
+        initNasdaq100AnnualPanel(D.nasdaq100);
+      }
+    },
+  },
+  'panel-ndx-annual-dist': {
+    requires: ['ndxAnnualTr'],
+    init() {
+      if (D.ndxAnnualTr) {
+        initSp500AnnualDistPanel(D.ndxAnnualTr, {
+          wrapId: 'ndxTrDistWrap', summaryId: 'ndxTrDistSummary',
+          returnKind: '价格回报口径（不含股息）',
+          sourceLabel: 'yfinance ^NDX 日线',
+          sourceDesc: '1986+ 年末收盘点位计算年度价格回报，不含股息。',
+        });
+      }
+    },
+  },
+  'panel-ndx-matrix': {
+    requires: ['ndxDaily'],
+    init() {
+      if (D.ndxDaily) {
+        initPanelAnnualizedMatrix(D.ndxDaily, {
+          containerId: 'ndxAnnualizedMatrix', rangeId: 'ndxMatrixRange', startYear: 1986,
+        });
+      }
+    },
+  },
+  'panel-ndx-return-details': {
+    requires: ['qqqDetails'],
+    init() {
+      if (D.qqqDetails) {
+        initReturnDetailsPanel(D.qqqDetails, {
+          chartId: 'chartNdxReturnDetails', summaryId: 'ndxReturnDetailsSummary', indexLabel: 'QQQ',
+        });
+      }
+    },
+  },
+  'panel-ndx-drawdown': {
+    requires: ['ndxPrice', 'ndxDrawdowns'],
+    init() {
+      if (D.ndxPrice && D.ndxDrawdowns) {
+        initPanelDrawdown(D.ndxPrice, D.ndxDrawdowns, {
+          chartId: 'chartNdxDrawdown', tbodyId: 'ndxDrawdownTbody',
+          tableId: 'ndxDrawdownTable', ddMin: -85, hideCause: true,
+        });
+      }
+    },
+  },
+  'panel-ndx-intrayear-dd': {
+    requires: ['ndxIntrayearDd'],
+    init() { if (D.ndxIntrayearDd) initIntrayearDdPanel(D.ndxIntrayearDd, { gridId: 'ndxDdGrid' }); },
+  },
+  'panel-ndx-volatility': {
+    requires: ['ndxVolatility'],
+    init() {
+      if (D.ndxVolatility) initPanelVolatility(D.ndxVolatility, { chartId: 'chartNdxVolatility', label: '纳指100' });
+    },
+  },
+  'panel-ndx-monthly': {
+    requires: ['ndxMonthly'],
+    init() { if (D.ndxMonthly) initPanelMonthly(D.ndxMonthly, { containerId: 'ndxMonthlyHeatmap' }); },
+  },
+  'panel-ndx-vxn': {
+    requires: ['ndxPrice', 'ndxVxn', 'recession'],
+    init() {
+      if (D.ndxPrice && D.ndxVxn) {
+        initPanelVix(D.ndxPrice, D.ndxVxn, D.recession, {
+          chartId: 'chartNdxVxn', indexLabel: '纳指100',
+          volLabel: 'VXN', volThreshold: 30, summaryId: 'ndxVxnSummary',
+        });
+      }
+    },
+  },
+  'panel-ndx-rolling': {
+    requires: ['ndxRolling5y'],
+    init() {
+      if (D.ndxRolling5y) initPanelRolling(D.ndxRolling5y, { chartId: 'chartNdxRolling', precomputed: true });
+    },
+  },
+  'panel-nasdaq100-member-returns': {
+    requires: ['nasdaq100'],
+    init() {
+      initNasdaqRankingPanel('chartNasdaq100MemberReturns', 'nasdaq100MemberReturnSummary',
+        D.nasdaq100.companies, {
+          key: 'return1y', label: '近1年收益', summaryLabel: '全样本均值',
+          showAllByDefault: true, gridLeft: 132, gridRight: 72, barMaxWidth: 8, xAxisSplitNumber: 6,
+          xAxisMin: v => Math.min(-200, Math.floor(v / 100) * 100),
+          xAxisMax: (_, v) => Math.max(1000, Math.ceil(v / 100) * 100),
+          color: v => v >= 0 ? (cssVar('--green') || '#389e0d') : (cssVar('--red') || '#cf1322'),
+        });
+    },
+  },
+  'panel-nasdaq100-ytd': {
+    requires: ['nasdaq100'],
+    init() {
+      initNasdaqRankingPanel('chartNasdaq100Ytd', 'nasdaq100YtdSummary',
+        D.nasdaq100.companies, {
+          key: 'ytdReturn', label: '年内收益', summaryLabel: '年初至今均值',
+          showAllByDefault: true, gridLeft: 132, gridRight: 72, barMaxWidth: 8, xAxisSplitNumber: 5,
+          xAxisMin: v => Math.min(-100, Math.floor(v / 10) * 10),
+          xAxisMax: (_, v) => Math.max(100, Math.ceil(v / 10) * 10),
+          color: v => v >= 0 ? (cssVar('--green') || '#389e0d') : (cssVar('--red') || '#cf1322'),
+        });
+    },
+  },
+  'panel-nasdaq100-weights': {
+    requires: ['nasdaq100'],
+    init() { initNasdaq100WeightsPanel(D.nasdaq100); },
+  },
+  'panel-nasdaq100-companies': {
+    requires: ['nasdaq100'],
+    init() { initNasdaq100CompaniesPanel(D.nasdaq100); },
+  },
+  'panel-dow-century': {
+    requires: ['dowCentury', 'recession'],
+    init() {
+      initLongRunIndexPanel('chartDowCentury', 'dowCenturySummary',
+        D.dowCentury, D.recession, '道琼斯指数', 'dowCenturyScaleToggle');
+    },
+  },
+};
+
+// ─────────────────────────────────────────────────────────────
+// § 4  Lazy init engine
+// ─────────────────────────────────────────────────────────────
+
+const initialized = new Set();
+
+/**
+ * Request initialization of a panel by id.
+ * - Starts fetching any missing required data files immediately.
+ * - Schedules init() to run once all required keys are available.
+ * - Safe to call multiple times; will only ever init once.
+ */
+function triggerPanel(id) {
+  if (initialized.has(id)) return;
+  const def = PANELS[id];
+  if (!def) return;
+
+  // Start loading any data this panel needs that isn't already in flight
+  def.requires.forEach(key => {
+    if (!(key in D) && !fetching.has(key) && FILES[key]) load(key, FILES[key]);
+  });
+
+  // Fire init when all required data resolves (including nulls for failures)
+  whenAll(def.requires, () => {
+    if (initialized.has(id)) return;   // guard against race
+    initialized.add(id);
+    try { def.init(); }
+    catch (e) { console.error(`[lazy] init error — ${id}:`, e); }
+  });
+}
+
+function setupLazyInit() {
+  // Trigger A: IntersectionObserver — fire 200px before panel enters viewport
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) triggerPanel(e.target.id); });
+  }, { rootMargin: '200px 0px' });
+
+  document.querySelectorAll('.panel[id]').forEach(el => io.observe(el));
+
+  // Trigger B: nav click — fire immediately on user intent
+  document.querySelectorAll('[data-panel]').forEach(el => {
+    el.addEventListener('click', () => triggerPanel(el.dataset.panel), { passive: true });
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+// § 5  Deferred data loading  (requestIdleCallback, 4 files/batch)
+// ─────────────────────────────────────────────────────────────
+
+// Keys to load in idle time, roughly in page-scroll order
+const DEFERRED_KEYS = [
+  // SP500 in scroll order
+  'annualReturns', 'annualTr', 'returnDetails', 'drawdown', 'intrayearDd',
+  'volatility', 'monthly', 'vix', 'pe', 'aiae', 'eps', 'roe',
+  'm7', 'sectors', 'changes', 'rules', 'constituents',
+  // Cross / NDX
+  'nasdaqComp',
+  'ndxAnnualLong', 'ndxAnnualTr', 'ndxDaily', 'ndxPrice',
+  'ndxVolatility', 'ndxMonthly', 'ndxDrawdowns', 'ndxRolling5y',
+  'ndxIntrayearDd', 'ndxVxn', 'qqqDetails',
+  'nasdaq100', 'dowCentury',
+];
+
+const scheduleIdle = fn =>
+  window.requestIdleCallback
+    ? requestIdleCallback(fn, { timeout: 5000 })
+    : setTimeout(fn, 200);
+
+function loadBatch(keys) {
+  if (!keys.length) return;
+  scheduleIdle(() => {
+    keys.slice(0, 4).forEach(k => { if (FILES[k]) load(k, FILES[k]); });
+    loadBatch(keys.slice(4));
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+// § 6  Main
+// ─────────────────────────────────────────────────────────────
 
 async function main() {
   initTheme();
   initNav();
 
-  try {
-    const [
-      priceData,
-      volatilityData,
-      monthlyData,
-      constituentsData,
-      drawdownData,
-      vixData,
-      peData,
-      epsData,
-      roeData,
-      recessionData,
-      sp500CenturyData,
-      nasdaqCompositeData,
-      annualReturnsData,
-      returnDetailsData,
-      nasdaq100Data,
-      dowCenturyData,
-      m7Data,
-      sectorsData,
-      changesData,
-      rulesData,
-    ] = await Promise.all([
-      fetchJSON('data/sp500_price.json'),
-      fetchJSON('data/sp500_volatility.json'),
-      fetchJSON('data/sp500_monthly.json'),
-      fetchJSON('data/sp500_constituents.json'),
-      fetchJSON('data/sp500_drawdowns.json'),
-      fetchJSON('data/sp500_vix.json'),
-      fetchJSON('data/sp500_pe.json'),
-      fetchJSON('data/sp500_eps.json'),
-      fetchJSON('data/sp500_roe.json'),
-      fetchJSON('data/us_recessions.json'),
-      fetchJSON('data/sp500_century.json'),
-      fetchJSON('data/nasdaq_composite.json'),
-      fetchJSON('data/sp500_annual_returns_long.json'),
-      fetchJSON('data/sp500_return_details.json'),
-      fetchJSON('data/nasdaq100_panels.json'),
-      fetchJSON('data/dow_jones_century.json'),
-      fetchJSON('data/m7_index.json'),
-      fetchJSON('data/sp500_sectors.json'),
-      fetchJSON('data/sp500_changes.json'),
-      fetchJSON('data/sp500_rules.json'),
-    ]);
+  // Phase 1 — critical data for the first visible panel (panel-price)
+  await Promise.all(
+    ['price', 'century', 'recession'].map(k => load(k, FILES[k]))
+  );
 
-    // AIAE 单独 fetch（缺失时也不影响其它面板）
-    let aiaeData = null;
-    try { aiaeData = await fetchJSON('data/aiae.json'); } catch (e) { console.warn('aiae.json 缺失，AIAE 面板将不渲染', e); }
-    // 年内回撤 vs 全年涨幅
-    let intrayearDdData = null;
-    try { intrayearDdData = await fetchJSON('data/sp500_intrayear_dd.json'); } catch (e) { console.warn('sp500_intrayear_dd.json 缺失，年内回撤面板将不渲染', e); }
-    // 年度总回报分布（Bilello 同款 histogram）
-    let annualTrData = null;
-    try { annualTrData = await fetchJSON('data/sp500_annual_tr.json'); } catch (e) { console.warn('sp500_annual_tr.json 缺失，年度回报分布面板将不渲染', e); }
-    // 纳指100 系列面板数据
-    const ndxData = {};
-    for (const [key, file] of [
-      ['annualLong',    'ndx_annual_returns_long.json'],
-      ['annualTr',      'ndx_annual_tr.json'],
-      ['daily',         'ndx_daily.json'],
-      ['price',         'ndx_price.json'],
-      ['volatility',    'ndx_volatility.json'],
-      ['monthly',       'ndx_monthly.json'],
-      ['drawdowns',     'ndx_drawdowns.json'],
-      ['rolling5y',     'ndx_rolling5y.json'],
-      ['intrayearDd',   'ndx_intrayear_dd.json'],
-      ['vxn',           'ndx_vxn.json'],
-      ['qqqDetails',    'qqq_return_details.json'],
-    ]) {
-      try { ndxData[key] = await fetchJSON(`data/${file}`); }
-      catch (e) { console.warn(`${file} 缺失`, e); }
-    }
+  // Init the two panels that are immediately visible on load
+  triggerPanel('panel-price');      // needs price + century + recession
+  triggerPanel('panel-capitalism'); // needs nothing — inits synchronously
 
-    initPanelPrice(priceData, recessionData, sp500CenturyData);
-    initCapitalismPanel();
-    initLongRunIndexPanel('chartNasdaqComposite', 'nasdaqCompositeSummary', nasdaqCompositeData, recessionData, '纳斯达克综指', 'nasdaqCompositeScaleToggle');
-    // ── 牛熊周期面板的手工坐标 ──
-    // 标签默认 distance=10 紧贴极值点；override 用来：
-    //  - 把标签推进上下方的大片空白区（牛市 yOff 正值往下、负值往上拔；熊市相反）
-    //  - 解决边界裁切（2026 进行中段贴右边界，xOff 负值左拉）
-    //  - 修正自动 stagger 把单个标签错位的情况（1972 / 2002 / 2022）
-    initLogYoyPanel('chartSp500LogYoy', sp500CenturyData, '标普500 同比', {
-      '1935-03': { xOff: 0,   yOff: 0 },                    // 取消 +50 下推，恢复贴近曲线（上方空白让出来）
-      '1938-03': { xOff: 0,   yOff: 0 },
-      '1942-04': { xOff: 0,   yOff: 0 },
-      '1972-12': { xOff: 0,   yOff: 0 },                    // 取消 stagger，回到正上方
-      '1974-09': { xOff: 0,   yOff: 0 },
-      '2020-03': { xOff: -30, yOff: 0 },                    // 往左挪避开 2022
-      '2021-12': { xOff: -30, yOff: 36 },                   // 左下方（推进 0%~+50% 空白区）
-      '2022-09': { xOff: 30,  yOff: 0 },                    // 往右挪避开 2020
-      '2026-04': { xOff: -25, yOff: 18 },                   // 稍微往下+往右（之前 -40, 0）
-    });
-    initLogYoyPanel('chartNasdaqLogYoy', nasdaqCompositeData, '纳斯达克综指 同比', {
-      '1982-07': { xOff: -25, yOff: 0 },                   // 减少左移幅度，往右回挪一些
-      '1983-06': { xOff: -30, yOff: 0,  force: true },    // 短牛 force 显示，xOff 留左移避让；yOff 回 0 走标准间距
-      '1984-07': { xOff: 0,   yOff: 0 },
-      '1987-11': { xOff: 0,   yOff: 0 },
-      '1989-09': { xOff: 0,   yOff: 0 },                    // 取消 stagger，回到正上方
-      '1990-10': { xOff: 0,   yOff: 0 },
-      '1998-08': { xOff: 0,   yOff: 0, force: true },      // 短熊强制显示
-      '2002-09': { xOff: 0,   yOff: 0 },                    // 取消 stagger，回到正下方
-      '2026-04': { xOff: -25, yOff: 18 },                  // 稍微往下+往右
-    });
-    initAnnualReturnsPanel(annualReturnsData);
-    if (annualTrData) initSp500AnnualDistPanel(annualTrData);
-    initPanelAnnualizedMatrix(sp500CenturyData);
-    initReturnDetailsPanel(returnDetailsData);
-    initPanelDrawdown(priceData, drawdownData);
-    initPanelVolatility(volatilityData);
-    initPanelMonthly(monthlyData);
-    initPanelVix(priceData, vixData, recessionData);
-    initPanelPe(peData, sp500CenturyData);
-    if (aiaeData) initPanelAiae(aiaeData);
-    if (intrayearDdData) initIntrayearDdPanel(intrayearDdData);
-    initPanelEps(epsData, sp500CenturyData);
-    initPanelRoe(roeData);
-    initPanelRolling(sp500CenturyData);
-    initPanelM7(m7Data);
-    initPanelSectors(sectorsData);
-    initPanelChanges(changesData);
-    initPanelRules(rulesData);
-    initPanelScatter(constituentsData);
-    initNasdaq100CompaniesPanel(nasdaq100Data);
-    // 纳指100年度回报：从 QQQ 1999+ 切到 ^NDX 1986+
-    if (ndxData.annualLong) {
-      initAnnualReturnsPanel(ndxData.annualLong, {
-        chartId: 'chartNasdaq100Annual',
-        summaryId: 'nasdaq100AnnualSummary',
-      });
-    } else {
-      initNasdaq100AnnualPanel(nasdaq100Data);
-    }
-    // 纳指100年度回报分布（histogram，价格回报）
-    if (ndxData.annualTr) {
-      initSp500AnnualDistPanel(ndxData.annualTr, {
-        wrapId: 'ndxTrDistWrap',
-        summaryId: 'ndxTrDistSummary',
-        returnKind: '价格回报口径（不含股息）',
-        sourceLabel: 'yfinance ^NDX 日线',
-        sourceDesc: '1986+ 年末收盘点位计算年度价格回报，不含股息。',
-      });
-    }
-    // 纳指100跨年持有矩阵（从 ndx_daily 1986+）
-    if (ndxData.daily) {
-      initPanelAnnualizedMatrix(ndxData.daily, {
-        containerId: 'ndxAnnualizedMatrix',
-        rangeId: 'ndxMatrixRange',
-        startYear: 1986,
-      });
-    }
-    // 纳指100回报分解（QQQ 2000+，价格 + 股息 + top25 回购聚合）
-    if (ndxData.qqqDetails) {
-      initReturnDetailsPanel(ndxData.qqqDetails, {
-        chartId: 'chartNdxReturnDetails',
-        summaryId: 'ndxReturnDetailsSummary',
-        indexLabel: 'QQQ',
-      });
-    }
-    // 纳指100回撤
-    if (ndxData.price && ndxData.drawdowns) {
-      initPanelDrawdown(ndxData.price, ndxData.drawdowns, {
-        chartId: 'chartNdxDrawdown',
-        tbodyId: 'ndxDrawdownTbody',
-        tableId: 'ndxDrawdownTable',
-        ddMin: -85,
-        hideCause: true,
-      });
-    }
-    // 纳指100年内DD
-    if (ndxData.intrayearDd) {
-      initIntrayearDdPanel(ndxData.intrayearDd, { gridId: 'ndxDdGrid' });
-    }
-    // 纳指100波动率
-    if (ndxData.volatility) {
-      initPanelVolatility(ndxData.volatility, {
-        chartId: 'chartNdxVolatility',
-        label: '纳指100',
-      });
-    }
-    // 纳指100月度涨跌
-    if (ndxData.monthly) {
-      initPanelMonthly(ndxData.monthly, { containerId: 'ndxMonthlyHeatmap' });
-    }
-    // 纳指100 VXN
-    if (ndxData.price && ndxData.vxn) {
-      initPanelVix(ndxData.price, ndxData.vxn, recessionData, {
-        chartId: 'chartNdxVxn',
-        indexLabel: '纳指100',
-        volLabel: 'VXN',
-        volThreshold: 30,
-        summaryId: 'ndxVxnSummary',
-      });
-    }
-    // 纳指100五年滚动（已预计算）
-    if (ndxData.rolling5y) {
-      initPanelRolling(ndxData.rolling5y, {
-        chartId: 'chartNdxRolling',
-        precomputed: true,
-      });
-    }
-    initNasdaqRankingPanel('chartNasdaq100MemberReturns', 'nasdaq100MemberReturnSummary', nasdaq100Data.companies, {
-      key: 'return1y',
-      label: '近1年收益',
-      summaryLabel: '全样本均值',
-      showAllByDefault: true,
-      gridLeft: 132,
-      gridRight: 72,
-      barMaxWidth: 8,
-      xAxisSplitNumber: 6,
-      xAxisMin: minValue => Math.min(-200, Math.floor(minValue / 100) * 100),
-      xAxisMax: (_minValue, maxValue) => Math.max(1000, Math.ceil(maxValue / 100) * 100),
-      color: value => (value >= 0 ? (cssVar('--green') || '#389e0d') : (cssVar('--red') || '#cf1322')),
-    });
-    initNasdaqRankingPanel('chartNasdaq100Ytd', 'nasdaq100YtdSummary', nasdaq100Data.companies, {
-      key: 'ytdReturn',
-      label: '年内收益',
-      summaryLabel: '年初至今均值',
-      showAllByDefault: true,
-      gridLeft: 132,
-      gridRight: 72,
-      barMaxWidth: 8,
-      xAxisSplitNumber: 5,
-      xAxisMin: minValue => Math.min(-100, Math.floor(minValue / 10) * 10),
-      xAxisMax: (_minValue, maxValue) => Math.max(100, Math.ceil(maxValue / 10) * 10),
-      color: value => (value >= 0 ? (cssVar('--green') || '#389e0d') : (cssVar('--red') || '#cf1322')),
-    });
-    initNasdaq100WeightsPanel(nasdaq100Data);
-    initLongRunIndexPanel('chartDowCentury', 'dowCenturySummary', dowCenturyData, recessionData, '道琼斯指数', 'dowCenturyScaleToggle');
-    initExportButtons();
-  } catch (err) {
-    console.error('数据加载失败:', err);
-    document.getElementById('main').innerHTML = `<div class="loading-msg">数据加载失败，请确保 data/ 目录中有 JSON 文件。<br><small>${err.message}</small></div>`;
-  }
+  // Phase 2 — set up lazy init triggers for all other panels
+  setupLazyInit();
+
+  // Phase 3 — kick off remaining data loads in idle time
+  loadBatch(DEFERRED_KEYS);
+
+  // Export buttons can be wired up immediately (handlers are lazy-safe)
+  initExportButtons();
 }
 
-main();
-
-main();
+main().catch(console.error);
