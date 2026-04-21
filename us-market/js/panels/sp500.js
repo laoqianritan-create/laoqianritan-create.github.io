@@ -650,13 +650,13 @@ export function initPanelMonthly(data, opts = {}) {
       }
 
       const color = getHeatColor(value);
-      const textColor = Math.abs(value) > 0.06 ? '#fff' : 'var(--text)';
+      const textColor = Math.abs(value) > 0.06 ? '#fff' : '#333';
       html += `<td><span class="heatmap-cell" style="background:${color};color:${textColor}">${formatPercent(value * 100, 1)}</span></td>`;
     }
 
     if (yearData.annual != null) {
       const annualColor = getHeatColor(yearData.annual);
-      const annualText = Math.abs(yearData.annual) > 0.06 ? '#fff' : 'var(--text)';
+      const annualText = Math.abs(yearData.annual) > 0.06 ? '#fff' : '#333';
       html += `<td class="annual-cell"><span class="heatmap-cell" style="background:${annualColor};color:${annualText}">${formatPercent(yearData.annual * 100, 1)}</span></td>`;
     } else {
       html += '<td></td>';
