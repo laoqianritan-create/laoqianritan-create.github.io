@@ -467,15 +467,18 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
     } else {
       recoveryCell = `${item.recovery_days}`;
     }
+    // data-label 为 mobile-cards 提供行内标签；desktop 下无视觉影响
+    const highLabel = opts.highLabel || '标普高点';
+    const lowLabel = opts.lowLabel || '标普低点';
     tr.innerHTML = `
-      <td style="white-space:nowrap">${item.period}</td>
-      <td style="text-align:right">${item.high}</td>
-      <td style="text-align:right">${item.low}</td>
-      <td style="text-align:right">${item.days}</td>
-      <td class="decline-cell" style="text-align:right;color:var(--red);background:rgba(207,19,34,${alpha.toFixed(2)})">${formatPercent(item.decline * 100, 1)}</td>
-      <td style="text-align:right;white-space:nowrap">${recoveryCell}</td>
-      <td><span class="cat-badge cat-${item.category}">${catNames[item.category] || item.category}</span></td>
-      ${hideCause ? '' : `<td class="cause-cell">${item.cause || ''}</td>`}
+      <td data-label="回调区间" style="white-space:nowrap">${item.period}</td>
+      <td data-label="${highLabel}" style="text-align:right">${item.high}</td>
+      <td data-label="${lowLabel}" style="text-align:right">${item.low}</td>
+      <td data-label="创新低天数" style="text-align:right">${item.days}</td>
+      <td data-label="跌幅" class="decline-cell" style="text-align:right;color:var(--red);background:rgba(207,19,34,${alpha.toFixed(2)})">${formatPercent(item.decline * 100, 1)}</td>
+      <td data-label="再创新高天数" style="text-align:right;white-space:nowrap">${recoveryCell}</td>
+      <td data-label="分类"><span class="cat-badge cat-${item.category}">${catNames[item.category] || item.category}</span></td>
+      ${hideCause ? '' : `<td data-label="下跌原因" class="cause-cell">${item.cause || ''}</td>`}
     `;
     tbody.appendChild(tr);
   });
