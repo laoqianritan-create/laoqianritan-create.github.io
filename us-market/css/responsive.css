@@ -120,4 +120,60 @@
   .metric-note {
     font-size: 10px;
   }
+
+  /* ── Mobile 表格通用策略（批次 3 面板级应用）── */
+
+  /* A. 矩阵/热力表：横向滑动容器
+     用法：在需要横滑的表格外层加 class="mobile-hscroll"（desktop 下无任何副作用） */
+  .mobile-hscroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-hscroll::before {
+    content: '← 左右滑动查看更多 →';
+    display: block;
+    font-size: 11px;
+    color: var(--text-secondary, #8a8a8a);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  /* B. 事件表：每行卡片化
+     用法：给 <table> 加 class="mobile-cards"；每个 <td> 加 data-label 属性
+     desktop 下保持原 table 视觉（该 class 在 desktop 无样式） */
+  table.mobile-cards {
+    display: block;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  table.mobile-cards thead { display: none; }
+  table.mobile-cards tbody { display: block; }
+  table.mobile-cards tbody tr {
+    display: block;
+    background: var(--card-bg, #fff);
+    border: 1px solid var(--border, #e5e5e5);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
+  }
+  table.mobile-cards tbody td {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px 0;
+    border: none;
+    font-size: 13px;
+  }
+  table.mobile-cards tbody td::before {
+    content: attr(data-label);
+    color: var(--text-secondary, #8a8a8a);
+    font-size: 12px;
+    flex: 0 0 auto;
+  }
 }
+
+/* Desktop 下（>768px）mobile-cards / mobile-hscroll 均无任何副作用 —
+   前者的内部规则全部包在 max-width:768px 块内，后者 overflow:auto 仅影响超宽表 */
+
