@@ -34,6 +34,8 @@ import {
   bindAnnualizedMatrixTooltip,
 } from '../chart-helpers.js';
 
+import { isMobile } from '../mobile.js';
+
 export function initPanelPrice(data, recessionData, centuryData) {
   const chart = registerChart(echarts.init(document.getElementById('chartPrice')));
   const dailySeries = data.series;
@@ -1139,21 +1141,22 @@ export function initPanelRoe(data) {
   function getOption() {
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
     const grayColor = cssVar('--gray') || '#999';
-
+    const mobile = isMobile();
+    // Mobile：markLine label 从右端外侧移到 plot 内部左端，避免"长期均值 XX%"被视口右边界截断
     return {
       animation: false,
-      grid: { left: 55, right: 20, top: 20, bottom: 40 },
+      grid: mobile ? { left: 44, right: 14, top: 20, bottom: 40 } : { left: 55, right: 20, top: 20, bottom: 40 },
       xAxis: {
         type: 'category',
         data: series.map(item => item.date.slice(0, 4)),
-        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        axisLabel: { fontSize: mobile ? 10 : 11, color: grayColor, fontFamily: CHART_FONT, hideOverlap: true },
         axisTick: { alignWithLabel: true },
       },
       yAxis: {
         type: 'value',
         axisLabel: {
           formatter: value => formatPercent(value, 0),
-          fontSize: 11,
+          fontSize: mobile ? 10 : 11,
           color: grayColor,
           fontFamily: CHART_FONT,
         },
@@ -1174,8 +1177,9 @@ export function initPanelRoe(data) {
             yAxis: average,
             label: {
               formatter: `长期均值 ${formatPercent(average, 1)}`,
-              fontSize: 11,
+              fontSize: mobile ? 10 : 11,
               color: '#faad14',
+              position: mobile ? 'insideStartTop' : 'end',
             },
           }],
         },
@@ -1220,20 +1224,36 @@ export function initPanelRolling(data, opts = {}) {
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
     const grayColor = cssVar('--gray') || '#999';
 
+    const mobile = isMobile();
+    // Mobile：右侧留更多空间，防止 markPoint "最新 XX%" 和 markLine "盈亏分界" label 被截断
+    const latestMarkPoint = latestRolling
+      ? buildSingleMarkPoint(
+          latestRolling.date,
+          latestRolling.value,
+          `最新 ${formatPercent(latestRolling.value, 2)}`,
+          lineColor,
+          'right',
+        )
+      : null;
+    if (mobile && latestMarkPoint) {
+      latestMarkPoint.label = { ...(latestMarkPoint.label || {}), fontSize: 10 };
+    }
     return {
       animation: false,
-      grid: { left: 65, right: 20, top: 20, bottom: 60 },
+      grid: mobile
+        ? { left: 52, right: 62, top: 20, bottom: 60 }
+        : { left: 65, right: 20, top: 20, bottom: 60 },
       xAxis: {
         type: 'time',
         max: AXIS_END_2028_TS,
-        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        axisLabel: { fontSize: mobile ? 10 : 11, color: grayColor, fontFamily: CHART_FONT, hideOverlap: true },
         splitLine: { show: false },
       },
       yAxis: {
         type: 'value',
         axisLabel: {
           formatter: value => formatPercent(value, 0),
-          fontSize: 11,
+          fontSize: mobile ? 10 : 11,
           color: grayColor,
           fontFamily: CHART_FONT,
         },
@@ -1275,22 +1295,12 @@ export function initPanelRolling(data, opts = {}) {
           data: series.map(item => [item.date, item.value]),
           showSymbol: false,
           lineStyle: { width: 1.8, color: lineColor },
-          markPoint: latestRolling ? {
-            data: [
-              buildSingleMarkPoint(
-                latestRolling.date,
-                latestRolling.value,
-                `最新 ${formatPercent(latestRolling.value, 2)}`,
-                lineColor,
-                'right',
-              ),
-            ],
-          } : undefined,
+          markPoint: latestMarkPoint ? { data: [latestMarkPoint] } : undefined,
           markLine: {
             silent: true,
             symbol: 'none',
             lineStyle: { color: grayColor, type: 'dashed', width: 1 },
-            data: [{ yAxis: 0, label: { formatter: '盈亏分界', fontSize: 11, color: grayColor } }],
+            data: [{ yAxis: 0, label: { formatter: '盈亏分界', fontSize: mobile ? 10 : 11, color: grayColor } }],
           },
           z: 3,
         },
@@ -1334,17 +1344,21 @@ export function initAnnualReturnsPanel(data, opts = {}) {
     const greenColor = cssVar('--green') || '#389e0d';
     const redColor = cssVar('--red') || '#cf1322';
 
+    const mobile = isMobile();
+    // Mobile：窄屏空间有限，每 20 年一个年份标签；desktop 保留每 10 年
+    const yearStride = mobile ? 20 : 10;
     return {
       animation: false,
-      grid: { left: 55, right: 20, top: 20, bottom: 50 },
+      grid: mobile ? { left: 44, right: 12, top: 20, bottom: 50 } : { left: 55, right: 20, top: 20, bottom: 50 },
       xAxis: {
         type: 'category',
         data: series.map(item => item.year),
         axisLabel: {
           color: grayColor,
-          fontSize: 11,
+          fontSize: mobile ? 10 : 11,
           fontFamily: CHART_FONT,
-          formatter: value => Number(value) % 10 === 0 ? value : '',
+          hideOverlap: true,
+          formatter: value => Number(value) % yearStride === 0 ? value : '',
         },
         axisTick: { show: false },
       },
@@ -1353,7 +1367,7 @@ export function initAnnualReturnsPanel(data, opts = {}) {
         axisLabel: {
           formatter: value => `${value}%`,
           color: grayColor,
-          fontSize: 11,
+          fontSize: mobile ? 10 : 11,
           fontFamily: CHART_FONT,
         },
         splitLine: { lineStyle: { color: gridColor } },
@@ -1369,6 +1383,8 @@ export function initAnnualReturnsPanel(data, opts = {}) {
         markLine: {
           silent: true,
           symbol: 'none',
+          // 不显示 "0" 默认 label（虚线本身已自证零轴，避免 mobile 下溢出视口）
+          label: { show: false },
           lineStyle: { color: grayColor, type: 'dashed', width: 1 },
           data: [{ yAxis: 0 }],
         },

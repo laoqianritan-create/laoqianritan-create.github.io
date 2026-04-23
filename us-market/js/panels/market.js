@@ -34,6 +34,8 @@ import {
   bindAnnualizedMatrixTooltip,
 } from '../chart-helpers.js';
 
+import { isMobile } from '../mobile.js';
+
 export function initPanelM7(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartM7')));
   const memberColors = {
@@ -50,6 +52,8 @@ export function initPanelM7(data) {
   function getOption() {
     const grayColor = cssVar('--gray') || '#999';
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
+    // Mobile：8 条尾部 ticker 标签在 375px 宽度下全部溢出，整体隐藏，用户通过 legend/tooltip 查看
+    const mobile = isMobile();
     const memberSeries = data.members.map((member, index) => {
       const color = memberColors[member.ticker] || ['#2563eb', '#0f766e', '#dc2626', '#f97316', '#7c3aed', '#0891b2', '#b45309'][index % 7];
       const normalizedSeries = member.series.map(item => [item.date, (item.value / member.basePrice) * 100]);
@@ -69,7 +73,7 @@ export function initPanelM7(data) {
           color,
           type: 'solid',
         },
-        markPoint: latestPoint ? {
+        markPoint: (!mobile && latestPoint) ? {
           data: [(() => {
             const mp = buildSingleMarkPoint(
               latestPoint[0],
@@ -93,14 +97,14 @@ export function initPanelM7(data) {
 
     return {
       animation: false,
-      grid: { left: 60, right: 20, top: 30, bottom: 60 },
+      grid: mobile ? { left: 48, right: 12, top: 30, bottom: 60 } : { left: 60, right: 20, top: 30, bottom: 60 },
       legend: getLineLegendConfig({
         type: 'scroll',
       }),
       xAxis: {
         type: 'time',
         max: AXIS_END_2028_TS,
-        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        axisLabel: { fontSize: mobile ? 10 : 11, color: grayColor, fontFamily: CHART_FONT, hideOverlap: true },
         splitLine: { show: false },
       },
       yAxis: {
@@ -130,7 +134,7 @@ export function initPanelM7(data) {
           color: indexColor,
           itemStyle: { color: indexColor },
           lineStyle: { width: 3, color: indexColor },
-          markPoint: latestIndexPoint ? {
+          markPoint: (!mobile && latestIndexPoint) ? {
             data: [
               buildSingleMarkPoint(
                 latestIndexPoint.date,

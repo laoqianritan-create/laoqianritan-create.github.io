@@ -34,6 +34,8 @@ import {
   bindAnnualizedMatrixTooltip,
 } from '../chart-helpers.js';
 
+import { isMobile } from '../mobile.js';
+
 export function initPanelVix(priceData, vixData, recessionData, opts = {}) {
   const chartId = opts.chartId || 'chartVix';
   const indexLabel = opts.indexLabel || '标普500';
@@ -422,7 +424,8 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
         },
         z: 2,
       };
-      if (placement) {
+      // Mobile：整体隐藏密集的牛熊段名标注（用户可通过 tooltip 查看具体数据）
+      if (placement && !isMobile()) {
         series.markPoint = {
           silent: true,
           symbol: 'rect',
@@ -452,13 +455,17 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
     const grayColor = cssVar('--gray') || '#999';
     const textColor = cssVar('--text') || '#1a1a1a';
 
+    // Mobile 下段名已隐藏，顶部/底部不需要预留标签空间
+    const mobile = isMobile();
     return {
       animation: false,
       // 标签紧贴极值点（distance=10），不再需要超大底/顶边距
-      grid: { left: 60, right: 24, top: 60, bottom: 70 },
+      grid: mobile
+        ? { left: 48, right: 14, top: 20, bottom: 60 }
+        : { left: 60, right: 24, top: 60, bottom: 70 },
       xAxis: {
         type: 'time',
-        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        axisLabel: { fontSize: mobile ? 10 : 11, color: grayColor, fontFamily: CHART_FONT, hideOverlap: true },
         splitLine: { show: false },
         axisLine: { onZero: true, lineStyle: { color: grayColor } },
       },
