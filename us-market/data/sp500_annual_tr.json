@@ -1,10 +1,10 @@
 {
-  "updated": "2026-04-23",
+  "updated": "2026-05-04",
   "source": "Damodaran 1928-1987 + yfinance ^SP500TR 1988+",
   "latestYear": 2026,
-  "latestDate": "2026-04-22",
+  "latestDate": "2026-05-01",
   "latestIsYtd": true,
-  "average": 11.83,
+  "average": 11.85,
   "positiveYears": 73,
   "totalYears": 99,
   "withinAvgPlusMinus2": 7,
@@ -592,7 +592,7 @@
     },
     {
       "year": 2026,
-      "value": 4.65
+      "value": 6.02
     }
   ]
 }
