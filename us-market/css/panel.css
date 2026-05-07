@@ -273,15 +273,16 @@ html.panel-snap-enabled .panel {
   box-sizing: border-box;
 }
 .matrix-cell--pos {
-  background: #ffffff;
-  color: #4d4d4d;
+  background: rgba(56, 158, 13, var(--pos-opacity, 0.22));
+  color: #1f4a14;
   border: 0;
 }
 .matrix-cell--neg {
   background: rgba(207, 19, 34, var(--neg-opacity, 0.22));
   color: #61272b;
 }
-.matrix-cell--strong {
+.matrix-cell--pos.matrix-cell--strong,
+.matrix-cell--neg.matrix-cell--strong {
   color: #ffffff;
   font-weight: 700;
 }
@@ -289,8 +290,8 @@ html.panel-snap-enabled .panel {
   background: transparent;
 }
 [data-theme="dark"] .matrix-cell--pos {
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.9);
+  background: rgba(82, 196, 26, var(--pos-opacity, 0.28));
+  color: rgba(244, 255, 244, 0.94);
 }
 [data-theme="dark"] .matrix-cell--neg {
   background: rgba(255, 77, 79, var(--neg-opacity, 0.28));

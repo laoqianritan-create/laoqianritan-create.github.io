@@ -28,6 +28,7 @@ import {
   isCompleteYearPoint,
   buildAnnualizedHoldingMatrix,
   getAnnualizedMatrixNegativeOpacity,
+  getAnnualizedMatrixPositiveOpacity,
   ensureAnnualizedMatrixTooltip,
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
@@ -712,7 +713,8 @@ export function initPanelAnnualizedMatrix(centuryData, opts = {}) {
         const strongClass = cell.value <= -10 ? ' matrix-cell--strong' : '';
         html += `<td><span class="matrix-cell matrix-cell--neg${strongClass}" style="--neg-opacity:${getAnnualizedMatrixNegativeOpacity(cell.value)}" data-start-year="${cell.startYear}" data-end-year="${cell.endYear}" data-holding-years="${cell.holdingYears}" data-cagr="${tooltipCagr}">${cell.value.toFixed(1)}</span></td>`;
       } else {
-        html += `<td><span class="matrix-cell matrix-cell--pos" data-start-year="${cell.startYear}" data-end-year="${cell.endYear}" data-holding-years="${cell.holdingYears}" data-cagr="${tooltipCagr}">${cell.value.toFixed(1)}</span></td>`;
+        const posStrongClass = cell.value >= 10 ? ' matrix-cell--strong' : '';
+        html += `<td><span class="matrix-cell matrix-cell--pos${posStrongClass}" style="--pos-opacity:${getAnnualizedMatrixPositiveOpacity(cell.value)}" data-start-year="${cell.startYear}" data-end-year="${cell.endYear}" data-holding-years="${cell.holdingYears}" data-cagr="${tooltipCagr}">${cell.value.toFixed(1)}</span></td>`;
       }
     });
 

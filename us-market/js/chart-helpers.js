@@ -346,6 +346,12 @@ export function getAnnualizedMatrixNegativeOpacity(value) {
   return (0.18 + ratio * 0.56).toFixed(3);
 }
 
+// 与负收益对称：0% → 0.18，≥25% → 0.74
+export function getAnnualizedMatrixPositiveOpacity(value) {
+  const ratio = Math.min(1, Math.abs(value) / 25);
+  return (0.18 + ratio * 0.56).toFixed(3);
+}
+
 export function ensureAnnualizedMatrixTooltip() {
   let tooltip = document.getElementById('annualizedMatrixHoverTooltip');
   if (tooltip) {
