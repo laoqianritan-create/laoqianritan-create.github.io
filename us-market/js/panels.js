@@ -26,6 +26,8 @@ import {
   initPanelVix, initLogYoyPanel, initLongRunIndexPanel, initPanelAiae,
 } from './panels/indices.js';
 
+import { initPanelBuffett } from './panels/buffett.js';
+
 import { initPanelM7, initPanelSectors } from './panels/market.js';
 
 import {
@@ -97,6 +99,7 @@ const FILES = {
   changes:        'data/sp500_changes.json',
   rules:          'data/sp500_rules.json',
   aiae:           'data/aiae.json',
+  buffett:        'data/buffett.json',
   intrayearDd:    'data/sp500_intrayear_dd.json',
   annualTr:       'data/sp500_annual_tr.json',
   // Cross / NDX
@@ -196,6 +199,10 @@ const PANELS = {
   'panel-vix': {
     requires: ['price', 'vix', 'recession'],
     init() { initPanelVix(D.price, D.vix, D.recession); },
+  },
+  'panel-buffett': {
+    requires: ['buffett', 'price'],
+    init() { if (D.buffett) initPanelBuffett(D.buffett, D.price); },
   },
   'panel-pe': {
     requires: ['pe', 'century'],
@@ -434,7 +441,7 @@ function setupLazyInit() {
 const DEFERRED_KEYS = [
   // SP500 in scroll order
   'annualReturns', 'annualTr', 'returnDetails', 'drawdown', 'intrayearDd',
-  'volatility', 'monthly', 'vix', 'pe', 'aiae', 'eps', 'roe',
+  'volatility', 'monthly', 'vix', 'buffett', 'pe', 'aiae', 'eps', 'roe',
   'm7', 'sectors', 'changes', 'rules', 'constituents',
   // Cross / NDX
   'nasdaqComp',
