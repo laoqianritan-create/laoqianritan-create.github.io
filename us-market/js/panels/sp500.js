@@ -1215,13 +1215,23 @@ export function initPanelRoe(data) {
 
 export function initPanelRolling(data, opts = {}) {
   const chartId = opts.chartId || 'chartRolling';
-  const lineColor = opts.lineColor || cssVar('--sp500-line') || '#1a1a1a';
+  const toggleId = opts.toggleId || 'rollingWindowToggle';
+  // 与「标普500 牛熊周期」面板同源：BULL_STROKE=#389e0d / BEAR_STROKE=#cf1322
+  const BULL_STROKE = '#389e0d';
+  const BEAR_STROKE = '#cf1322';
   const chart = registerChart(echarts.init(document.getElementById(chartId)));
-  // precomputed=true 时直接使用 data.series（已是 rolling 序列），否则用 buildRollingAnnualizedSeries 从月线推导
-  const series = opts.precomputed
-    ? (data?.series || [])
-    : buildRollingAnnualizedSeries(data?.series || [], 5).series;
-  const latestRolling = series.at(-1) ?? null;
+  // precomputed=true 时直接使用 data.series（已是 rolling 序列，外部已选好窗口），无切换能力
+  // 否则基于月线 data.series + currentWindow 即时推导，支持 1/5/7/10/20 年切换
+  const monthlySeries = data?.series || [];
+  let currentWindow = opts.precomputed ? null : (opts.defaultWindow ?? 5);
+  let series = opts.precomputed
+    ? monthlySeries
+    : buildRollingAnnualizedSeries(monthlySeries, currentWindow).series;
+  let latestRolling = series.at(-1) ?? null;
+
+  function windowLabel(years) {
+    return years === 1 ? '52周' : `${years}年`;
+  }
 
   function getOption() {
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
@@ -1229,12 +1239,16 @@ export function initPanelRolling(data, opts = {}) {
 
     const mobile = isMobile();
     // Mobile：右侧留更多空间，防止 markPoint "最新 XX%" 和 markLine "盈亏分界" label 被截断
+    const latestLabel = currentWindow
+      ? `最新 ${windowLabel(currentWindow)} ${formatPercent(latestRolling?.value ?? 0, 2)}`
+      : `最新 ${formatPercent(latestRolling?.value ?? 0, 2)}`;
+    const latestPointColor = (latestRolling?.value ?? 0) >= 0 ? BULL_STROKE : BEAR_STROKE;
     const latestMarkPoint = latestRolling
       ? buildSingleMarkPoint(
           latestRolling.date,
           latestRolling.value,
-          `最新 ${formatPercent(latestRolling.value, 2)}`,
-          lineColor,
+          latestLabel,
+          latestPointColor,
           'right',
         )
       : null;
@@ -1292,12 +1306,34 @@ export function initPanelRolling(data, opts = {}) {
           z: 1,
         },
         {
-          name: '五年年化收益率',
+          // 正收益线段（绿）：值 ≥ 0 时画线，否则空
+          name: '正收益年化',
+          type: 'line',
+          connectNulls: false,
+          data: series.map(item => [item.date, item.value >= 0 ? item.value : null]),
+          showSymbol: false,
+          lineStyle: { width: 1.8, color: BULL_STROKE },
+          z: 3,
+        },
+        {
+          // 负收益线段（红）：值 < 0 时画线，否则空
+          name: '负收益年化',
+          type: 'line',
+          connectNulls: false,
+          data: series.map(item => [item.date, item.value < 0 ? item.value : null]),
+          showSymbol: false,
+          lineStyle: { width: 1.8, color: BEAR_STROKE },
+          z: 3,
+        },
+        {
+          // 透明承载层：跨越 0 时让相邻正/负点 1px 衔接，避免肉眼断开
+          // 同时承担 markPoint 与 markLine 渲染
+          name: currentWindow ? `${windowLabel(currentWindow)}年化收益率` : '滚动年化收益率',
           type: 'line',
           clip: false,
           data: series.map(item => [item.date, item.value]),
           showSymbol: false,
-          lineStyle: { width: 1.8, color: lineColor },
+          lineStyle: { width: 0, opacity: 0 },
           markPoint: latestMarkPoint ? { data: [latestMarkPoint] } : undefined,
           markLine: {
             silent: true,
@@ -1305,7 +1341,8 @@ export function initPanelRolling(data, opts = {}) {
             lineStyle: { color: grayColor, type: 'dashed', width: 1 },
             data: [{ yAxis: 0, label: { formatter: '盈亏分界', fontSize: mobile ? 10 : 11, color: grayColor } }],
           },
-          z: 3,
+          tooltip: { show: false },
+          z: 4,
         },
       ],
       tooltip: {
@@ -1326,8 +1363,30 @@ export function initPanelRolling(data, opts = {}) {
     };
   }
 
-  chart.setOption(resolveMarkPointOverlaps(getOption()));
-  chart._refreshTheme = () => chart.setOption(resolveMarkPointOverlaps(getOption()), true);
+  function applyOption() {
+    chart.setOption(resolveMarkPointOverlaps(getOption()), true);
+  }
+
+  applyOption();
+  chart._refreshTheme = applyOption;
+
+  if (!opts.precomputed) {
+    const toggleEl = document.getElementById(toggleId);
+    if (toggleEl) {
+      toggleEl.addEventListener('click', event => {
+        const btn = event.target.closest('.btn');
+        if (!btn || !btn.dataset.window) return;
+        const next = Number(btn.dataset.window);
+        if (!Number.isFinite(next) || next === currentWindow) return;
+        toggleEl.querySelectorAll('.btn').forEach(item => item.classList.remove('active'));
+        btn.classList.add('active');
+        currentWindow = next;
+        series = buildRollingAnnualizedSeries(monthlySeries, currentWindow).series;
+        latestRolling = series.at(-1) ?? null;
+        applyOption();
+      });
+    }
+  }
 }
 
 /**

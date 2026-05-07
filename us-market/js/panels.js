@@ -130,7 +130,12 @@ const SP500_LOG_OVERRIDES = {
   '2020-03': { xOff: -30, yOff: 0 },
   '2021-12': { xOff: -30, yOff: 36 },
   '2022-09': { xOff: 30,  yOff: 0 },
-  '2026-04': { xOff: -25, yOff: 18 },
+  // 末段（牛市进行中）的 anchor 月份会随数据更新前移；同时保留 04/05 两键，
+  // 哪个匹配上就用哪个，避免上游数据每月新增一根月线就让 override 失效。
+  // xOff -30：与 2022-09 (xOff +30) 对称（同样距离锚点 30px），标签放在
+  // 锚点左侧——因为 2026.05 锚点贴在图表右边缘，往右挪会出框。
+  '2026-04': { xOff: -30, yOff: 18 },
+  '2026-05': { xOff: -30, yOff: 18 },
 };
 
 const NASDAQ_LOG_OVERRIDES = {
@@ -143,6 +148,7 @@ const NASDAQ_LOG_OVERRIDES = {
   '1998-08': { xOff: 0,   yOff: 0, force: true },
   '2002-09': { xOff: 0,   yOff: 0 },
   '2026-04': { xOff: -25, yOff: 18 },
+  '2026-05': { xOff: -25, yOff: 18 },
 };
 
 const PANELS = {

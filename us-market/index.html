@@ -442,10 +442,17 @@
     <div class="panel-inner">
       <div class="panel-header">
         <div>
-          <h2 class="panel-title">五年滚动收益率</h2>
-          <p class="panel-desc">基于 1928 年以来月线数据，任意时点往回看 5 年的年化回报</p>
+          <h2 class="panel-title">滚动收益率</h2>
+          <p class="panel-desc">基于 1928 年以来月线数据，任意时点往回看 N 年的年化回报</p>
         </div>
         <div class="panel-controls">
+          <div class="btn-group" id="rollingWindowToggle">
+            <button class="btn" data-window="1">52周</button>
+            <button class="btn active" data-window="5">5年</button>
+            <button class="btn" data-window="7">7年</button>
+            <button class="btn" data-window="10">10年</button>
+            <button class="btn" data-window="20">20年</button>
+          </div>
           <button class="btn btn-export" data-chart="chartRolling" title="导出PNG">&#8681;</button>
         </div>
       </div>
@@ -932,7 +939,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260507093541"></script>
+<script type="module" src="js/panels.js?v=20260507105834"></script>
 <script>
 // Hero banner: SP500 百年走势动态曲线 + 历史事件标记 + 实时数据徽章
 (function initHeroCurve() {
