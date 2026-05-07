@@ -40,7 +40,7 @@ export function initPanelVix(priceData, vixData, recessionData, opts = {}) {
   const chartId = opts.chartId || 'chartVix';
   const indexLabel = opts.indexLabel || '标普500';
   const volLabel = opts.volLabel || 'VIX';
-  const volThreshold = opts.volThreshold ?? 30;
+  const volThreshold = opts.volThreshold ?? 20;
   const chart = registerChart(echarts.init(document.getElementById(chartId)));
   const vixMap = new Map(vixData.series.map(item => [item.date, item.value]));
   const series = priceData.series
@@ -114,8 +114,8 @@ export function initPanelVix(priceData, vixData, recessionData, opts = {}) {
           markLine: {
             silent: true,
             symbol: 'none',
-            lineStyle: { color: vixColor, type: 'dashed', width: 1 },
-            data: [{ yAxis: volThreshold, label: { formatter: `${volLabel} ${volThreshold}`, fontSize: 11, color: vixColor } }],
+            lineStyle: { color: '#cf1322', type: 'dashed', width: 1 },
+            data: [{ yAxis: volThreshold, label: { formatter: `${volLabel} ${volThreshold}`, fontSize: 11, color: '#cf1322' } }],
           },
           markArea: highVixAreas.length ? {
             silent: true,
