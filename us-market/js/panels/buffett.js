@@ -71,9 +71,9 @@ export function initPanelBuffett(buffettData, priceData) {
     .filter(Boolean);
 
   function getOption() {
-    const lineColor = '#1a1a1a';            // 改良版主线
-    const classicColor = '#999';            // 原版对照
-    const sp500Color = cssVar('--gray') || '#bfbfbf';
+    const lineColor = '#2563eb';            // 改良版主线（蓝）
+    const classicColor = '#999';            // 原版对照（保持灰虚线）
+    const sp500Color = '#1a1a1a';            // 标普500 黑色
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
     const grayColor = cssVar('--gray') || '#999';
     const textColor = cssVar('--text') || '#1a1a1a';
@@ -98,24 +98,13 @@ export function initPanelBuffett(buffettData, priceData) {
     const modLine = series.map(p => [p.date, p.ratio_modified]);
     const classicLine = series.map(p => [p.date, p.ratio_classic]);
 
-    // markPoint：当前 + 改良版历史峰谷
+    // markPoint：仅改良版历史峰谷，纯数字标签（不带「峰」「谷」字样，无当前值标签）
     const markPoints = [];
-    if (cur.ratio_modified != null) {
-      markPoints.push({
-        name: '当前',
-        coord: [series[series.length - 1].date, cur.ratio_modified],
-        value: `当前 ${cur.ratio_modified.toFixed(0)}%`,
-        itemStyle: { color: '#1a1a1a' },
-        symbol: 'pin',
-        symbolSize: 50,
-        label: { fontSize: 10, color: '#fff', fontFamily: CHART_FONT },
-      });
-    }
     if (ext.modified_peak) {
       markPoints.push({
-        name: '历史峰',
+        name: 'peak',
         coord: [ext.modified_peak.date, ext.modified_peak.value],
-        value: `峰 ${ext.modified_peak.value.toFixed(0)}%`,
+        value: `${ext.modified_peak.value.toFixed(0)}%`,
         itemStyle: { color: '#cf1322' },
         symbol: 'pin',
         symbolSize: 46,
@@ -124,9 +113,9 @@ export function initPanelBuffett(buffettData, priceData) {
     }
     if (ext.modified_trough) {
       markPoints.push({
-        name: '历史谷',
+        name: 'trough',
         coord: [ext.modified_trough.date, ext.modified_trough.value],
-        value: `谷 ${ext.modified_trough.value.toFixed(0)}%`,
+        value: `${ext.modified_trough.value.toFixed(0)}%`,
         itemStyle: { color: '#1d7e3a' },
         symbol: 'pin',
         symbolSize: 46,
