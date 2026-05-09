@@ -1,5 +1,5 @@
-@import url("css/theme.css");
-@import url("css/layout.css");
-@import url("css/nav.css");
-@import url("css/panel.css");
-@import url("css/responsive.css");
+@import url("css/theme.css?v=__BUILD__");
+@import url("css/layout.css?v=__BUILD__");
+@import url("css/nav.css?v=__BUILD__");
+@import url("css/panel.css?v=__BUILD__");
+@import url("css/responsive.css?v=__BUILD__");
