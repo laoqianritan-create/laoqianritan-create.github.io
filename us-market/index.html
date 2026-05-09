@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260509190807">
+<link rel="stylesheet" href="style.css?v=20260509220538">
+<link rel="stylesheet" href="css/chronicle.css?v=20260509220538">
 </head>
 <body>
 
@@ -60,6 +61,9 @@
         <a class="nav-item" href="#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">成分股</a>
         <a class="nav-item" href="#panel-dow-century" data-panel="panel-dow-century">道指</a>
       </div>
+      <div class="nav-group" data-category="chronicle">
+        <a class="nav-item active" href="#panel-chronicle" data-panel="panel-chronicle">日历</a>
+      </div>
     </nav>
     <button class="theme-toggle" id="themeToggle" title="切换主题">
       <span class="theme-icon-light">&#9790;</span>
@@ -93,6 +97,7 @@
   <div class="category-inner">
     <button class="category-tab active" data-category="sp500">标普500</button>
     <button class="category-tab" data-category="cross">纳斯达克100与道琼斯</button>
+    <button class="category-tab" data-category="chronicle">编年史</button>
   </div>
 </div>
 
@@ -937,6 +942,17 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-chronicle" data-category="chronicle" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">美股编年史 · 1948–2026</h2>
+        </div>
+      </div>
+      <div class="chronicle-wrap" id="chronicleGrid"></div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="footer">
@@ -957,7 +973,7 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260509190807"></script>
+<script type="module" src="js/panels.js?v=20260509220538"></script>
 <script>
 // Hero banner: SP500 百年走势动态曲线 + 历史事件标记 + 实时数据徽章
 (function initHeroCurve() {

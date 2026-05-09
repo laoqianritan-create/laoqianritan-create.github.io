@@ -37,6 +37,8 @@ import {
 
 import { initPanelChanges, initPanelRules } from './panels/rules.js';
 
+import { initPanelChronicle } from './panels/chronicle.js';
+
 // ─────────────────────────────────────────────────────────────
 // § 1  Data store — key/value + callback notifications
 // ─────────────────────────────────────────────────────────────
@@ -118,6 +120,8 @@ const FILES = {
   ndxVxn:         'data/ndx_vxn.json',
   qqqDetails:     'data/qqq_return_details.json',
   equalWeight:    'data/sp500_equal_weight.json',
+  // Chronicle
+  chronicleYears: 'data/chronicle/years.json',
 };
 
 // ─────────────────────────────────────────────────────────────
@@ -387,6 +391,11 @@ const PANELS = {
         D.dowCentury, D.recession, '道琼斯指数', 'dowCenturyScaleToggle');
     },
   },
+  // ── Chronicle ──────────────────────────────────────────────
+  'panel-chronicle': {
+    requires: ['annualReturns', 'chronicleYears'],
+    init() { initPanelChronicle(D.annualReturns, D.chronicleYears); },
+  },
 };
 
 // ─────────────────────────────────────────────────────────────
@@ -450,6 +459,8 @@ const DEFERRED_KEYS = [
   'ndxVolatility', 'ndxMonthly', 'ndxDrawdowns', 'ndxRolling5y',
   'ndxIntrayearDd', 'ndxVxn', 'qqqDetails',
   'nasdaq100', 'dowCentury',
+  // Chronicle
+  'chronicleYears',
 ];
 
 const scheduleIdle = fn =>
