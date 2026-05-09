@@ -21,12 +21,39 @@
   .chart-ranking-tall { height: 72vh; min-height: 420px; }
   .chart-medium { height: 40vh; min-height: 280px; }
   .chart-standard { height: 50vh; min-height: 320px; }
-  .header { width: 100px; }
-  .header-inner { padding: 12px 8px; gap: 8px; }
-  .header-title { font-size: 13px; }
-  .main, .hero-banner, .footer, .category-bar { margin-left: 100px; }
-  .nav-item { font-size: 11px; padding: 5px 6px; }
-  .category-tab { font-size: 11px; padding: 5px 6px; }
+  /* 移动端：侧边栏恢复为顶部横栏 */
+  .header {
+    position: sticky;
+    top: 0;
+    left: auto;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    overflow-y: visible;
+    overflow-x: auto;
+  }
+  .header-inner {
+    flex-direction: row;
+    align-items: center;
+    padding: 0 12px;
+    gap: 12px;
+    height: 44px;
+  }
+  .header-title { font-size: 14px; padding-bottom: 0; border-bottom: none; }
+  .nav {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
+    flex: 1;
+  }
+  .nav-group { flex-direction: row; gap: 4px; min-width: 100%; }
+  .nav-item { font-size: 12px; padding: 5px 8px; }
+  .theme-toggle { margin-top: 0; }
+  .main, .hero-banner, .footer, .category-bar { margin-left: 0; }
+  .category-inner { padding: 10px 16px; }
+  .category-tab { font-size: 12px; padding: 6px 12px; }
+  html { scroll-padding-top: 88px; }
   .sector-layout,
   .rules-highlights,
   .rules-grid,
