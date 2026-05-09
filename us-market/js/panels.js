@@ -117,6 +117,7 @@ const FILES = {
   ndxIntrayearDd: 'data/ndx_intrayear_dd.json',
   ndxVxn:         'data/ndx_vxn.json',
   qqqDetails:     'data/qqq_return_details.json',
+  equalWeight:    'data/sp500_equal_weight.json',
 };
 
 // ─────────────────────────────────────────────────────────────
@@ -157,8 +158,8 @@ const NASDAQ_LOG_OVERRIDES = {
 const PANELS = {
   // ── SP500 ──────────────────────────────────────────────────
   'panel-price': {
-    requires: ['price', 'recession', 'century'],
-    init() { initPanelPrice(D.price, D.recession, D.century); },
+    requires: ['price', 'recession', 'century', 'equalWeight'],
+    init() { initPanelPrice(D.price, D.recession, D.century, D.equalWeight); },
   },
   'panel-capitalism': {
     requires: [],

@@ -1,6 +1,6 @@
 /* ── Reset ── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 108px; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
 html.panel-snap-enabled {
   scroll-snap-type: none;
 }
@@ -13,7 +13,7 @@ body {
 }
 
 /* ── Main ── */
-.main { padding-bottom: 40px; }
+.main { padding-bottom: 40px; margin-left: 140px; }
 
 /* ── Hero Banner ── */
 .hero-banner {
@@ -24,6 +24,7 @@ body {
   border-bottom: 1px solid var(--border);
   overflow: hidden;
   min-height: 220px;
+  margin-left: 140px;
 }
 [data-theme="dark"] .hero-banner {
   background: linear-gradient(135deg, #0a0a0a 0%, #1e1e28 100%);
@@ -206,6 +207,7 @@ body {
   color: var(--gray);
   border-top: 1px solid var(--border);
   background: var(--bg-section);
+  margin-left: 140px;
 }
 .footer-inner {
   max-width: 1400px;

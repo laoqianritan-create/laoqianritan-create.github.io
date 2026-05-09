@@ -34,7 +34,6 @@ export function renderMetricStrip(containerId, cards) {
 
 export function getDataZoom(grayColor) {
   return [
-    { type: 'inside', start: 0, end: 100 },
     {
       type: 'slider',
       start: 0,

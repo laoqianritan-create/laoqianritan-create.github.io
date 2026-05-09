@@ -37,7 +37,7 @@ import {
 
 import { isMobile } from '../mobile.js';
 
-export function initPanelPrice(data, recessionData, centuryData) {
+export function initPanelPrice(data, recessionData, centuryData, equalWeightData) {
   const chart = registerChart(echarts.init(document.getElementById('chartPrice')));
   const dailySeries = data.series;
   const dailyDates = dailySeries.map(item => item.date);
@@ -49,152 +49,10 @@ export function initPanelPrice(data, recessionData, centuryData) {
     ...monthlyFiltered.map(item => [item.date, item.value]),
     ...dailyDates.map((date, index) => [date, dailyCloses[index]]),
   ];
-  const minTrendTs = new Date(combinedData[0][0]).getTime();
-  const maxTrendTs = new Date(combinedData.at(-1)[0]).getTime();
-  const minTrendGapMs = 90 * 24 * 3600 * 1000;
+  const ewSeries = (equalWeightData?.series || []).filter(item => item.close != null);
+  const ewData = ewSeries.map(item => [item.date, item.close]);
+
   let currentScale = 'log';
-  let trendLineState = null;
-
-  function ensureTrendLineState() {
-    if (trendLineState || !combinedData.length) {
-      return;
-    }
-    const startValue = combinedData[0][1];
-    const years = (maxTrendTs - minTrendTs) / (365.25 * 24 * 3600 * 1000);
-    trendLineState = {
-      startTs: minTrendTs,
-      endTs: maxTrendTs,
-      startValue,
-      endValue: startValue * Math.pow(1.075, years),
-    };
-  }
-
-  function clampTrendLineState(lastChanged) {
-    ensureTrendLineState();
-    trendLineState.startTs = Math.min(maxTrendTs - minTrendGapMs, Math.max(minTrendTs, trendLineState.startTs));
-    trendLineState.endTs = Math.max(minTrendTs + minTrendGapMs, Math.min(maxTrendTs, trendLineState.endTs));
-    if (trendLineState.endTs - trendLineState.startTs < minTrendGapMs) {
-      if (lastChanged === 'start') {
-        trendLineState.startTs = Math.max(minTrendTs, trendLineState.endTs - minTrendGapMs);
-      } else {
-        trendLineState.endTs = Math.min(maxTrendTs, trendLineState.startTs + minTrendGapMs);
-      }
-    }
-    trendLineState.startValue = Math.max(1, trendLineState.startValue);
-    trendLineState.endValue = Math.max(1, trendLineState.endValue);
-  }
-
-  function getTrendLineData() {
-    ensureTrendLineState();
-    clampTrendLineState();
-    return [
-      [trendLineState.startTs, trendLineState.startValue],
-      [trendLineState.endTs, trendLineState.endValue],
-    ];
-  }
-
-  function updateTrendLineSeries() {
-    if (currentScale !== 'log') {
-      return;
-    }
-    chart.setOption({
-      series: [{
-        id: 'trend-line',
-        data: getTrendLineData(),
-        lineStyle: {
-          width: 2,
-          color: cssVar('--accent') || '#4758e0',
-          type: 'dashed',
-        },
-      }],
-    });
-  }
-
-  function updateTrendHandles() {
-    if (currentScale !== 'log') {
-      chart.setOption({ graphic: [] });
-      return;
-    }
-
-    const trendData = getTrendLineData();
-    const startPixel = chart.convertToPixel('grid', trendData[0]);
-    const endPixel = chart.convertToPixel('grid', trendData[1]);
-    if (!Array.isArray(startPixel) || !Array.isArray(endPixel)) {
-      return;
-    }
-
-    const trendColor = cssVar('--accent') || '#4758e0';
-    chart.setOption({
-      graphic: [
-        {
-          id: 'trend-start',
-          type: 'circle',
-          position: startPixel,
-          shape: { r: 6 },
-          style: {
-            fill: cssVar('--card-bg') || '#fff',
-            stroke: trendColor,
-            lineWidth: 2,
-          },
-          draggable: true,
-          cursor: 'move',
-          z: 100,
-          ondrag: echarts.util.curry(onTrendHandleDrag, 'start'),
-        },
-        {
-          id: 'trend-end',
-          type: 'circle',
-          position: endPixel,
-          shape: { r: 6 },
-          style: {
-            fill: cssVar('--card-bg') || '#fff',
-            stroke: trendColor,
-            lineWidth: 2,
-          },
-          draggable: true,
-          cursor: 'move',
-          z: 100,
-          ondrag: echarts.util.curry(onTrendHandleDrag, 'end'),
-        },
-        {
-          id: 'trend-label',
-          type: 'text',
-          position: [endPixel[0] + 10, endPixel[1] - 18],
-          style: {
-            text: '拖动蓝线',
-            fill: trendColor,
-            font: `600 12px ${CHART_FONT}`,
-          },
-          silent: true,
-          z: 100,
-        },
-      ],
-    });
-  }
-
-  function onTrendHandleDrag(which) {
-    const coords = chart.convertFromPixel('grid', this.position);
-    if (!Array.isArray(coords)) {
-      requestAnimationFrame(updateTrendHandles);
-      return;
-    }
-    const [rawTs, rawValue] = coords;
-    if (!Number.isFinite(rawTs) || !Number.isFinite(rawValue)) {
-      requestAnimationFrame(updateTrendHandles);
-      return;
-    }
-    ensureTrendLineState();
-    if (which === 'start') {
-      trendLineState.startTs = rawTs;
-      trendLineState.startValue = rawValue;
-    } else {
-      trendLineState.endTs = rawTs;
-      trendLineState.endValue = rawValue;
-    }
-    clampTrendLineState(which);
-    updateTrendLineSeries();
-    requestAnimationFrame(updateTrendHandles);
-  }
 
   function getOption(scale) {
     const isLog = scale === 'log';
@@ -204,23 +62,32 @@ export function initPanelPrice(data, recessionData, centuryData) {
     const grayColor = cssVar('--gray') || '#999';
 
     let chartData;
+    let ewChartData;
     let tooltipFmt;
 
     if (isPct) {
       const base = combinedData[0][1];
       chartData = combinedData.map(([date, val]) => [date, (val / base - 1) * 100]);
+      const ewBase = ewData.length ? ewData[0][1] : 1;
+      ewChartData = ewData.map(([date, val]) => [date, (val / ewBase - 1) * 100]);
       tooltipFmt = params => {
-        const item = params.find(p => p.seriesName === 'S&P 500') || params[0];
-        if (!item) return '';
-        return `${params[0].axisValueLabel}<br/>自1928年起涨幅: <b>${formatPercent(item.value[1], 1)}</b>`;
+        const sp = params.find(p => p.seriesName === 'S&P 500');
+        const ew = params.find(p => p.seriesName === 'S&P 500 等权');
+        let html = params[0].axisValueLabel;
+        if (sp) html += `<br/>S&P 500 自1928年起: <b>${formatPercent(sp.value[1], 1)}</b>`;
+        if (ew) html += `<br/>等权 自2003年起: <b>${formatPercent(ew.value[1], 1)}</b>`;
+        return html;
       };
     } else {
       chartData = combinedData;
+      ewChartData = ewData;
       tooltipFmt = params => {
-        const item = params.find(p => p.seriesName === 'S&P 500') || params[0];
-        if (!item) return '';
-        const value = item.value[1];
-        return `${params[0].axisValueLabel}<br/>点位: <b>${formatNumber(value, 0)}</b>`;
+        const sp = params.find(p => p.seriesName === 'S&P 500');
+        const ew = params.find(p => p.seriesName === 'S&P 500 等权');
+        let html = params[0].axisValueLabel;
+        if (sp) html += `<br/>S&P 500: <b>${formatNumber(sp.value[1], 0)}</b>`;
+        if (ew) html += `<br/>等权: <b>${formatNumber(ew.value[1], 2)}</b>`;
+        return html;
       };
     }
 
@@ -236,16 +103,34 @@ export function initPanelPrice(data, recessionData, centuryData) {
       position: 'left',
     };
 
+    const ewYAxisConf = {
+      type: isLog ? 'log' : 'value',
+      axisLabel: {
+        formatter: isPct ? '{value}%' : undefined,
+        fontSize: 11,
+        color: '#2563eb',
+        fontFamily: CHART_FONT,
+      },
+      splitLine: { show: false },
+      position: 'right',
+    };
+
     const option = {
       animation: false,
-      grid: { left: 65, right: 20, top: 20, bottom: 60 },
+      legend: {
+        data: ['S&P 500', 'S&P 500 等权'],
+        top: 4,
+        right: 70,
+        textStyle: { fontSize: 12, fontFamily: CHART_FONT, color: grayColor },
+      },
+      grid: { left: 65, right: 60, top: 36, bottom: 60 },
       xAxis: {
         type: 'time',
         max: AXIS_END_2028_TS,
         axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
         splitLine: { show: false },
       },
-      yAxis: yAxisConf,
+      yAxis: [yAxisConf, ewYAxisConf],
       series: [],
       tooltip: {
         trigger: 'axis',
@@ -280,19 +165,21 @@ export function initPanelPrice(data, recessionData, centuryData) {
       z: 3,
     });
 
-    if (isLog) {
+    if (ewChartData.length) {
+      const ewColor = '#2563eb';
       option.series.push({
-        id: 'trend-line',
-        name: '轨道趋势线',
+        id: 'sp500-ew-line',
+        name: 'S&P 500 等权',
         type: 'line',
-        data: getTrendLineData(),
+        data: ewChartData,
         showSymbol: false,
-        color: cssVar('--accent') || '#4758e0',
-        itemStyle: { color: cssVar('--accent') || '#4758e0' },
-        lineStyle: { width: 2, color: cssVar('--accent') || '#4758e0', type: 'dashed' },
-        tooltip: { show: false },
-        silent: true,
-        z: 4,
+        color: ewColor,
+        itemStyle: { color: ewColor },
+        lineStyle: { width: 2, color: ewColor },
+        large: true,
+        largeThreshold: 2000,
+        yAxisIndex: 1,
+        z: 3,
       });
     }
 
@@ -302,18 +189,14 @@ export function initPanelPrice(data, recessionData, centuryData) {
   chart.setOption(getOption(currentScale));
   chart._refreshTheme = () => {
     chart.setOption(getOption(currentScale), true);
-    requestAnimationFrame(updateTrendHandles);
   };
-  chart.on('dataZoom', () => requestAnimationFrame(updateTrendHandles));
-  window.addEventListener('resize', () => requestAnimationFrame(updateTrendHandles));
-  requestAnimationFrame(updateTrendHandles);
 
   if (centuryData) {
     renderMetricStrip('sp500CenturySummary', [
       buildMetricCard('数据起点', `${centuryData.start?.date || '--'} | ${centuryData.start ? formatNumber(centuryData.start.value, 2) : '--'}`, '月度数据起点'),
       buildMetricCard('最新月度点位', centuryData.latest ? formatNumber(centuryData.latest.value, 2) : '--', centuryData.latest?.date || ''),
       buildMetricCard('长期复合增速', centuryData.cagr != null ? formatPercent(centuryData.cagr, 2) : '--', '1928年至今年化'),
-      buildMetricCard('默认视图', '对数模式', '蓝色趋势线支持鼠标拖动，拖动时保留当前缩放窗口；时间轴预留到 2028 年。'),
+      buildMetricCard('默认视图', '对数模式', '黑线 S&P 500 · 蓝线等权(RSP) · 时间轴预留到 2028 年'),
     ]);
   }
 
@@ -324,7 +207,6 @@ export function initPanelPrice(data, recessionData, centuryData) {
     btn.classList.add('active');
     currentScale = btn.dataset.scale;
     chart.setOption(getOption(currentScale), true);
-    requestAnimationFrame(updateTrendHandles);
   });
 }
 

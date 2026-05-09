@@ -21,9 +21,12 @@
   .chart-ranking-tall { height: 72vh; min-height: 420px; }
   .chart-medium { height: 40vh; min-height: 280px; }
   .chart-standard { height: 50vh; min-height: 320px; }
-  .header-inner { padding: 0 12px; gap: 12px; }
-  .category-inner { padding: 10px 16px; }
-  .nav-item { font-size: 12px; padding: 5px 8px; }
+  .header { width: 100px; }
+  .header-inner { padding: 12px 8px; gap: 8px; }
+  .header-title { font-size: 13px; }
+  .main, .hero-banner, .footer, .category-bar { margin-left: 100px; }
+  .nav-item { font-size: 11px; padding: 5px 6px; }
+  .category-tab { font-size: 11px; padding: 5px 6px; }
   .sector-layout,
   .rules-highlights,
   .rules-grid,
