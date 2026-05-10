@@ -64,6 +64,8 @@ function buildCellHTML(year, returnVal, titleEntry) {
   return `
     <a class="chronicle-cell"
        href="chronicle/${year}.html"
+       target="_blank"
+       rel="noopener"
        data-year="${year}"
        ${tierAttr}
        title="${ariaTitle}${returnVal != null ? ' · ' + fmtPct(returnVal) : ''}${isDraft ? ' · 待补' : ''}">

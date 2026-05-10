@@ -271,6 +271,15 @@
 .year-hero-stat-value--green { color: #95de64; }
 .year-hero-stat-value--red   { color: #ffa39e; }
 
+/* ── 走势图下色带注释 ── */
+.chart-band-note {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--gray);
+  text-align: center;
+}
+
 /* ── 摘要段 ── */
 .year-summary {
   font-size: 16px;
@@ -344,15 +353,44 @@
   background: var(--card-bg);
   border: 2px solid var(--text-secondary);
 }
-/* 时间线 dot 一律使用文本主色,不再分色 */
-.timeline-item .timeline-dot,
-.timeline-item--up .timeline-dot,
-.timeline-item--down .timeline-dot,
-.timeline-item--key .timeline-dot {
-  background: var(--text);
-  border-color: var(--text);
-  box-shadow: none;
+/* 涨/跌 dot 颜色 */
+.timeline-item--up .timeline-dot   { border-color: var(--green); background: var(--green); }
+.timeline-item--down .timeline-dot { border-color: var(--red);   background: var(--red); }
+/* key 单独 = 蓝 dot;key 与 up/down 同时存在 = 保留 up/down 颜色 + 蓝色发光环 */
+.timeline-item--key:not(.timeline-item--up):not(.timeline-item--down) .timeline-dot {
+  border-color: var(--accent);
+  background: var(--accent);
 }
+.timeline-item--key .timeline-dot {
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+/* 颜色图例 */
+.timeline-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 auto 20px;
+  max-width: 880px;
+  padding-left: 36px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.timeline-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.timeline-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--text-secondary);
+  background: var(--card-bg);
+}
+.timeline-legend-dot--up   { border-color: var(--green); background: var(--green); }
+.timeline-legend-dot--down { border-color: var(--red);   background: var(--red); }
+.timeline-legend-dot--key  { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 2px var(--accent-light); }
 .timeline-date {
   display: inline-block;
   font-family: "Inter", monospace;
