@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260511171856">
-<link rel="stylesheet" href="css/chronicle.css?v=20260511171856">
+<link rel="stylesheet" href="style.css?v=20260511173216">
+<link rel="stylesheet" href="css/chronicle.css?v=20260511173216">
 </head>
 <body>
 
@@ -975,162 +975,13 @@
         <li><a href="https://www.hongsehuojian.com/red-rocket/home" target="_blank" rel="noopener">红色火箭</a></li>
       </ul>
     </div>
-    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · Big Picture</p>
+    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · Big Picture · <span id="dataHealth" class="data-health-badge">数据状态加载中…</span></p>
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260511171856"></script>
-<script>
-// Hero banner: SP500 百年走势动态曲线 + 历史事件标记 + 实时数据徽章
-(function initHeroCurve() {
-  const pathEl = document.getElementById('heroCurvePath');
-  const svgEl = document.getElementById('heroCurve');
-  const markerLayer = document.getElementById('heroMarkerLayer');
-  const badgesEl = document.getElementById('heroBadges');
-  if (!pathEl || !svgEl) return;
+<script type="module" src="js/panels.js?v=20260511173216"></script>
+<script defer src="js/hero-curve.js?v=20260511173216"></script>
+<script defer src="js/data-health.js?v=20260511173216"></script>
 
-  // 历史事件节点（按曲线从左到右）
-  // place: 注释相对圆点位置 'top'|'bottom'；align: 注释相对圆点水平锚点 'center'|'left'|'right'
-  const EVENTS = [
-    { date: '1929-09', label: '大萧条',     year: 1929, place: 'bottom', align: 'left'  },  // 最左：文字向右伸
-    { date: '1974-10', label: '滞胀底',     year: 1974, place: 'top'                      },
-    { date: '1987-10', label: '黑色星期一', year: 1987, place: 'bottom'                   },  // 下方，与 1974 错开
-    { date: '2000-03', label: '互联网泡沫', year: 2000, place: 'top'                      },
-    { date: '2008-09', label: '次贷危机',   year: 2008, place: 'bottom'                   },
-    { date: '2020-03', label: '疫情冲击',   year: 2020, place: 'top',    align: 'right' },  // 最右：文字向左伸
-  ];
-
-  const VIEW_W = 1400;
-  const VIEW_H = 200;
-  const PAD_Y = 12;
-
-  Promise.all([
-    fetch('data/sp500_century.json', { cache: 'force-cache' }).then(r => r.ok ? r.json() : null),
-    fetch('data/sp500_pe.json',      { cache: 'force-cache' }).then(r => r.ok ? r.json() : null).catch(() => null),
-  ])
-    .then(([centuryPayload, pePayload]) => {
-      const series = (centuryPayload?.series || [])
-        .filter(it => it && it.value != null && it.value > 0)
-        .filter(it => (it.date || '').slice(0, 4) >= '1928');
-      if (series.length < 2) return;
-
-      const logs = series.map(it => Math.log10(it.value));
-      const minLog = Math.min(...logs);
-      const maxLog = Math.max(...logs);
-      const range = Math.max(maxLog - minLog, 0.001);
-      const n = series.length;
-
-      // 对数 y 翻转到 SVG 坐标（底部=低点）
-      const points = logs.map((lg, i) => {
-        const x = (i / (n - 1)) * VIEW_W;
-        const y = VIEW_H - PAD_Y - ((lg - minLog) / range) * (VIEW_H - PAD_Y * 2);
-        return [x, y];
-      });
-
-      // 平滑 cubic Bezier（相邻两点中点作控制点，形成柔和过渡）
-      let d = `M ${points[0][0].toFixed(2)} ${points[0][1].toFixed(2)}`;
-      for (let i = 1; i < points.length; i++) {
-        const [px, py] = points[i - 1];
-        const [cx, cy] = points[i];
-        const mx = (px + cx) / 2;
-        d += ` Q ${px.toFixed(2)} ${py.toFixed(2)} ${mx.toFixed(2)} ${((py + cy) / 2).toFixed(2)}`;
-      }
-      const last = points[points.length - 1];
-      d += ` T ${last[0].toFixed(2)} ${last[1].toFixed(2)}`;
-
-      pathEl.setAttribute('d', d);
-
-      // 计算真实 path 长度，喂给 CSS 动画（同步执行，避免 RAF 时序丢失）
-      try {
-        const length = pathEl.getTotalLength();
-        if (length && isFinite(length)) {
-          pathEl.style.setProperty('--path-length', length.toFixed(0));
-          // 重置动画使新长度立即生效
-          pathEl.style.animation = 'none';
-          void pathEl.offsetWidth;
-          pathEl.style.animation = '';
-        }
-      } catch (err) { /* no-op */ }
-
-      // ── 事件标记（HTML div 绝对定位，避开 SVG 非等比拉伸的椭圆问题） ──
-      if (markerLayer) {
-        markerLayer.innerHTML = '';
-        EVENTS.forEach((ev, idx) => {
-          // 在 series 中找最接近目标月的索引
-          const prefix = ev.date;
-          let hit = -1;
-          for (let i = 0; i < series.length; i++) {
-            if ((series[i].date || '').slice(0, 7) >= prefix) { hit = i; break; }
-          }
-          if (hit < 0) return;
-          const [sx, sy] = points[hit];
-          const xPct = (sx / VIEW_W) * 100;
-          const yPct = (sy / VIEW_H) * 100;
-
-          const marker = document.createElement('div');
-          marker.className = 'hero-event-marker';
-          marker.dataset.place = ev.place || 'top';
-          marker.dataset.align = ev.align || 'center';
-          marker.style.left = xPct.toFixed(2) + '%';
-          marker.style.top  = yPct.toFixed(2) + '%';
-          marker.style.animationDelay = (idx * 0.35).toFixed(2) + 's';
-          marker.setAttribute('aria-label', `${ev.year} · ${ev.label}`);
-
-          const label = document.createElement('span');
-          label.className = 'hero-event-label';
-          label.textContent = `${ev.year} · ${ev.label}`;
-          marker.appendChild(label);
-
-          markerLayer.appendChild(marker);
-        });
-      }
-
-      // ── 实时数据徽章 ──
-      if (badgesEl) {
-        const latest = series[series.length - 1];
-        const latestVal = latest.value;
-        const latestYear = parseInt(latest.date.slice(0, 4), 10);
-        const latestMonth = latest.date.slice(5, 7);
-        const target = `${latestYear - 1}-${latestMonth}`;
-
-        // 找约 12 月前的值
-        let yearAgoVal = null;
-        for (let i = series.length - 1; i >= 0; i--) {
-          if ((series[i].date || '').slice(0, 7) <= target) {
-            yearAgoVal = series[i].value;
-            break;
-          }
-        }
-        const yoy = yearAgoVal ? (latestVal - yearAgoVal) / yearAgoVal * 100 : null;
-
-        // 历史高点
-        let ath = 0;
-        for (const it of series) { if (it.value > ath) ath = it.value; }
-        const distPct = ath ? (latestVal - ath) / ath * 100 : null;
-
-        // CAPE
-        const capeArr = (pePayload && Array.isArray(pePayload.cape)) ? pePayload.cape : [];
-        const capeLatest = capeArr.length ? capeArr[capeArr.length - 1].value : null;
-
-        const fmtPct = v => (v > 0 ? '+' : '') + v.toFixed(1) + '%';
-        const fmtNum = v => v.toFixed(v >= 10 ? 1 : 2);
-        const cls = v => v > 0 ? 'hero-badge-value--green' : v < 0 ? 'hero-badge-value--red' : '';
-
-        const items = [];
-        if (capeLatest != null) {
-          items.push(`<span class="hero-badge"><span class="hero-badge-label">Shiller PE</span><span class="hero-badge-value">${fmtNum(capeLatest)}</span></span>`);
-        }
-        if (yoy != null) {
-          items.push(`<span class="hero-badge"><span class="hero-badge-label">近12月</span><span class="hero-badge-value ${cls(yoy)}">${fmtPct(yoy)}</span></span>`);
-        }
-        if (distPct != null) {
-          items.push(`<span class="hero-badge"><span class="hero-badge-label">距历史高点</span><span class="hero-badge-value ${cls(distPct)}">${fmtPct(distPct)}</span></span>`);
-        }
-        badgesEl.innerHTML = items.join('');
-      }
-    })
-    .catch(() => { /* silent: banner 是装饰，失败不影响主内容 */ });
-})();
-</script>
 </body>
 </html>
