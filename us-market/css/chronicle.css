@@ -299,6 +299,63 @@
   color: var(--text);
 }
 .year-summary h3:first-child { margin-top: 0; }
+
+/* ── 时代背景 关键史实 时间线布局 ── */
+/* 结构: [日期 100px] [灰线 2px,贯穿] [标题+正文]  */
+.year-summary ul.era-history-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0;
+}
+.year-summary .era-history-list li {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0 20px;
+  margin: 0;
+}
+.year-summary .era-history-list .era-history-date {
+  text-align: right;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  padding-top: 2px;
+  white-space: nowrap;
+}
+.year-summary .era-history-list .era-history-content {
+  border-left: 2px solid var(--border);
+  padding: 0 0 20px 20px;
+  margin-top: -2px;
+}
+.year-summary .era-history-list li:last-child .era-history-content {
+  padding-bottom: 0;
+}
+.year-summary .era-history-list .era-history-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+  margin-bottom: 4px;
+}
+.year-summary .era-history-list .era-history-body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+@media (max-width: 640px) {
+  .year-summary .era-history-list li {
+    grid-template-columns: 72px 1fr;
+    gap: 0 12px;
+  }
+  .year-summary .era-history-list .era-history-date {
+    font-size: 12px;
+  }
+  .year-summary .era-history-list .era-history-content {
+    padding: 0 0 18px 14px;
+  }
+}
 .year-summary ul {
   margin: 8px 0 12px 0;
   padding-left: 22px;

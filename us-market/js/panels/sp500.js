@@ -1548,7 +1548,13 @@ export function initSp500AnnualDistPanel(data, opts = {}) {
     const years = [...b.years].sort((a, c) => a - c);
     const cells = years.map(yr => {
       const isCurrent = yr === latestYear;
-      return `<div class="tr-dist-cell tr-${sign}${isCurrent ? ' tr-current' : ''}" title="${yr}">${yr}</div>`;
+      // 1948-2026 有编年史页:加超链跳转
+      const hasChronicle = yr >= 1948 && yr <= 2026;
+      const cls = `tr-dist-cell tr-${sign}${isCurrent ? ' tr-current' : ''}`;
+      if (hasChronicle) {
+        return `<a class="${cls}" href="chronicle/${yr}.html" target="_blank" rel="noopener" title="${yr} · 查看编年史">${yr}</a>`;
+      }
+      return `<div class="${cls}" title="${yr}">${yr}</div>`;
     }).join('');
     return `<div class="tr-dist-col">${cells}</div>`;
   }).join('');

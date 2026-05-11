@@ -345,9 +345,21 @@ const PANELS = {
     },
   },
   'panel-ndx-rolling': {
-    requires: ['ndxRolling5y'],
+    requires: ['ndxDaily'],
     init() {
-      if (D.ndxRolling5y) initPanelRolling(D.ndxRolling5y, { chartId: 'chartNdxRolling', precomputed: true });
+      if (!D.ndxDaily?.series) return;
+      // 把日线降采样为月末序列(每月保留最后一个值),复用 SP500 同款多窗口算法
+      const byMonth = new Map();
+      D.ndxDaily.series.forEach(item => {
+        if (item && item.date) byMonth.set(item.date.slice(0, 7), item);
+      });
+      const monthly = { series: Array.from(byMonth.values()) };
+      initPanelRolling(monthly, {
+        chartId: 'chartNdxRolling',
+        toggleId: 'ndxRollingWindowToggle',
+        precomputed: false,
+        defaultWindow: 5,
+      });
     },
   },
   'panel-nasdaq100-member-returns': {
