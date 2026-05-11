@@ -5,8 +5,8 @@
 (function () {
   const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
   const DATA_BASE = location.pathname.includes('/site/chronicle/')
-    ? '../data/chronicle'
-    : 'data/chronicle';
+    ? '../../data/chronicle'
+    : '../data/chronicle';
 
   function cssVar(name) {
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
