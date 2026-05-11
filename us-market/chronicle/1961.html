@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1961 · 最年轻的总统 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260511170650">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260511170650">
+<script>
+  // 提前应用主题，避免首屏闪烁
+  (function() {
+    var saved = localStorage.getItem('sp500-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">概览</a>
+        <a class="nav-item" href="#section-events">大事时间线</a>
+        <a class="nav-item" href="#section-context">时代背景</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← 返回日历</a>
+      </div>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="切换主题">
+      <span class="theme-icon-light">&#9790;</span>
+      <span class="theme-icon-dark">&#9728;</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">1961</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 新边疆开局之年</span>
+        <h1 class="year-hero-title">最年轻的总统</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">标普500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+23.13%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">道指</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+18.7%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">年末</span>
+            <span class="year-hero-stat-value">731 点</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">主线</span>
+            <span class="year-hero-stat-value">肯尼迪上台 + 经济复苏 + 冷战升级</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">标普500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">纳斯达克100与道琼斯</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">编年史</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">概览</h2>
+          <p class="panel-desc">肯尼迪就职 · 经济从衰退末端走向复苏 · 冷战升级与柏林危机</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>1961 年是肯尼迪政府的开局之年。1 月 20 日 43 岁的肯尼迪宣誓就职，成为<strong>美国历史上最年轻的总统</strong>。开年伊始，宏观基本面仍处在 1960 年衰退的最后阶段，工业生产同比 1 月触底于 -8.6%。但市场利率持续下行，2 月初美联储授权纽约联储购买 1 年期以上中长期国债，进一步放松货币环境，股市在前五个月连续上涨。</p>
+        <p>3 月开始经济形势出现好转，NBER 定义的衰退于 2 月结束。3 月 4 日西德马克对美元升值 4.76%，荷兰随后跟进，缓解了美国贸易不平衡的压力。4 月 17 日"猪湾事件"爆发，中央情报局策划的古巴流亡军三天内被歼灭，市场在 4 月中下旬出现一轮有限调整。5 月下旬至 7 月下旬，受第三次柏林危机与 6-7 月集中二次发行冲击，道指出现约 4% 的两个月调整。</p>
+        <p>8 月 13 日柏林墙开建反而使紧张局势相对锁定。9-10 月美苏相继恢复核试验，行情再度走软；11 月起<strong>宏观进入复苏高峰期</strong>，经济数据利好不断，行情转好。道琼斯工业指数收于 731 点，<strong>全年 +18.7%</strong>；标普 500 全年 +23.13%。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear1961" style="margin-top:24px;"></div>
+      <p class="chart-band-note">色带 = 价格走势分段 · <span style="color:var(--green);">绿色</span> 上涨时段（≥5%）· <span style="color:var(--red);">红色</span> 下跌时段（≥5%）</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">大事时间线</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>一般背景信息</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>显著推动行情上行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>显著推动行情下行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>历史关键节点</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">（节点同时显示在下方走势图）</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item"
+             data-chart-date="1961-01-03"
+             data-chart-label="美古断交">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.3</div>
+          <div class="timeline-title">美国与古巴断绝外交关系</div>
+          <div class="timeline-desc">美古关系全面破裂，为后续猪湾事件与古巴危机埋下伏笔。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1961-01-14"
+             data-chart-label="禁持境外黄金">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.14</div>
+          <div class="timeline-title">艾森豪威尔颁布黄金管制令</div>
+          <div class="timeline-desc">离任前禁止美国居民在世界任何地方持有黄金，应对持续增加的黄金外流压力。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1961-01-20"
+             data-chart-label="肯尼迪就职"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.20</div>
+          <div class="timeline-title">肯尼迪宣誓就任美国总统</div>
+          <div class="timeline-desc">43 岁的肯尼迪成为美国历史上最年轻的总统。上台后明确表态美元必须保持现有价值，1960 年 10 月美元危机暂告段落。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="1961-02-20"
+             data-chart-label="纽约联储购长债"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2 月初</div>
+          <div class="timeline-title">美联储授权纽约联储购入中长期国债</div>
+          <div class="timeline-desc">纽约联储随后购入大量 1 年期以上美国国债，等同于进一步放松货币政策，奠定双重利率政策基调。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1961-02-28"
+             data-chart-label="衰退结束">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2 月</div>
+          <div class="timeline-title">NBER 定义的本轮经济衰退结束</div>
+          <div class="timeline-desc">工业生产同比 1 月触底 -8.6% 后开始回升，3 月起宏观形势出现实质好转。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1961-03-06"
+             data-chart-label="马克升值">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">3.4</div>
+          <div class="timeline-title">联邦德国马克对美元升值 4.76%</div>
+          <div class="timeline-desc">官方汇率从 1 美元兑 4.2 马克调整到 4.0 马克，荷兰随后跟进，缓解美国贸易失衡压力。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1961-04-17"
+             data-chart-label="猪湾事件"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">4.17</div>
+          <div class="timeline-title">猪湾事件</div>
+          <div class="timeline-desc">CIA 协助下逃亡美国的古巴雇佣军在猪湾登陆，三天后即被卡斯特罗政府歼灭。军事失败冲击了美国国际形象。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1961-04-12"
+             data-chart-label="加加林上太空">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">4.12</div>
+          <div class="timeline-title">苏联加加林完成人类首次载人航天</div>
+          <div class="timeline-desc">东方一号搭载加加林环绕地球一周，太空竞赛全面打响。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1961-05-05"
+             data-chart-label="美国首次载人">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">5.5</div>
+          <div class="timeline-title">谢泼德完成美国首次载人亚轨道飞行</div>
+          <div class="timeline-desc">水星-红石 3 号搭载艾伦·谢泼德进入太空，美国正式回应苏联航天突破。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1961-05-25"
+             data-chart-label="阿波罗计划"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">5.25</div>
+          <div class="timeline-title">肯尼迪宣布登月计划</div>
+          <div class="timeline-desc">肯尼迪向国会发表特别咨文，要求批准在十年内将人送上月球并安全返回，阿波罗计划由此启动。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1961-06-05"
+             data-chart-label="维也纳会谈">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">6.3-4</div>
+          <div class="timeline-title">肯尼迪与赫鲁晓夫维也纳会谈</div>
+          <div class="timeline-desc">赫鲁晓夫重提柏林问题、要求英美法撤出西柏林，遭肯尼迪断然拒绝。第三次柏林危机由此爆发。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1961-07-03"
+             data-chart-label="柏林危机升级">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7 月初</div>
+          <div class="timeline-title">苏联暂停复员，军费增加 1/3</div>
+          <div class="timeline-desc">肯尼迪要求国会增加国防预算、征召后备役与国民警卫队入伍，扩大民防与防空。第三次柏林危机进入高潮。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1961-06-30"
+             data-chart-label="二次发行潮">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">6-7 月</div>
+          <div class="timeline-title">资本市场出现大量二次发行</div>
+          <div class="timeline-desc">伯利恒钢铁、海湾石油、麦克森、罗宾斯等公司集中进行二次发行，冲击短期流动性。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1961-08-14"
+             data-chart-label="柏林墙开建"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">8.13</div>
+          <div class="timeline-title">柏林墙动工修建</div>
+          <div class="timeline-desc">东德开始沿东西柏林边界修筑隔离设施，紧张局势在被锁定的同时反而短期缓和。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1961-09-15"
+             data-chart-label="美苏恢复核试">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">9 月</div>
+          <div class="timeline-title">美苏相继恢复核试验</div>
+          <div class="timeline-desc">9 月起苏联率先恢复大气层核试验，美国随后跟进，军备竞赛进入新高潮。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="1958-1967">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">时代背景</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">加载中…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">📚 同一时代下的所有年份页面（1958-1967）共享本"时代背景"内容。</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← 返回日历</a>
+        <a class="year-back-link" href="../index.html#panel-price">看长周期标普500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">看席勒市盈率 →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">编年史 · 资料来源</h4>
+      <ul class="footer-link-list">
+        <li>燕翔 战迪 许茹纯 朱成成 著 <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">《美股70年:1948~2018年美国股市行情复盘》</a> 经济科学出版社 2020</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · Big Picture · 编年史</p>
+  </div>
+</footer>
+
+<script>
+// ── 主题切换（轻量版，无需 module） ──
+document.getElementById('themeToggle').addEventListener('click', function() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('sp500-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('sp500-theme', 'dark');
+  }
+  if (window._yearChart && window._yearData) {
+    window._yearChart.setOption(getYearChartOption(window._yearData), true);
+  }
+});
+
+// ── 1961 年指数日频走势 ──
+const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+// 从时间线 DOM 读事件,保证两边永远同步
+function readTimelineEvents() {
+  const items = document.querySelectorAll('#yearTimeline [data-chart-date]');
+  return Array.from(items).map(el => {
+    const cls = el.classList;
+    let kind = 'info';
+    if (cls.contains('timeline-item--up')) kind = 'up';
+    else if (cls.contains('timeline-item--down')) kind = 'down';
+    if (cls.contains('timeline-item--key')) kind = kind === 'info' ? 'key' : kind + '-key';
+    return {
+      date: el.dataset.chartDate,
+      rangeEnd: el.dataset.chartRangeEnd || null,
+      label: el.dataset.chartLabel || el.querySelector('.timeline-title')?.textContent || '',
+      showLabel: el.dataset.chartShowLabel === 'true',
+      kind,  // 'info' | 'up' | 'down' | 'key' | 'up-key' | 'down-key'
+      desc: el.querySelector('.timeline-desc')?.textContent || '',
+    };
+  });
+}
+
+// kind → dot/area 颜色
+function colorForKind(kind, theme) {
+  // theme: { green, red, accent, sec, cardBg }
+  if (kind.includes('up'))   return { dot: theme.green,  ring: kind.includes('key') ? theme.accent : null };
+  if (kind.includes('down')) return { dot: theme.red,    ring: kind.includes('key') ? theme.accent : null };
+  if (kind === 'key')        return { dot: theme.accent, ring: theme.accent };
+  return { dot: theme.cardBg, ring: null };  // info: 中空白点
+}
+
+// 从日频价格序列识别上涨/下跌/震荡段(zigzag,minPct=5%)
+// 返回 [{startDate, endDate, change, kind:'up'|'down'|'side'}]
+function findTrendSegments(data, minPct) {
+  minPct = minPct || 5;
+  if (!data || data.length < 2) return [];
+  const pivots = [{ idx: 0, close: data[0].close }];
+  let direction = null;
+  let extHigh = data[0].close, extHighIdx = 0;
+  let extLow  = data[0].close, extLowIdx  = 0;
+  for (let i = 1; i < data.length; i++) {
+    const c = data[i].close;
+    if (c > extHigh) { extHigh = c; extHighIdx = i; }
+    if (c < extLow)  { extLow = c;  extLowIdx = i; }
+    if (direction === null) {
+      const base = data[0].close;
+      if ((extHigh - base) / base * 100 >= minPct) direction = 'up';
+      else if ((base - extLow) / base * 100 >= minPct) direction = 'down';
+    } else if (direction === 'up') {
+      if ((extHigh - c) / extHigh * 100 >= minPct) {
+        pivots.push({ idx: extHighIdx, close: extHigh });
+        extLow = c; extLowIdx = i; direction = 'down';
+      }
+    } else {
+      if ((c - extLow) / extLow * 100 >= minPct) {
+        pivots.push({ idx: extLowIdx, close: extLow });
+        extHigh = c; extHighIdx = i; direction = 'up';
+      }
+    }
+  }
+  pivots.push({ idx: data.length - 1, close: data[data.length - 1].close });
+  const segments = [];
+  for (let i = 1; i < pivots.length; i++) {
+    const a = pivots[i - 1], b = pivots[i];
+    if (a.idx === b.idx) continue;
+    const change = (b.close - a.close) / a.close * 100;
+    let kind = 'side';
+    if (change >=  minPct) kind = 'up';
+    if (change <= -minPct) kind = 'down';
+    segments.push({
+      startDate: data[a.idx].date,
+      endDate:   data[b.idx].date,
+      change, kind,
+    });
+  }
+  return segments;
+}
+
+function getYearChartOption(data) {
+  if (!data || !data.length) return {};
+  const text = cssVar('--text') || '#1a1a1a';
+  const grid = cssVar('--chart-grid') || '#f0f0f0';
+  const sec = cssVar('--text-secondary') || '#666';
+  const green = cssVar('--green') || '#389e0d';
+  const red = cssVar('--red') || '#cf1322';
+  const accent = cssVar('--accent') || '#4758e0';
+  const cardBg = cssVar('--card-bg') || '#fff';
+  const border = cssVar('--border') || '#e8e8e8';
+  const lineColor = cssVar('--sp500-line') || '#1a1a1a';
+  const theme = { green, red, accent, sec, cardBg };
+
+  const events = readTimelineEvents();
+
+  // 找 >= 目标日的第一条
+  function findCoord(targetDate) {
+    for (const d of data) {
+      if (d.date >= targetDate) return [d.date, d.close];
+    }
+    return null;
+  }
+  // 找 <= 目标日的最后一条
+  function findCoordReverse(targetDate) {
+    let last = null;
+    for (const d of data) {
+      if (d.date > targetDate) break;
+      last = d;
+    }
+    return last ? [last.date, last.close] : null;
+  }
+
+  // markPoint: 每个事件起点,按 kind 染色
+  const markPoints = events.map(ev => {
+    const coord = findCoord(ev.date);
+    if (!coord) return null;
+    const c = colorForKind(ev.kind, theme);
+    const isInfo = ev.kind === 'info';
+    return {
+      coord,
+      name: ev.label,
+      symbol: 'circle',
+      symbolSize: ev.kind.includes('key') ? 12 : 9,
+      itemStyle: {
+        color: c.dot,
+        borderColor: isInfo ? sec : (c.ring || cardBg),
+        borderWidth: ev.kind.includes('key') ? 3 : 2,
+        shadowBlur: ev.kind.includes('key') ? 6 : 0,
+        shadowColor: ev.kind.includes('key') ? 'rgba(71,88,224,0.45)' : 'transparent',
+      },
+      label: {
+        show: ev.showLabel,
+        position: 'top',
+        distance: 14,
+        fontSize: 11,
+        fontFamily: CHART_FONT,
+        color: ev.kind.includes('down') ? red : ev.kind.includes('up') ? green : ev.kind === 'key' ? accent : sec,
+        fontWeight: 600,
+        backgroundColor: cardBg,
+        padding: [2, 6],
+        borderRadius: 3,
+        borderColor: border,
+        borderWidth: 1,
+        formatter: ev.label,
+      },
+    };
+  }).filter(Boolean);
+
+  // markArea: 价格自驱动,标注 >=5% 的上涨/下跌段;震荡段不标
+  const markAreas = findTrendSegments(data, 5)
+    .filter(seg => seg.kind !== 'side')
+    .map(seg => {
+      const bg = seg.kind === 'up' ? 'rgba(56,158,13,0.10)' : 'rgba(207,19,34,0.10)';
+      return [
+        { xAxis: seg.startDate, itemStyle: { color: bg } },
+        { xAxis: seg.endDate },
+      ];
+    });
+
+  // tooltip: 显示事件信息(若当前 hover 日附近有事件)
+  const eventByDate = new Map(events.map(ev => [ev.date, ev]));
+
+  return {
+    grid: { left: 50, right: 30, top: 64, bottom: 36 },
+    xAxis: {
+      type: 'time',
+      axisLine: { lineStyle: { color: border } },
+      axisLabel: {
+        color: sec,
+        fontFamily: CHART_FONT,
+        formatter: function(value) {
+          var d = new Date(value);
+          return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+        },
+      },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      scale: true,
+      name: '标普500',
+      nameTextStyle: { color: sec, fontFamily: CHART_FONT, fontSize: 11 },
+      axisLine: { show: false },
+      axisLabel: { color: sec, fontFamily: CHART_FONT },
+      splitLine: { lineStyle: { color: grid } },
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: cardBg,
+      borderColor: border,
+      textStyle: { color: text, fontFamily: CHART_FONT },
+      formatter: function(params) {
+        const p = params[0];
+        const date = p.value[0];
+        const dateStr = typeof date === 'string' ? date : new Date(date).toISOString().slice(0, 10);
+        let html = `${dateStr}<br/>标普500: <b>${p.value[1].toFixed(2)}</b>`;
+        const ev = eventByDate.get(dateStr);
+        if (ev) {
+          html += `<br/><span style="color:${sec};">事件: ${ev.label}</span>`;
+        }
+        return html;
+      },
+    },
+    series: [{
+      name: '标普500日线',
+      type: 'line',
+      smooth: false,
+      showSymbol: false,
+      sampling: 'lttb',
+      data: data.map(d => [d.date, d.close]),
+      lineStyle: { color: lineColor, width: 1.5 },
+      itemStyle: { color: lineColor },
+      areaStyle: {
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: 'rgba(26,26,26,0.10)' },
+            { offset: 1, color: 'rgba(26,26,26,0)' },
+          ],
+        },
+      },
+      markPoint: { data: markPoints, silent: false },
+      markArea: { silent: true, data: markAreas },
+    }],
+  };
+}
+
+(function init1961Chart() {
+  const el = document.getElementById('chartYear1961');
+  if (!el) return;
+  const chart = echarts.init(el);
+  window._yearChart = chart;
+  window.addEventListener('resize', () => chart.resize());
+
+  fetch('../data/chronicle/year_data/1961.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(payload => {
+      const series = (payload.series || []).filter(d => d && d.date && d.close != null);
+      if (!series.length) return;
+      window._yearData = series;
+      chart.setOption(getYearChartOption(series));
+    })
+    .catch(err => console.warn('1961 chart load failed', err));
+})();
+
+// ── 时代背景 · 从 era_data JSON 渲染 ──
+function escapeHTML(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function renderEra(era) {
+  const titleEl = document.getElementById('eraTitle');
+  const tagEl = document.getElementById('eraTagline');
+  const contentEl = document.getElementById('eraContent');
+  if (titleEl && era.title) titleEl.textContent = '时代背景 · ' + era.title;
+  if (tagEl && era.tagline) tagEl.textContent = era.tagline;
+  if (!contentEl) return;
+
+  const parts = [];
+  (era.sections || []).forEach(sec => {
+    parts.push(`<h3>${escapeHTML(sec.heading)}</h3>`);
+    if (sec.type === 'paragraphs') {
+      (sec.body || []).forEach(p => parts.push(`<p>${p}</p>`));
+    } else if (sec.type === 'list') {
+      const isHist = sec.heading && sec.heading.indexOf('关键史实') >= 0;
+      if (isHist) {
+        const items = (sec.items || []).map(it => {
+          const date = it.date || it.strong || '';
+          const title = it.title || '';
+          const body = it.body || '';
+          return `<li><div class="era-history-date">${date}</div><div class="era-history-content"><div class="era-history-title">${title}</div><div class="era-history-body">${body}</div></div></li>`;
+        }).join('');
+        parts.push(`<ul class="era-history-list">${items}</ul>`);
+      } else {
+        const items = (sec.items || []).map(it => {
+          const lead = it.strong ? `<strong>${it.strong}</strong>：` : '';
+          return `<li>${lead}${it.body || ''}</li>`;
+        }).join('');
+        parts.push(`<ul>${items}</ul>`);
+      }
+    }
+  });
+  contentEl.innerHTML = parts.join('');
+}
+(function loadEra() {
+  const section = document.querySelector('[data-era]');
+  if (!section) return;
+  const eraId = section.dataset.era;
+  fetch(`../data/chronicle/era_data/${eraId}.json?v=` + Date.now())
+    .then(r => r.json())
+    .then(renderEra)
+    .catch(err => {
+      console.warn('era load failed', err);
+      const el = document.getElementById('eraContent');
+      if (el) el.innerHTML = '<p style="color:var(--text-secondary);">时代背景加载失败</p>';
+    });
+})();
+</script>
+
+</body>
+</html>

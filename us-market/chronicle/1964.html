@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1964 · 向贫困宣战 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260511170650">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260511170650">
+<script>
+  // 提前应用主题，避免首屏闪烁
+  (function() {
+    var saved = localStorage.getItem('sp500-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">概览</a>
+        <a class="nav-item" href="#section-events">大事时间线</a>
+        <a class="nav-item" href="#section-context">时代背景</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← 返回日历</a>
+      </div>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="切换主题">
+      <span class="theme-icon-light">&#9790;</span>
+      <span class="theme-icon-dark">&#9728;</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">1964</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 伟大社会前夜的繁荣牛市</span>
+        <h1 class="year-hero-title">向贫困宣战</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">标普500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+12.97%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">道指</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+14.6%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">年末</span>
+            <span class="year-hero-stat-value">874 点</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">主线</span>
+            <span class="year-hero-stat-value">减税 + 民权 + 越战授权</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">标普500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">纳斯达克100与道琼斯</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">编年史</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">概览</h2>
+          <p class="panel-desc">减税法案落地 · 民权法案签署 · 越战授权与大选连任</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>1964 年是约翰逊政府的第一个完整年份。1 月 8 日的国情咨文以"<strong>向贫困宣战</strong>"奠定全年政策基调；2 月 26 日《1964 年减税法案》正式签署，企业所得税最高档税率自 52% 下调至 48%、个人所得税最高档自 91% 下调至 70%。延续 1963 年的牛市叠加积极财政，年初到 4 月中旬指数几乎单边上行。</p>
+        <p>5 月上旬到 6 月上旬，道琼斯工业指数从 830 点回踩至 800 点，触发因素是最高法院禁止银行合并的判决、政府对钢铁行业的价格干预、铁路工人罢工威胁与 SEC 内幕交易整治叠加复苏已持续 39 个月引发的周期担忧。6 月下旬夏季行情启动，<strong>7 月 2 日《1964 年民权法案》签署</strong>，禁止种族歧视进入联邦法律。</p>
+        <p>8 月 4 日北部湾事件发生、东京湾决议授权使用武力，越战正式升级；10 月赫鲁晓夫被勃列日涅夫废黜、中国首颗原子弹试爆。11 月 3 日<strong>约翰逊大选连任</strong>，11 月中旬道指脉冲创下年内高点 897。<strong>11 月 24 日美联储贴现利率自 3.5% 上调至 4.0%</strong>，年末两个月指数温和回落，道琼斯工业指数收于 874 点。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear1964" style="margin-top:24px;"></div>
+      <p class="chart-band-note">色带 = 价格走势分段 · <span style="color:var(--green);">绿色</span> 上涨时段（≥5%）· <span style="color:var(--red);">红色</span> 下跌时段（≥5%）</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">大事时间线</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>一般背景信息</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>显著推动行情上行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>显著推动行情下行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>历史关键节点</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">（节点同时显示在下方走势图）</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="1964-01-08"
+             data-chart-label="向贫困宣战"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.8</div>
+          <div class="timeline-title">约翰逊总统首份国情咨文</div>
+          <div class="timeline-desc">通称"向贫困宣战"演说，承诺推动民权立法、减税法案、对国内贫困与失业全面宣战。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1964-01-09"
+             data-chart-label="巴拿马断交">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.9</div>
+          <div class="timeline-title">巴拿马运河区冲突 · 美巴断交</div>
+          <div class="timeline-desc">美军与巴拿马群众在运河区发生冲突，1 月 11 日巴拿马政府宣布与美国断交并废除运河区条约。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="1964-02-26"
+             data-chart-label="减税法案签署"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2.26</div>
+          <div class="timeline-title">《1964 年减税法案》签署</div>
+          <div class="timeline-desc">企业所得税最高档税率 52% → 48%，个人所得税最高档 91% → 70%，预计减少联邦所得税收入近 20%。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1964-02-03"
+             data-chart-label="GM 业绩新高">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2 月初</div>
+          <div class="timeline-title">通用汽车业绩创美国公司历史新高</div>
+          <div class="timeline-desc">通用汽车报告的营业收入和利润金额创下当时全美所有上市公司的历史最高纪录。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1964-05-25"
+             data-chart-label="禁止银行合并">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">5 月下旬</div>
+          <div class="timeline-title">最高法院禁止银行合并的判决</div>
+          <div class="timeline-desc">叠加政府对钢铁企业的价格限制、铁路工人罢工威胁、SEC 内幕交易治理，构成 5-6 月负面催化剂集合。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="1964-07-02"
+             data-chart-label="民权法案"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7.2</div>
+          <div class="timeline-title">《1964 年民权法案》签署</div>
+          <div class="timeline-desc">禁止在雇佣、公用事业、工会会员资格及联邦出资项目中存在种族歧视。20 世纪美国最重要的民权立法之一。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1964-08-04"
+             data-chart-label="东京湾决议"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">8.4</div>
+          <div class="timeline-title">北部湾事件 · 东京湾决议</div>
+          <div class="timeline-desc">美国驱逐舰据称在北部湾再次受到北越攻击。国会随后通过东京湾决议，授权总统在东南亚使用武力，越战正式升级。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1964-10-14"
+             data-chart-label="赫鲁晓夫下台">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">10.14</div>
+          <div class="timeline-title">赫鲁晓夫被废黜 · 勃列日涅夫上台</div>
+          <div class="timeline-desc">赫鲁晓夫在黑海度假期间被勃列日涅夫在莫斯科发动的政变废除，结束其对苏联的统治。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1964-10-16"
+             data-chart-label="中国试爆原子弹">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">10.16</div>
+          <div class="timeline-title">中国成功试爆首颗原子弹</div>
+          <div class="timeline-desc">继美、苏、英、法之后，中国成为世界第五个拥有核武器的国家。冷战核格局再次改变。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="1964-11-03"
+             data-chart-label="约翰逊连任"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.3</div>
+          <div class="timeline-title">约翰逊大选连任</div>
+          <div class="timeline-desc">林登·约翰逊击败共和党参议员戈德华特，赢得总统连任，确认积极财政与"伟大社会"路线延续。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1964-11-24"
+             data-chart-label="贴现率→4.0%"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.24</div>
+          <div class="timeline-title">美联储贴现利率 3.5% → 4.0%</div>
+          <div class="timeline-desc">年内首次加息，回应经济过热与英镑危机背景下的国际收支压力。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="1958-1967">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">时代背景</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">加载中…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">📚 同一时代下的所有年份页面（1958-1967）共享本"时代背景"内容。</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← 返回日历</a>
+        <a class="year-back-link" href="../index.html#panel-price">看长周期标普500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">看席勒市盈率 →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">编年史 · 资料来源</h4>
+      <ul class="footer-link-list">
+        <li>燕翔 战迪 许茹纯 朱成成 著 <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">《美股70年:1948~2018年美国股市行情复盘》</a> 经济科学出版社 2020</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · Big Picture · 编年史</p>
+  </div>
+</footer>
+
+<script>
+// ── 主题切换（轻量版，无需 module） ──
+document.getElementById('themeToggle').addEventListener('click', function() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('sp500-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('sp500-theme', 'dark');
+  }
+  if (window._yearChart && window._yearData) {
+    window._yearChart.setOption(getYearChartOption(window._yearData), true);
+  }
+});
+
+// ── 1964 年指数日频走势 ──
+const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+// 从时间线 DOM 读事件,保证两边永远同步
+function readTimelineEvents() {
+  const items = document.querySelectorAll('#yearTimeline [data-chart-date]');
+  return Array.from(items).map(el => {
+    const cls = el.classList;
+    let kind = 'info';
+    if (cls.contains('timeline-item--up')) kind = 'up';
+    else if (cls.contains('timeline-item--down')) kind = 'down';
+    if (cls.contains('timeline-item--key')) kind = kind === 'info' ? 'key' : kind + '-key';
+    return {
+      date: el.dataset.chartDate,
+      rangeEnd: el.dataset.chartRangeEnd || null,
+      label: el.dataset.chartLabel || el.querySelector('.timeline-title')?.textContent || '',
+      showLabel: el.dataset.chartShowLabel === 'true',
+      kind,  // 'info' | 'up' | 'down' | 'key' | 'up-key' | 'down-key'
+      desc: el.querySelector('.timeline-desc')?.textContent || '',
+    };
+  });
+}
+
+// kind → dot/area 颜色
+function colorForKind(kind, theme) {
+  // theme: { green, red, accent, sec, cardBg }
+  if (kind.includes('up'))   return { dot: theme.green,  ring: kind.includes('key') ? theme.accent : null };
+  if (kind.includes('down')) return { dot: theme.red,    ring: kind.includes('key') ? theme.accent : null };
+  if (kind === 'key')        return { dot: theme.accent, ring: theme.accent };
+  return { dot: theme.cardBg, ring: null };  // info: 中空白点
+}
+
+// 从日频价格序列识别上涨/下跌/震荡段(zigzag,minPct=5%)
+// 返回 [{startDate, endDate, change, kind:'up'|'down'|'side'}]
+function findTrendSegments(data, minPct) {
+  minPct = minPct || 5;
+  if (!data || data.length < 2) return [];
+  const pivots = [{ idx: 0, close: data[0].close }];
+  let direction = null;
+  let extHigh = data[0].close, extHighIdx = 0;
+  let extLow  = data[0].close, extLowIdx  = 0;
+  for (let i = 1; i < data.length; i++) {
+    const c = data[i].close;
+    if (c > extHigh) { extHigh = c; extHighIdx = i; }
+    if (c < extLow)  { extLow = c;  extLowIdx = i; }
+    if (direction === null) {
+      const base = data[0].close;
+      if ((extHigh - base) / base * 100 >= minPct) direction = 'up';
+      else if ((base - extLow) / base * 100 >= minPct) direction = 'down';
+    } else if (direction === 'up') {
+      if ((extHigh - c) / extHigh * 100 >= minPct) {
+        pivots.push({ idx: extHighIdx, close: extHigh });
+        extLow = c; extLowIdx = i; direction = 'down';
+      }
+    } else {
+      if ((c - extLow) / extLow * 100 >= minPct) {
+        pivots.push({ idx: extLowIdx, close: extLow });
+        extHigh = c; extHighIdx = i; direction = 'up';
+      }
+    }
+  }
+  pivots.push({ idx: data.length - 1, close: data[data.length - 1].close });
+  const segments = [];
+  for (let i = 1; i < pivots.length; i++) {
+    const a = pivots[i - 1], b = pivots[i];
+    if (a.idx === b.idx) continue;
+    const change = (b.close - a.close) / a.close * 100;
+    let kind = 'side';
+    if (change >=  minPct) kind = 'up';
+    if (change <= -minPct) kind = 'down';
+    segments.push({
+      startDate: data[a.idx].date,
+      endDate:   data[b.idx].date,
+      change, kind,
+    });
+  }
+  return segments;
+}
+
+function getYearChartOption(data) {
+  if (!data || !data.length) return {};
+  const text = cssVar('--text') || '#1a1a1a';
+  const grid = cssVar('--chart-grid') || '#f0f0f0';
+  const sec = cssVar('--text-secondary') || '#666';
+  const green = cssVar('--green') || '#389e0d';
+  const red = cssVar('--red') || '#cf1322';
+  const accent = cssVar('--accent') || '#4758e0';
+  const cardBg = cssVar('--card-bg') || '#fff';
+  const border = cssVar('--border') || '#e8e8e8';
+  const lineColor = cssVar('--sp500-line') || '#1a1a1a';
+  const theme = { green, red, accent, sec, cardBg };
+
+  const events = readTimelineEvents();
+
+  // 找 >= 目标日的第一条
+  function findCoord(targetDate) {
+    for (const d of data) {
+      if (d.date >= targetDate) return [d.date, d.close];
+    }
+    return null;
+  }
+  // 找 <= 目标日的最后一条
+  function findCoordReverse(targetDate) {
+    let last = null;
+    for (const d of data) {
+      if (d.date > targetDate) break;
+      last = d;
+    }
+    return last ? [last.date, last.close] : null;
+  }
+
+  // markPoint: 每个事件起点,按 kind 染色
+  const markPoints = events.map(ev => {
+    const coord = findCoord(ev.date);
+    if (!coord) return null;
+    const c = colorForKind(ev.kind, theme);
+    const isInfo = ev.kind === 'info';
+    return {
+      coord,
+      name: ev.label,
+      symbol: 'circle',
+      symbolSize: ev.kind.includes('key') ? 12 : 9,
+      itemStyle: {
+        color: c.dot,
+        borderColor: isInfo ? sec : (c.ring || cardBg),
+        borderWidth: ev.kind.includes('key') ? 3 : 2,
+        shadowBlur: ev.kind.includes('key') ? 6 : 0,
+        shadowColor: ev.kind.includes('key') ? 'rgba(71,88,224,0.45)' : 'transparent',
+      },
+      label: {
+        show: ev.showLabel,
+        position: 'top',
+        distance: 14,
+        fontSize: 11,
+        fontFamily: CHART_FONT,
+        color: ev.kind.includes('down') ? red : ev.kind.includes('up') ? green : ev.kind === 'key' ? accent : sec,
+        fontWeight: 600,
+        backgroundColor: cardBg,
+        padding: [2, 6],
+        borderRadius: 3,
+        borderColor: border,
+        borderWidth: 1,
+        formatter: ev.label,
+      },
+    };
+  }).filter(Boolean);
+
+  // markArea: 价格自驱动,标注 >=5% 的上涨/下跌段;震荡段不标
+  const markAreas = findTrendSegments(data, 5)
+    .filter(seg => seg.kind !== 'side')
+    .map(seg => {
+      const bg = seg.kind === 'up' ? 'rgba(56,158,13,0.10)' : 'rgba(207,19,34,0.10)';
+      return [
+        { xAxis: seg.startDate, itemStyle: { color: bg } },
+        { xAxis: seg.endDate },
+      ];
+    });
+
+  // tooltip: 显示事件信息(若当前 hover 日附近有事件)
+  const eventByDate = new Map(events.map(ev => [ev.date, ev]));
+
+  return {
+    grid: { left: 50, right: 30, top: 64, bottom: 36 },
+    xAxis: {
+      type: 'time',
+      axisLine: { lineStyle: { color: border } },
+      axisLabel: {
+        color: sec,
+        fontFamily: CHART_FONT,
+        formatter: function(value) {
+          var d = new Date(value);
+          return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+        },
+      },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      scale: true,
+      name: '标普500',
+      nameTextStyle: { color: sec, fontFamily: CHART_FONT, fontSize: 11 },
+      axisLine: { show: false },
+      axisLabel: { color: sec, fontFamily: CHART_FONT },
+      splitLine: { lineStyle: { color: grid } },
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: cardBg,
+      borderColor: border,
+      textStyle: { color: text, fontFamily: CHART_FONT },
+      formatter: function(params) {
+        const p = params[0];
+        const date = p.value[0];
+        const dateStr = typeof date === 'string' ? date : new Date(date).toISOString().slice(0, 10);
+        let html = `${dateStr}<br/>标普500: <b>${p.value[1].toFixed(2)}</b>`;
+        const ev = eventByDate.get(dateStr);
+        if (ev) {
+          html += `<br/><span style="color:${sec};">事件: ${ev.label}</span>`;
+        }
+        return html;
+      },
+    },
+    series: [{
+      name: '标普500日线',
+      type: 'line',
+      smooth: false,
+      showSymbol: false,
+      sampling: 'lttb',
+      data: data.map(d => [d.date, d.close]),
+      lineStyle: { color: lineColor, width: 1.5 },
+      itemStyle: { color: lineColor },
+      areaStyle: {
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: 'rgba(26,26,26,0.10)' },
+            { offset: 1, color: 'rgba(26,26,26,0)' },
+          ],
+        },
+      },
+      markPoint: { data: markPoints, silent: false },
+      markArea: { silent: true, data: markAreas },
+    }],
+  };
+}
+
+(function init1964Chart() {
+  const el = document.getElementById('chartYear1964');
+  if (!el) return;
+  const chart = echarts.init(el);
+  window._yearChart = chart;
+  window.addEventListener('resize', () => chart.resize());
+
+  fetch('../data/chronicle/year_data/1964.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(payload => {
+      const series = (payload.series || []).filter(d => d && d.date && d.close != null);
+      if (!series.length) return;
+      window._yearData = series;
+      chart.setOption(getYearChartOption(series));
+    })
+    .catch(err => console.warn('1964 chart load failed', err));
+})();
+
+// ── 时代背景 · 从 era_data JSON 渲染 ──
+function escapeHTML(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function renderEra(era) {
+  const titleEl = document.getElementById('eraTitle');
+  const tagEl = document.getElementById('eraTagline');
+  const contentEl = document.getElementById('eraContent');
+  if (titleEl && era.title) titleEl.textContent = '时代背景 · ' + era.title;
+  if (tagEl && era.tagline) tagEl.textContent = era.tagline;
+  if (!contentEl) return;
+
+  const parts = [];
+  (era.sections || []).forEach(sec => {
+    parts.push(`<h3>${escapeHTML(sec.heading)}</h3>`);
+    if (sec.type === 'paragraphs') {
+      (sec.body || []).forEach(p => parts.push(`<p>${p}</p>`));
+    } else if (sec.type === 'list') {
+      const isHist = sec.heading && sec.heading.indexOf('关键史实') >= 0;
+      if (isHist) {
+        const items = (sec.items || []).map(it => {
+          const date = it.date || it.strong || '';
+          const title = it.title || '';
+          const body = it.body || '';
+          return `<li><div class="era-history-date">${date}</div><div class="era-history-content"><div class="era-history-title">${title}</div><div class="era-history-body">${body}</div></div></li>`;
+        }).join('');
+        parts.push(`<ul class="era-history-list">${items}</ul>`);
+      } else {
+        const items = (sec.items || []).map(it => {
+          const lead = it.strong ? `<strong>${it.strong}</strong>：` : '';
+          return `<li>${lead}${it.body || ''}</li>`;
+        }).join('');
+        parts.push(`<ul>${items}</ul>`);
+      }
+    }
+  });
+  contentEl.innerHTML = parts.join('');
+}
+(function loadEra() {
+  const section = document.querySelector('[data-era]');
+  if (!section) return;
+  const eraId = section.dataset.era;
+  fetch(`../data/chronicle/era_data/${eraId}.json?v=` + Date.now())
+    .then(r => r.json())
+    .then(renderEra)
+    .catch(err => {
+      console.warn('era load failed', err);
+      const el = document.getElementById('eraContent');
+      if (el) el.innerHTML = '<p style="color:var(--text-secondary);">时代背景加载失败</p>';
+    });
+})();
+</script>
+
+</body>
+</html>

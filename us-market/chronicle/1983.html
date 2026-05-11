@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1983 · 星球大战计划 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260511170650">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260511170650">
+<script>
+  // 提前应用主题，避免首屏闪烁
+  (function() {
+    var saved = localStorage.getItem('sp500-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">概览</a>
+        <a class="nav-item" href="#section-events">大事时间线</a>
+        <a class="nav-item" href="#section-context">时代背景</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← 返回日历</a>
+      </div>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="切换主题">
+      <span class="theme-icon-light">&#9790;</span>
+      <span class="theme-icon-dark">&#9728;</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">1983</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 里根牛市启动年</span>
+        <h1 class="year-hero-title">星球大战计划</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">标普500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+17.27%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">道指</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+20.3%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">年末</span>
+            <span class="year-hero-stat-value">1259 点</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">主线</span>
+            <span class="year-hero-stat-value">复苏确认 + 利率震荡 + SDI</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">标普500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">纳斯达克100与道琼斯</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">编年史</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">概览</h2>
+          <p class="panel-desc">复苏确认 + 战略防御倡议 + 沃尔克续任</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>1983 年是 1982 年 11 月衰退结束后的第一个完整扩张年。NBER 后定的衰退底部位于 1982 年 11 月，整个 1983 年走在复苏与扩张通道上：全年实际 GDP 增长约 4.6%，CPI 同比从前一年的 6%+ 降至 3.2%，工业生产同比一路回升，新屋开工在 1 月与 6 月先后创出 1959 年商务部有数据以来的新高。基本面构成股市全年上涨的底层动力。</p>
+        <p>1 月中旬，标普 500 在徘徊近 20 年后<strong>突破前期震荡区间上限创出历史新高</strong>，随后短暂调整。2 月起进入主升浪，3 月 4 日上冲至 153.67 点完成第一波。3 月 23 日里根在白宫电视讲话中提出<strong>战略防御倡议（SDI，"星球大战计划"）</strong>，这是冷战军备结构的关键转折。4 月财报季叠加复苏确认推动指数累计涨幅破 15%；6 月 22 日因「沃尔克续任」预期形成所谓「沃尔克上涨」，标普 500 上冲 170.99 点，年内累计涨幅 21%。</p>
+        <p>下半年市场重回利率主导：6 月下旬至 8 月上旬随长端利率上行调整，标普 500 最低跌至 159 点；8 月中旬至 10 月上旬利率回落，10 月 10 日指数见年内高点 172.65；此后长短端利率先后回升，市场进入震荡盘整。地缘层面，<strong>9 月 1 日苏联击落韩国 KAL007 客机、10 月 23 日贝鲁特海军营房遭爆炸袭击致 241 名美军遇难、10 月 25 日美国入侵格林纳达</strong>，冷战与中东局势同时升温。美联储 1983 年贴现率从年初的 8.5% 维持至年中，下半年小幅上调至 9.0%。年末标普 500 收于 164.93 点，全年 +17.27%；道指收 1258.64 点，全年 +20.3%。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear1983" style="margin-top:24px;"></div>
+      <p class="chart-band-note">色带 = 价格走势分段 · <span style="color:var(--green);">绿色</span> 上涨时段（≥5%）· <span style="color:var(--red);">红色</span> 下跌时段（≥5%）</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">大事时间线</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>一般背景信息</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>显著推动行情上行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>显著推动行情下行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>历史关键节点</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">（节点同时显示在下方走势图）</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="1983-01-15"
+             data-chart-label="最优惠贷款利率下调"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.15</div>
+          <div class="timeline-title">银行最优惠贷款利率 11.5% → 11.0%</div>
+          <div class="timeline-desc">1983 年 1 月 15 日银行下调最优惠贷款利率，进一步释放复苏预期。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1983-01-20"
+             data-chart-label="沃尔克谈赤字">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.20</div>
+          <div class="timeline-title">沃尔克：财政赤字限制货币政策空间</div>
+          <div class="timeline-desc">美联储主席保罗·沃尔克在国会表示巨额财政赤字使美联储难以兼顾经济复苏与降低利率。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1983-01-24"
+             data-chart-label="OPEC 日内瓦无果">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.24</div>
+          <div class="timeline-title">OPEC 日内瓦会议无果而终</div>
+          <div class="timeline-desc">OPEC 部长会议未能就限产价稳定方案达成一致。两个月后才在 3 月 14 日伦敦会议首次同意削价。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1983-03-08"
+             data-chart-label="IBM PC XT">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">3 月</div>
+          <div class="timeline-title">IBM PC XT 发布</div>
+          <div class="timeline-desc">IBM 推出第二代个人电脑 PC XT，标配硬盘，PC 时代加速推进。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1983-03-14"
+             data-chart-label="OPEC 首次削价">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">3.14</div>
+          <div class="timeline-title">OPEC 首次同意削减石油价格</div>
+          <div class="timeline-desc">沙特阿拉伯轻质原油基准价由 34 美元降至 29 美元/桶，降幅 15%；13 国规定日产量不超过 1750 万桶。同年 NYMEX 推出 WTI 期货合约。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1983-03-23"
+             data-chart-label="星球大战计划"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">3.23</div>
+          <div class="timeline-title">里根公布战略防御倡议（SDI）</div>
+          <div class="timeline-desc">里根在白宫电视讲话中提出"星球大战计划"——以新技术构建拦截洲际战略导弹与太空航天器的防御体系，冷战军备结构进入新阶段。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1983-04-18"
+             data-chart-label="美使馆贝鲁特爆炸"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">4.18</div>
+          <div class="timeline-title">美国驻贝鲁特大使馆汽车炸弹袭击</div>
+          <div class="timeline-desc">63 人死亡，其中 17 名美国人。黎巴嫩内战外溢，美军在中东介入加深。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1983-04-26"
+             data-chart-label="《国家在险》报告">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">4.26</div>
+          <div class="timeline-title">《国家在险：教育改革势在必行》发布</div>
+          <div class="timeline-desc">里根总统教育委员会报告抨击美国基础教育，引发全国教育改革浪潮。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="1983-06-16"
+             data-chart-label="新屋开工新高">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">6.16</div>
+          <div class="timeline-title">新屋开工再创新高</div>
+          <div class="timeline-desc">商务部公布的新屋开工数据再次创出 1959 年以来的新高，复苏强度获得确认。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="1983-06-18"
+             data-chart-label="沃尔克续任"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">6 月</div>
+          <div class="timeline-title">里根再度提名沃尔克续任美联储主席</div>
+          <div class="timeline-desc">里根再次提名保罗·沃尔克续任美联储主席，市场预期反通胀承诺延续，史称"沃尔克续任"（Volcker rally）。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1983-06-18"
+             data-chart-label="STS-7 莱德">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">6.18</div>
+          <div class="timeline-title">萨莉·莱德成为首位进入太空的美国女性</div>
+          <div class="timeline-desc">航天飞机挑战者号 STS-7 任务发射，美国太空计划的标志性节点。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1983-09-01"
+             data-chart-label="苏联击落 KAL007"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">9.1</div>
+          <div class="timeline-title">苏联战机击落大韩航空 007 班机</div>
+          <div class="timeline-desc">从纽约飞往汉城的 KAL007 客机偏离航线进入苏联领空，被 Su-15 拦截击落，269 名乘员全部罹难，含 1 名美国国会议员。冷战回到对抗周期。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1983-09-26"
+             data-chart-label="麦当劳快乐套餐">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">下半年</div>
+          <div class="timeline-title">麦当劳推出"快乐套餐"（Happy Meal）全国上市</div>
+          <div class="timeline-desc">儿童餐玩具组合首次全国推广，成为美国消费文化的标志性产品。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1983-10-23"
+             data-chart-label="贝鲁特营房爆炸">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">10.23</div>
+          <div class="timeline-title">贝鲁特美国海军陆战队营房爆炸</div>
+          <div class="timeline-desc">真主党自杀式卡车炸弹袭击，241 名美军遇难。同日法军营地遭袭 58 人遇难。两年后多国部队从黎巴嫩撤出。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1983-10-25"
+             data-chart-label="入侵格林纳达"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">10.25</div>
+          <div class="timeline-title">美国入侵格林纳达（"急怒行动"）</div>
+          <div class="timeline-desc">五角大楼称为越战以来美军最大规模军事行动，目标是推翻新马克思主义政变政权。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="1982-1987">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">时代背景</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">加载中…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">📚 同一时代下的所有年份页面（1982-1987）共享本"时代背景"内容。</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← 返回日历</a>
+        <a class="year-back-link" href="../index.html#panel-price">看长周期标普500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">看席勒市盈率 →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">编年史 · 资料来源</h4>
+      <ul class="footer-link-list">
+        <li>燕翔 战迪 许茹纯 朱成成 著 <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">《美股70年:1948~2018年美国股市行情复盘》</a> 经济科学出版社 2020</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · Big Picture · 编年史</p>
+  </div>
+</footer>
+
+<script>
+// ── 主题切换（轻量版，无需 module） ──
+document.getElementById('themeToggle').addEventListener('click', function() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('sp500-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('sp500-theme', 'dark');
+  }
+  if (window._yearChart && window._yearData) {
+    window._yearChart.setOption(getYearChartOption(window._yearData), true);
+  }
+});
+
+// ── 1983 年指数日频走势 ──
+const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+// 从时间线 DOM 读事件,保证两边永远同步
+function readTimelineEvents() {
+  const items = document.querySelectorAll('#yearTimeline [data-chart-date]');
+  return Array.from(items).map(el => {
+    const cls = el.classList;
+    let kind = 'info';
+    if (cls.contains('timeline-item--up')) kind = 'up';
+    else if (cls.contains('timeline-item--down')) kind = 'down';
+    if (cls.contains('timeline-item--key')) kind = kind === 'info' ? 'key' : kind + '-key';
+    return {
+      date: el.dataset.chartDate,
+      rangeEnd: el.dataset.chartRangeEnd || null,
+      label: el.dataset.chartLabel || el.querySelector('.timeline-title')?.textContent || '',
+      showLabel: el.dataset.chartShowLabel === 'true',
+      kind,  // 'info' | 'up' | 'down' | 'key' | 'up-key' | 'down-key'
+      desc: el.querySelector('.timeline-desc')?.textContent || '',
+    };
+  });
+}
+
+// kind → dot/area 颜色
+function colorForKind(kind, theme) {
+  // theme: { green, red, accent, sec, cardBg }
+  if (kind.includes('up'))   return { dot: theme.green,  ring: kind.includes('key') ? theme.accent : null };
+  if (kind.includes('down')) return { dot: theme.red,    ring: kind.includes('key') ? theme.accent : null };
+  if (kind === 'key')        return { dot: theme.accent, ring: theme.accent };
+  return { dot: theme.cardBg, ring: null };  // info: 中空白点
+}
+
+// 从日频价格序列识别上涨/下跌/震荡段(zigzag,minPct=5%)
+// 返回 [{startDate, endDate, change, kind:'up'|'down'|'side'}]
+function findTrendSegments(data, minPct) {
+  minPct = minPct || 5;
+  if (!data || data.length < 2) return [];
+  const pivots = [{ idx: 0, close: data[0].close }];
+  let direction = null;
+  let extHigh = data[0].close, extHighIdx = 0;
+  let extLow  = data[0].close, extLowIdx  = 0;
+  for (let i = 1; i < data.length; i++) {
+    const c = data[i].close;
+    if (c > extHigh) { extHigh = c; extHighIdx = i; }
+    if (c < extLow)  { extLow = c;  extLowIdx = i; }
+    if (direction === null) {
+      const base = data[0].close;
+      if ((extHigh - base) / base * 100 >= minPct) direction = 'up';
+      else if ((base - extLow) / base * 100 >= minPct) direction = 'down';
+    } else if (direction === 'up') {
+      if ((extHigh - c) / extHigh * 100 >= minPct) {
+        pivots.push({ idx: extHighIdx, close: extHigh });
+        extLow = c; extLowIdx = i; direction = 'down';
+      }
+    } else {
+      if ((c - extLow) / extLow * 100 >= minPct) {
+        pivots.push({ idx: extLowIdx, close: extLow });
+        extHigh = c; extHighIdx = i; direction = 'up';
+      }
+    }
+  }
+  pivots.push({ idx: data.length - 1, close: data[data.length - 1].close });
+  const segments = [];
+  for (let i = 1; i < pivots.length; i++) {
+    const a = pivots[i - 1], b = pivots[i];
+    if (a.idx === b.idx) continue;
+    const change = (b.close - a.close) / a.close * 100;
+    let kind = 'side';
+    if (change >=  minPct) kind = 'up';
+    if (change <= -minPct) kind = 'down';
+    segments.push({
+      startDate: data[a.idx].date,
+      endDate:   data[b.idx].date,
+      change, kind,
+    });
+  }
+  return segments;
+}
+
+function getYearChartOption(data) {
+  if (!data || !data.length) return {};
+  const text = cssVar('--text') || '#1a1a1a';
+  const grid = cssVar('--chart-grid') || '#f0f0f0';
+  const sec = cssVar('--text-secondary') || '#666';
+  const green = cssVar('--green') || '#389e0d';
+  const red = cssVar('--red') || '#cf1322';
+  const accent = cssVar('--accent') || '#4758e0';
+  const cardBg = cssVar('--card-bg') || '#fff';
+  const border = cssVar('--border') || '#e8e8e8';
+  const lineColor = cssVar('--sp500-line') || '#1a1a1a';
+  const theme = { green, red, accent, sec, cardBg };
+
+  const events = readTimelineEvents();
+
+  // 找 >= 目标日的第一条
+  function findCoord(targetDate) {
+    for (const d of data) {
+      if (d.date >= targetDate) return [d.date, d.close];
+    }
+    return null;
+  }
+  // 找 <= 目标日的最后一条
+  function findCoordReverse(targetDate) {
+    let last = null;
+    for (const d of data) {
+      if (d.date > targetDate) break;
+      last = d;
+    }
+    return last ? [last.date, last.close] : null;
+  }
+
+  // markPoint: 每个事件起点,按 kind 染色
+  const markPoints = events.map(ev => {
+    const coord = findCoord(ev.date);
+    if (!coord) return null;
+    const c = colorForKind(ev.kind, theme);
+    const isInfo = ev.kind === 'info';
+    return {
+      coord,
+      name: ev.label,
+      symbol: 'circle',
+      symbolSize: ev.kind.includes('key') ? 12 : 9,
+      itemStyle: {
+        color: c.dot,
+        borderColor: isInfo ? sec : (c.ring || cardBg),
+        borderWidth: ev.kind.includes('key') ? 3 : 2,
+        shadowBlur: ev.kind.includes('key') ? 6 : 0,
+        shadowColor: ev.kind.includes('key') ? 'rgba(71,88,224,0.45)' : 'transparent',
+      },
+      label: {
+        show: ev.showLabel,
+        position: 'top',
+        distance: 14,
+        fontSize: 11,
+        fontFamily: CHART_FONT,
+        color: ev.kind.includes('down') ? red : ev.kind.includes('up') ? green : ev.kind === 'key' ? accent : sec,
+        fontWeight: 600,
+        backgroundColor: cardBg,
+        padding: [2, 6],
+        borderRadius: 3,
+        borderColor: border,
+        borderWidth: 1,
+        formatter: ev.label,
+      },
+    };
+  }).filter(Boolean);
+
+  // markArea: 价格自驱动,标注 >=5% 的上涨/下跌段;震荡段不标
+  const markAreas = findTrendSegments(data, 5)
+    .filter(seg => seg.kind !== 'side')
+    .map(seg => {
+      const bg = seg.kind === 'up' ? 'rgba(56,158,13,0.10)' : 'rgba(207,19,34,0.10)';
+      return [
+        { xAxis: seg.startDate, itemStyle: { color: bg } },
+        { xAxis: seg.endDate },
+      ];
+    });
+
+  // tooltip: 显示事件信息(若当前 hover 日附近有事件)
+  const eventByDate = new Map(events.map(ev => [ev.date, ev]));
+
+  return {
+    grid: { left: 50, right: 30, top: 64, bottom: 36 },
+    xAxis: {
+      type: 'time',
+      axisLine: { lineStyle: { color: border } },
+      axisLabel: {
+        color: sec,
+        fontFamily: CHART_FONT,
+        formatter: function(value) {
+          var d = new Date(value);
+          return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+        },
+      },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      scale: true,
+      name: '标普500',
+      nameTextStyle: { color: sec, fontFamily: CHART_FONT, fontSize: 11 },
+      axisLine: { show: false },
+      axisLabel: { color: sec, fontFamily: CHART_FONT },
+      splitLine: { lineStyle: { color: grid } },
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: cardBg,
+      borderColor: border,
+      textStyle: { color: text, fontFamily: CHART_FONT },
+      formatter: function(params) {
+        const p = params[0];
+        const date = p.value[0];
+        const dateStr = typeof date === 'string' ? date : new Date(date).toISOString().slice(0, 10);
+        let html = `${dateStr}<br/>标普500: <b>${p.value[1].toFixed(2)}</b>`;
+        const ev = eventByDate.get(dateStr);
+        if (ev) {
+          html += `<br/><span style="color:${sec};">事件: ${ev.label}</span>`;
+        }
+        return html;
+      },
+    },
+    series: [{
+      name: '标普500日线',
+      type: 'line',
+      smooth: false,
+      showSymbol: false,
+      sampling: 'lttb',
+      data: data.map(d => [d.date, d.close]),
+      lineStyle: { color: lineColor, width: 1.5 },
+      itemStyle: { color: lineColor },
+      areaStyle: {
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: 'rgba(26,26,26,0.10)' },
+            { offset: 1, color: 'rgba(26,26,26,0)' },
+          ],
+        },
+      },
+      markPoint: { data: markPoints, silent: false },
+      markArea: { silent: true, data: markAreas },
+    }],
+  };
+}
+
+(function init1983Chart() {
+  const el = document.getElementById('chartYear1983');
+  if (!el) return;
+  const chart = echarts.init(el);
+  window._yearChart = chart;
+  window.addEventListener('resize', () => chart.resize());
+
+  fetch('../data/chronicle/year_data/1983.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(payload => {
+      const series = (payload.series || []).filter(d => d && d.date && d.close != null);
+      if (!series.length) return;
+      window._yearData = series;
+      chart.setOption(getYearChartOption(series));
+    })
+    .catch(err => console.warn('1983 chart load failed', err));
+})();
+
+// ── 时代背景 · 从 era_data JSON 渲染 ──
+function escapeHTML(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function renderEra(era) {
+  const titleEl = document.getElementById('eraTitle');
+  const tagEl = document.getElementById('eraTagline');
+  const contentEl = document.getElementById('eraContent');
+  if (titleEl && era.title) titleEl.textContent = '时代背景 · ' + era.title;
+  if (tagEl && era.tagline) tagEl.textContent = era.tagline;
+  if (!contentEl) return;
+
+  const parts = [];
+  (era.sections || []).forEach(sec => {
+    parts.push(`<h3>${escapeHTML(sec.heading)}</h3>`);
+    if (sec.type === 'paragraphs') {
+      (sec.body || []).forEach(p => parts.push(`<p>${p}</p>`));
+    } else if (sec.type === 'list') {
+      const isHist = sec.heading && sec.heading.indexOf('关键史实') >= 0;
+      if (isHist) {
+        const items = (sec.items || []).map(it => {
+          const date = it.date || it.strong || '';
+          const title = it.title || '';
+          const body = it.body || '';
+          return `<li><div class="era-history-date">${date}</div><div class="era-history-content"><div class="era-history-title">${title}</div><div class="era-history-body">${body}</div></div></li>`;
+        }).join('');
+        parts.push(`<ul class="era-history-list">${items}</ul>`);
+      } else {
+        const items = (sec.items || []).map(it => {
+          const lead = it.strong ? `<strong>${it.strong}</strong>：` : '';
+          return `<li>${lead}${it.body || ''}</li>`;
+        }).join('');
+        parts.push(`<ul>${items}</ul>`);
+      }
+    }
+  });
+  contentEl.innerHTML = parts.join('');
+}
+(function loadEra() {
+  const section = document.querySelector('[data-era]');
+  if (!section) return;
+  const eraId = section.dataset.era;
+  fetch(`../data/chronicle/era_data/${eraId}.json?v=` + Date.now())
+    .then(r => r.json())
+    .then(renderEra)
+    .catch(err => {
+      console.warn('era load failed', err);
+      const el = document.getElementById('eraContent');
+      if (el) el.innerHTML = '<p style="color:var(--text-secondary);">时代背景加载失败</p>';
+    });
+})();
+</script>
+
+</body>
+</html>

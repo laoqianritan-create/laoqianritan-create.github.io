@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1988 · 扭转美元逆境 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260511170650">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260511170650">
+<script>
+  // 提前应用主题，避免首屏闪烁
+  (function() {
+    var saved = localStorage.getItem('sp500-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">概览</a>
+        <a class="nav-item" href="#section-events">大事时间线</a>
+        <a class="nav-item" href="#section-context">时代背景</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← 返回日历</a>
+      </div>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="切换主题">
+      <span class="theme-icon-light">&#9790;</span>
+      <span class="theme-icon-dark">&#9728;</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">1988</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 蓄势待发开篇之年</span>
+        <h1 class="year-hero-title">扭转美元逆境</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">标普500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+12.40%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">道指</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+11.85%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">年末</span>
+            <span class="year-hero-stat-value">2169 点</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">主线</span>
+            <span class="year-hero-stat-value">护美元 + 反通胀加息 + 大选</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">标普500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">纳斯达克100与道琼斯</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">编年史</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">概览</h2>
+          <p class="panel-desc">货币政策从应对 87 股灾余波 · 转向反通胀加息支持美元 · 大选年</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>1988 年是<strong>"蓄势待发"时代的开篇</strong>。1987 年 10 月股灾余波未散，年初核心矛盾是美元——自 1985 年《广场协议》以来一路贬值，1987 年尤甚。1 月初多国政府入市买入 20~30 亿美元支撑汇率，叠加联邦基金目标利率两度下调至 6.5%，1 月下旬至 3 月中旬走出第一轮温和上涨。</p>
+        <p>3 月底货币政策转向。联邦基金目标利率从 3 月 29 日的 6.75% 一路被抬升至 8 月 9 日的 8.125%，<strong>同日贴现利率上调至 6.5%</strong>。加息目的不是抑制通胀，而是用利率支持美元汇率——3 个月期国债利率全年从 6.0% 升至 8.5%，10 年期持平 9.0%，期限利差收窄。</p>
+        <p>8 月底加息停步，市场迎来全年幅度最大的第三轮上涨。11 月 8 日<strong>老布什击败杜卡基斯当选第 41 任总统</strong>，承诺继承里根路线；但月中格林斯潘重申将继续收紧，市场回调。12 月初"戈尔巴乔夫行情"——苏联宣布单方面裁军 50 万——重燃做多热情。标普 500 全年 +12.4%。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear1988" style="margin-top:24px;"></div>
+      <p class="chart-band-note">色带 = 价格走势分段 · <span style="color:var(--green);">绿色</span> 上涨时段（≥5%）· <span style="color:var(--red);">红色</span> 下跌时段（≥5%）</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">大事时间线</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>一般背景信息</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>显著推动行情上行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>显著推动行情下行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>历史关键节点</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">（节点同时显示在下方走势图）</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="1988-01-04"
+             data-chart-label="多国护美元"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.4</div>
+          <div class="timeline-title">多国政府入市买美元</div>
+          <div class="timeline-desc">据报道美国和其他国家在外汇市场买入 20~30 亿美元支撑美元。市场普遍认为底线是不允许跌破 1 美元兑 120 日元。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="1988-01-28"
+             data-chart-label="降息至 6.625%">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.28</div>
+          <div class="timeline-title">联邦基金目标利率 6.8125% → 6.625%</div>
+          <div class="timeline-desc">87 股灾后货币宽松延续。2 月 11 日继续下调至 6.5%。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1988-03-29"
+             data-chart-label="转向加息"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">3.29</div>
+          <div class="timeline-title">联邦基金目标利率上调至 6.75%</div>
+          <div class="timeline-desc">货币政策从应对 87 股灾余波转向支持美元汇率，1988 年加息周期的起点。议息申明强调经济无过热、通胀压力可控。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1988-04-17"
+             data-chart-label="袭击伊朗">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">4.17</div>
+          <div class="timeline-title">美国海军袭击伊朗</div>
+          <div class="timeline-desc">伊朗陷入与伊拉克和美国两面作战的被动状态，为 7 月两伊停火埋下伏笔。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1988-06-19"
+             data-chart-label="多伦多 G7">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">6.19</div>
+          <div class="timeline-title">第 14 届 G7 多伦多峰会</div>
+          <div class="timeline-desc">里根任内最后一次 G7 峰会，议题集中在贸易、债务和汇率协调。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1988-07-08"
+             data-chart-label="失业率 5.2%">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7.8</div>
+          <div class="timeline-title">失业率降至 14 年来最低 5.2%</div>
+          <div class="timeline-desc">劳工部数据。强劲就业反而被市场解读为强化美联储继续加息的理由。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1988-07-18"
+             data-chart-label="民主党大会">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7.18</div>
+          <div class="timeline-title">民主党全国代表大会召开</div>
+          <div class="timeline-desc">亚特兰大举行，提名马萨诸塞州长杜卡基斯为总统候选人、参议员本特森为副总统候选人。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1988-08-09"
+             data-chart-label="贴现率 +50bp"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">8.9</div>
+          <div class="timeline-title">贴现利率 6.0% → 6.5%</div>
+          <div class="timeline-desc">同日联邦基金目标利率被推至 8.125%。这是 1988 年加息周期的高点，此后 3 个月美联储停步。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1988-09-17"
+             data-chart-label="汉城奥运">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">9.17</div>
+          <div class="timeline-title">汉城（首尔）奥运会开幕</div>
+          <div class="timeline-desc">韩国举办。159 个国家和地区参赛，结束了 1980、1984 年两届被冷战阵营抵制的局面。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1988-11-08"
+             data-chart-label="老布什当选"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.8</div>
+          <div class="timeline-title">老布什当选第 41 任美国总统</div>
+          <div class="timeline-desc">共和党乔治·H.W. 布什击败民主党杜卡基斯。承诺继承罗纳德·里根的精神和路线。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1988-11-16"
+             data-chart-label="格林斯潘鹰派">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.16</div>
+          <div class="timeline-title">格林斯潘：将继续收紧直至赤字改善</div>
+          <div class="timeline-desc">同日 9 月贸易赤字 104.6 亿美元、较 8 月明显缩窄，但美联储主席的鹰派表态压过利好。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="1988-12-07"
+             data-chart-label="苏联裁军 50 万"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">12.7</div>
+          <div class="timeline-title">戈尔巴乔夫宣布单方面裁军 50 万</div>
+          <div class="timeline-desc">联合国大会第 43 届会议上，苏联总书记宣布两年内裁军 50 万人并大幅削减常规武器。投资者解读为未来美国财政赤字压力减轻、货币政策有望放松。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1988-12-15"
+             data-chart-label="储贷危机持续">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">12 月</div>
+          <div class="timeline-title">储贷危机（S&L Crisis）持续发酵</div>
+          <div class="timeline-desc">联邦储蓄贷款保险公司（FSLIC）资不抵债，问题机构数量持续累积，为 1989 年《金融机构改革、复兴和实施法案》（FIRREA）铺路。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="1988-1994">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">时代背景</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">加载中…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">📚 同一时代下的所有年份页面（1988-1994）共享本"时代背景"内容。</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← 返回日历</a>
+        <a class="year-back-link" href="../index.html#panel-price">看长周期标普500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">看席勒市盈率 →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">编年史 · 资料来源</h4>
+      <ul class="footer-link-list">
+        <li>燕翔 战迪 许茹纯 朱成成 著 <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">《美股70年:1948~2018年美国股市行情复盘》</a> 经济科学出版社 2020</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · Big Picture · 编年史</p>
+  </div>
+</footer>
+
+<script>
+// ── 主题切换（轻量版，无需 module） ──
+document.getElementById('themeToggle').addEventListener('click', function() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('sp500-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('sp500-theme', 'dark');
+  }
+  if (window._yearChart && window._yearData) {
+    window._yearChart.setOption(getYearChartOption(window._yearData), true);
+  }
+});
+
+// ── 1988 年指数日频走势 ──
+const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+// 从时间线 DOM 读事件,保证两边永远同步
+function readTimelineEvents() {
+  const items = document.querySelectorAll('#yearTimeline [data-chart-date]');
+  return Array.from(items).map(el => {
+    const cls = el.classList;
+    let kind = 'info';
+    if (cls.contains('timeline-item--up')) kind = 'up';
+    else if (cls.contains('timeline-item--down')) kind = 'down';
+    if (cls.contains('timeline-item--key')) kind = kind === 'info' ? 'key' : kind + '-key';
+    return {
+      date: el.dataset.chartDate,
+      rangeEnd: el.dataset.chartRangeEnd || null,
+      label: el.dataset.chartLabel || el.querySelector('.timeline-title')?.textContent || '',
+      showLabel: el.dataset.chartShowLabel === 'true',
+      kind,  // 'info' | 'up' | 'down' | 'key' | 'up-key' | 'down-key'
+      desc: el.querySelector('.timeline-desc')?.textContent || '',
+    };
+  });
+}
+
+// kind → dot/area 颜色
+function colorForKind(kind, theme) {
+  // theme: { green, red, accent, sec, cardBg }
+  if (kind.includes('up'))   return { dot: theme.green,  ring: kind.includes('key') ? theme.accent : null };
+  if (kind.includes('down')) return { dot: theme.red,    ring: kind.includes('key') ? theme.accent : null };
+  if (kind === 'key')        return { dot: theme.accent, ring: theme.accent };
+  return { dot: theme.cardBg, ring: null };  // info: 中空白点
+}
+
+// 从日频价格序列识别上涨/下跌/震荡段(zigzag,minPct=5%)
+// 返回 [{startDate, endDate, change, kind:'up'|'down'|'side'}]
+function findTrendSegments(data, minPct) {
+  minPct = minPct || 5;
+  if (!data || data.length < 2) return [];
+  const pivots = [{ idx: 0, close: data[0].close }];
+  let direction = null;
+  let extHigh = data[0].close, extHighIdx = 0;
+  let extLow  = data[0].close, extLowIdx  = 0;
+  for (let i = 1; i < data.length; i++) {
+    const c = data[i].close;
+    if (c > extHigh) { extHigh = c; extHighIdx = i; }
+    if (c < extLow)  { extLow = c;  extLowIdx = i; }
+    if (direction === null) {
+      const base = data[0].close;
+      if ((extHigh - base) / base * 100 >= minPct) direction = 'up';
+      else if ((base - extLow) / base * 100 >= minPct) direction = 'down';
+    } else if (direction === 'up') {
+      if ((extHigh - c) / extHigh * 100 >= minPct) {
+        pivots.push({ idx: extHighIdx, close: extHigh });
+        extLow = c; extLowIdx = i; direction = 'down';
+      }
+    } else {
+      if ((c - extLow) / extLow * 100 >= minPct) {
+        pivots.push({ idx: extLowIdx, close: extLow });
+        extHigh = c; extHighIdx = i; direction = 'up';
+      }
+    }
+  }
+  pivots.push({ idx: data.length - 1, close: data[data.length - 1].close });
+  const segments = [];
+  for (let i = 1; i < pivots.length; i++) {
+    const a = pivots[i - 1], b = pivots[i];
+    if (a.idx === b.idx) continue;
+    const change = (b.close - a.close) / a.close * 100;
+    let kind = 'side';
+    if (change >=  minPct) kind = 'up';
+    if (change <= -minPct) kind = 'down';
+    segments.push({
+      startDate: data[a.idx].date,
+      endDate:   data[b.idx].date,
+      change, kind,
+    });
+  }
+  return segments;
+}
+
+function getYearChartOption(data) {
+  if (!data || !data.length) return {};
+  const text = cssVar('--text') || '#1a1a1a';
+  const grid = cssVar('--chart-grid') || '#f0f0f0';
+  const sec = cssVar('--text-secondary') || '#666';
+  const green = cssVar('--green') || '#389e0d';
+  const red = cssVar('--red') || '#cf1322';
+  const accent = cssVar('--accent') || '#4758e0';
+  const cardBg = cssVar('--card-bg') || '#fff';
+  const border = cssVar('--border') || '#e8e8e8';
+  const lineColor = cssVar('--sp500-line') || '#1a1a1a';
+  const theme = { green, red, accent, sec, cardBg };
+
+  const events = readTimelineEvents();
+
+  // 找 >= 目标日的第一条
+  function findCoord(targetDate) {
+    for (const d of data) {
+      if (d.date >= targetDate) return [d.date, d.close];
+    }
+    return null;
+  }
+  // 找 <= 目标日的最后一条
+  function findCoordReverse(targetDate) {
+    let last = null;
+    for (const d of data) {
+      if (d.date > targetDate) break;
+      last = d;
+    }
+    return last ? [last.date, last.close] : null;
+  }
+
+  // markPoint: 每个事件起点,按 kind 染色
+  const markPoints = events.map(ev => {
+    const coord = findCoord(ev.date);
+    if (!coord) return null;
+    const c = colorForKind(ev.kind, theme);
+    const isInfo = ev.kind === 'info';
+    return {
+      coord,
+      name: ev.label,
+      symbol: 'circle',
+      symbolSize: ev.kind.includes('key') ? 12 : 9,
+      itemStyle: {
+        color: c.dot,
+        borderColor: isInfo ? sec : (c.ring || cardBg),
+        borderWidth: ev.kind.includes('key') ? 3 : 2,
+        shadowBlur: ev.kind.includes('key') ? 6 : 0,
+        shadowColor: ev.kind.includes('key') ? 'rgba(71,88,224,0.45)' : 'transparent',
+      },
+      label: {
+        show: ev.showLabel,
+        position: 'top',
+        distance: 14,
+        fontSize: 11,
+        fontFamily: CHART_FONT,
+        color: ev.kind.includes('down') ? red : ev.kind.includes('up') ? green : ev.kind === 'key' ? accent : sec,
+        fontWeight: 600,
+        backgroundColor: cardBg,
+        padding: [2, 6],
+        borderRadius: 3,
+        borderColor: border,
+        borderWidth: 1,
+        formatter: ev.label,
+      },
+    };
+  }).filter(Boolean);
+
+  // markArea: 价格自驱动,标注 >=5% 的上涨/下跌段;震荡段不标
+  const markAreas = findTrendSegments(data, 5)
+    .filter(seg => seg.kind !== 'side')
+    .map(seg => {
+      const bg = seg.kind === 'up' ? 'rgba(56,158,13,0.10)' : 'rgba(207,19,34,0.10)';
+      return [
+        { xAxis: seg.startDate, itemStyle: { color: bg } },
+        { xAxis: seg.endDate },
+      ];
+    });
+
+  // tooltip: 显示事件信息(若当前 hover 日附近有事件)
+  const eventByDate = new Map(events.map(ev => [ev.date, ev]));
+
+  return {
+    grid: { left: 50, right: 30, top: 64, bottom: 36 },
+    xAxis: {
+      type: 'time',
+      axisLine: { lineStyle: { color: border } },
+      axisLabel: {
+        color: sec,
+        fontFamily: CHART_FONT,
+        formatter: function(value) {
+          var d = new Date(value);
+          return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+        },
+      },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      scale: true,
+      name: '标普500',
+      nameTextStyle: { color: sec, fontFamily: CHART_FONT, fontSize: 11 },
+      axisLine: { show: false },
+      axisLabel: { color: sec, fontFamily: CHART_FONT },
+      splitLine: { lineStyle: { color: grid } },
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: cardBg,
+      borderColor: border,
+      textStyle: { color: text, fontFamily: CHART_FONT },
+      formatter: function(params) {
+        const p = params[0];
+        const date = p.value[0];
+        const dateStr = typeof date === 'string' ? date : new Date(date).toISOString().slice(0, 10);
+        let html = `${dateStr}<br/>标普500: <b>${p.value[1].toFixed(2)}</b>`;
+        const ev = eventByDate.get(dateStr);
+        if (ev) {
+          html += `<br/><span style="color:${sec};">事件: ${ev.label}</span>`;
+        }
+        return html;
+      },
+    },
+    series: [{
+      name: '标普500日线',
+      type: 'line',
+      smooth: false,
+      showSymbol: false,
+      sampling: 'lttb',
+      data: data.map(d => [d.date, d.close]),
+      lineStyle: { color: lineColor, width: 1.5 },
+      itemStyle: { color: lineColor },
+      areaStyle: {
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: 'rgba(26,26,26,0.10)' },
+            { offset: 1, color: 'rgba(26,26,26,0)' },
+          ],
+        },
+      },
+      markPoint: { data: markPoints, silent: false },
+      markArea: { silent: true, data: markAreas },
+    }],
+  };
+}
+
+(function init1988Chart() {
+  const el = document.getElementById('chartYear1988');
+  if (!el) return;
+  const chart = echarts.init(el);
+  window._yearChart = chart;
+  window.addEventListener('resize', () => chart.resize());
+
+  fetch('../data/chronicle/year_data/1988.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(payload => {
+      const series = (payload.series || []).filter(d => d && d.date && d.close != null);
+      if (!series.length) return;
+      window._yearData = series;
+      chart.setOption(getYearChartOption(series));
+    })
+    .catch(err => console.warn('1988 chart load failed', err));
+})();
+
+// ── 时代背景 · 从 era_data JSON 渲染 ──
+function escapeHTML(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function renderEra(era) {
+  const titleEl = document.getElementById('eraTitle');
+  const tagEl = document.getElementById('eraTagline');
+  const contentEl = document.getElementById('eraContent');
+  if (titleEl && era.title) titleEl.textContent = '时代背景 · ' + era.title;
+  if (tagEl && era.tagline) tagEl.textContent = era.tagline;
+  if (!contentEl) return;
+
+  const parts = [];
+  (era.sections || []).forEach(sec => {
+    parts.push(`<h3>${escapeHTML(sec.heading)}</h3>`);
+    if (sec.type === 'paragraphs') {
+      (sec.body || []).forEach(p => parts.push(`<p>${p}</p>`));
+    } else if (sec.type === 'list') {
+      const isHist = sec.heading && sec.heading.indexOf('关键史实') >= 0;
+      if (isHist) {
+        const items = (sec.items || []).map(it => {
+          const date = it.date || it.strong || '';
+          const title = it.title || '';
+          const body = it.body || '';
+          return `<li><div class="era-history-date">${date}</div><div class="era-history-content"><div class="era-history-title">${title}</div><div class="era-history-body">${body}</div></div></li>`;
+        }).join('');
+        parts.push(`<ul class="era-history-list">${items}</ul>`);
+      } else {
+        const items = (sec.items || []).map(it => {
+          const lead = it.strong ? `<strong>${it.strong}</strong>：` : '';
+          return `<li>${lead}${it.body || ''}</li>`;
+        }).join('');
+        parts.push(`<ul>${items}</ul>`);
+      }
+    }
+  });
+  contentEl.innerHTML = parts.join('');
+}
+(function loadEra() {
+  const section = document.querySelector('[data-era]');
+  if (!section) return;
+  const eraId = section.dataset.era;
+  fetch(`../data/chronicle/era_data/${eraId}.json?v=` + Date.now())
+    .then(r => r.json())
+    .then(renderEra)
+    .catch(err => {
+      console.warn('era load failed', err);
+      const el = document.getElementById('eraContent');
+      if (el) el.innerHTML = '<p style="color:var(--text-secondary);">时代背景加载失败</p>';
+    });
+})();
+</script>
+
+</body>
+</html>

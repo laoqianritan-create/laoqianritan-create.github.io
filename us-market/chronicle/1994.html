@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1994 · 债市大崩盘 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260511170650">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260511170650">
+<script>
+  // 提前应用主题，避免首屏闪烁
+  (function() {
+    var saved = localStorage.getItem('sp500-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">概览</a>
+        <a class="nav-item" href="#section-events">大事时间线</a>
+        <a class="nav-item" href="#section-context">时代背景</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← 返回日历</a>
+      </div>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="切换主题">
+      <span class="theme-icon-light">&#9790;</span>
+      <span class="theme-icon-dark">&#9728;</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">1994</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 全球化与互联网的元年</span>
+        <h1 class="year-hero-title">债市大崩盘</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">标普500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--red">-1.54%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">道指</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+2.14%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">年末</span>
+            <span class="year-hero-stat-value">3834 点</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">主线</span>
+            <span class="year-hero-stat-value">Fed 连加 6 次 + 债市崩盘 + 网景诞生</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">标普500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">纳斯达克100与道琼斯</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">编年史</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">概览</h2>
+          <p class="panel-desc">Fed 五年来首次加息 · 年内连加 6 次共 250bp · 全球债市崩盘 · 网景与 NAFTA 同年登场</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>1994 年是<strong>美联储五年来首次加息</strong>的年份。2 月 4 日 Fed 突然加息 25bp，打破支撑前三年大牛市的宽松预期。年内连续加息 6 次共 250bp，11 月 15 日单次加 75bp 比预期高 25bp。10 年期国债利率从年初的 5.7% 抬升至年末逾 8%，短端涨幅显著超过长端，收益率曲线倒挂。</p>
+        <p>债市受冲击远超股市：据《财富》估计，年初至 9 月中旬美国债市损失约 6000 亿美元，全年全球债市蒸发 1.5 万亿美元——<strong>20 世纪 90 年代最著名的金融风暴之一</strong>。两个标志性衍生事件：12 月 6 日加州橙县破产，规模 16.4 亿美元，是当时美国最大的市政府破产案；12 月 19 日墨西哥比索骤贬 15%，引爆比索危机与新兴市场撤资潮。</p>
+        <p>股市端：标普 500 全年微跌 1.54%，道指收涨 2.14%、纳指跌约 3%；盈利端亮眼（Q3 GDP 增速 4.3%，一季报大超预期），但被紧缩与债市冲击对冲。年内三件改变格局的事：1 月 1 日 NAFTA 生效，<strong>10 月 13 日网景 Navigator 1.0 发布</strong>开启商业互联网时代，11 月 8 日中期选举共和党"美国契约"大胜，参议院多数 40 年首次易主。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear1994" style="margin-top:24px;"></div>
+      <p class="chart-band-note">色带 = 价格走势分段 · <span style="color:var(--green);">绿色</span> 上涨时段（≥5%）· <span style="color:var(--red);">红色</span> 下跌时段（≥5%）</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">大事时间线</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>一般背景信息</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>显著推动行情上行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>显著推动行情下行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>历史关键节点</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">（节点同时显示在下方走势图）</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1994-01-03"
+             data-chart-label="NAFTA 生效"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.1</div>
+          <div class="timeline-title">NAFTA 北美自由贸易协定生效 · Zapatista 起义</div>
+          <div class="timeline-desc">美加墨三国零关税自由贸易区启动。同日墨西哥南部恰帕斯省爆发 Zapatista 农民武装起义，为年末比索危机埋下导火索。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1994-02-04"
+             data-chart-label="Fed 五年来首次加息"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2.4</div>
+          <div class="timeline-title">美联储加息 25bp（3.0% → 3.25%）</div>
+          <div class="timeline-desc">五年来第一次加息，打破支撑前三年大牛市的宽松预期。年内 Fed 共加息 6 次累计 250bp。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1994-03-22"
+             data-chart-label="加息 +25bp">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">3.22</div>
+          <div class="timeline-title">美联储加息 25bp（3.25% → 3.5%）</div>
+          <div class="timeline-desc">年内第二次加息。同日墨西哥总统候选人 Colosio 在蒂华纳遇刺，是墨西哥几十年来第一个被谋杀的总统候选人。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1994-04-22"
+             data-chart-label="尼克松去世">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">4.22</div>
+          <div class="timeline-title">前总统理查德·尼克松去世</div>
+          <div class="timeline-desc">享年 81 岁，4 月 27 日加州约巴琳达国葬，五位前任与现任总统出席。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1994-05-06"
+             data-chart-label="英吉利海峡隧道">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">5.6</div>
+          <div class="timeline-title">英吉利海峡隧道开通</div>
+          <div class="timeline-desc">英女王伊丽莎白二世与法国总统密特朗联合主持开通仪式。同月 W3C 万维网联盟在 MIT 成立。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1994-05-17"
+             data-chart-label="加息 +50bp">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">5.17</div>
+          <div class="timeline-title">美联储加息 50bp（3.75% → 4.25%）</div>
+          <div class="timeline-desc">年内第四次加息，加息幅度由 25bp 升至 50bp。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1994-07-08"
+             data-chart-label="金日成去世">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7.8</div>
+          <div class="timeline-title">朝鲜领导人金日成去世</div>
+          <div class="timeline-desc">享年 82 岁，统治朝鲜近半个世纪。其子金正日接任。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1994-07-18"
+             data-chart-label="美国世界杯">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7.17</div>
+          <div class="timeline-title">第 15 届世界杯在美国闭幕</div>
+          <div class="timeline-desc">巴西在洛杉矶玫瑰碗点球击败意大利夺冠，美国首次承办世界杯。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1994-08-16"
+             data-chart-label="加息 +50bp">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">8.16</div>
+          <div class="timeline-title">美联储加息 50bp（4.25% → 4.75%）</div>
+          <div class="timeline-desc">年内第五次加息。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1994-10-13"
+             data-chart-label="网景 Navigator 1.0"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">10.13</div>
+          <div class="timeline-title">网景发布 Netscape Navigator 1.0</div>
+          <div class="timeline-desc">Mosaic Communications 改名为 Netscape Communications，发布第一版商用浏览器。商业互联网时代由此开启。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1994-11-08"
+             data-chart-label="共和党革命"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.8</div>
+          <div class="timeline-title">中期选举：共和党"美国契约"大胜</div>
+          <div class="timeline-desc">众议院金里奇领衔，共和党净增 54 席夺回多数；参议院多数 40 年来首次易主。克林顿陷"跛脚鸭"困境。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1994-11-15"
+             data-chart-label="加息 +75bp">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.15</div>
+          <div class="timeline-title">美联储加息 75bp（4.75% → 5.5%）</div>
+          <div class="timeline-desc">年内第六次加息，单次幅度比市场预期高 25bp，长端利率突破 8%。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1994-12-06"
+             data-chart-label="橙县破产"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">12.6</div>
+          <div class="timeline-title">加州橙县申请破产</div>
+          <div class="timeline-desc">规模 16.4 亿美元，是当时美国历史上最大的市政府破产案。其投资池在利率上行中重仓反向衍生品引爆爆仓。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1994-12-20"
+             data-chart-label="比索危机"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">12.20</div>
+          <div class="timeline-title">墨西哥比索贬值 → 比索危机</div>
+          <div class="timeline-desc">12 月 19 日深夜墨西哥政府宣布比索贬值 15%。12.20—22 三天兑美元暴跌 42.17%，外资疯狂撤离，新兴市场危机蔓延（"龙舌兰效应"）。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="1988-1994">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">时代背景</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">加载中…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">📚 同一时代下的所有年份页面（1988-1994）共享本"时代背景"内容。</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← 返回日历</a>
+        <a class="year-back-link" href="../index.html#panel-price">看长周期标普500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">看席勒市盈率 →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">编年史 · 资料来源</h4>
+      <ul class="footer-link-list">
+        <li>燕翔 战迪 许茹纯 朱成成 著 <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">《美股70年:1948~2018年美国股市行情复盘》</a> 经济科学出版社 2020</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · Big Picture · 编年史</p>
+  </div>
+</footer>
+
+<script>
+// ── 主题切换（轻量版，无需 module） ──
+document.getElementById('themeToggle').addEventListener('click', function() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('sp500-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('sp500-theme', 'dark');
+  }
+  if (window._yearChart && window._yearData) {
+    window._yearChart.setOption(getYearChartOption(window._yearData), true);
+  }
+});
+
+// ── 1994 年指数日频走势 ──
+const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+// 从时间线 DOM 读事件,保证两边永远同步
+function readTimelineEvents() {
+  const items = document.querySelectorAll('#yearTimeline [data-chart-date]');
+  return Array.from(items).map(el => {
+    const cls = el.classList;
+    let kind = 'info';
+    if (cls.contains('timeline-item--up')) kind = 'up';
+    else if (cls.contains('timeline-item--down')) kind = 'down';
+    if (cls.contains('timeline-item--key')) kind = kind === 'info' ? 'key' : kind + '-key';
+    return {
+      date: el.dataset.chartDate,
+      rangeEnd: el.dataset.chartRangeEnd || null,
+      label: el.dataset.chartLabel || el.querySelector('.timeline-title')?.textContent || '',
+      showLabel: el.dataset.chartShowLabel === 'true',
+      kind,  // 'info' | 'up' | 'down' | 'key' | 'up-key' | 'down-key'
+      desc: el.querySelector('.timeline-desc')?.textContent || '',
+    };
+  });
+}
+
+// kind → dot/area 颜色
+function colorForKind(kind, theme) {
+  // theme: { green, red, accent, sec, cardBg }
+  if (kind.includes('up'))   return { dot: theme.green,  ring: kind.includes('key') ? theme.accent : null };
+  if (kind.includes('down')) return { dot: theme.red,    ring: kind.includes('key') ? theme.accent : null };
+  if (kind === 'key')        return { dot: theme.accent, ring: theme.accent };
+  return { dot: theme.cardBg, ring: null };  // info: 中空白点
+}
+
+// 从日频价格序列识别上涨/下跌/震荡段(zigzag,minPct=5%)
+// 返回 [{startDate, endDate, change, kind:'up'|'down'|'side'}]
+function findTrendSegments(data, minPct) {
+  minPct = minPct || 5;
+  if (!data || data.length < 2) return [];
+  const pivots = [{ idx: 0, close: data[0].close }];
+  let direction = null;
+  let extHigh = data[0].close, extHighIdx = 0;
+  let extLow  = data[0].close, extLowIdx  = 0;
+  for (let i = 1; i < data.length; i++) {
+    const c = data[i].close;
+    if (c > extHigh) { extHigh = c; extHighIdx = i; }
+    if (c < extLow)  { extLow = c;  extLowIdx = i; }
+    if (direction === null) {
+      const base = data[0].close;
+      if ((extHigh - base) / base * 100 >= minPct) direction = 'up';
+      else if ((base - extLow) / base * 100 >= minPct) direction = 'down';
+    } else if (direction === 'up') {
+      if ((extHigh - c) / extHigh * 100 >= minPct) {
+        pivots.push({ idx: extHighIdx, close: extHigh });
+        extLow = c; extLowIdx = i; direction = 'down';
+      }
+    } else {
+      if ((c - extLow) / extLow * 100 >= minPct) {
+        pivots.push({ idx: extLowIdx, close: extLow });
+        extHigh = c; extHighIdx = i; direction = 'up';
+      }
+    }
+  }
+  pivots.push({ idx: data.length - 1, close: data[data.length - 1].close });
+  const segments = [];
+  for (let i = 1; i < pivots.length; i++) {
+    const a = pivots[i - 1], b = pivots[i];
+    if (a.idx === b.idx) continue;
+    const change = (b.close - a.close) / a.close * 100;
+    let kind = 'side';
+    if (change >=  minPct) kind = 'up';
+    if (change <= -minPct) kind = 'down';
+    segments.push({
+      startDate: data[a.idx].date,
+      endDate:   data[b.idx].date,
+      change, kind,
+    });
+  }
+  return segments;
+}
+
+function getYearChartOption(data) {
+  if (!data || !data.length) return {};
+  const text = cssVar('--text') || '#1a1a1a';
+  const grid = cssVar('--chart-grid') || '#f0f0f0';
+  const sec = cssVar('--text-secondary') || '#666';
+  const green = cssVar('--green') || '#389e0d';
+  const red = cssVar('--red') || '#cf1322';
+  const accent = cssVar('--accent') || '#4758e0';
+  const cardBg = cssVar('--card-bg') || '#fff';
+  const border = cssVar('--border') || '#e8e8e8';
+  const lineColor = cssVar('--sp500-line') || '#1a1a1a';
+  const theme = { green, red, accent, sec, cardBg };
+
+  const events = readTimelineEvents();
+
+  // 找 >= 目标日的第一条
+  function findCoord(targetDate) {
+    for (const d of data) {
+      if (d.date >= targetDate) return [d.date, d.close];
+    }
+    return null;
+  }
+  // 找 <= 目标日的最后一条
+  function findCoordReverse(targetDate) {
+    let last = null;
+    for (const d of data) {
+      if (d.date > targetDate) break;
+      last = d;
+    }
+    return last ? [last.date, last.close] : null;
+  }
+
+  // markPoint: 每个事件起点,按 kind 染色
+  const markPoints = events.map(ev => {
+    const coord = findCoord(ev.date);
+    if (!coord) return null;
+    const c = colorForKind(ev.kind, theme);
+    const isInfo = ev.kind === 'info';
+    return {
+      coord,
+      name: ev.label,
+      symbol: 'circle',
+      symbolSize: ev.kind.includes('key') ? 12 : 9,
+      itemStyle: {
+        color: c.dot,
+        borderColor: isInfo ? sec : (c.ring || cardBg),
+        borderWidth: ev.kind.includes('key') ? 3 : 2,
+        shadowBlur: ev.kind.includes('key') ? 6 : 0,
+        shadowColor: ev.kind.includes('key') ? 'rgba(71,88,224,0.45)' : 'transparent',
+      },
+      label: {
+        show: ev.showLabel,
+        position: 'top',
+        distance: 14,
+        fontSize: 11,
+        fontFamily: CHART_FONT,
+        color: ev.kind.includes('down') ? red : ev.kind.includes('up') ? green : ev.kind === 'key' ? accent : sec,
+        fontWeight: 600,
+        backgroundColor: cardBg,
+        padding: [2, 6],
+        borderRadius: 3,
+        borderColor: border,
+        borderWidth: 1,
+        formatter: ev.label,
+      },
+    };
+  }).filter(Boolean);
+
+  // markArea: 价格自驱动,标注 >=5% 的上涨/下跌段;震荡段不标
+  const markAreas = findTrendSegments(data, 5)
+    .filter(seg => seg.kind !== 'side')
+    .map(seg => {
+      const bg = seg.kind === 'up' ? 'rgba(56,158,13,0.10)' : 'rgba(207,19,34,0.10)';
+      return [
+        { xAxis: seg.startDate, itemStyle: { color: bg } },
+        { xAxis: seg.endDate },
+      ];
+    });
+
+  // tooltip: 显示事件信息(若当前 hover 日附近有事件)
+  const eventByDate = new Map(events.map(ev => [ev.date, ev]));
+
+  return {
+    grid: { left: 50, right: 30, top: 64, bottom: 36 },
+    xAxis: {
+      type: 'time',
+      axisLine: { lineStyle: { color: border } },
+      axisLabel: {
+        color: sec,
+        fontFamily: CHART_FONT,
+        formatter: function(value) {
+          var d = new Date(value);
+          return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+        },
+      },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      scale: true,
+      name: '标普500',
+      nameTextStyle: { color: sec, fontFamily: CHART_FONT, fontSize: 11 },
+      axisLine: { show: false },
+      axisLabel: { color: sec, fontFamily: CHART_FONT },
+      splitLine: { lineStyle: { color: grid } },
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: cardBg,
+      borderColor: border,
+      textStyle: { color: text, fontFamily: CHART_FONT },
+      formatter: function(params) {
+        const p = params[0];
+        const date = p.value[0];
+        const dateStr = typeof date === 'string' ? date : new Date(date).toISOString().slice(0, 10);
+        let html = `${dateStr}<br/>标普500: <b>${p.value[1].toFixed(2)}</b>`;
+        const ev = eventByDate.get(dateStr);
+        if (ev) {
+          html += `<br/><span style="color:${sec};">事件: ${ev.label}</span>`;
+        }
+        return html;
+      },
+    },
+    series: [{
+      name: '标普500日线',
+      type: 'line',
+      smooth: false,
+      showSymbol: false,
+      sampling: 'lttb',
+      data: data.map(d => [d.date, d.close]),
+      lineStyle: { color: lineColor, width: 1.5 },
+      itemStyle: { color: lineColor },
+      areaStyle: {
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: 'rgba(26,26,26,0.10)' },
+            { offset: 1, color: 'rgba(26,26,26,0)' },
+          ],
+        },
+      },
+      markPoint: { data: markPoints, silent: false },
+      markArea: { silent: true, data: markAreas },
+    }],
+  };
+}
+
+(function init1994Chart() {
+  const el = document.getElementById('chartYear1994');
+  if (!el) return;
+  const chart = echarts.init(el);
+  window._yearChart = chart;
+  window.addEventListener('resize', () => chart.resize());
+
+  fetch('../data/chronicle/year_data/1994.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(payload => {
+      const series = (payload.series || []).filter(d => d && d.date && d.close != null);
+      if (!series.length) return;
+      window._yearData = series;
+      chart.setOption(getYearChartOption(series));
+    })
+    .catch(err => console.warn('1994 chart load failed', err));
+})();
+
+// ── 时代背景 · 从 era_data JSON 渲染 ──
+function escapeHTML(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function renderEra(era) {
+  const titleEl = document.getElementById('eraTitle');
+  const tagEl = document.getElementById('eraTagline');
+  const contentEl = document.getElementById('eraContent');
+  if (titleEl && era.title) titleEl.textContent = '时代背景 · ' + era.title;
+  if (tagEl && era.tagline) tagEl.textContent = era.tagline;
+  if (!contentEl) return;
+
+  const parts = [];
+  (era.sections || []).forEach(sec => {
+    parts.push(`<h3>${escapeHTML(sec.heading)}</h3>`);
+    if (sec.type === 'paragraphs') {
+      (sec.body || []).forEach(p => parts.push(`<p>${p}</p>`));
+    } else if (sec.type === 'list') {
+      const isHist = sec.heading && sec.heading.indexOf('关键史实') >= 0;
+      if (isHist) {
+        const items = (sec.items || []).map(it => {
+          const date = it.date || it.strong || '';
+          const title = it.title || '';
+          const body = it.body || '';
+          return `<li><div class="era-history-date">${date}</div><div class="era-history-content"><div class="era-history-title">${title}</div><div class="era-history-body">${body}</div></div></li>`;
+        }).join('');
+        parts.push(`<ul class="era-history-list">${items}</ul>`);
+      } else {
+        const items = (sec.items || []).map(it => {
+          const lead = it.strong ? `<strong>${it.strong}</strong>：` : '';
+          return `<li>${lead}${it.body || ''}</li>`;
+        }).join('');
+        parts.push(`<ul>${items}</ul>`);
+      }
+    }
+  });
+  contentEl.innerHTML = parts.join('');
+}
+(function loadEra() {
+  const section = document.querySelector('[data-era]');
+  if (!section) return;
+  const eraId = section.dataset.era;
+  fetch(`../data/chronicle/era_data/${eraId}.json?v=` + Date.now())
+    .then(r => r.json())
+    .then(renderEra)
+    .catch(err => {
+      console.warn('era load failed', err);
+      const el = document.getElementById('eraContent');
+      if (el) el.innerHTML = '<p style="color:var(--text-secondary);">时代背景加载失败</p>';
+    });
+})();
+</script>
+
+</body>
+</html>

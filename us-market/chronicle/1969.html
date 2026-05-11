@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1969 · 滞胀警钟 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260511170650">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260511170650">
+<script>
+  // 提前应用主题，避免首屏闪烁
+  (function() {
+    var saved = localStorage.getItem('sp500-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">概览</a>
+        <a class="nav-item" href="#section-events">大事时间线</a>
+        <a class="nav-item" href="#section-context">时代背景</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← 返回日历</a>
+      </div>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="切换主题">
+      <span class="theme-icon-light">&#9790;</span>
+      <span class="theme-icon-dark">&#9728;</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">1969</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 滞胀十三年开端</span>
+        <h1 class="year-hero-title">滞胀警钟</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">标普500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--red">-11.36%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">道指</span>
+            <span class="year-hero-stat-value year-hero-stat-value--red">-15.2%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">年末</span>
+            <span class="year-hero-stat-value">800 点</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">主线</span>
+            <span class="year-hero-stat-value">通胀失控 + 加息加税 + 越战未止</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">标普500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">纳斯达克100与道琼斯</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">编年史</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">概览</h2>
+          <p class="panel-desc">通胀进入失控 · 美联储多轮加息 · 越战边打边谈 · 12 月正式进入衰退</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>1969 年是战后通胀第一次真正失控的一年。年初<strong>商业银行最优惠贷款利率连升至 7%</strong>，为历史最高水平。1 月 20 日尼克松就任，市场短暂寄望和谈。2 月中旬国会启动对集团型企业并购的限制，叠加财政部和总统经济顾问双双暗示 10% 附加税延期、7% 投资税收抵免取消，并预告进一步收紧货币，引发急速下跌。</p>
+        <p>4 月 3 日美联储贴现利率由 5.5% 上调至 6.0%、同时上调存款准备金率，4 月底投资税收抵免被废止。"巴黎和谈"的进展一度托住盘面，但 5 月下旬尼克松电视讲话令和平预期落空。6—7 月在持续加息加税中道指自 975 点跌至 802 点，跌幅近 20%。<strong>7 月 20 日阿波罗 11 号登月</strong>，但与基本面无关；7 月 25 日尼克松在关岛抛出"越战越南化"的尼克松主义。9 月 4 日《1969 年税收改革法案》签署，附带推出<strong>替代性最低税（AMT）</strong>。</p>
+        <p>10 月失业率上行让市场短暂期待加息见顶，道指反弹至 863 点。11 月 3 日尼克松"沉默的大多数"讲话表明越战短期难结束，11 月 15 日 50 万人华盛顿反战大游行；利率再度突破前高。NBER 事后确认<strong>1969 年 12 月美国经济正式进入衰退</strong>。道指年末收 800 点、全年 -15.2%，标普 500 全年 -11.36%。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear1969" style="margin-top:24px;"></div>
+      <p class="chart-band-note">色带 = 价格走势分段 · <span style="color:var(--green);">绿色</span> 上涨时段（≥5%）· <span style="color:var(--red);">红色</span> 下跌时段（≥5%）</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">大事时间线</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>一般背景信息</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>显著推动行情上行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>显著推动行情下行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>历史关键节点</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">（节点同时显示在下方走势图）</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1969-01-15"
+             data-chart-label="最优惠利率 7%"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1 月中</div>
+          <div class="timeline-title">商业银行最优惠贷款利率升至 7%</div>
+          <div class="timeline-desc">大型商业银行五周内连升三次，达到历史最高水平。通胀压力的直接信号。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1969-01-20"
+             data-chart-label="尼克松就职"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.20</div>
+          <div class="timeline-title">尼克松就任美国第 37 任总统</div>
+          <div class="timeline-desc">巴黎和谈与越南"边打边谈"开启。市场一度寄望其成为和平的缔造者。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1969-02-17"
+             data-chart-label="国会限制集团并购">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2 月中</div>
+          <div class="timeline-title">国会启动对集团型企业并购的限制</div>
+          <div class="timeline-desc">conglomerates 并购及相关行为受限，集团型企业股价持续承压。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1969-02-18"
+             data-chart-label="听证会预警加税"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2 月中下</div>
+          <div class="timeline-title">财政部、白宫顾问国会听证会双双预警</div>
+          <div class="timeline-desc">财政部长肯尼迪、总统首席经济顾问麦克拉肯表态：10% 附加税延期、7% 投资税收抵免可能取消，并需通过收紧货币抑制通胀。美联储同期表态将提高存款准备金率与贴现利率。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1969-04-03"
+             data-chart-label="加息至 6.0%"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">4.3</div>
+          <div class="timeline-title">美联储贴现利率 5.5% → 6.0%</div>
+          <div class="timeline-desc">同步上调存款准备金率。年内主要的一次政策性加息。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1969-04-30"
+             data-chart-label="废 7% 抵免">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">4 月底</div>
+          <div class="timeline-title">7% 投资税收抵免被废止</div>
+          <div class="timeline-desc">企业资本支出抵免取消。属此前预警的兑现。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1969-05-20"
+             data-chart-label="加州反战游行">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">5.20</div>
+          <div class="timeline-title">加利福尼亚爆发反战游行</div>
+          <div class="timeline-desc">反战游行随后向其他地区扩散。尼克松电视讲话令和平协议预期再度遥远。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1969-06-08"
+             data-chart-label="第一次越南撤军">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">6.8</div>
+          <div class="timeline-title">尼克松宣布从越南撤军 2.5 万人</div>
+          <div class="timeline-desc">在中途岛宣布，8 月底以前完成。这是尼克松政府的第一次越南撤军。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1969-07-01"
+             data-chart-label="附加税延期">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7 月初</div>
+          <div class="timeline-title">国会通过 10% 附加税延期法案</div>
+          <div class="timeline-desc">商业银行最优惠贷款利率同期已升至 8.5%，工资—物价螺旋式通胀显现。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1969-07-21"
+             data-chart-label="阿波罗 11 号登月"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7.20-21</div>
+          <div class="timeline-title">阿波罗 11 号实现人类首次登月</div>
+          <div class="timeline-desc">7 月 24 日指挥舱在太平洋安全降落。阿姆斯特朗、奥尔德林完成首次月面行走。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1969-07-24"
+             data-chart-label="海外存款入准备金">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7.24</div>
+          <div class="timeline-title">美联储修订储备银行准备金规则</div>
+          <div class="timeline-desc">将海外银行签发支票纳入存款以计算保证金要求，相关业务被收紧。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1969-07-25"
+             data-chart-label="尼克松主义">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7.25</div>
+          <div class="timeline-title">尼克松在关岛提出"新亚洲政策"</div>
+          <div class="timeline-desc">即"尼克松主义"——美国收缩战线、越战越南化、用亚洲人打亚洲人。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1969-08-08"
+             data-chart-label="法郎贬值 12.5%">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">8.8</div>
+          <div class="timeline-title">法国法郎大幅贬值 12.5%</div>
+          <div class="timeline-desc">布雷顿森林体系下的又一次主要货币重估。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1969-09-04"
+             data-chart-label="税改法案 / AMT">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">9.4</div>
+          <div class="timeline-title">《1969 年税收改革法案》签署</div>
+          <div class="timeline-desc">针对高收入人群抵免漏洞加税，替代性最低税（AMT）由此推出。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1969-09-29"
+             data-chart-label="德国关闭外汇市场">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">9 月</div>
+          <div class="timeline-title">联邦德国外汇市场因投机被迫关闭</div>
+          <div class="timeline-desc">大量国际资本流入联邦德国，货币投机引发关市；马克随后重估升值。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1969-11-03"
+             data-chart-label="沉默的大多数"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.3</div>
+          <div class="timeline-title">尼克松"沉默的大多数"电视讲话</div>
+          <div class="timeline-desc">宣布越战"越南化"计划，明确不会因示威立即撤军。政治上成功，但意味着战争短期难结束。利率随后再度突破前高。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1969-11-15"
+             data-chart-label="华盛顿反战大游行">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.15</div>
+          <div class="timeline-title">华盛顿反战大游行（Moratorium）</div>
+          <div class="timeline-desc">约 50 万人参加，是越战期间最大规模反战示威之一。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1969-12-01"
+             data-chart-label="NBER：12 月入衰退"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">12 月</div>
+          <div class="timeline-title">NBER 事后确认美国经济进入衰退</div>
+          <div class="timeline-desc">起点为 1969 年 12 月。"滞胀"作为新的宏观范式从此进入主流经济辞典。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="1968-1981">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">时代背景</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">加载中…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">📚 同一时代下的所有年份页面（1968-1981）共享本"时代背景"内容。</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← 返回日历</a>
+        <a class="year-back-link" href="../index.html#panel-price">看长周期标普500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">看席勒市盈率 →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">编年史 · 资料来源</h4>
+      <ul class="footer-link-list">
+        <li>燕翔 战迪 许茹纯 朱成成 著 <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">《美股70年:1948~2018年美国股市行情复盘》</a> 经济科学出版社 2020</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · Big Picture · 编年史</p>
+  </div>
+</footer>
+
+<script>
+// ── 主题切换（轻量版，无需 module） ──
+document.getElementById('themeToggle').addEventListener('click', function() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('sp500-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('sp500-theme', 'dark');
+  }
+  if (window._yearChart && window._yearData) {
+    window._yearChart.setOption(getYearChartOption(window._yearData), true);
+  }
+});
+
+// ── 1969 年指数日频走势 ──
+const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+// 从时间线 DOM 读事件,保证两边永远同步
+function readTimelineEvents() {
+  const items = document.querySelectorAll('#yearTimeline [data-chart-date]');
+  return Array.from(items).map(el => {
+    const cls = el.classList;
+    let kind = 'info';
+    if (cls.contains('timeline-item--up')) kind = 'up';
+    else if (cls.contains('timeline-item--down')) kind = 'down';
+    if (cls.contains('timeline-item--key')) kind = kind === 'info' ? 'key' : kind + '-key';
+    return {
+      date: el.dataset.chartDate,
+      rangeEnd: el.dataset.chartRangeEnd || null,
+      label: el.dataset.chartLabel || el.querySelector('.timeline-title')?.textContent || '',
+      showLabel: el.dataset.chartShowLabel === 'true',
+      kind,  // 'info' | 'up' | 'down' | 'key' | 'up-key' | 'down-key'
+      desc: el.querySelector('.timeline-desc')?.textContent || '',
+    };
+  });
+}
+
+// kind → dot/area 颜色
+function colorForKind(kind, theme) {
+  if (kind.includes('up'))   return { dot: theme.green,  ring: kind.includes('key') ? theme.accent : null };
+  if (kind.includes('down')) return { dot: theme.red,    ring: kind.includes('key') ? theme.accent : null };
+  if (kind === 'key')        return { dot: theme.accent, ring: theme.accent };
+  return { dot: theme.cardBg, ring: null };
+}
+
+// 从日频价格序列识别上涨/下跌/震荡段(zigzag,minPct=5%)
+function findTrendSegments(data, minPct) {
+  minPct = minPct || 5;
+  if (!data || data.length < 2) return [];
+  const pivots = [{ idx: 0, close: data[0].close }];
+  let direction = null;
+  let extHigh = data[0].close, extHighIdx = 0;
+  let extLow  = data[0].close, extLowIdx  = 0;
+  for (let i = 1; i < data.length; i++) {
+    const c = data[i].close;
+    if (c > extHigh) { extHigh = c; extHighIdx = i; }
+    if (c < extLow)  { extLow = c;  extLowIdx = i; }
+    if (direction === null) {
+      const base = data[0].close;
+      if ((extHigh - base) / base * 100 >= minPct) direction = 'up';
+      else if ((base - extLow) / base * 100 >= minPct) direction = 'down';
+    } else if (direction === 'up') {
+      if ((extHigh - c) / extHigh * 100 >= minPct) {
+        pivots.push({ idx: extHighIdx, close: extHigh });
+        extLow = c; extLowIdx = i; direction = 'down';
+      }
+    } else {
+      if ((c - extLow) / extLow * 100 >= minPct) {
+        pivots.push({ idx: extLowIdx, close: extLow });
+        extHigh = c; extHighIdx = i; direction = 'up';
+      }
+    }
+  }
+  pivots.push({ idx: data.length - 1, close: data[data.length - 1].close });
+  const segments = [];
+  for (let i = 1; i < pivots.length; i++) {
+    const a = pivots[i - 1], b = pivots[i];
+    if (a.idx === b.idx) continue;
+    const change = (b.close - a.close) / a.close * 100;
+    let kind = 'side';
+    if (change >=  minPct) kind = 'up';
+    if (change <= -minPct) kind = 'down';
+    segments.push({
+      startDate: data[a.idx].date,
+      endDate:   data[b.idx].date,
+      change, kind,
+    });
+  }
+  return segments;
+}
+
+function getYearChartOption(data) {
+  if (!data || !data.length) return {};
+  const text = cssVar('--text') || '#1a1a1a';
+  const grid = cssVar('--chart-grid') || '#f0f0f0';
+  const sec = cssVar('--text-secondary') || '#666';
+  const green = cssVar('--green') || '#389e0d';
+  const red = cssVar('--red') || '#cf1322';
+  const accent = cssVar('--accent') || '#4758e0';
+  const cardBg = cssVar('--card-bg') || '#fff';
+  const border = cssVar('--border') || '#e8e8e8';
+  const lineColor = cssVar('--sp500-line') || '#1a1a1a';
+  const theme = { green, red, accent, sec, cardBg };
+
+  const events = readTimelineEvents();
+
+  function findCoord(targetDate) {
+    for (const d of data) {
+      if (d.date >= targetDate) return [d.date, d.close];
+    }
+    return null;
+  }
+  function findCoordReverse(targetDate) {
+    let last = null;
+    for (const d of data) {
+      if (d.date > targetDate) break;
+      last = d;
+    }
+    return last ? [last.date, last.close] : null;
+  }
+
+  const markPoints = events.map(ev => {
+    const coord = findCoord(ev.date);
+    if (!coord) return null;
+    const c = colorForKind(ev.kind, theme);
+    const isInfo = ev.kind === 'info';
+    return {
+      coord,
+      name: ev.label,
+      symbol: 'circle',
+      symbolSize: ev.kind.includes('key') ? 12 : 9,
+      itemStyle: {
+        color: c.dot,
+        borderColor: isInfo ? sec : (c.ring || cardBg),
+        borderWidth: ev.kind.includes('key') ? 3 : 2,
+        shadowBlur: ev.kind.includes('key') ? 6 : 0,
+        shadowColor: ev.kind.includes('key') ? 'rgba(71,88,224,0.45)' : 'transparent',
+      },
+      label: {
+        show: ev.showLabel,
+        position: 'top',
+        distance: 14,
+        fontSize: 11,
+        fontFamily: CHART_FONT,
+        color: ev.kind.includes('down') ? red : ev.kind.includes('up') ? green : ev.kind === 'key' ? accent : sec,
+        fontWeight: 600,
+        backgroundColor: cardBg,
+        padding: [2, 6],
+        borderRadius: 3,
+        borderColor: border,
+        borderWidth: 1,
+        formatter: ev.label,
+      },
+    };
+  }).filter(Boolean);
+
+  const markAreas = findTrendSegments(data, 5)
+    .filter(seg => seg.kind !== 'side')
+    .map(seg => {
+      const bg = seg.kind === 'up' ? 'rgba(56,158,13,0.10)' : 'rgba(207,19,34,0.10)';
+      return [
+        { xAxis: seg.startDate, itemStyle: { color: bg } },
+        { xAxis: seg.endDate },
+      ];
+    });
+
+  const eventByDate = new Map(events.map(ev => [ev.date, ev]));
+
+  return {
+    grid: { left: 50, right: 30, top: 64, bottom: 36 },
+    xAxis: {
+      type: 'time',
+      axisLine: { lineStyle: { color: border } },
+      axisLabel: {
+        color: sec,
+        fontFamily: CHART_FONT,
+        formatter: function(value) {
+          var d = new Date(value);
+          return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+        },
+      },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      scale: true,
+      name: '标普500',
+      nameTextStyle: { color: sec, fontFamily: CHART_FONT, fontSize: 11 },
+      axisLine: { show: false },
+      axisLabel: { color: sec, fontFamily: CHART_FONT },
+      splitLine: { lineStyle: { color: grid } },
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: cardBg,
+      borderColor: border,
+      textStyle: { color: text, fontFamily: CHART_FONT },
+      formatter: function(params) {
+        const p = params[0];
+        const date = p.value[0];
+        const dateStr = typeof date === 'string' ? date : new Date(date).toISOString().slice(0, 10);
+        let html = `${dateStr}<br/>标普500: <b>${p.value[1].toFixed(2)}</b>`;
+        const ev = eventByDate.get(dateStr);
+        if (ev) {
+          html += `<br/><span style="color:${sec};">事件: ${ev.label}</span>`;
+        }
+        return html;
+      },
+    },
+    series: [{
+      name: '标普500日线',
+      type: 'line',
+      smooth: false,
+      showSymbol: false,
+      sampling: 'lttb',
+      data: data.map(d => [d.date, d.close]),
+      lineStyle: { color: lineColor, width: 1.5 },
+      itemStyle: { color: lineColor },
+      areaStyle: {
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: 'rgba(26,26,26,0.10)' },
+            { offset: 1, color: 'rgba(26,26,26,0)' },
+          ],
+        },
+      },
+      markPoint: { data: markPoints, silent: false },
+      markArea: { silent: true, data: markAreas },
+    }],
+  };
+}
+
+(function init1969Chart() {
+  const el = document.getElementById('chartYear1969');
+  if (!el) return;
+  const chart = echarts.init(el);
+  window._yearChart = chart;
+  window.addEventListener('resize', () => chart.resize());
+
+  fetch('../data/chronicle/year_data/1969.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(payload => {
+      const series = (payload.series || []).filter(d => d && d.date && d.close != null);
+      if (!series.length) return;
+      window._yearData = series;
+      chart.setOption(getYearChartOption(series));
+    })
+    .catch(err => console.warn('1969 chart load failed', err));
+})();
+
+// ── 时代背景 · 从 era_data JSON 渲染 ──
+function escapeHTML(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function renderEra(era) {
+  const titleEl = document.getElementById('eraTitle');
+  const tagEl = document.getElementById('eraTagline');
+  const contentEl = document.getElementById('eraContent');
+  if (titleEl && era.title) titleEl.textContent = '时代背景 · ' + era.title;
+  if (tagEl && era.tagline) tagEl.textContent = era.tagline;
+  if (!contentEl) return;
+
+  const parts = [];
+  (era.sections || []).forEach(sec => {
+    parts.push(`<h3>${escapeHTML(sec.heading)}</h3>`);
+    if (sec.type === 'paragraphs') {
+      (sec.body || []).forEach(p => parts.push(`<p>${p}</p>`));
+    } else if (sec.type === 'list') {
+      const isHist = sec.heading && sec.heading.indexOf('关键史实') >= 0;
+      if (isHist) {
+        const items = (sec.items || []).map(it => {
+          const date = it.date || it.strong || '';
+          const title = it.title || '';
+          const body = it.body || '';
+          return `<li><div class="era-history-date">${date}</div><div class="era-history-content"><div class="era-history-title">${title}</div><div class="era-history-body">${body}</div></div></li>`;
+        }).join('');
+        parts.push(`<ul class="era-history-list">${items}</ul>`);
+      } else {
+        const items = (sec.items || []).map(it => {
+          const lead = it.strong ? `<strong>${it.strong}</strong>：` : '';
+          return `<li>${lead}${it.body || ''}</li>`;
+        }).join('');
+        parts.push(`<ul>${items}</ul>`);
+      }
+    }
+  });
+  contentEl.innerHTML = parts.join('');
+}
+(function loadEra() {
+  const section = document.querySelector('[data-era]');
+  if (!section) return;
+  const eraId = section.dataset.era;
+  fetch(`../data/chronicle/era_data/${eraId}.json?v=` + Date.now())
+    .then(r => r.json())
+    .then(renderEra)
+    .catch(err => {
+      console.warn('era load failed', err);
+      const el = document.getElementById('eraContent');
+      if (el) el.innerHTML = '<p style="color:var(--text-secondary);">时代背景加载失败</p>';
+    });
+})();
+</script>
+
+</body>
+</html>

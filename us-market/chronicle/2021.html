@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2021 · 通胀回归与meme股 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260511170650">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260511170650">
+<script>
+  // 提前应用主题，避免首屏闪烁
+  (function() {
+    var saved = localStorage.getItem('sp500-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">概览</a>
+        <a class="nav-item" href="#section-events">大事时间线</a>
+        <a class="nav-item" href="#section-context">时代背景</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← 返回日历</a>
+      </div>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" title="切换主题">
+      <span class="theme-icon-light">&#9790;</span>
+      <span class="theme-icon-dark">&#9728;</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">2021</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 疫后再通胀与散户狂潮</span>
+        <h1 class="year-hero-title">通胀回归与meme股</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">标普500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+26.89%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">道指</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+18.7%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">年末</span>
+            <span class="year-hero-stat-value">36338 点</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">主线</span>
+            <span class="year-hero-stat-value">财政刺激 + 散户轧空 + 通胀转向</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">标普500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">纳斯达克100与道琼斯</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">编年史</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">概览</h2>
+          <p class="panel-desc">财政刺激续航 · 散户轧空震荡 · 「暂时性通胀」叙事在年末被官方放弃</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>2021 年以国会山骚乱开局，拜登就职后政治权力顺利交接。1 月底，散户聚集地 WallStreetBets 发动针对 GameStop 的轧空，逼空对冲基金 Melvin Capital，<strong>散户与机构之间的力量对比首次被严肃讨论</strong>。3 月 11 日，《美国救援法案》1.9 万亿美元落地，每位成年人再获 1400 美元直接转账，叠加前两轮财政转移与超低利率，居民部门现金充裕。</p>
+        <p>3 月 Archegos Capital 隐藏杠杆爆仓，瑞信、野村均出现巨额减记，但未演变成系统性事件。5 月 Colonial Pipeline 遭勒索软件攻击导致东岸燃油短缺；同月 CPI 公布 4.2%，<strong>「暂时性通胀」叙事开始受到质疑</strong>。6 月 FOMC 点阵图意外转鹰。8 月美军撤离阿富汗、喀布尔陷落。9 月中国恒大债务危机引发跨境市场震荡，但海外溢出有限。10 月 Facebook 更名 Meta，元宇宙叙事接棒；11 月 IIJA 基础设施法案 1.2 万亿美元签署。</p>
+        <p>转折发生在 11 月底：鲍威尔获提名连任后，<strong>在国会作证时明确表态「停止使用'暂时性'描述通胀」</strong>，为政策转向定锚。12 月 FOMC 加速 Taper，Omicron 变种带来短促回撤但未改趋势。标普 500 全年 +26.89%，是新世纪以来最强劲的牛市年份之一，但年末估值已与即将到来的紧缩周期高度紧绷。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear2021" style="margin-top:24px;"></div>
+      <p class="chart-band-note">色带 = 价格走势分段 · <span style="color:var(--green);">绿色</span> 上涨时段（≥5%）· <span style="color:var(--red);">红色</span> 下跌时段（≥5%）</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">大事时间线</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>一般背景信息</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>显著推动行情上行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>显著推动行情下行</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>历史关键节点</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">（节点同时显示在下方走势图）</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2021-01-06"
+             data-chart-label="国会山事件"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.6</div>
+          <div class="timeline-title">国会山骚乱</div>
+          <div class="timeline-desc">川普支持者冲击国会大厦，干扰选举人票认证程序。美国政治极化达到象征性高点。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2021-01-20"
+             data-chart-label="拜登就职">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.20</div>
+          <div class="timeline-title">拜登正式就任第 46 任美国总统</div>
+          <div class="timeline-desc">行政权力交接完成，民主党同时掌握白宫、参众两院，为后续大规模财政立法铺路。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2021-01-27"
+             data-chart-label="GME 散户轧空"
+             data-chart-show-label="true"
+             data-chart-range-end="2021-01-28">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">1.27-28</div>
+          <div class="timeline-title">GameStop 散户轧空事件</div>
+          <div class="timeline-desc">WallStreetBets 散户合力逼空对冲基金 Melvin Capital，Robinhood 限制买入。散户与机构博弈被搬上主流台面。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2021-02-13"
+             data-chart-label="弹劾否决">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2.13</div>
+          <div class="timeline-title">川普第二次弹劾案在参议院被否决</div>
+          <div class="timeline-desc">参议院以 57:43 未达 2/3 多数，川普被宣告无罪。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="2021-03-11"
+             data-chart-label="1.9 万亿救援"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">3.11</div>
+          <div class="timeline-title">《美国救援法案》1.9 万亿美元签署</div>
+          <div class="timeline-desc">第三轮疫情纾困，每位成年人再获 1400 美元直接转账，延长失业救济与儿童税收抵免。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2021-03-26"
+             data-chart-label="Archegos 爆仓"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">3.23-26</div>
+          <div class="timeline-title">Archegos Capital 隐性杠杆爆仓</div>
+          <div class="timeline-desc">家族办公室通过总收益互换累积巨量风险敞口，瑞信、野村巨亏，但未引发系统性危机。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2021-04-14"
+             data-chart-label="BTC 破 6 万">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">4 月</div>
+          <div class="timeline-title">比特币首次突破 6 万美元</div>
+          <div class="timeline-desc">Coinbase 在纳斯达克直接上市当周，比特币一度逼近 6.5 万美元，加密资产进入主流叙事。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2021-05-07"
+             data-chart-label="输油管被攻击">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">5.7</div>
+          <div class="timeline-title">Colonial Pipeline 遭勒索软件攻击</div>
+          <div class="timeline-desc">美国东岸最大成品油管道关停数日，多州出现汽油短缺。运营方支付约 440 万美元赎金。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2021-05-12"
+             data-chart-label="CPI 4.2%">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">5.12</div>
+          <div class="timeline-title">4 月 CPI 公布 4.2%</div>
+          <div class="timeline-desc">同比读数为 2008 年以来最高，市场首次正式警觉通胀风险，「暂时性」叙事开始被质疑。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2021-06-16"
+             data-chart-label="点阵图转鹰"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">6.16</div>
+          <div class="timeline-title">美联储 6 月点阵图意外转鹰</div>
+          <div class="timeline-desc">FOMC 委员中位数预期 2023 年加息两次，较 3 月预期大幅前移，市场首次为政策转向重新定价。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2021-07-20"
+             data-chart-label="太空旅游">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">7.20-21</div>
+          <div class="timeline-title">蓝色起源、维珍银河商业载人飞行</div>
+          <div class="timeline-desc">贝索斯、布兰森相继完成亚轨道飞行，民营太空旅游进入公众视野。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2021-08-15"
+             data-chart-label="喀布尔陷落">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">8.15</div>
+          <div class="timeline-title">塔利班攻占喀布尔，美军撤离阿富汗</div>
+          <div class="timeline-desc">美国结束历时近 20 年的阿富汗战争，撤军过程混乱，拜登政府对外政策受到广泛批评。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2021-09-20"
+             data-chart-label="恒大债务危机"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">9.15</div>
+          <div class="timeline-title">中国恒大债务危机公开化</div>
+          <div class="timeline-desc">恒大美元债违约风险引发全球市场短期避险，对美股直接溢出有限，但成为中国地产周期拐点。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2021-10-28"
+             data-chart-label="Facebook→Meta">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">10.28</div>
+          <div class="timeline-title">Facebook 母公司更名为 Meta</div>
+          <div class="timeline-desc">扎克伯格宣布全面押注元宇宙，资本市场叙事从社交平台转向 VR/AR 长期投入。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2021-11-15"
+             data-chart-label="IIJA 基建签署">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.15</div>
+          <div class="timeline-title">《基础设施投资和就业法案》1.2 万亿美元签署</div>
+          <div class="timeline-desc">十年期联邦基建投资法案，覆盖道路、桥梁、宽带、电网与新能源汽车充电网络。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2021-11-22"
+             data-chart-label="鲍威尔连任">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.22</div>
+          <div class="timeline-title">拜登提名鲍威尔连任美联储主席</div>
+          <div class="timeline-desc">布雷纳德获提名副主席。政策连续性确认，市场对货币政策路径预期短期稳定。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2021-11-30"
+             data-chart-label="弃用「暂时性」"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">11.30</div>
+          <div class="timeline-title">鲍威尔国会作证：停止用「暂时性」描述通胀</div>
+          <div class="timeline-desc">货币政策语言正式转向，为加快 Taper、提前加息铺垫，被视作本轮紧缩周期的政策锚点。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2021-12-01"
+             data-chart-label="Omicron">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">12 月</div>
+          <div class="timeline-title">Omicron 变种全球扩散</div>
+          <div class="timeline-desc">南非首先报告，传播力显著高于 Delta，但重症率较低，对供应链与服务业造成短期扰动。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2021-12-15"
+             data-chart-label="加速 Taper">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">12.15</div>
+          <div class="timeline-title">FOMC 加速 Taper，点阵图指向 2022 年三次加息</div>
+          <div class="timeline-desc">月度购债缩减速度翻倍至 300 亿美元，市场为 2022 年开启加息周期定价。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="2019-2026">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">时代背景</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">加载中…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">📚 同一时代下的所有年份页面（2019-2026）共享本"时代背景"内容。</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← 返回日历</a>
+        <a class="year-back-link" href="../index.html#panel-price">看长周期标普500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">看席勒市盈率 →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">编年史 · 资料来源</h4>
+      <ul class="footer-link-list">
+        <li>燕翔 战迪 许茹纯 朱成成 著 <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">《美股70年:1948~2018年美国股市行情复盘》</a> 经济科学出版社 2020</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · Big Picture · 编年史</p>
+  </div>
+</footer>
+
+<script>
+// ── 主题切换（轻量版，无需 module） ──
+document.getElementById('themeToggle').addEventListener('click', function() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('sp500-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('sp500-theme', 'dark');
+  }
+  if (window._yearChart && window._yearData) {
+    window._yearChart.setOption(getYearChartOption(window._yearData), true);
+  }
+});
+
+// ── 2021 年指数日频走势 ──
+const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+// 从时间线 DOM 读事件,保证两边永远同步
+function readTimelineEvents() {
+  const items = document.querySelectorAll('#yearTimeline [data-chart-date]');
+  return Array.from(items).map(el => {
+    const cls = el.classList;
+    let kind = 'info';
+    if (cls.contains('timeline-item--up')) kind = 'up';
+    else if (cls.contains('timeline-item--down')) kind = 'down';
+    if (cls.contains('timeline-item--key')) kind = kind === 'info' ? 'key' : kind + '-key';
+    return {
+      date: el.dataset.chartDate,
+      rangeEnd: el.dataset.chartRangeEnd || null,
+      label: el.dataset.chartLabel || el.querySelector('.timeline-title')?.textContent || '',
+      showLabel: el.dataset.chartShowLabel === 'true',
+      kind,  // 'info' | 'up' | 'down' | 'key' | 'up-key' | 'down-key'
+      desc: el.querySelector('.timeline-desc')?.textContent || '',
+    };
+  });
+}
+
+// kind → dot/area 颜色
+function colorForKind(kind, theme) {
+  // theme: { green, red, accent, sec, cardBg }
+  if (kind.includes('up'))   return { dot: theme.green,  ring: kind.includes('key') ? theme.accent : null };
+  if (kind.includes('down')) return { dot: theme.red,    ring: kind.includes('key') ? theme.accent : null };
+  if (kind === 'key')        return { dot: theme.accent, ring: theme.accent };
+  return { dot: theme.cardBg, ring: null };  // info: 中空白点
+}
+
+// 从日频价格序列识别上涨/下跌/震荡段(zigzag,minPct=5%)
+// 返回 [{startDate, endDate, change, kind:'up'|'down'|'side'}]
+function findTrendSegments(data, minPct) {
+  minPct = minPct || 5;
+  if (!data || data.length < 2) return [];
+  const pivots = [{ idx: 0, close: data[0].close }];
+  let direction = null;
+  let extHigh = data[0].close, extHighIdx = 0;
+  let extLow  = data[0].close, extLowIdx  = 0;
+  for (let i = 1; i < data.length; i++) {
+    const c = data[i].close;
+    if (c > extHigh) { extHigh = c; extHighIdx = i; }
+    if (c < extLow)  { extLow = c;  extLowIdx = i; }
+    if (direction === null) {
+      const base = data[0].close;
+      if ((extHigh - base) / base * 100 >= minPct) direction = 'up';
+      else if ((base - extLow) / base * 100 >= minPct) direction = 'down';
+    } else if (direction === 'up') {
+      if ((extHigh - c) / extHigh * 100 >= minPct) {
+        pivots.push({ idx: extHighIdx, close: extHigh });
+        extLow = c; extLowIdx = i; direction = 'down';
+      }
+    } else {
+      if ((c - extLow) / extLow * 100 >= minPct) {
+        pivots.push({ idx: extLowIdx, close: extLow });
+        extHigh = c; extHighIdx = i; direction = 'up';
+      }
+    }
+  }
+  pivots.push({ idx: data.length - 1, close: data[data.length - 1].close });
+  const segments = [];
+  for (let i = 1; i < pivots.length; i++) {
+    const a = pivots[i - 1], b = pivots[i];
+    if (a.idx === b.idx) continue;
+    const change = (b.close - a.close) / a.close * 100;
+    let kind = 'side';
+    if (change >=  minPct) kind = 'up';
+    if (change <= -minPct) kind = 'down';
+    segments.push({
+      startDate: data[a.idx].date,
+      endDate:   data[b.idx].date,
+      change, kind,
+    });
+  }
+  return segments;
+}
+
+function getYearChartOption(data) {
+  if (!data || !data.length) return {};
+  const text = cssVar('--text') || '#1a1a1a';
+  const grid = cssVar('--chart-grid') || '#f0f0f0';
+  const sec = cssVar('--text-secondary') || '#666';
+  const green = cssVar('--green') || '#389e0d';
+  const red = cssVar('--red') || '#cf1322';
+  const accent = cssVar('--accent') || '#4758e0';
+  const cardBg = cssVar('--card-bg') || '#fff';
+  const border = cssVar('--border') || '#e8e8e8';
+  const lineColor = cssVar('--sp500-line') || '#1a1a1a';
+  const theme = { green, red, accent, sec, cardBg };
+
+  const events = readTimelineEvents();
+
+  // 找 >= 目标日的第一条
+  function findCoord(targetDate) {
+    for (const d of data) {
+      if (d.date >= targetDate) return [d.date, d.close];
+    }
+    return null;
+  }
+  // 找 <= 目标日的最后一条
+  function findCoordReverse(targetDate) {
+    let last = null;
+    for (const d of data) {
+      if (d.date > targetDate) break;
+      last = d;
+    }
+    return last ? [last.date, last.close] : null;
+  }
+
+  // markPoint: 每个事件起点,按 kind 染色
+  const markPoints = events.map(ev => {
+    const coord = findCoord(ev.date);
+    if (!coord) return null;
+    const c = colorForKind(ev.kind, theme);
+    const isInfo = ev.kind === 'info';
+    return {
+      coord,
+      name: ev.label,
+      symbol: 'circle',
+      symbolSize: ev.kind.includes('key') ? 12 : 9,
+      itemStyle: {
+        color: c.dot,
+        borderColor: isInfo ? sec : (c.ring || cardBg),
+        borderWidth: ev.kind.includes('key') ? 3 : 2,
+        shadowBlur: ev.kind.includes('key') ? 6 : 0,
+        shadowColor: ev.kind.includes('key') ? 'rgba(71,88,224,0.45)' : 'transparent',
+      },
+      label: {
+        show: ev.showLabel,
+        position: 'top',
+        distance: 14,
+        fontSize: 11,
+        fontFamily: CHART_FONT,
+        color: ev.kind.includes('down') ? red : ev.kind.includes('up') ? green : ev.kind === 'key' ? accent : sec,
+        fontWeight: 600,
+        backgroundColor: cardBg,
+        padding: [2, 6],
+        borderRadius: 3,
+        borderColor: border,
+        borderWidth: 1,
+        formatter: ev.label,
+      },
+    };
+  }).filter(Boolean);
+
+  // markArea: 价格自驱动,标注 >=5% 的上涨/下跌段;震荡段不标
+  const markAreas = findTrendSegments(data, 5)
+    .filter(seg => seg.kind !== 'side')
+    .map(seg => {
+      const bg = seg.kind === 'up' ? 'rgba(56,158,13,0.10)' : 'rgba(207,19,34,0.10)';
+      return [
+        { xAxis: seg.startDate, itemStyle: { color: bg } },
+        { xAxis: seg.endDate },
+      ];
+    });
+
+  // tooltip: 显示事件信息(若当前 hover 日附近有事件)
+  const eventByDate = new Map(events.map(ev => [ev.date, ev]));
+
+  return {
+    grid: { left: 50, right: 30, top: 64, bottom: 36 },
+    xAxis: {
+      type: 'time',
+      axisLine: { lineStyle: { color: border } },
+      axisLabel: {
+        color: sec,
+        fontFamily: CHART_FONT,
+        formatter: function(value) {
+          var d = new Date(value);
+          return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+        },
+      },
+      splitLine: { show: false },
+    },
+    yAxis: {
+      type: 'value',
+      scale: true,
+      name: '标普500',
+      nameTextStyle: { color: sec, fontFamily: CHART_FONT, fontSize: 11 },
+      axisLine: { show: false },
+      axisLabel: { color: sec, fontFamily: CHART_FONT },
+      splitLine: { lineStyle: { color: grid } },
+    },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: cardBg,
+      borderColor: border,
+      textStyle: { color: text, fontFamily: CHART_FONT },
+      formatter: function(params) {
+        const p = params[0];
+        const date = p.value[0];
+        const dateStr = typeof date === 'string' ? date : new Date(date).toISOString().slice(0, 10);
+        let html = `${dateStr}<br/>标普500: <b>${p.value[1].toFixed(2)}</b>`;
+        const ev = eventByDate.get(dateStr);
+        if (ev) {
+          html += `<br/><span style="color:${sec};">事件: ${ev.label}</span>`;
+        }
+        return html;
+      },
+    },
+    series: [{
+      name: '标普500日线',
+      type: 'line',
+      smooth: false,
+      showSymbol: false,
+      sampling: 'lttb',
+      data: data.map(d => [d.date, d.close]),
+      lineStyle: { color: lineColor, width: 1.5 },
+      itemStyle: { color: lineColor },
+      areaStyle: {
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: 'rgba(26,26,26,0.10)' },
+            { offset: 1, color: 'rgba(26,26,26,0)' },
+          ],
+        },
+      },
+      markPoint: { data: markPoints, silent: false },
+      markArea: { silent: true, data: markAreas },
+    }],
+  };
+}
+
+(function init2021Chart() {
+  const el = document.getElementById('chartYear2021');
+  if (!el) return;
+  const chart = echarts.init(el);
+  window._yearChart = chart;
+  window.addEventListener('resize', () => chart.resize());
+
+  fetch('../data/chronicle/year_data/2021.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(payload => {
+      const series = (payload.series || []).filter(d => d && d.date && d.close != null);
+      if (!series.length) return;
+      window._yearData = series;
+      chart.setOption(getYearChartOption(series));
+    })
+    .catch(err => console.warn('2021 chart load failed', err));
+})();
+
+// ── 时代背景 · 从 era_data JSON 渲染 ──
+function escapeHTML(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+function renderEra(era) {
+  const titleEl = document.getElementById('eraTitle');
+  const tagEl = document.getElementById('eraTagline');
+  const contentEl = document.getElementById('eraContent');
+  if (titleEl && era.title) titleEl.textContent = '时代背景 · ' + era.title;
+  if (tagEl && era.tagline) tagEl.textContent = era.tagline;
+  if (!contentEl) return;
+
+  const parts = [];
+  (era.sections || []).forEach(sec => {
+    parts.push(`<h3>${escapeHTML(sec.heading)}</h3>`);
+    if (sec.type === 'paragraphs') {
+      (sec.body || []).forEach(p => parts.push(`<p>${p}</p>`));
+    } else if (sec.type === 'list') {
+      const isHist = sec.heading && sec.heading.indexOf('关键史实') >= 0;
+      if (isHist) {
+        const items = (sec.items || []).map(it => {
+          const date = it.date || it.strong || '';
+          const title = it.title || '';
+          const body = it.body || '';
+          return `<li><div class="era-history-date">${date}</div><div class="era-history-content"><div class="era-history-title">${title}</div><div class="era-history-body">${body}</div></div></li>`;
+        }).join('');
+        parts.push(`<ul class="era-history-list">${items}</ul>`);
+      } else {
+        const items = (sec.items || []).map(it => {
+          const lead = it.strong ? `<strong>${it.strong}</strong>：` : '';
+          return `<li>${lead}${it.body || ''}</li>`;
+        }).join('');
+        parts.push(`<ul>${items}</ul>`);
+      }
+    }
+  });
+  contentEl.innerHTML = parts.join('');
+}
+(function loadEra() {
+  const section = document.querySelector('[data-era]');
+  if (!section) return;
+  const eraId = section.dataset.era;
+  fetch(`../data/chronicle/era_data/${eraId}.json?v=` + Date.now())
+    .then(r => r.json())
+    .then(renderEra)
+    .catch(err => {
+      console.warn('era load failed', err);
+      const el = document.getElementById('eraContent');
+      if (el) el.innerHTML = '<p style="color:var(--text-secondary);">时代背景加载失败</p>';
+    });
+})();
+</script>
+
+</body>
+</html>
