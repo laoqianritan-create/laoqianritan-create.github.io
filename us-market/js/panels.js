@@ -460,9 +460,12 @@ function setupLazyInit() {
 // ─────────────────────────────────────────────────────────────
 
 // Keys to load in idle time, roughly in page-scroll order
+// 编年史依赖前置: chronicleYears (8KB) + annualReturns (8KB) 必须最先 idle 加载,
+// 否则用户点"返回日历"会被 2MB+ 的 sp500_price/volatility 等堵在网络队列后面
 const DEFERRED_KEYS = [
+  'chronicleYears', 'annualReturns',
   // SP500 in scroll order
-  'annualReturns', 'annualTr', 'returnDetails', 'drawdown', 'intrayearDd',
+  'annualTr', 'returnDetails', 'drawdown', 'intrayearDd',
   'volatility', 'monthly', 'vix', 'buffett', 'pe', 'aiae', 'eps', 'roe',
   'm7', 'sectors', 'changes', 'rules', 'constituents',
   // Cross / NDX
@@ -471,8 +474,6 @@ const DEFERRED_KEYS = [
   'ndxVolatility', 'ndxMonthly', 'ndxDrawdowns', 'ndxRolling5y',
   'ndxIntrayearDd', 'ndxVxn', 'qqqDetails',
   'nasdaq100', 'dowCentury',
-  // Chronicle
-  'chronicleYears',
 ];
 
 const scheduleIdle = fn =>
@@ -496,20 +497,35 @@ async function main() {
   initTheme();
   initNav();
 
-  // Phase 1 — critical data for the first visible panel (panel-price)
-  await Promise.all(
-    ['price', 'century', 'recession'].map(k => load(k, FILES[k]))
-  );
+  // 检测 URL hash:若用户带着 #panel-chronicle 进来(典型场景:从年页"返回日历"),
+  // 跳过 SP500 重数据 Phase 1 (sp500_price 2.1MB + sp500_century),
+  // 直接加载编年史 16KB 依赖,首屏 < 1s
+  const targetHash = window.location.hash || '';
+  const isChronicleTarget = targetHash === '#panel-chronicle';
 
-  // Init the two panels that are immediately visible on load
-  triggerPanel('panel-price');      // needs price + century + recession
-  triggerPanel('panel-capitalism'); // needs nothing — inits synchronously
+  if (isChronicleTarget) {
+    // Phase 1 (编年史路径):只加载日历必需的两份 8KB JSON
+    await Promise.all([
+      load('chronicleYears', FILES.chronicleYears),
+      load('annualReturns', FILES.annualReturns),
+    ]);
+    triggerPanel('panel-chronicle');
+    triggerPanel('panel-capitalism'); // 无数据依赖,同步 init,几乎免费
 
-  // Phase 2 — set up lazy init triggers for all other panels
-  setupLazyInit();
+    setupLazyInit();
+    // 其它面板继续在 idle 时装填,但优先级靠后(已从 DEFERRED_KEYS 里前置 chronicle 两条)
+    loadBatch(DEFERRED_KEYS.filter(k => k !== 'chronicleYears' && k !== 'annualReturns'));
+  } else {
+    // Phase 1 (默认 SP500 路径):critical data for the first visible panel (panel-price)
+    await Promise.all(
+      ['price', 'century', 'recession'].map(k => load(k, FILES[k]))
+    );
+    triggerPanel('panel-price');
+    triggerPanel('panel-capitalism');
 
-  // Phase 3 — kick off remaining data loads in idle time
-  loadBatch(DEFERRED_KEYS);
+    setupLazyInit();
+    loadBatch(DEFERRED_KEYS);
+  }
 
   // Export buttons can be wired up immediately (handlers are lazy-safe)
   initExportButtons();
