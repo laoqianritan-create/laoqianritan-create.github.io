@@ -429,14 +429,6 @@ a.tr-dist-cell:hover {
   position: relative;
 }
 
-/* 数据健康徽章 */
-.data-health-badge {
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  margin-left: 4px;
-}
-
 /* 黄金看板 footer 链接金光闪烁 (每秒一次) */
 .footer-link-gold {
   position: relative;
