@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260512181056">
-<link rel="stylesheet" href="css/chronicle.css?v=20260512181056">
+<link rel="stylesheet" href="style.css?v=20260512200904">
+<link rel="stylesheet" href="css/chronicle.css?v=20260512200904">
 </head>
 <body>
 
@@ -862,6 +862,25 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-ndx-breadth" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">纳斯达克100牛市宽度</h2>
+          <p class="panel-desc">创历史新高的成分股数量占比</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-export-element="panel-ndx-breadth" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="breadth-layout">
+        <div class="chart-container chart-square" id="chartNdxBreadthPie"></div>
+        <div class="chart-container chart-wide" id="chartNdxBreadthLine"></div>
+      </div>
+      <div class="metric-strip" id="ndxBreadthSummary"></div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-ndx-scatter" data-category="cross" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -931,25 +950,6 @@
     </div>
   </section>
 
-  <section class="panel" id="panel-ndx-breadth" data-category="cross" hidden>
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">纳斯达克100牛市宽度</h2>
-          <p class="panel-desc">创历史新高的成分股数量占比</p>
-        </div>
-        <div class="panel-controls">
-          <button class="btn btn-export" data-export-element="panel-ndx-breadth" title="导出PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="breadth-layout">
-        <div class="chart-container chart-square" id="chartNdxBreadthPie"></div>
-        <div class="chart-container chart-wide" id="chartNdxBreadthLine"></div>
-      </div>
-      <div class="metric-strip" id="ndxBreadthSummary"></div>
-    </div>
-  </section>
-
   <section class="panel" id="panel-dow-century" data-category="cross" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -1002,8 +1002,8 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260512181056"></script>
-<script defer src="js/hero-curve.js?v=20260512181056"></script>
+<script type="module" src="js/panels.js?v=20260512200904"></script>
+<script defer src="js/hero-curve.js?v=20260512200904"></script>
 
 </body>
 </html>

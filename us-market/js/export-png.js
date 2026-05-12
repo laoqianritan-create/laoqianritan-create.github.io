@@ -38,30 +38,22 @@ function wrapDescLines(descs, maxWidth, fontSize) {
   return lines;
 }
 
-// 从 panel 抽出标题 + 所有 .panel-desc 文本 + metric-strip 数据
+// 从 panel 抽出标题 + 所有 .panel-desc 文本
 function getPanelMeta(panelEl) {
-  if (!panelEl) return { title: 'Big Picture', descs: [], stats: [] };
+  if (!panelEl) return { title: 'Big Picture', descs: [] };
   const title = panelEl.querySelector('.panel-title')?.textContent.trim() || 'Big Picture';
   const descs = [...panelEl.querySelectorAll('.panel-desc')]
     .map(p => p.innerText.trim().replace(/\s+/g, ' '))
     .filter(Boolean);
-  const stats = [...panelEl.querySelectorAll('.metric-card')]
-    .map(card => {
-      const label = card.querySelector('.metric-label')?.textContent.trim() || '';
-      const value = card.querySelector('.metric-value')?.textContent.trim() || '';
-      const note  = card.querySelector('.metric-note')?.textContent.trim()  || '';
-      const head  = [label, value].filter(Boolean).join('  ');
-      return note ? `${head}    ${note}` : head;
-    })
-    .filter(Boolean);
-  return { title, descs, stats };
+  return { title, descs };
 }
 
-// 找到底部"说明表格"类型的附加元素（VXN 五档解读表、其他未来 panel-explainer 等）
-// 导出 PNG 时把这些元素也渲染进画布底部
+// 找到面板内需要额外渲染的 HTML 元素（metric-strip、VXN 五档解读表等）
+// 导出 PNG 时用 html2canvas 将它们原样渲染进画布底部，保持所见即所得
 function getPanelExtras(panelEl) {
   if (!panelEl) return [];
   const selectors = [
+    '.metric-strip',           // 统计指标条（所见即所得，替代旧的灰色纯文本）
     '.vxn-explainer',          // VXN 五档解读表
     '.panel-explainer',        // 未来通用 explainer 容器
     '.drawdown-table-wrap',    // 回撤事件表（chart 导出时一并带上）
@@ -70,7 +62,8 @@ function getPanelExtras(panelEl) {
   const extras = [];
   selectors.forEach(sel => {
     panelEl.querySelectorAll(sel).forEach(el => {
-      if (!seen.has(el)) { seen.add(el); extras.push(el); }
+      // 跳过已收集的和内容为空的（尚未被 JS 填充的占位容器）
+      if (!seen.has(el) && el.innerHTML.trim()) { seen.add(el); extras.push(el); }
     });
   });
   return extras;
@@ -97,35 +90,39 @@ async function renderElementToImage(element) {
 }
 
 // 用 contentImg + meta 拼最终图，落盘
-// extraImages: [{ img, naturalW, naturalH }, ...] 可选；会等比缩放后堆叠到 stats 之下
-function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, meta, extraImages = []) {
+// extraImages: [{ img, naturalW, naturalH }, ...] 可选；会等比缩放后堆叠到内容图之下
+// opts.skipHeader: 内容图已包含面板标题/描述时跳过顶部重复绘制
+function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, meta, extraImages = [], opts = {}) {
   const bg = cssVar('--bg') || '#fff';
   const textColor = cssVar('--text') || '#1a1a1a';
   const grayColor = cssVar('--gray') || '#999';
+  const skipHeader = opts.skipHeader || false;
 
   const contentMaxW = EXPORT_W - PAD * 2;
   // 不放大、只缩小：natural < max 时保持原尺寸居中
   const contentW = Math.min(contentMaxW, contentNaturalW);
   const contentH = Math.round(contentW * (contentNaturalH / contentNaturalW));
 
-  // 估算标题字号（自适应缩小如果超宽）
-  const ctxMeasure = document.createElement('canvas').getContext('2d');
+  let headerH;
   let titleFontSize = TITLE_SIZE;
-  ctxMeasure.font = `bold ${titleFontSize}px ${FONT}`;
-  while (ctxMeasure.measureText(meta.title).width > contentMaxW && titleFontSize > 32) {
-    titleFontSize -= 2;
-    ctxMeasure.font = `bold ${titleFontSize}px ${FONT}`;
-  }
-
-  const descLines = wrapDescLines(meta.descs, contentMaxW, DESC_SIZE);
+  let descLines = [];
   const descLineH = DESC_SIZE + DESC_LINE_GAP;
-  const descBlockH = descLines.length * descLineH;
 
-  // metric-strip 统计数据（图表下方）
-  const statsLines = (meta.stats?.length > 0)
-    ? wrapDescLines(meta.stats, contentMaxW, DESC_SIZE)
-    : [];
-  const statsBlockH = statsLines.length > 0 ? 32 + statsLines.length * descLineH : 0;
+  if (skipHeader) {
+    // 内容图已含标题/描述，只保留顶部留白
+    headerH = PAD;
+  } else {
+    // 估算标题字号（自适应缩小如果超宽）
+    const ctxMeasure = document.createElement('canvas').getContext('2d');
+    ctxMeasure.font = `bold ${titleFontSize}px ${FONT}`;
+    while (ctxMeasure.measureText(meta.title).width > contentMaxW && titleFontSize > 32) {
+      titleFontSize -= 2;
+      ctxMeasure.font = `bold ${titleFontSize}px ${FONT}`;
+    }
+    descLines = wrapDescLines(meta.descs, contentMaxW, DESC_SIZE);
+    const descBlockH = descLines.length * descLineH;
+    headerH = PAD + titleFontSize + 18 + DATE_SIZE + 30 + descBlockH + 36;
+  }
 
   // 预计算 extras 缩放后高度
   const extrasLayout = extraImages.map(ex => {
@@ -133,16 +130,11 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
     const h = Math.round(w * (ex.naturalH / ex.naturalW));
     return { ...ex, w, h };
   });
-  const extrasGap = 40; // 每个 extra 之间 + 与 stats 之间的间距
+  const extrasGap = 40;
   const extrasBlockH = extrasLayout.reduce((sum, ex) => sum + ex.h + extrasGap, 0);
 
-  const headerH = PAD                  // 顶部留白
-    + titleFontSize + 18               // 标题
-    + DATE_SIZE + 30                   // 日期
-    + descBlockH                       // 描述块
-    + 36;                              // 描述与内容间隔
-  const footerH = FOOTER_SIZE + 28 + 24; // footer
-  const exportH = headerH + contentH + statsBlockH + extrasBlockH + footerH;
+  const footerH = FOOTER_SIZE + 28 + 24;
+  const exportH = headerH + contentH + extrasBlockH + footerH;
 
   const canvas = document.createElement('canvas');
   canvas.width = EXPORT_W;
@@ -152,42 +144,35 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
   ctx.fillRect(0, 0, EXPORT_W, exportH);
 
   let y = PAD;
-  // 标题
-  ctx.fillStyle = textColor;
-  ctx.font = `bold ${titleFontSize}px ${FONT}`;
-  ctx.textAlign = 'left';
-  ctx.fillText(meta.title, PAD, y + titleFontSize * 0.85);
-  y += titleFontSize + 18;
-  // 日期
-  ctx.fillStyle = grayColor;
-  ctx.font = `${DATE_SIZE}px ${FONT}`;
-  ctx.fillText(new Date().toISOString().substring(0, 10), PAD, y + DATE_SIZE * 0.85);
-  y += DATE_SIZE + 30;
-  // 描述
-  ctx.fillStyle = grayColor;
-  ctx.font = `${DESC_SIZE}px ${FONT}`;
-  for (const line of descLines) {
-    if (line) ctx.fillText(line, PAD, y + DESC_SIZE * 0.85);
-    y += descLineH;
+
+  if (!skipHeader) {
+    // 标题
+    ctx.fillStyle = textColor;
+    ctx.font = `bold ${titleFontSize}px ${FONT}`;
+    ctx.textAlign = 'left';
+    ctx.fillText(meta.title, PAD, y + titleFontSize * 0.85);
+    y += titleFontSize + 18;
+    // 日期
+    ctx.fillStyle = grayColor;
+    ctx.font = `${DATE_SIZE}px ${FONT}`;
+    ctx.fillText(new Date().toISOString().substring(0, 10), PAD, y + DATE_SIZE * 0.85);
+    y += DATE_SIZE + 30;
+    // 描述
+    ctx.fillStyle = grayColor;
+    ctx.font = `${DESC_SIZE}px ${FONT}`;
+    for (const line of descLines) {
+      if (line) ctx.fillText(line, PAD, y + DESC_SIZE * 0.85);
+      y += descLineH;
+    }
+    y += 36;
   }
-  y += 36;
+
   // 内容居中绘制
   const contentX = (EXPORT_W - contentW) / 2;
   ctx.drawImage(contentImg, contentX, y, contentW, contentH);
   y += contentH;
 
-  // metric-strip 统计数据
-  if (statsLines.length > 0) {
-    y += 32;
-    ctx.fillStyle = grayColor;
-    ctx.font = `${DESC_SIZE}px ${FONT}`;
-    for (const line of statsLines) {
-      if (line) ctx.fillText(line, PAD, y + DESC_SIZE * 0.85);
-      y += descLineH;
-    }
-  }
-
-  // 附加元素（底部说明表格等）
+  // 附加元素（metric-strip、说明表格等，html2canvas 原样渲染）
   for (const ex of extrasLayout) {
     y += extrasGap;
     const exX = (EXPORT_W - ex.w) / 2;
@@ -261,6 +246,14 @@ export async function exportElementAsPng(element, panelEl) {
     alert('导出工具加载失败，请检查网络');
     return;
   }
+
+  // 如果渲染的元素就是整个面板（含 panel-title），则：
+  //  1. 隐藏导出按钮，避免截进图里
+  //  2. 最终组装时跳过顶部标题/描述（内容图已包含）
+  const hasHeader = !!element.querySelector('.panel-title');
+  const btnsToHide = hasHeader ? [...element.querySelectorAll('.btn-export')] : [];
+  btnsToHide.forEach(b => b.style.display = 'none');
+
   const bg = cssVar('--bg') || '#fff';
   // windowWidth=1600 强制以 desktop 视口渲染，避免 mobile 单列布局产出超长 PNG
   const sourceCanvas = await h2c(element, {
@@ -271,9 +264,27 @@ export async function exportElementAsPng(element, panelEl) {
     windowHeight: Math.max(element.scrollHeight, 900),
   });
 
+  // 恢复按钮显示
+  btnsToHide.forEach(b => b.style.display = '');
+
+  // 收集面板内附加元素（metric-strip、说明表格等），
+  // 过滤掉已在被渲染元素内部的（避免重复，如 panel-breadth 整体导出时 metric-strip 已在截图里）
+  let extras = [];
+  const extraEls = getPanelExtras(panelEl).filter(el => !element.contains(el));
+  for (const el of extraEls) {
+    try {
+      extras.push(await renderElementToImage(el));
+    } catch (err) {
+      console.warn('附加元素渲染失败，跳过', el, err);
+    }
+  }
+
   const img = new Image();
   img.src = sourceCanvas.toDataURL('image/png');
-  img.onload = () => buildFrameAndDownload(img, sourceCanvas.width, sourceCanvas.height, getPanelMeta(panelEl));
+  img.onload = () => buildFrameAndDownload(
+    img, sourceCanvas.width, sourceCanvas.height,
+    getPanelMeta(panelEl), extras, { skipHeader: hasHeader },
+  );
 }
 
 export function initExportButtons() {
