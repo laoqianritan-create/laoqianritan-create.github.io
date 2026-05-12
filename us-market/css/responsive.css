@@ -55,6 +55,7 @@
   .category-tab { font-size: 12px; padding: 6px 12px; }
   html { scroll-padding-top: 88px; }
   .sector-layout,
+  .breadth-layout,
   .rules-highlights,
   .rules-grid,
   .compare-grid {

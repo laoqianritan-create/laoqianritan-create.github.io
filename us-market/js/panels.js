@@ -28,7 +28,7 @@ import {
 
 import { initPanelBuffett } from './panels/buffett.js';
 
-import { initPanelM7, initPanelSectors } from './panels/market.js';
+import { initPanelM7, initPanelSectors, initPanelBreadth } from './panels/market.js';
 
 import {
   initNasdaq100CompaniesPanel, initNasdaq100AnnualPanel,
@@ -101,6 +101,7 @@ const FILES = {
   changes:        'data/sp500_changes.json',
   rules:          'data/sp500_rules.json',
   aiae:           'data/aiae.json',
+  breadth:        'data/sp500_breadth.json',
   buffett:        'data/buffett.json',
   intrayearDd:    'data/sp500_intrayear_dd.json',
   annualTr:       'data/sp500_annual_tr.json',
@@ -120,6 +121,7 @@ const FILES = {
   ndxVxn:         'data/ndx_vxn.json',
   qqqDetails:     'data/qqq_return_details.json',
   equalWeight:    'data/sp500_equal_weight.json',
+  ndxBreadth:     'data/ndx_breadth.json',
   // Chronicle
   chronicleYears: 'data/chronicle/years.json',
 };
@@ -212,6 +214,10 @@ const PANELS = {
   'panel-pe': {
     requires: ['pe', 'century'],
     init() { initPanelPe(D.pe, D.century); },
+  },
+  'panel-breadth': {
+    requires: ['breadth'],
+    init() { if (D.breadth) initPanelBreadth(D.breadth); },
   },
   'panel-aiae': {
     requires: ['aiae'],
@@ -395,6 +401,15 @@ const PANELS = {
   'panel-nasdaq100-companies': {
     requires: ['nasdaq100'],
     init() { initNasdaq100CompaniesPanel(D.nasdaq100); },
+  },
+  'panel-ndx-breadth': {
+    requires: ['ndxBreadth'],
+    init() {
+      if (D.ndxBreadth) initPanelBreadth(D.ndxBreadth, {
+        pieId: 'chartNdxBreadthPie', lineId: 'chartNdxBreadthLine',
+        stripId: 'ndxBreadthSummary',
+      });
+    },
   },
   'panel-dow-century': {
     requires: ['dowCentury', 'recession'],

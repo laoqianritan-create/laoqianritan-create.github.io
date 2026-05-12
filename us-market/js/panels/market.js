@@ -293,5 +293,179 @@ export function initPanelSectors(data) {
 }
 
 // ══════════════════════════════════════════════════════
+// 标普500牛市宽度（创新高占比）
+// ══════════════════════════════════════════════════════
+
+export function initPanelBreadth(data, opts = {}) {
+  if (!data || !data.current || !data.history || !data.history.length) return;
+
+  const pieId    = opts.pieId    || 'chartBreadthPie';
+  const lineId   = opts.lineId   || 'chartBreadthLine';
+  const stripId  = opts.stripId  || 'breadthSummary';
+
+  // 项目统一配色：绿 = --green，蓝 = #2563eb（与 VIX/PE/巴菲特等面板一致）
+  const greenColor = cssVar('--green') || '#389e0d';
+  const blueColor  = '#2563eb';
+
+  const { current, summary, history } = data;
+
+  // ── 左侧：饼图 ─────────────────────────────────────
+  const pieChart = registerChart(echarts.init(document.getElementById(pieId)));
+  const notAtAth = current.total - current.atAth;
+
+  function getPieOption() {
+    const muted  = cssVar('--border') || '#e0e0e0';
+    const mobile = isMobile();
+
+    return {
+      animation: false,
+      tooltip: {
+        trigger: 'item',
+        backgroundColor: cssVar('--card-bg') || '#fff',
+        borderColor: cssVar('--border') || '#e8e8e8',
+        textStyle: { fontSize: 13, color: cssVar('--text') || '#1a1a1a', fontFamily: CHART_FONT },
+        formatter: params => `${params.name}: <b>${params.value}</b> 只 (${formatPercent(params.percent, 1)})`,
+      },
+      series: [{
+        name: '创新高占比',
+        type: 'pie',
+        radius: ['50%', '78%'],
+        center: ['50%', '50%'],
+        avoidLabelOverlap: true,
+        itemStyle: { borderColor: cssVar('--bg') || '#fff', borderWidth: 2 },
+        label: {
+          fontSize: mobile ? 11 : 13,
+          color: cssVar('--text-secondary') || '#666',
+          fontFamily: CHART_FONT,
+          formatter: '{b}\n{d}%',
+        },
+        labelLine: { length: 10, length2: 8 },
+        data: [
+          { value: current.atAth, name: '创新高', itemStyle: { color: greenColor } },
+          { value: notAtAth, name: '未创新高', itemStyle: { color: muted } },
+        ],
+      }],
+      graphic: [{
+        type: 'text',
+        left: 'center',
+        top: '42%',
+        style: {
+          text: `${formatPercent(current.pct, 1)}`,
+          textAlign: 'center',
+          fill: cssVar('--text') || '#1a1a1a',
+          font: `700 ${mobile ? 22 : 28}px Inter`,
+        },
+      }, {
+        type: 'text',
+        left: 'center',
+        top: mobile ? '54%' : '55%',
+        style: {
+          text: `${current.atAth} / ${current.total}`,
+          textAlign: 'center',
+          fill: cssVar('--text-secondary') || '#666',
+          font: `400 ${mobile ? 11 : 13}px Inter`,
+        },
+      }],
+    };
+  }
+
+  pieChart.setOption(getPieOption());
+  pieChart._refreshTheme = () => pieChart.setOption(getPieOption(), true);
+
+  // ── 右侧：双线折线图（1px 线宽）──────────────────────
+  const lineChart = registerChart(echarts.init(document.getElementById(lineId)));
+
+  function getLineOption() {
+    const grayColor = cssVar('--gray') || '#999';
+    const gridColor = cssVar('--chart-grid') || '#f0f0f0';
+    const mobile = isMobile();
+    const athLineData  = history.map(d => [d.date, d.pct]);
+    const pct80LineData = history.map(d => [d.date, d.pct80 ?? null]);
+
+    return {
+      animation: false,
+      grid: mobile
+        ? { left: 40, right: 12, top: 40, bottom: 56 }
+        : { left: 50, right: 20, top: 40, bottom: 56 },
+      legend: {
+        top: 4,
+        textStyle: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        itemWidth: 16, itemHeight: 2, itemGap: 16,
+      },
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: cssVar('--card-bg') || '#fff',
+        borderColor: cssVar('--border') || '#e8e8e8',
+        textStyle: { fontSize: 13, color: cssVar('--text') || '#1a1a1a', fontFamily: CHART_FONT },
+        formatter: params => {
+          if (!params.length) return '';
+          const dateStr = params[0].axisValueLabel;
+          const item = history.find(h => h.date === params[0].value[0]);
+          let s = dateStr;
+          if (item) {
+            s += `<br/>创新高占比: <b>${formatPercent(item.pct, 1)}</b> (${item.count}/${item.total})`;
+            if (item.pct80 != null) {
+              s += `<br/>80%百分位占比: <b>${formatPercent(item.pct80, 1)}</b> (${item.count80}/${item.total})`;
+            }
+          }
+          return s;
+        },
+      },
+      xAxis: {
+        type: 'time',
+        axisLabel: { fontSize: mobile ? 10 : 11, color: grayColor, fontFamily: CHART_FONT, hideOverlap: true },
+        splitLine: { show: false },
+      },
+      yAxis: {
+        type: 'value',
+        name: '%',
+        nameTextStyle: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        min: 0,
+        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT, formatter: v => `${v}%` },
+        splitLine: { lineStyle: { color: gridColor } },
+      },
+      series: [
+        {
+          name: '创新高占比',
+          type: 'line',
+          showSymbol: false,
+          data: athLineData,
+          lineStyle: { width: 1, color: greenColor },
+          itemStyle: { color: greenColor },
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: greenColor + '40' },
+              { offset: 1, color: greenColor + '05' },
+            ]),
+          },
+        },
+        {
+          name: '80%百分位占比',
+          type: 'line',
+          showSymbol: false,
+          data: pct80LineData,
+          lineStyle: { width: 1, color: blueColor },
+          itemStyle: { color: blueColor },
+        },
+      ],
+      dataZoom: getDataZoom(grayColor),
+    };
+  }
+
+  lineChart.setOption(getLineOption());
+  lineChart._refreshTheme = () => lineChart.setOption(getLineOption(), true);
+
+  // ── metric-strip ──────────────────────────────────────
+  if (summary) {
+    renderMetricStrip(stripId, [
+      buildMetricCard('当前占比', formatPercent(current.pct, 1), `${current.date} · ${current.atAth} 只创新高`),
+      buildMetricCard('历史均值', formatPercent(summary.avgPct, 1), '出图窗口期均值'),
+      buildMetricCard('峰值', formatPercent(summary.maxPct, 1), summary.maxDate),
+      buildMetricCard('谷值', formatPercent(summary.minPct, 1), summary.minDate),
+    ]);
+  }
+}
+
+// ══════════════════════════════════════════════════════
 // 面板12：成分股变动
 // ══════════════════════════════════════════════════════
