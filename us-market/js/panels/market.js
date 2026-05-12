@@ -293,7 +293,7 @@ export function initPanelSectors(data) {
 }
 
 // ══════════════════════════════════════════════════════
-// 标普500牛市宽度（创新高占比）
+// 标普500牛市宽度（52周新高占比）
 // ══════════════════════════════════════════════════════
 
 export function initPanelBreadth(data, opts = {}) {
@@ -327,7 +327,7 @@ export function initPanelBreadth(data, opts = {}) {
         formatter: params => `${params.name}: <b>${params.value}</b> 只 (${formatPercent(params.percent, 1)})`,
       },
       series: [{
-        name: '创新高占比',
+        name: '52周新高占比',
         type: 'pie',
         radius: ['50%', '78%'],
         center: ['50%', '50%'],
@@ -341,7 +341,7 @@ export function initPanelBreadth(data, opts = {}) {
         },
         labelLine: { length: 10, length2: 8 },
         data: [
-          { value: current.atAth, name: '创新高', itemStyle: { color: greenColor } },
+          { value: current.atAth, name: '52周新高', itemStyle: { color: greenColor } },
           { value: notAtAth, name: '未创新高', itemStyle: { color: muted } },
         ],
       }],
@@ -403,7 +403,7 @@ export function initPanelBreadth(data, opts = {}) {
           const item = history.find(h => h.date === params[0].value[0]);
           let s = dateStr;
           if (item) {
-            s += `<br/>创新高占比: <b>${formatPercent(item.pct, 1)}</b> (${item.count}/${item.total})`;
+            s += `<br/>52周新高占比: <b>${formatPercent(item.pct, 1)}</b> (${item.count}/${item.total})`;
             if (item.pct80 != null) {
               s += `<br/>80%百分位占比: <b>${formatPercent(item.pct80, 1)}</b> (${item.count80}/${item.total})`;
             }
@@ -426,7 +426,7 @@ export function initPanelBreadth(data, opts = {}) {
       },
       series: [
         {
-          name: '创新高占比',
+          name: '52周新高占比',
           type: 'line',
           showSymbol: false,
           data: athLineData,
@@ -458,7 +458,7 @@ export function initPanelBreadth(data, opts = {}) {
   // ── metric-strip ──────────────────────────────────────
   if (summary) {
     renderMetricStrip(stripId, [
-      buildMetricCard('当前占比', formatPercent(current.pct, 1), `${current.date} · ${current.atAth} 只创新高`),
+      buildMetricCard('当前占比', formatPercent(current.pct, 1), `${current.date} · ${current.atAth} 只创52周新高`),
       buildMetricCard('历史均值', formatPercent(summary.avgPct, 1), '出图窗口期均值'),
       buildMetricCard('峰值', formatPercent(summary.maxPct, 1), summary.maxDate),
       buildMetricCard('谷值', formatPercent(summary.minPct, 1), summary.minDate),
