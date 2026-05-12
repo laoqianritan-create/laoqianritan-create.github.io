@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260512173342">
-<link rel="stylesheet" href="css/chronicle.css?v=20260512173342">
+<link rel="stylesheet" href="style.css?v=20260512181056">
+<link rel="stylesheet" href="css/chronicle.css?v=20260512181056">
 </head>
 <body>
 
@@ -57,8 +57,7 @@
         <a class="nav-item" href="#panel-ndx-vxn" data-panel="panel-ndx-vxn">恐慌指数</a>
         <a class="nav-item" href="#panel-ndx-rolling" data-panel="panel-ndx-rolling">滚动收益率</a>
         <a class="nav-item" href="#panel-ndx-breadth" data-panel="panel-ndx-breadth">牛市宽度</a>
-        <a class="nav-item" href="#panel-nasdaq100-member-returns" data-panel="panel-nasdaq100-member-returns">近1年</a>
-        <a class="nav-item" href="#panel-nasdaq100-ytd" data-panel="panel-nasdaq100-ytd">年内</a>
+        <a class="nav-item" href="#panel-ndx-scatter" data-panel="panel-ndx-scatter">收益散点</a>
         <a class="nav-item" href="#panel-nasdaq100-weights" data-panel="panel-nasdaq100-weights">权重累计</a>
         <a class="nav-item" href="#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">成分股</a>
         <a class="nav-item" href="#panel-dow-century" data-panel="panel-dow-century">道指</a>
@@ -863,35 +862,19 @@
     </div>
   </section>
 
-  <section class="panel" id="panel-nasdaq100-member-returns" data-category="cross" hidden>
+  <section class="panel" id="panel-ndx-scatter" data-category="cross" hidden>
     <div class="panel-inner">
       <div class="panel-header">
         <div>
-          <h2 class="panel-title">纳斯达克100成员近1年收益</h2>
-          <p class="panel-desc">按近 1 年收益率对全部成分股做横截面排序，可滚动浏览完整样本</p>
+          <h2 class="panel-title">纳斯达克100成分股收益散点</h2>
+          <p class="panel-desc">X 轴年内收益 · Y 轴近1年收益 · 气泡大小 = QQQ 权重 · 颜色 = 行业</p>
         </div>
         <div class="panel-controls">
-          <button class="btn btn-export" data-chart="chartNasdaq100MemberReturns" title="导出PNG">&#8681;</button>
+          <button class="btn btn-export" data-chart="chartNdxScatter" title="导出PNG">&#8681;</button>
         </div>
       </div>
-      <div class="chart-container chart-hero chart-ranking-tall" id="chartNasdaq100MemberReturns"></div>
-      <div class="metric-strip" id="nasdaq100MemberReturnSummary"></div>
-    </div>
-  </section>
-
-  <section class="panel" id="panel-nasdaq100-ytd" data-category="cross" hidden>
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">纳斯达克100年内涨跌</h2>
-          <p class="panel-desc">按年初以来涨跌幅排序，看今年内部扩散与分化</p>
-        </div>
-        <div class="panel-controls">
-          <button class="btn btn-export" data-chart="chartNasdaq100Ytd" title="导出PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="chart-container chart-hero chart-ranking-tall" id="chartNasdaq100Ytd"></div>
-      <div class="metric-strip" id="nasdaq100YtdSummary"></div>
+      <div class="chart-container chart-hero" id="chartNdxScatter"></div>
+      <div class="metric-strip" id="ndxScatterSummary"></div>
     </div>
   </section>
 
@@ -1019,8 +1002,8 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260512173342"></script>
-<script defer src="js/hero-curve.js?v=20260512173342"></script>
+<script type="module" src="js/panels.js?v=20260512181056"></script>
+<script defer src="js/hero-curve.js?v=20260512181056"></script>
 
 </body>
 </html>

@@ -33,6 +33,7 @@ import { initPanelM7, initPanelSectors, initPanelBreadth } from './panels/market
 import {
   initNasdaq100CompaniesPanel, initNasdaq100AnnualPanel,
   initNasdaqRankingPanel, initNasdaq100WeightsPanel,
+  initNdxScatterPanel,
 } from './panels/nasdaq.js';
 
 import { initPanelChanges, initPanelRules } from './panels/rules.js';
@@ -368,30 +369,10 @@ const PANELS = {
       });
     },
   },
-  'panel-nasdaq100-member-returns': {
+  'panel-ndx-scatter': {
     requires: ['nasdaq100'],
     init() {
-      initNasdaqRankingPanel('chartNasdaq100MemberReturns', 'nasdaq100MemberReturnSummary',
-        D.nasdaq100.companies, {
-          key: 'return1y', label: '近1年收益', summaryLabel: '全样本均值',
-          showAllByDefault: true, gridLeft: 132, gridRight: 72, barMaxWidth: 8, xAxisSplitNumber: 6,
-          xAxisMin: v => Math.min(-200, Math.floor(v / 100) * 100),
-          xAxisMax: (_, v) => Math.max(1000, Math.ceil(v / 100) * 100),
-          color: v => v >= 0 ? (cssVar('--green') || '#389e0d') : (cssVar('--red') || '#cf1322'),
-        });
-    },
-  },
-  'panel-nasdaq100-ytd': {
-    requires: ['nasdaq100'],
-    init() {
-      initNasdaqRankingPanel('chartNasdaq100Ytd', 'nasdaq100YtdSummary',
-        D.nasdaq100.companies, {
-          key: 'ytdReturn', label: '年内收益', summaryLabel: '年初至今均值',
-          showAllByDefault: true, gridLeft: 132, gridRight: 72, barMaxWidth: 8, xAxisSplitNumber: 5,
-          xAxisMin: v => Math.min(-100, Math.floor(v / 10) * 10),
-          xAxisMax: (_, v) => Math.max(100, Math.ceil(v / 10) * 10),
-          color: v => v >= 0 ? (cssVar('--green') || '#389e0d') : (cssVar('--red') || '#cf1322'),
-        });
+      if (D.nasdaq100) initNdxScatterPanel(D.nasdaq100);
     },
   },
   'panel-nasdaq100-weights': {

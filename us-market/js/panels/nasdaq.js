@@ -34,6 +34,8 @@ import {
   bindAnnualizedMatrixTooltip,
 } from '../chart-helpers.js';
 
+import { isMobile } from '../mobile.js';
+
 export function initNasdaq100CompaniesPanel(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartNasdaq100Companies')));
   const weightedCompanies = data.companies
@@ -475,6 +477,228 @@ export function initNasdaq100WeightsPanel(data) {
     buildMetricCard('前25大覆盖', data.overview.top25Weight != null ? formatPercent(data.overview.top25Weight, 2) : '--', '当前免费源能拿到的实际披露权重覆盖。'),
     buildMetricCard('其余成分', data.overview.otherWeight != null ? formatPercent(data.overview.otherWeight, 2) : '--', '剩余成分被聚合为一个尾部桶。'),
     buildMetricCard('最大持仓', data.topHoldings?.[0] ? `${data.topHoldings[0].ticker} | ${formatPercent(data.topHoldings[0].weight, 2)}` : '--', data.topHoldings?.[0]?.name || ''),
+  ]);
+}
+
+// ══════════════════════════════════════════════════════
+// 面板：NDX 成分股收益散点图（年内 × 近1年）
+// ══════════════════════════════════════════════════════
+
+export function initNdxScatterPanel(data) {
+  const container = document.getElementById('chartNdxScatter');
+  if (!container) return;
+  const chart = registerChart(echarts.init(container));
+  const companies = (data.companies || []).filter(
+    c => c.return1y != null && c.ytdReturn != null,
+  );
+
+  // ── 行业归类（10 → 5 大组）────────────────────────────
+  const SECTOR_MAP = {
+    'Technology':             '科技',
+    'Consumer Discretionary': '可选消费',
+    'Consumer Staples':       '必选消费',
+    'Telecommunications':     '电信',
+    'Health Care':            '医疗',
+    'Industrials':            '工业',
+    'Utilities':              '公用',
+    'Basic Materials':        '材料',
+    'Energy':                 '能源',
+    'Real Estate':            '地产',
+  };
+  const SECTOR_COLOR = {
+    '科技':     '#2563eb',
+    '可选消费': '#f97316',
+    '医疗':     '#0f766e',
+    '工业':     '#7c3aed',
+    '其他':     '#999999',
+  };
+  function getSector(industry) {
+    const cn = SECTOR_MAP[industry] || '其他';
+    if (['必选消费', '电信'].includes(cn)) return '可选消费';
+    if (['公用', '材料', '能源', '地产'].includes(cn)) return '其他';
+    return cn;
+  }
+
+  // ── 按行业分组 ──────────────────────────────────────
+  const groups = {};
+  companies.forEach(c => {
+    const sector = getSector(c.industry);
+    if (!groups[sector]) groups[sector] = [];
+    groups[sector].push(c);
+  });
+
+  // 决定标注 ticker 的股票：权重 top7 + 涨跌幅极端值
+  const byWeight = [...companies].sort((a, b) => (b.qqqWeight || 0) - (a.qqqWeight || 0));
+  const labelSet = new Set(byWeight.slice(0, 7).map(c => c.ticker));
+  const byYtd = [...companies].sort((a, b) => a.ytdReturn - b.ytdReturn);
+  byYtd.slice(0, 2).forEach(c => labelSet.add(c.ticker));
+  byYtd.slice(-2).forEach(c => labelSet.add(c.ticker));
+  const byR1y = [...companies].sort((a, b) => a.return1y - b.return1y);
+  byR1y.slice(0, 2).forEach(c => labelSet.add(c.ticker));
+  byR1y.slice(-2).forEach(c => labelSet.add(c.ticker));
+
+  // ── symlog 变换：0 附近线性，远端对数压缩 ──────────────
+  const SYMLOG_C = 30; // 线性段阈值（±30% 内保持线性）
+  function symlog(v) {
+    if (Math.abs(v) <= SYMLOG_C) return v;
+    return Math.sign(v) * (SYMLOG_C + SYMLOG_C * Math.log(Math.abs(v) / SYMLOG_C));
+  }
+  function symlogInv(v) {
+    if (Math.abs(v) <= SYMLOG_C) return v;
+    return Math.sign(v) * SYMLOG_C * Math.exp((Math.abs(v) - SYMLOG_C) / SYMLOG_C);
+  }
+
+  // ── 生成刻度 ─────────────────────────────────────────
+  function buildTicks(values) {
+    const absMax = Math.max(...values.map(Math.abs));
+    const candidates = [
+      -3000, -2000, -1000, -500, -200, -100, -50, -20, 0,
+      20, 50, 100, 200, 500, 1000, 2000, 3000, 5000,
+    ];
+    return candidates.filter(v => Math.abs(v) <= absMax * 1.2);
+  }
+
+  function getOption() {
+    const grayColor  = cssVar('--gray') || '#999';
+    const gridColor  = cssVar('--chart-grid') || '#f0f0f0';
+    const greenColor = cssVar('--green') || '#389e0d';
+    const redColor   = cssVar('--red') || '#cf1322';
+    const mobile     = isMobile();
+
+    const allYtd = companies.map(c => c.ytdReturn);
+    const allR1y = companies.map(c => c.return1y);
+    const xTicks = buildTicks(allYtd);
+    const yTicks = buildTicks(allR1y);
+
+    // 各行业 series
+    const sectorOrder = ['科技', '可选消费', '医疗', '工业', '其他'];
+    const seriesList = sectorOrder
+      .filter(s => groups[s] && groups[s].length)
+      .map(sector => ({
+        name: sector,
+        type: 'scatter',
+        data: groups[sector].map(c => {
+          const w = c.qqqWeight || 0;
+          const size = Math.max(8, Math.min(32, 6 + w * 3));
+          return {
+            value: [symlog(c.ytdReturn), symlog(c.return1y)],
+            _raw: [c.ytdReturn, c.return1y],
+            ticker: c.ticker,
+            companyName: c.name,
+            weight: w,
+            symbolSize: size,
+            label: labelSet.has(c.ticker) ? {
+              show: true,
+              formatter: c.ticker,
+              fontSize: mobile ? 9 : 10,
+              color: cssVar('--text') || '#1a1a1a',
+              position: 'right',
+              fontFamily: CHART_FONT,
+              distance: 4,
+            } : { show: false },
+          };
+        }),
+        itemStyle: { color: SECTOR_COLOR[sector], opacity: 0.78 },
+      }));
+
+    return {
+      animation: false,
+      grid: mobile
+        ? { left: 48, right: 16, top: 50, bottom: 56 }
+        : { left: 64, right: 28, top: 50, bottom: 60 },
+      legend: {
+        top: 6,
+        textStyle: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        itemWidth: 10, itemHeight: 10, itemGap: 14,
+      },
+      tooltip: {
+        trigger: 'item',
+        backgroundColor: cssVar('--card-bg') || '#fff',
+        borderColor: cssVar('--border') || '#e8e8e8',
+        textStyle: { fontSize: 13, color: cssVar('--text') || '#1a1a1a', fontFamily: CHART_FONT },
+        formatter: params => {
+          const d = params.data;
+          const [ytd, r1y] = d._raw;
+          const ytdColor = ytd >= 0 ? greenColor : redColor;
+          const r1yColor = r1y >= 0 ? greenColor : redColor;
+          let s = `<b>${d.ticker}</b> ${escapeHtml(d.companyName)}`;
+          s += `<br/>年内: <b style="color:${ytdColor}">${formatPercent(ytd, 1)}</b>`;
+          s += `<br/>近1年: <b style="color:${r1yColor}">${formatPercent(r1y, 1)}</b>`;
+          if (d.weight) s += `<br/>QQQ权重: ${formatPercent(d.weight, 2)}`;
+          return s;
+        },
+      },
+      xAxis: {
+        type: 'value',
+        name: '年内收益',
+        nameLocation: 'center',
+        nameGap: mobile ? 32 : 38,
+        nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
+        min: symlog(Math.min(...allYtd) * 1.15),
+        max: symlog(Math.max(...allYtd) * 1.15),
+        axisLabel: {
+          fontSize: 11, color: grayColor, fontFamily: CHART_FONT,
+          formatter: v => {
+            const raw = symlogInv(v);
+            return `${Math.round(raw)}%`;
+          },
+        },
+        axisTick: { alignWithLabel: true, inside: true },
+        splitLine: { show: false },
+        axisLine: { show: true, lineStyle: { color: gridColor } },
+      },
+      yAxis: {
+        type: 'value',
+        name: '近1年收益',
+        nameLocation: 'center',
+        nameGap: mobile ? 36 : 48,
+        nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
+        min: symlog(Math.min(...allR1y) * 1.15),
+        max: symlog(Math.max(...allR1y) * 1.15),
+        axisLabel: {
+          fontSize: 11, color: grayColor, fontFamily: CHART_FONT,
+          formatter: v => {
+            const raw = symlogInv(v);
+            return `${Math.round(raw)}%`;
+          },
+        },
+        axisTick: { alignWithLabel: true, inside: true },
+        splitLine: { show: false },
+        axisLine: { show: true, lineStyle: { color: gridColor } },
+      },
+      series: [
+        // 十字线 markLine（X=0, Y=0）
+        {
+          type: 'scatter', data: [], silent: true,
+          markLine: {
+            silent: true, symbol: 'none',
+            lineStyle: { color: gridColor, type: 'solid', width: 1 },
+            data: [
+              { xAxis: 0, label: { show: false } },
+              { yAxis: 0, label: { show: false } },
+            ],
+          },
+        },
+        ...seriesList,
+      ],
+    };
+  }
+
+  chart.setOption(getOption());
+  chart._refreshTheme = () => chart.setOption(getOption(), true);
+
+  // ── metric-strip ──────────────────────────────────────
+  const ytdArr = companies.map(c => c.ytdReturn);
+  const r1yArr = companies.map(c => c.return1y);
+  const avgYtd = ytdArr.reduce((s, v) => s + v, 0) / ytdArr.length;
+  const avgR1y = r1yArr.reduce((s, v) => s + v, 0) / r1yArr.length;
+  const posYtd = ytdArr.filter(v => v > 0).length;
+  const posR1y = r1yArr.filter(v => v > 0).length;
+  renderMetricStrip('ndxScatterSummary', [
+    buildMetricCard('年内均值', formatPercent(avgYtd, 1), `${posYtd}/${companies.length} 只上涨`),
+    buildMetricCard('近1年均值', formatPercent(avgR1y, 1), `${posR1y}/${companies.length} 只上涨`),
+    buildMetricCard('年内极值', `${formatPercent(Math.min(...ytdArr), 0)} ~ ${formatPercent(Math.max(...ytdArr), 0)}`, '最差 ~ 最好'),
+    buildMetricCard('近1年极值', `${formatPercent(Math.min(...r1yArr), 0)} ~ ${formatPercent(Math.max(...r1yArr), 0)}`, '最差 ~ 最好'),
   ]);
 }
 
