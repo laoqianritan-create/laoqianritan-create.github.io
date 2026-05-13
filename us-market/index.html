@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260513103541">
-<link rel="stylesheet" href="css/chronicle.css?v=20260513103541">
+<link rel="stylesheet" href="style.css?v=20260513133403">
+<link rel="stylesheet" href="css/chronicle.css?v=20260513133403">
 </head>
 <body>
 
@@ -45,6 +45,7 @@
       </div>
       <div class="nav-group" data-category="cross">
         <a class="nav-item active" href="#panel-nasdaq-composite" data-panel="panel-nasdaq-composite">纳指综指</a>
+        <a class="nav-item" href="#panel-dow-century" data-panel="panel-dow-century">道指</a>
         <a class="nav-item" href="#panel-nasdaq-logyoy" data-panel="panel-nasdaq-logyoy">牛熊周期</a>
         <a class="nav-item" href="#panel-nasdaq100-annual" data-panel="panel-nasdaq100-annual">年回报</a>
         <a class="nav-item" href="#panel-ndx-annual-dist" data-panel="panel-ndx-annual-dist">回报分布</a>
@@ -60,7 +61,6 @@
         <a class="nav-item" href="#panel-ndx-scatter" data-panel="panel-ndx-scatter">收益散点</a>
         <a class="nav-item" href="#panel-nasdaq100-weights" data-panel="panel-nasdaq100-weights">权重累计</a>
         <a class="nav-item" href="#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">成分股</a>
-        <a class="nav-item" href="#panel-dow-century" data-panel="panel-dow-century">道指</a>
       </div>
       <div class="nav-group" data-category="chronicle">
         <a class="nav-item active" href="#panel-chronicle" data-panel="panel-chronicle">日历</a>
@@ -203,6 +203,27 @@
       </div>
       <div class="chart-container chart-standard" id="chartNasdaqComposite"></div>
       <div class="metric-strip" id="nasdaqCompositeSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-dow-century" data-category="cross" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">道琼斯指数百年走势</h2>
+          <p class="panel-desc">100 年月度收盘点位 · 支持价格、对数、百分比三种视角</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group" id="dowCenturyScaleToggle">
+            <button class="btn" data-scale="price">价格</button>
+            <button class="btn active" data-scale="log">对数</button>
+            <button class="btn" data-scale="pct">百分比</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartDowCentury" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartDowCentury"></div>
+      <div class="metric-strip" id="dowCenturySummary"></div>
     </div>
   </section>
 
@@ -950,27 +971,6 @@
     </div>
   </section>
 
-  <section class="panel" id="panel-dow-century" data-category="cross" hidden>
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">道琼斯指数百年走势</h2>
-          <p class="panel-desc">100 年月度收盘点位 · 支持价格、对数、百分比三种视角</p>
-        </div>
-        <div class="panel-controls">
-          <div class="btn-group" id="dowCenturyScaleToggle">
-            <button class="btn" data-scale="price">价格</button>
-            <button class="btn active" data-scale="log">对数</button>
-            <button class="btn" data-scale="pct">百分比</button>
-          </div>
-          <button class="btn btn-export" data-chart="chartDowCentury" title="导出PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="chart-container chart-standard" id="chartDowCentury"></div>
-      <div class="metric-strip" id="dowCenturySummary"></div>
-    </div>
-  </section>
-
   <section class="panel" id="panel-chronicle" data-category="chronicle" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -1002,8 +1002,8 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260513103541"></script>
-<script defer src="js/hero-curve.js?v=20260513103541"></script>
+<script type="module" src="js/panels.js?v=20260513133403"></script>
+<script defer src="js/hero-curve.js?v=20260513133403"></script>
 
 </body>
 </html>
