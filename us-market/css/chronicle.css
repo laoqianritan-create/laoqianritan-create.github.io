@@ -11,14 +11,6 @@
   --chr-tier-up:          #389e0d;          /* 10% ~ 20% */
   --chr-tier-strong-up:   #237804;          /* ≥ 20% */
 }
-[data-theme="dark"] {
-  --chr-tier-strong-down: #d11a2a;
-  --chr-tier-down:        #ff4d4f;
-  --chr-tier-soft-down:   rgba(255,77,79,0.30);
-  --chr-tier-soft-up:     rgba(82,196,26,0.30);
-  --chr-tier-up:          #52c41a;
-  --chr-tier-strong-up:   #389e0d;
-}
 
 /* ── 日历容器 ── */
 .chronicle-wrap {

@@ -49,7 +49,6 @@
   }
   .nav-group { flex-direction: row; gap: 4px; min-width: 100%; }
   .nav-item { font-size: 12px; padding: 5px 8px; }
-  .theme-toggle { margin-top: 0; }
   .main, .hero-banner, .footer, .category-bar { margin-left: 0; }
   .category-inner { padding: 10px 16px; }
   .category-tab { font-size: 12px; padding: 6px 12px; }

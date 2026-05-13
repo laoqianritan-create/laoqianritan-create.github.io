@@ -8,16 +8,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="../style.css?v=20260513205810">
-<link rel="stylesheet" href="../css/chronicle.css?v=20260513205810">
+<link rel="stylesheet" href="../style.css?v=20260513211726">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260513211726">
 <script>
-  // 提前应用主题，避免首屏闪烁
-  (function() {
-    var saved = localStorage.getItem('sp500-theme');
-    if (saved === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  })();
 </script>
 </head>
 <body>
@@ -33,10 +26,6 @@
         <a class="nav-item" href="../index.html#panel-chronicle">← 返回日历</a>
       </div>
     </nav>
-    <button class="theme-toggle" id="themeToggle" title="切换主题">
-      <span class="theme-icon-light">&#9790;</span>
-      <span class="theme-icon-dark">&#9728;</span>
-    </button>
   </div>
 </header>
 
@@ -242,7 +231,7 @@
   </div>
 </footer>
 
-<script defer src="../js/chronicle-year.js?v=20260513205810"></script>
+<script defer src="../js/chronicle-year.js?v=20260513211726"></script>
 
 </body>
 </html>

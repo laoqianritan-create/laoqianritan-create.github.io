@@ -12,23 +12,6 @@
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   }
 
-  // ── 主题切换 ──
-  const toggleBtn = document.getElementById('themeToggle');
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if (isDark) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('sp500-theme', 'light');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('sp500-theme', 'dark');
-      }
-      if (window._yearChart && window._yearData) {
-        window._yearChart.setOption(getYearChartOption(window._yearData), true);
-      }
-    });
-  }
 
   // ── 时间线读取 → 事件数组 ──
   function readTimelineEvents() {

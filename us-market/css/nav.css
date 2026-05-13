@@ -63,27 +63,6 @@
   background: var(--accent-light);
 }
 
-/* ── Theme Toggle ── */
-.theme-toggle {
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  color: var(--text-secondary);
-  transition: all 0.15s;
-  flex-shrink: 0;
-  margin-top: 8px;
-}
-.theme-toggle:hover { color: var(--text); border-color: var(--text-secondary); }
-.theme-icon-dark { display: none; }
-[data-theme="dark"] .theme-icon-light { display: none; }
-[data-theme="dark"] .theme-icon-dark { display: inline; }
 
 /* ── Category Bar (horizontal, below hero) ── */
 .category-bar {

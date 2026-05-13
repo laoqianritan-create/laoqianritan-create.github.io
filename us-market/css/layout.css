@@ -26,10 +26,6 @@ body {
   min-height: 220px;
   margin-left: 140px;
 }
-[data-theme="dark"] .hero-banner {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1e1e28 100%);
-  border-bottom-color: #222;
-}
 .hero-inner {
   position: relative;
   z-index: 2;
