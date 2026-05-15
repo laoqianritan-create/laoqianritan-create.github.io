@@ -1,13 +1,13 @@
 {
-  "updated": "2026-05-14",
+  "updated": "2026-05-15",
   "source": "Damodaran 1928-1987 + yfinance ^SP500TR 1988+",
   "latestYear": 2026,
-  "latestDate": "2026-05-13",
+  "latestDate": "2026-05-14",
   "latestIsYtd": true,
-  "average": 11.88,
+  "average": 11.89,
   "positiveYears": 73,
   "totalYears": 99,
-  "withinAvgPlusMinus2": 7,
+  "withinAvgPlusMinus2": 8,
   "buckets": [
     {
       "key": "lt_-40",
@@ -94,8 +94,7 @@
         2005,
         2007,
         2011,
-        2015,
-        2026
+        2015
       ]
     },
     {
@@ -125,7 +124,8 @@
         2014,
         2016,
         2020,
-        2025
+        2025,
+        2026
       ]
     },
     {
@@ -592,7 +592,7 @@
     },
     {
       "year": 2026,
-      "value": 9.2
+      "value": 10.04
     }
   ]
 }
