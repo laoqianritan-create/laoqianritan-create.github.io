@@ -1,0 +1,97 @@
+{
+  "updated": "2026-05-16T06:33:14Z",
+  "sources": [
+    {
+      "name": "debt-total",
+      "ok": true,
+      "critical": true,
+      "panels": [
+        "panel-debt-total"
+      ],
+      "latest_data": "2026-05-14",
+      "elapsed_sec": 3.5,
+      "started_at": "2026-05-16T06:32:00Z",
+      "error": null
+    },
+    {
+      "name": "auction",
+      "ok": true,
+      "critical": true,
+      "panels": [
+        "panel-auction"
+      ],
+      "latest_data": "2026-05-16",
+      "elapsed_sec": 5.5,
+      "started_at": "2026-05-16T06:32:03Z",
+      "error": null
+    },
+    {
+      "name": "rate-by-type",
+      "ok": true,
+      "critical": true,
+      "panels": [
+        "panel-rate-by-type"
+      ],
+      "latest_data": "2026-05-16",
+      "elapsed_sec": 2.9,
+      "started_at": "2026-05-16T06:32:09Z",
+      "error": null
+    },
+    {
+      "name": "yield-curve",
+      "ok": true,
+      "critical": false,
+      "panels": [
+        "panel-yield-curve"
+      ],
+      "latest_data": "2026-05-14",
+      "elapsed_sec": 24.3,
+      "started_at": "2026-05-16T06:32:12Z",
+      "error": null
+    },
+    {
+      "name": "macro-annual",
+      "ok": true,
+      "critical": false,
+      "panels": [
+        "panel-revenue",
+        "panel-spending",
+        "panel-deficit",
+        "panel-deficit-gdp",
+        "panel-debt-gdp"
+      ],
+      "latest_data": "2026-05-16T06:32:46Z",
+      "elapsed_sec": 10.4,
+      "started_at": "2026-05-16T06:32:36Z",
+      "error": null
+    },
+    {
+      "name": "v2-fred",
+      "ok": true,
+      "critical": true,
+      "panels": [
+        "lab-*",
+        "P29-P37"
+      ],
+      "latest_data": null,
+      "elapsed_sec": 27.2,
+      "started_at": "2026-05-16T06:32:46Z",
+      "error": null
+    },
+    {
+      "name": "v2-compile",
+      "ok": true,
+      "critical": false,
+      "panels": [],
+      "latest_data": null,
+      "elapsed_sec": 0.1,
+      "started_at": "2026-05-16T06:33:14Z",
+      "error": null
+    }
+  ],
+  "summary": {
+    "ok": 7,
+    "fail": 0,
+    "total": 7
+  }
+}
