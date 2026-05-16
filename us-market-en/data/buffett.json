@@ -1,0 +1,5515 @@
+{
+  "as_of": "2026-05-15",
+  "current": {
+    "ratio_classic": 231.39,
+    "ratio_modified": 191.04,
+    "tmc": 73713.73,
+    "gdp": 31856.26,
+    "fed_ta": 6728.5
+  },
+  "extremes": {
+    "classic_peak": {
+      "date": "2026-05-15",
+      "value": 231.39
+    },
+    "classic_trough": {
+      "date": "1982-04-28",
+      "value": 35.2
+    },
+    "modified_peak": {
+      "date": "2026-05-15",
+      "value": 191.04
+    },
+    "modified_trough": {
+      "date": "2009-02-27",
+      "value": 45.72
+    }
+  },
+  "valuation_modified": {
+    "name": "Modified: TMC / (GDP + Fed Total Assets)",
+    "bands": [
+      {
+        "max": 73,
+        "label": "Significantly Undervalued",
+        "color": "#1d7e3a"
+      },
+      {
+        "max": 94,
+        "label": "Undervalued",
+        "color": "#52c41a"
+      },
+      {
+        "max": 115,
+        "label": "Fair Value",
+        "color": "#fadb14"
+      },
+      {
+        "max": 136,
+        "label": "Overvalued",
+        "color": "#fa8c16"
+      },
+      {
+        "max": null,
+        "label": "Significantly Overvalued",
+        "color": "#cf1322"
+      }
+    ]
+  },
+  "valuation_classic": {
+    "name": "Classic: TMC / GDP",
+    "bands": [
+      {
+        "max": 90,
+        "label": "Significantly Undervalued",
+        "color": "#1d7e3a"
+      },
+      {
+        "max": 115,
+        "label": "Undervalued",
+        "color": "#52c41a"
+      },
+      {
+        "max": 141,
+        "label": "Fair Value",
+        "color": "#fadb14"
+      },
+      {
+        "max": 167,
+        "label": "Overvalued",
+        "color": "#fa8c16"
+      },
+      {
+        "max": null,
+        "label": "Significantly Overvalued",
+        "color": "#cf1322"
+      }
+    ]
+  },
+  "series": [
+    {
+      "date": "1970-01-28",
+      "tmc": 740.34,
+      "gdp": 1051.2,
+      "fed_ta": null,
+      "ratio_classic": 70.43,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-02-28",
+      "tmc": 740.34,
+      "gdp": 1051.2,
+      "fed_ta": null,
+      "ratio_classic": 70.43,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-03-28",
+      "tmc": 740.34,
+      "gdp": 1051.2,
+      "fed_ta": null,
+      "ratio_classic": 70.43,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-04-28",
+      "tmc": 591.88,
+      "gdp": 1067.38,
+      "fed_ta": null,
+      "ratio_classic": 55.45,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-05-28",
+      "tmc": 591.88,
+      "gdp": 1067.38,
+      "fed_ta": null,
+      "ratio_classic": 55.45,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-06-28",
+      "tmc": 591.88,
+      "gdp": 1067.38,
+      "fed_ta": null,
+      "ratio_classic": 55.45,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-07-28",
+      "tmc": 692.27,
+      "gdp": 1086.06,
+      "fed_ta": null,
+      "ratio_classic": 63.74,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-08-28",
+      "tmc": 692.27,
+      "gdp": 1086.06,
+      "fed_ta": null,
+      "ratio_classic": 63.74,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-09-28",
+      "tmc": 692.27,
+      "gdp": 1086.06,
+      "fed_ta": null,
+      "ratio_classic": 63.74,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-10-28",
+      "tmc": 767.35,
+      "gdp": 1088.61,
+      "fed_ta": null,
+      "ratio_classic": 70.49,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-11-28",
+      "tmc": 767.35,
+      "gdp": 1088.61,
+      "fed_ta": null,
+      "ratio_classic": 70.49,
+      "ratio_modified": null
+    },
+    {
+      "date": "1970-12-28",
+      "tmc": 767.35,
+      "gdp": 1088.61,
+      "fed_ta": null,
+      "ratio_classic": 70.49,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-01-28",
+      "tmc": 846.34,
+      "gdp": 1135.16,
+      "fed_ta": null,
+      "ratio_classic": 74.56,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-02-28",
+      "tmc": 846.34,
+      "gdp": 1135.16,
+      "fed_ta": null,
+      "ratio_classic": 74.56,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-03-28",
+      "tmc": 846.34,
+      "gdp": 1135.16,
+      "fed_ta": null,
+      "ratio_classic": 74.56,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-04-28",
+      "tmc": 850.56,
+      "gdp": 1156.27,
+      "fed_ta": null,
+      "ratio_classic": 73.56,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-05-28",
+      "tmc": 850.56,
+      "gdp": 1156.27,
+      "fed_ta": null,
+      "ratio_classic": 73.56,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-06-28",
+      "tmc": 850.56,
+      "gdp": 1156.27,
+      "fed_ta": null,
+      "ratio_classic": 73.56,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-07-28",
+      "tmc": 836.3,
+      "gdp": 1177.67,
+      "fed_ta": null,
+      "ratio_classic": 71.01,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-08-28",
+      "tmc": 836.3,
+      "gdp": 1177.67,
+      "fed_ta": null,
+      "ratio_classic": 71.01,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-09-28",
+      "tmc": 836.3,
+      "gdp": 1177.67,
+      "fed_ta": null,
+      "ratio_classic": 71.01,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-10-28",
+      "tmc": 900.13,
+      "gdp": 1190.3,
+      "fed_ta": null,
+      "ratio_classic": 75.62,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-11-28",
+      "tmc": 900.13,
+      "gdp": 1190.3,
+      "fed_ta": null,
+      "ratio_classic": 75.62,
+      "ratio_modified": null
+    },
+    {
+      "date": "1971-12-28",
+      "tmc": 900.13,
+      "gdp": 1190.3,
+      "fed_ta": null,
+      "ratio_classic": 75.62,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-01-28",
+      "tmc": 952.77,
+      "gdp": 1230.61,
+      "fed_ta": null,
+      "ratio_classic": 77.42,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-02-28",
+      "tmc": 952.77,
+      "gdp": 1230.61,
+      "fed_ta": null,
+      "ratio_classic": 77.42,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-03-28",
+      "tmc": 952.77,
+      "gdp": 1230.61,
+      "fed_ta": null,
+      "ratio_classic": 77.42,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-04-28",
+      "tmc": 956.01,
+      "gdp": 1266.37,
+      "fed_ta": null,
+      "ratio_classic": 75.49,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-05-28",
+      "tmc": 956.01,
+      "gdp": 1266.37,
+      "fed_ta": null,
+      "ratio_classic": 75.49,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-06-28",
+      "tmc": 956.01,
+      "gdp": 1266.37,
+      "fed_ta": null,
+      "ratio_classic": 75.49,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-07-28",
+      "tmc": 976.23,
+      "gdp": 1290.57,
+      "fed_ta": null,
+      "ratio_classic": 75.64,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-08-28",
+      "tmc": 976.23,
+      "gdp": 1290.57,
+      "fed_ta": null,
+      "ratio_classic": 75.64,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-09-28",
+      "tmc": 976.23,
+      "gdp": 1290.57,
+      "fed_ta": null,
+      "ratio_classic": 75.64,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-10-28",
+      "tmc": 1128.33,
+      "gdp": 1328.9,
+      "fed_ta": null,
+      "ratio_classic": 84.91,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-11-28",
+      "tmc": 1128.33,
+      "gdp": 1328.9,
+      "fed_ta": null,
+      "ratio_classic": 84.91,
+      "ratio_modified": null
+    },
+    {
+      "date": "1972-12-28",
+      "tmc": 1128.33,
+      "gdp": 1328.9,
+      "fed_ta": null,
+      "ratio_classic": 84.91,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-01-28",
+      "tmc": 1060.43,
+      "gdp": 1377.49,
+      "fed_ta": null,
+      "ratio_classic": 76.98,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-02-28",
+      "tmc": 1060.43,
+      "gdp": 1377.49,
+      "fed_ta": null,
+      "ratio_classic": 76.98,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-03-28",
+      "tmc": 1060.43,
+      "gdp": 1377.49,
+      "fed_ta": null,
+      "ratio_classic": 76.98,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-04-28",
+      "tmc": 987.29,
+      "gdp": 1413.89,
+      "fed_ta": null,
+      "ratio_classic": 69.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-05-28",
+      "tmc": 987.29,
+      "gdp": 1413.89,
+      "fed_ta": null,
+      "ratio_classic": 69.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-06-28",
+      "tmc": 987.29,
+      "gdp": 1413.89,
+      "fed_ta": null,
+      "ratio_classic": 69.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-07-28",
+      "tmc": 1041.79,
+      "gdp": 1433.84,
+      "fed_ta": null,
+      "ratio_classic": 72.66,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-08-28",
+      "tmc": 1041.79,
+      "gdp": 1433.84,
+      "fed_ta": null,
+      "ratio_classic": 72.66,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-09-28",
+      "tmc": 1041.79,
+      "gdp": 1433.84,
+      "fed_ta": null,
+      "ratio_classic": 72.66,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-10-28",
+      "tmc": 884.32,
+      "gdp": 1476.29,
+      "fed_ta": null,
+      "ratio_classic": 59.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-11-28",
+      "tmc": 884.32,
+      "gdp": 1476.29,
+      "fed_ta": null,
+      "ratio_classic": 59.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1973-12-28",
+      "tmc": 884.32,
+      "gdp": 1476.29,
+      "fed_ta": null,
+      "ratio_classic": 59.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-01-28",
+      "tmc": 856.78,
+      "gdp": 1491.21,
+      "fed_ta": null,
+      "ratio_classic": 57.46,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-02-28",
+      "tmc": 856.78,
+      "gdp": 1491.21,
+      "fed_ta": null,
+      "ratio_classic": 57.46,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-03-28",
+      "tmc": 856.78,
+      "gdp": 1491.21,
+      "fed_ta": null,
+      "ratio_classic": 57.46,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-04-28",
+      "tmc": 790.23,
+      "gdp": 1530.06,
+      "fed_ta": null,
+      "ratio_classic": 51.65,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-05-28",
+      "tmc": 790.23,
+      "gdp": 1530.06,
+      "fed_ta": null,
+      "ratio_classic": 51.65,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-06-28",
+      "tmc": 790.23,
+      "gdp": 1530.06,
+      "fed_ta": null,
+      "ratio_classic": 51.65,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-07-28",
+      "tmc": 590.41,
+      "gdp": 1560.03,
+      "fed_ta": null,
+      "ratio_classic": 37.85,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-08-28",
+      "tmc": 590.41,
+      "gdp": 1560.03,
+      "fed_ta": null,
+      "ratio_classic": 37.85,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-09-28",
+      "tmc": 590.41,
+      "gdp": 1560.03,
+      "fed_ta": null,
+      "ratio_classic": 37.85,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-10-28",
+      "tmc": 609.15,
+      "gdp": 1599.68,
+      "fed_ta": null,
+      "ratio_classic": 38.08,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-11-28",
+      "tmc": 609.15,
+      "gdp": 1599.68,
+      "fed_ta": null,
+      "ratio_classic": 38.08,
+      "ratio_modified": null
+    },
+    {
+      "date": "1974-12-28",
+      "tmc": 609.15,
+      "gdp": 1599.68,
+      "fed_ta": null,
+      "ratio_classic": 38.08,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-01-28",
+      "tmc": 748.25,
+      "gdp": 1616.12,
+      "fed_ta": null,
+      "ratio_classic": 46.3,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-02-28",
+      "tmc": 748.25,
+      "gdp": 1616.12,
+      "fed_ta": null,
+      "ratio_classic": 46.3,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-03-28",
+      "tmc": 748.25,
+      "gdp": 1616.12,
+      "fed_ta": null,
+      "ratio_classic": 46.3,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-04-28",
+      "tmc": 864.81,
+      "gdp": 1651.85,
+      "fed_ta": null,
+      "ratio_classic": 52.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-05-28",
+      "tmc": 864.81,
+      "gdp": 1651.85,
+      "fed_ta": null,
+      "ratio_classic": 52.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-06-28",
+      "tmc": 864.81,
+      "gdp": 1651.85,
+      "fed_ta": null,
+      "ratio_classic": 52.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-07-28",
+      "tmc": 766.57,
+      "gdp": 1709.82,
+      "fed_ta": null,
+      "ratio_classic": 44.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-08-28",
+      "tmc": 766.57,
+      "gdp": 1709.82,
+      "fed_ta": null,
+      "ratio_classic": 44.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-09-28",
+      "tmc": 766.57,
+      "gdp": 1709.82,
+      "fed_ta": null,
+      "ratio_classic": 44.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-10-28",
+      "tmc": 824.6,
+      "gdp": 1761.83,
+      "fed_ta": null,
+      "ratio_classic": 46.8,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-11-28",
+      "tmc": 824.6,
+      "gdp": 1761.83,
+      "fed_ta": null,
+      "ratio_classic": 46.8,
+      "ratio_modified": null
+    },
+    {
+      "date": "1975-12-28",
+      "tmc": 824.6,
+      "gdp": 1761.83,
+      "fed_ta": null,
+      "ratio_classic": 46.8,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-01-28",
+      "tmc": 948.45,
+      "gdp": 1820.49,
+      "fed_ta": null,
+      "ratio_classic": 52.1,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-02-28",
+      "tmc": 948.45,
+      "gdp": 1820.49,
+      "fed_ta": null,
+      "ratio_classic": 52.1,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-03-28",
+      "tmc": 948.45,
+      "gdp": 1820.49,
+      "fed_ta": null,
+      "ratio_classic": 52.1,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-04-28",
+      "tmc": 969.72,
+      "gdp": 1852.33,
+      "fed_ta": null,
+      "ratio_classic": 52.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-05-28",
+      "tmc": 969.72,
+      "gdp": 1852.33,
+      "fed_ta": null,
+      "ratio_classic": 52.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-06-28",
+      "tmc": 969.72,
+      "gdp": 1852.33,
+      "fed_ta": null,
+      "ratio_classic": 52.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-07-28",
+      "tmc": 980.24,
+      "gdp": 1886.56,
+      "fed_ta": null,
+      "ratio_classic": 51.96,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-08-28",
+      "tmc": 980.24,
+      "gdp": 1886.56,
+      "fed_ta": null,
+      "ratio_classic": 51.96,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-09-28",
+      "tmc": 980.24,
+      "gdp": 1886.56,
+      "fed_ta": null,
+      "ratio_classic": 51.96,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-10-28",
+      "tmc": 1013.05,
+      "gdp": 1934.27,
+      "fed_ta": null,
+      "ratio_classic": 52.37,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-11-28",
+      "tmc": 1013.05,
+      "gdp": 1934.27,
+      "fed_ta": null,
+      "ratio_classic": 52.37,
+      "ratio_modified": null
+    },
+    {
+      "date": "1976-12-28",
+      "tmc": 1013.05,
+      "gdp": 1934.27,
+      "fed_ta": null,
+      "ratio_classic": 52.37,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-01-28",
+      "tmc": 936.26,
+      "gdp": 1988.65,
+      "fed_ta": null,
+      "ratio_classic": 47.08,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-02-28",
+      "tmc": 936.26,
+      "gdp": 1988.65,
+      "fed_ta": null,
+      "ratio_classic": 47.08,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-03-28",
+      "tmc": 936.26,
+      "gdp": 1988.65,
+      "fed_ta": null,
+      "ratio_classic": 47.08,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-04-28",
+      "tmc": 963.52,
+      "gdp": 2055.91,
+      "fed_ta": null,
+      "ratio_classic": 46.87,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-05-28",
+      "tmc": 963.52,
+      "gdp": 2055.91,
+      "fed_ta": null,
+      "ratio_classic": 46.87,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-06-28",
+      "tmc": 963.52,
+      "gdp": 2055.91,
+      "fed_ta": null,
+      "ratio_classic": 46.87,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-07-28",
+      "tmc": 923.36,
+      "gdp": 2118.47,
+      "fed_ta": null,
+      "ratio_classic": 43.59,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-08-28",
+      "tmc": 923.36,
+      "gdp": 2118.47,
+      "fed_ta": null,
+      "ratio_classic": 43.59,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-09-28",
+      "tmc": 923.36,
+      "gdp": 2118.47,
+      "fed_ta": null,
+      "ratio_classic": 43.59,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-10-28",
+      "tmc": 894.82,
+      "gdp": 2164.27,
+      "fed_ta": null,
+      "ratio_classic": 41.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-11-28",
+      "tmc": 894.82,
+      "gdp": 2164.27,
+      "fed_ta": null,
+      "ratio_classic": 41.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1977-12-28",
+      "tmc": 894.82,
+      "gdp": 2164.27,
+      "fed_ta": null,
+      "ratio_classic": 41.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-01-28",
+      "tmc": 845.35,
+      "gdp": 2202.76,
+      "fed_ta": null,
+      "ratio_classic": 38.38,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-02-28",
+      "tmc": 845.35,
+      "gdp": 2202.76,
+      "fed_ta": null,
+      "ratio_classic": 38.38,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-03-28",
+      "tmc": 845.35,
+      "gdp": 2202.76,
+      "fed_ta": null,
+      "ratio_classic": 38.38,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-04-28",
+      "tmc": 910.15,
+      "gdp": 2331.63,
+      "fed_ta": null,
+      "ratio_classic": 39.03,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-05-28",
+      "tmc": 910.15,
+      "gdp": 2331.63,
+      "fed_ta": null,
+      "ratio_classic": 39.03,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-06-28",
+      "tmc": 910.15,
+      "gdp": 2331.63,
+      "fed_ta": null,
+      "ratio_classic": 39.03,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-07-28",
+      "tmc": 978.53,
+      "gdp": 2395.05,
+      "fed_ta": null,
+      "ratio_classic": 40.86,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-08-28",
+      "tmc": 978.53,
+      "gdp": 2395.05,
+      "fed_ta": null,
+      "ratio_classic": 40.86,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-09-28",
+      "tmc": 978.53,
+      "gdp": 2395.05,
+      "fed_ta": null,
+      "ratio_classic": 40.86,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-10-28",
+      "tmc": 935.41,
+      "gdp": 2476.95,
+      "fed_ta": null,
+      "ratio_classic": 37.76,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-11-28",
+      "tmc": 935.41,
+      "gdp": 2476.95,
+      "fed_ta": null,
+      "ratio_classic": 37.76,
+      "ratio_modified": null
+    },
+    {
+      "date": "1978-12-28",
+      "tmc": 935.41,
+      "gdp": 2476.95,
+      "fed_ta": null,
+      "ratio_classic": 37.76,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-01-28",
+      "tmc": 995.01,
+      "gdp": 2526.61,
+      "fed_ta": null,
+      "ratio_classic": 39.38,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-02-28",
+      "tmc": 995.01,
+      "gdp": 2526.61,
+      "fed_ta": null,
+      "ratio_classic": 39.38,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-03-28",
+      "tmc": 995.01,
+      "gdp": 2526.61,
+      "fed_ta": null,
+      "ratio_classic": 39.38,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-04-28",
+      "tmc": 1006.2,
+      "gdp": 2591.25,
+      "fed_ta": null,
+      "ratio_classic": 38.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-05-28",
+      "tmc": 1006.2,
+      "gdp": 2591.25,
+      "fed_ta": null,
+      "ratio_classic": 38.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-06-28",
+      "tmc": 1006.2,
+      "gdp": 2591.25,
+      "fed_ta": null,
+      "ratio_classic": 38.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-07-28",
+      "tmc": 1071.76,
+      "gdp": 2667.57,
+      "fed_ta": null,
+      "ratio_classic": 40.18,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-08-28",
+      "tmc": 1071.76,
+      "gdp": 2667.57,
+      "fed_ta": null,
+      "ratio_classic": 40.18,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-09-28",
+      "tmc": 1071.76,
+      "gdp": 2667.57,
+      "fed_ta": null,
+      "ratio_classic": 40.18,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-10-28",
+      "tmc": 1108.49,
+      "gdp": 2723.88,
+      "fed_ta": null,
+      "ratio_classic": 40.7,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-11-28",
+      "tmc": 1108.49,
+      "gdp": 2723.88,
+      "fed_ta": null,
+      "ratio_classic": 40.7,
+      "ratio_modified": null
+    },
+    {
+      "date": "1979-12-28",
+      "tmc": 1108.49,
+      "gdp": 2723.88,
+      "fed_ta": null,
+      "ratio_classic": 40.7,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-01-28",
+      "tmc": 1045.27,
+      "gdp": 2789.84,
+      "fed_ta": null,
+      "ratio_classic": 37.47,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-02-28",
+      "tmc": 1045.27,
+      "gdp": 2789.84,
+      "fed_ta": null,
+      "ratio_classic": 37.47,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-03-28",
+      "tmc": 1045.27,
+      "gdp": 2789.84,
+      "fed_ta": null,
+      "ratio_classic": 37.47,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-04-28",
+      "tmc": 1176.02,
+      "gdp": 2797.35,
+      "fed_ta": null,
+      "ratio_classic": 42.04,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-05-28",
+      "tmc": 1176.02,
+      "gdp": 2797.35,
+      "fed_ta": null,
+      "ratio_classic": 42.04,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-06-28",
+      "tmc": 1176.02,
+      "gdp": 2797.35,
+      "fed_ta": null,
+      "ratio_classic": 42.04,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-07-28",
+      "tmc": 1326.11,
+      "gdp": 2856.48,
+      "fed_ta": null,
+      "ratio_classic": 46.42,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-08-28",
+      "tmc": 1326.11,
+      "gdp": 2856.48,
+      "fed_ta": null,
+      "ratio_classic": 46.42,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-09-28",
+      "tmc": 1326.11,
+      "gdp": 2856.48,
+      "fed_ta": null,
+      "ratio_classic": 46.42,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-10-28",
+      "tmc": 1470.86,
+      "gdp": 2985.56,
+      "fed_ta": null,
+      "ratio_classic": 49.27,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-11-28",
+      "tmc": 1470.86,
+      "gdp": 2985.56,
+      "fed_ta": null,
+      "ratio_classic": 49.27,
+      "ratio_modified": null
+    },
+    {
+      "date": "1980-12-28",
+      "tmc": 1470.86,
+      "gdp": 2985.56,
+      "fed_ta": null,
+      "ratio_classic": 49.27,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-01-28",
+      "tmc": 1475.76,
+      "gdp": 3124.21,
+      "fed_ta": null,
+      "ratio_classic": 47.24,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-02-28",
+      "tmc": 1475.76,
+      "gdp": 3124.21,
+      "fed_ta": null,
+      "ratio_classic": 47.24,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-03-28",
+      "tmc": 1475.76,
+      "gdp": 3124.21,
+      "fed_ta": null,
+      "ratio_classic": 47.24,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-04-28",
+      "tmc": 1437.37,
+      "gdp": 3162.53,
+      "fed_ta": null,
+      "ratio_classic": 45.45,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-05-28",
+      "tmc": 1437.37,
+      "gdp": 3162.53,
+      "fed_ta": null,
+      "ratio_classic": 45.45,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-06-28",
+      "tmc": 1437.37,
+      "gdp": 3162.53,
+      "fed_ta": null,
+      "ratio_classic": 45.45,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-07-28",
+      "tmc": 1241.05,
+      "gdp": 3260.61,
+      "fed_ta": null,
+      "ratio_classic": 38.06,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-08-28",
+      "tmc": 1241.05,
+      "gdp": 3260.61,
+      "fed_ta": null,
+      "ratio_classic": 38.06,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-09-28",
+      "tmc": 1241.05,
+      "gdp": 3260.61,
+      "fed_ta": null,
+      "ratio_classic": 38.06,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-10-28",
+      "tmc": 1338.81,
+      "gdp": 3280.82,
+      "fed_ta": null,
+      "ratio_classic": 40.81,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-11-28",
+      "tmc": 1338.81,
+      "gdp": 3280.82,
+      "fed_ta": null,
+      "ratio_classic": 40.81,
+      "ratio_modified": null
+    },
+    {
+      "date": "1981-12-28",
+      "tmc": 1338.81,
+      "gdp": 3280.82,
+      "fed_ta": null,
+      "ratio_classic": 40.81,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-01-28",
+      "tmc": 1191.13,
+      "gdp": 3274.3,
+      "fed_ta": null,
+      "ratio_classic": 36.38,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-02-28",
+      "tmc": 1191.13,
+      "gdp": 3274.3,
+      "fed_ta": null,
+      "ratio_classic": 36.38,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-03-28",
+      "tmc": 1191.13,
+      "gdp": 3274.3,
+      "fed_ta": null,
+      "ratio_classic": 36.38,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-04-28",
+      "tmc": 1172.8,
+      "gdp": 3331.97,
+      "fed_ta": null,
+      "ratio_classic": 35.2,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-05-28",
+      "tmc": 1172.8,
+      "gdp": 3331.97,
+      "fed_ta": null,
+      "ratio_classic": 35.2,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-06-28",
+      "tmc": 1172.8,
+      "gdp": 3331.97,
+      "fed_ta": null,
+      "ratio_classic": 35.2,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-07-28",
+      "tmc": 1281.09,
+      "gdp": 3366.32,
+      "fed_ta": null,
+      "ratio_classic": 38.06,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-08-28",
+      "tmc": 1281.09,
+      "gdp": 3366.32,
+      "fed_ta": null,
+      "ratio_classic": 38.06,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-09-28",
+      "tmc": 1281.09,
+      "gdp": 3366.32,
+      "fed_ta": null,
+      "ratio_classic": 38.06,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-10-28",
+      "tmc": 1514.51,
+      "gdp": 3402.56,
+      "fed_ta": null,
+      "ratio_classic": 44.51,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-11-28",
+      "tmc": 1514.51,
+      "gdp": 3402.56,
+      "fed_ta": null,
+      "ratio_classic": 44.51,
+      "ratio_modified": null
+    },
+    {
+      "date": "1982-12-28",
+      "tmc": 1514.51,
+      "gdp": 3402.56,
+      "fed_ta": null,
+      "ratio_classic": 44.51,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-01-28",
+      "tmc": 1675.43,
+      "gdp": 3473.41,
+      "fed_ta": null,
+      "ratio_classic": 48.24,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-02-28",
+      "tmc": 1675.43,
+      "gdp": 3473.41,
+      "fed_ta": null,
+      "ratio_classic": 48.24,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-03-28",
+      "tmc": 1675.43,
+      "gdp": 3473.41,
+      "fed_ta": null,
+      "ratio_classic": 48.24,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-04-28",
+      "tmc": 1897.08,
+      "gdp": 3578.85,
+      "fed_ta": null,
+      "ratio_classic": 53.01,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-05-28",
+      "tmc": 1897.08,
+      "gdp": 3578.85,
+      "fed_ta": null,
+      "ratio_classic": 53.01,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-06-28",
+      "tmc": 1897.08,
+      "gdp": 3578.85,
+      "fed_ta": null,
+      "ratio_classic": 53.01,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-07-28",
+      "tmc": 1867.38,
+      "gdp": 3689.18,
+      "fed_ta": null,
+      "ratio_classic": 50.62,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-08-28",
+      "tmc": 1867.38,
+      "gdp": 3689.18,
+      "fed_ta": null,
+      "ratio_classic": 50.62,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-09-28",
+      "tmc": 1867.38,
+      "gdp": 3689.18,
+      "fed_ta": null,
+      "ratio_classic": 50.62,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-10-28",
+      "tmc": 1781.07,
+      "gdp": 3794.71,
+      "fed_ta": null,
+      "ratio_classic": 46.94,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-11-28",
+      "tmc": 1781.07,
+      "gdp": 3794.71,
+      "fed_ta": null,
+      "ratio_classic": 46.94,
+      "ratio_modified": null
+    },
+    {
+      "date": "1983-12-28",
+      "tmc": 1781.07,
+      "gdp": 3794.71,
+      "fed_ta": null,
+      "ratio_classic": 46.94,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-01-28",
+      "tmc": 1668.88,
+      "gdp": 3908.05,
+      "fed_ta": null,
+      "ratio_classic": 42.7,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-02-28",
+      "tmc": 1668.88,
+      "gdp": 3908.05,
+      "fed_ta": null,
+      "ratio_classic": 42.7,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-03-28",
+      "tmc": 1668.88,
+      "gdp": 3908.05,
+      "fed_ta": null,
+      "ratio_classic": 42.7,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-04-28",
+      "tmc": 1590.46,
+      "gdp": 4009.6,
+      "fed_ta": null,
+      "ratio_classic": 39.67,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-05-28",
+      "tmc": 1590.46,
+      "gdp": 4009.6,
+      "fed_ta": null,
+      "ratio_classic": 39.67,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-06-28",
+      "tmc": 1590.46,
+      "gdp": 4009.6,
+      "fed_ta": null,
+      "ratio_classic": 39.67,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-07-28",
+      "tmc": 1685.74,
+      "gdp": 4084.25,
+      "fed_ta": null,
+      "ratio_classic": 41.27,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-08-28",
+      "tmc": 1685.74,
+      "gdp": 4084.25,
+      "fed_ta": null,
+      "ratio_classic": 41.27,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-09-28",
+      "tmc": 1685.74,
+      "gdp": 4084.25,
+      "fed_ta": null,
+      "ratio_classic": 41.27,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-10-28",
+      "tmc": 1697.12,
+      "gdp": 4148.55,
+      "fed_ta": null,
+      "ratio_classic": 40.91,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-11-28",
+      "tmc": 1697.12,
+      "gdp": 4148.55,
+      "fed_ta": null,
+      "ratio_classic": 40.91,
+      "ratio_modified": null
+    },
+    {
+      "date": "1984-12-28",
+      "tmc": 1697.12,
+      "gdp": 4148.55,
+      "fed_ta": null,
+      "ratio_classic": 40.91,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-01-28",
+      "tmc": 1825.84,
+      "gdp": 4230.17,
+      "fed_ta": null,
+      "ratio_classic": 43.16,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-02-28",
+      "tmc": 1825.84,
+      "gdp": 4230.17,
+      "fed_ta": null,
+      "ratio_classic": 43.16,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-03-28",
+      "tmc": 1825.84,
+      "gdp": 4230.17,
+      "fed_ta": null,
+      "ratio_classic": 43.16,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-04-28",
+      "tmc": 1905.1,
+      "gdp": 4294.89,
+      "fed_ta": null,
+      "ratio_classic": 44.36,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-05-28",
+      "tmc": 1905.1,
+      "gdp": 4294.89,
+      "fed_ta": null,
+      "ratio_classic": 44.36,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-06-28",
+      "tmc": 1905.1,
+      "gdp": 4294.89,
+      "fed_ta": null,
+      "ratio_classic": 44.36,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-07-28",
+      "tmc": 1794.02,
+      "gdp": 4386.77,
+      "fed_ta": null,
+      "ratio_classic": 40.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-08-28",
+      "tmc": 1794.02,
+      "gdp": 4386.77,
+      "fed_ta": null,
+      "ratio_classic": 40.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-09-28",
+      "tmc": 1794.02,
+      "gdp": 4386.77,
+      "fed_ta": null,
+      "ratio_classic": 40.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-10-28",
+      "tmc": 2094.7,
+      "gdp": 4444.09,
+      "fed_ta": null,
+      "ratio_classic": 47.13,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-11-28",
+      "tmc": 2094.7,
+      "gdp": 4444.09,
+      "fed_ta": null,
+      "ratio_classic": 47.13,
+      "ratio_modified": null
+    },
+    {
+      "date": "1985-12-28",
+      "tmc": 2094.7,
+      "gdp": 4444.09,
+      "fed_ta": null,
+      "ratio_classic": 47.13,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-01-28",
+      "tmc": 2335.06,
+      "gdp": 4507.89,
+      "fed_ta": null,
+      "ratio_classic": 51.8,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-02-28",
+      "tmc": 2335.06,
+      "gdp": 4507.89,
+      "fed_ta": null,
+      "ratio_classic": 51.8,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-03-28",
+      "tmc": 2335.06,
+      "gdp": 4507.89,
+      "fed_ta": null,
+      "ratio_classic": 51.8,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-04-28",
+      "tmc": 2452.77,
+      "gdp": 4545.34,
+      "fed_ta": null,
+      "ratio_classic": 53.96,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-05-28",
+      "tmc": 2452.77,
+      "gdp": 4545.34,
+      "fed_ta": null,
+      "ratio_classic": 53.96,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-06-28",
+      "tmc": 2452.77,
+      "gdp": 4545.34,
+      "fed_ta": null,
+      "ratio_classic": 53.96,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-07-28",
+      "tmc": 2220.38,
+      "gdp": 4607.67,
+      "fed_ta": null,
+      "ratio_classic": 48.19,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-08-28",
+      "tmc": 2220.38,
+      "gdp": 4607.67,
+      "fed_ta": null,
+      "ratio_classic": 48.19,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-09-28",
+      "tmc": 2220.38,
+      "gdp": 4607.67,
+      "fed_ta": null,
+      "ratio_classic": 48.19,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-10-28",
+      "tmc": 2448.91,
+      "gdp": 4657.63,
+      "fed_ta": null,
+      "ratio_classic": 52.58,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-11-28",
+      "tmc": 2448.91,
+      "gdp": 4657.63,
+      "fed_ta": null,
+      "ratio_classic": 52.58,
+      "ratio_modified": null
+    },
+    {
+      "date": "1986-12-28",
+      "tmc": 2448.91,
+      "gdp": 4657.63,
+      "fed_ta": null,
+      "ratio_classic": 52.58,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-01-28",
+      "tmc": 2959.54,
+      "gdp": 4722.16,
+      "fed_ta": null,
+      "ratio_classic": 62.67,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-02-28",
+      "tmc": 2959.54,
+      "gdp": 4722.16,
+      "fed_ta": null,
+      "ratio_classic": 62.67,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-03-28",
+      "tmc": 2959.54,
+      "gdp": 4722.16,
+      "fed_ta": null,
+      "ratio_classic": 62.67,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-04-28",
+      "tmc": 3041.97,
+      "gdp": 4806.16,
+      "fed_ta": null,
+      "ratio_classic": 63.29,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-05-28",
+      "tmc": 3041.97,
+      "gdp": 4806.16,
+      "fed_ta": null,
+      "ratio_classic": 63.29,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-06-28",
+      "tmc": 3041.97,
+      "gdp": 4806.16,
+      "fed_ta": null,
+      "ratio_classic": 63.29,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-07-28",
+      "tmc": 3217.56,
+      "gdp": 4884.56,
+      "fed_ta": null,
+      "ratio_classic": 65.87,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-08-28",
+      "tmc": 3217.56,
+      "gdp": 4884.56,
+      "fed_ta": null,
+      "ratio_classic": 65.87,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-09-28",
+      "tmc": 3217.56,
+      "gdp": 4884.56,
+      "fed_ta": null,
+      "ratio_classic": 65.87,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-10-28",
+      "tmc": 2498.92,
+      "gdp": 5007.99,
+      "fed_ta": null,
+      "ratio_classic": 49.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-11-28",
+      "tmc": 2498.92,
+      "gdp": 5007.99,
+      "fed_ta": null,
+      "ratio_classic": 49.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1987-12-28",
+      "tmc": 2498.92,
+      "gdp": 5007.99,
+      "fed_ta": null,
+      "ratio_classic": 49.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-01-28",
+      "tmc": 2643.85,
+      "gdp": 5073.37,
+      "fed_ta": null,
+      "ratio_classic": 52.11,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-02-28",
+      "tmc": 2643.85,
+      "gdp": 5073.37,
+      "fed_ta": null,
+      "ratio_classic": 52.11,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-03-28",
+      "tmc": 2643.85,
+      "gdp": 5073.37,
+      "fed_ta": null,
+      "ratio_classic": 52.11,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-04-28",
+      "tmc": 2748.43,
+      "gdp": 5190.04,
+      "fed_ta": null,
+      "ratio_classic": 52.96,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-05-28",
+      "tmc": 2748.43,
+      "gdp": 5190.04,
+      "fed_ta": null,
+      "ratio_classic": 52.96,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-06-28",
+      "tmc": 2748.43,
+      "gdp": 5190.04,
+      "fed_ta": null,
+      "ratio_classic": 52.96,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-07-28",
+      "tmc": 2687.73,
+      "gdp": 5282.84,
+      "fed_ta": null,
+      "ratio_classic": 50.88,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-08-28",
+      "tmc": 2687.73,
+      "gdp": 5282.84,
+      "fed_ta": null,
+      "ratio_classic": 50.88,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-09-28",
+      "tmc": 2687.73,
+      "gdp": 5282.84,
+      "fed_ta": null,
+      "ratio_classic": 50.88,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-10-28",
+      "tmc": 2795.66,
+      "gdp": 5399.51,
+      "fed_ta": null,
+      "ratio_classic": 51.78,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-11-28",
+      "tmc": 2795.66,
+      "gdp": 5399.51,
+      "fed_ta": null,
+      "ratio_classic": 51.78,
+      "ratio_modified": null
+    },
+    {
+      "date": "1988-12-28",
+      "tmc": 2795.66,
+      "gdp": 5399.51,
+      "fed_ta": null,
+      "ratio_classic": 51.78,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-01-31",
+      "tmc": 2917.26,
+      "gdp": 5511.25,
+      "fed_ta": null,
+      "ratio_classic": 52.93,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-02-28",
+      "tmc": 2857.86,
+      "gdp": 5511.25,
+      "fed_ta": null,
+      "ratio_classic": 51.85,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-03-31",
+      "tmc": 2915.07,
+      "gdp": 5511.25,
+      "fed_ta": null,
+      "ratio_classic": 52.89,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-04-28",
+      "tmc": 3053.13,
+      "gdp": 5612.46,
+      "fed_ta": null,
+      "ratio_classic": 54.4,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-05-31",
+      "tmc": 3162.61,
+      "gdp": 5612.46,
+      "fed_ta": null,
+      "ratio_classic": 56.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-06-30",
+      "tmc": 3137.01,
+      "gdp": 5612.46,
+      "fed_ta": null,
+      "ratio_classic": 55.89,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-07-31",
+      "tmc": 3377.4,
+      "gdp": 5695.36,
+      "fed_ta": null,
+      "ratio_classic": 59.3,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-08-31",
+      "tmc": 3440.84,
+      "gdp": 5695.36,
+      "fed_ta": null,
+      "ratio_classic": 60.41,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-09-29",
+      "tmc": 3426.66,
+      "gdp": 5695.36,
+      "fed_ta": null,
+      "ratio_classic": 60.17,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-10-31",
+      "tmc": 3320.35,
+      "gdp": 5747.24,
+      "fed_ta": null,
+      "ratio_classic": 57.77,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-11-30",
+      "tmc": 3367.64,
+      "gdp": 5747.24,
+      "fed_ta": null,
+      "ratio_classic": 58.6,
+      "ratio_modified": null
+    },
+    {
+      "date": "1989-12-29",
+      "tmc": 3419.88,
+      "gdp": 5747.24,
+      "fed_ta": null,
+      "ratio_classic": 59.5,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-01-31",
+      "tmc": 3163.3,
+      "gdp": 5872.7,
+      "fed_ta": null,
+      "ratio_classic": 53.86,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-02-28",
+      "tmc": 3201.2,
+      "gdp": 5872.7,
+      "fed_ta": null,
+      "ratio_classic": 54.51,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-03-30",
+      "tmc": 3273.46,
+      "gdp": 5872.7,
+      "fed_ta": null,
+      "ratio_classic": 55.74,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-04-30",
+      "tmc": 3172.33,
+      "gdp": 5960.03,
+      "fed_ta": null,
+      "ratio_classic": 53.23,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-05-31",
+      "tmc": 3448.48,
+      "gdp": 5960.03,
+      "fed_ta": null,
+      "ratio_classic": 57.86,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-06-29",
+      "tmc": 3424.37,
+      "gdp": 5960.03,
+      "fed_ta": null,
+      "ratio_classic": 57.46,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-07-31",
+      "tmc": 3384.36,
+      "gdp": 6015.12,
+      "fed_ta": null,
+      "ratio_classic": 56.26,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-08-31",
+      "tmc": 3053.6,
+      "gdp": 6015.12,
+      "fed_ta": null,
+      "ratio_classic": 50.77,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-09-28",
+      "tmc": 2879.34,
+      "gdp": 6015.12,
+      "fed_ta": null,
+      "ratio_classic": 47.87,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-10-31",
+      "tmc": 2833.99,
+      "gdp": 6004.73,
+      "fed_ta": null,
+      "ratio_classic": 47.2,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-11-30",
+      "tmc": 3015.02,
+      "gdp": 6004.73,
+      "fed_ta": null,
+      "ratio_classic": 50.21,
+      "ratio_modified": null
+    },
+    {
+      "date": "1990-12-31",
+      "tmc": 3101.36,
+      "gdp": 6004.73,
+      "fed_ta": null,
+      "ratio_classic": 51.65,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-01-31",
+      "tmc": 3245.35,
+      "gdp": 6035.18,
+      "fed_ta": null,
+      "ratio_classic": 53.77,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-02-28",
+      "tmc": 3484.85,
+      "gdp": 6035.18,
+      "fed_ta": null,
+      "ratio_classic": 57.74,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-03-28",
+      "tmc": 3583.67,
+      "gdp": 6035.18,
+      "fed_ta": null,
+      "ratio_classic": 59.38,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-04-30",
+      "tmc": 3587.92,
+      "gdp": 6126.86,
+      "fed_ta": null,
+      "ratio_classic": 58.56,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-05-31",
+      "tmc": 3719.3,
+      "gdp": 6126.86,
+      "fed_ta": null,
+      "ratio_classic": 60.7,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-06-28",
+      "tmc": 3545.47,
+      "gdp": 6126.86,
+      "fed_ta": null,
+      "ratio_classic": 57.87,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-07-31",
+      "tmc": 3705.89,
+      "gdp": 6205.94,
+      "fed_ta": null,
+      "ratio_classic": 59.72,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-08-30",
+      "tmc": 3795.04,
+      "gdp": 6205.94,
+      "fed_ta": null,
+      "ratio_classic": 61.15,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-09-30",
+      "tmc": 3743.98,
+      "gdp": 6205.94,
+      "fed_ta": null,
+      "ratio_classic": 60.33,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-10-31",
+      "tmc": 3807.08,
+      "gdp": 6264.54,
+      "fed_ta": null,
+      "ratio_classic": 60.77,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-11-29",
+      "tmc": 3649.99,
+      "gdp": 6264.54,
+      "fed_ta": null,
+      "ratio_classic": 58.26,
+      "ratio_modified": null
+    },
+    {
+      "date": "1991-12-31",
+      "tmc": 4041.1,
+      "gdp": 6264.54,
+      "fed_ta": null,
+      "ratio_classic": 64.51,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-01-31",
+      "tmc": 4027.77,
+      "gdp": 6363.1,
+      "fed_ta": null,
+      "ratio_classic": 63.3,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-02-28",
+      "tmc": 4071.25,
+      "gdp": 6363.1,
+      "fed_ta": null,
+      "ratio_classic": 63.98,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-03-31",
+      "tmc": 3961.55,
+      "gdp": 6363.1,
+      "fed_ta": null,
+      "ratio_classic": 62.26,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-04-30",
+      "tmc": 4008.71,
+      "gdp": 6470.76,
+      "fed_ta": null,
+      "ratio_classic": 61.95,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-05-29",
+      "tmc": 4021.51,
+      "gdp": 6470.76,
+      "fed_ta": null,
+      "ratio_classic": 62.15,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-06-30",
+      "tmc": 3930.33,
+      "gdp": 6470.76,
+      "fed_ta": null,
+      "ratio_classic": 60.74,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-07-31",
+      "tmc": 4083.85,
+      "gdp": 6566.64,
+      "fed_ta": null,
+      "ratio_classic": 62.19,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-08-31",
+      "tmc": 3985.0,
+      "gdp": 6566.64,
+      "fed_ta": null,
+      "ratio_classic": 60.69,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-09-30",
+      "tmc": 4024.36,
+      "gdp": 6566.64,
+      "fed_ta": null,
+      "ratio_classic": 61.28,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-10-30",
+      "tmc": 4067.78,
+      "gdp": 6680.8,
+      "fed_ta": null,
+      "ratio_classic": 60.89,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-11-30",
+      "tmc": 4223.41,
+      "gdp": 6680.8,
+      "fed_ta": null,
+      "ratio_classic": 63.22,
+      "ratio_modified": null
+    },
+    {
+      "date": "1992-12-31",
+      "tmc": 4289.74,
+      "gdp": 6680.8,
+      "fed_ta": null,
+      "ratio_classic": 64.21,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-01-29",
+      "tmc": 4336.92,
+      "gdp": 6729.46,
+      "fed_ta": null,
+      "ratio_classic": 64.45,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-02-26",
+      "tmc": 4342.87,
+      "gdp": 6729.46,
+      "fed_ta": null,
+      "ratio_classic": 64.54,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-03-31",
+      "tmc": 4444.3,
+      "gdp": 6729.46,
+      "fed_ta": null,
+      "ratio_classic": 66.04,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-04-30",
+      "tmc": 4316.12,
+      "gdp": 6808.94,
+      "fed_ta": null,
+      "ratio_classic": 63.39,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-05-28",
+      "tmc": 4438.55,
+      "gdp": 6808.94,
+      "fed_ta": null,
+      "ratio_classic": 65.19,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-06-30",
+      "tmc": 4449.57,
+      "gdp": 6808.94,
+      "fed_ta": null,
+      "ratio_classic": 65.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-07-30",
+      "tmc": 4443.28,
+      "gdp": 6882.1,
+      "fed_ta": null,
+      "ratio_classic": 64.56,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-08-31",
+      "tmc": 4601.55,
+      "gdp": 6882.1,
+      "fed_ta": null,
+      "ratio_classic": 66.86,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-09-30",
+      "tmc": 4601.84,
+      "gdp": 6882.1,
+      "fed_ta": null,
+      "ratio_classic": 66.87,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-10-29",
+      "tmc": 4672.77,
+      "gdp": 7013.74,
+      "fed_ta": null,
+      "ratio_classic": 66.62,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-11-30",
+      "tmc": 4583.82,
+      "gdp": 7013.74,
+      "fed_ta": null,
+      "ratio_classic": 65.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1993-12-31",
+      "tmc": 4657.83,
+      "gdp": 7013.74,
+      "fed_ta": null,
+      "ratio_classic": 66.41,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-01-31",
+      "tmc": 4798.07,
+      "gdp": 7115.65,
+      "fed_ta": null,
+      "ratio_classic": 67.43,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-02-28",
+      "tmc": 4678.39,
+      "gdp": 7115.65,
+      "fed_ta": null,
+      "ratio_classic": 65.75,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-03-31",
+      "tmc": 4457.69,
+      "gdp": 7115.65,
+      "fed_ta": null,
+      "ratio_classic": 62.65,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-04-29",
+      "tmc": 4494.72,
+      "gdp": 7246.93,
+      "fed_ta": null,
+      "ratio_classic": 62.02,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-05-31",
+      "tmc": 4525.52,
+      "gdp": 7246.93,
+      "fed_ta": null,
+      "ratio_classic": 62.45,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-06-30",
+      "tmc": 4395.22,
+      "gdp": 7246.93,
+      "fed_ta": null,
+      "ratio_classic": 60.65,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-07-29",
+      "tmc": 4519.8,
+      "gdp": 7331.07,
+      "fed_ta": null,
+      "ratio_classic": 61.65,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-08-31",
+      "tmc": 4705.96,
+      "gdp": 7331.07,
+      "fed_ta": null,
+      "ratio_classic": 64.19,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-09-30",
+      "tmc": 4605.82,
+      "gdp": 7331.07,
+      "fed_ta": null,
+      "ratio_classic": 62.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-10-31",
+      "tmc": 4674.18,
+      "gdp": 7455.29,
+      "fed_ta": null,
+      "ratio_classic": 62.7,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-11-30",
+      "tmc": 4490.58,
+      "gdp": 7455.29,
+      "fed_ta": null,
+      "ratio_classic": 60.23,
+      "ratio_modified": null
+    },
+    {
+      "date": "1994-12-30",
+      "tmc": 4540.62,
+      "gdp": 7455.29,
+      "fed_ta": null,
+      "ratio_classic": 60.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-01-31",
+      "tmc": 4631.4,
+      "gdp": 7522.29,
+      "fed_ta": null,
+      "ratio_classic": 61.57,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-02-28",
+      "tmc": 4803.9,
+      "gdp": 7522.29,
+      "fed_ta": null,
+      "ratio_classic": 63.86,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-03-31",
+      "tmc": 4920.42,
+      "gdp": 7522.29,
+      "fed_ta": null,
+      "ratio_classic": 65.41,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-04-28",
+      "tmc": 5035.89,
+      "gdp": 7581.0,
+      "fed_ta": null,
+      "ratio_classic": 66.43,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-05-31",
+      "tmc": 5192.8,
+      "gdp": 7581.0,
+      "fed_ta": null,
+      "ratio_classic": 68.5,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-06-30",
+      "tmc": 5348.77,
+      "gdp": 7581.0,
+      "fed_ta": null,
+      "ratio_classic": 70.55,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-07-31",
+      "tmc": 5561.86,
+      "gdp": 7683.12,
+      "fed_ta": null,
+      "ratio_classic": 72.39,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-08-31",
+      "tmc": 5602.28,
+      "gdp": 7683.12,
+      "fed_ta": null,
+      "ratio_classic": 72.92,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-09-29",
+      "tmc": 5806.63,
+      "gdp": 7683.12,
+      "fed_ta": null,
+      "ratio_classic": 75.58,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-10-31",
+      "tmc": 5740.87,
+      "gdp": 7772.59,
+      "fed_ta": null,
+      "ratio_classic": 73.86,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-11-30",
+      "tmc": 5969.99,
+      "gdp": 7772.59,
+      "fed_ta": null,
+      "ratio_classic": 76.81,
+      "ratio_modified": null
+    },
+    {
+      "date": "1995-12-29",
+      "tmc": 6057.2,
+      "gdp": 7772.59,
+      "fed_ta": null,
+      "ratio_classic": 77.93,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-01-31",
+      "tmc": 6211.82,
+      "gdp": 7868.47,
+      "fed_ta": null,
+      "ratio_classic": 78.95,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-02-29",
+      "tmc": 6307.25,
+      "gdp": 7868.47,
+      "fed_ta": null,
+      "ratio_classic": 80.16,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-03-29",
+      "tmc": 6365.89,
+      "gdp": 7868.47,
+      "fed_ta": null,
+      "ratio_classic": 80.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-04-30",
+      "tmc": 6514.79,
+      "gdp": 8032.84,
+      "fed_ta": null,
+      "ratio_classic": 81.1,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-05-31",
+      "tmc": 6677.35,
+      "gdp": 8032.84,
+      "fed_ta": null,
+      "ratio_classic": 83.13,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-06-28",
+      "tmc": 6612.77,
+      "gdp": 8032.84,
+      "fed_ta": null,
+      "ratio_classic": 82.32,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-07-31",
+      "tmc": 6247.03,
+      "gdp": 8131.41,
+      "fed_ta": null,
+      "ratio_classic": 76.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-08-30",
+      "tmc": 6434.02,
+      "gdp": 8131.41,
+      "fed_ta": null,
+      "ratio_classic": 79.13,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-09-30",
+      "tmc": 6765.65,
+      "gdp": 8131.41,
+      "fed_ta": null,
+      "ratio_classic": 83.2,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-10-31",
+      "tmc": 6851.33,
+      "gdp": 8259.77,
+      "fed_ta": null,
+      "ratio_classic": 82.95,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-11-29",
+      "tmc": 7292.16,
+      "gdp": 8259.77,
+      "fed_ta": null,
+      "ratio_classic": 88.29,
+      "ratio_modified": null
+    },
+    {
+      "date": "1996-12-31",
+      "tmc": 7198.29,
+      "gdp": 8259.77,
+      "fed_ta": null,
+      "ratio_classic": 87.15,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-01-31",
+      "tmc": 7575.79,
+      "gdp": 8362.66,
+      "fed_ta": null,
+      "ratio_classic": 90.59,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-02-28",
+      "tmc": 7559.42,
+      "gdp": 8362.66,
+      "fed_ta": null,
+      "ratio_classic": 90.39,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-03-31",
+      "tmc": 7213.53,
+      "gdp": 8362.66,
+      "fed_ta": null,
+      "ratio_classic": 86.26,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-04-30",
+      "tmc": 7519.29,
+      "gdp": 8518.83,
+      "fed_ta": null,
+      "ratio_classic": 88.27,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-05-30",
+      "tmc": 8038.5,
+      "gdp": 8518.83,
+      "fed_ta": null,
+      "ratio_classic": 94.36,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-06-30",
+      "tmc": 8396.87,
+      "gdp": 8518.83,
+      "fed_ta": null,
+      "ratio_classic": 98.57,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-07-31",
+      "tmc": 9031.43,
+      "gdp": 8662.82,
+      "fed_ta": null,
+      "ratio_classic": 104.26,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-08-29",
+      "tmc": 8679.98,
+      "gdp": 8662.82,
+      "fed_ta": null,
+      "ratio_classic": 100.2,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-09-30",
+      "tmc": 9180.21,
+      "gdp": 8662.82,
+      "fed_ta": null,
+      "ratio_classic": 105.97,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-10-31",
+      "tmc": 8865.25,
+      "gdp": 8765.91,
+      "fed_ta": null,
+      "ratio_classic": 101.13,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-11-28",
+      "tmc": 9142.43,
+      "gdp": 8765.91,
+      "fed_ta": null,
+      "ratio_classic": 104.3,
+      "ratio_modified": null
+    },
+    {
+      "date": "1997-12-31",
+      "tmc": 9298.19,
+      "gdp": 8765.91,
+      "fed_ta": null,
+      "ratio_classic": 106.07,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-01-30",
+      "tmc": 9340.8,
+      "gdp": 8866.48,
+      "fed_ta": null,
+      "ratio_classic": 105.35,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-02-27",
+      "tmc": 10006.44,
+      "gdp": 8866.48,
+      "fed_ta": null,
+      "ratio_classic": 112.86,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-03-31",
+      "tmc": 10494.72,
+      "gdp": 8866.48,
+      "fed_ta": null,
+      "ratio_classic": 118.36,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-04-30",
+      "tmc": 10609.61,
+      "gdp": 8969.7,
+      "fed_ta": null,
+      "ratio_classic": 118.28,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-05-29",
+      "tmc": 10314.18,
+      "gdp": 8969.7,
+      "fed_ta": null,
+      "ratio_classic": 114.99,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-06-30",
+      "tmc": 10663.61,
+      "gdp": 8969.7,
+      "fed_ta": null,
+      "ratio_classic": 118.88,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-07-31",
+      "tmc": 10420.26,
+      "gdp": 9121.1,
+      "fed_ta": null,
+      "ratio_classic": 114.24,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-08-31",
+      "tmc": 8785.71,
+      "gdp": 9121.1,
+      "fed_ta": null,
+      "ratio_classic": 96.32,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-09-30",
+      "tmc": 9346.81,
+      "gdp": 9121.1,
+      "fed_ta": null,
+      "ratio_classic": 102.47,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-10-30",
+      "tmc": 10032.19,
+      "gdp": 9293.99,
+      "fed_ta": null,
+      "ratio_classic": 107.94,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-11-30",
+      "tmc": 10650.2,
+      "gdp": 9293.99,
+      "fed_ta": null,
+      "ratio_classic": 114.59,
+      "ratio_modified": null
+    },
+    {
+      "date": "1998-12-31",
+      "tmc": 11317.59,
+      "gdp": 9293.99,
+      "fed_ta": null,
+      "ratio_classic": 121.77,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-01-29",
+      "tmc": 11724.83,
+      "gdp": 9411.68,
+      "fed_ta": null,
+      "ratio_classic": 124.58,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-02-26",
+      "tmc": 11286.08,
+      "gdp": 9411.68,
+      "fed_ta": null,
+      "ratio_classic": 119.92,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-03-31",
+      "tmc": 11707.67,
+      "gdp": 9411.68,
+      "fed_ta": null,
+      "ratio_classic": 124.4,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-04-30",
+      "tmc": 12259.36,
+      "gdp": 9526.21,
+      "fed_ta": null,
+      "ratio_classic": 128.69,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-05-28",
+      "tmc": 11976.75,
+      "gdp": 9526.21,
+      "fed_ta": null,
+      "ratio_classic": 125.72,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-06-30",
+      "tmc": 12583.6,
+      "gdp": 9526.21,
+      "fed_ta": null,
+      "ratio_classic": 132.09,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-07-30",
+      "tmc": 12189.84,
+      "gdp": 9686.63,
+      "fed_ta": null,
+      "ratio_classic": 125.84,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-08-31",
+      "tmc": 12042.23,
+      "gdp": 9686.63,
+      "fed_ta": null,
+      "ratio_classic": 124.32,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-09-30",
+      "tmc": 11713.8,
+      "gdp": 9686.63,
+      "fed_ta": null,
+      "ratio_classic": 120.93,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-10-29",
+      "tmc": 12449.4,
+      "gdp": 9900.17,
+      "fed_ta": null,
+      "ratio_classic": 125.75,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-11-30",
+      "tmc": 12851.93,
+      "gdp": 9900.17,
+      "fed_ta": null,
+      "ratio_classic": 129.82,
+      "ratio_modified": null
+    },
+    {
+      "date": "1999-12-31",
+      "tmc": 13812.67,
+      "gdp": 9900.17,
+      "fed_ta": null,
+      "ratio_classic": 139.52,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-01-31",
+      "tmc": 13230.62,
+      "gdp": 10002.18,
+      "fed_ta": null,
+      "ratio_classic": 132.28,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-02-29",
+      "tmc": 13511.0,
+      "gdp": 10002.18,
+      "fed_ta": null,
+      "ratio_classic": 135.08,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-03-31",
+      "tmc": 14296.18,
+      "gdp": 10002.18,
+      "fed_ta": null,
+      "ratio_classic": 142.93,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-04-28",
+      "tmc": 13541.7,
+      "gdp": 10247.72,
+      "fed_ta": null,
+      "ratio_classic": 132.14,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-05-31",
+      "tmc": 13052.96,
+      "gdp": 10247.72,
+      "fed_ta": null,
+      "ratio_classic": 127.37,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-06-30",
+      "tmc": 13618.5,
+      "gdp": 10247.72,
+      "fed_ta": null,
+      "ratio_classic": 132.89,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-07-31",
+      "tmc": 13330.31,
+      "gdp": 10318.17,
+      "fed_ta": null,
+      "ratio_classic": 129.19,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-08-31",
+      "tmc": 14280.04,
+      "gdp": 10318.17,
+      "fed_ta": null,
+      "ratio_classic": 138.4,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-09-29",
+      "tmc": 13613.33,
+      "gdp": 10318.17,
+      "fed_ta": null,
+      "ratio_classic": 131.94,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-10-31",
+      "tmc": 13314.68,
+      "gdp": 10435.74,
+      "fed_ta": null,
+      "ratio_classic": 127.59,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-11-30",
+      "tmc": 11976.24,
+      "gdp": 10435.74,
+      "fed_ta": null,
+      "ratio_classic": 114.76,
+      "ratio_modified": null
+    },
+    {
+      "date": "2000-12-29",
+      "tmc": 12175.88,
+      "gdp": 10435.74,
+      "fed_ta": null,
+      "ratio_classic": 116.67,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-01-31",
+      "tmc": 12631.36,
+      "gdp": 10470.23,
+      "fed_ta": null,
+      "ratio_classic": 120.64,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-02-28",
+      "tmc": 11425.29,
+      "gdp": 10470.23,
+      "fed_ta": null,
+      "ratio_classic": 109.12,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-03-30",
+      "tmc": 10645.85,
+      "gdp": 10470.23,
+      "fed_ta": null,
+      "ratio_classic": 101.68,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-04-30",
+      "tmc": 11512.46,
+      "gdp": 10599.0,
+      "fed_ta": null,
+      "ratio_classic": 108.62,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-05-31",
+      "tmc": 11610.22,
+      "gdp": 10599.0,
+      "fed_ta": null,
+      "ratio_classic": 109.54,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-06-29",
+      "tmc": 11407.15,
+      "gdp": 10599.0,
+      "fed_ta": null,
+      "ratio_classic": 107.62,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-07-31",
+      "tmc": 11208.51,
+      "gdp": 10598.02,
+      "fed_ta": null,
+      "ratio_classic": 105.76,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-08-31",
+      "tmc": 10515.09,
+      "gdp": 10598.02,
+      "fed_ta": null,
+      "ratio_classic": 99.22,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-09-28",
+      "tmc": 9562.95,
+      "gdp": 10598.02,
+      "fed_ta": null,
+      "ratio_classic": 90.23,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-10-31",
+      "tmc": 9796.86,
+      "gdp": 10660.47,
+      "fed_ta": null,
+      "ratio_classic": 91.9,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-11-30",
+      "tmc": 10531.45,
+      "gdp": 10660.47,
+      "fed_ta": null,
+      "ratio_classic": 98.79,
+      "ratio_modified": null
+    },
+    {
+      "date": "2001-12-31",
+      "tmc": 10707.68,
+      "gdp": 10660.47,
+      "fed_ta": null,
+      "ratio_classic": 100.44,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-01-31",
+      "tmc": 10564.69,
+      "gdp": 10783.5,
+      "fed_ta": null,
+      "ratio_classic": 97.97,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-02-28",
+      "tmc": 10332.89,
+      "gdp": 10783.5,
+      "fed_ta": null,
+      "ratio_classic": 95.82,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-03-28",
+      "tmc": 10775.74,
+      "gdp": 10783.5,
+      "fed_ta": null,
+      "ratio_classic": 99.93,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-04-30",
+      "tmc": 10241.18,
+      "gdp": 10887.46,
+      "fed_ta": null,
+      "ratio_classic": 94.06,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-05-31",
+      "tmc": 10106.49,
+      "gdp": 10887.46,
+      "fed_ta": null,
+      "ratio_classic": 92.83,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-06-28",
+      "tmc": 9384.03,
+      "gdp": 10887.46,
+      "fed_ta": null,
+      "ratio_classic": 86.19,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-07-31",
+      "tmc": 8616.94,
+      "gdp": 10984.04,
+      "fed_ta": null,
+      "ratio_classic": 78.45,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-08-30",
+      "tmc": 8654.04,
+      "gdp": 10984.04,
+      "fed_ta": null,
+      "ratio_classic": 78.79,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-09-30",
+      "tmc": 7773.63,
+      "gdp": 10984.04,
+      "fed_ta": null,
+      "ratio_classic": 70.77,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-10-31",
+      "tmc": 8357.32,
+      "gdp": 11061.43,
+      "fed_ta": null,
+      "ratio_classic": 75.55,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-11-29",
+      "tmc": 8846.71,
+      "gdp": 11061.43,
+      "fed_ta": null,
+      "ratio_classic": 79.98,
+      "ratio_modified": null
+    },
+    {
+      "date": "2002-12-31",
+      "tmc": 8343.19,
+      "gdp": 11061.43,
+      "fed_ta": 732.06,
+      "ratio_classic": 75.43,
+      "ratio_modified": 70.74
+    },
+    {
+      "date": "2003-01-31",
+      "tmc": 8125.07,
+      "gdp": 11174.13,
+      "fed_ta": 712.81,
+      "ratio_classic": 72.71,
+      "ratio_modified": 68.35
+    },
+    {
+      "date": "2003-02-28",
+      "tmc": 7972.6,
+      "gdp": 11174.13,
+      "fed_ta": 721.98,
+      "ratio_classic": 71.35,
+      "ratio_modified": 67.02
+    },
+    {
+      "date": "2003-03-31",
+      "tmc": 8051.86,
+      "gdp": 11174.13,
+      "fed_ta": 725.02,
+      "ratio_classic": 72.06,
+      "ratio_modified": 67.67
+    },
+    {
+      "date": "2003-04-30",
+      "tmc": 8701.97,
+      "gdp": 11312.77,
+      "fed_ta": 746.29,
+      "ratio_classic": 76.92,
+      "ratio_modified": 72.16
+    },
+    {
+      "date": "2003-05-30",
+      "tmc": 9218.89,
+      "gdp": 11312.77,
+      "fed_ta": 744.9,
+      "ratio_classic": 81.49,
+      "ratio_modified": 76.46
+    },
+    {
+      "date": "2003-06-30",
+      "tmc": 9342.42,
+      "gdp": 11312.77,
+      "fed_ta": 744.02,
+      "ratio_classic": 82.58,
+      "ratio_modified": 77.49
+    },
+    {
+      "date": "2003-07-31",
+      "tmc": 9555.19,
+      "gdp": 11566.67,
+      "fed_ta": 740.29,
+      "ratio_classic": 82.61,
+      "ratio_modified": 77.64
+    },
+    {
+      "date": "2003-08-29",
+      "tmc": 9770.56,
+      "gdp": 11566.67,
+      "fed_ta": 740.64,
+      "ratio_classic": 84.47,
+      "ratio_modified": 79.39
+    },
+    {
+      "date": "2003-09-30",
+      "tmc": 9649.68,
+      "gdp": 11566.67,
+      "fed_ta": 741.19,
+      "ratio_classic": 83.43,
+      "ratio_modified": 78.4
+    },
+    {
+      "date": "2003-10-31",
+      "tmc": 10224.52,
+      "gdp": 11772.23,
+      "fed_ta": 747.27,
+      "ratio_classic": 86.85,
+      "ratio_modified": 81.67
+    },
+    {
+      "date": "2003-11-28",
+      "tmc": 10352.22,
+      "gdp": 11772.23,
+      "fed_ta": 756.96,
+      "ratio_classic": 87.94,
+      "ratio_modified": 82.62
+    },
+    {
+      "date": "2003-12-31",
+      "tmc": 10799.63,
+      "gdp": 11772.23,
+      "fed_ta": 771.55,
+      "ratio_classic": 91.74,
+      "ratio_modified": 86.1
+    },
+    {
+      "date": "2004-01-30",
+      "tmc": 11029.2,
+      "gdp": 11923.45,
+      "fed_ta": 755.28,
+      "ratio_classic": 92.5,
+      "ratio_modified": 86.99
+    },
+    {
+      "date": "2004-02-27",
+      "tmc": 11172.89,
+      "gdp": 11923.45,
+      "fed_ta": 750.67,
+      "ratio_classic": 93.71,
+      "ratio_modified": 88.16
+    },
+    {
+      "date": "2004-03-31",
+      "tmc": 11039.42,
+      "gdp": 11923.45,
+      "fed_ta": 760.73,
+      "ratio_classic": 92.59,
+      "ratio_modified": 87.03
+    },
+    {
+      "date": "2004-04-30",
+      "tmc": 10793.66,
+      "gdp": 12112.82,
+      "fed_ta": 772.93,
+      "ratio_classic": 89.11,
+      "ratio_modified": 83.76
+    },
+    {
+      "date": "2004-05-28",
+      "tmc": 10926.36,
+      "gdp": 12112.82,
+      "fed_ta": 771.11,
+      "ratio_classic": 90.2,
+      "ratio_modified": 84.81
+    },
+    {
+      "date": "2004-06-30",
+      "tmc": 11138.91,
+      "gdp": 12112.82,
+      "fed_ta": 779.58,
+      "ratio_classic": 91.96,
+      "ratio_modified": 86.4
+    },
+    {
+      "date": "2004-07-30",
+      "tmc": 10701.65,
+      "gdp": 12305.31,
+      "fed_ta": 773.92,
+      "ratio_classic": 86.97,
+      "ratio_modified": 81.82
+    },
+    {
+      "date": "2004-08-31",
+      "tmc": 10719.15,
+      "gdp": 12305.31,
+      "fed_ta": 775.44,
+      "ratio_classic": 87.11,
+      "ratio_modified": 81.95
+    },
+    {
+      "date": "2004-09-30",
+      "tmc": 10895.48,
+      "gdp": 12305.31,
+      "fed_ta": 786.33,
+      "ratio_classic": 88.54,
+      "ratio_modified": 83.22
+    },
+    {
+      "date": "2004-10-29",
+      "tmc": 11068.95,
+      "gdp": 12527.21,
+      "fed_ta": 791.34,
+      "ratio_classic": 88.36,
+      "ratio_modified": 83.11
+    },
+    {
+      "date": "2004-11-30",
+      "tmc": 11568.54,
+      "gdp": 12527.21,
+      "fed_ta": 809.96,
+      "ratio_classic": 92.35,
+      "ratio_modified": 86.74
+    },
+    {
+      "date": "2004-12-31",
+      "tmc": 11971.14,
+      "gdp": 12527.21,
+      "fed_ta": 810.94,
+      "ratio_classic": 95.56,
+      "ratio_modified": 89.75
+    },
+    {
+      "date": "2005-01-31",
+      "tmc": 11642.57,
+      "gdp": 12767.29,
+      "fed_ta": 807.26,
+      "ratio_classic": 91.19,
+      "ratio_modified": 85.77
+    },
+    {
+      "date": "2005-02-28",
+      "tmc": 11863.48,
+      "gdp": 12767.29,
+      "fed_ta": 804.58,
+      "ratio_classic": 92.92,
+      "ratio_modified": 87.41
+    },
+    {
+      "date": "2005-03-31",
+      "tmc": 11638.27,
+      "gdp": 12767.29,
+      "fed_ta": 807.55,
+      "ratio_classic": 91.16,
+      "ratio_modified": 85.73
+    },
+    {
+      "date": "2005-04-29",
+      "tmc": 11363.52,
+      "gdp": 12922.66,
+      "fed_ta": 809.8,
+      "ratio_classic": 87.93,
+      "ratio_modified": 82.75
+    },
+    {
+      "date": "2005-05-31",
+      "tmc": 11787.81,
+      "gdp": 12922.66,
+      "fed_ta": 810.16,
+      "ratio_classic": 91.22,
+      "ratio_modified": 85.84
+    },
+    {
+      "date": "2005-06-30",
+      "tmc": 11876.74,
+      "gdp": 12922.66,
+      "fed_ta": 810.08,
+      "ratio_classic": 91.91,
+      "ratio_modified": 86.48
+    },
+    {
+      "date": "2005-07-29",
+      "tmc": 12360.81,
+      "gdp": 13142.64,
+      "fed_ta": 814.26,
+      "ratio_classic": 94.05,
+      "ratio_modified": 88.56
+    },
+    {
+      "date": "2005-08-31",
+      "tmc": 12217.13,
+      "gdp": 13142.64,
+      "fed_ta": 823.24,
+      "ratio_classic": 92.96,
+      "ratio_modified": 87.48
+    },
+    {
+      "date": "2005-09-30",
+      "tmc": 12289.26,
+      "gdp": 13142.64,
+      "fed_ta": 823.77,
+      "ratio_classic": 93.51,
+      "ratio_modified": 87.99
+    },
+    {
+      "date": "2005-10-31",
+      "tmc": 12063.24,
+      "gdp": 13324.2,
+      "fed_ta": 819.11,
+      "ratio_classic": 90.54,
+      "ratio_modified": 85.29
+    },
+    {
+      "date": "2005-11-30",
+      "tmc": 12521.92,
+      "gdp": 13324.2,
+      "fed_ta": 835.06,
+      "ratio_classic": 93.98,
+      "ratio_modified": 88.44
+    },
+    {
+      "date": "2005-12-30",
+      "tmc": 12517.69,
+      "gdp": 13324.2,
+      "fed_ta": 847.7,
+      "ratio_classic": 93.95,
+      "ratio_modified": 88.33
+    },
+    {
+      "date": "2006-01-31",
+      "tmc": 12953.63,
+      "gdp": 13599.16,
+      "fed_ta": 828.9,
+      "ratio_classic": 95.25,
+      "ratio_modified": 89.78
+    },
+    {
+      "date": "2006-02-28",
+      "tmc": 12922.27,
+      "gdp": 13599.16,
+      "fed_ta": 840.55,
+      "ratio_classic": 95.02,
+      "ratio_modified": 89.49
+    },
+    {
+      "date": "2006-03-31",
+      "tmc": 13155.44,
+      "gdp": 13599.16,
+      "fed_ta": 833.67,
+      "ratio_classic": 96.74,
+      "ratio_modified": 91.15
+    },
+    {
+      "date": "2006-04-28",
+      "tmc": 13280.93,
+      "gdp": 13753.42,
+      "fed_ta": 844.57,
+      "ratio_classic": 96.56,
+      "ratio_modified": 90.98
+    },
+    {
+      "date": "2006-05-31",
+      "tmc": 12841.69,
+      "gdp": 13753.42,
+      "fed_ta": 851.58,
+      "ratio_classic": 93.37,
+      "ratio_modified": 87.93
+    },
+    {
+      "date": "2006-06-30",
+      "tmc": 12849.29,
+      "gdp": 13753.42,
+      "fed_ta": 844.44,
+      "ratio_classic": 93.43,
+      "ratio_modified": 88.02
+    },
+    {
+      "date": "2006-07-31",
+      "tmc": 12789.67,
+      "gdp": 13870.19,
+      "fed_ta": 841.55,
+      "ratio_classic": 92.21,
+      "ratio_modified": 86.94
+    },
+    {
+      "date": "2006-08-31",
+      "tmc": 13062.54,
+      "gdp": 13870.19,
+      "fed_ta": 850.92,
+      "ratio_classic": 94.18,
+      "ratio_modified": 88.73
+    },
+    {
+      "date": "2006-09-29",
+      "tmc": 13345.97,
+      "gdp": 13870.19,
+      "fed_ta": 849.97,
+      "ratio_classic": 96.22,
+      "ratio_modified": 90.66
+    },
+    {
+      "date": "2006-10-31",
+      "tmc": 13829.07,
+      "gdp": 14039.56,
+      "fed_ta": 852.65,
+      "ratio_classic": 98.5,
+      "ratio_modified": 92.86
+    },
+    {
+      "date": "2006-11-30",
+      "tmc": 14116.71,
+      "gdp": 14039.56,
+      "fed_ta": 856.67,
+      "ratio_classic": 100.55,
+      "ratio_modified": 94.77
+    },
+    {
+      "date": "2006-12-29",
+      "tmc": 14257.55,
+      "gdp": 14039.56,
+      "fed_ta": 869.99,
+      "ratio_classic": 101.55,
+      "ratio_modified": 95.63
+    },
+    {
+      "date": "2007-01-31",
+      "tmc": 14531.92,
+      "gdp": 14215.65,
+      "fed_ta": 865.73,
+      "ratio_classic": 102.22,
+      "ratio_modified": 96.36
+    },
+    {
+      "date": "2007-02-28",
+      "tmc": 14271.61,
+      "gdp": 14215.65,
+      "fed_ta": 877.41,
+      "ratio_classic": 100.39,
+      "ratio_modified": 94.56
+    },
+    {
+      "date": "2007-03-30",
+      "tmc": 14409.27,
+      "gdp": 14215.65,
+      "fed_ta": 869.8,
+      "ratio_classic": 101.36,
+      "ratio_modified": 95.52
+    },
+    {
+      "date": "2007-04-30",
+      "tmc": 14952.35,
+      "gdp": 14402.08,
+      "fed_ta": 879.69,
+      "ratio_classic": 103.82,
+      "ratio_modified": 97.84
+    },
+    {
+      "date": "2007-05-31",
+      "tmc": 15462.16,
+      "gdp": 14402.08,
+      "fed_ta": 876.99,
+      "ratio_classic": 107.36,
+      "ratio_modified": 101.2
+    },
+    {
+      "date": "2007-06-29",
+      "tmc": 15210.65,
+      "gdp": 14402.08,
+      "fed_ta": 865.11,
+      "ratio_classic": 105.61,
+      "ratio_modified": 99.63
+    },
+    {
+      "date": "2007-07-31",
+      "tmc": 14682.66,
+      "gdp": 14564.12,
+      "fed_ta": 863.89,
+      "ratio_classic": 100.81,
+      "ratio_modified": 95.17
+    },
+    {
+      "date": "2007-08-31",
+      "tmc": 14847.7,
+      "gdp": 14564.12,
+      "fed_ta": 872.87,
+      "ratio_classic": 101.95,
+      "ratio_modified": 96.18
+    },
+    {
+      "date": "2007-09-28",
+      "tmc": 15362.02,
+      "gdp": 14564.12,
+      "fed_ta": 889.9,
+      "ratio_classic": 105.48,
+      "ratio_modified": 99.4
+    },
+    {
+      "date": "2007-10-31",
+      "tmc": 15673.36,
+      "gdp": 14715.06,
+      "fed_ta": 883.38,
+      "ratio_classic": 106.51,
+      "ratio_modified": 100.48
+    },
+    {
+      "date": "2007-11-30",
+      "tmc": 14932.67,
+      "gdp": 14715.06,
+      "fed_ta": 879.42,
+      "ratio_classic": 101.48,
+      "ratio_modified": 95.76
+    },
+    {
+      "date": "2007-12-31",
+      "tmc": 14819.58,
+      "gdp": 14715.06,
+      "fed_ta": 890.66,
+      "ratio_classic": 100.71,
+      "ratio_modified": 94.96
+    },
+    {
+      "date": "2008-01-31",
+      "tmc": 13896.65,
+      "gdp": 14706.54,
+      "fed_ta": 900.26,
+      "ratio_classic": 94.49,
+      "ratio_modified": 89.04
+    },
+    {
+      "date": "2008-02-29",
+      "tmc": 13455.96,
+      "gdp": 14706.54,
+      "fed_ta": 893.83,
+      "ratio_classic": 91.5,
+      "ratio_modified": 86.25
+    },
+    {
+      "date": "2008-03-31",
+      "tmc": 13332.01,
+      "gdp": 14706.54,
+      "fed_ta": 893.97,
+      "ratio_classic": 90.65,
+      "ratio_modified": 85.46
+    },
+    {
+      "date": "2008-04-30",
+      "tmc": 13991.12,
+      "gdp": 14865.7,
+      "fed_ta": 888.13,
+      "ratio_classic": 94.12,
+      "ratio_modified": 88.81
+    },
+    {
+      "date": "2008-05-30",
+      "tmc": 14260.76,
+      "gdp": 14865.7,
+      "fed_ta": 904.05,
+      "ratio_classic": 95.93,
+      "ratio_modified": 90.43
+    },
+    {
+      "date": "2008-06-30",
+      "tmc": 13073.54,
+      "gdp": 14865.7,
+      "fed_ta": 892.71,
+      "ratio_classic": 87.94,
+      "ratio_modified": 82.96
+    },
+    {
+      "date": "2008-07-31",
+      "tmc": 12946.89,
+      "gdp": 14899.0,
+      "fed_ta": 918.62,
+      "ratio_classic": 86.9,
+      "ratio_modified": 81.85
+    },
+    {
+      "date": "2008-08-29",
+      "tmc": 13124.49,
+      "gdp": 14899.0,
+      "fed_ta": 909.98,
+      "ratio_classic": 88.09,
+      "ratio_modified": 83.02
+    },
+    {
+      "date": "2008-09-30",
+      "tmc": 11875.41,
+      "gdp": 14899.0,
+      "fed_ta": 1211.83,
+      "ratio_classic": 79.71,
+      "ratio_modified": 73.71
+    },
+    {
+      "date": "2008-10-31",
+      "tmc": 9768.64,
+      "gdp": 14608.21,
+      "fed_ta": 1969.09,
+      "ratio_classic": 66.87,
+      "ratio_modified": 58.93
+    },
+    {
+      "date": "2008-11-28",
+      "tmc": 8945.22,
+      "gdp": 14608.21,
+      "fed_ta": 2106.12,
+      "ratio_classic": 61.23,
+      "ratio_modified": 53.52
+    },
+    {
+      "date": "2008-12-31",
+      "tmc": 9087.17,
+      "gdp": 14608.21,
+      "fed_ta": 2239.46,
+      "ratio_classic": 62.21,
+      "ratio_modified": 53.94
+    },
+    {
+      "date": "2009-01-30",
+      "tmc": 8335.64,
+      "gdp": 14430.9,
+      "fed_ta": 1927.08,
+      "ratio_classic": 57.76,
+      "ratio_modified": 50.96
+    },
+    {
+      "date": "2009-02-27",
+      "tmc": 7473.97,
+      "gdp": 14430.9,
+      "fed_ta": 1916.12,
+      "ratio_classic": 51.79,
+      "ratio_modified": 45.72
+    },
+    {
+      "date": "2009-03-31",
+      "tmc": 8113.14,
+      "gdp": 14430.9,
+      "fed_ta": 2071.56,
+      "ratio_classic": 56.22,
+      "ratio_modified": 49.16
+    },
+    {
+      "date": "2009-04-30",
+      "tmc": 8962.61,
+      "gdp": 14381.24,
+      "fed_ta": 2066.71,
+      "ratio_classic": 62.32,
+      "ratio_modified": 54.49
+    },
+    {
+      "date": "2009-05-29",
+      "tmc": 9408.29,
+      "gdp": 14381.24,
+      "fed_ta": 2080.11,
+      "ratio_classic": 65.42,
+      "ratio_modified": 57.15
+    },
+    {
+      "date": "2009-06-30",
+      "tmc": 9428.12,
+      "gdp": 14381.24,
+      "fed_ta": 2025.57,
+      "ratio_classic": 65.56,
+      "ratio_modified": 57.46
+    },
+    {
+      "date": "2009-07-31",
+      "tmc": 10158.39,
+      "gdp": 14448.88,
+      "fed_ta": 2000.55,
+      "ratio_classic": 70.31,
+      "ratio_modified": 61.76
+    },
+    {
+      "date": "2009-08-31",
+      "tmc": 10512.31,
+      "gdp": 14448.88,
+      "fed_ta": 2074.9,
+      "ratio_classic": 72.76,
+      "ratio_modified": 63.62
+    },
+    {
+      "date": "2009-09-30",
+      "tmc": 10945.11,
+      "gdp": 14448.88,
+      "fed_ta": 2141.02,
+      "ratio_classic": 75.75,
+      "ratio_modified": 65.97
+    },
+    {
+      "date": "2009-10-30",
+      "tmc": 10655.47,
+      "gdp": 14651.25,
+      "fed_ta": 2161.54,
+      "ratio_classic": 72.73,
+      "ratio_modified": 63.38
+    },
+    {
+      "date": "2009-11-30",
+      "tmc": 11207.22,
+      "gdp": 14651.25,
+      "fed_ta": 2206.36,
+      "ratio_classic": 76.49,
+      "ratio_modified": 66.48
+    },
+    {
+      "date": "2009-12-31",
+      "tmc": 11548.41,
+      "gdp": 14651.25,
+      "fed_ta": 2234.07,
+      "ratio_classic": 78.82,
+      "ratio_modified": 68.39
+    },
+    {
+      "date": "2010-01-29",
+      "tmc": 11151.15,
+      "gdp": 14764.61,
+      "fed_ta": 2246.89,
+      "ratio_classic": 75.53,
+      "ratio_modified": 65.55
+    },
+    {
+      "date": "2010-02-26",
+      "tmc": 11512.26,
+      "gdp": 14764.61,
+      "fed_ta": 2286.13,
+      "ratio_classic": 77.97,
+      "ratio_modified": 67.52
+    },
+    {
+      "date": "2010-03-31",
+      "tmc": 12222.19,
+      "gdp": 14764.61,
+      "fed_ta": 2307.15,
+      "ratio_classic": 82.78,
+      "ratio_modified": 71.59
+    },
+    {
+      "date": "2010-04-30",
+      "tmc": 12477.21,
+      "gdp": 14980.19,
+      "fed_ta": 2330.47,
+      "ratio_classic": 83.29,
+      "ratio_modified": 72.08
+    },
+    {
+      "date": "2010-05-28",
+      "tmc": 11466.19,
+      "gdp": 14980.19,
+      "fed_ta": 2334.04,
+      "ratio_classic": 76.54,
+      "ratio_modified": 66.22
+    },
+    {
+      "date": "2010-06-30",
+      "tmc": 10823.2,
+      "gdp": 14980.19,
+      "fed_ta": 2330.85,
+      "ratio_classic": 72.25,
+      "ratio_modified": 62.52
+    },
+    {
+      "date": "2010-07-30",
+      "tmc": 11568.37,
+      "gdp": 15141.61,
+      "fed_ta": 2325.3,
+      "ratio_classic": 76.4,
+      "ratio_modified": 66.23
+    },
+    {
+      "date": "2010-08-31",
+      "tmc": 11001.08,
+      "gdp": 15141.61,
+      "fed_ta": 2301.01,
+      "ratio_classic": 72.65,
+      "ratio_modified": 63.07
+    },
+    {
+      "date": "2010-09-30",
+      "tmc": 12020.58,
+      "gdp": 15141.61,
+      "fed_ta": 2298.69,
+      "ratio_classic": 79.39,
+      "ratio_modified": 68.92
+    },
+    {
+      "date": "2010-10-29",
+      "tmc": 12489.06,
+      "gdp": 15309.47,
+      "fed_ta": 2295.39,
+      "ratio_classic": 81.58,
+      "ratio_modified": 70.94
+    },
+    {
+      "date": "2010-11-30",
+      "tmc": 12541.03,
+      "gdp": 15309.47,
+      "fed_ta": 2346.0,
+      "ratio_classic": 81.92,
+      "ratio_modified": 71.03
+    },
+    {
+      "date": "2010-12-31",
+      "tmc": 13360.08,
+      "gdp": 15309.47,
+      "fed_ta": 2420.57,
+      "ratio_classic": 87.27,
+      "ratio_modified": 75.35
+    },
+    {
+      "date": "2011-01-31",
+      "tmc": 13617.34,
+      "gdp": 15351.45,
+      "fed_ta": 2443.53,
+      "ratio_classic": 88.7,
+      "ratio_modified": 76.52
+    },
+    {
+      "date": "2011-02-28",
+      "tmc": 14072.1,
+      "gdp": 15351.45,
+      "fed_ta": 2533.22,
+      "ratio_classic": 91.67,
+      "ratio_modified": 78.68
+    },
+    {
+      "date": "2011-03-31",
+      "tmc": 14101.19,
+      "gdp": 15351.45,
+      "fed_ta": 2622.52,
+      "ratio_classic": 91.86,
+      "ratio_modified": 78.45
+    },
+    {
+      "date": "2011-04-29",
+      "tmc": 14495.28,
+      "gdp": 15557.54,
+      "fed_ta": 2690.99,
+      "ratio_classic": 93.17,
+      "ratio_modified": 79.43
+    },
+    {
+      "date": "2011-05-31",
+      "tmc": 14287.31,
+      "gdp": 15557.54,
+      "fed_ta": 2775.0,
+      "ratio_classic": 91.84,
+      "ratio_modified": 77.93
+    },
+    {
+      "date": "2011-06-30",
+      "tmc": 14023.05,
+      "gdp": 15557.54,
+      "fed_ta": 2865.25,
+      "ratio_classic": 90.14,
+      "ratio_modified": 76.12
+    },
+    {
+      "date": "2011-07-29",
+      "tmc": 13701.47,
+      "gdp": 15647.68,
+      "fed_ta": 2863.58,
+      "ratio_classic": 87.56,
+      "ratio_modified": 74.02
+    },
+    {
+      "date": "2011-08-31",
+      "tmc": 12856.2,
+      "gdp": 15647.68,
+      "fed_ta": 2853.89,
+      "ratio_classic": 82.16,
+      "ratio_modified": 69.49
+    },
+    {
+      "date": "2011-09-30",
+      "tmc": 11842.08,
+      "gdp": 15647.68,
+      "fed_ta": 2850.92,
+      "ratio_classic": 75.68,
+      "ratio_modified": 64.02
+    },
+    {
+      "date": "2011-10-31",
+      "tmc": 13191.05,
+      "gdp": 15842.26,
+      "fed_ta": 2845.68,
+      "ratio_classic": 83.26,
+      "ratio_modified": 70.59
+    },
+    {
+      "date": "2011-11-30",
+      "tmc": 13101.13,
+      "gdp": 15842.26,
+      "fed_ta": 2814.24,
+      "ratio_classic": 82.7,
+      "ratio_modified": 70.22
+    },
+    {
+      "date": "2011-12-30",
+      "tmc": 13189.6,
+      "gdp": 15842.26,
+      "fed_ta": 2926.09,
+      "ratio_classic": 83.26,
+      "ratio_modified": 70.28
+    },
+    {
+      "date": "2012-01-31",
+      "tmc": 13839.07,
+      "gdp": 16068.81,
+      "fed_ta": 2919.55,
+      "ratio_classic": 86.12,
+      "ratio_modified": 72.88
+    },
+    {
+      "date": "2012-02-29",
+      "tmc": 14400.33,
+      "gdp": 16068.81,
+      "fed_ta": 2925.72,
+      "ratio_classic": 89.62,
+      "ratio_modified": 75.81
+    },
+    {
+      "date": "2012-03-30",
+      "tmc": 14805.35,
+      "gdp": 16068.81,
+      "fed_ta": 2878.14,
+      "ratio_classic": 92.14,
+      "ratio_modified": 78.14
+    },
+    {
+      "date": "2012-04-30",
+      "tmc": 14689.54,
+      "gdp": 16207.11,
+      "fed_ta": 2866.56,
+      "ratio_classic": 90.64,
+      "ratio_modified": 77.01
+    },
+    {
+      "date": "2012-05-31",
+      "tmc": 13740.24,
+      "gdp": 16207.11,
+      "fed_ta": 2842.65,
+      "ratio_classic": 84.78,
+      "ratio_modified": 72.13
+    },
+    {
+      "date": "2012-06-29",
+      "tmc": 14258.27,
+      "gdp": 16207.11,
+      "fed_ta": 2863.55,
+      "ratio_classic": 87.98,
+      "ratio_modified": 74.77
+    },
+    {
+      "date": "2012-07-31",
+      "tmc": 14370.21,
+      "gdp": 16319.54,
+      "fed_ta": 2846.76,
+      "ratio_classic": 88.06,
+      "ratio_modified": 74.98
+    },
+    {
+      "date": "2012-08-31",
+      "tmc": 14680.58,
+      "gdp": 16319.54,
+      "fed_ta": 2812.81,
+      "ratio_classic": 89.96,
+      "ratio_modified": 76.73
+    },
+    {
+      "date": "2012-09-28",
+      "tmc": 15044.14,
+      "gdp": 16319.54,
+      "fed_ta": 2804.46,
+      "ratio_classic": 92.18,
+      "ratio_modified": 78.67
+    },
+    {
+      "date": "2012-10-31",
+      "tmc": 14773.06,
+      "gdp": 16420.42,
+      "fed_ta": 2823.14,
+      "ratio_classic": 89.97,
+      "ratio_modified": 76.77
+    },
+    {
+      "date": "2012-11-30",
+      "tmc": 14848.04,
+      "gdp": 16420.42,
+      "fed_ta": 2851.36,
+      "ratio_classic": 90.42,
+      "ratio_modified": 77.05
+    },
+    {
+      "date": "2012-12-31",
+      "tmc": 14995.07,
+      "gdp": 16420.42,
+      "fed_ta": 2907.3,
+      "ratio_classic": 91.32,
+      "ratio_modified": 77.58
+    },
+    {
+      "date": "2013-01-31",
+      "tmc": 15824.21,
+      "gdp": 16648.19,
+      "fed_ta": 3008.7,
+      "ratio_classic": 95.05,
+      "ratio_modified": 80.5
+    },
+    {
+      "date": "2013-02-28",
+      "tmc": 15993.45,
+      "gdp": 16648.19,
+      "fed_ta": 3090.6,
+      "ratio_classic": 96.07,
+      "ratio_modified": 81.03
+    },
+    {
+      "date": "2013-03-28",
+      "tmc": 16598.17,
+      "gdp": 16648.19,
+      "fed_ta": 3202.26,
+      "ratio_classic": 99.7,
+      "ratio_modified": 83.62
+    },
+    {
+      "date": "2013-04-30",
+      "tmc": 16864.28,
+      "gdp": 16728.69,
+      "fed_ta": 3318.65,
+      "ratio_classic": 100.81,
+      "ratio_modified": 84.12
+    },
+    {
+      "date": "2013-05-31",
+      "tmc": 17212.26,
+      "gdp": 16728.69,
+      "fed_ta": 3385.13,
+      "ratio_classic": 102.89,
+      "ratio_modified": 85.57
+    },
+    {
+      "date": "2013-06-28",
+      "tmc": 16992.09,
+      "gdp": 16728.69,
+      "fed_ta": 3478.67,
+      "ratio_classic": 101.57,
+      "ratio_modified": 84.09
+    },
+    {
+      "date": "2013-07-31",
+      "tmc": 17890.39,
+      "gdp": 16953.84,
+      "fed_ta": 3571.8,
+      "ratio_classic": 105.52,
+      "ratio_modified": 87.16
+    },
+    {
+      "date": "2013-08-30",
+      "tmc": 17352.08,
+      "gdp": 16953.84,
+      "fed_ta": 3644.46,
+      "ratio_classic": 102.35,
+      "ratio_modified": 84.24
+    },
+    {
+      "date": "2013-09-30",
+      "tmc": 17982.43,
+      "gdp": 16953.84,
+      "fed_ta": 3734.02,
+      "ratio_classic": 106.07,
+      "ratio_modified": 86.92
+    },
+    {
+      "date": "2013-10-31",
+      "tmc": 18711.92,
+      "gdp": 17192.02,
+      "fed_ta": 3843.4,
+      "ratio_classic": 108.84,
+      "ratio_modified": 88.95
+    },
+    {
+      "date": "2013-11-29",
+      "tmc": 19201.96,
+      "gdp": 17192.02,
+      "fed_ta": 3925.88,
+      "ratio_classic": 111.69,
+      "ratio_modified": 90.93
+    },
+    {
+      "date": "2013-12-31",
+      "tmc": 19706.03,
+      "gdp": 17192.02,
+      "fed_ta": 4032.57,
+      "ratio_classic": 114.62,
+      "ratio_modified": 92.85
+    },
+    {
+      "date": "2014-01-31",
+      "tmc": 19105.24,
+      "gdp": 17197.74,
+      "fed_ta": 4102.14,
+      "ratio_classic": 111.09,
+      "ratio_modified": 89.7
+    },
+    {
+      "date": "2014-02-28",
+      "tmc": 19946.84,
+      "gdp": 17197.74,
+      "fed_ta": 4159.97,
+      "ratio_classic": 115.99,
+      "ratio_modified": 93.39
+    },
+    {
+      "date": "2014-03-31",
+      "tmc": 19996.01,
+      "gdp": 17197.74,
+      "fed_ta": 4226.97,
+      "ratio_classic": 116.27,
+      "ratio_modified": 93.33
+    },
+    {
+      "date": "2014-04-30",
+      "tmc": 19959.84,
+      "gdp": 17518.51,
+      "fed_ta": 4296.05,
+      "ratio_classic": 113.94,
+      "ratio_modified": 91.5
+    },
+    {
+      "date": "2014-05-30",
+      "tmc": 20348.35,
+      "gdp": 17518.51,
+      "fed_ta": 4322.65,
+      "ratio_classic": 116.15,
+      "ratio_modified": 93.17
+    },
+    {
+      "date": "2014-06-30",
+      "tmc": 20862.74,
+      "gdp": 17518.51,
+      "fed_ta": 4368.35,
+      "ratio_classic": 119.09,
+      "ratio_modified": 95.32
+    },
+    {
+      "date": "2014-07-31",
+      "tmc": 20410.81,
+      "gdp": 17804.23,
+      "fed_ta": 4406.64,
+      "ratio_classic": 114.64,
+      "ratio_modified": 91.9
+    },
+    {
+      "date": "2014-08-29",
+      "tmc": 21233.83,
+      "gdp": 17804.23,
+      "fed_ta": 4413.74,
+      "ratio_classic": 119.26,
+      "ratio_modified": 95.57
+    },
+    {
+      "date": "2014-09-30",
+      "tmc": 20760.46,
+      "gdp": 17804.23,
+      "fed_ta": 4459.05,
+      "ratio_classic": 116.6,
+      "ratio_modified": 93.25
+    },
+    {
+      "date": "2014-10-31",
+      "tmc": 21256.74,
+      "gdp": 17912.08,
+      "fed_ta": 4486.75,
+      "ratio_classic": 118.67,
+      "ratio_modified": 94.9
+    },
+    {
+      "date": "2014-11-28",
+      "tmc": 21731.18,
+      "gdp": 17912.08,
+      "fed_ta": 4485.93,
+      "ratio_classic": 121.32,
+      "ratio_modified": 97.02
+    },
+    {
+      "date": "2014-12-31",
+      "tmc": 21669.86,
+      "gdp": 17912.08,
+      "fed_ta": 4497.66,
+      "ratio_classic": 120.98,
+      "ratio_modified": 96.7
+    },
+    {
+      "date": "2015-01-30",
+      "tmc": 21060.44,
+      "gdp": 18063.53,
+      "fed_ta": 4500.06,
+      "ratio_classic": 116.59,
+      "ratio_modified": 93.34
+    },
+    {
+      "date": "2015-02-27",
+      "tmc": 22212.34,
+      "gdp": 18063.53,
+      "fed_ta": 4486.73,
+      "ratio_classic": 122.97,
+      "ratio_modified": 98.5
+    },
+    {
+      "date": "2015-03-31",
+      "tmc": 21947.91,
+      "gdp": 18063.53,
+      "fed_ta": 4480.6,
+      "ratio_classic": 121.5,
+      "ratio_modified": 97.36
+    },
+    {
+      "date": "2015-04-30",
+      "tmc": 22034.29,
+      "gdp": 18279.78,
+      "fed_ta": 4471.5,
+      "ratio_classic": 120.54,
+      "ratio_modified": 96.85
+    },
+    {
+      "date": "2015-05-29",
+      "tmc": 22259.7,
+      "gdp": 18279.78,
+      "fed_ta": 4463.98,
+      "ratio_classic": 121.77,
+      "ratio_modified": 97.87
+    },
+    {
+      "date": "2015-06-30",
+      "tmc": 21841.75,
+      "gdp": 18279.78,
+      "fed_ta": 4495.06,
+      "ratio_classic": 119.49,
+      "ratio_modified": 95.9
+    },
+    {
+      "date": "2015-07-31",
+      "tmc": 22180.08,
+      "gdp": 18401.63,
+      "fed_ta": 4485.48,
+      "ratio_classic": 120.53,
+      "ratio_modified": 96.91
+    },
+    {
+      "date": "2015-08-31",
+      "tmc": 20802.96,
+      "gdp": 18401.63,
+      "fed_ta": 4475.1,
+      "ratio_classic": 113.05,
+      "ratio_modified": 90.94
+    },
+    {
+      "date": "2015-09-30",
+      "tmc": 20119.28,
+      "gdp": 18401.63,
+      "fed_ta": 4484.11,
+      "ratio_classic": 109.33,
+      "ratio_modified": 87.91
+    },
+    {
+      "date": "2015-10-30",
+      "tmc": 21648.51,
+      "gdp": 18435.14,
+      "fed_ta": 4489.34,
+      "ratio_classic": 117.43,
+      "ratio_modified": 94.43
+    },
+    {
+      "date": "2015-11-30",
+      "tmc": 21658.55,
+      "gdp": 18435.14,
+      "fed_ta": 4477.09,
+      "ratio_classic": 117.49,
+      "ratio_modified": 94.53
+    },
+    {
+      "date": "2015-12-31",
+      "tmc": 21167.86,
+      "gdp": 18435.14,
+      "fed_ta": 4486.59,
+      "ratio_classic": 114.82,
+      "ratio_modified": 92.35
+    },
+    {
+      "date": "2016-01-29",
+      "tmc": 19926.1,
+      "gdp": 18525.93,
+      "fed_ta": 4482.35,
+      "ratio_classic": 107.56,
+      "ratio_modified": 86.6
+    },
+    {
+      "date": "2016-02-29",
+      "tmc": 19864.02,
+      "gdp": 18525.93,
+      "fed_ta": 4489.8,
+      "ratio_classic": 107.22,
+      "ratio_modified": 86.31
+    },
+    {
+      "date": "2016-03-31",
+      "tmc": 21224.32,
+      "gdp": 18525.93,
+      "fed_ta": 4482.84,
+      "ratio_classic": 114.57,
+      "ratio_modified": 92.24
+    },
+    {
+      "date": "2016-04-29",
+      "tmc": 21377.59,
+      "gdp": 18711.7,
+      "fed_ta": 4474.66,
+      "ratio_classic": 114.25,
+      "ratio_modified": 92.2
+    },
+    {
+      "date": "2016-05-27",
+      "tmc": 21701.47,
+      "gdp": 18711.7,
+      "fed_ta": 4461.11,
+      "ratio_classic": 115.98,
+      "ratio_modified": 93.65
+    },
+    {
+      "date": "2016-06-30",
+      "tmc": 21711.38,
+      "gdp": 18711.7,
+      "fed_ta": 4466.48,
+      "ratio_classic": 116.03,
+      "ratio_modified": 93.67
+    },
+    {
+      "date": "2016-07-29",
+      "tmc": 22547.92,
+      "gdp": 18892.64,
+      "fed_ta": 4464.5,
+      "ratio_classic": 119.35,
+      "ratio_modified": 96.54
+    },
+    {
+      "date": "2016-08-31",
+      "tmc": 22561.22,
+      "gdp": 18892.64,
+      "fed_ta": 4457.91,
+      "ratio_classic": 119.42,
+      "ratio_modified": 96.62
+    },
+    {
+      "date": "2016-09-30",
+      "tmc": 22576.67,
+      "gdp": 18892.64,
+      "fed_ta": 4452.0,
+      "ratio_classic": 119.5,
+      "ratio_modified": 96.71
+    },
+    {
+      "date": "2016-10-31",
+      "tmc": 22072.49,
+      "gdp": 19089.38,
+      "fed_ta": 4454.33,
+      "ratio_classic": 115.63,
+      "ratio_modified": 93.75
+    },
+    {
+      "date": "2016-11-30",
+      "tmc": 22991.07,
+      "gdp": 19089.38,
+      "fed_ta": 4446.31,
+      "ratio_classic": 120.44,
+      "ratio_modified": 97.69
+    },
+    {
+      "date": "2016-12-30",
+      "tmc": 23425.86,
+      "gdp": 19089.38,
+      "fed_ta": 4451.45,
+      "ratio_classic": 122.72,
+      "ratio_modified": 99.51
+    },
+    {
+      "date": "2017-01-31",
+      "tmc": 23847.21,
+      "gdp": 19280.08,
+      "fed_ta": 4452.84,
+      "ratio_classic": 123.69,
+      "ratio_modified": 100.48
+    },
+    {
+      "date": "2017-02-28",
+      "tmc": 24609.79,
+      "gdp": 19280.08,
+      "fed_ta": 4468.7,
+      "ratio_classic": 127.64,
+      "ratio_modified": 103.63
+    },
+    {
+      "date": "2017-03-31",
+      "tmc": 24624.72,
+      "gdp": 19280.08,
+      "fed_ta": 4469.62,
+      "ratio_classic": 127.72,
+      "ratio_modified": 103.68
+    },
+    {
+      "date": "2017-04-28",
+      "tmc": 24878.48,
+      "gdp": 19438.64,
+      "fed_ta": 4470.14,
+      "ratio_classic": 127.98,
+      "ratio_modified": 104.06
+    },
+    {
+      "date": "2017-05-31",
+      "tmc": 25041.34,
+      "gdp": 19438.64,
+      "fed_ta": 4459.91,
+      "ratio_classic": 128.82,
+      "ratio_modified": 104.78
+    },
+    {
+      "date": "2017-06-30",
+      "tmc": 25230.41,
+      "gdp": 19438.64,
+      "fed_ta": 4463.35,
+      "ratio_classic": 129.8,
+      "ratio_modified": 105.56
+    },
+    {
+      "date": "2017-07-31",
+      "tmc": 25685.19,
+      "gdp": 19692.6,
+      "fed_ta": 4465.28,
+      "ratio_classic": 130.43,
+      "ratio_modified": 106.32
+    },
+    {
+      "date": "2017-08-31",
+      "tmc": 25657.96,
+      "gdp": 19692.6,
+      "fed_ta": 4452.36,
+      "ratio_classic": 130.29,
+      "ratio_modified": 106.27
+    },
+    {
+      "date": "2017-09-29",
+      "tmc": 26233.34,
+      "gdp": 19692.6,
+      "fed_ta": 4455.66,
+      "ratio_classic": 133.21,
+      "ratio_modified": 108.63
+    },
+    {
+      "date": "2017-10-31",
+      "tmc": 26760.19,
+      "gdp": 20037.09,
+      "fed_ta": 4461.12,
+      "ratio_classic": 133.55,
+      "ratio_modified": 109.23
+    },
+    {
+      "date": "2017-11-30",
+      "tmc": 27493.38,
+      "gdp": 20037.09,
+      "fed_ta": 4438.59,
+      "ratio_classic": 137.21,
+      "ratio_modified": 112.33
+    },
+    {
+      "date": "2017-12-29",
+      "tmc": 27794.17,
+      "gdp": 20037.09,
+      "fed_ta": 4448.68,
+      "ratio_classic": 138.71,
+      "ratio_modified": 113.51
+    },
+    {
+      "date": "2018-01-31",
+      "tmc": 29237.48,
+      "gdp": 20328.55,
+      "fed_ta": 4419.23,
+      "ratio_classic": 143.82,
+      "ratio_modified": 118.14
+    },
+    {
+      "date": "2018-02-28",
+      "tmc": 28117.02,
+      "gdp": 20328.55,
+      "fed_ta": 4393.4,
+      "ratio_classic": 138.31,
+      "ratio_modified": 113.73
+    },
+    {
+      "date": "2018-03-29",
+      "tmc": 27410.72,
+      "gdp": 20328.55,
+      "fed_ta": 4392.2,
+      "ratio_classic": 134.84,
+      "ratio_modified": 110.88
+    },
+    {
+      "date": "2018-04-30",
+      "tmc": 27520.95,
+      "gdp": 20580.91,
+      "fed_ta": 4372.89,
+      "ratio_classic": 133.72,
+      "ratio_modified": 110.29
+    },
+    {
+      "date": "2018-05-31",
+      "tmc": 28218.46,
+      "gdp": 20580.91,
+      "fed_ta": 4327.52,
+      "ratio_classic": 137.11,
+      "ratio_modified": 113.29
+    },
+    {
+      "date": "2018-06-29",
+      "tmc": 28394.13,
+      "gdp": 20580.91,
+      "fed_ta": 4305.49,
+      "ratio_classic": 137.96,
+      "ratio_modified": 114.09
+    },
+    {
+      "date": "2018-07-31",
+      "tmc": 29295.75,
+      "gdp": 20798.73,
+      "fed_ta": 4277.68,
+      "ratio_classic": 140.85,
+      "ratio_modified": 116.83
+    },
+    {
+      "date": "2018-08-31",
+      "tmc": 30274.53,
+      "gdp": 20798.73,
+      "fed_ta": 4218.91,
+      "ratio_classic": 145.56,
+      "ratio_modified": 121.01
+    },
+    {
+      "date": "2018-09-28",
+      "tmc": 30259.82,
+      "gdp": 20798.73,
+      "fed_ta": 4192.91,
+      "ratio_classic": 145.49,
+      "ratio_modified": 121.08
+    },
+    {
+      "date": "2018-10-31",
+      "tmc": 27980.9,
+      "gdp": 20917.87,
+      "fed_ta": 4139.73,
+      "ratio_classic": 133.77,
+      "ratio_modified": 111.67
+    },
+    {
+      "date": "2018-11-30",
+      "tmc": 28448.87,
+      "gdp": 20917.87,
+      "fed_ta": 4097.17,
+      "ratio_classic": 136.0,
+      "ratio_modified": 113.73
+    },
+    {
+      "date": "2018-12-31",
+      "tmc": 25749.72,
+      "gdp": 20917.87,
+      "fed_ta": 4075.64,
+      "ratio_classic": 123.1,
+      "ratio_modified": 103.03
+    },
+    {
+      "date": "2019-01-31",
+      "tmc": 27992.41,
+      "gdp": 21111.6,
+      "fed_ta": 4039.68,
+      "ratio_classic": 132.59,
+      "ratio_modified": 111.3
+    },
+    {
+      "date": "2019-02-28",
+      "tmc": 28903.3,
+      "gdp": 21111.6,
+      "fed_ta": 3974.59,
+      "ratio_classic": 136.91,
+      "ratio_modified": 115.22
+    },
+    {
+      "date": "2019-03-29",
+      "tmc": 29266.91,
+      "gdp": 21111.6,
+      "fed_ta": 3955.62,
+      "ratio_classic": 138.63,
+      "ratio_modified": 116.75
+    },
+    {
+      "date": "2019-04-30",
+      "tmc": 30410.02,
+      "gdp": 21397.94,
+      "fed_ta": 3928.27,
+      "ratio_classic": 142.12,
+      "ratio_modified": 120.07
+    },
+    {
+      "date": "2019-05-31",
+      "tmc": 28369.39,
+      "gdp": 21397.94,
+      "fed_ta": 3851.44,
+      "ratio_classic": 132.58,
+      "ratio_modified": 112.36
+    },
+    {
+      "date": "2019-06-28",
+      "tmc": 30268.05,
+      "gdp": 21397.94,
+      "fed_ta": 3826.82,
+      "ratio_classic": 141.45,
+      "ratio_modified": 119.99
+    },
+    {
+      "date": "2019-07-31",
+      "tmc": 30684.82,
+      "gdp": 21717.17,
+      "fed_ta": 3779.1,
+      "ratio_classic": 141.29,
+      "ratio_modified": 120.35
+    },
+    {
+      "date": "2019-08-30",
+      "tmc": 29925.35,
+      "gdp": 21717.17,
+      "fed_ta": 3759.95,
+      "ratio_classic": 137.8,
+      "ratio_modified": 117.46
+    },
+    {
+      "date": "2019-09-30",
+      "tmc": 30351.92,
+      "gdp": 21717.17,
+      "fed_ta": 3857.72,
+      "ratio_classic": 139.76,
+      "ratio_modified": 118.68
+    },
+    {
+      "date": "2019-10-31",
+      "tmc": 30945.63,
+      "gdp": 21933.22,
+      "fed_ta": 4019.82,
+      "ratio_classic": 141.09,
+      "ratio_modified": 119.24
+    },
+    {
+      "date": "2019-11-29",
+      "tmc": 32025.86,
+      "gdp": 21933.22,
+      "fed_ta": 4052.88,
+      "ratio_classic": 146.02,
+      "ratio_modified": 123.24
+    },
+    {
+      "date": "2019-12-31",
+      "tmc": 32886.74,
+      "gdp": 21933.22,
+      "fed_ta": 4165.59,
+      "ratio_classic": 149.94,
+      "ratio_modified": 126.01
+    },
+    {
+      "date": "2020-01-31",
+      "tmc": 32838.19,
+      "gdp": 21751.24,
+      "fed_ta": 4151.63,
+      "ratio_classic": 150.97,
+      "ratio_modified": 126.77
+    },
+    {
+      "date": "2020-02-28",
+      "tmc": 30125.07,
+      "gdp": 21751.24,
+      "fed_ta": 4158.64,
+      "ratio_classic": 138.5,
+      "ratio_modified": 116.27
+    },
+    {
+      "date": "2020-03-31",
+      "tmc": 25899.93,
+      "gdp": 21751.24,
+      "fed_ta": 5254.28,
+      "ratio_classic": 119.07,
+      "ratio_modified": 95.91
+    },
+    {
+      "date": "2020-04-30",
+      "tmc": 29365.49,
+      "gdp": 19958.29,
+      "fed_ta": 6655.93,
+      "ratio_classic": 147.13,
+      "ratio_modified": 110.34
+    },
+    {
+      "date": "2020-05-29",
+      "tmc": 30927.04,
+      "gdp": 19958.29,
+      "fed_ta": 7097.32,
+      "ratio_classic": 154.96,
+      "ratio_modified": 114.31
+    },
+    {
+      "date": "2020-06-30",
+      "tmc": 31630.51,
+      "gdp": 19958.29,
+      "fed_ta": 7082.3,
+      "ratio_classic": 158.48,
+      "ratio_modified": 116.97
+    },
+    {
+      "date": "2020-07-31",
+      "tmc": 33393.39,
+      "gdp": 21704.44,
+      "fed_ta": 6949.03,
+      "ratio_classic": 153.86,
+      "ratio_modified": 116.54
+    },
+    {
+      "date": "2020-08-31",
+      "tmc": 35807.66,
+      "gdp": 21704.44,
+      "fed_ta": 6990.42,
+      "ratio_classic": 164.98,
+      "ratio_modified": 124.79
+    },
+    {
+      "date": "2020-09-30",
+      "tmc": 34480.27,
+      "gdp": 21704.44,
+      "fed_ta": 7056.13,
+      "ratio_classic": 158.86,
+      "ratio_modified": 119.89
+    },
+    {
+      "date": "2020-10-30",
+      "tmc": 33724.81,
+      "gdp": 22087.16,
+      "fed_ta": 7146.31,
+      "ratio_classic": 152.69,
+      "ratio_modified": 115.36
+    },
+    {
+      "date": "2020-11-30",
+      "tmc": 37839.65,
+      "gdp": 22087.16,
+      "fed_ta": 7216.48,
+      "ratio_classic": 171.32,
+      "ratio_modified": 129.13
+    },
+    {
+      "date": "2020-12-31",
+      "tmc": 39456.66,
+      "gdp": 22087.16,
+      "fed_ta": 7363.35,
+      "ratio_classic": 178.64,
+      "ratio_modified": 133.98
+    },
+    {
+      "date": "2021-01-29",
+      "tmc": 39396.17,
+      "gdp": 22680.69,
+      "fed_ta": 7404.93,
+      "ratio_classic": 173.7,
+      "ratio_modified": 130.95
+    },
+    {
+      "date": "2021-02-26",
+      "tmc": 40508.68,
+      "gdp": 22680.69,
+      "fed_ta": 7590.11,
+      "ratio_classic": 178.6,
+      "ratio_modified": 133.82
+    },
+    {
+      "date": "2021-03-31",
+      "tmc": 41741.87,
+      "gdp": 22680.69,
+      "fed_ta": 7688.99,
+      "ratio_classic": 184.04,
+      "ratio_modified": 137.45
+    },
+    {
+      "date": "2021-04-30",
+      "tmc": 43870.09,
+      "gdp": 23425.91,
+      "fed_ta": 7780.96,
+      "ratio_classic": 187.27,
+      "ratio_modified": 140.58
+    },
+    {
+      "date": "2021-05-28",
+      "tmc": 43966.36,
+      "gdp": 23425.91,
+      "fed_ta": 7903.54,
+      "ratio_classic": 187.68,
+      "ratio_modified": 140.34
+    },
+    {
+      "date": "2021-06-30",
+      "tmc": 45113.86,
+      "gdp": 23425.91,
+      "fed_ta": 8078.54,
+      "ratio_classic": 192.58,
+      "ratio_modified": 143.2
+    },
+    {
+      "date": "2021-07-30",
+      "tmc": 45708.0,
+      "gdp": 23982.38,
+      "fed_ta": 8221.47,
+      "ratio_classic": 190.59,
+      "ratio_modified": 141.93
+    },
+    {
+      "date": "2021-08-31",
+      "tmc": 46979.63,
+      "gdp": 23982.38,
+      "fed_ta": 8332.74,
+      "ratio_classic": 195.89,
+      "ratio_modified": 145.38
+    },
+    {
+      "date": "2021-09-30",
+      "tmc": 44850.03,
+      "gdp": 23982.38,
+      "fed_ta": 8447.98,
+      "ratio_classic": 187.01,
+      "ratio_modified": 138.3
+    },
+    {
+      "date": "2021-10-29",
+      "tmc": 47795.09,
+      "gdp": 24813.6,
+      "fed_ta": 8556.18,
+      "ratio_classic": 192.62,
+      "ratio_modified": 143.23
+    },
+    {
+      "date": "2021-11-30",
+      "tmc": 46936.08,
+      "gdp": 24813.6,
+      "fed_ta": 8681.77,
+      "ratio_classic": 189.15,
+      "ratio_modified": 140.13
+    },
+    {
+      "date": "2021-12-31",
+      "tmc": 48461.16,
+      "gdp": 24813.6,
+      "fed_ta": 8757.46,
+      "ratio_classic": 195.3,
+      "ratio_modified": 144.35
+    },
+    {
+      "date": "2022-01-31",
+      "tmc": 45416.47,
+      "gdp": 25250.35,
+      "fed_ta": 8860.49,
+      "ratio_classic": 179.86,
+      "ratio_modified": 133.14
+    },
+    {
+      "date": "2022-02-28",
+      "tmc": 44259.21,
+      "gdp": 25250.35,
+      "fed_ta": 8928.13,
+      "ratio_classic": 175.28,
+      "ratio_modified": 129.49
+    },
+    {
+      "date": "2022-03-31",
+      "tmc": 45606.67,
+      "gdp": 25250.35,
+      "fed_ta": 8937.14,
+      "ratio_classic": 180.62,
+      "ratio_modified": 133.4
+    },
+    {
+      "date": "2022-04-29",
+      "tmc": 41343.97,
+      "gdp": 25861.29,
+      "fed_ta": 8939.2,
+      "ratio_classic": 159.87,
+      "ratio_modified": 118.8
+    },
+    {
+      "date": "2022-05-31",
+      "tmc": 41084.9,
+      "gdp": 25861.29,
+      "fed_ta": 8914.28,
+      "ratio_classic": 158.87,
+      "ratio_modified": 118.14
+    },
+    {
+      "date": "2022-06-30",
+      "tmc": 37564.23,
+      "gdp": 25861.29,
+      "fed_ta": 8913.55,
+      "ratio_classic": 145.25,
+      "ratio_modified": 108.02
+    },
+    {
+      "date": "2022-07-29",
+      "tmc": 41119.58,
+      "gdp": 26336.3,
+      "fed_ta": 8890.0,
+      "ratio_classic": 156.13,
+      "ratio_modified": 116.73
+    },
+    {
+      "date": "2022-08-31",
+      "tmc": 39560.86,
+      "gdp": 26336.3,
+      "fed_ta": 8826.09,
+      "ratio_classic": 150.21,
+      "ratio_modified": 112.51
+    },
+    {
+      "date": "2022-09-30",
+      "tmc": 35836.92,
+      "gdp": 26336.3,
+      "fed_ta": 8795.57,
+      "ratio_classic": 136.07,
+      "ratio_modified": 102.01
+    },
+    {
+      "date": "2022-10-31",
+      "tmc": 38702.5,
+      "gdp": 26770.51,
+      "fed_ta": 8723.09,
+      "ratio_classic": 144.57,
+      "ratio_modified": 109.04
+    },
+    {
+      "date": "2022-11-30",
+      "tmc": 40552.42,
+      "gdp": 26770.51,
+      "fed_ta": 8584.58,
+      "ratio_classic": 151.48,
+      "ratio_modified": 114.7
+    },
+    {
+      "date": "2022-12-30",
+      "tmc": 38073.94,
+      "gdp": 26770.51,
+      "fed_ta": 8551.17,
+      "ratio_classic": 142.22,
+      "ratio_modified": 107.79
+    },
+    {
+      "date": "2023-01-31",
+      "tmc": 40724.96,
+      "gdp": 27216.44,
+      "fed_ta": 8470.56,
+      "ratio_classic": 149.63,
+      "ratio_modified": 114.12
+    },
+    {
+      "date": "2023-02-28",
+      "tmc": 39704.38,
+      "gdp": 27216.44,
+      "fed_ta": 8382.19,
+      "ratio_classic": 145.88,
+      "ratio_modified": 111.53
+    },
+    {
+      "date": "2023-03-31",
+      "tmc": 40708.41,
+      "gdp": 27216.44,
+      "fed_ta": 8705.94,
+      "ratio_classic": 149.57,
+      "ratio_modified": 113.32
+    },
+    {
+      "date": "2023-04-28",
+      "tmc": 41064.05,
+      "gdp": 27530.06,
+      "fed_ta": 8562.77,
+      "ratio_classic": 149.16,
+      "ratio_modified": 113.77
+    },
+    {
+      "date": "2023-05-31",
+      "tmc": 42053.18,
+      "gdp": 27530.06,
+      "fed_ta": 8385.85,
+      "ratio_classic": 152.75,
+      "ratio_modified": 117.09
+    },
+    {
+      "date": "2023-06-30",
+      "tmc": 44883.61,
+      "gdp": 27530.06,
+      "fed_ta": 8340.91,
+      "ratio_classic": 163.03,
+      "ratio_modified": 125.13
+    },
+    {
+      "date": "2023-07-31",
+      "tmc": 46450.22,
+      "gdp": 28074.85,
+      "fed_ta": 8243.34,
+      "ratio_classic": 165.45,
+      "ratio_modified": 127.9
+    },
+    {
+      "date": "2023-08-31",
+      "tmc": 45468.43,
+      "gdp": 28074.85,
+      "fed_ta": 8121.32,
+      "ratio_classic": 161.95,
+      "ratio_modified": 125.62
+    },
+    {
+      "date": "2023-09-29",
+      "tmc": 43249.3,
+      "gdp": 28074.85,
+      "fed_ta": 8002.06,
+      "ratio_classic": 154.05,
+      "ratio_modified": 119.88
+    },
+    {
+      "date": "2023-10-31",
+      "tmc": 42059.95,
+      "gdp": 28424.72,
+      "fed_ta": 7907.83,
+      "ratio_classic": 147.97,
+      "ratio_modified": 115.76
+    },
+    {
+      "date": "2023-11-30",
+      "tmc": 45900.9,
+      "gdp": 28424.72,
+      "fed_ta": 7796.15,
+      "ratio_classic": 161.48,
+      "ratio_modified": 126.73
+    },
+    {
+      "date": "2023-12-29",
+      "tmc": 48295.38,
+      "gdp": 28424.72,
+      "fed_ta": 7712.78,
+      "ratio_classic": 169.91,
+      "ratio_modified": 133.64
+    },
+    {
+      "date": "2024-01-31",
+      "tmc": 48769.87,
+      "gdp": 28708.16,
+      "fed_ta": 7630.12,
+      "ratio_classic": 169.88,
+      "ratio_modified": 134.21
+    },
+    {
+      "date": "2024-02-29",
+      "tmc": 51321.23,
+      "gdp": 28708.16,
+      "fed_ta": 7567.81,
+      "ratio_classic": 178.77,
+      "ratio_modified": 141.47
+    },
+    {
+      "date": "2024-03-28",
+      "tmc": 52915.82,
+      "gdp": 28708.16,
+      "fed_ta": 7484.74,
+      "ratio_classic": 184.32,
+      "ratio_modified": 146.2
+    },
+    {
+      "date": "2024-04-30",
+      "tmc": 50572.38,
+      "gdp": 29147.04,
+      "fed_ta": 7402.43,
+      "ratio_classic": 173.51,
+      "ratio_modified": 138.37
+    },
+    {
+      "date": "2024-05-31",
+      "tmc": 52875.52,
+      "gdp": 29147.04,
+      "fed_ta": 7284.32,
+      "ratio_classic": 181.41,
+      "ratio_modified": 145.14
+    },
+    {
+      "date": "2024-06-28",
+      "tmc": 54470.66,
+      "gdp": 29147.04,
+      "fed_ta": 7231.16,
+      "ratio_classic": 186.88,
+      "ratio_modified": 149.73
+    },
+    {
+      "date": "2024-07-31",
+      "tmc": 55429.84,
+      "gdp": 29511.66,
+      "fed_ta": 7178.39,
+      "ratio_classic": 187.82,
+      "ratio_modified": 151.08
+    },
+    {
+      "date": "2024-08-30",
+      "tmc": 56554.44,
+      "gdp": 29511.66,
+      "fed_ta": 7123.24,
+      "ratio_classic": 191.63,
+      "ratio_modified": 154.37
+    },
+    {
+      "date": "2024-09-30",
+      "tmc": 57636.94,
+      "gdp": 29511.66,
+      "fed_ta": 7080.06,
+      "ratio_classic": 195.3,
+      "ratio_modified": 157.51
+    },
+    {
+      "date": "2024-10-31",
+      "tmc": 57178.68,
+      "gdp": 29825.18,
+      "fed_ta": 7013.49,
+      "ratio_classic": 191.71,
+      "ratio_modified": 155.21
+    },
+    {
+      "date": "2024-11-29",
+      "tmc": 60880.74,
+      "gdp": 29825.18,
+      "fed_ta": 6905.14,
+      "ratio_classic": 204.13,
+      "ratio_modified": 165.75
+    },
+    {
+      "date": "2024-12-31",
+      "tmc": 58970.02,
+      "gdp": 29825.18,
+      "fed_ta": 6885.96,
+      "ratio_classic": 197.72,
+      "ratio_modified": 160.63
+    },
+    {
+      "date": "2025-01-31",
+      "tmc": 60775.2,
+      "gdp": 30042.11,
+      "fed_ta": 6818.19,
+      "ratio_classic": 202.3,
+      "ratio_modified": 164.88
+    },
+    {
+      "date": "2025-02-28",
+      "tmc": 59524.47,
+      "gdp": 30042.11,
+      "fed_ta": 6766.1,
+      "ratio_classic": 198.14,
+      "ratio_modified": 161.72
+    },
+    {
+      "date": "2025-03-31",
+      "tmc": 55933.39,
+      "gdp": 30042.11,
+      "fed_ta": 6740.25,
+      "ratio_classic": 186.18,
+      "ratio_modified": 152.07
+    },
+    {
+      "date": "2025-04-30",
+      "tmc": 55521.83,
+      "gdp": 30485.73,
+      "fed_ta": 6709.28,
+      "ratio_classic": 182.12,
+      "ratio_modified": 149.27
+    },
+    {
+      "date": "2025-05-30",
+      "tmc": 58996.79,
+      "gdp": 30485.73,
+      "fed_ta": 6673.24,
+      "ratio_classic": 193.52,
+      "ratio_modified": 158.77
+    },
+    {
+      "date": "2025-06-30",
+      "tmc": 61940.59,
+      "gdp": 30485.73,
+      "fed_ta": 6662.2,
+      "ratio_classic": 203.18,
+      "ratio_modified": 166.74
+    },
+    {
+      "date": "2025-07-31",
+      "tmc": 63290.9,
+      "gdp": 31098.03,
+      "fed_ta": 6642.58,
+      "ratio_classic": 203.52,
+      "ratio_modified": 167.7
+    },
+    {
+      "date": "2025-08-29",
+      "tmc": 64683.39,
+      "gdp": 31098.03,
+      "fed_ta": 6603.38,
+      "ratio_classic": 208.0,
+      "ratio_modified": 171.57
+    },
+    {
+      "date": "2025-09-30",
+      "tmc": 66847.84,
+      "gdp": 31098.03,
+      "fed_ta": 6608.4,
+      "ratio_classic": 214.96,
+      "ratio_modified": 177.29
+    },
+    {
+      "date": "2025-10-31",
+      "tmc": 68237.11,
+      "gdp": 31422.53,
+      "fed_ta": 6587.03,
+      "ratio_classic": 217.16,
+      "ratio_modified": 179.53
+    },
+    {
+      "date": "2025-11-28",
+      "tmc": 68336.33,
+      "gdp": 31422.53,
+      "fed_ta": 6552.42,
+      "ratio_classic": 217.48,
+      "ratio_modified": 179.95
+    },
+    {
+      "date": "2025-12-31",
+      "tmc": 68208.68,
+      "gdp": 31422.53,
+      "fed_ta": 6640.62,
+      "ratio_classic": 217.07,
+      "ratio_modified": 179.2
+    },
+    {
+      "date": "2026-01-30",
+      "tmc": 69262.99,
+      "gdp": 31856.26,
+      "fed_ta": 6587.57,
+      "ratio_classic": 217.42,
+      "ratio_modified": 180.17
+    },
+    {
+      "date": "2026-02-27",
+      "tmc": 68850.02,
+      "gdp": 31856.26,
+      "fed_ta": 6613.8,
+      "ratio_classic": 216.13,
+      "ratio_modified": 178.97
+    },
+    {
+      "date": "2026-03-31",
+      "tmc": 65362.52,
+      "gdp": 31856.26,
+      "fed_ta": 6657.16,
+      "ratio_classic": 205.18,
+      "ratio_modified": 169.71
+    },
+    {
+      "date": "2026-04-30",
+      "tmc": 72051.97,
+      "gdp": 31856.26,
+      "fed_ta": 6699.95,
+      "ratio_classic": 226.18,
+      "ratio_modified": 186.88
+    },
+    {
+      "date": "2026-05-15",
+      "tmc": 73713.73,
+      "gdp": 31856.26,
+      "fed_ta": 6728.5,
+      "ratio_classic": 231.39,
+      "ratio_modified": 191.04
+    }
+  ],
+  "source": {
+    "tmc": "yfinance ^W5000 (1989+) + FRED NCBEILQ027S (1970-1988, Z.1 equity market value, spliced and calibrated at 1989Q1)",
+    "gdp": "FRED GDP (Quarterly, Annualized, $bn)",
+    "fed_ta": "FRED WALCL (Weekly, $mn → /1000 to $bn; available from 2002-12)",
+    "formula_modified": "TMC / (GDP + Fed Total Assets) × 100%",
+    "formula_classic": "TMC / GDP × 100% (for reference)",
+    "thresholds_modified": "≤73 Significantly Undervalued / 73-94 Undervalued / 94-115 Fair Value / 115-136 Overvalued / >136 Significantly Overvalued",
+    "reference": "https://www.gurufocus.cn/indicator/buffett-market-valuation"
+  }
+}

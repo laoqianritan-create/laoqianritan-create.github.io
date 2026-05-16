@@ -1,0 +1,104 @@
+{
+  "updated": "2026-02",
+  "source": {
+    "name": "S&P U.S. Indices Methodology",
+    "url": "https://www.spglobal.com/spdji/en/documents/methodologies/methodology-sp-us-indices.pdf",
+    "version": "February 2026"
+  },
+  "highlights": [
+    {
+      "label": "Constituent Count",
+      "value": "500 companies",
+      "detail": "Measures the US large-cap equity segment."
+    },
+    {
+      "label": "Weighting",
+      "value": "Float-adjusted market capitalization",
+      "detail": "Weighted by free-float market value."
+    },
+    {
+      "label": "Minimum Market Cap",
+      "value": "Above $22.7 billion",
+      "detail": "Company-level total market cap, per the S&P 500 guidelines."
+    },
+    {
+      "label": "Earnings Requirement",
+      "value": "Positive in the most recent quarter and trailing four quarters",
+      "detail": "GAAP net income from continuing operations must be positive."
+    },
+    {
+      "label": "Liquidity Requirement",
+      "value": "At least 250,000 shares traded each month over six months",
+      "detail": "At addition, the FALR must also be no lower than 0.75."
+    },
+    {
+      "label": "Structural Constraints",
+      "value": "US-domiciled, common stock, listed on a qualifying exchange",
+      "detail": "ADRs, SPACs, ETFs, and LP/LLC structures are generally excluded."
+    }
+  ],
+  "sections": [
+    {
+      "title": "Index Overview",
+      "intro": "The S&P 500 is designed to represent the US large-cap equity market. Constituents are screened from the S&P Total Market Index, with the Index Committee making the final inclusion decisions.",
+      "bullets": [
+        "It is not a mechanical ranking of the top 500 by market cap; committee judgment and sector-balance constraints apply.",
+        "The goal is to cover the US large-cap segment while preserving investability and tradability."
+      ]
+    },
+    {
+      "title": "Eligibility",
+      "intro": "Candidates must first clear hard thresholds before entering the committee's final consideration set.",
+      "bullets": [
+        "Must be a US-domiciled company that meets US securities disclosure requirements.",
+        "Must list on a qualifying US exchange such as NYSE, Nasdaq, or Cboe BZX/EDGX.",
+        "The legal structure is typically a corporation, and the security type is typically common stock.",
+        "The current company-level market cap threshold for the S&P 500 is above $22.7 billion, with the security-level float-adjusted market cap at least 50% of that threshold.",
+        "At addition, the liquidity test requires at least 250,000 shares traded each month over the prior six months, and the FALR must be no lower than 0.75.",
+        "Financially, GAAP net income from continuing operations must be positive in the most recent quarter and in the sum of the trailing four quarters."
+      ]
+    },
+    {
+      "title": "Additions and Deletions",
+      "intro": "The index is not rebalanced wholesale each quarter; it is mostly event-driven and committee-maintained.",
+      "bullets": [
+        "The Index Committee has final discretion: clearing the thresholds does not guarantee inclusion.",
+        "Sector balance is considered, with reference to GICS sector weights within the relevant market-cap range of the S&P Total Market Index.",
+        "M&A, delistings, bankruptcies, and corporate restructurings frequently trigger constituent replacements.",
+        "Former SPACs typically need 12 months of trading history after de-SPAC before being considered."
+      ]
+    },
+    {
+      "title": "Weights and Maintenance",
+      "intro": "The S&P 500 is neither equal-weighted nor price-weighted, but float-adjusted market-cap weighted.",
+      "bullets": [
+        "Weight is determined by a company's investable market cap; share count, IWF, and price all influence the weight.",
+        "Index maintenance is continuous in response to corporate actions, share changes, and constituent replacements.",
+        "Market-cap thresholds are reviewed quarterly; if the ranges drift too far, the committee updates the large/mid/small-cap cutoffs."
+      ]
+    }
+  ],
+  "comparison": [
+    {
+      "name": "S&P 500",
+      "focus": "US large-cap equities",
+      "weighting": "Float-adjusted market cap",
+      "count": "500 companies",
+      "note": "Widely regarded as the core benchmark for US equities."
+    },
+    {
+      "name": "Dow Jones Industrial Average",
+      "focus": "A small set of blue-chip stocks",
+      "weighting": "Price-weighted",
+      "count": "30 companies",
+      "note": "A smaller, high-profile blue-chip sample."
+    },
+    {
+      "name": "Nasdaq 100",
+      "focus": "Large non-financial Nasdaq companies",
+      "weighting": "Modified market-cap weighted",
+      "count": "100 companies",
+      "note": "More concentrated in tech and growth, with heavier exposure to innovation platforms."
+    }
+  ]
+}

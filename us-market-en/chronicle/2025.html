@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2025 · 关税2.0 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260516220730">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260516220730">
+<script>
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">Overview</a>
+        <a class="nav-item" href="#section-events">Timeline of Events</a>
+        <a class="nav-item" href="#section-context">Era Context</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← Back to Calendar</a>
+      </div>
+    </nav>
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+      <a class="lang-opt" data-lang="zh" href="../../us-market/chronicle/2025.html">中</a>
+      <span class="lang-sep">|</span>
+      <a class="lang-opt active" data-lang="en" href="#" aria-current="true">EN</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">2025</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 川普 2.0 与 AI 资本周期</span>
+        <h1 class="year-hero-title">关税2.0</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">S&P 500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+16.39%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">联邦基金利率</span>
+            <span class="year-hero-stat-value">3.5–3.75%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">主权评级</span>
+            <span class="year-hero-stat-value year-hero-stat-value--red">Aa1（下调）</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Main Theme</span>
+            <span class="year-hero-stat-value">关税冲击 + AI 资本支出</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">S&P 500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">Nasdaq 100 & Dow Jones</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">Chronicle</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Overview</h2>
+          <p class="panel-desc">川普二次就职 · 关税 2.0 与解放日冲击 · AI 资本周期 · 三次降息</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>2025 年是川普第二任开年。1 月 20 日就职当日签署多项行政令，包括退出 WHO 与巴黎协定。1 月底中国 DeepSeek R1 发布，引发美股 AI 估值链短期重定价。2 月起 DOGE 启动大规模联邦机构裁员，财政与公共部门重构成为贯穿全年的政策主题。</p>
+        <p>关税是本年最具系统性影响的政策变量。2 月 1 日宣布对加拿大、墨西哥 25%、对华 10% 关税；3 月 4 日生效后市场回调。<strong>4 月 2 日「解放日关税」</strong>对全球加征 10% 基础关税并对华叠加，4 月 4 日标普 500 单日 -6%，至 4 月 8 日累计跌幅显著。<strong>4 月 9 日川普暂停部分关税 90 天</strong>，谈判窗口开启。5 月 Moody's 将美国主权评级由 AAA 下调至 Aa1，结束最后一家三大评级机构给予的最高评级。</p>
+        <p>6 月 13 日与 22 日，以色列、美国先后空袭、轰炸伊朗核设施，地缘风险阶段性放大。7 月川普签署「Big Beautiful Bill」综合法案。美联储于 9 月、10 月、12 月连续三次降息 25bp，年末利率走廊降至 3.5–3.75%。11 月 Nvidia 市值一度突破 4 万亿美元，<strong>全年 AI 资本支出超 4000 亿美元</strong>，成为指数级估值支撑。12 月政府关门危机延续。标普 500 全年 +16.39%，在关税冲击与 AI 资本周期的双轨叙事中收官。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear2025" style="margin-top:24px;"></div>
+      <p class="chart-band-note">Bands = price-trend segments · <span style="color:var(--green);">green</span> uptrend periods (≥5%) · <span style="color:var(--red);">red</span> downtrend periods (≥5%)</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Timeline of Events</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>General background</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>Materially pushed market higher</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>Materially pushed market lower</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>Key historical event</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">(Events also mark the chart below)</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item"
+             data-chart-date="2025-01-20"
+             data-chart-label="川普就职"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan 20</div>
+          <div class="timeline-title">川普就任美国第 47 任总统</div>
+          <div class="timeline-desc">同日签署多项行政令，包括退出 WHO、退出巴黎协定。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2025-01-27"
+             data-chart-label="DeepSeek R1"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan 27</div>
+          <div class="timeline-title">中国 DeepSeek R1 发布引发 AI 估值冲击</div>
+          <div class="timeline-desc">低成本开源推理模型挑战美国 AI 投入逻辑，美股 AI 估值链短期重定价。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2025-02-03"
+             data-chart-label="关税宣布">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb 1</div>
+          <div class="timeline-title">川普宣布加墨 25%、对华 10% 关税</div>
+          <div class="timeline-desc">第二任期首轮单边关税。3 月 4 日生效。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2025-02-12"
+             data-chart-label="DOGE 裁员">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb</div>
+          <div class="timeline-title">DOGE 启动大规模联邦机构裁员</div>
+          <div class="timeline-desc">「政府效率部」Department of Government Efficiency 推动跨部门大规模解聘与机构合并。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2025-03-04"
+             data-chart-label="关税生效">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 4</div>
+          <div class="timeline-title">加墨与对华关税正式生效</div>
+          <div class="timeline-desc">前述 2 月 1 日宣布的关税清单进入执行阶段。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2025-04-02"
+             data-chart-date-end="2025-04-08"
+             data-chart-range-end="2025-04-08"
+             data-chart-label="解放日关税"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 2</div>
+          <div class="timeline-title">「解放日关税」签署</div>
+          <div class="timeline-desc">川普签署对全球加征 10% 基础关税并对中国叠加更高税率，触发全球贸易体系重定价。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="2025-04-09"
+             data-chart-label="关税暂停 90 天"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 9</div>
+          <div class="timeline-title">川普宣布暂停部分关税 90 天</div>
+          <div class="timeline-desc">对除中国外的多数贸易伙伴 10% 基础关税暂停 90 天，谈判窗口开启。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2025-05-16"
+             data-chart-label="Moody's 下调">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May</div>
+          <div class="timeline-title">Moody's 下调美国主权评级 AAA → Aa1</div>
+          <div class="timeline-desc">最后一家三大评级机构撤销美国 AAA。理由为长期债务路径与利息支出占比。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2025-06-13"
+             data-chart-range-end="2025-06-22"
+             data-chart-label="以伊冲突">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">6.13 / 6.22</div>
+          <div class="timeline-title">以色列空袭伊朗核设施，美国轰炸福尔多</div>
+          <div class="timeline-desc">6 月 13 日以色列空袭伊朗核设施；6 月 22 日美国直接轰炸福尔多地下核设施。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2025-07-04"
+             data-chart-label="BBB 法案">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jul</div>
+          <div class="timeline-title">川普签署「Big Beautiful Bill」综合法案</div>
+          <div class="timeline-desc">税收、移民、能源与社会保障多领域打包立法。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="2025-09-17"
+             data-chart-label="首次降息"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Sep 17</div>
+          <div class="timeline-title">美联储降息 25bp 至 4.0–4.25%</div>
+          <div class="timeline-desc">本轮周期内首次降息。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2025-10-29"
+             data-chart-label="二次降息">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Oct 29</div>
+          <div class="timeline-title">美联储降息 25bp 至 3.75–4.0%</div>
+          <div class="timeline-desc">连续两次降息确立宽松节奏。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="2025-11-05"
+             data-chart-label="Nvidia 4 万亿"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Nov</div>
+          <div class="timeline-title">Nvidia 市值一度突破 4 万亿美元</div>
+          <div class="timeline-desc">AI 资本支出周期延续，全年行业 capex 超 4000 亿美元。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="2025-12-10"
+             data-chart-label="年内三次降息">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Dec 10</div>
+          <div class="timeline-title">美联储降息 25bp 至 3.5–3.75%</div>
+          <div class="timeline-desc">年内第三次降息。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2025-12-19"
+             data-chart-label="政府关门">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Dec</div>
+          <div class="timeline-title">政府关门危机</div>
+          <div class="timeline-desc">国会两党在拨款与债务上限上的对峙延续至年末。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="2019-2026">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">Era Context</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">Loading…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">All year pages within the same era (2019-2026) share this "Era Context" content.</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← Back to Calendar</a>
+        <a class="year-back-link" href="../index.html#panel-price">View Long-Term S&P 500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">View Shiller PE →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">Chronicle · Source</h4>
+      <ul class="footer-link-list">
+        <li>Yan Xiang, Zhan Di, Xu Ruchun, Zhu Chengcheng. <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">"70 Years of US Equities: 1948–2018 Market Recap"</a>. Economic Science Press, 2020.</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">Data for reference only; not investment advice · Big Picture · Chronicle</p>
+  </div>
+</footer>
+
+<script defer src="../js/chronicle-year.js?v=20260516220730"></script>
+
+</body>
+</html>

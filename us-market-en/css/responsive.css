@@ -1,0 +1,211 @@
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero-banner { padding: 42px 16px 36px; min-height: 180px; }
+  .hero-title { font-size: 26px; line-height: 1.3; }
+  .hero-title-cn { display: block; margin-top: 4px; font-size: 22px; }
+  .hero-subtitle { font-size: 15px; margin-top: 10px; letter-spacing: 0; }
+  .hero-curve-layer { width: 72%; right: 4%; }
+  .hero-event-marker { width: 8px; height: 8px; }
+  .hero-event-label { font-size: 10px; }
+  .hero-badges { gap: 8px; margin-top: 16px; }
+  .hero-badge { padding: 3px 10px; font-size: 11px; }
+  .hero-badge-value { font-size: 12px; }
+  .footer { padding: 28px 16px 20px; }
+  .footer-link-list { gap: 8px 14px; }
+  .footer-link-list a,
+  .footer-link-pending { font-size: 12px; }
+  .panel { padding: 40px 0; }
+  .panel-inner { padding: 0 16px; }
+  .panel-title { font-size: 22px; }
+  .chart-hero { height: 55vh; min-height: 320px; }
+  .chart-ranking-tall { height: 72vh; min-height: 420px; }
+  .chart-medium { height: 40vh; min-height: 280px; }
+  .chart-standard { height: 50vh; min-height: 320px; }
+  /* Mobile: sidebar reverts to a top horizontal bar */
+  .header {
+    position: sticky;
+    top: 0;
+    left: auto;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    overflow-y: visible;
+    overflow-x: auto;
+  }
+  .header-inner {
+    flex-direction: row;
+    align-items: center;
+    padding: 0 12px;
+    gap: 12px;
+    height: 44px;
+  }
+  .header-title { font-size: 14px; padding-bottom: 0; border-bottom: none; }
+  .nav {
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: visible;
+    flex: 1;
+  }
+  .nav-group { flex-direction: row; gap: 4px; min-width: 100%; }
+  .nav-item { font-size: 12px; padding: 5px 8px; }
+  .main, .hero-banner, .footer, .category-bar { margin-left: 0; }
+  .category-inner { padding: 10px 16px; }
+  .category-tab { font-size: 12px; padding: 6px 12px; }
+  html { scroll-padding-top: 88px; }
+  .sector-layout,
+  .breadth-layout,
+  .rules-highlights,
+  .rules-grid,
+  .compare-grid {
+    grid-template-columns: 1fr;
+  }
+  /* Metric strip on mobile: keep the table-row layout but wrap `note` to a second line to save width */
+  .metric-strip {
+    margin-top: 12px;
+  }
+  .metric-card {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "label value" "note note";
+    gap: 2px 12px;
+    padding: 8px 12px;
+  }
+  .metric-label { grid-area: label; }
+  .metric-value { grid-area: value; }
+  .metric-note  { grid-area: note; text-align: left; }
+  .table-toolbar {
+    align-items: stretch;
+  }
+  .table-search {
+    width: 100%;
+  }
+  .panel-date-range {
+    font-size: 13px;
+  }
+  .matrix-y-label {
+    width: 52px;
+    min-width: 52px;
+    font-size: 9px;
+    padding-right: 6px !important;
+  }
+  .matrix-x-label {
+    width: 26px;
+    min-width: 26px;
+    height: 58px;
+  }
+  .matrix-x-label span {
+    transform: translate(8px, 2px) rotate(-45deg);
+    font-size: 8.5px;
+  }
+  .matrix-cell,
+  .matrix-blank {
+    width: 24px;
+    min-width: 24px;
+    height: 19px;
+  }
+  .matrix-cell {
+    font-size: 7.8px;
+  }
+  .matrix-hover-tooltip {
+    max-width: calc(100vw - 24px);
+    white-space: normal;
+  }
+  .matrix-tooltip-title,
+  .matrix-tooltip-line {
+    font-size: 13px;
+  }
+
+  /* Category switcher: horizontal scroll on mobile */
+  .category-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  .category-tabs::-webkit-scrollbar { display: none; }
+
+  /* Navigation: horizontal scroll */
+  .nav-list {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+  }
+  .nav-list::-webkit-scrollbar { display: none; }
+
+  /* Export button: larger touch target */
+  .btn-export {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px 12px;
+  }
+
+  /* Metric cards: mobile font sizes */
+  .metric-label {
+    font-size: 11px;
+  }
+  .metric-value {
+    font-size: 14px;
+  }
+  .metric-note {
+    font-size: 10px;
+  }
+
+  /* ── Mobile table general strategies (panel-level rollout, batch 3) ── */
+
+  /* A. Matrix / heatmap tables: horizontal-scroll container.
+     Usage: wrap any table that needs horizontal scrolling with class="mobile-hscroll"
+     (no effect on desktop). */
+  .mobile-hscroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mobile-hscroll::before {
+    content: '← Swipe to see more →';
+    display: block;
+    font-size: 11px;
+    color: var(--text-secondary, #8a8a8a);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  /* B. Event tables: convert each row to a card.
+     Usage: add class="mobile-cards" to <table>; add a data-label attribute to each <td>.
+     Desktop keeps the original table appearance (this class is a no-op on desktop). */
+  table.mobile-cards {
+    display: block;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+  table.mobile-cards thead { display: none; }
+  table.mobile-cards tbody { display: block; }
+  table.mobile-cards tbody tr {
+    display: block;
+    background: var(--card-bg, #fff);
+    border: 1px solid var(--border, #e5e5e5);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    padding: 10px 12px;
+  }
+  table.mobile-cards tbody td {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px 0;
+    border: none;
+    font-size: 13px;
+  }
+  table.mobile-cards tbody td::before {
+    content: attr(data-label);
+    color: var(--text-secondary, #8a8a8a);
+    font-size: 12px;
+    flex: 0 0 auto;
+  }
+}
+
+/* On desktop (>768px) mobile-cards / mobile-hscroll have no side effects —
+   the former's rules live inside the max-width:768px block, and the latter's
+   overflow:auto only affects extra-wide tables. */
+

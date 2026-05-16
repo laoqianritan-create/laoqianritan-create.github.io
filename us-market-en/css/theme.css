@@ -1,0 +1,20 @@
+/* ── Theme Variables ── */
+:root {
+  --bg: #ffffff;
+  --bg-section: #fafafa;
+  --text: #1a1a1a;
+  --text-secondary: #666666;
+  --border: #e8e8e8;
+  --sp500-line: #1a1a1a;
+  --green: #389e0d;
+  --red: #cf1322;
+  --accent: #4758e0;
+  --accent-light: rgba(71,88,224,0.08);
+  --chart-grid: #f0f0f0;
+  --gray: #999999;
+  --header-bg: rgba(255,255,255,0.92);
+  --card-bg: #ffffff;
+  --table-stripe: #fafafa;
+  --table-hover: #f0f4ff;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06);
+}

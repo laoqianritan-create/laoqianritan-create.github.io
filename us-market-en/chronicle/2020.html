@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2020 · 新冠疫情·最快熊市与最快反弹 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260516220730">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260516220730">
+<script>
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">Overview</a>
+        <a class="nav-item" href="#section-events">Timeline of Events</a>
+        <a class="nav-item" href="#section-context">Era Context</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← Back to Calendar</a>
+      </div>
+    </nav>
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+      <a class="lang-opt" data-lang="zh" href="../../us-market/chronicle/2020.html">中</a>
+      <span class="lang-sep">|</span>
+      <a class="lang-opt active" data-lang="en" href="#" aria-current="true">EN</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">2020</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 大流行 · 史上最快熊市与最快牛市</span>
+        <h1 class="year-hero-title">新冠疫情·最快熊市与最快反弹</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">S&P 500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+16.26%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">最大回撤</span>
+            <span class="year-hero-stat-value year-hero-stat-value--red">-34%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">3.23 低点</span>
+            <span class="year-hero-stat-value">2237</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Main Theme</span>
+            <span class="year-hero-stat-value">大流行 + 零利率无限 QE + 财政接力</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">S&P 500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">Nasdaq 100 & Dow Jones</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">Chronicle</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Overview</h2>
+          <p class="panel-desc">22 个交易日跌 34% · 零利率 + 无限 QE · 8 月即收复全部失地</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>2020 年的市场被一场全球大流行劈成两半。2 月 19 日标普 500 还在创出历史新高，随后疫情在欧美迅速扩散，3 月 9 日、12 日、16 日、18 日美股 <strong>10 天 4 次触发熔断</strong>，3 月 23 日指数跌至 2237 点，自高点回落 34%，仅用 22 个交易日完成熊市——史上最快。</p>
+        <p>政策反应同样史无前例。美联储 3 月 3 日紧急降息 50bp，3 月 15 日再降 100bp 至零利率并启动 <strong>7000 亿无限量 QE</strong>，3 月 23 日宣布购买公司债 ETF；财政端 3 月 27 日 CARES 法案 2.2 万亿美元落地，12 月再追加 9000 亿。流动性洪水叠加居家经济，纳斯达克与大型科技股率先脱钩反弹，标普 500 在 8 月 18 日就收复全部失地，创造了史上最快的牛市切换。</p>
+        <p>下半年的叙事主线切换至大选、疫苗与散户。5 月弗洛伊德事件引发 BLM 运动，11 月 3 日拜登当选，11 月 9 日辉瑞披露疫苗 III 期 90% 有效性，价值股与顺周期补涨。4 月 20 日 WTI 原油期货首次跌至负值 -37 美元，12 月散户聚集 GME 的轧空行情开始酝酿——为 2021 年的故事埋下伏笔。全年标普 500 <strong>+16.26%</strong>，NBER 认定的 2 月至 4 月衰退也是史上最短。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear2020" style="margin-top:24px;"></div>
+      <p class="chart-band-note">Bands = price-trend segments · <span style="color:var(--green);">green</span> uptrend periods (≥5%) · <span style="color:var(--red);">red</span> downtrend periods (≥5%)</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Timeline of Events</h2>
+        </div>
+      </div>
+
+      <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>General background</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>Materially pushed market higher</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>Materially pushed market lower</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>Key historical event</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">(Events also mark the chart below)</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item"
+             data-chart-date="2020-01-03"
+             data-chart-label="击杀苏莱曼尼">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan 3</div>
+          <div class="timeline-title">美军在巴格达击杀伊朗将领苏莱曼尼</div>
+          <div class="timeline-desc">美伊关系一度濒临开战，原油短线跳涨。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2020-01-21"
+             data-chart-label="美国首例新冠">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan 21</div>
+          <div class="timeline-title">美国首例新冠确诊（西雅图）</div>
+          <div class="timeline-desc">病例溯源来自武汉旅行者，CDC 启动首轮接触者追踪。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2020-01-31"
+             data-chart-label="对华旅行禁令">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan 31</div>
+          <div class="timeline-title">川普宣布对中国旅行禁令</div>
+          <div class="timeline-desc">14 天内到访中国的非美国公民禁止入境，全球航空业开始停摆。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2020-02-05"
+             data-chart-label="弹劾案否决">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb 5</div>
+          <div class="timeline-title">参议院弹劾川普案否决</div>
+          <div class="timeline-desc">两项弹劾条款均未达到 67 票门槛，川普获判无罪。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2020-03-03"
+             data-chart-label="紧急降息 50bp"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 3</div>
+          <div class="timeline-title">美联储紧急降息 50bp</div>
+          <div class="timeline-desc">两次例会之间的紧急动作，为 2008 年金融危机以来首次。利率走廊降至 1.00%–1.25%。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2020-03-09"
+             data-chart-label="10天4次熔断"
+             data-chart-show-label="true"
+             data-chart-range-end="2020-03-18">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">3.9 / 3.12 / 3.16 / 3.18</div>
+          <div class="timeline-title">美股 10 个交易日内 4 次触发熔断</div>
+          <div class="timeline-desc">1988 年熔断机制设立以来仅 1997 年触发过一次，本次连发四次。叠加沙特俄罗斯油价战，全球资产同步抛售、美元荒。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2020-03-15"
+             data-chart-label="降息至零+无限QE"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 15</div>
+          <div class="timeline-title">美联储再降 100bp 至零利率 + 7000 亿无限 QE</div>
+          <div class="timeline-desc">联邦基金利率回到 0–0.25%，同步启动 7000 亿美元资产购买，并随后宣布不设上限。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2020-03-23"
+             data-chart-label="标普触底2237"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 23</div>
+          <div class="timeline-title">标普 500 触底 2237 点，史上最快熊市</div>
+          <div class="timeline-desc">自 2 月 19 日高点 22 个交易日跌 34%。同日美联储宣布购买投资级公司债 ETF，将救助伸入信用市场。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2020-03-27"
+             data-chart-label="CARES 2.2万亿"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 27</div>
+          <div class="timeline-title">CARES 法案 2.2 万亿美元签署</div>
+          <div class="timeline-desc">美国历史上规模最大的一次性救助法案，含直接现金支票、PPP 小企业贷款、失业救济加码。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2020-04-20"
+             data-chart-label="WTI 负油价">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 20</div>
+          <div class="timeline-title">WTI 5 月原油期货跌至 -37 美元</div>
+          <div class="timeline-desc">交割地库容耗尽 + 多头被动平仓，期货史上首次出现负价。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2020-05-25"
+             data-chart-label="弗洛伊德 / BLM">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May 25</div>
+          <div class="timeline-title">弗洛伊德事件引爆全美 BLM 抗议</div>
+          <div class="timeline-desc">明尼阿波利斯白人警察跪压致黑人男子死亡，全美数百城市抗议持续整个夏季。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2020-06-08"
+             data-chart-label="NBER 认定衰退">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jun 8</div>
+          <div class="timeline-title">NBER 认定 2020 衰退周期：2 月 → 4 月</div>
+          <div class="timeline-desc">仅 2 个月，史上最短衰退。终结 2009 年 6 月以来最长扩张周期。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="2020-08-18"
+             data-chart-label="史上最快牛市"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Aug 18</div>
+          <div class="timeline-title">标普 500 收复疫情前高点，史上最快熊牛切换</div>
+          <div class="timeline-desc">自 3 月 23 日低点不到 5 个月完成切换，由大型科技股领涨。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2020-11-03"
+             data-chart-label="拜登当选">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Nov 3</div>
+          <div class="timeline-title">拜登在 2020 大选中击败川普</div>
+          <div class="timeline-desc">民主党拿下白宫，参议院控制权悬于 2021 年 1 月乔治亚州决选。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="2020-11-09"
+             data-chart-label="辉瑞疫苗 90%"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Nov 9</div>
+          <div class="timeline-title">辉瑞披露疫苗 III 期 90% 有效性</div>
+          <div class="timeline-desc">mRNA 路线首份大样本三期数据，价值股、航空酒店与小盘股集体补涨。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2020-12-27"
+             data-chart-label="第二轮纾困 9000 亿">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Dec 27</div>
+          <div class="timeline-title">第二轮纾困法案 9000 亿美元签署</div>
+          <div class="timeline-desc">含每人 600 美元支票与失业救济延期，跨越政府关门危机。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2020-12-21"
+             data-chart-label="GME 散户酝酿">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Dec</div>
+          <div class="timeline-title">GameStop 散户轧空开始酝酿</div>
+          <div class="timeline-desc">Reddit WallStreetBets 论坛聚集，押注 GME 高空头比例，为 2021 年 1 月轧空行情埋下伏笔。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="2019-2026">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">Era Context</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">Loading…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">All year pages within the same era (2019-2026) share this "Era Context" content.</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← Back to Calendar</a>
+        <a class="year-back-link" href="../index.html#panel-price">View Long-Term S&P 500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">View Shiller PE →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">Chronicle · Source</h4>
+      <ul class="footer-link-list">
+        <li>Yan Xiang, Zhan Di, Xu Ruchun, Zhu Chengcheng. <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">"70 Years of US Equities: 1948–2018 Market Recap"</a>. Economic Science Press, 2020.</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">Data for reference only; not investment advice · Big Picture · Chronicle</p>
+  </div>
+</footer>
+
+<script defer src="../js/chronicle-year.js?v=20260516220730"></script>
+
+</body>
+</html>

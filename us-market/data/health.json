@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-16 09:38:22",
+  "generated_at": "2026-05-16 22:07:29",
   "today": "2026-05-16",
   "overall": "critical",
   "stale_count": 1,
@@ -14,9 +14,9 @@
     {
       "file": "sp500_century.json",
       "label": "标普 500 月线百年",
-      "updated": "2026-05-13",
-      "days_old": 3,
-      "status": "recent"
+      "updated": "2026-05-15",
+      "days_old": 1,
+      "status": "fresh"
     },
     {
       "file": "sp500_pe.json",

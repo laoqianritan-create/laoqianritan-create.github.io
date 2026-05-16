@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2023 · 硅谷银行倒闭与AI浪潮 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260516220730">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260516220730">
+<script>
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">Overview</a>
+        <a class="nav-item" href="#section-events">Timeline of Events</a>
+        <a class="nav-item" href="#section-context">Era Context</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← Back to Calendar</a>
+      </div>
+    </nav>
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+      <a class="lang-opt" data-lang="zh" href="../../us-market/chronicle/2023.html">中</a>
+      <span class="lang-sep">|</span>
+      <a class="lang-opt active" data-lang="en" href="#" aria-current="true">EN</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">2023</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 银行危机与AI叙事启动</span>
+        <h1 class="year-hero-title">硅谷银行倒闭与AI浪潮</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">S&P 500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+24.23%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Dow Jones</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+13.7%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Year-End</span>
+            <span class="year-hero-stat-value">37690</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Main Theme</span>
+            <span class="year-hero-stat-value">SVB 危机 + AI 叙事 + 加息末段</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">S&P 500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">Nasdaq 100 & Dow Jones</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">Chronicle</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Overview</h2>
+          <p class="panel-desc">银行危机短促爆发 · AI 资本支出叙事启动 · 加息周期收官</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>2023 年开年带着 2022 年熊市的余温，市场普遍预期衰退。1 月触及债务上限、2 月美联储继续加息，宏观仍在收紧轨道。真正的转折点在 3 月——加密银行 Silvergate 清算后，<strong>3 月 10 日硅谷银行 (SVB) 被关闭，成为美国史上第二大银行倒闭事件</strong>，随后 Signature Bank、First Republic 相继出事。美联储紧急推出 BTFP（银行定期融资计划），市场对系统性风险的担忧在 3 月中下旬迅速消化。</p>
+        <p>5 月 30 日 <strong>Nvidia 公布业绩并大幅上调指引，单日 +24%</strong>，AI 资本支出叙事自此正式启动，七巨头与半导体板块成为全年最强主线。下半年加息进入末段，7 月 26 日为本轮最后一次加息（5.25-5.5%），8 月惠誉下调美国主权评级 AAA→AA+，10 月哈以战争爆发，长债收益率一度逼近 5%，指数在 8-10 月回调约 10%。</p>
+        <p>11 月起市场重新计入降息预期，12 月 13 日鲍威尔在 FOMC 会后释放鸽派信号，指数完成 V 型反转。标普 500 全年 <strong>+24.23%</strong>，纳指领涨；比特币全年上涨约 150%，风险资产同步走宽。这一年定下了之后两年的两条主线：<strong>AI 资本支出周期</strong>与<strong>降息预期博弈</strong>。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear2023" style="margin-top:24px;"></div>
+      <p class="chart-band-note">Bands = price-trend segments · <span style="color:var(--green);">green</span> uptrend periods (≥5%) · <span style="color:var(--red);">red</span> downtrend periods (≥5%)</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Timeline of Events</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>General background</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>Materially pushed market higher</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>Materially pushed market lower</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>Key historical event</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">(Events also mark the chart below)</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item"
+             data-chart-date="2023-01-19"
+             data-chart-label="触及债务上限">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan 19</div>
+          <div class="timeline-title">美国触及债务上限</div>
+          <div class="timeline-desc">财政部启动非常规措施争取时间，开启长达数月的债务上限博弈。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2023-02-01"
+             data-chart-label="加息至 4.75%">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb 1</div>
+          <div class="timeline-title">美联储加息 25bp 至 4.5-4.75%</div>
+          <div class="timeline-desc">加息步伐从 75bp 放缓到 25bp，但通胀仍粘性，紧缩周期未结束。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2023-02-03"
+             data-chart-label="击落气球">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb 3</div>
+          <div class="timeline-title">美国击落中国「流浪气球」</div>
+          <div class="timeline-desc">中美关系一度急剧紧张，国务卿布林肯推迟访华。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="2023-02-22"
+             data-chart-label="Nvidia 业绩预告">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb 24</div>
+          <div class="timeline-title">Nvidia 业绩预测大超预期</div>
+          <div class="timeline-desc">数据中心业务首次显露 AI 加速器需求的拐点信号。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2023-03-08"
+             data-chart-label="Silvergate 清算">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 8</div>
+          <div class="timeline-title">加密银行 Silvergate 自愿清算</div>
+          <div class="timeline-desc">银行业流动性危机的第一张多米诺骨牌。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2023-03-10"
+             data-chart-label="SVB 倒闭"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 10</div>
+          <div class="timeline-title">硅谷银行 (SVB) 被关闭</div>
+          <div class="timeline-desc">美国史上第二大银行倒闭。两天后 Signature Bank 跟随倒闭，区域银行板块集体承压。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="2023-03-12"
+             data-chart-label="BTFP 推出"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 12</div>
+          <div class="timeline-title">美联储紧急推出 BTFP（银行定期融资计划）</div>
+          <div class="timeline-desc">允许银行以面值抵押美债换取一年期流动性，遏制存款挤兑外溢。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2023-03-19"
+             data-chart-label="UBS 收购瑞信">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 19</div>
+          <div class="timeline-title">UBS 以 320 亿瑞郎收购瑞信</div>
+          <div class="timeline-desc">瑞士政府主导的"shotgun"交易，AT1 债券遭全额减记，欧洲百年大行就此落幕。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2023-03-22"
+             data-chart-label="加息至 5%">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">3.22 / 5.3</div>
+          <div class="timeline-title">美联储继续加息至 5.0-5.25%</div>
+          <div class="timeline-desc">银行危机期间仍连续两次加息 25bp，通胀优先。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2023-04-27"
+             data-chart-label="First Republic">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 27</div>
+          <div class="timeline-title">First Republic Bank 被关闭</div>
+          <div class="timeline-desc">摩根大通接手，美国史上第二大银行倒闭纪录易主。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="2023-05-30"
+             data-chart-label="Nvidia +24%"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May 30</div>
+          <div class="timeline-title">Nvidia 业绩超预期，单日 +24%</div>
+          <div class="timeline-desc">数据中心指引大幅上修，AI 资本支出叙事正式启动，七巨头与半导体板块成全年主线。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2023-06-03"
+             data-chart-label="债务上限解决">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jun 3</div>
+          <div class="timeline-title">拜登签署债务上限协议避免违约</div>
+          <div class="timeline-desc">将债务上限暂停至 2025 年 1 月，结束数月的政治拉锯。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2023-07-26"
+             data-chart-label="末次加息 5.5%">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jul 26</div>
+          <div class="timeline-title">美联储加息至 5.25-5.5%</div>
+          <div class="timeline-desc">本轮加息周期的最后一次，自此进入观望阶段。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2023-08-01"
+             data-chart-label="惠誉下调评级"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Aug 1</div>
+          <div class="timeline-title">惠誉下调美国主权评级 AAA→AA+</div>
+          <div class="timeline-desc">2011 年标普下调以来三大评级机构第二次撤销 AAA，长债收益率随后加速上行。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2023-09-27"
+             data-chart-label="政府关门危机">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Sep 27</div>
+          <div class="timeline-title">政府关门危机</div>
+          <div class="timeline-desc">10 月 1 日凌晨众议院通过短期拨款法案，关门危机暂解。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2023-10-09"
+             data-chart-label="哈以战争"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Oct 7</div>
+          <div class="timeline-title">哈以战争爆发</div>
+          <div class="timeline-desc">哈马斯对以色列发动大规模袭击，地缘风险溢价回升，原油与黄金跳涨。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2023-11-15"
+             data-chart-label="习拜会">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Nov 15</div>
+          <div class="timeline-title">习近平拜登旧金山会晤</div>
+          <div class="timeline-desc">APEC 峰会期间举行，恢复两军沟通、合作管控芬太尼，中美关系阶段性回暖。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2023-11-29"
+             data-chart-label="SBF 定罪">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Nov 29</div>
+          <div class="timeline-title">FTX 创始人 SBF 被裁定 7 项罪名成立</div>
+          <div class="timeline-desc">加密行业 2022 年塌方的司法收官。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="2023-12-13"
+             data-chart-label="鸽派转向"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Dec 13</div>
+          <div class="timeline-title">美联储释放降息信号</div>
+          <div class="timeline-desc">FOMC 点阵图显示 2024 年三次降息，鲍威尔确认本轮加息或已结束，市场进入"降息交易"。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="2023-12-29"
+             data-chart-label="BTC +150%">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Dec 31</div>
+          <div class="timeline-title">比特币全年上涨约 150%</div>
+          <div class="timeline-desc">现货 ETF 获批预期与降息交易共振，风险资产同步走宽。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="2019-2026">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">Era Context</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">Loading…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">All year pages within the same era (2019-2026) share this "Era Context" content.</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← Back to Calendar</a>
+        <a class="year-back-link" href="../index.html#panel-price">View Long-Term S&P 500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">View Shiller PE →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">Chronicle · Source</h4>
+      <ul class="footer-link-list">
+        <li>Yan Xiang, Zhan Di, Xu Ruchun, Zhu Chengcheng. <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">"70 Years of US Equities: 1948–2018 Market Recap"</a>. Economic Science Press, 2020.</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">Data for reference only; not investment advice · Big Picture · Chronicle</p>
+  </div>
+</footer>
+
+<script defer src="../js/chronicle-year.js?v=20260516220730"></script>
+
+</body>
+</html>

@@ -12,6 +12,7 @@
 
 import { fetchJSON, cssVar } from './utils.js';
 import { initTheme } from './theme.js';
+import { initLangSwitch } from './lang-switch.js';
 import { initNav } from './nav.js';
 import { initExportButtons } from './export-png.js';
 
@@ -491,6 +492,7 @@ function loadBatch(keys) {
 
 async function main() {
   initTheme();
+  initLangSwitch();
   initNav();
 
   // 检测 URL hash:若用户带着 #panel-chronicle 进来(典型场景:从年页"返回日历"),

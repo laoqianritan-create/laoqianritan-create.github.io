@@ -1,0 +1,133 @@
+/* ── Sidebar Navigation ── */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 140px;
+  height: 100vh;
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px;
+  gap: 12px;
+  height: auto;
+}
+.header-title {
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-group {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+.nav-group.active {
+  display: flex;
+}
+.nav-item {
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.15s;
+  cursor: pointer;
+  line-height: 1.4;
+}
+.nav-item:hover { color: var(--text); background: var(--accent-light); }
+.nav-item.active {
+  color: var(--accent);
+  font-weight: 600;
+  background: var(--accent-light);
+}
+
+
+/* ── Category Bar (horizontal, below hero) ── */
+.category-bar {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  margin-left: 140px;
+}
+.category-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  gap: 10px;
+}
+.category-tab {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.category-tab:hover {
+  color: var(--text);
+  border-color: var(--text-secondary);
+}
+.category-tab.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* ── Language Toggle (right side) ── */
+.lang-toggle {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  user-select: none;
+}
+.lang-toggle .lang-opt {
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: color 0.15s, background 0.15s;
+}
+.lang-toggle .lang-opt:hover { color: var(--text); }
+.lang-toggle .lang-opt.active {
+  color: var(--accent);
+  background: var(--accent-light);
+}
+.lang-toggle .lang-sep { color: var(--border); }
+
+/* Position the lang-toggle inside Chronicle year-page headers */
+.header-inner .lang-toggle { margin-left: 12px; flex-shrink: 0; }

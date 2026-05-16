@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1987 · Black Monday — Big Picture Chronicle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260516220730">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260516220730">
+<script>
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">Overview</a>
+        <a class="nav-item" href="#section-events">Timeline of Events</a>
+        <a class="nav-item" href="#section-context">Era Context</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← Back to Calendar</a>
+      </div>
+    </nav>
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+      <a class="lang-opt" data-lang="zh" href="../../us-market/chronicle/1987.html">中</a>
+      <span class="lang-sep">|</span>
+      <a class="lang-opt active" data-lang="en" href="#" aria-current="true">EN</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">1987</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · Final Year of the "New All-Time Highs" Era</span>
+        <h1 class="year-hero-title">Black Monday</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">S&P 500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+2.03%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Dow Jones</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+2.3%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Year-End</span>
+            <span class="year-hero-stat-value">1939</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Main Theme</span>
+            <span class="year-hero-stat-value">Primary uptrend + Single-day -20.5% + Liquidity rescue</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">S&P 500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">Nasdaq 100 & Dow Jones</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">Chronicle</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Overview</h2>
+          <p class="panel-desc">Fundamentals-driven uptrend · Peaks in August · Oct 19 single-day -20.5% · Emergency liquidity rescue</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>1987 was the last year of the "new all-time highs" era and the most dramatic year of the period. Fundamentals continued the expansion underway since 1983: industrial production growth climbed throughout, and unemployment fell to 5.8% by year-end. The early-year rally unfolded along the fundamentals storyline; <strong>on January 8, the Dow Jones Industrial Average broke 2,000 for the first time in history</strong>, and on August 25 the S&P 500 peaked at 337.89, with year-to-date gains of 39.6%.</p>
+        <p>On February 22, six nations signed the Louvre Accord, attempting to stabilize the dollar after the post-Plaza decline — a pivotal turn in the year's FX-and-rates narrative. March–May saw range trading as 10-year Treasury yields surged from 7.2% to 8.9%, and Reagan's tariffs on Japanese imports further escalated trade frictions. Greenspan was nominated in June and <strong>formally succeeded Volcker as Fed Chair on August 11</strong>; on September 4 the discount rate was raised 5.5% → 6.0%, the first hike of the year.</p>
+        <p>After the late-August peak, accelerating rates plus dollar weakness sent equities into a stepwise decline from October 6; by the 16th the drawdown had exceeded 16%. <strong>On October 19, "Black Monday," the S&P 500 fell 20.5% in a single session and the Dow fell 22.6% — exceeding the 1929 record</strong>. The Fed emergency-injected liquidity and Treasury yields plummeted near-vertically. October-end saw an 18% rebound, November rangebound, and December a gradual fundamentals-supported recovery. The S&P 500 finished at 247, +2.0%; the Dow closed near 1,939, +2.3%.</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear1987" style="margin-top:24px;"></div>
+      <p class="chart-band-note">Bands = price-trend segments · <span style="color:var(--green);">green</span> uptrend periods (≥5%) · <span style="color:var(--red);">red</span> downtrend periods (≥5%)</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Timeline of Events</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>General background</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>Materially pushed market higher</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>Materially pushed market lower</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>Key historical event</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">(Events also mark the chart below)</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="1987-01-08"
+             data-chart-label="Dow breaks 2,000"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan 8</div>
+          <div class="timeline-title">Dow Jones Industrial Average tops 2,000 for the first time</div>
+          <div class="timeline-desc">Fourteen years after first crossing 1,000 in November 1972.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1987-02-20"
+             data-chart-label="Brazil suspends debt payments">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb 20</div>
+          <div class="timeline-title">Brazil announces indefinite suspension of external debt interest payments</div>
+          <div class="timeline-desc">Involved roughly $81 billion in debt, including $24 billion owed to US commercial banks. On February 25, Brazil also announced suspension of payments on $16 billion of maturing short-term loans.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1987-02-22"
+             data-chart-label="Louvre Accord"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb 22</div>
+          <div class="timeline-title">Six nations sign the Louvre Accord</div>
+          <div class="timeline-desc">The US, Japan, UK, France, West Germany, and Canada signed an agreement in Paris aimed at stabilizing international currency markets and halting the sustained dollar decline triggered by the Plaza Accord. The US committed to lowering the federal deficit-to-GDP ratio from 3.9% to 2.3% by 1988.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="1987-03-04"
+             data-chart-label="GM buyback 20%"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 3 – 4</div>
+          <div class="timeline-title">General Motors announces buyback of 20% of shares by 1990</div>
+          <div class="timeline-desc">Announced after the close on March 3, easing market concerns about elevated equity prices.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1987-04-17"
+             data-chart-label="$300M tariffs on Japan">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 17</div>
+          <div class="timeline-title">Reagan imposes tariffs on $300 million of Japanese imports</div>
+          <div class="timeline-desc">Categories included computers, televisions, and electrical equipment. The US-Japan trade war escalated in April.</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1987-06-03"
+             data-chart-label="Greenspan nominated">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jun 3</div>
+          <div class="timeline-title">Greenspan nominated as Fed Chair</div>
+          <div class="timeline-desc">Reagan nominated Alan Greenspan to succeed Paul Volcker. Markets viewed Greenspan as aligned with Reaganomics and inclined to continue lowering rates.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="1987-08-11"
+             data-chart-label="Greenspan takes office"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Aug 11</div>
+          <div class="timeline-title">Greenspan officially succeeds Volcker as Fed Chair</div>
+          <div class="timeline-desc">Opening the eighteen-year Greenspan era.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="1987-09-04"
+             data-chart-label="Discount rate 5.5%→6.0%"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Sep 4</div>
+          <div class="timeline-title">Fed discount rate 5.5% → 6.0%</div>
+          <div class="timeline-desc">First hike of the year. The 10-year Treasury yield accelerated higher from July, breaking the prior peak by late August.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="1987-10-19"
+             data-chart-label="Black Monday -20.5%"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mon, Oct 19</div>
+          <div class="timeline-title">"Black Monday"</div>
+          <div class="timeline-desc">S&P 500 fell 20.5% in a single session, the Dow Jones Industrial Average -22.6%, exceeding the single-day decline record from October 29, 1929. Record trading volumes overwhelmed multiple NYSE systems, delaying trade reports by over an hour. The shock rapidly spread globally: the UK FTSE -10.8%, Japan Nikkei 225 -16.9% over two days, Hong Kong Hang Seng -11.12%.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="1987-10-22"
+             data-chart-label="Fed rescue"
+             data-chart-show-label="true"
+             data-chart-range-end="1987-10-26">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Oct 22 – 26</div>
+          <div class="timeline-title">Fed emergency liquidity injection rescues the market</div>
+          <div class="timeline-desc">From October 20, the Fed announced its "commitment to serve as a source of liquidity to support the economic and financial system" and injected substantial liquidity through open market operations for several consecutive days. Treasury yields plummeted near-vertically.</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1987-11-20"
+             data-chart-label="Deficit reduction deal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Nov 20</div>
+          <div class="timeline-title">White House and Congress reach deficit reduction agreement</div>
+          <div class="timeline-desc">Planned to reduce the federal deficit by $75 billion over the next two years. The same month, major Western nations cut rates to stabilize markets and economies.</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="1987-12-07"
+             data-chart-label="US-Canada FTA">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Dec 7</div>
+          <div class="timeline-title">US and Canada agree on free-trade agreement details</div>
+          <div class="timeline-desc">Early December data showed US unemployment falling to 5.8%.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="1982-1987">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">Era Context</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">Loading…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">All year pages within the same era (1982-1987) share this "Era Context" content.</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← Back to Calendar</a>
+        <a class="year-back-link" href="../index.html#panel-price">View Long-Term S&P 500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">View Shiller PE →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">Chronicle · Source</h4>
+      <ul class="footer-link-list">
+        <li>Yan Xiang, Zhan Di, Xu Ruchun, Zhu Chengcheng. <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">"70 Years of US Equities: 1948–2018 Market Recap"</a>. Economic Science Press, 2020.</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">Data for reference only; not investment advice · Big Picture · Chronicle</p>
+  </div>
+</footer>
+
+<script defer src="../js/chronicle-year.js?v=20260516220730"></script>
+
+</body>
+</html>

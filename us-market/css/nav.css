@@ -103,3 +103,31 @@
   border-color: var(--accent);
   background: var(--accent-light);
 }
+
+/* ── Language Toggle (右侧) ── */
+.lang-toggle {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  user-select: none;
+}
+.lang-toggle .lang-opt {
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: color 0.15s, background 0.15s;
+}
+.lang-toggle .lang-opt:hover { color: var(--text); }
+.lang-toggle .lang-opt.active {
+  color: var(--accent);
+  background: var(--accent-light);
+}
+.lang-toggle .lang-sep { color: var(--border); }
+
+/* 编年史年页 header 内的 lang-toggle 单独定位 */
+.header-inner .lang-toggle { margin-left: 12px; flex-shrink: 0; }

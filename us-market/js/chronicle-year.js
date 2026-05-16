@@ -12,6 +12,32 @@
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   }
 
+  // ── 中英文无感切换（编年史年页版）──
+  (function bindLangSwitch() {
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggle = document.getElementById('langToggle');
+      if (!toggle) return;
+      toggle.querySelectorAll('.lang-opt').forEach(el => {
+        el.addEventListener('click', e => {
+          if (el.classList.contains('active')) { e.preventDefault(); return; }
+          e.preventDefault();
+          sessionStorage.setItem('langSwitchScroll', String(window.scrollY));
+          document.body.style.transition = 'opacity 0.12s';
+          document.body.style.opacity = '0.4';
+          window.location.href = el.getAttribute('href') + (window.location.hash || '');
+        });
+      });
+      // 恢复滚动
+      const saved = sessionStorage.getItem('langSwitchScroll');
+      if (saved !== null) {
+        requestAnimationFrame(() => {
+          setTimeout(() => window.scrollTo({ top: parseInt(saved, 10), behavior: 'instant' }), 80);
+        });
+        sessionStorage.removeItem('langSwitchScroll');
+      }
+    });
+  })();
+
 
   // ── 时间线读取 → 事件数组 ──
   function readTimelineEvents() {

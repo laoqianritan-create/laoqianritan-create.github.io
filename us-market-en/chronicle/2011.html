@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2011 · 欧美债务危机蔓延 — Big Picture 编年史</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="../style.css?v=20260516220730">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260516220730">
+<script>
+</script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title"><a href="../index.html" style="color:inherit;text-decoration:none;">Big Picture</a></div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="chronicle">
+        <a class="nav-item active" href="#section-overview">Overview</a>
+        <a class="nav-item" href="#section-events">Timeline of Events</a>
+        <a class="nav-item" href="#section-context">Era Context</a>
+        <a class="nav-item" href="../index.html#panel-chronicle">← Back to Calendar</a>
+      </div>
+    </nav>
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+      <a class="lang-opt" data-lang="zh" href="../../us-market/chronicle/2011.html">中</a>
+      <span class="lang-sep">|</span>
+      <a class="lang-opt active" data-lang="en" href="#" aria-current="true">EN</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="year-hero">
+      <div class="year-hero-number">2011</div>
+      <div class="year-hero-meta">
+        <span class="year-hero-tag">Chronicle · 后危机复苏第三年</span>
+        <h1 class="year-hero-title">欧美债务危机蔓延</h1>
+        <div class="year-hero-stats">
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">S&P 500</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">0.00%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Dow Jones</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+5.5%</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Year-End</span>
+            <span class="year-hero-stat-value">12218</span>
+          </span>
+          <span class="year-hero-stat">
+            <span class="year-hero-stat-label">Main Theme</span>
+            <span class="year-hero-stat-value">欧债扩散 + 美国失 AAA</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a href="../index.html#panel-price" class="category-tab" style="text-decoration:none;">S&P 500</a>
+    <a href="../index.html#panel-nasdaq-composite" class="category-tab" style="text-decoration:none;">Nasdaq 100 & Dow Jones</a>
+    <a href="../index.html#panel-chronicle" class="category-tab active" style="text-decoration:none;">Chronicle</a>
+  </div>
+</div>
+
+<main class="main" id="main">
+
+  <section class="panel" id="section-overview" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Overview</h2>
+          <p class="panel-desc">阿拉伯之春 · 日本 3·11 大地震 · 美国失 AAA · 占领华尔街</p>
+        </div>
+      </div>
+      <div class="year-summary">
+        <p>2011 年延续了 2010 年末的牛市惯性，年初情绪高亢。但 2 月中旬利比亚冲突推升油价、3 月 11 日日本 9.0 级大地震叠加福岛核事故，先后冲击市场预期。3 月起穆迪连续下调西班牙评级，欧债危机外溢；4 月欧洲央行率先加息，标普将美国主权信用评级展望降至"负面"。指数从 2 月到 7 月维持宽幅震荡。</p>
+        <p>7 月下旬至 8 月初，美国债务上限谈判陷入僵局，8 月 2 日两院最终签署提案。但 <strong>8 月 5 日标普下调美国主权信用评级 AAA → AA+，近百年首次</strong>。7 月 25 日至 8 月 8 日，标普 500 指数十几个交易日累计下跌 16.8%，国债收益率与原油同步崩跌。9 月 20 日美联储推出 <strong>4000 亿美元的"扭曲操作"（Operation Twist）</strong>，置换短债为长债压低长端利率；9 月 17 日<strong>占领华尔街运动</strong>从纽约祖科蒂公园开始，向全球蔓延。</p>
+        <p>10 月底欧盟峰会达成 1300 亿欧元希腊救助方案，欧债担忧暂时缓和；美国三季度经济数据回暖，市场超跌反弹。最终标普 500 指数收平于 <strong>1257 点（全年 0.00%）</strong>，道指 +5.5%。在全球权益市场一片哀鸿中，美股仍是一枝独秀。</p>
+      </div>
+      <div class="chart-container chart-medium" id="chartYear2011" style="margin-top:24px;"></div>
+      <p class="chart-band-note">Bands = price-trend segments · <span style="color:var(--green);">green</span> uptrend periods (≥5%) · <span style="color:var(--red);">red</span> downtrend periods (≥5%)</p>
+    </div>
+  </section>
+
+  <section class="panel" id="section-events" data-category="chronicle">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Timeline of Events</h2>
+        </div>
+      </div>
+
+            <div class="timeline-legend">
+        <span class="timeline-legend-item"><span class="timeline-legend-dot"></span>General background</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--up"></span>Materially pushed market higher</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--down"></span>Materially pushed market lower</span>
+        <span class="timeline-legend-item"><span class="timeline-legend-dot timeline-legend-dot--key"></span>Key historical event</span>
+        <span class="timeline-legend-item" style="color:var(--gray);">(Events also mark the chart below)</span>
+      </div>
+
+      <div class="year-timeline" id="yearTimeline">
+
+        <div class="timeline-item"
+             data-chart-date="2011-01-14"
+             data-chart-label="突尼斯总统下台">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jan 14</div>
+          <div class="timeline-title">突尼斯总统本·阿里下台</div>
+          <div class="timeline-desc">阿拉伯之春的起点，随后中东北非多国政权动荡。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2011-02-11"
+             data-chart-label="穆巴拉克下台">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb 11</div>
+          <div class="timeline-title">埃及总统穆巴拉克下台</div>
+          <div class="timeline-desc">执政 30 年的穆巴拉克在大规模抗议下辞职，阿拉伯之春蔓延。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2011-03-11"
+             data-chart-label="日本 3·11 大地震"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar 11</div>
+          <div class="timeline-title">日本东北 9.0 级大地震 + 福岛核事故</div>
+          <div class="timeline-desc">引发海啸与福岛第一核电站核泄漏，全球供应链与核能产业格局被重塑。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2011-03-19"
+             data-chart-label="利比亚战争">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mar</div>
+          <div class="timeline-title">利比亚战争爆发</div>
+          <div class="timeline-desc">美法英对利比亚发动空袭。油价从 85 美元飙升突破 100 美元/桶。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="2011-05-02"
+             data-chart-label="击毙本拉登"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May 1</div>
+          <div class="timeline-title">美军在巴基斯坦击毙本·拉登</div>
+          <div class="timeline-desc">海豹突击队执行"海神之矛"行动，9·11 后近十年反恐战争阶段性收尾。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2011-05-14"
+             data-chart-label="卡恩性丑闻">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May</div>
+          <div class="timeline-title">IMF 总裁卡恩性丑闻被捕</div>
+          <div class="timeline-desc">多米尼克·斯特劳斯-卡恩在纽约被捕，6 月辞职，欧债救助谈判节奏被打乱。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2011-07-22"
+             data-chart-label="债务上限僵局">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jul</div>
+          <div class="timeline-title">美国债务上限谈判僵局</div>
+          <div class="timeline-desc">两党就提高债务上限激烈对峙，临近 8.2 法定违约日期。8.3 奥巴马签署提案。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--down"
+             data-chart-date="2011-08-05"
+             data-chart-label="美国失 AAA"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Aug 5</div>
+          <div class="timeline-title">标普下调美国主权信用评级 AAA → AA+</div>
+          <div class="timeline-desc">展望负面。这是近百年首次，引发全球避险情绪剧烈反应。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="2011-08-09"
+             data-chart-label="苹果超埃克森">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Aug</div>
+          <div class="timeline-title">苹果市值首次超越埃克森美孚</div>
+          <div class="timeline-desc">成为全球市值第一的公司。能源时代向科技时代的标志性交接。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key timeline-item--up"
+             data-chart-date="2011-09-20"
+             data-chart-label="扭曲操作 OT"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Sep</div>
+          <div class="timeline-title">美联储推出"扭曲操作" Operation Twist</div>
+          <div class="timeline-desc">将 4000 亿美元短期债券置换为长期国债，压低长端利率，刺激经济。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2011-09-17"
+             data-chart-label="占领华尔街"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Sep 17</div>
+          <div class="timeline-title">占领华尔街运动开始</div>
+          <div class="timeline-desc">从纽约祖科蒂公园开始，反对金融业贪婪与贫富不均，向全球蔓延。</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="2011-10-27"
+             data-chart-label="希腊救助方案">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Oct</div>
+          <div class="timeline-title">欧盟峰会达成希腊救助方案</div>
+          <div class="timeline-desc">第 14 次峰会决定延长 1300 亿欧元希腊援助计划，欧债担忧暂时缓和。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2011-10-20"
+             data-chart-label="卡扎菲被击毙">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Oct 20</div>
+          <div class="timeline-title">利比亚领导人卡扎菲被击毙</div>
+          <div class="timeline-desc">执政 42 年的卡扎菲在苏尔特被反对派击毙，利比亚战争结束。</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2011-12-18"
+             data-chart-label="美军撤离伊拉克">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Dec 18</div>
+          <div class="timeline-title">美军全部撤离伊拉克</div>
+          <div class="timeline-desc">历时近 9 年的伊拉克战争正式结束，美军作战部队全部撤出。</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="section-context" data-category="chronicle" data-era="2009-2018">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title" id="eraTitle">Era Context</h2>
+          <p class="panel-desc" id="eraTagline"></p>
+        </div>
+      </div>
+
+      <div class="year-summary" id="eraContent">
+        <p style="color:var(--text-secondary);">Loading…</p>
+      </div>
+
+      <p style="font-size:13px;color:var(--text-secondary);margin-top:14px;max-width:880px;margin-left:auto;margin-right:auto;">All year pages within the same era (2009-2018) share this "Era Context" content.</p>
+
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a class="year-back-link" href="../index.html#panel-chronicle">← Back to Calendar</a>
+        <a class="year-back-link" href="../index.html#panel-price">View Long-Term S&P 500 →</a>
+        <a class="year-back-link" href="../index.html#panel-pe">View Shiller PE →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">Chronicle · Source</h4>
+      <ul class="footer-link-list">
+        <li>Yan Xiang, Zhan Di, Xu Ruchun, Zhu Chengcheng. <a href="https://u.jd.com/fDhzPLE" target="_blank" rel="noopener">"70 Years of US Equities: 1948–2018 Market Recap"</a>. Economic Science Press, 2020.</li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">Data for reference only; not investment advice · Big Picture · Chronicle</p>
+  </div>
+</footer>
+
+<script defer src="../js/chronicle-year.js?v=20260516220730"></script>
+
+</body>
+</html>
