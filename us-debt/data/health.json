@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-16T06:33:14Z",
+  "updated": "2026-05-17T08:54:14Z",
   "sources": [
     {
       "name": "debt-total",
@@ -9,8 +9,8 @@
         "panel-debt-total"
       ],
       "latest_data": "2026-05-14",
-      "elapsed_sec": 3.5,
-      "started_at": "2026-05-16T06:32:00Z",
+      "elapsed_sec": 4.5,
+      "started_at": "2026-05-17T08:52:19Z",
       "error": null
     },
     {
@@ -20,9 +20,9 @@
       "panels": [
         "panel-auction"
       ],
-      "latest_data": "2026-05-16",
-      "elapsed_sec": 5.5,
-      "started_at": "2026-05-16T06:32:03Z",
+      "latest_data": "2026-05-17",
+      "elapsed_sec": 27.3,
+      "started_at": "2026-05-17T08:52:24Z",
       "error": null
     },
     {
@@ -32,9 +32,9 @@
       "panels": [
         "panel-rate-by-type"
       ],
-      "latest_data": "2026-05-16",
-      "elapsed_sec": 2.9,
-      "started_at": "2026-05-16T06:32:09Z",
+      "latest_data": "2026-05-17",
+      "elapsed_sec": 1.8,
+      "started_at": "2026-05-17T08:52:51Z",
       "error": null
     },
     {
@@ -45,8 +45,8 @@
         "panel-yield-curve"
       ],
       "latest_data": "2026-05-14",
-      "elapsed_sec": 24.3,
-      "started_at": "2026-05-16T06:32:12Z",
+      "elapsed_sec": 42.5,
+      "started_at": "2026-05-17T08:52:53Z",
       "error": null
     },
     {
@@ -60,9 +60,9 @@
         "panel-deficit-gdp",
         "panel-debt-gdp"
       ],
-      "latest_data": "2026-05-16T06:32:46Z",
-      "elapsed_sec": 10.4,
-      "started_at": "2026-05-16T06:32:36Z",
+      "latest_data": "2026-05-17T08:53:46Z",
+      "elapsed_sec": 11.2,
+      "started_at": "2026-05-17T08:53:35Z",
       "error": null
     },
     {
@@ -74,8 +74,8 @@
         "P29-P37"
       ],
       "latest_data": null,
-      "elapsed_sec": 27.2,
-      "started_at": "2026-05-16T06:32:46Z",
+      "elapsed_sec": 27.5,
+      "started_at": "2026-05-17T08:53:46Z",
       "error": null
     },
     {
@@ -85,7 +85,7 @@
       "panels": [],
       "latest_data": null,
       "elapsed_sec": 0.1,
-      "started_at": "2026-05-16T06:33:14Z",
+      "started_at": "2026-05-17T08:54:14Z",
       "error": null
     }
   ],
