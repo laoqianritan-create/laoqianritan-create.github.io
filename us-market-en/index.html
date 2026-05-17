@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260517143504">
-<link rel="stylesheet" href="css/chronicle.css?v=20260517143504">
+<link rel="stylesheet" href="style.css?v=20260517151303">
+<link rel="stylesheet" href="css/chronicle.css?v=20260517151303">
 </head>
 <body>
 
@@ -29,6 +29,7 @@
         <a class="nav-item" href="#panel-volatility" data-panel="panel-volatility">Volatility</a>
         <a class="nav-item" href="#panel-monthly" data-panel="panel-monthly">Monthly</a>
         <a class="nav-item" href="#panel-vix" data-panel="panel-vix">VIX</a>
+        <a class="nav-item" href="#panel-vixeq" data-panel="panel-vixeq">Single-Stock Fear</a>
         <a class="nav-item" href="#panel-buffett" data-panel="panel-buffett">Buffett</a>
         <a class="nav-item" href="#panel-pe" data-panel="panel-pe">Shiller PE</a>
         <a class="nav-item" href="#panel-breadth" data-panel="panel-breadth">Breadth</a>
@@ -402,6 +403,22 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-vixeq" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Index Fear vs Single-Stock Fear (VIX / VIXEQ)</h2>
+          <p class="panel-desc">VIX measures the expected volatility of the S&amp;P 500 as a whole. VIXEQ, launched by CBOE in late 2024, can be read as the "single-stock fear index" — it reflects the average implied volatility of each S&amp;P 500 constituent on its own.</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartVixVixeq" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartVixVixeq"></div>
+      <div class="metric-strip" id="vixeqSummary"></div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-buffett" data-category="sp500">
     <div class="panel-inner">
       <div class="panel-header">
@@ -482,7 +499,7 @@
           <button class="btn btn-export" data-chart="chartEps" title="Export PNG">&#8681;</button>
         </div>
       </div>
-      <div class="chart-container chart-standard" id="chartEps"></div>
+      <div class="chart-container chart-tall" id="chartEps"></div>
     </div>
   </section>
 
@@ -1000,8 +1017,8 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260517143504"></script>
-<script defer src="js/hero-curve.js?v=20260517143504"></script>
+<script type="module" src="js/panels.js?v=20260517151303"></script>
+<script defer src="js/hero-curve.js?v=20260517151303"></script>
 
 </body>
 </html>

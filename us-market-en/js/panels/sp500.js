@@ -918,7 +918,7 @@ export function initPanelPe(data, centuryData) {
 // Panel 8: EPS
 // ══════════════════════════════════════════════════════
 
-export function initPanelEps(data, sp500CenturyData) {
+export function initPanelEps(data, sp500CenturyData, recessionData) {
   const chart = registerChart(echarts.init(document.getElementById('chartEps')));
   // Log y-axis requires positive values (filter occasional zero/negative EPS prints)
   const epsSeries = data.series.filter(item => item.value != null && item.value > 0);
@@ -928,24 +928,120 @@ export function initPanelEps(data, sp500CenturyData) {
     .filter(item => item.value != null && (!epsStart || item.date >= epsStart))
     .map(item => [item.date, item.value]);
 
+  // YoY growth: look up the same month/day from a year ago for each point.
+  // 1871-1926 are annual prints (12-31 only) → annual YoY; 1927+ are quarterly (Macrotrends)
+  // → quarter-over-same-quarter-last-year YoY. Density transitions naturally.
+  const epsMap = new Map(data.series.filter(item => item.value != null).map(item => [item.date, item.value]));
+  const yearAgoKey = isoDate => `${parseInt(isoDate.slice(0, 4), 10) - 1}${isoDate.slice(4)}`;
+  const yoySeries = [];
+  for (const item of data.series) {
+    if (item.value == null) continue;
+    const prevValue = epsMap.get(yearAgoKey(item.date));
+    if (prevValue == null || prevValue === 0) continue;
+    yoySeries.push({
+      date: item.date,
+      value: ((item.value - prevValue) / Math.abs(prevValue)) * 100,
+    });
+  }
+
   function getOption() {
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
     const grayColor = cssVar('--gray') || '#999';
     const epsColor = cssVar('--accent') || '#4758e0';
     const spColor  = cssVar('--sp500-line') || '#1a1a1a';
+    const greenColor = cssVar('--green') || '#389e0d';
+    const redColor   = cssVar('--red')   || '#cf1322';
+
+    const series = [];
+
+    // Recession shading: each grid carries its own invisible series with markArea
+    const recessionTop = buildRecessionOverlaySeries(
+      sp500Series.length ? sp500Series : epsSeries.map(item => [item.date, item.value]),
+      recessionData,
+    );
+    if (recessionTop) {
+      recessionTop.xAxisIndex = 0;
+      recessionTop.yAxisIndex = 0;
+      series.push(recessionTop);
+    }
+    const recessionBot = buildRecessionOverlaySeries(
+      yoySeries.map(item => [item.date, item.value]),
+      recessionData,
+    );
+    if (recessionBot) {
+      recessionBot.name = 'Recession (YoY)';
+      recessionBot.xAxisIndex = 1;
+      recessionBot.yAxisIndex = 2;
+      series.push(recessionBot);
+    }
+
+    series.push({
+      name: 'S&P 500 EPS (TTM)',
+      type: 'line',
+      xAxisIndex: 0,
+      yAxisIndex: 0,
+      showSymbol: false,
+      data: epsSeries.map(item => [item.date, item.value]),
+      color: epsColor,
+      lineStyle: { width: 2, color: epsColor },
+      z: 3,
+    });
+
+    series.push({
+      name: 'S&P 500 Index (Log)',
+      type: 'line',
+      xAxisIndex: 0,
+      yAxisIndex: 1,
+      showSymbol: false,
+      data: sp500Series,
+      color: spColor,
+      lineStyle: { width: 1.4, color: spColor },
+      large: true,
+      largeThreshold: 2000,
+      z: 3,
+    });
+
+    series.push({
+      name: 'EPS YoY Growth',
+      type: 'bar',
+      xAxisIndex: 1,
+      yAxisIndex: 2,
+      data: yoySeries.map(item => [item.date, item.value]),
+      barMaxWidth: 6,
+      itemStyle: {
+        color: params => (params.value[1] >= 0 ? greenColor : redColor),
+      },
+      z: 3,
+    });
 
     return {
       animation: false,
-      grid: { left: 64, right: 64, top: 36, bottom: 60 },
-      legend: getLineLegendConfig({ data: ['S&P 500 EPS (TTM)', 'S&P 500 Index (Log)'] }),
-      xAxis: {
-        type: 'time',
-        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
-        splitLine: { show: false },
-      },
+      legend: getLineLegendConfig({
+        data: ['S&P 500 EPS (TTM)', 'S&P 500 Index (Log)', 'EPS YoY Growth'],
+      }),
+      grid: [
+        { left: 64, right: 64, top: 36, height: '52%' },
+        { left: 64, right: 64, top: '68%', height: '22%' },
+      ],
+      xAxis: [
+        {
+          type: 'time',
+          gridIndex: 0,
+          axisLabel: { show: false },
+          axisLine: { lineStyle: { color: gridColor } },
+          splitLine: { show: false },
+        },
+        {
+          type: 'time',
+          gridIndex: 1,
+          axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+          splitLine: { show: false },
+        },
+      ],
       yAxis: [
         {
           type: 'log',
+          gridIndex: 0,
           name: 'EPS ($)',
           position: 'left',
           nameTextStyle: { fontSize: 10, color: grayColor, fontFamily: CHART_FONT },
@@ -954,35 +1050,30 @@ export function initPanelEps(data, sp500CenturyData) {
         },
         {
           type: 'log',
+          gridIndex: 0,
           name: 'S&P 500',
           position: 'right',
           nameTextStyle: { fontSize: 10, color: grayColor, fontFamily: CHART_FONT },
           axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
           splitLine: { show: false },
         },
-      ],
-      series: [
         {
-          name: 'S&P 500 EPS (TTM)',
-          type: 'line',
-          yAxisIndex: 0,
-          showSymbol: false,
-          data: epsSeries.map(item => [item.date, item.value]),
-          color: epsColor,
-          lineStyle: { width: 2, color: epsColor },
-        },
-        {
-          name: 'S&P 500 Index (Log)',
-          type: 'line',
-          yAxisIndex: 1,
-          showSymbol: false,
-          data: sp500Series,
-          color: spColor,
-          lineStyle: { width: 1.4, color: spColor },
-          large: true,
-          largeThreshold: 2000,
+          type: 'value',
+          gridIndex: 1,
+          name: 'YoY (%)',
+          position: 'left',
+          nameTextStyle: { fontSize: 10, color: grayColor, fontFamily: CHART_FONT },
+          axisLabel: {
+            formatter: '{value}%',
+            fontSize: 11,
+            color: grayColor,
+            fontFamily: CHART_FONT,
+          },
+          splitLine: { lineStyle: { color: gridColor } },
         },
       ],
+      axisPointer: { link: [{ xAxisIndex: 'all' }] },
+      series,
       tooltip: {
         trigger: 'axis',
         backgroundColor: cssVar('--card-bg') || '#fff',
@@ -994,8 +1085,9 @@ export function initPanelEps(data, sp500CenturyData) {
         },
         formatter: params => {
           const date = params?.[0]?.axisValueLabel || '';
-          const eps = params.find(p => p.seriesName.startsWith('S&P 500 EPS'));
-          const sp = params.find(p => p.seriesName.startsWith('S&P 500 Index'));
+          const eps = params.find(p => p.seriesName === 'S&P 500 EPS (TTM)');
+          const sp  = params.find(p => p.seriesName === 'S&P 500 Index (Log)');
+          const yoy = params.find(p => p.seriesName === 'EPS YoY Growth');
           const lines = [date];
           if (eps && eps.value && eps.value[1] != null) {
             lines.push(`EPS: <b style="color:${epsColor}">${formatNumber(eps.value[1], 2)}</b>`);
@@ -1003,10 +1095,26 @@ export function initPanelEps(data, sp500CenturyData) {
           if (sp && sp.value && sp.value[1] != null) {
             lines.push(`S&P 500: <b style="color:${spColor}">${formatNumber(sp.value[1], 0)}</b>`);
           }
+          if (yoy && yoy.value && yoy.value[1] != null) {
+            const color = yoy.value[1] >= 0 ? greenColor : redColor;
+            lines.push(`EPS YoY: <b style="color:${color}">${formatPercent(yoy.value[1] / 100, 1)}</b>`);
+          }
           return lines.join('<br/>');
         },
       },
-      dataZoom: getDataZoom(grayColor),
+      dataZoom: [
+        {
+          type: 'slider',
+          xAxisIndex: [0, 1],
+          bottom: 8,
+          height: 18,
+          borderColor: 'transparent',
+          backgroundColor: 'rgba(0,0,0,0)',
+          fillerColor: 'rgba(56,158,13,0.08)',
+          handleStyle: { color: grayColor },
+          textStyle: { fontSize: 10, color: grayColor, fontFamily: CHART_FONT },
+        },
+      ],
     };
   }
 

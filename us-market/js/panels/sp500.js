@@ -928,19 +928,19 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
     .filter(item => item.value != null && (!epsStart || item.date >= epsStart))
     .map(item => [item.date, item.value]);
 
-  // YoY 同比增长率：取年末点（12-31）按年度同比，覆盖 1872 至最新完整年度
-  const annualPoints = data.series
-    .filter(item => item.value != null && item.date.endsWith('-12-31'));
+  // YoY 同比增长率：对每个点查找一年前同月日的点（map lookup），同时兼容年频（1871-1926 仅 12-31）
+  // 与季频（1927 起 03-31/06-30/09-30/12-31），早期保持年度同比、后期变成季度同比，密度自然过渡。
+  const epsMap = new Map(data.series.filter(item => item.value != null).map(item => [item.date, item.value]));
+  const yearAgoKey = isoDate => `${parseInt(isoDate.slice(0, 4), 10) - 1}${isoDate.slice(4)}`;
   const yoySeries = [];
-  for (let i = 1; i < annualPoints.length; i++) {
-    const prev = annualPoints[i - 1].value;
-    const curr = annualPoints[i].value;
-    if (prev != null && curr != null && prev !== 0) {
-      yoySeries.push({
-        date: annualPoints[i].date,
-        value: ((curr - prev) / Math.abs(prev)) * 100,
-      });
-    }
+  for (const item of data.series) {
+    if (item.value == null) continue;
+    const prevValue = epsMap.get(yearAgoKey(item.date));
+    if (prevValue == null || prevValue === 0) continue;
+    yoySeries.push({
+      date: item.date,
+      value: ((item.value - prevValue) / Math.abs(prevValue)) * 100,
+    });
   }
   const yoyStart = yoySeries.length ? yoySeries[0].date : epsStart;
 

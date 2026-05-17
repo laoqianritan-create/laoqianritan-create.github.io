@@ -298,6 +298,119 @@ function middleDate(startDate, endDate) {
   return new Date(ms).toISOString().slice(0, 10);
 }
 
+// ══════════════════════════════════════════════════════
+// Panel: VIX vs VIXEQ (cap-weighted vs equal-weight volatility)
+// ══════════════════════════════════════════════════════
+
+export function initPanelVixeq(vixData, vixeqData) {
+  const dom = document.getElementById('chartVixVixeq');
+  if (!dom) return;
+  const chart = registerChart(echarts.init(dom));
+
+  const vixSeries = (vixData?.series || [])
+    .filter(item => item.value != null)
+    .map(item => [item.date, item.value]);
+  const vixeqSeries = (vixeqData?.series || [])
+    .filter(item => item.value != null)
+    .map(item => [item.date, item.value]);
+
+  const vixeqStart = vixeqSeries.length ? vixeqSeries[0][0] : null;
+  const latestVix = vixSeries.at(-1);
+  const latestVixeq = vixeqSeries.at(-1);
+  const spread = (latestVix && latestVixeq) ? (latestVixeq[1] - latestVix[1]) : null;
+
+  function getOption() {
+    const gridColor = cssVar('--chart-grid') || '#f0f0f0';
+    const grayColor = cssVar('--gray') || '#999';
+    const vixColor = '#1a1a1a';
+    const vixeqColor = '#2563eb';
+
+    return {
+      animation: false,
+      grid: { left: 56, right: 30, top: 36, bottom: 60 },
+      legend: getLineLegendConfig({
+        data: ['VIX (Cap-Weighted)', 'VIXEQ (Equal-Weight)'],
+      }),
+      xAxis: {
+        type: 'time',
+        min: vixeqStart,
+        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        splitLine: { show: false },
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        splitLine: { lineStyle: { color: gridColor } },
+      },
+      series: [
+        {
+          name: 'VIX (Cap-Weighted)',
+          type: 'line',
+          data: vixSeries,
+          showSymbol: false,
+          color: vixColor,
+          lineStyle: { width: 1.4, color: vixColor },
+          large: true,
+          largeThreshold: 2000,
+        },
+        {
+          name: 'VIXEQ (Equal-Weight)',
+          type: 'line',
+          data: vixeqSeries,
+          showSymbol: false,
+          color: vixeqColor,
+          lineStyle: { width: 1.4, color: vixeqColor },
+          large: true,
+          largeThreshold: 2000,
+        },
+      ],
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: cssVar('--card-bg') || '#fff',
+        borderColor: cssVar('--border') || '#e8e8e8',
+        textStyle: {
+          fontSize: 13,
+          color: cssVar('--text') || '#1a1a1a',
+          fontFamily: CHART_FONT,
+        },
+        formatter: params => {
+          const date = params?.[0]?.axisValueLabel || '';
+          const vix = params.find(p => p.seriesName.startsWith('VIX ('));
+          const vixeq = params.find(p => p.seriesName.startsWith('VIXEQ'));
+          const lines = [date];
+          if (vix && vix.value && vix.value[1] != null) {
+            lines.push(`VIX: <b style="color:${vixColor}">${formatNumber(vix.value[1], 2)}</b>`);
+          }
+          if (vixeq && vixeq.value && vixeq.value[1] != null) {
+            lines.push(`VIXEQ: <b style="color:${vixeqColor}">${formatNumber(vixeq.value[1], 2)}</b>`);
+          }
+          if (vix?.value && vixeq?.value && vix.value[1] != null && vixeq.value[1] != null) {
+            const diff = vixeq.value[1] - vix.value[1];
+            const diffColor = diff >= 0 ? (cssVar('--red') || '#cf1322') : (cssVar('--green') || '#389e0d');
+            lines.push(`Equal − Cap: <b style="color:${diffColor}">${diff >= 0 ? '+' : ''}${formatNumber(diff, 2)}</b>`);
+          }
+          return lines.join('<br/>');
+        },
+      },
+      dataZoom: getDataZoom(grayColor),
+    };
+  }
+
+  chart.setOption(getOption());
+  chart._refreshTheme = () => chart.setOption(getOption(), true);
+
+  renderMetricStrip('vixeqSummary', [
+    buildMetricCard('VIX latest', latestVix ? formatNumber(latestVix[1], 2) : '--', latestVix?.[0] || ''),
+    buildMetricCard('VIXEQ latest', latestVixeq ? formatNumber(latestVixeq[1], 2) : '--', latestVixeq?.[0] || ''),
+    buildMetricCard(
+      'Equal − Cap',
+      spread != null ? `${spread >= 0 ? '+' : ''}${formatNumber(spread, 2)}` : '--',
+      spread != null && spread > 5 ? 'Equal-weight vol far exceeds cap-weight (single-stock fear)' : 'Spread normal',
+    ),
+    buildMetricCard('VIXEQ start', vixeqStart || '--', 'CBOE, from 2014-06'),
+  ]);
+}
+
 export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = {}) {
   const dom = document.getElementById(containerId);
   if (!dom || !data?.series?.length) return;
