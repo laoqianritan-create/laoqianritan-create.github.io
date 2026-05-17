@@ -24,7 +24,7 @@ import {
 } from './panels/sp500.js';
 
 import {
-  initPanelVix, initLogYoyPanel, initLongRunIndexPanel, initPanelAiae,
+  initPanelVix, initPanelVixeq, initLogYoyPanel, initLongRunIndexPanel, initPanelAiae,
 } from './panels/indices.js';
 
 import { initPanelBuffett } from './panels/buffett.js';
@@ -91,6 +91,7 @@ const FILES = {
   constituents:   'data/sp500_constituents.json',
   drawdown:       'data/sp500_drawdowns.json',
   vix:            'data/sp500_vix.json',
+  vixeq:          'data/sp500_vixeq.json',
   pe:             'data/sp500_pe.json',
   eps:            'data/sp500_eps.json',
   roe:            'data/sp500_roe.json',
@@ -209,6 +210,10 @@ const PANELS = {
     requires: ['price', 'vix', 'recession'],
     init() { initPanelVix(D.price, D.vix, D.recession); },
   },
+  'panel-vixeq': {
+    requires: ['vix', 'vixeq'],
+    init() { initPanelVixeq(D.vix, D.vixeq); },
+  },
   'panel-buffett': {
     requires: ['buffett', 'price'],
     init() { if (D.buffett) initPanelBuffett(D.buffett, D.price); },
@@ -226,8 +231,8 @@ const PANELS = {
     init() { if (D.aiae) initPanelAiae(D.aiae); },
   },
   'panel-eps': {
-    requires: ['eps', 'century'],
-    init() { initPanelEps(D.eps, D.century); },
+    requires: ['eps', 'century', 'recession'],
+    init() { initPanelEps(D.eps, D.century, D.recession); },
   },
   'panel-roe': {
     requires: ['roe'],

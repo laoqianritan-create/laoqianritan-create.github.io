@@ -87,7 +87,7 @@ export function initPanelChanges(data) {
           ${escapeHtml(change.reason)}<br/>
           <a class="source-link" href="${escapeHtml(change.sourceUrl)}" target="_blank" rel="noreferrer">Original announcement</a>
         </td>
-        <td><span class="type-badge ${change.type === '并购触发' ? 'type-merger' : 'type-rebalance'}">${escapeHtml(change.type)}</span></td>
+        <td><span class="type-badge ${change.type === 'M&A-Triggered' ? 'type-merger' : 'type-rebalance'}">${escapeHtml(change.type)}</span></td>
       </tr>
     `).join('');
   }

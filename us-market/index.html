@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260516220730">
-<link rel="stylesheet" href="css/chronicle.css?v=20260516220730">
+<link rel="stylesheet" href="style.css?v=20260517143504">
+<link rel="stylesheet" href="css/chronicle.css?v=20260517143504">
 </head>
 <body>
 
@@ -29,6 +29,7 @@
         <a class="nav-item" href="#panel-volatility" data-panel="panel-volatility">波动率</a>
         <a class="nav-item" href="#panel-monthly" data-panel="panel-monthly">月度涨跌</a>
         <a class="nav-item" href="#panel-vix" data-panel="panel-vix">恐慌指数</a>
+        <a class="nav-item" href="#panel-vixeq" data-panel="panel-vixeq">市值/等权波动</a>
         <a class="nav-item" href="#panel-buffett" data-panel="panel-buffett">巴菲特指标</a>
         <a class="nav-item" href="#panel-pe" data-panel="panel-pe">席勒市盈率</a>
         <a class="nav-item" href="#panel-breadth" data-panel="panel-breadth">牛市宽度</a>
@@ -402,6 +403,22 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-vixeq" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">市值波动率 vs 等权波动率（VIX / VIXEQ）</h2>
+          <p class="panel-desc">VIX：标普500（市值加权）期权隐含波动率 · VIXEQ：标普500等权（RSP）期权隐含波动率 · 数据自 CBOE 2014 年 6 月起</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartVixVixeq" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartVixVixeq"></div>
+      <div class="metric-strip" id="vixeqSummary"></div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-buffett" data-category="sp500">
     <div class="panel-inner">
       <div class="panel-header">
@@ -482,7 +499,7 @@
           <button class="btn btn-export" data-chart="chartEps" title="导出PNG">&#8681;</button>
         </div>
       </div>
-      <div class="chart-container chart-standard" id="chartEps"></div>
+      <div class="chart-container chart-tall" id="chartEps"></div>
     </div>
   </section>
 
@@ -1000,8 +1017,8 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260516220730"></script>
-<script defer src="js/hero-curve.js?v=20260516220730"></script>
+<script type="module" src="js/panels.js?v=20260517143504"></script>
+<script defer src="js/hero-curve.js?v=20260517143504"></script>
 
 </body>
 </html>

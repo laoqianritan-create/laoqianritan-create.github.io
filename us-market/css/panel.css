@@ -85,6 +85,7 @@ html.panel-snap-enabled .panel {
 .chart-ranking-tall { height: 82vh; min-height: 760px; }
 .chart-medium { height: 50vh; min-height: 360px; }
 .chart-standard { height: 60vh; min-height: 400px; }
+.chart-tall { height: 78vh; min-height: 560px; }
 .chart-square { height: 360px; min-height: 300px; }
 .chart-wide { height: 360px; min-height: 300px; }
 
