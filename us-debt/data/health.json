@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-17T08:54:14Z",
+  "updated": "2026-05-19T01:31:13Z",
   "sources": [
     {
       "name": "debt-total",
@@ -8,9 +8,9 @@
       "panels": [
         "panel-debt-total"
       ],
-      "latest_data": "2026-05-14",
-      "elapsed_sec": 4.5,
-      "started_at": "2026-05-17T08:52:19Z",
+      "latest_data": "2026-05-15",
+      "elapsed_sec": 5.9,
+      "started_at": "2026-05-19T01:30:00Z",
       "error": null
     },
     {
@@ -20,9 +20,9 @@
       "panels": [
         "panel-auction"
       ],
-      "latest_data": "2026-05-17",
-      "elapsed_sec": 27.3,
-      "started_at": "2026-05-17T08:52:24Z",
+      "latest_data": "2026-05-19",
+      "elapsed_sec": 5.2,
+      "started_at": "2026-05-19T01:30:06Z",
       "error": null
     },
     {
@@ -32,9 +32,9 @@
       "panels": [
         "panel-rate-by-type"
       ],
-      "latest_data": "2026-05-17",
-      "elapsed_sec": 1.8,
-      "started_at": "2026-05-17T08:52:51Z",
+      "latest_data": "2026-05-19",
+      "elapsed_sec": 1.7,
+      "started_at": "2026-05-19T01:30:11Z",
       "error": null
     },
     {
@@ -44,9 +44,9 @@
       "panels": [
         "panel-yield-curve"
       ],
-      "latest_data": "2026-05-14",
-      "elapsed_sec": 42.5,
-      "started_at": "2026-05-17T08:52:53Z",
+      "latest_data": "2026-05-15",
+      "elapsed_sec": 23.8,
+      "started_at": "2026-05-19T01:30:13Z",
       "error": null
     },
     {
@@ -60,9 +60,9 @@
         "panel-deficit-gdp",
         "panel-debt-gdp"
       ],
-      "latest_data": "2026-05-17T08:53:46Z",
-      "elapsed_sec": 11.2,
-      "started_at": "2026-05-17T08:53:35Z",
+      "latest_data": "2026-05-19T01:30:46Z",
+      "elapsed_sec": 9.7,
+      "started_at": "2026-05-19T01:30:37Z",
       "error": null
     },
     {
@@ -74,8 +74,8 @@
         "P29-P37"
       ],
       "latest_data": null,
-      "elapsed_sec": 27.5,
-      "started_at": "2026-05-17T08:53:46Z",
+      "elapsed_sec": 26.4,
+      "started_at": "2026-05-19T01:30:46Z",
       "error": null
     },
     {
@@ -85,13 +85,23 @@
       "panels": [],
       "latest_data": null,
       "elapsed_sec": 0.1,
-      "started_at": "2026-05-17T08:54:14Z",
+      "started_at": "2026-05-19T01:31:13Z",
+      "error": null
+    },
+    {
+      "name": "macro-yield-compile",
+      "ok": true,
+      "critical": false,
+      "panels": [],
+      "latest_data": null,
+      "elapsed_sec": 0.0,
+      "started_at": "2026-05-19T01:31:13Z",
       "error": null
     }
   ],
   "summary": {
-    "ok": 7,
+    "ok": 8,
     "fail": 0,
-    "total": 7
+    "total": 8
   }
 }

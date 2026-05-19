@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-17T08:53:46Z",
+  "updated": "2026-05-19T01:30:46Z",
   "source": "FRED",
   "series": {
     "revenue": {
@@ -1891,22 +1891,6 @@
         {
           "date": "2025-09-30",
           "value": 970065.0
-        }
-      ]
-    },
-    "defense": {
-      "series_id": "FYONDA",
-      "unit": "M",
-      "freq": "annual",
-      "count": 1,
-      "latest": {
-        "date": "background-color: rgb(225",
-        "value": 233.0
-      },
-      "data": [
-        {
-          "date": "background-color: rgb(225",
-          "value": 233.0
         }
       ]
     },
