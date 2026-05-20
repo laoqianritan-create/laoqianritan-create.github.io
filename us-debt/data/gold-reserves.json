@@ -1,236 +1,420 @@
 {
-  "updated": "2026-05-20T07:48:59Z",
-  "source": "Wikipedia / WGC (fallback)",
-  "source_url": "https://en.wikipedia.org/wiki/Gold_reserve",
-  "method": "wikipedia-fallback",
-  "data_as_of": null,
+  "updated": "2026-05-20T08:22:25Z",
+  "source": "World Gold Council (via Playwright)",
+  "source_url": "https://www.gold.org/download/file/7739/World_official_gold_holdings_as_of_May2026_IFS.xlsx",
+  "method": "wgc-playwright",
+  "data_as_of": "May2026",
   "note": "WGC 月度 IFS Excel，登录后才能下载，session 持久在 .wgc_state.json",
   "snapshot_buckets": {
-    "美国": 8133.5,
-    "德国": 3350.3,
-    "国际货币基金组织": 2814.0,
-    "意大利": 2451.8,
-    "法国": 2437.0,
-    "俄罗斯": 2304.7,
-    "中国": 2313.4,
-    "瑞士": 1039.9,
-    "印度": 880.5,
-    "日本": 845.9,
-    "其他": 19206.9
+    "美国": 8133.461673353862,
+    "德国": 3350.25349133775,
+    "国际货币基金组织": 2814.04208267239,
+    "意大利": 2451.8366458275013,
+    "法国": 2437.0004043420113,
+    "俄罗斯": 2304.7494634692544,
+    "中国": 2313.4583683244687,
+    "瑞士": 1039.9365494074837,
+    "印度": 880.52,
+    "日本": 845.9730904170943,
+    "其他": 9234.5
   },
-  "snapshot_total_tons": 45777.9,
+  "snapshot_total_tons": 35805.8,
   "all_countries": [
     {
       "country": "United States",
-      "tons": 8133.5
+      "tons": 8133.462
+    },
+    {
+      "country": "Pakistan",
+      "tons": 64.803
     },
     {
       "country": "Germany",
-      "tons": 3350.3
+      "tons": 3350.253
     },
     {
-      "country": "International Monetary Fund",
-      "tons": 2814.0
+      "country": "Argentina",
+      "tons": 61.739
+    },
+    {
+      "country": "IMF",
+      "tons": 2814.042
+    },
+    {
+      "country": "Cambodia",
+      "tons": 56.121
     },
     {
       "country": "Italy",
-      "tons": 2451.8
+      "tons": 2451.837
+    },
+    {
+      "country": "Belarus, Rep. of",
+      "tons": 53.874
     },
     {
       "country": "France",
       "tons": 2437.0
     },
     {
-      "country": "China",
-      "tons": 2313.4
+      "country": "Serbia, Rep. of",
+      "tons": 53.809
     },
     {
-      "country": "Russia",
-      "tons": 2304.7
+      "country": "China, P.R.: Mainland",
+      "tons": 2313.458
+    },
+    {
+      "country": "Kyrgyz Rep.",
+      "tons": 47.811
+    },
+    {
+      "country": "Russian Federation",
+      "tons": 2304.749
+    },
+    {
+      "country": "Malaysia",
+      "tons": 43.856
     },
     {
       "country": "Switzerland",
-      "tons": 1039.9
+      "tons": 1039.937
+    },
+    {
+      "country": "Finland",
+      "tons": 43.762
     },
     {
       "country": "India",
-      "tons": 880.5
+      "tons": 880.52
+    },
+    {
+      "country": "Bulgaria",
+      "tons": 41.041
     },
     {
       "country": "Japan",
-      "tons": 845.9
+      "tons": 845.973
     },
     {
-      "country": "Netherlands",
-      "tons": 612.5
+      "country": "WAEMU",
+      "tons": 36.522
     },
     {
-      "country": "Poland",
-      "tons": 581.6
+      "country": "Netherlands, The",
+      "tons": 612.454
+    },
+    {
+      "country": "Peru",
+      "tons": 34.67
+    },
+    {
+      "country": "Poland, Rep. of",
+      "tons": 581.642
+    },
+    {
+      "country": "Slovak Rep.",
+      "tons": 31.694
     },
     {
       "country": "Turkey",
-      "tons": 534.8
+      "tons": 534.851
     },
     {
-      "country": "European Central Bank",
-      "tons": 508.4
+      "country": "Ukraine",
+      "tons": 27.371
     },
     {
-      "country": "Uzbekistan",
-      "tons": 415.5
+      "country": "Ecuador",
+      "tons": 26.281
+    },
+    {
+      "country": "Taiwan Province of China",
+      "tons": 423.937
+    },
+    {
+      "country": "Syrian Arab Republic",
+      "tons": 25.8
+    },
+    {
+      "country": "Uzbekistan, Rep. of",
+      "tons": 415.539
+    },
+    {
+      "country": "Bolivia",
+      "tons": 22.5
     },
     {
       "country": "Portugal",
-      "tons": 382.7
+      "tons": 382.663
     },
     {
-      "country": "Kazakhstan",
-      "tons": 353.5
+      "country": "Morocco",
+      "tons": 22.117
+    },
+    {
+      "country": "Kazakhstan, Rep. of",
+      "tons": 353.594
+    },
+    {
+      "country": "Afghanistan, Islamic Rep. of",
+      "tons": 21.866
     },
     {
       "country": "Saudi Arabia",
-      "tons": 323.1
+      "tons": 323.067
+    },
+    {
+      "country": "Nigeria",
+      "tons": 21.63
     },
     {
       "country": "United Kingdom",
-      "tons": 310.3
+      "tons": 310.287
+    },
+    {
+      "country": "Ghana",
+      "tons": 19.2
     },
     {
       "country": "Lebanon",
-      "tons": 286.8
+      "tons": 286.834
+    },
+    {
+      "country": "Guatemala",
+      "tons": 15.508
     },
     {
       "country": "Spain",
-      "tons": 281.6
+      "tons": 281.578
+    },
+    {
+      "country": "Bangladesh",
+      "tons": 14.281
     },
     {
       "country": "Austria",
-      "tons": 280.0
+      "tons": 280.022
+    },
+    {
+      "country": "Cyprus",
+      "tons": 13.872
     },
     {
       "country": "Thailand",
-      "tons": 234.5
+      "tons": 234.518
+    },
+    {
+      "country": "Guinea",
+      "tons": 13.162
     },
     {
       "country": "Belgium",
-      "tons": 227.4
+      "tons": 227.396
     },
     {
-      "country": "Azerbaijan",
-      "tons": 200.0
+      "country": "Mauritius",
+      "tons": 12.416
     },
     {
       "country": "Singapore",
-      "tons": 193.8
+      "tons": 193.851
+    },
+    {
+      "country": "Ireland",
+      "tons": 12.037
+    },
+    {
+      "country": "Azerbaijan, Rep. of",
+      "tons": 178.1
+    },
+    {
+      "country": "Curaçao and Sint Maarten",
+      "tons": 9.175
     },
     {
       "country": "Iraq",
-      "tons": 174.6
+      "tons": 174.614
+    },
+    {
+      "country": "Paraguay",
+      "tons": 8.193
     },
     {
       "country": "Algeria",
-      "tons": 173.6
+      "tons": 173.556
+    },
+    {
+      "country": "Nepal",
+      "tons": 7.988
     },
     {
       "country": "Brazil",
-      "tons": 172.4
+      "tons": 172.445
+    },
+    {
+      "country": "Mongolia",
+      "tons": 7.88
+    },
+    {
+      "country": "Venezuela, Republica Bolivariana de",
+      "tons": 161.22
+    },
+    {
+      "country": "Tajikistan, Rep. of",
+      "tons": 7.415
     },
     {
       "country": "Libya",
-      "tons": 146.6
+      "tons": 146.652
+    },
+    {
+      "country": "Georgia",
+      "tons": 7.138
     },
     {
       "country": "Philippines",
-      "tons": 133.5
+      "tons": 133.508
     },
     {
-      "country": "Egypt",
-      "tons": 129.5
+      "country": "North Macedonia, Republic of",
+      "tons": 6.893
+    },
+    {
+      "country": "Egypt, Arab Rep. of",
+      "tons": 129.508
+    },
+    {
+      "country": "Tunisia",
+      "tons": 6.843
     },
     {
       "country": "Sweden",
-      "tons": 125.7
+      "tons": 125.719
+    },
+    {
+      "country": "Oman",
+      "tons": 6.728
     },
     {
       "country": "South Africa",
-      "tons": 125.5
+      "tons": 125.502
+    },
+    {
+      "country": "Latvia",
+      "tons": 6.656
     },
     {
       "country": "Mexico",
-      "tons": 120.1
+      "tons": 120.145
+    },
+    {
+      "country": "Lithuania",
+      "tons": 5.816
     },
     {
       "country": "Qatar",
-      "tons": 115.2
+      "tons": 115.233
+    },
+    {
+      "country": "BEAC",
+      "tons": 4.746
     },
     {
       "country": "Greece",
-      "tons": 114.7
+      "tons": 114.709
+    },
+    {
+      "country": "Colombia",
+      "tons": 4.675
     },
     {
       "country": "Hungary",
-      "tons": 110.0
+      "tons": 110.012
     },
     {
-      "country": "South Korea",
-      "tons": 104.4
+      "country": "Bahrain, Kingdom of",
+      "tons": 4.665
+    },
+    {
+      "country": "Korea, Rep. of",
+      "tons": 104.447
+    },
+    {
+      "country": "Brunei Darussalam",
+      "tons": 4.548
     },
     {
       "country": "Romania",
-      "tons": 103.6
+      "tons": 103.627
+    },
+    {
+      "country": "Slovenia, Rep. of",
+      "tons": 4.23
+    },
+    {
+      "country": "BIS",
+      "tons": 102.0
+    },
+    {
+      "country": "Zimbabwe",
+      "tons": 4.084
     },
     {
       "country": "Indonesia",
-      "tons": 87.0
+      "tons": 87.043
+    },
+    {
+      "country": "Mozambique, Rep. of",
+      "tons": 3.937
     },
     {
       "country": "Australia",
-      "tons": 79.8
+      "tons": 79.873
+    },
+    {
+      "country": "Albania",
+      "tons": 3.732
     },
     {
       "country": "Kuwait",
-      "tons": 79.0
+      "tons": 78.976
     },
     {
-      "country": "Czech Republic",
-      "tons": 76.6
+      "country": "Bosnia and Herzegovina",
+      "tons": 3.484
+    },
+    {
+      "country": "Czech Rep.",
+      "tons": 76.643
+    },
+    {
+      "country": "Aruba, Kingdom of the Netherlands",
+      "tons": 3.11
     },
     {
       "country": "United Arab Emirates",
-      "tons": 74.5
+      "tons": 75.306
+    },
+    {
+      "country": "Luxembourg",
+      "tons": 2.239
     },
     {
       "country": "Jordan",
-      "tons": 70.8
+      "tons": 70.825
+    },
+    {
+      "country": "El Salvador",
+      "tons": 2.096
     },
     {
       "country": "Denmark",
-      "tons": 66.5
+      "tons": 66.548
     },
     {
-      "country": "Pakistan",
-      "tons": 64.8
-    },
-    {
-      "country": "Argentina",
-      "tons": 61.7
-    },
-    {
-      "country": "Cambodia",
-      "tons": 54.4
-    },
-    {
-      "country": "Belarus",
-      "tons": 53.8
-    },
-    {
-      "country": "Serbia",
-      "tons": 53.8
-    },
-    {
-      "country": "Euro area (including the ECB)",
-      "tons": 10808.3
+      "country": "Hong Kong SAR",
+      "tons": 2.084
     }
   ]
 }
