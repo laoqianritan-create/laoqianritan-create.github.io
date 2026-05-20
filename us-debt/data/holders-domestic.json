@@ -1,0 +1,2530 @@
+{
+  "updated": "2026-05-20T08:38:06Z",
+  "source": "FRED Z.1 · FDHBPIN / FDHBFRBN / FDHBFIN / GFDEBTN",
+  "frequency": "quarterly",
+  "unit": "USD billions",
+  "quarterly": [
+    {
+      "date": "1970-01-01",
+      "year": 1970,
+      "total": 372.0,
+      "fed_reserve": 55.8,
+      "foreign": 12.4,
+      "domestic_non_fed": 156.8,
+      "intragovernmental": 147.0
+    },
+    {
+      "date": "1970-04-01",
+      "year": 1970,
+      "total": 370.1,
+      "fed_reserve": 57.7,
+      "foreign": 14.0,
+      "domestic_non_fed": 145.5,
+      "intragovernmental": 152.9
+    },
+    {
+      "date": "1970-07-01",
+      "year": 1970,
+      "total": 378.7,
+      "fed_reserve": 60.0,
+      "foreign": 16.6,
+      "domestic_non_fed": 145.8,
+      "intragovernmental": 156.3
+    },
+    {
+      "date": "1970-10-01",
+      "year": 1970,
+      "total": 389.2,
+      "fed_reserve": 62.1,
+      "foreign": 19.7,
+      "domestic_non_fed": 147.3,
+      "intragovernmental": 160.1
+    },
+    {
+      "date": "1971-01-01",
+      "year": 1971,
+      "total": 391.7,
+      "fed_reserve": 64.2,
+      "foreign": 24.6,
+      "domestic_non_fed": 139.1,
+      "intragovernmental": 163.8
+    },
+    {
+      "date": "1971-04-01",
+      "year": 1971,
+      "total": 397.3,
+      "fed_reserve": 65.5,
+      "foreign": 31.8,
+      "domestic_non_fed": 131.6,
+      "intragovernmental": 168.4
+    },
+    {
+      "date": "1971-07-01",
+      "year": 1971,
+      "total": 412.3,
+      "fed_reserve": 67.6,
+      "foreign": 41.5,
+      "domestic_non_fed": 128.3,
+      "intragovernmental": 174.9
+    },
+    {
+      "date": "1971-10-01",
+      "year": 1971,
+      "total": 424.1,
+      "fed_reserve": 70.2,
+      "foreign": 46.0,
+      "domestic_non_fed": 130.8,
+      "intragovernmental": 177.1
+    },
+    {
+      "date": "1972-01-01",
+      "year": 1972,
+      "total": 427.3,
+      "fed_reserve": 69.9,
+      "foreign": 49.0,
+      "domestic_non_fed": 132.2,
+      "intragovernmental": 176.2
+    },
+    {
+      "date": "1972-04-01",
+      "year": 1972,
+      "total": 426.4,
+      "fed_reserve": 71.4,
+      "foreign": 49.2,
+      "domestic_non_fed": 123.0,
+      "intragovernmental": 182.8
+    },
+    {
+      "date": "1972-07-01",
+      "year": 1972,
+      "total": 433.9,
+      "fed_reserve": 69.7,
+      "foreign": 54.5,
+      "domestic_non_fed": 125.6,
+      "intragovernmental": 184.1
+    },
+    {
+      "date": "1972-10-01",
+      "year": 1972,
+      "total": 448.5,
+      "fed_reserve": 69.9,
+      "foreign": 54.4,
+      "domestic_non_fed": 137.4,
+      "intragovernmental": 186.8
+    },
+    {
+      "date": "1973-01-01",
+      "year": 1973,
+      "total": 458.6,
+      "fed_reserve": 74.3,
+      "foreign": 62.2,
+      "domestic_non_fed": 129.1,
+      "intragovernmental": 193.0
+    },
+    {
+      "date": "1973-04-01",
+      "year": 1973,
+      "total": 457.3,
+      "fed_reserve": 75.0,
+      "foreign": 59.4,
+      "domestic_non_fed": 124.5,
+      "intragovernmental": 198.4
+    },
+    {
+      "date": "1973-07-01",
+      "year": 1973,
+      "total": 460.6,
+      "fed_reserve": 76.2,
+      "foreign": 57.7,
+      "domestic_non_fed": 122.7,
+      "intragovernmental": 204.0
+    },
+    {
+      "date": "1973-10-01",
+      "year": 1973,
+      "total": 469.1,
+      "fed_reserve": 78.5,
+      "foreign": 54.7,
+      "domestic_non_fed": 127.7,
+      "intragovernmental": 208.2
+    },
+    {
+      "date": "1974-01-01",
+      "year": 1974,
+      "total": 473.7,
+      "fed_reserve": 79.5,
+      "foreign": 54.1,
+      "domestic_non_fed": 129.4,
+      "intragovernmental": 210.7
+    },
+    {
+      "date": "1974-04-01",
+      "year": 1974,
+      "total": 474.2,
+      "fed_reserve": 80.5,
+      "foreign": 56.8,
+      "domestic_non_fed": 118.2,
+      "intragovernmental": 218.7
+    },
+    {
+      "date": "1974-07-01",
+      "year": 1974,
+      "total": 481.5,
+      "fed_reserve": 81.0,
+      "foreign": 56.0,
+      "domestic_non_fed": 123.1,
+      "intragovernmental": 221.4
+    },
+    {
+      "date": "1974-10-01",
+      "year": 1974,
+      "total": 492.7,
+      "fed_reserve": 80.5,
+      "foreign": 58.8,
+      "domestic_non_fed": 131.7,
+      "intragovernmental": 221.7
+    },
+    {
+      "date": "1975-01-01",
+      "year": 1975,
+      "total": 509.7,
+      "fed_reserve": 81.4,
+      "foreign": 65.0,
+      "domestic_non_fed": 143.4,
+      "intragovernmental": 219.9
+    },
+    {
+      "date": "1975-04-01",
+      "year": 1975,
+      "total": 533.2,
+      "fed_reserve": 84.7,
+      "foreign": 66.0,
+      "domestic_non_fed": 152.5,
+      "intragovernmental": 230.0
+    },
+    {
+      "date": "1975-07-01",
+      "year": 1975,
+      "total": 553.6,
+      "fed_reserve": 87.0,
+      "foreign": 65.5,
+      "domestic_non_fed": 171.9,
+      "intragovernmental": 229.2
+    },
+    {
+      "date": "1975-10-01",
+      "year": 1975,
+      "total": 576.6,
+      "fed_reserve": 87.9,
+      "foreign": 66.5,
+      "domestic_non_fed": 195.0,
+      "intragovernmental": 227.2
+    },
+    {
+      "date": "1976-01-01",
+      "year": 1976,
+      "total": 600.5,
+      "fed_reserve": 89.8,
+      "foreign": 68.1,
+      "domestic_non_fed": 213.8,
+      "intragovernmental": 228.8
+    },
+    {
+      "date": "1976-04-01",
+      "year": 1976,
+      "total": 620.4,
+      "fed_reserve": 94.4,
+      "foreign": 69.8,
+      "domestic_non_fed": 212.2,
+      "intragovernmental": 244.0
+    },
+    {
+      "date": "1976-07-01",
+      "year": 1976,
+      "total": 634.7,
+      "fed_reserve": 96.4,
+      "foreign": 74.6,
+      "domestic_non_fed": 221.2,
+      "intragovernmental": 242.5
+    },
+    {
+      "date": "1976-10-01",
+      "year": 1976,
+      "total": 653.5,
+      "fed_reserve": 97.0,
+      "foreign": 78.1,
+      "domestic_non_fed": 234.4,
+      "intragovernmental": 244.0
+    },
+    {
+      "date": "1977-01-01",
+      "year": 1977,
+      "total": 669.2,
+      "fed_reserve": 96.0,
+      "foreign": 84.7,
+      "domestic_non_fed": 247.6,
+      "intragovernmental": 240.9
+    },
+    {
+      "date": "1977-04-01",
+      "year": 1977,
+      "total": 674.4,
+      "fed_reserve": 102.2,
+      "foreign": 87.9,
+      "domestic_non_fed": 230.9,
+      "intragovernmental": 253.4
+    },
+    {
+      "date": "1977-07-01",
+      "year": 1977,
+      "total": 698.8,
+      "fed_reserve": 104.7,
+      "foreign": 95.5,
+      "domestic_non_fed": 238.4,
+      "intragovernmental": 260.2
+    },
+    {
+      "date": "1977-10-01",
+      "year": 1977,
+      "total": 718.9,
+      "fed_reserve": 102.8,
+      "foreign": 109.6,
+      "domestic_non_fed": 248.9,
+      "intragovernmental": 257.6
+    },
+    {
+      "date": "1978-01-01",
+      "year": 1978,
+      "total": 738.0,
+      "fed_reserve": 101.6,
+      "foreign": 124.5,
+      "domestic_non_fed": 257.6,
+      "intragovernmental": 254.3
+    },
+    {
+      "date": "1978-04-01",
+      "year": 1978,
+      "total": 749.0,
+      "fed_reserve": 110.1,
+      "foreign": 119.5,
+      "domestic_non_fed": 248.2,
+      "intragovernmental": 271.2
+    },
+    {
+      "date": "1978-07-01",
+      "year": 1978,
+      "total": 771.5,
+      "fed_reserve": 115.3,
+      "foreign": 120.9,
+      "domestic_non_fed": 252.1,
+      "intragovernmental": 283.2
+    },
+    {
+      "date": "1978-10-01",
+      "year": 1978,
+      "total": 789.2,
+      "fed_reserve": 109.6,
+      "foreign": 133.1,
+      "domestic_non_fed": 265.9,
+      "intragovernmental": 280.6
+    },
+    {
+      "date": "1979-01-01",
+      "year": 1979,
+      "total": 796.8,
+      "fed_reserve": 110.9,
+      "foreign": 132.8,
+      "domestic_non_fed": 275.9,
+      "intragovernmental": 277.2
+    },
+    {
+      "date": "1979-04-01",
+      "year": 1979,
+      "total": 804.9,
+      "fed_reserve": 109.7,
+      "foreign": 119.5,
+      "domestic_non_fed": 287.4,
+      "intragovernmental": 288.3
+    },
+    {
+      "date": "1979-07-01",
+      "year": 1979,
+      "total": 826.5,
+      "fed_reserve": 115.5,
+      "foreign": 124.2,
+      "domestic_non_fed": 283.7,
+      "intragovernmental": 303.1
+    },
+    {
+      "date": "1979-10-01",
+      "year": 1979,
+      "total": 845.1,
+      "fed_reserve": 117.5,
+      "foreign": 119.0,
+      "domestic_non_fed": 304.0,
+      "intragovernmental": 304.6
+    },
+    {
+      "date": "1980-01-01",
+      "year": 1980,
+      "total": 863.5,
+      "fed_reserve": 116.7,
+      "foreign": 125.0,
+      "domestic_non_fed": 318.8,
+      "intragovernmental": 303.0
+    },
+    {
+      "date": "1980-04-01",
+      "year": 1980,
+      "total": 877.6,
+      "fed_reserve": 124.5,
+      "foreign": 118.2,
+      "domestic_non_fed": 315.5,
+      "intragovernmental": 319.4
+    },
+    {
+      "date": "1980-07-01",
+      "year": 1980,
+      "total": 907.7,
+      "fed_reserve": 120.7,
+      "foreign": 124.7,
+      "domestic_non_fed": 343.8,
+      "intragovernmental": 318.5
+    },
+    {
+      "date": "1980-10-01",
+      "year": 1980,
+      "total": 930.2,
+      "fed_reserve": 121.3,
+      "foreign": 129.7,
+      "domestic_non_fed": 365.4,
+      "intragovernmental": 313.8
+    },
+    {
+      "date": "1981-01-01",
+      "year": 1981,
+      "total": 964.5,
+      "fed_reserve": 119.0,
+      "foreign": 138.2,
+      "domestic_non_fed": 397.4,
+      "intragovernmental": 309.9
+    },
+    {
+      "date": "1981-04-01",
+      "year": 1981,
+      "total": 971.2,
+      "fed_reserve": 120.0,
+      "foreign": 136.6,
+      "domestic_non_fed": 394.6,
+      "intragovernmental": 320.0
+    },
+    {
+      "date": "1981-07-01",
+      "year": 1981,
+      "total": 997.9,
+      "fed_reserve": 124.3,
+      "foreign": 130.7,
+      "domestic_non_fed": 410.4,
+      "intragovernmental": 332.5
+    },
+    {
+      "date": "1981-10-01",
+      "year": 1981,
+      "total": 1028.7,
+      "fed_reserve": 131.0,
+      "foreign": 136.6,
+      "domestic_non_fed": 426.9,
+      "intragovernmental": 334.2
+    },
+    {
+      "date": "1982-01-01",
+      "year": 1982,
+      "total": 1061.3,
+      "fed_reserve": 126.6,
+      "foreign": 136.1,
+      "domestic_non_fed": 470.6,
+      "intragovernmental": 328.0
+    },
+    {
+      "date": "1982-04-01",
+      "year": 1982,
+      "total": 1079.6,
+      "fed_reserve": 127.0,
+      "foreign": 137.2,
+      "domestic_non_fed": 476.7,
+      "intragovernmental": 338.7
+    },
+    {
+      "date": "1982-07-01",
+      "year": 1982,
+      "total": 1142.0,
+      "fed_reserve": 134.4,
+      "foreign": 140.6,
+      "domestic_non_fed": 516.2,
+      "intragovernmental": 350.8
+    },
+    {
+      "date": "1982-10-01",
+      "year": 1982,
+      "total": 1197.1,
+      "fed_reserve": 139.3,
+      "foreign": 149.5,
+      "domestic_non_fed": 559.6,
+      "intragovernmental": 348.7
+    },
+    {
+      "date": "1983-01-01",
+      "year": 1983,
+      "total": 1244.5,
+      "fed_reserve": 136.7,
+      "foreign": 156.2,
+      "domestic_non_fed": 613.7,
+      "intragovernmental": 337.9
+    },
+    {
+      "date": "1983-04-01",
+      "year": 1983,
+      "total": 1319.6,
+      "fed_reserve": 141.7,
+      "foreign": 160.1,
+      "domestic_non_fed": 646.8,
+      "intragovernmental": 371.0
+    },
+    {
+      "date": "1983-07-01",
+      "year": 1983,
+      "total": 1377.2,
+      "fed_reserve": 155.4,
+      "foreign": 160.1,
+      "domestic_non_fed": 667.2,
+      "intragovernmental": 394.5
+    },
+    {
+      "date": "1983-10-01",
+      "year": 1983,
+      "total": 1410.7,
+      "fed_reserve": 151.9,
+      "foreign": 166.3,
+      "domestic_non_fed": 704.4,
+      "intragovernmental": 388.1
+    },
+    {
+      "date": "1984-01-01",
+      "year": 1984,
+      "total": 1463.7,
+      "fed_reserve": 150.8,
+      "foreign": 166.3,
+      "domestic_non_fed": 755.9,
+      "intragovernmental": 390.7
+    },
+    {
+      "date": "1984-04-01",
+      "year": 1984,
+      "total": 1512.7,
+      "fed_reserve": 152.9,
+      "foreign": 171.6,
+      "domestic_non_fed": 777.7,
+      "intragovernmental": 410.5
+    },
+    {
+      "date": "1984-07-01",
+      "year": 1984,
+      "total": 1572.3,
+      "fed_reserve": 155.0,
+      "foreign": 175.6,
+      "domestic_non_fed": 823.5,
+      "intragovernmental": 418.2
+    },
+    {
+      "date": "1984-10-01",
+      "year": 1984,
+      "total": 1663.0,
+      "fed_reserve": 160.9,
+      "foreign": 192.9,
+      "domestic_non_fed": 858.7,
+      "intragovernmental": 450.5
+    },
+    {
+      "date": "1985-01-01",
+      "year": 1985,
+      "total": 1710.7,
+      "fed_reserve": 161.0,
+      "foreign": 199.6,
+      "domestic_non_fed": 893.5,
+      "intragovernmental": 456.6
+    },
+    {
+      "date": "1985-04-01",
+      "year": 1985,
+      "total": 1774.6,
+      "fed_reserve": 169.1,
+      "foreign": 213.8,
+      "domestic_non_fed": 909.1,
+      "intragovernmental": 482.6
+    },
+    {
+      "date": "1985-07-01",
+      "year": 1985,
+      "total": 1823.1,
+      "fed_reserve": 169.7,
+      "foreign": 222.9,
+      "domestic_non_fed": 945.6,
+      "intragovernmental": 484.9
+    },
+    {
+      "date": "1985-10-01",
+      "year": 1985,
+      "total": 1945.9,
+      "fed_reserve": 181.3,
+      "foreign": 224.8,
+      "domestic_non_fed": 1011.1,
+      "intragovernmental": 528.7
+    },
+    {
+      "date": "1986-01-01",
+      "year": 1986,
+      "total": 1986.8,
+      "fed_reserve": 184.8,
+      "foreign": 232.6,
+      "domestic_non_fed": 1055.7,
+      "intragovernmental": 513.7
+    },
+    {
+      "date": "1986-04-01",
+      "year": 1986,
+      "total": 2059.3,
+      "fed_reserve": 183.9,
+      "foreign": 250.9,
+      "domestic_non_fed": 1067.9,
+      "intragovernmental": 556.6
+    },
+    {
+      "date": "1986-07-01",
+      "year": 1986,
+      "total": 2125.3,
+      "fed_reserve": 190.8,
+      "foreign": 265.5,
+      "domestic_non_fed": 1097.0,
+      "intragovernmental": 572.0
+    },
+    {
+      "date": "1986-10-01",
+      "year": 1986,
+      "total": 2214.8,
+      "fed_reserve": 211.3,
+      "foreign": 263.4,
+      "domestic_non_fed": 1127.3,
+      "intragovernmental": 612.8
+    },
+    {
+      "date": "1987-01-01",
+      "year": 1987,
+      "total": 2246.7,
+      "fed_reserve": 196.4,
+      "foreign": 272.8,
+      "domestic_non_fed": 1172.2,
+      "intragovernmental": 605.3
+    },
+    {
+      "date": "1987-04-01",
+      "year": 1987,
+      "total": 2309.3,
+      "fed_reserve": 212.3,
+      "foreign": 281.1,
+      "domestic_non_fed": 1164.7,
+      "intragovernmental": 651.2
+    },
+    {
+      "date": "1987-07-01",
+      "year": 1987,
+      "total": 2350.3,
+      "fed_reserve": 211.9,
+      "foreign": 279.5,
+      "domestic_non_fed": 1189.3,
+      "intragovernmental": 669.6
+    },
+    {
+      "date": "1987-10-01",
+      "year": 1987,
+      "total": 2431.7,
+      "fed_reserve": 222.6,
+      "foreign": 299.7,
+      "domestic_non_fed": 1209.1,
+      "intragovernmental": 700.3
+    },
+    {
+      "date": "1988-01-01",
+      "year": 1988,
+      "total": 2487.6,
+      "fed_reserve": 217.5,
+      "foreign": 332.5,
+      "domestic_non_fed": 1229.6,
+      "intragovernmental": 708.0
+    },
+    {
+      "date": "1988-04-01",
+      "year": 1988,
+      "total": 2547.7,
+      "fed_reserve": 227.6,
+      "foreign": 345.4,
+      "domestic_non_fed": 1213.7,
+      "intragovernmental": 761.0
+    },
+    {
+      "date": "1988-07-01",
+      "year": 1988,
+      "total": 2602.2,
+      "fed_reserve": 229.2,
+      "foreign": 345.9,
+      "domestic_non_fed": 1246.1,
+      "intragovernmental": 781.0
+    },
+    {
+      "date": "1988-10-01",
+      "year": 1988,
+      "total": 2684.4,
+      "fed_reserve": 238.4,
+      "foreign": 362.2,
+      "domestic_non_fed": 1257.9,
+      "intragovernmental": 825.9
+    },
+    {
+      "date": "1989-01-01",
+      "year": 1989,
+      "total": 2740.9,
+      "fed_reserve": 228.6,
+      "foreign": 373.5,
+      "domestic_non_fed": 1301.3,
+      "intragovernmental": 837.5
+    },
+    {
+      "date": "1989-04-01",
+      "year": 1989,
+      "total": 2799.9,
+      "fed_reserve": 231.8,
+      "foreign": 366.4,
+      "domestic_non_fed": 1310.9,
+      "intragovernmental": 890.8
+    },
+    {
+      "date": "1989-07-01",
+      "year": 1989,
+      "total": 2857.4,
+      "fed_reserve": 221.1,
+      "foreign": 391.8,
+      "domestic_non_fed": 1345.4,
+      "intragovernmental": 899.1
+    },
+    {
+      "date": "1989-10-01",
+      "year": 1989,
+      "total": 2953.0,
+      "fed_reserve": 226.8,
+      "foreign": 426.1,
+      "domestic_non_fed": 1364.5,
+      "intragovernmental": 935.6
+    },
+    {
+      "date": "1990-01-01",
+      "year": 1990,
+      "total": 3052.0,
+      "fed_reserve": 217.9,
+      "foreign": 445.4,
+      "domestic_non_fed": 1453.3,
+      "intragovernmental": 935.4
+    },
+    {
+      "date": "1990-04-01",
+      "year": 1990,
+      "total": 3143.8,
+      "fed_reserve": 231.4,
+      "foreign": 451.0,
+      "domestic_non_fed": 1457.6,
+      "intragovernmental": 1003.8
+    },
+    {
+      "date": "1990-07-01",
+      "year": 1990,
+      "total": 3233.3,
+      "fed_reserve": 234.4,
+      "foreign": 463.8,
+      "domestic_non_fed": 1509.1,
+      "intragovernmental": 1026.0
+    },
+    {
+      "date": "1990-10-01",
+      "year": 1990,
+      "total": 3364.8,
+      "fed_reserve": 235.1,
+      "foreign": 487.1,
+      "domestic_non_fed": 1583.1,
+      "intragovernmental": 1059.5
+    },
+    {
+      "date": "1991-01-01",
+      "year": 1991,
+      "total": 3465.2,
+      "fed_reserve": 241.0,
+      "foreign": 492.0,
+      "domestic_non_fed": 1627.6,
+      "intragovernmental": 1104.6
+    },
+    {
+      "date": "1991-04-01",
+      "year": 1991,
+      "total": 3538.0,
+      "fed_reserve": 247.5,
+      "foreign": 502.0,
+      "domestic_non_fed": 1649.4,
+      "intragovernmental": 1139.1
+    },
+    {
+      "date": "1991-07-01",
+      "year": 1991,
+      "total": 3665.3,
+      "fed_reserve": 258.6,
+      "foreign": 506.3,
+      "domestic_non_fed": 1733.5,
+      "intragovernmental": 1166.9
+    },
+    {
+      "date": "1991-10-01",
+      "year": 1991,
+      "total": 3801.7,
+      "fed_reserve": 266.5,
+      "foreign": 520.9,
+      "domestic_non_fed": 1791.1,
+      "intragovernmental": 1223.2
+    },
+    {
+      "date": "1992-01-01",
+      "year": 1992,
+      "total": 3881.3,
+      "fed_reserve": 265.8,
+      "foreign": 536.4,
+      "domestic_non_fed": 1863.6,
+      "intragovernmental": 1215.5
+    },
+    {
+      "date": "1992-04-01",
+      "year": 1992,
+      "total": 3984.7,
+      "fed_reserve": 276.9,
+      "foreign": 558.2,
+      "domestic_non_fed": 1877.3,
+      "intragovernmental": 1272.3
+    },
+    {
+      "date": "1992-07-01",
+      "year": 1992,
+      "total": 4064.6,
+      "fed_reserve": 279.7,
+      "foreign": 562.8,
+      "domestic_non_fed": 1939.7,
+      "intragovernmental": 1282.4
+    },
+    {
+      "date": "1992-10-01",
+      "year": 1992,
+      "total": 4177.0,
+      "fed_reserve": 295.0,
+      "foreign": 576.7,
+      "domestic_non_fed": 1975.6,
+      "intragovernmental": 1329.7
+    },
+    {
+      "date": "1993-01-01",
+      "year": 1993,
+      "total": 4230.6,
+      "fed_reserve": 298.5,
+      "foreign": 585.9,
+      "domestic_non_fed": 2017.6,
+      "intragovernmental": 1328.6
+    },
+    {
+      "date": "1993-04-01",
+      "year": 1993,
+      "total": 4351.9,
+      "fed_reserve": 313.1,
+      "foreign": 596.8,
+      "domestic_non_fed": 2041.5,
+      "intragovernmental": 1400.5
+    },
+    {
+      "date": "1993-07-01",
+      "year": 1993,
+      "total": 4411.5,
+      "fed_reserve": 319.4,
+      "foreign": 619.1,
+      "domestic_non_fed": 2050.8,
+      "intragovernmental": 1422.2
+    },
+    {
+      "date": "1993-10-01",
+      "year": 1993,
+      "total": 4535.7,
+      "fed_reserve": 332.0,
+      "foreign": 650.3,
+      "domestic_non_fed": 2077.3,
+      "intragovernmental": 1476.1
+    },
+    {
+      "date": "1994-01-01",
+      "year": 1994,
+      "total": 4575.9,
+      "fed_reserve": 337.3,
+      "foreign": 661.1,
+      "domestic_non_fed": 2101.5,
+      "intragovernmental": 1476.0
+    },
+    {
+      "date": "1994-04-01",
+      "year": 1994,
+      "total": 4645.8,
+      "fed_reserve": 347.6,
+      "foreign": 659.9,
+      "domestic_non_fed": 2090.8,
+      "intragovernmental": 1547.5
+    },
+    {
+      "date": "1994-07-01",
+      "year": 1994,
+      "total": 4692.8,
+      "fed_reserve": 353.0,
+      "foreign": 682.0,
+      "domestic_non_fed": 2095.0,
+      "intragovernmental": 1562.8
+    },
+    {
+      "date": "1994-10-01",
+      "year": 1994,
+      "total": 4800.1,
+      "fed_reserve": 364.5,
+      "foreign": 667.3,
+      "domestic_non_fed": 2145.8,
+      "intragovernmental": 1622.5
+    },
+    {
+      "date": "1995-01-01",
+      "year": 1995,
+      "total": 4864.1,
+      "fed_reserve": 363.7,
+      "foreign": 707.0,
+      "domestic_non_fed": 2174.1,
+      "intragovernmental": 1619.3
+    },
+    {
+      "date": "1995-04-01",
+      "year": 1995,
+      "total": 4951.4,
+      "fed_reserve": 372.6,
+      "foreign": 762.5,
+      "domestic_non_fed": 2126.2,
+      "intragovernmental": 1690.1
+    },
+    {
+      "date": "1995-07-01",
+      "year": 1995,
+      "total": 4974.0,
+      "fed_reserve": 367.7,
+      "foreign": 820.4,
+      "domestic_non_fed": 2097.9,
+      "intragovernmental": 1688.0
+    },
+    {
+      "date": "1995-10-01",
+      "year": 1995,
+      "total": 4988.7,
+      "fed_reserve": 378.2,
+      "foreign": 835.2,
+      "domestic_non_fed": 2094.3,
+      "intragovernmental": 1681.0
+    },
+    {
+      "date": "1996-01-01",
+      "year": 1996,
+      "total": 5117.8,
+      "fed_reserve": 377.1,
+      "foreign": 908.1,
+      "domestic_non_fed": 2101.5,
+      "intragovernmental": 1731.1
+    },
+    {
+      "date": "1996-04-01",
+      "year": 1996,
+      "total": 5161.1,
+      "fed_reserve": 383.9,
+      "foreign": 929.7,
+      "domestic_non_fed": 2040.8,
+      "intragovernmental": 1806.7
+    },
+    {
+      "date": "1996-07-01",
+      "year": 1996,
+      "total": 5224.8,
+      "fed_reserve": 383.9,
+      "foreign": 993.4,
+      "domestic_non_fed": 2015.9,
+      "intragovernmental": 1831.6
+    },
+    {
+      "date": "1996-10-01",
+      "year": 1996,
+      "total": 5323.2,
+      "fed_reserve": 390.9,
+      "foreign": 1102.1,
+      "domestic_non_fed": 1938.2,
+      "intragovernmental": 1892.0
+    },
+    {
+      "date": "1997-01-01",
+      "year": 1997,
+      "total": 5380.9,
+      "fed_reserve": 395.1,
+      "foreign": 1157.6,
+      "domestic_non_fed": 1899.5,
+      "intragovernmental": 1928.7
+    },
+    {
+      "date": "1997-04-01",
+      "year": 1997,
+      "total": 5376.2,
+      "fed_reserve": 410.9,
+      "foreign": 1182.7,
+      "domestic_non_fed": 1783.7,
+      "intragovernmental": 1998.9
+    },
+    {
+      "date": "1997-07-01",
+      "year": 1997,
+      "total": 5413.1,
+      "fed_reserve": 411.8,
+      "foreign": 1230.5,
+      "domestic_non_fed": 1759.3,
+      "intragovernmental": 2011.5
+    },
+    {
+      "date": "1997-10-01",
+      "year": 1997,
+      "total": 5502.4,
+      "fed_reserve": 430.7,
+      "foreign": 1241.6,
+      "domestic_non_fed": 1742.3,
+      "intragovernmental": 2087.8
+    },
+    {
+      "date": "1998-01-01",
+      "year": 1998,
+      "total": 5542.4,
+      "fed_reserve": 433.2,
+      "foreign": 1250.5,
+      "domestic_non_fed": 1753.8,
+      "intragovernmental": 2104.9
+    },
+    {
+      "date": "1998-04-01",
+      "year": 1998,
+      "total": 5547.9,
+      "fed_reserve": 439.8,
+      "foreign": 1256.0,
+      "domestic_non_fed": 1653.5,
+      "intragovernmental": 2198.6
+    },
+    {
+      "date": "1998-07-01",
+      "year": 1998,
+      "total": 5526.2,
+      "fed_reserve": 446.0,
+      "foreign": 1224.2,
+      "domestic_non_fed": 1643.0,
+      "intragovernmental": 2213.0
+    },
+    {
+      "date": "1998-10-01",
+      "year": 1998,
+      "total": 5614.2,
+      "fed_reserve": 452.1,
+      "foreign": 1278.7,
+      "domestic_non_fed": 1603.2,
+      "intragovernmental": 2280.2
+    },
+    {
+      "date": "1999-01-01",
+      "year": 1999,
+      "total": 5651.6,
+      "fed_reserve": 465.7,
+      "foreign": 1272.3,
+      "domestic_non_fed": 1589.5,
+      "intragovernmental": 2324.1
+    },
+    {
+      "date": "1999-04-01",
+      "year": 1999,
+      "total": 5638.8,
+      "fed_reserve": 484.9,
+      "foreign": 1258.8,
+      "domestic_non_fed": 1455.5,
+      "intragovernmental": 2439.6
+    },
+    {
+      "date": "1999-07-01",
+      "year": 1999,
+      "total": 5656.3,
+      "fed_reserve": 489.0,
+      "foreign": 1281.4,
+      "domestic_non_fed": 1405.0,
+      "intragovernmental": 2480.9
+    },
+    {
+      "date": "1999-10-01",
+      "year": 1999,
+      "total": 5776.1,
+      "fed_reserve": 478.0,
+      "foreign": 1268.7,
+      "domestic_non_fed": 1487.2,
+      "intragovernmental": 2542.2
+    },
+    {
+      "date": "2000-01-01",
+      "year": 2000,
+      "total": 5773.4,
+      "fed_reserve": 501.7,
+      "foreign": 1085.0,
+      "domestic_non_fed": 1596.1,
+      "intragovernmental": 2590.6
+    },
+    {
+      "date": "2000-04-01",
+      "year": 2000,
+      "total": 5685.9,
+      "fed_reserve": 504.9,
+      "foreign": 1060.7,
+      "domestic_non_fed": 1421.7,
+      "intragovernmental": 2698.6
+    },
+    {
+      "date": "2000-07-01",
+      "year": 2000,
+      "total": 5674.2,
+      "fed_reserve": 511.4,
+      "foreign": 1038.8,
+      "domestic_non_fed": 1386.1,
+      "intragovernmental": 2737.9
+    },
+    {
+      "date": "2000-10-01",
+      "year": 2000,
+      "total": 5662.2,
+      "fed_reserve": 511.7,
+      "foreign": 1015.2,
+      "domestic_non_fed": 1353.5,
+      "intragovernmental": 2781.8
+    },
+    {
+      "date": "2001-01-01",
+      "year": 2001,
+      "total": 5773.7,
+      "fed_reserve": 523.9,
+      "foreign": 1012.5,
+      "domestic_non_fed": 1356.4,
+      "intragovernmental": 2880.9
+    },
+    {
+      "date": "2001-04-01",
+      "year": 2001,
+      "total": 5726.8,
+      "fed_reserve": 535.1,
+      "foreign": 983.3,
+      "domestic_non_fed": 1204.2,
+      "intragovernmental": 3004.2
+    },
+    {
+      "date": "2001-07-01",
+      "year": 2001,
+      "total": 5807.5,
+      "fed_reserve": 534.1,
+      "foreign": 992.2,
+      "domestic_non_fed": 1253.4,
+      "intragovernmental": 3027.8
+    },
+    {
+      "date": "2001-10-01",
+      "year": 2001,
+      "total": 5943.4,
+      "fed_reserve": 551.7,
+      "foreign": 1040.1,
+      "domestic_non_fed": 1227.7,
+      "intragovernmental": 3123.9
+    },
+    {
+      "date": "2002-01-01",
+      "year": 2002,
+      "total": 6006.0,
+      "fed_reserve": 575.4,
+      "foreign": 1057.2,
+      "domestic_non_fed": 1216.6,
+      "intragovernmental": 3156.8
+    },
+    {
+      "date": "2002-04-01",
+      "year": 2002,
+      "total": 6126.5,
+      "fed_reserve": 590.7,
+      "foreign": 1123.1,
+      "domestic_non_fed": 1136.0,
+      "intragovernmental": 3276.7
+    },
+    {
+      "date": "2002-07-01",
+      "year": 2002,
+      "total": 6228.2,
+      "fed_reserve": 604.2,
+      "foreign": 1188.6,
+      "domestic_non_fed": 1132.0,
+      "intragovernmental": 3303.4
+    },
+    {
+      "date": "2002-10-01",
+      "year": 2002,
+      "total": 6405.7,
+      "fed_reserve": 629.4,
+      "foreign": 1235.6,
+      "domestic_non_fed": 1153.5,
+      "intragovernmental": 3387.2
+    },
+    {
+      "date": "2003-01-01",
+      "year": 2003,
+      "total": 6460.8,
+      "fed_reserve": 641.5,
+      "foreign": 1275.2,
+      "domestic_non_fed": 1153.3,
+      "intragovernmental": 3390.8
+    },
+    {
+      "date": "2003-04-01",
+      "year": 2003,
+      "total": 6670.1,
+      "fed_reserve": 652.1,
+      "foreign": 1371.9,
+      "domestic_non_fed": 1140.7,
+      "intragovernmental": 3505.4
+    },
+    {
+      "date": "2003-07-01",
+      "year": 2003,
+      "total": 6783.3,
+      "fed_reserve": 656.1,
+      "foreign": 1443.3,
+      "domestic_non_fed": 1168.5,
+      "intragovernmental": 3515.4
+    },
+    {
+      "date": "2003-10-01",
+      "year": 2003,
+      "total": 6998.0,
+      "fed_reserve": 666.7,
+      "foreign": 1523.1,
+      "domestic_non_fed": 1188.1,
+      "intragovernmental": 3620.1
+    },
+    {
+      "date": "2004-01-01",
+      "year": 2004,
+      "total": 7131.1,
+      "fed_reserve": 674.1,
+      "foreign": 1670.0,
+      "domestic_non_fed": 1158.7,
+      "intragovernmental": 3628.3
+    },
+    {
+      "date": "2004-04-01",
+      "year": 2004,
+      "total": 7274.3,
+      "fed_reserve": 687.4,
+      "foreign": 1735.4,
+      "domestic_non_fed": 1108.7,
+      "intragovernmental": 3742.8
+    },
+    {
+      "date": "2004-07-01",
+      "year": 2004,
+      "total": 7379.1,
+      "fed_reserve": 700.3,
+      "foreign": 1794.5,
+      "domestic_non_fed": 1112.3,
+      "intragovernmental": 3772.0
+    },
+    {
+      "date": "2004-10-01",
+      "year": 2004,
+      "total": 7596.1,
+      "fed_reserve": 717.8,
+      "foreign": 1849.3,
+      "domestic_non_fed": 1123.4,
+      "intragovernmental": 3905.6
+    },
+    {
+      "date": "2005-01-01",
+      "year": 2005,
+      "total": 7776.9,
+      "fed_reserve": 717.3,
+      "foreign": 1952.0,
+      "domestic_non_fed": 1185.7,
+      "intragovernmental": 3921.9
+    },
+    {
+      "date": "2005-04-01",
+      "year": 2005,
+      "total": 7836.5,
+      "fed_reserve": 724.7,
+      "foreign": 1878.0,
+      "domestic_non_fed": 1200.3,
+      "intragovernmental": 4033.5
+    },
+    {
+      "date": "2005-07-01",
+      "year": 2005,
+      "total": 7932.7,
+      "fed_reserve": 736.4,
+      "foreign": 1930.0,
+      "domestic_non_fed": 1198.6,
+      "intragovernmental": 4067.7
+    },
+    {
+      "date": "2005-10-01",
+      "year": 2005,
+      "total": 8170.4,
+      "fed_reserve": 744.2,
+      "foreign": 2034.0,
+      "domestic_non_fed": 1192.8,
+      "intragovernmental": 4199.4
+    },
+    {
+      "date": "2006-01-01",
+      "year": 2006,
+      "total": 8371.2,
+      "fed_reserve": 758.5,
+      "foreign": 2082.1,
+      "domestic_non_fed": 1273.4,
+      "intragovernmental": 4257.2
+    },
+    {
+      "date": "2006-04-01",
+      "year": 2006,
+      "total": 8420.0,
+      "fed_reserve": 766.4,
+      "foreign": 1977.8,
+      "domestic_non_fed": 1286.6,
+      "intragovernmental": 4389.2
+    },
+    {
+      "date": "2006-07-01",
+      "year": 2006,
+      "total": 8507.0,
+      "fed_reserve": 768.9,
+      "foreign": 2025.3,
+      "domestic_non_fed": 1280.0,
+      "intragovernmental": 4432.8
+    },
+    {
+      "date": "2006-10-01",
+      "year": 2006,
+      "total": 8680.2,
+      "fed_reserve": 778.9,
+      "foreign": 2103.1,
+      "domestic_non_fed": 1240.1,
+      "intragovernmental": 4558.1
+    },
+    {
+      "date": "2007-01-01",
+      "year": 2007,
+      "total": 8849.7,
+      "fed_reserve": 780.9,
+      "foreign": 2194.8,
+      "domestic_non_fed": 1297.4,
+      "intragovernmental": 4576.6
+    },
+    {
+      "date": "2007-04-01",
+      "year": 2007,
+      "total": 8867.7,
+      "fed_reserve": 790.5,
+      "foreign": 2192.0,
+      "domestic_non_fed": 1170.1,
+      "intragovernmental": 4715.1
+    },
+    {
+      "date": "2007-07-01",
+      "year": 2007,
+      "total": 9007.7,
+      "fed_reserve": 779.6,
+      "foreign": 2235.3,
+      "domestic_non_fed": 1254.8,
+      "intragovernmental": 4738.0
+    },
+    {
+      "date": "2007-10-01",
+      "year": 2007,
+      "total": 9229.2,
+      "fed_reserve": 740.6,
+      "foreign": 2353.2,
+      "domestic_non_fed": 1301.9,
+      "intragovernmental": 4833.5
+    },
+    {
+      "date": "2008-01-01",
+      "year": 2008,
+      "total": 9437.6,
+      "fed_reserve": 591.2,
+      "foreign": 2506.3,
+      "domestic_non_fed": 1645.4,
+      "intragovernmental": 4694.7
+    },
+    {
+      "date": "2008-04-01",
+      "year": 2008,
+      "total": 9492.0,
+      "fed_reserve": 478.8,
+      "foreign": 2587.4,
+      "domestic_non_fed": 1740.0,
+      "intragovernmental": 4685.8
+    },
+    {
+      "date": "2008-07-01",
+      "year": 2008,
+      "total": 10024.7,
+      "fed_reserve": 476.6,
+      "foreign": 2802.4,
+      "domestic_non_fed": 2053.0,
+      "intragovernmental": 4692.7
+    },
+    {
+      "date": "2008-10-01",
+      "year": 2008,
+      "total": 10699.8,
+      "fed_reserve": 475.9,
+      "foreign": 3077.2,
+      "domestic_non_fed": 2340.3,
+      "intragovernmental": 4806.4
+    },
+    {
+      "date": "2009-01-01",
+      "year": 2009,
+      "total": 11126.9,
+      "fed_reserve": 492.3,
+      "foreign": 3265.7,
+      "domestic_non_fed": 2583.7,
+      "intragovernmental": 4785.2
+    },
+    {
+      "date": "2009-04-01",
+      "year": 2009,
+      "total": 11545.3,
+      "fed_reserve": 656.5,
+      "foreign": 3460.8,
+      "domestic_non_fed": 2401.2,
+      "intragovernmental": 5026.8
+    },
+    {
+      "date": "2009-07-01",
+      "year": 2009,
+      "total": 11909.8,
+      "fed_reserve": 769.2,
+      "foreign": 3570.6,
+      "domestic_non_fed": 2442.9,
+      "intragovernmental": 5127.1
+    },
+    {
+      "date": "2009-10-01",
+      "year": 2009,
+      "total": 12311.3,
+      "fed_reserve": 776.6,
+      "foreign": 3685.1,
+      "domestic_non_fed": 2572.7,
+      "intragovernmental": 5276.9
+    },
+    {
+      "date": "2010-01-01",
+      "year": 2010,
+      "total": 12773.1,
+      "fed_reserve": 776.7,
+      "foreign": 3877.9,
+      "domestic_non_fed": 2858.7,
+      "intragovernmental": 5259.8
+    },
+    {
+      "date": "2010-04-01",
+      "year": 2010,
+      "total": 13201.8,
+      "fed_reserve": 777.0,
+      "foreign": 4070.0,
+      "domestic_non_fed": 3009.7,
+      "intragovernmental": 5345.1
+    },
+    {
+      "date": "2010-07-01",
+      "year": 2010,
+      "total": 13561.6,
+      "fed_reserve": 811.7,
+      "foreign": 4324.2,
+      "domestic_non_fed": 3075.2,
+      "intragovernmental": 5350.5
+    },
+    {
+      "date": "2010-10-01",
+      "year": 2010,
+      "total": 14025.2,
+      "fed_reserve": 1021.5,
+      "foreign": 4435.6,
+      "domestic_non_fed": 2911.8,
+      "intragovernmental": 5656.3
+    },
+    {
+      "date": "2011-01-01",
+      "year": 2011,
+      "total": 14270.1,
+      "fed_reserve": 1340.4,
+      "foreign": 4481.4,
+      "domestic_non_fed": 2489.3,
+      "intragovernmental": 5959.0
+    },
+    {
+      "date": "2011-04-01",
+      "year": 2011,
+      "total": 14343.1,
+      "fed_reserve": 1619.5,
+      "foreign": 4690.6,
+      "domestic_non_fed": 1812.6,
+      "intragovernmental": 6220.4
+    },
+    {
+      "date": "2011-07-01",
+      "year": 2011,
+      "total": 14790.3,
+      "fed_reserve": 1664.7,
+      "foreign": 4912.1,
+      "domestic_non_fed": 1885.6,
+      "intragovernmental": 6327.9
+    },
+    {
+      "date": "2011-10-01",
+      "year": 2011,
+      "total": 15222.9,
+      "fed_reserve": 1663.4,
+      "foreign": 5006.9,
+      "domestic_non_fed": 2113.0,
+      "intragovernmental": 6439.6
+    },
+    {
+      "date": "2012-01-01",
+      "year": 2012,
+      "total": 15606.5,
+      "fed_reserve": 1661.1,
+      "foreign": 5145.1,
+      "domestic_non_fed": 2378.9,
+      "intragovernmental": 6421.4
+    },
+    {
+      "date": "2012-04-01",
+      "year": 2012,
+      "total": 15855.0,
+      "fed_reserve": 1659.9,
+      "foreign": 5310.9,
+      "domestic_non_fed": 2408.9,
+      "intragovernmental": 6475.3
+    },
+    {
+      "date": "2012-07-01",
+      "year": 2012,
+      "total": 16066.2,
+      "fed_reserve": 1645.3,
+      "foreign": 5476.1,
+      "domestic_non_fed": 2498.0,
+      "intragovernmental": 6446.8
+    },
+    {
+      "date": "2012-10-01",
+      "year": 2012,
+      "total": 16432.7,
+      "fed_reserve": 1666.1,
+      "foreign": 5573.8,
+      "domestic_non_fed": 2669.2,
+      "intragovernmental": 6523.6
+    },
+    {
+      "date": "2013-01-01",
+      "year": 2013,
+      "total": 16771.4,
+      "fed_reserve": 1796.0,
+      "foreign": 5725.0,
+      "domestic_non_fed": 2593.8,
+      "intragovernmental": 6656.6
+    },
+    {
+      "date": "2013-04-01",
+      "year": 2013,
+      "total": 16738.3,
+      "fed_reserve": 1936.6,
+      "foreign": 5595.0,
+      "domestic_non_fed": 2433.3,
+      "intragovernmental": 6773.4
+    },
+    {
+      "date": "2013-07-01",
+      "year": 2013,
+      "total": 16738.2,
+      "fed_reserve": 2072.3,
+      "foreign": 5652.8,
+      "domestic_non_fed": 2178.9,
+      "intragovernmental": 6834.2
+    },
+    {
+      "date": "2013-10-01",
+      "year": 2013,
+      "total": 17156.1,
+      "fed_reserve": 2208.8,
+      "foreign": 5792.6,
+      "domestic_non_fed": 2145.2,
+      "intragovernmental": 7009.5
+    },
+    {
+      "date": "2014-01-01",
+      "year": 2014,
+      "total": 17601.2,
+      "fed_reserve": 2614.6,
+      "foreign": 5948.3,
+      "domestic_non_fed": 1736.8,
+      "intragovernmental": 7301.5
+    },
+    {
+      "date": "2014-04-01",
+      "year": 2014,
+      "total": 17632.6,
+      "fed_reserve": 2705.9,
+      "foreign": 6018.7,
+      "domestic_non_fed": 1447.0,
+      "intragovernmental": 7461.0
+    },
+    {
+      "date": "2014-07-01",
+      "year": 2014,
+      "total": 17824.1,
+      "fed_reserve": 2767.3,
+      "foreign": 6069.2,
+      "domestic_non_fed": 1496.7,
+      "intragovernmental": 7490.9
+    },
+    {
+      "date": "2014-10-01",
+      "year": 2014,
+      "total": 18141.4,
+      "fed_reserve": 2793.4,
+      "foreign": 6157.7,
+      "domestic_non_fed": 1611.5,
+      "intragovernmental": 7578.8
+    },
+    {
+      "date": "2015-01-01",
+      "year": 2015,
+      "total": 18152.1,
+      "fed_reserve": 2797.5,
+      "foreign": 6172.6,
+      "domestic_non_fed": 1660.7,
+      "intragovernmental": 7521.3
+    },
+    {
+      "date": "2015-04-01",
+      "year": 2015,
+      "total": 18152.0,
+      "fed_reserve": 2798.5,
+      "foreign": 6161.0,
+      "domestic_non_fed": 1656.0,
+      "intragovernmental": 7536.5
+    },
+    {
+      "date": "2015-07-01",
+      "year": 2015,
+      "total": 18150.6,
+      "fed_reserve": 2802.1,
+      "foreign": 6104.0,
+      "domestic_non_fed": 1755.8,
+      "intragovernmental": 7488.7
+    },
+    {
+      "date": "2015-10-01",
+      "year": 2015,
+      "total": 18922.2,
+      "fed_reserve": 2810.1,
+      "foreign": 6144.2,
+      "domestic_non_fed": 2256.7,
+      "intragovernmental": 7711.2
+    },
+    {
+      "date": "2016-01-01",
+      "year": 2016,
+      "total": 19264.9,
+      "fed_reserve": 2815.3,
+      "foreign": 6284.4,
+      "domestic_non_fed": 2363.9,
+      "intragovernmental": 7801.3
+    },
+    {
+      "date": "2016-04-01",
+      "year": 2016,
+      "total": 19381.6,
+      "fed_reserve": 2819.1,
+      "foreign": 6279.1,
+      "domestic_non_fed": 2372.2,
+      "intragovernmental": 7911.2
+    },
+    {
+      "date": "2016-07-01",
+      "year": 2016,
+      "total": 19573.4,
+      "fed_reserve": 2830.1,
+      "foreign": 6155.9,
+      "domestic_non_fed": 2723.9,
+      "intragovernmental": 7863.5
+    },
+    {
+      "date": "2016-10-01",
+      "year": 2016,
+      "total": 19976.8,
+      "fed_reserve": 2843.7,
+      "foreign": 6006.3,
+      "domestic_non_fed": 3121.3,
+      "intragovernmental": 8005.5
+    },
+    {
+      "date": "2017-01-01",
+      "year": 2017,
+      "total": 19846.4,
+      "fed_reserve": 2859.1,
+      "foreign": 6075.3,
+      "domestic_non_fed": 2970.9,
+      "intragovernmental": 7941.1
+    },
+    {
+      "date": "2017-04-01",
+      "year": 2017,
+      "total": 19844.6,
+      "fed_reserve": 2864.1,
+      "foreign": 6151.9,
+      "domestic_non_fed": 2885.1,
+      "intragovernmental": 7943.5
+    },
+    {
+      "date": "2017-07-01",
+      "year": 2017,
+      "total": 20244.9,
+      "fed_reserve": 2867.6,
+      "foreign": 6301.9,
+      "domestic_non_fed": 3038.5,
+      "intragovernmental": 8036.9
+    },
+    {
+      "date": "2017-10-01",
+      "year": 2017,
+      "total": 20492.7,
+      "fed_reserve": 2858.1,
+      "foreign": 6211.3,
+      "domestic_non_fed": 3291.2,
+      "intragovernmental": 8132.1
+    },
+    {
+      "date": "2018-01-01",
+      "year": 2018,
+      "total": 21089.6,
+      "fed_reserve": 2828.5,
+      "foreign": 6223.4,
+      "domestic_non_fed": 3951.4,
+      "intragovernmental": 8086.3
+    },
+    {
+      "date": "2018-04-01",
+      "year": 2018,
+      "total": 21195.1,
+      "fed_reserve": 2772.9,
+      "foreign": 6225.0,
+      "domestic_non_fed": 4090.6,
+      "intragovernmental": 8106.6
+    },
+    {
+      "date": "2018-07-01",
+      "year": 2018,
+      "total": 21516.1,
+      "fed_reserve": 2697.9,
+      "foreign": 6225.9,
+      "domestic_non_fed": 4524.1,
+      "intragovernmental": 8068.2
+    },
+    {
+      "date": "2018-10-01",
+      "year": 2018,
+      "total": 21974.1,
+      "fed_reserve": 2594.7,
+      "foreign": 6270.1,
+      "domestic_non_fed": 5014.3,
+      "intragovernmental": 8095.0
+    },
+    {
+      "date": "2019-01-01",
+      "year": 2019,
+      "total": 22027.9,
+      "fed_reserve": 2536.7,
+      "foreign": 6474.0,
+      "domestic_non_fed": 5018.2,
+      "intragovernmental": 7999.0
+    },
+    {
+      "date": "2019-04-01",
+      "year": 2019,
+      "total": 22023.3,
+      "fed_reserve": 2452.8,
+      "foreign": 6625.9,
+      "domestic_non_fed": 4999.7,
+      "intragovernmental": 7944.9
+    },
+    {
+      "date": "2019-07-01",
+      "year": 2019,
+      "total": 22719.4,
+      "fed_reserve": 2436.4,
+      "foreign": 6923.5,
+      "domestic_non_fed": 5335.9,
+      "intragovernmental": 8023.6
+    },
+    {
+      "date": "2019-10-01",
+      "year": 2019,
+      "total": 23201.4,
+      "fed_reserve": 2637.3,
+      "foreign": 6844.2,
+      "domestic_non_fed": 5360.0,
+      "intragovernmental": 8359.9
+    },
+    {
+      "date": "2020-01-01",
+      "year": 2020,
+      "total": 23223.8,
+      "fed_reserve": 3559.6,
+      "foreign": 6949.5,
+      "domestic_non_fed": 3898.1,
+      "intragovernmental": 8816.6
+    },
+    {
+      "date": "2020-04-01",
+      "year": 2020,
+      "total": 26477.2,
+      "fed_reserve": 4615.4,
+      "foreign": 7046.6,
+      "domestic_non_fed": 4657.6,
+      "intragovernmental": 10157.6
+    },
+    {
+      "date": "2020-07-01",
+      "year": 2020,
+      "total": 26945.4,
+      "fed_reserve": 4873.0,
+      "foreign": 7071.0,
+      "domestic_non_fed": 4629.5,
+      "intragovernmental": 10371.9
+    },
+    {
+      "date": "2020-10-01",
+      "year": 2020,
+      "total": 27747.8,
+      "fed_reserve": 5127.8,
+      "foreign": 7070.8,
+      "domestic_non_fed": 4740.0,
+      "intragovernmental": 10809.2
+    },
+    {
+      "date": "2021-01-01",
+      "year": 2021,
+      "total": 28132.6,
+      "fed_reserve": 5401.4,
+      "foreign": 7028.4,
+      "domestic_non_fed": 4607.3,
+      "intragovernmental": 11095.5
+    },
+    {
+      "date": "2021-04-01",
+      "year": 2021,
+      "total": 28529.4,
+      "fed_reserve": 5644.4,
+      "foreign": 7497.2,
+      "domestic_non_fed": 4004.9,
+      "intragovernmental": 11382.9
+    },
+    {
+      "date": "2021-07-01",
+      "year": 2021,
+      "total": 28428.9,
+      "fed_reserve": 5911.6,
+      "foreign": 7570.0,
+      "domestic_non_fed": 3368.2,
+      "intragovernmental": 11579.1
+    },
+    {
+      "date": "2021-10-01",
+      "year": 2021,
+      "total": 29617.2,
+      "fed_reserve": 6141.5,
+      "foreign": 7747.7,
+      "domestic_non_fed": 3602.1,
+      "intragovernmental": 12125.9
+    },
+    {
+      "date": "2022-01-01",
+      "year": 2022,
+      "total": 30401.0,
+      "fed_reserve": 6255.0,
+      "foreign": 7613.6,
+      "domestic_non_fed": 4251.1,
+      "intragovernmental": 12281.3
+    },
+    {
+      "date": "2022-04-01",
+      "year": 2022,
+      "total": 30568.6,
+      "fed_reserve": 6216.8,
+      "foreign": 7430.8,
+      "domestic_non_fed": 4521.3,
+      "intragovernmental": 12399.7
+    },
+    {
+      "date": "2022-07-01",
+      "year": 2022,
+      "total": 30928.9,
+      "fed_reserve": 6097.1,
+      "foreign": 7302.6,
+      "domestic_non_fed": 5264.5,
+      "intragovernmental": 12264.7
+    },
+    {
+      "date": "2022-10-01",
+      "year": 2022,
+      "total": 31419.7,
+      "fed_reserve": 5944.7,
+      "foreign": 7318.7,
+      "domestic_non_fed": 5755.1,
+      "intragovernmental": 12401.2
+    },
+    {
+      "date": "2023-01-01",
+      "year": 2023,
+      "total": 31458.4,
+      "fed_reserve": 5713.2,
+      "foreign": 7468.6,
+      "domestic_non_fed": 6232.0,
+      "intragovernmental": 12044.6
+    },
+    {
+      "date": "2023-04-01",
+      "year": 2023,
+      "total": 32332.3,
+      "fed_reserve": 5522.5,
+      "foreign": 7563.2,
+      "domestic_non_fed": 7269.7,
+      "intragovernmental": 11976.9
+    },
+    {
+      "date": "2023-07-01",
+      "year": 2023,
+      "total": 33167.3,
+      "fed_reserve": 5352.4,
+      "foreign": 7509.1,
+      "domestic_non_fed": 8515.9,
+      "intragovernmental": 11789.9
+    },
+    {
+      "date": "2023-10-01",
+      "year": 2023,
+      "total": 34001.5,
+      "fed_reserve": 5238.9,
+      "foreign": 7940.8,
+      "domestic_non_fed": 8973.7,
+      "intragovernmental": 11848.1
+    },
+    {
+      "date": "2024-01-01",
+      "year": 2024,
+      "total": 34586.5,
+      "fed_reserve": 4991.3,
+      "foreign": 8107.9,
+      "domestic_non_fed": 9803.9,
+      "intragovernmental": 11683.4
+    },
+    {
+      "date": "2024-04-01",
+      "year": 2024,
+      "total": 34831.6,
+      "fed_reserve": 4813.8,
+      "foreign": 8299.3,
+      "domestic_non_fed": 10046.4,
+      "intragovernmental": 11672.1
+    },
+    {
+      "date": "2024-07-01",
+      "year": 2024,
+      "total": 35464.7,
+      "fed_reserve": 4714.0,
+      "foreign": 8766.3,
+      "domestic_non_fed": 10462.7,
+      "intragovernmental": 11521.7
+    },
+    {
+      "date": "2024-10-01",
+      "year": 2024,
+      "total": 36218.6,
+      "fed_reserve": 4629.3,
+      "foreign": 8528.0,
+      "domestic_non_fed": 11388.6,
+      "intragovernmental": 11672.7
+    },
+    {
+      "date": "2025-01-01",
+      "year": 2025,
+      "total": 36214.3,
+      "fed_reserve": 4556.4,
+      "foreign": 9049.5,
+      "domestic_non_fed": 11084.8,
+      "intragovernmental": 11523.6
+    },
+    {
+      "date": "2025-04-01",
+      "year": 2025,
+      "total": 36211.5,
+      "fed_reserve": 4532.7,
+      "foreign": 9126.8,
+      "domestic_non_fed": 11085.8,
+      "intragovernmental": 11466.2
+    },
+    {
+      "date": "2025-07-01",
+      "year": 2025,
+      "total": 37637.6,
+      "fed_reserve": 4509.5,
+      "foreign": 9248.4,
+      "domestic_non_fed": 12323.5,
+      "intragovernmental": 11556.2
+    }
+  ],
+  "annual": [
+    {
+      "date": "1970-10-01",
+      "year": 1970,
+      "total": 389.2,
+      "fed_reserve": 62.1,
+      "foreign": 19.7,
+      "domestic_non_fed": 147.3,
+      "intragovernmental": 160.1
+    },
+    {
+      "date": "1971-10-01",
+      "year": 1971,
+      "total": 424.1,
+      "fed_reserve": 70.2,
+      "foreign": 46.0,
+      "domestic_non_fed": 130.8,
+      "intragovernmental": 177.1
+    },
+    {
+      "date": "1972-10-01",
+      "year": 1972,
+      "total": 448.5,
+      "fed_reserve": 69.9,
+      "foreign": 54.4,
+      "domestic_non_fed": 137.4,
+      "intragovernmental": 186.8
+    },
+    {
+      "date": "1973-10-01",
+      "year": 1973,
+      "total": 469.1,
+      "fed_reserve": 78.5,
+      "foreign": 54.7,
+      "domestic_non_fed": 127.7,
+      "intragovernmental": 208.2
+    },
+    {
+      "date": "1974-10-01",
+      "year": 1974,
+      "total": 492.7,
+      "fed_reserve": 80.5,
+      "foreign": 58.8,
+      "domestic_non_fed": 131.7,
+      "intragovernmental": 221.7
+    },
+    {
+      "date": "1975-10-01",
+      "year": 1975,
+      "total": 576.6,
+      "fed_reserve": 87.9,
+      "foreign": 66.5,
+      "domestic_non_fed": 195.0,
+      "intragovernmental": 227.2
+    },
+    {
+      "date": "1976-10-01",
+      "year": 1976,
+      "total": 653.5,
+      "fed_reserve": 97.0,
+      "foreign": 78.1,
+      "domestic_non_fed": 234.4,
+      "intragovernmental": 244.0
+    },
+    {
+      "date": "1977-10-01",
+      "year": 1977,
+      "total": 718.9,
+      "fed_reserve": 102.8,
+      "foreign": 109.6,
+      "domestic_non_fed": 248.9,
+      "intragovernmental": 257.6
+    },
+    {
+      "date": "1978-10-01",
+      "year": 1978,
+      "total": 789.2,
+      "fed_reserve": 109.6,
+      "foreign": 133.1,
+      "domestic_non_fed": 265.9,
+      "intragovernmental": 280.6
+    },
+    {
+      "date": "1979-10-01",
+      "year": 1979,
+      "total": 845.1,
+      "fed_reserve": 117.5,
+      "foreign": 119.0,
+      "domestic_non_fed": 304.0,
+      "intragovernmental": 304.6
+    },
+    {
+      "date": "1980-10-01",
+      "year": 1980,
+      "total": 930.2,
+      "fed_reserve": 121.3,
+      "foreign": 129.7,
+      "domestic_non_fed": 365.4,
+      "intragovernmental": 313.8
+    },
+    {
+      "date": "1981-10-01",
+      "year": 1981,
+      "total": 1028.7,
+      "fed_reserve": 131.0,
+      "foreign": 136.6,
+      "domestic_non_fed": 426.9,
+      "intragovernmental": 334.2
+    },
+    {
+      "date": "1982-10-01",
+      "year": 1982,
+      "total": 1197.1,
+      "fed_reserve": 139.3,
+      "foreign": 149.5,
+      "domestic_non_fed": 559.6,
+      "intragovernmental": 348.7
+    },
+    {
+      "date": "1983-10-01",
+      "year": 1983,
+      "total": 1410.7,
+      "fed_reserve": 151.9,
+      "foreign": 166.3,
+      "domestic_non_fed": 704.4,
+      "intragovernmental": 388.1
+    },
+    {
+      "date": "1984-10-01",
+      "year": 1984,
+      "total": 1663.0,
+      "fed_reserve": 160.9,
+      "foreign": 192.9,
+      "domestic_non_fed": 858.7,
+      "intragovernmental": 450.5
+    },
+    {
+      "date": "1985-10-01",
+      "year": 1985,
+      "total": 1945.9,
+      "fed_reserve": 181.3,
+      "foreign": 224.8,
+      "domestic_non_fed": 1011.1,
+      "intragovernmental": 528.7
+    },
+    {
+      "date": "1986-10-01",
+      "year": 1986,
+      "total": 2214.8,
+      "fed_reserve": 211.3,
+      "foreign": 263.4,
+      "domestic_non_fed": 1127.3,
+      "intragovernmental": 612.8
+    },
+    {
+      "date": "1987-10-01",
+      "year": 1987,
+      "total": 2431.7,
+      "fed_reserve": 222.6,
+      "foreign": 299.7,
+      "domestic_non_fed": 1209.1,
+      "intragovernmental": 700.3
+    },
+    {
+      "date": "1988-10-01",
+      "year": 1988,
+      "total": 2684.4,
+      "fed_reserve": 238.4,
+      "foreign": 362.2,
+      "domestic_non_fed": 1257.9,
+      "intragovernmental": 825.9
+    },
+    {
+      "date": "1989-10-01",
+      "year": 1989,
+      "total": 2953.0,
+      "fed_reserve": 226.8,
+      "foreign": 426.1,
+      "domestic_non_fed": 1364.5,
+      "intragovernmental": 935.6
+    },
+    {
+      "date": "1990-10-01",
+      "year": 1990,
+      "total": 3364.8,
+      "fed_reserve": 235.1,
+      "foreign": 487.1,
+      "domestic_non_fed": 1583.1,
+      "intragovernmental": 1059.5
+    },
+    {
+      "date": "1991-10-01",
+      "year": 1991,
+      "total": 3801.7,
+      "fed_reserve": 266.5,
+      "foreign": 520.9,
+      "domestic_non_fed": 1791.1,
+      "intragovernmental": 1223.2
+    },
+    {
+      "date": "1992-10-01",
+      "year": 1992,
+      "total": 4177.0,
+      "fed_reserve": 295.0,
+      "foreign": 576.7,
+      "domestic_non_fed": 1975.6,
+      "intragovernmental": 1329.7
+    },
+    {
+      "date": "1993-10-01",
+      "year": 1993,
+      "total": 4535.7,
+      "fed_reserve": 332.0,
+      "foreign": 650.3,
+      "domestic_non_fed": 2077.3,
+      "intragovernmental": 1476.1
+    },
+    {
+      "date": "1994-10-01",
+      "year": 1994,
+      "total": 4800.1,
+      "fed_reserve": 364.5,
+      "foreign": 667.3,
+      "domestic_non_fed": 2145.8,
+      "intragovernmental": 1622.5
+    },
+    {
+      "date": "1995-10-01",
+      "year": 1995,
+      "total": 4988.7,
+      "fed_reserve": 378.2,
+      "foreign": 835.2,
+      "domestic_non_fed": 2094.3,
+      "intragovernmental": 1681.0
+    },
+    {
+      "date": "1996-10-01",
+      "year": 1996,
+      "total": 5323.2,
+      "fed_reserve": 390.9,
+      "foreign": 1102.1,
+      "domestic_non_fed": 1938.2,
+      "intragovernmental": 1892.0
+    },
+    {
+      "date": "1997-10-01",
+      "year": 1997,
+      "total": 5502.4,
+      "fed_reserve": 430.7,
+      "foreign": 1241.6,
+      "domestic_non_fed": 1742.3,
+      "intragovernmental": 2087.8
+    },
+    {
+      "date": "1998-10-01",
+      "year": 1998,
+      "total": 5614.2,
+      "fed_reserve": 452.1,
+      "foreign": 1278.7,
+      "domestic_non_fed": 1603.2,
+      "intragovernmental": 2280.2
+    },
+    {
+      "date": "1999-10-01",
+      "year": 1999,
+      "total": 5776.1,
+      "fed_reserve": 478.0,
+      "foreign": 1268.7,
+      "domestic_non_fed": 1487.2,
+      "intragovernmental": 2542.2
+    },
+    {
+      "date": "2000-10-01",
+      "year": 2000,
+      "total": 5662.2,
+      "fed_reserve": 511.7,
+      "foreign": 1015.2,
+      "domestic_non_fed": 1353.5,
+      "intragovernmental": 2781.8
+    },
+    {
+      "date": "2001-10-01",
+      "year": 2001,
+      "total": 5943.4,
+      "fed_reserve": 551.7,
+      "foreign": 1040.1,
+      "domestic_non_fed": 1227.7,
+      "intragovernmental": 3123.9
+    },
+    {
+      "date": "2002-10-01",
+      "year": 2002,
+      "total": 6405.7,
+      "fed_reserve": 629.4,
+      "foreign": 1235.6,
+      "domestic_non_fed": 1153.5,
+      "intragovernmental": 3387.2
+    },
+    {
+      "date": "2003-10-01",
+      "year": 2003,
+      "total": 6998.0,
+      "fed_reserve": 666.7,
+      "foreign": 1523.1,
+      "domestic_non_fed": 1188.1,
+      "intragovernmental": 3620.1
+    },
+    {
+      "date": "2004-10-01",
+      "year": 2004,
+      "total": 7596.1,
+      "fed_reserve": 717.8,
+      "foreign": 1849.3,
+      "domestic_non_fed": 1123.4,
+      "intragovernmental": 3905.6
+    },
+    {
+      "date": "2005-10-01",
+      "year": 2005,
+      "total": 8170.4,
+      "fed_reserve": 744.2,
+      "foreign": 2034.0,
+      "domestic_non_fed": 1192.8,
+      "intragovernmental": 4199.4
+    },
+    {
+      "date": "2006-10-01",
+      "year": 2006,
+      "total": 8680.2,
+      "fed_reserve": 778.9,
+      "foreign": 2103.1,
+      "domestic_non_fed": 1240.1,
+      "intragovernmental": 4558.1
+    },
+    {
+      "date": "2007-10-01",
+      "year": 2007,
+      "total": 9229.2,
+      "fed_reserve": 740.6,
+      "foreign": 2353.2,
+      "domestic_non_fed": 1301.9,
+      "intragovernmental": 4833.5
+    },
+    {
+      "date": "2008-10-01",
+      "year": 2008,
+      "total": 10699.8,
+      "fed_reserve": 475.9,
+      "foreign": 3077.2,
+      "domestic_non_fed": 2340.3,
+      "intragovernmental": 4806.4
+    },
+    {
+      "date": "2009-10-01",
+      "year": 2009,
+      "total": 12311.3,
+      "fed_reserve": 776.6,
+      "foreign": 3685.1,
+      "domestic_non_fed": 2572.7,
+      "intragovernmental": 5276.9
+    },
+    {
+      "date": "2010-10-01",
+      "year": 2010,
+      "total": 14025.2,
+      "fed_reserve": 1021.5,
+      "foreign": 4435.6,
+      "domestic_non_fed": 2911.8,
+      "intragovernmental": 5656.3
+    },
+    {
+      "date": "2011-10-01",
+      "year": 2011,
+      "total": 15222.9,
+      "fed_reserve": 1663.4,
+      "foreign": 5006.9,
+      "domestic_non_fed": 2113.0,
+      "intragovernmental": 6439.6
+    },
+    {
+      "date": "2012-10-01",
+      "year": 2012,
+      "total": 16432.7,
+      "fed_reserve": 1666.1,
+      "foreign": 5573.8,
+      "domestic_non_fed": 2669.2,
+      "intragovernmental": 6523.6
+    },
+    {
+      "date": "2013-10-01",
+      "year": 2013,
+      "total": 17156.1,
+      "fed_reserve": 2208.8,
+      "foreign": 5792.6,
+      "domestic_non_fed": 2145.2,
+      "intragovernmental": 7009.5
+    },
+    {
+      "date": "2014-10-01",
+      "year": 2014,
+      "total": 18141.4,
+      "fed_reserve": 2793.4,
+      "foreign": 6157.7,
+      "domestic_non_fed": 1611.5,
+      "intragovernmental": 7578.8
+    },
+    {
+      "date": "2015-10-01",
+      "year": 2015,
+      "total": 18922.2,
+      "fed_reserve": 2810.1,
+      "foreign": 6144.2,
+      "domestic_non_fed": 2256.7,
+      "intragovernmental": 7711.2
+    },
+    {
+      "date": "2016-10-01",
+      "year": 2016,
+      "total": 19976.8,
+      "fed_reserve": 2843.7,
+      "foreign": 6006.3,
+      "domestic_non_fed": 3121.3,
+      "intragovernmental": 8005.5
+    },
+    {
+      "date": "2017-10-01",
+      "year": 2017,
+      "total": 20492.7,
+      "fed_reserve": 2858.1,
+      "foreign": 6211.3,
+      "domestic_non_fed": 3291.2,
+      "intragovernmental": 8132.1
+    },
+    {
+      "date": "2018-10-01",
+      "year": 2018,
+      "total": 21974.1,
+      "fed_reserve": 2594.7,
+      "foreign": 6270.1,
+      "domestic_non_fed": 5014.3,
+      "intragovernmental": 8095.0
+    },
+    {
+      "date": "2019-10-01",
+      "year": 2019,
+      "total": 23201.4,
+      "fed_reserve": 2637.3,
+      "foreign": 6844.2,
+      "domestic_non_fed": 5360.0,
+      "intragovernmental": 8359.9
+    },
+    {
+      "date": "2020-10-01",
+      "year": 2020,
+      "total": 27747.8,
+      "fed_reserve": 5127.8,
+      "foreign": 7070.8,
+      "domestic_non_fed": 4740.0,
+      "intragovernmental": 10809.2
+    },
+    {
+      "date": "2021-10-01",
+      "year": 2021,
+      "total": 29617.2,
+      "fed_reserve": 6141.5,
+      "foreign": 7747.7,
+      "domestic_non_fed": 3602.1,
+      "intragovernmental": 12125.9
+    },
+    {
+      "date": "2022-10-01",
+      "year": 2022,
+      "total": 31419.7,
+      "fed_reserve": 5944.7,
+      "foreign": 7318.7,
+      "domestic_non_fed": 5755.1,
+      "intragovernmental": 12401.2
+    },
+    {
+      "date": "2023-10-01",
+      "year": 2023,
+      "total": 34001.5,
+      "fed_reserve": 5238.9,
+      "foreign": 7940.8,
+      "domestic_non_fed": 8973.7,
+      "intragovernmental": 11848.1
+    },
+    {
+      "date": "2024-10-01",
+      "year": 2024,
+      "total": 36218.6,
+      "fed_reserve": 4629.3,
+      "foreign": 8528.0,
+      "domestic_non_fed": 11388.6,
+      "intragovernmental": 11672.7
+    },
+    {
+      "date": "2025-07-01",
+      "year": 2025,
+      "total": 37637.6,
+      "fed_reserve": 4509.5,
+      "foreign": 9248.4,
+      "domestic_non_fed": 12323.5,
+      "intragovernmental": 11556.2
+    }
+  ],
+  "latest": {
+    "date": "2025-07-01",
+    "year": 2025,
+    "total": 37637.6,
+    "fed_reserve": 4509.5,
+    "foreign": 9248.4,
+    "domestic_non_fed": 12323.5,
+    "intragovernmental": 11556.2
+  }
+}
