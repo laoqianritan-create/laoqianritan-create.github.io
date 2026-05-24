@@ -1,207 +1,22 @@
 {
-  "updated": "2026-05-24T01:38:54Z",
+  "updated": "2026-05-24T05:08:41Z",
   "sources": [
     {
-      "name": "debt-total",
-      "ok": true,
-      "critical": true,
-      "panels": [
-        "panel-debt-total"
-      ],
-      "latest_data": "2026-05-21",
-      "elapsed_sec": 3.7,
-      "started_at": "2026-05-24T01:30:00Z",
-      "error": null
-    },
-    {
-      "name": "auction",
-      "ok": true,
-      "critical": true,
-      "panels": [
-        "panel-auction"
-      ],
-      "latest_data": "2026-05-24",
-      "elapsed_sec": 9.2,
-      "started_at": "2026-05-24T01:30:04Z",
-      "error": null
-    },
-    {
-      "name": "rate-by-type",
-      "ok": true,
-      "critical": true,
-      "panels": [
-        "panel-rate-by-type"
-      ],
-      "latest_data": "2026-05-24",
-      "elapsed_sec": 1.6,
-      "started_at": "2026-05-24T01:30:13Z",
-      "error": null
-    },
-    {
-      "name": "yield-curve",
+      "name": "g7-yields",
       "ok": true,
       "critical": false,
       "panels": [
-        "panel-yield-curve"
+        "lab-g7-yields"
       ],
-      "latest_data": "2026-05-21",
-      "elapsed_sec": 39.1,
-      "started_at": "2026-05-24T01:30:14Z",
-      "error": null
-    },
-    {
-      "name": "macro-annual",
-      "ok": true,
-      "critical": false,
-      "panels": [
-        "panel-revenue",
-        "panel-spending",
-        "panel-deficit",
-        "panel-deficit-gdp",
-        "panel-debt-gdp"
-      ],
-      "latest_data": "2026-05-24T01:31:02Z",
-      "elapsed_sec": 8.5,
-      "started_at": "2026-05-24T01:30:54Z",
-      "error": null
-    },
-    {
-      "name": "tic-holders",
-      "ok": true,
-      "critical": false,
-      "panels": [
-        "panel-holders-foreign"
-      ],
-      "latest_data": "2026-05-24T01:31:15Z",
-      "elapsed_sec": 13.1,
-      "started_at": "2026-05-24T01:31:02Z",
-      "error": null
-    },
-    {
-      "name": "omb-outlays",
-      "ok": true,
-      "critical": false,
-      "panels": [
-        "panel-mandatory"
-      ],
-      "latest_data": "2026-05-24T01:31:17Z",
-      "elapsed_sec": 1.4,
-      "started_at": "2026-05-24T01:31:15Z",
-      "error": null
-    },
-    {
-      "name": "reserve-currency",
-      "ok": true,
-      "critical": false,
-      "panels": [
-        "panel-reserve-currency"
-      ],
-      "latest_data": "2026-05-24T01:31:17Z",
-      "elapsed_sec": 0.0,
-      "started_at": "2026-05-24T01:31:17Z",
-      "error": null
-    },
-    {
-      "name": "mts-detail",
-      "ok": true,
-      "critical": false,
-      "panels": [
-        "panel-revenue-breakdown",
-        "panel-spending-breakdown",
-        "panel-sankey"
-      ],
-      "latest_data": "2026-05-24T01:32:17Z",
-      "elapsed_sec": 60.3,
-      "started_at": "2026-05-24T01:31:17Z",
-      "error": null
-    },
-    {
-      "name": "gold-reserves",
-      "ok": true,
-      "critical": false,
-      "panels": [
-        "panel-gold-reserves"
-      ],
-      "latest_data": "2026-05-24T01:32:21Z",
-      "elapsed_sec": 4.6,
-      "started_at": "2026-05-24T01:32:17Z",
-      "error": null
-    },
-    {
-      "name": "mspd",
-      "ok": true,
-      "critical": false,
-      "panels": [
-        "panel-expense-by-type",
-        "panel-maturity",
-        "panel-maturity-schedule"
-      ],
-      "latest_data": "2026-05-24T01:32:39Z",
-      "elapsed_sec": 17.6,
-      "started_at": "2026-05-24T01:32:21Z",
-      "error": null
-    },
-    {
-      "name": "holders-domestic",
-      "ok": true,
-      "critical": false,
-      "panels": [
-        "panel-holders-domestic"
-      ],
-      "latest_data": "2026-05-24T01:32:39Z",
-      "elapsed_sec": 0.1,
-      "started_at": "2026-05-24T01:32:39Z",
-      "error": null
-    },
-    {
-      "name": "v2-fred",
-      "ok": true,
-      "critical": true,
-      "panels": [
-        "lab-*",
-        "P29-P37"
-      ],
-      "latest_data": null,
-      "elapsed_sec": 23.9,
-      "started_at": "2026-05-24T01:32:39Z",
-      "error": null
-    },
-    {
-      "name": "bills-coupons",
-      "ok": true,
-      "critical": false,
-      "panels": [
-        "lab-bills-coupons"
-      ],
-      "latest_data": "2026-05-24T01:38:54Z",
-      "elapsed_sec": 351.0,
-      "started_at": "2026-05-24T01:33:03Z",
-      "error": null
-    },
-    {
-      "name": "v2-compile",
-      "ok": true,
-      "critical": false,
-      "panels": [],
-      "latest_data": null,
-      "elapsed_sec": 0.1,
-      "started_at": "2026-05-24T01:38:54Z",
-      "error": null
-    },
-    {
-      "name": "macro-yield-compile",
-      "ok": true,
-      "critical": false,
-      "panels": [],
-      "latest_data": null,
-      "elapsed_sec": 0.1,
-      "started_at": "2026-05-24T01:38:54Z",
+      "latest_data": "2026-05-24T05:08:41Z",
+      "elapsed_sec": 8.8,
+      "started_at": "2026-05-24T05:08:33Z",
       "error": null
     }
   ],
   "summary": {
-    "ok": 16,
+    "ok": 1,
     "fail": 0,
-    "total": 16
+    "total": 1
   }
 }
