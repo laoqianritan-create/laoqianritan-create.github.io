@@ -1,14 +1,14 @@
 {
-  "updated": "2026-05-17",
+  "updated": "2026-05-26",
   "ticker": "^NDX",
   "source": "ndx_daily.json 年末点位（价格回报口径，不含股息）",
   "latestYear": 2026,
-  "latestDate": "2026-05-15",
+  "latestDate": "2026-05-22",
   "latestIsYtd": true,
-  "average": 18.21,
+  "average": 18.24,
   "positiveYears": 34,
   "totalYears": 41,
-  "withinAvgPlusMinus2": 5,
+  "withinAvgPlusMinus2": 6,
   "buckets": [
     {
       "key": "lt_-40",
@@ -302,7 +302,7 @@
     },
     {
       "year": 2026,
-      "value": 15.35
+      "value": 16.76
     }
   ]
 }
