@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-27 09:37:37",
+  "generated_at": "2026-05-27 22:07:27",
   "today": "2026-05-27",
   "overall": "critical",
   "stale_count": 1,
@@ -7,8 +7,8 @@
     {
       "file": "sp500_price.json",
       "label": "标普 500 日线",
-      "updated": "2026-05-26",
-      "days_old": 1,
+      "updated": "2026-05-27",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -35,8 +35,8 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-05-25",
-      "days_old": 2,
+      "updated": "2026-05-26",
+      "days_old": 1,
       "status": "fresh"
     },
     {
@@ -70,8 +70,8 @@
     {
       "file": "nasdaq100_panels.json",
       "label": "纳指 100 成分股",
-      "updated": "2026-05-26",
-      "days_old": 1,
+      "updated": "2026-05-27",
+      "days_old": 0,
       "status": "fresh"
     },
     {
