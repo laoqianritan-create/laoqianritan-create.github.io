@@ -1,0 +1,23 @@
+时间: 2026-05-27T01:35:56Z
+
+⚠️ 以下美债看板 fetcher 已连续失败 ≥ 2 次（AI 工单，立刻自主修复）：
+
+  - holders-domestic: 连续 3 次失败
+
+本次失败明细：
+  - holders-domestic: exit 1
+      stderr: ripts/fetch_holders_domestic.py", line 229, in <module>
+    main()
+    ~~~~^^
+  File "/Volumes/AI_WORKSPACE/ai专用/内容项目/美债看板/scripts/fetch_holders_domestic.py", line 161, in main
+    download_zip(zip_path)
+    ~~~~~~~~~~~~^^^^^^^^^^
+  File "/Volumes/AI_WORKSPACE/ai专用/内容项目/美债看板/scripts/fetch_holders_do
+
+排障：
+  cd /Volumes/AI_WORKSPACE/ai专用/内容项目/美债看板
+  python3 scripts/update_data.py --only <name>
+
+成功一次即自动从 .fetcher_failures.json 移除。
+
+完整告警协议：/Volumes/AI_WORKSPACE/ai专用/SYSTEM.md §十五
