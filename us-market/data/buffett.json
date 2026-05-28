@@ -1,16 +1,16 @@
 {
   "as_of": "2026-05-27",
   "current": {
-    "ratio_classic": 235.59,
-    "ratio_modified": 194.58,
+    "ratio_classic": 235.86,
+    "ratio_modified": 194.77,
     "tmc": 75050.36,
-    "gdp": 31856.26,
+    "gdp": 31819.46,
     "fed_ta": 6713.64
   },
   "extremes": {
     "classic_peak": {
       "date": "2026-05-27",
-      "value": 235.59
+      "value": 235.86
     },
     "classic_trough": {
       "date": "1982-04-28",
@@ -18,7 +18,7 @@
     },
     "modified_peak": {
       "date": "2026-05-27",
-      "value": 194.58
+      "value": 194.77
     },
     "modified_trough": {
       "date": "2009-02-27",
@@ -5465,42 +5465,42 @@
     {
       "date": "2026-01-30",
       "tmc": 69262.99,
-      "gdp": 31856.26,
+      "gdp": 31819.46,
       "fed_ta": 6587.57,
-      "ratio_classic": 217.42,
-      "ratio_modified": 180.17
+      "ratio_classic": 217.67,
+      "ratio_modified": 180.34
     },
     {
       "date": "2026-02-27",
       "tmc": 68850.02,
-      "gdp": 31856.26,
+      "gdp": 31819.46,
       "fed_ta": 6613.8,
-      "ratio_classic": 216.13,
-      "ratio_modified": 178.97
+      "ratio_classic": 216.38,
+      "ratio_modified": 179.14
     },
     {
       "date": "2026-03-31",
       "tmc": 65362.52,
-      "gdp": 31856.26,
+      "gdp": 31819.46,
       "fed_ta": 6657.16,
-      "ratio_classic": 205.18,
-      "ratio_modified": 169.71
+      "ratio_classic": 205.42,
+      "ratio_modified": 169.88
     },
     {
       "date": "2026-04-30",
       "tmc": 72051.97,
-      "gdp": 31856.26,
+      "gdp": 31819.46,
       "fed_ta": 6699.95,
-      "ratio_classic": 226.18,
-      "ratio_modified": 186.88
+      "ratio_classic": 226.44,
+      "ratio_modified": 187.05
     },
     {
       "date": "2026-05-27",
       "tmc": 75050.36,
-      "gdp": 31856.26,
+      "gdp": 31819.46,
       "fed_ta": 6713.64,
-      "ratio_classic": 235.59,
-      "ratio_modified": 194.58
+      "ratio_classic": 235.86,
+      "ratio_modified": 194.77
     }
   ],
   "source": {
