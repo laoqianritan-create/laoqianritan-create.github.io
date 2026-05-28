@@ -2,11 +2,11 @@
   "series_id": "SOFR",
   "friendly": "sofr",
   "source": "FRED",
-  "fetched": "2026-05-27",
-  "count": 2033,
+  "fetched": "2026-05-28",
+  "count": 2034,
   "latest": {
-    "date": "2026-05-22",
-    "value": 3.55
+    "date": "2026-05-26",
+    "value": 3.63
   },
   "data": [
     {
@@ -8140,6 +8140,10 @@
     {
       "date": "2026-05-22",
       "value": 3.55
+    },
+    {
+      "date": "2026-05-26",
+      "value": 3.63
     }
   ]
 }

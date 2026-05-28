@@ -2,11 +2,11 @@
   "series_id": "RRPONTSYD",
   "friendly": "on_rrp",
   "source": "FRED",
-  "fetched": "2026-05-27",
-  "count": 3089,
+  "fetched": "2026-05-28",
+  "count": 3090,
   "latest": {
-    "date": "2026-05-26",
-    "value": 1.787
+    "date": "2026-05-27",
+    "value": 1.853
   },
   "data": [
     {
@@ -12364,6 +12364,10 @@
     {
       "date": "2026-05-26",
       "value": 1.787
+    },
+    {
+      "date": "2026-05-27",
+      "value": 1.853
     }
   ]
 }
