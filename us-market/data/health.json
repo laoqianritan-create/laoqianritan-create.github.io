@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-29 09:37:47",
+  "generated_at": "2026-05-29 22:07:28",
   "today": "2026-05-29",
   "overall": "critical",
   "stale_count": 1,
@@ -7,8 +7,8 @@
     {
       "file": "sp500_price.json",
       "label": "标普 500 日线",
-      "updated": "2026-05-28",
-      "days_old": 1,
+      "updated": "2026-05-29",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -56,8 +56,8 @@
     {
       "file": "aiae.json",
       "label": "AIAE 仓位",
-      "updated": "2026-05-28",
-      "days_old": 1,
+      "updated": "2026-05-29",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -70,8 +70,8 @@
     {
       "file": "nasdaq100_panels.json",
       "label": "纳指 100 成分股",
-      "updated": "2026-05-28",
-      "days_old": 1,
+      "updated": "2026-05-29",
+      "days_old": 0,
       "status": "fresh"
     },
     {
