@@ -2,11 +2,11 @@
   "series_id": "WTREGEN",
   "friendly": "tga",
   "source": "FRED",
-  "fetched": "2026-05-28",
-  "count": 960,
+  "fetched": "2026-05-30",
+  "count": 961,
   "latest": {
-    "date": "2026-05-20",
-    "value": 781293.0
+    "date": "2026-05-27",
+    "value": 830296.0
   },
   "data": [
     {
@@ -3848,6 +3848,10 @@
     {
       "date": "2026-05-20",
       "value": 781293.0
+    },
+    {
+      "date": "2026-05-27",
+      "value": 830296.0
     }
   ]
 }

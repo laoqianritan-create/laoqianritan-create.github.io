@@ -2,11 +2,11 @@
   "series_id": "POPTHM",
   "friendly": "us_pop",
   "source": "FRED",
-  "fetched": "2026-05-28",
-  "count": 435,
+  "fetched": "2026-05-30",
+  "count": 436,
   "latest": {
-    "date": "2026-03-01",
-    "value": 342627.0
+    "date": "2026-04-01",
+    "value": 342680.0
   },
   "data": [
     {
@@ -1748,6 +1748,10 @@
     {
       "date": "2026-03-01",
       "value": 342627.0
+    },
+    {
+      "date": "2026-04-01",
+      "value": 342680.0
     }
   ]
 }
