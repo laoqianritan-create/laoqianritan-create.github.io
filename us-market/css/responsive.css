@@ -1,6 +1,6 @@
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .hero-banner { padding: 42px 16px 36px; min-height: 180px; }
+  .hero-banner { padding: 42px 16px 64px; min-height: 180px; }
   .hero-title { font-size: 26px; line-height: 1.3; }
   .hero-title-cn { display: block; margin-top: 4px; font-size: 22px; }
   .hero-subtitle { font-size: 15px; margin-top: 10px; letter-spacing: 0; }
@@ -10,6 +10,15 @@
   .hero-badges { gap: 8px; margin-top: 16px; }
   .hero-badge { padding: 3px 10px; font-size: 11px; }
   .hero-badge-value { font-size: 12px; }
+  .hero-crosslinks {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+  }
+  .hero-crosslink { font-size: 12px; padding: 4px 11px; }
   .footer { padding: 28px 16px 20px; }
   .footer-link-list { gap: 8px 14px; }
   .footer-link-list a,

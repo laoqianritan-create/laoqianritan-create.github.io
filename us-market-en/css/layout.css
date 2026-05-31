@@ -196,6 +196,47 @@ body {
 .hero-badge-value--green { color: #95de64; }
 .hero-badge-value--red   { color: #ffa39e; }
 
+/* ── Hero 姊妹看板入口（cross-site links） ── */
+.hero-crosslinks {
+  position: absolute;
+  bottom: 22px;
+  left: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 3;
+}
+.hero-crosslink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  background: rgba(0, 0, 0, 0.36);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid currentColor;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+  opacity: 0.92;
+}
+.hero-crosslink:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(2px);
+  opacity: 1;
+}
+.hero-crosslink svg {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  opacity: 0.72;
+}
+.hero-crosslink-debt { color: #ff7875; }
+.hero-crosslink-gold { color: #d4a853; }
+
 /* ── Footer ── */
 .footer {
   padding: 40px 24px 28px;
