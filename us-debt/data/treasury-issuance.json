@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-31T01:35:01Z",
+  "updated": "2026-06-01T01:35:24Z",
   "source": "Treasury Fiscal Data auctions_query (monthly gross issuance, total_accepted) + FRED GDP (nominal SAAR)",
   "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query",
   "frequency": "monthly",
@@ -3911,12 +3911,12 @@
       "issuance": 2591.56,
       "gdp_saar": null,
       "pct_gdp": null,
-      "partial": true
+      "partial": false
     }
   ],
   "latest_issuance": {
-    "month": "2026-04",
-    "issuance": 2614.38,
+    "month": "2026-05",
+    "issuance": 2591.56,
     "gdp_saar": null,
     "pct_gdp": null,
     "partial": false
