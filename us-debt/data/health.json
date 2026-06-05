@@ -1,22 +1,46 @@
 {
-  "updated": "2026-06-05T03:09:03Z",
+  "updated": "2026-06-05T03:12:23Z",
   "sources": [
     {
-      "name": "yield-curve",
-      "ok": false,
-      "critical": false,
+      "name": "debt-total",
+      "ok": true,
+      "critical": true,
       "panels": [
-        "panel-yield-curve"
+        "panel-debt-total"
       ],
-      "latest_data": null,
-      "elapsed_sec": 380.5,
-      "started_at": "2026-06-05T03:02:42Z",
-      "error": "exit 1"
+      "latest_data": "2026-06-03",
+      "elapsed_sec": 3.6,
+      "started_at": "2026-06-05T03:12:10Z",
+      "error": null
+    },
+    {
+      "name": "auction",
+      "ok": true,
+      "critical": true,
+      "panels": [
+        "panel-auction"
+      ],
+      "latest_data": "2026-06-05",
+      "elapsed_sec": 6.3,
+      "started_at": "2026-06-05T03:12:14Z",
+      "error": null
+    },
+    {
+      "name": "rate-by-type",
+      "ok": true,
+      "critical": true,
+      "panels": [
+        "panel-rate-by-type"
+      ],
+      "latest_data": "2026-06-05",
+      "elapsed_sec": 2.6,
+      "started_at": "2026-06-05T03:12:20Z",
+      "error": null
     }
   ],
   "summary": {
-    "ok": 0,
-    "fail": 1,
-    "total": 1
+    "ok": 3,
+    "fail": 0,
+    "total": 3
   }
 }
