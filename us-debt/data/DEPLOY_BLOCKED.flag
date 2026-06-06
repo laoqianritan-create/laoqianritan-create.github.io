@@ -1,0 +1,16 @@
+时间: 2026-06-06T02:17:54Z
+
+❌ 美债看板：critical source 失败 → deploy 已阻断 → 线上数据未更新
+
+失败的 critical fetcher：
+  - v2-fred: timeout after 600s
+
+排障（AI 工单，立刻自主修复，不要问用户）：
+  cd /Volumes/AI_WORKSPACE/ai专用/内容项目/美债看板
+  python3 scripts/update_data.py --only v2-fred
+  # 修通后跑完整：
+  bash scripts/deploy.sh
+
+成功部署后本 flag 自动删除。
+
+完整告警协议：/Volumes/AI_WORKSPACE/ai专用/SYSTEM.md §十五
