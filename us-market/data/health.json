@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-13 22:07:43",
-  "today": "2026-06-13",
+  "generated_at": "2026-06-14 09:45:58",
+  "today": "2026-06-14",
   "overall": "healthy",
   "stale_count": 0,
   "sources": [
@@ -8,13 +8,13 @@
       "file": "sp500_price.json",
       "label": "标普 500 日线",
       "updated": "2026-06-12",
-      "days_old": 1,
+      "days_old": 2,
       "status": "fresh"
     },
     {
       "file": "sp500_century.json",
       "label": "标普 500 月线百年",
-      "updated": "2026-06-11",
+      "updated": "2026-06-12",
       "days_old": 2,
       "status": "fresh"
     },
@@ -22,27 +22,27 @@
       "file": "sp500_pe.json",
       "label": "席勒市盈率",
       "updated": "2026-06-12",
-      "days_old": 1,
+      "days_old": 2,
       "status": "fresh"
     },
     {
       "file": "sp500_eps.json",
       "label": "标普 500 EPS",
       "updated": "2026-03-31",
-      "days_old": 74,
+      "days_old": 75,
       "status": "recent"
     },
     {
       "file": "sp500_vix.json",
       "label": "VIX",
       "updated": "2026-06-11",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "sp500_annual_returns_long.json",
       "label": "标普 500 年回报",
-      "updated": "2026-06-13",
+      "updated": "2026-06-14",
       "days_old": 0,
       "status": "fresh"
     },
@@ -50,20 +50,20 @@
       "file": "buffett.json",
       "label": "巴菲特指标",
       "updated": "2026-06-12",
-      "days_old": 1,
+      "days_old": 2,
       "status": "fresh"
     },
     {
       "file": "aiae.json",
       "label": "AIAE 仓位",
-      "updated": "2026-06-13",
+      "updated": "2026-06-14",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ndx_daily.json",
       "label": "纳指 100 日线",
-      "updated": "2026-06-13",
+      "updated": "2026-06-14",
       "days_old": 0,
       "status": "fresh"
     },
@@ -71,20 +71,20 @@
       "file": "nasdaq100_panels.json",
       "label": "纳指 100 成分股",
       "updated": "2026-06-12",
-      "days_old": 1,
+      "days_old": 2,
       "status": "fresh"
     },
     {
       "file": "nasdaq_composite.json",
       "label": "纳指综指月线",
-      "updated": "2026-06-13",
+      "updated": "2026-06-14",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "dow_jones_century.json",
       "label": "道指百年",
-      "updated": "2026-06-11",
+      "updated": "2026-06-12",
       "days_old": 2,
       "status": "fresh"
     }
