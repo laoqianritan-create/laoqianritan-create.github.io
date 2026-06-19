@@ -2,11 +2,11 @@
   "series_id": "WRESBAL",
   "friendly": "bank_reserves",
   "source": "FRED",
-  "fetched": "2026-06-18",
-  "count": 963,
+  "fetched": "2026-06-19",
+  "count": 964,
   "latest": {
-    "date": "2026-06-10",
-    "value": 3080723.0
+    "date": "2026-06-17",
+    "value": 3033444.0
   },
   "data": [
     {
@@ -3860,6 +3860,10 @@
     {
       "date": "2026-06-10",
       "value": 3080723.0
+    },
+    {
+      "date": "2026-06-17",
+      "value": 3033444.0
     }
   ]
 }
