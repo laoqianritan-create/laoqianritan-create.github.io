@@ -1,16 +1,16 @@
 {
   "as_of": "2026-06-18",
   "current": {
-    "ratio_classic": 235.95,
-    "ratio_modified": 194.72,
+    "ratio_classic": 235.61,
+    "ratio_modified": 194.49,
     "tmc": 75077.43,
-    "gdp": 31819.46,
+    "gdp": 31865.72,
     "fed_ta": 6736.42
   },
   "extremes": {
     "classic_peak": {
       "date": "2026-05-29",
-      "value": 237.76
+      "value": 237.42
     },
     "classic_trough": {
       "date": "1982-04-28",
@@ -18,7 +18,7 @@
     },
     "modified_peak": {
       "date": "2026-05-29",
-      "value": 196.38
+      "value": 196.15
     },
     "modified_trough": {
       "date": "2009-02-27",
@@ -5465,50 +5465,50 @@
     {
       "date": "2026-01-30",
       "tmc": 69262.99,
-      "gdp": 31819.46,
+      "gdp": 31865.72,
       "fed_ta": 6587.57,
-      "ratio_classic": 217.67,
-      "ratio_modified": 180.34
+      "ratio_classic": 217.36,
+      "ratio_modified": 180.12
     },
     {
       "date": "2026-02-27",
       "tmc": 68850.02,
-      "gdp": 31819.46,
+      "gdp": 31865.72,
       "fed_ta": 6613.8,
-      "ratio_classic": 216.38,
-      "ratio_modified": 179.14
+      "ratio_classic": 216.06,
+      "ratio_modified": 178.93
     },
     {
       "date": "2026-03-31",
       "tmc": 65362.52,
-      "gdp": 31819.46,
+      "gdp": 31865.72,
       "fed_ta": 6657.16,
-      "ratio_classic": 205.42,
-      "ratio_modified": 169.88
+      "ratio_classic": 205.12,
+      "ratio_modified": 169.67
     },
     {
       "date": "2026-04-30",
       "tmc": 72051.97,
-      "gdp": 31819.46,
+      "gdp": 31865.72,
       "fed_ta": 6699.95,
-      "ratio_classic": 226.44,
-      "ratio_modified": 187.05
+      "ratio_classic": 226.11,
+      "ratio_modified": 186.83
     },
     {
       "date": "2026-05-29",
       "tmc": 75654.23,
-      "gdp": 31819.46,
+      "gdp": 31865.72,
       "fed_ta": 6704.38,
-      "ratio_classic": 237.76,
-      "ratio_modified": 196.38
+      "ratio_classic": 237.42,
+      "ratio_modified": 196.15
     },
     {
       "date": "2026-06-18",
       "tmc": 75077.43,
-      "gdp": 31819.46,
+      "gdp": 31865.72,
       "fed_ta": 6736.42,
-      "ratio_classic": 235.95,
-      "ratio_modified": 194.72
+      "ratio_classic": 235.61,
+      "ratio_modified": 194.49
     }
   ],
   "source": {
