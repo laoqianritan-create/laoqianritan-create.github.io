@@ -1,46 +1,43 @@
 /**
  * 热力图渲染器（canvas）
- * 渲染规格与 PNG 完全一致：
- *   蓝(#4A6FE2) → 浅蓝(#C0CFFA) → 白 → 浅红(#F5C0BE) → 红(#e65a56)
- *   TwoSlopeNorm: 以 0 为对称轴, vmin=-50, vmax=105
- *   单元格内数值 1 位小数；亮度 > 0.55 用深字，否则白字
+ * 蓝(#4A6FE2) → 浅蓝 → 白 → 浅红 → 红(#e65a56)，TwoSlopeNorm 以 0 为对称轴。
+ * 年度涨跌幅区: VMIN=-50, VMAX=105 (大波动)
+ * CAGR 区:     VMIN_M=-12, VMAX_M=18  (年化复合,数值小)
+ * 单元格内数值 1 位小数；亮度 > 0.55 用深字，否则白字。
  *
- * 入口：SW_drawHeatmap(canvas, { years, rows }, opts?)
- *   opts.scale       — 像素倍数（屏幕用 dpr，导图用 3）
- *   opts.exportMode  — true=用于导出（顶部加大标题+色条+底部页脚）；false=纯图主体
- *   opts.maxWidthCss — 屏幕模式下的 CSS 宽度
+ * 入口：SW_drawHeatmap(canvas, { years, rows, metricsMeta }, opts?)
+ *   opts.scale       — 像素倍数（屏幕 dpr，导图 1）
+ *   opts.exportMode  — true=导出版(顶部加标题+色条+底部页脚)；false=屏幕版
  */
 (function () {
   'use strict';
 
+  // 年度涨跌幅配色
   const VMIN = -50;
   const VMAX = 105;
-  // 颜色停靠点(归一化到 0..1 的位置, hex)
+  // CAGR 配色(更紧的范围，让数值差异看得见)
+  const VMIN_M = -12;
+  const VMAX_M = 18;
+
   const STOPS = [
-    [0.00, [74, 111, 226]],   // #4A6FE2
-    [0.35, [192, 207, 250]],  // #C0CFFA
-    [0.50, [255, 255, 255]],  // #FFFFFF
-    [0.65, [245, 192, 190]],  // #F5C0BE
-    [1.00, [230, 90, 86]]     // #e65a56
+    [0.00, [74, 111, 226]],
+    [0.35, [192, 207, 250]],
+    [0.50, [255, 255, 255]],
+    [0.65, [245, 192, 190]],
+    [1.00, [230, 90, 86]]
   ];
 
-  function norm(val) {
-    // TwoSlopeNorm: 0 永远落在 0.5
-    if (val >= 0) {
-      return 0.5 + (val / VMAX) * 0.5;
-    } else {
-      return 0.5 + (val / Math.abs(VMIN)) * 0.5; // val 负, 结果 <0.5
-    }
+  function normVal(val, vmin, vmax) {
+    if (val >= 0) return 0.5 + (val / vmax) * 0.5;
+    return 0.5 + (val / Math.abs(vmin)) * 0.5;
   }
-
   function clamp(x, lo, hi) { return Math.max(lo, Math.min(hi, x)); }
 
-  function mapColor(val) {
+  function mapColor(val, vmin, vmax) {
     if (val === null || val === undefined || Number.isNaN(val)) {
       return { rgb: [240, 240, 240], lum: 0.94 };
     }
-    const t = clamp(norm(val), 0, 1);
-    // 线性插值找两个相邻 STOP
+    const t = clamp(normVal(val, vmin, vmax), 0, 1);
     let i = 0;
     while (i < STOPS.length - 1 && STOPS[i + 1][0] < t) i++;
     const [t0, c0] = STOPS[i];
@@ -51,50 +48,61 @@
     const lum = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
     return { rgb, lum };
   }
-
   function rgbStr([r, g, b]) { return `rgb(${r},${g},${b})`; }
 
-  /**
-   * 计算布局（数据像素 = 与缩放无关的"逻辑像素"）
-   */
-  function layout(years, rows, exportMode) {
-    const n_cols = years.length;
-    const n_rows = rows.length;
+  /** 计算布局 */
+  function layout(years, rows, metricsMeta, exportMode) {
+    const n_year = years.length;            // 22
+    const n_metric = metricsMeta.length;    // 4
+    const n_rows = rows.length;             // 31
 
     if (exportMode) {
-      // 导出模式：3000px 宽固定布局
       const W = 3000;
-      const padL = 320, padR = 80;          // 左留行标签
-      const cellW = (W - padL - padR) / n_cols;
+      const padL = 320, padR = 80;
+      // 年度列 + CAGR 列 + 分隔 gap
+      const gapW = 30;                      // 年度区与 CAGR 区之间的视觉分隔
+      const usable = W - padL - padR - gapW;
+      // CAGR 单格稍宽,以便容纳两位小数 + %
+      const yearCellW = usable / (n_year + n_metric * 1.45);
+      const metricCellW = yearCellW * 1.45;
       const cellH = 60;
-      const headerH = 240;                  // 标题区
-      const legendH = 90;                   // 色条
-      const colHdrH = 50;                   // 年份行
-      const footerH = 100;                  // 页脚
+      const headerH = 240;
+      const legendH = 90;
+      const colHdrH = 78;                   // 两行标题(label + sublabel)
+      const footerH = 100;
       const padBot = 50;
       const matrixTop = headerH + legendH + colHdrH;
       const matrixBot = matrixTop + cellH * n_rows;
       const H = matrixBot + footerH + padBot;
+      const metricStartX = padL + n_year * yearCellW + gapW;
       return {
-        W, H, padL, padR, cellW, cellH,
+        W, H, padL, padR, gapW,
+        yearCellW, metricCellW, cellH,
         headerH, legendH, colHdrH, footerH, padBot,
-        matrixTop, matrixBot
+        matrixTop, matrixBot,
+        metricStartX, exportMode: true
       };
     }
 
     // 屏幕模式：按视口宽度自适应
-    const W = 1340;                          // 逻辑宽度，CSS 缩放
-    const padL = 150, padR = 30;
-    const cellW = (W - padL - padR) / n_cols;
+    const W = 1480;
+    const padL = 140, padR = 20;
+    const gapW = 16;
+    const usable = W - padL - padR - gapW;
+    const yearCellW = usable / (n_year + n_metric * 1.4);
+    const metricCellW = yearCellW * 1.4;
     const cellH = 38;
-    const colHdrH = 36;
+    const colHdrH = 54;                     // 两行标题
     const matrixTop = colHdrH;
     const matrixBot = matrixTop + cellH * n_rows;
     const H = matrixBot + 16;
+    const metricStartX = padL + n_year * yearCellW + gapW;
     return {
-      W, H, padL, padR, cellW, cellH,
+      W, H, padL, padR, gapW,
+      yearCellW, metricCellW, cellH,
       headerH: 0, legendH: 0, colHdrH, footerH: 0, padBot: 0,
-      matrixTop, matrixBot
+      matrixTop, matrixBot,
+      metricStartX, exportMode: false
     };
   }
 
@@ -103,18 +111,15 @@
     return v.toFixed(1);
   }
 
-  /**
-   * 主渲染
-   */
+  /** 主渲染 */
   window.SW_drawHeatmap = function (canvas, payload, opts) {
     opts = opts || {};
     const exportMode = !!opts.exportMode;
     const scale = opts.scale || (window.devicePixelRatio || 1);
 
-    const { years, rows } = payload;
-    const L = layout(years, rows, exportMode);
+    const { years, rows, metricsMeta = [] } = payload;
+    const L = layout(years, rows, metricsMeta, exportMode);
 
-    // 设置 canvas 实际像素 + CSS 尺寸
     canvas.width = L.W * scale;
     canvas.height = L.H * scale;
     if (!exportMode) {
@@ -122,95 +127,131 @@
       canvas.style.maxWidth = L.W + 'px';
       canvas.style.height = 'auto';
     }
-
     const ctx = canvas.getContext('2d');
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.scale(scale, scale);
-
-    // 背景
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, L.W, L.H);
 
-    // ── 导出模式：顶部标题区 ──
+    // ── 导出版顶部标题区 ──
     if (exportMode) {
-      // 大标题
       ctx.fillStyle = '#1a1a1a';
       ctx.font = '900 92px AlibabaPuHuiTi, "Microsoft YaHei", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText('申万一级行业年度涨跌幅', L.W / 2, 100);
+      ctx.fillText('申万一级行业年度涨跌幅 · 长期 CAGR', L.W / 2, 100);
 
-      // 副标题
       ctx.fillStyle = '#555555';
       ctx.font = '300 30px NotoSansSC, "Microsoft YaHei", sans-serif';
-      ctx.fillText('2005 — 2026 · 31 个一级行业 · 蓝跌红涨', L.W / 2, 175);
+      ctx.fillText('2005 — 2026 · 31 个一级行业 · 蓝跌红涨 · 右侧 4 列为年化复合收益率', L.W / 2, 175);
 
-      // 色条
       drawLegendBar(ctx, L);
     }
 
-    // ── 列标题（年份）──
-    ctx.fillStyle = '#333333';
+    // ── 列标题（年度） ──
     const colHdrSize = exportMode ? 24 : 14;
+    const sublabelSize = exportMode ? 17 : 10;
+
     ctx.font = `400 ${colHdrSize}px NotoSansSC, "Microsoft YaHei", sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'bottom';
     const colHdrBaseY = L.matrixTop - 6;
     years.forEach((y, j) => {
-      const cx = L.padL + (j + 0.5) * L.cellW;
+      const cx = L.padL + (j + 0.5) * L.yearCellW;
       const isYtd = y === '2026*';
       ctx.fillStyle = isYtd ? '#E65A56' : '#333333';
       ctx.fillText(y, cx, colHdrBaseY);
     });
 
-    // ── 行标签 + 色块 + 数值 ──
+    // ── 列标题（CAGR）——label + sublabel 双行 ──
+    metricsMeta.forEach((col, j) => {
+      const cx = L.metricStartX + (j + 0.5) * L.metricCellW;
+      ctx.fillStyle = '#1a1a1a';
+      ctx.font = `400 ${colHdrSize}px NotoSansSC, "Microsoft YaHei", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(col.label, cx, colHdrBaseY - sublabelSize - 2);
+
+      ctx.fillStyle = '#999999';
+      ctx.font = `300 ${sublabelSize}px NotoSansSC, "Microsoft YaHei", sans-serif`;
+      ctx.fillText(col.sublabel, cx, colHdrBaseY);
+    });
+
+    // ── 行渲染 ──
     const rowLblSize = exportMode ? 26 : 14;
     const cellTxtSize = exportMode ? 22 : 11;
+    const metricTxtSize = exportMode ? 24 : 12;
 
     rows.forEach((row, i) => {
       const rowY = L.matrixTop + i * L.cellH;
 
-      // 行标签（右对齐贴近左边格子）
+      // 行标签
       ctx.fillStyle = '#333333';
       ctx.font = `400 ${rowLblSize}px NotoSansSC, "Microsoft YaHei", sans-serif`;
       ctx.textAlign = 'right';
       ctx.textBaseline = 'middle';
       ctx.fillText(row.name, L.padL - 12, rowY + L.cellH / 2);
 
-      // 色块 + 数值
+      // 年度色块 + 数值
       row.rets.forEach((val, j) => {
-        const x = L.padL + j * L.cellW;
+        const x = L.padL + j * L.yearCellW;
         const y = rowY;
-        const { rgb, lum } = mapColor(val);
+        const { rgb, lum } = mapColor(val, VMIN, VMAX);
         ctx.fillStyle = rgbStr(rgb);
-        ctx.fillRect(x, y, L.cellW, L.cellH);
-
-        // 白色细网格
+        ctx.fillRect(x, y, L.yearCellW, L.cellH);
         ctx.strokeStyle = '#FFFFFF';
         ctx.lineWidth = 1;
-        ctx.strokeRect(x + 0.5, y + 0.5, L.cellW - 1, L.cellH - 1);
-
-        // 数值
-        const txtColor = lum > 0.55 ? '#222222' : '#FFFFFF';
-        ctx.fillStyle = txtColor;
+        ctx.strokeRect(x + 0.5, y + 0.5, L.yearCellW - 1, L.cellH - 1);
+        ctx.fillStyle = lum > 0.55 ? '#222222' : '#FFFFFF';
         ctx.font = `400 ${cellTxtSize}px NotoSansSC, "Microsoft YaHei", sans-serif`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(fmtVal(val), x + L.cellW / 2, y + L.cellH / 2);
+        ctx.fillText(fmtVal(val), x + L.yearCellW / 2, y + L.cellH / 2);
+      });
+
+      // CAGR 色块 + 数值 + %
+      (row.metrics || []).forEach((val, j) => {
+        const x = L.metricStartX + j * L.metricCellW;
+        const y = rowY;
+        const { rgb, lum } = mapColor(val, VMIN_M, VMAX_M);
+        ctx.fillStyle = rgbStr(rgb);
+        ctx.fillRect(x, y, L.metricCellW, L.cellH);
+        ctx.strokeStyle = '#FFFFFF';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x + 0.5, y + 0.5, L.metricCellW - 1, L.cellH - 1);
+        ctx.fillStyle = lum > 0.55 ? '#222222' : '#FFFFFF';
+        // 加粗一点点表明这是「指标」而非「年度」
+        ctx.font = `500 ${metricTxtSize}px NotoSansSC, "Microsoft YaHei", sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        const txt = (val === null || val === undefined) ? '—' : `${val.toFixed(1)}%`;
+        ctx.fillText(txt, x + L.metricCellW / 2, y + L.cellH / 2);
       });
     });
 
     // ── 顶/底边框线 ──
+    const matrixRight = L.metricStartX + metricsMeta.length * L.metricCellW;
     ctx.strokeStyle = '#999999';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(L.padL, L.matrixTop);
-    ctx.lineTo(L.padL + years.length * L.cellW, L.matrixTop);
+    ctx.lineTo(matrixRight, L.matrixTop);
     ctx.moveTo(L.padL, L.matrixBot);
-    ctx.lineTo(L.padL + years.length * L.cellW, L.matrixBot);
+    ctx.lineTo(matrixRight, L.matrixBot);
     ctx.stroke();
 
-    // ── 导出模式：页脚 ──
+    // ── 年度区与 CAGR 区之间的竖向分隔线 ──
+    const sepX = L.padL + years.length * L.yearCellW + L.gapW / 2;
+    ctx.strokeStyle = '#BBBBBB';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(sepX, L.matrixTop - L.colHdrH);
+    ctx.lineTo(sepX, L.matrixBot);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // 导出版页脚
     if (exportMode) {
       const footY = L.matrixBot + 60;
       ctx.fillStyle = '#555555';
@@ -221,6 +262,7 @@
       let leftLine = '数据来源：Wind 申万一级行业指数';
       if (opts.ytdAsOf) leftLine += `  ·  2026 年为年初至今涨跌幅（截至 ${opts.ytdAsOf}）`;
       else leftLine += '  ·  2026 年为年初至今涨跌幅';
+      leftLine += '  ·  CAGR 基于完整年度数据';
       ctx.fillText(leftLine, L.padL, footY);
 
       ctx.textAlign = 'right';
@@ -229,7 +271,6 @@
   };
 
   function drawLegendBar(ctx, L) {
-    // 居中色条，跨越中间 30% 宽度
     const barW = Math.round(L.W * 0.32);
     const barH = 22;
     const barX = (L.W - barW) / 2;
@@ -247,21 +288,22 @@
     ctx.lineWidth = 1;
     ctx.strokeRect(barX + 0.5, barY + 0.5, barW - 1, barH - 1);
 
-    // 标签 -50% / 0 / +100%
     ctx.fillStyle = '#555555';
     ctx.font = '300 22px NotoSansSC, "Microsoft YaHei", sans-serif';
     ctx.textBaseline = 'middle';
-
     ctx.textAlign = 'right';
     ctx.fillText('−50%', barX - 12, barY + barH / 2);
-
     ctx.textAlign = 'left';
     ctx.fillText('+100%', barX + barW + 12, barY + barH / 2);
-
-    // 0 标签（位于 50/(50+100)=33.3% 处即 vmin=-50/vmax=100 的零点）
-    // 我们的归一化是 0.5(零点固定在中间)
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
     ctx.fillText('0', barX + barW * 0.5, barY + barH + 6);
+
+    // CAGR 色阶说明小字
+    ctx.fillStyle = '#888888';
+    ctx.font = '300 17px NotoSansSC, "Microsoft YaHei", sans-serif';
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'center';
+    ctx.fillText('右侧 CAGR 区使用更紧的色阶（−12% ~ +18%）以拉开年化数值差异', L.W / 2, barY + barH + 36);
   }
 })();

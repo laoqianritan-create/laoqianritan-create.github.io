@@ -30,19 +30,29 @@
     const yearsBase = raw.years.map(String);
     const years = [...yearsBase, '2026*'];
 
-    // rows: 按 ROW_ORDER 取出
+    // metrics_meta: CAGR 列定义(后端写入)
+    const metricsMeta = raw.metrics_meta && raw.metrics_meta.columns
+      ? raw.metrics_meta.columns
+      : [];
+
+    // rows: 按 ROW_ORDER 取出 + 拼接 CAGR
     const rows = ROW_ORDER.map((name) => {
       const item = raw.data[name];
       if (!item) throw new Error(`数据缺少行业: ${name}`);
       const rets = [...item.rets];
       // 追加 2026 YTD 作为最后一列
       rets.push(item.ytd2026 !== undefined && item.ytd2026 !== null ? item.ytd2026 : null);
-      return { name, rets };
+      // 4 列 CAGR (按 metricsMeta 顺序取值)
+      const metrics = metricsMeta.map(col =>
+        item.metrics && item.metrics[col.key] !== undefined ? item.metrics[col.key] : null
+      );
+      return { name, rets, metrics };
     });
 
     return {
       years,
       rows,
+      metricsMeta,
       updated: raw.updated || null,
       ytdAsOf: raw.ytd_as_of || null
     };

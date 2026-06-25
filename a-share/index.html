@@ -6,15 +6,15 @@
   <title>申万一级行业年度涨跌幅 · A 股看板</title>
   <meta name="description" content="申万一级行业 2005—2026 年度涨跌幅热力图，蓝跌红涨，一眼看完 22 年 A 股行业轮动。">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20260625174722">
+  <link rel="stylesheet" href="css/style.css?v=20260625210517">
 </head>
 <body>
 
 <main class="container">
 
   <header class="site-header">
-    <h1 class="site-title">申万一级行业年度涨跌幅</h1>
-    <p class="site-subtitle">2005 — 2026 · 31 个一级行业 · 蓝跌红涨 · 一眼看完 22 年 A 股行业轮动</p>
+    <h1 class="site-title">申万一级行业年度涨跌幅 · 长期 CAGR</h1>
+    <p class="site-subtitle">2005 — 2026 · 31 个一级行业 · 蓝跌红涨 · 右侧 4 列为年化复合收益率</p>
   </header>
 
   <section class="legend-bar">
@@ -49,15 +49,17 @@
       <li>2005—2014 数据来自 Wind 申万一级行业指数（2021 版）回溯重构合成指数。2021 版分类是申万宏源 2021 年启用并向前回算的，当年部分行业（电力设备、美容护理、社会服务、环保、煤炭、石油石化等）并非独立一级行业，其早年数值是按现行口径合成回算，无幸存者偏差校正。</li>
       <li>2015—2025 为完整年度涨跌幅，对应申万一级行业指数年末收盘价计算。</li>
       <li>2026 数据为年初至今涨跌幅（YTD），每日自动更新。</li>
-      <li>颜色映射：深蓝 #4A6FE2 → 白色 → 深红 #e65a56，以 0% 为对称轴；数值范围 −50% 到 +100%，超出区间的格子会贴顶/贴底显示。</li>
+      <li>颜色映射：深蓝 #4A6FE2 → 白色 → 深红 #e65a56，以 0% 为对称轴；年度涨跌幅区数值范围 −50% 到 +100%，超出的格子会贴顶/贴底显示。</li>
+      <li>右侧 4 列 CAGR（年化复合收益率）：21 年（2005–2025）/ 近 7 年（2019–2025）/ 近 5 年（2021–2025）/ 近 3 年（2023–2025）。<strong>仅基于完整年度数据计算，不混入 2026 半年 YTD</strong>，避免半年数据扰动长期年化。CAGR 区使用更紧的色阶（−12% ~ +18%），与年度区分隔显示。</li>
+      <li>数据存储：项目本地维护 <code>data/sw_returns.json</code> 真相源，并每日存档 <code>data/snapshots/YYYY-MM-DD.json</code>。Wind 接口失败时网站照常显示历史数据，不会因为单日拉数失败而中断。</li>
     </ul>
   </details>
 
 </main>
 
-<script src="js/data.js?v=20260625174722"></script>
-<script src="js/heatmap.js?v=20260625174722"></script>
-<script src="js/main.js?v=20260625174722"></script>
+<script src="js/data.js?v=20260625210517"></script>
+<script src="js/heatmap.js?v=20260625210517"></script>
+<script src="js/main.js?v=20260625210517"></script>
 
 </body>
 </html>
