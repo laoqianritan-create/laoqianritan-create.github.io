@@ -1,0 +1,200 @@
+/* ─── 字体声明 ─── */
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src: url('../fonts/Alibaba-PuHuiTi-Heavy.ttf') format('truetype');
+  font-weight: 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NotoSansSC';
+  src: url('../fonts/NotoSansSC-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'NotoSansSC';
+  src: url('../fonts/NotoSansSC-Light.otf') format('opentype');
+  font-weight: 300;
+  font-display: swap;
+}
+
+/* ─── 全局 ─── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #555555;
+  --text-faint: #999999;
+  --border: #e5e5e5;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04);
+
+  --blue-deep: #4A6FE2;
+  --red-deep:  #e65a56;
+  --accent:    #2563eb;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'NotoSansSC', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 56px 32px 80px;
+}
+
+/* ─── 标题区 ─── */
+.site-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.site-title {
+  font-family: 'AlibabaPuHuiTi', sans-serif;
+  font-weight: 900;
+  font-size: 44px;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  line-height: 1.2;
+}
+.site-subtitle {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+/* ─── 色条 ─── */
+.legend-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 24px auto 28px;
+  max-width: 480px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+.legend-gradient {
+  flex: 1;
+  height: 12px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    #4A6FE2 0%,
+    #C0CFFA 35%,
+    #FFFFFF 50%,
+    #F5C0BE 65%,
+    #e65a56 100%
+  );
+  border: 1px solid var(--border);
+  position: relative;
+}
+.legend-zero {
+  position: relative;
+  display: inline-block;
+  min-width: 12px;
+  text-align: center;
+}
+
+/* ─── 热力图 ─── */
+.heatmap-wrap {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 20px 16px;
+  overflow-x: auto;
+}
+#heatmap {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ─── 操作栏 ─── */
+.action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 11px 26px;
+  background: var(--text);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform .12s ease, background .18s ease;
+  letter-spacing: 0.5px;
+}
+.btn-primary:hover { background: #000; transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+.btn-primary:disabled { opacity: 0.6; cursor: wait; }
+.action-hint {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-faint);
+}
+
+/* ─── 页脚 ─── */
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-left { display: flex; flex-direction: column; gap: 4px; }
+.footer-note { font-size: 11px; color: var(--text-faint); }
+
+/* ─── 口径说明 ─── */
+.notes-block {
+  margin-top: 28px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.7;
+}
+.notes-block summary {
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 400;
+  padding: 10px 0;
+  user-select: none;
+}
+.notes-block summary:hover { color: var(--accent); }
+.notes-block ul {
+  margin-top: 8px;
+  padding-left: 20px;
+}
+.notes-block li { margin-bottom: 6px; }
+
+/* ─── 响应式 ─── */
+@media (max-width: 768px) {
+  .container { padding: 32px 12px 60px; }
+  .site-title { font-size: 30px; }
+  .site-subtitle { font-size: 13px; }
+  .heatmap-wrap { padding: 12px 6px; }
+  .site-footer { flex-direction: column; align-items: flex-start; }
+}
