@@ -44,7 +44,7 @@
       btn.addEventListener('click', () => exportHighRes(btn));
 
     } catch (err) {
-      console.error('[A股看板] 初始化失败', err);
+      console.error('[A 股看板] 初始化失败', err);
       const wrap = document.querySelector('.heatmap-wrap');
       if (wrap) {
         wrap.innerHTML = `<div style="padding:40px;text-align:center;color:#e65a56;font-size:14px;">
