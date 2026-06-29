@@ -29,6 +29,8 @@ import {
 
 import { initPanelBuffett } from './panels/buffett.js';
 
+import { initPanelHindenburg } from './panels/hindenburg.js';
+
 import { initPanelM7, initPanelSectors, initPanelBreadth } from './panels/market.js';
 
 import {
@@ -106,6 +108,7 @@ const FILES = {
   aiae:           'data/aiae.json',
   breadth:        'data/sp500_breadth.json',
   buffett:        'data/buffett.json',
+  hindenburg:     'data/sp500_hindenburg.json',
   intrayearDd:    'data/sp500_intrayear_dd.json',
   annualTr:       'data/sp500_annual_tr.json',
   // Cross / NDX
@@ -219,6 +222,10 @@ const PANELS = {
   'panel-buffett': {
     requires: ['buffett', 'price'],
     init() { if (D.buffett) initPanelBuffett(D.buffett, D.price); },
+  },
+  'panel-hindenburg': {
+    requires: ['hindenburg', 'price'],
+    init() { if (D.hindenburg) initPanelHindenburg(D.hindenburg, D.price); },
   },
   'panel-pe': {
     requires: ['pe', 'century'],
@@ -472,7 +479,7 @@ const DEFERRED_KEYS = [
   'chronicleYears', 'annualReturns',
   // SP500 in scroll order
   'annualTr', 'returnDetails', 'drawdown', 'intrayearDd',
-  'volatility', 'monthly', 'vix', 'buffett', 'pe', 'aiae', 'eps', 'roe',
+  'volatility', 'monthly', 'vix', 'buffett', 'hindenburg', 'pe', 'aiae', 'eps', 'roe',
   'm7', 'sectors', 'changes', 'rules', 'constituents',
   // Cross / NDX
   'nasdaqComp',

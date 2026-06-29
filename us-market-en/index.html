@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260629094145">
-<link rel="stylesheet" href="css/chronicle.css?v=20260629094145">
+<link rel="stylesheet" href="style.css?v=20260629172200">
+<link rel="stylesheet" href="css/chronicle.css?v=20260629172200">
 </head>
 <body>
 
@@ -31,6 +31,7 @@
         <a class="nav-item" href="#panel-vix" data-panel="panel-vix">VIX</a>
         <a class="nav-item" href="#panel-vixeq" data-panel="panel-vixeq">Single-Stock Fear</a>
         <a class="nav-item" href="#panel-buffett" data-panel="panel-buffett">Buffett</a>
+        <a class="nav-item" href="#panel-hindenburg" data-panel="panel-hindenburg">Hindenburg Omen</a>
         <a class="nav-item" href="#panel-pe" data-panel="panel-pe">Shiller PE</a>
         <a class="nav-item" href="#panel-breadth" data-panel="panel-breadth">Breadth</a>
         <a class="nav-item" href="#panel-aiae" data-panel="panel-aiae">AIAE</a>
@@ -447,6 +448,23 @@
       </div>
       <div class="chart-container chart-standard" id="chartBuffett"></div>
       <div class="metric-strip" id="chartBuffettSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-hindenburg" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Hindenburg Omen · Breadth Divergence Warning</h2>
+          <p class="panel-desc">S&amp;P 500 adaptation · 5 conditions must trigger on the same day.</p>
+          <p class="panel-desc">The Hindenburg Omen, developed by Jim Miekka in the 1990s, captures a market structure rarely seen in healthy bull markets: the index keeps rising while breadth fractures — an unusually large share of stocks simultaneously hit new 52-week highs AND new 52-week lows, indicating that part of the market is quietly weakening. The original calculation uses the entire NYSE (often criticized for being polluted by foreign stocks, small caps, and bond funds). This panel substitutes S&amp;P 500 constituents, sidestepping that pollution. Backtest 1963 to date: 360 triggers. Median S&amp;P 500 return 30 days after trigger: -0.02% (market baseline +1.42%). 60-day negative-return probability: 46.9% (baseline 33.5%).</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartHindenburg" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartHindenburg"></div>
+      <div class="metric-strip" id="chartHindenburgSummary"></div>
     </div>
   </section>
 
@@ -1031,8 +1049,8 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260629094145"></script>
-<script defer src="js/hero-curve.js?v=20260629094145"></script>
+<script type="module" src="js/panels.js?v=20260629172200"></script>
+<script defer src="js/hero-curve.js?v=20260629172200"></script>
 
 </body>
 </html>
