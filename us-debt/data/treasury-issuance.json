@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30T01:36:05Z",
+  "updated": "2026-07-01T01:34:55Z",
   "source": "Treasury Fiscal Data auctions_query (monthly gross issuance, total_accepted) + FRED GDP (nominal SAAR)",
   "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query",
   "frequency": "monthly",
@@ -7,9 +7,9 @@
   "method": "月度发行 = 所有 total_accepted>0 拍卖按月求和（全口径，不分期限桶）；% of GDP = 月度发行 / 当季年化 GDP",
   "caveat": "gross issuance 含 bills rollover（短债滚动重发），总量远大于净融资；与 bills-coupons 面板的分桶 total 口径略有差异（此处不做归类过滤，故略高）",
   "audit": {
-    "records_total": 11021,
-    "records_counted": 11019,
-    "records_skipped_no_amount": 2,
+    "records_total": 11023,
+    "records_counted": 11020,
+    "records_skipped_no_amount": 3,
     "earliest_month": "1979-10",
     "latest_month": "2026-06"
   },
@@ -3915,15 +3915,15 @@
     },
     {
       "month": "2026-06",
-      "issuance": 2549.74,
+      "issuance": 2634.93,
       "gdp_saar": null,
       "pct_gdp": null,
-      "partial": true
+      "partial": false
     }
   ],
   "latest_issuance": {
-    "month": "2026-05",
-    "issuance": 2591.56,
+    "month": "2026-06",
+    "issuance": 2634.93,
     "gdp_saar": null,
     "pct_gdp": null,
     "partial": false

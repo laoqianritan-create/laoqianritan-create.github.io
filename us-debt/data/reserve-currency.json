@@ -1,10 +1,10 @@
 {
-  "updated": "2026-06-30T01:32:00Z",
+  "updated": "2026-07-01T01:31:02Z",
   "source": "IMF COFER (Currency Composition of Official Foreign Exchange Reserves)",
   "source_url": "https://data.imf.org/COFER",
   "manual_maintenance": true,
   "manual_note": "IMF 无开放 CSV/API，数据每季度需手动从 data.imf.org/COFER 同步至 fetch_reserve_currency.py 的 SNAPSHOTS 字典",
-  "months_since_last_snapshot": 12,
+  "months_since_last_snapshot": 13,
   "stale_warning": true,
   "note": "季度发布；下次更新当 IMF 发布 2025-Q3（约 3 个月后）",
   "periods": [
