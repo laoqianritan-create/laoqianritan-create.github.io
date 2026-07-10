@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10 09:37:36",
+  "generated_at": "2026-07-10 22:07:51",
   "today": "2026-07-10",
   "overall": "healthy",
   "stale_count": 0,
@@ -7,8 +7,8 @@
     {
       "file": "sp500_price.json",
       "label": "标普 500 日线",
-      "updated": "2026-07-09",
-      "days_old": 1,
+      "updated": "2026-07-10",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -35,8 +35,8 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-07-08",
-      "days_old": 2,
+      "updated": "2026-07-09",
+      "days_old": 1,
       "status": "fresh"
     },
     {
@@ -49,8 +49,8 @@
     {
       "file": "buffett.json",
       "label": "巴菲特指标",
-      "updated": "2026-07-09",
-      "days_old": 1,
+      "updated": "2026-07-10",
+      "days_old": 0,
       "status": "fresh"
     },
     {
