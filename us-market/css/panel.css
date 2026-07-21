@@ -104,6 +104,36 @@ html.panel-snap-enabled .panel {
   border: 1px solid var(--border);
   border-radius: 8px;
 }
+
+/* ── Style ETF Table ── */
+.style-etf-table-wrap {
+  margin-top: 24px;
+}
+.style-etf-table {
+  font-variant-numeric: tabular-nums;
+}
+.style-etf-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+.style-etf-swatch {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.style-etf-symbol {
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+.style-etf-cn {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
 .data-table {
   width: 100%;
   border-collapse: collapse;

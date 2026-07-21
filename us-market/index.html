@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260721094205">
-<link rel="stylesheet" href="css/chronicle.css?v=20260721094205">
+<link rel="stylesheet" href="style.css?v=20260721104116">
+<link rel="stylesheet" href="css/chronicle.css?v=20260721104116">
 </head>
 <body>
 
@@ -64,6 +64,9 @@
         <a class="nav-item" href="#panel-nasdaq100-weights" data-panel="panel-nasdaq100-weights">权重累计</a>
         <a class="nav-item" href="#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">成分股</a>
       </div>
+      <div class="nav-group" data-category="style-etf">
+        <a class="nav-item active" href="#panel-style-etf" data-panel="panel-style-etf">主流风格ETF</a>
+      </div>
       <div class="nav-group" data-category="chronicle">
         <a class="nav-item active" href="#panel-chronicle" data-panel="panel-chronicle">日历</a>
       </div>
@@ -110,6 +113,7 @@
   <div class="category-inner">
     <button class="category-tab active" data-category="sp500">标普500</button>
     <button class="category-tab" data-category="cross">纳斯达克100与道琼斯</button>
+    <button class="category-tab" data-category="style-etf">风格ETF</button>
     <button class="category-tab" data-category="chronicle">编年史</button>
     <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
       <a class="lang-opt active" data-lang="zh" href="#" aria-current="true">中</a>
@@ -1018,6 +1022,39 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-style-etf" data-category="style-etf" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">美股主流风格 ETF 走势全景</h2>
+          <p class="panel-desc">近 10 年 · 全收益（含股息复权）· 基期 = 100 · 对数轴</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-export-element="styleEtfPanelWrap" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div id="styleEtfPanelWrap">
+        <div class="chart-container chart-hero" id="chartStyleEtf"></div>
+        <div class="drawdown-table-wrap style-etf-table-wrap panel-explainer">
+          <table class="data-table style-etf-table">
+            <thead>
+              <tr>
+                <th>代表</th>
+                <th style="text-align:right">年化收益</th>
+                <th style="text-align:right">最大回撤</th>
+                <th style="text-align:right">波动率</th>
+                <th style="text-align:right">夏普比</th>
+                <th style="text-align:right">卡玛比</th>
+              </tr>
+            </thead>
+            <tbody id="styleEtfTbody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="metric-strip" id="styleEtfSummary"></div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-chronicle" data-category="chronicle" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -1049,8 +1086,8 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260721094205"></script>
-<script defer src="js/hero-curve.js?v=20260721094205"></script>
+<script type="module" src="js/panels.js?v=20260721104116"></script>
+<script defer src="js/hero-curve.js?v=20260721104116"></script>
 
 </body>
 </html>

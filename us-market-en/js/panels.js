@@ -43,6 +43,8 @@ import { initPanelChanges, initPanelRules } from './panels/rules.js';
 
 import { initPanelChronicle } from './panels/chronicle.js';
 
+import { initPanelStyleEtf } from './panels/style_etf.js';
+
 // ─────────────────────────────────────────────────────────────
 // § 1  Data store — key/value + callback notifications
 // ─────────────────────────────────────────────────────────────
@@ -128,6 +130,8 @@ const FILES = {
   qqqDetails:     'data/qqq_return_details.json',
   equalWeight:    'data/sp500_equal_weight.json',
   ndxBreadth:     'data/ndx_breadth.json',
+  // Style ETF
+  styleEtf:       'data/style_etf.json',
   // Chronicle
   chronicleYears: 'data/chronicle/years.json',
 };
@@ -415,6 +419,11 @@ const PANELS = {
         D.dowCentury, D.recession, 'Dow Jones', 'dowCenturyScaleToggle');
     },
   },
+  // ── Style ETF ──────────────────────────────────────────────
+  'panel-style-etf': {
+    requires: ['styleEtf'],
+    init() { if (D.styleEtf) initPanelStyleEtf(D.styleEtf); },
+  },
   // ── Chronicle ──────────────────────────────────────────────
   'panel-chronicle': {
     requires: ['annualReturns', 'chronicleYears'],
@@ -487,6 +496,8 @@ const DEFERRED_KEYS = [
   'ndxVolatility', 'ndxMonthly', 'ndxDrawdowns', 'ndxRolling5y',
   'ndxIntrayearDd', 'ndxVxn', 'qqqDetails',
   'nasdaq100', 'dowCentury',
+  // Style ETF
+  'styleEtf',
 ];
 
 const scheduleIdle = fn =>
@@ -541,6 +552,14 @@ async function main() {
 
     setupLazyInit();
     loadBatch(DEFERRED_KEYS);
+  }
+
+  // Explicit triggerPanel(id) when URL hash names a panel (safety net):
+  // IntersectionObserver occasionally misses the initial intersect on
+  // direct-hash landings, leaving the target panel empty until user clicks nav.
+  const hashId = (window.location.hash || '').slice(1);
+  if (hashId && hashId.startsWith('panel-') && hashId !== 'panel-chronicle') {
+    setTimeout(() => triggerPanel(hashId), 50);
   }
 
   // Export buttons can be wired up immediately (handlers are lazy-safe)
