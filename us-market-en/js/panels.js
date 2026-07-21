@@ -43,7 +43,7 @@ import { initPanelChanges, initPanelRules } from './panels/rules.js';
 
 import { initPanelChronicle } from './panels/chronicle.js';
 
-import { initPanelStyleEtf } from './panels/style_etf.js';
+import { initPanelStyleEtf, initPanelStyleEtfScatter } from './panels/style_etf.js';
 
 // ─────────────────────────────────────────────────────────────
 // § 1  Data store — key/value + callback notifications
@@ -423,6 +423,10 @@ const PANELS = {
   'panel-style-etf': {
     requires: ['styleEtf'],
     init() { if (D.styleEtf) initPanelStyleEtf(D.styleEtf); },
+  },
+  'panel-style-etf-scatter': {
+    requires: ['styleEtf'],
+    init() { if (D.styleEtf) initPanelStyleEtfScatter(D.styleEtf); },
   },
   // ── Chronicle ──────────────────────────────────────────────
   'panel-chronicle': {

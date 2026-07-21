@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260721104116">
-<link rel="stylesheet" href="css/chronicle.css?v=20260721104116">
+<link rel="stylesheet" href="style.css?v=20260721172218">
+<link rel="stylesheet" href="css/chronicle.css?v=20260721172218">
 </head>
 <body>
 
@@ -66,6 +66,7 @@
       </div>
       <div class="nav-group" data-category="style-etf">
         <a class="nav-item active" href="#panel-style-etf" data-panel="panel-style-etf">主流风格ETF</a>
+        <a class="nav-item" href="#panel-style-etf-scatter" data-panel="panel-style-etf-scatter">风险收益平面</a>
       </div>
       <div class="nav-group" data-category="chronicle">
         <a class="nav-item active" href="#panel-chronicle" data-panel="panel-chronicle">日历</a>
@@ -1055,6 +1056,22 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-style-etf-scatter" data-category="style-etf" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">风格 ETF 风险收益平面</h2>
+          <p class="panel-desc">近 10 年 · X = 年化波动率 · Y = 年化收益率 · 灰色虚线 = 夏普比等值线（斜率 = Sharpe）</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartStyleEtfScatter" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartStyleEtfScatter"></div>
+      <div class="metric-strip" id="styleEtfScatterSummary"></div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-chronicle" data-category="chronicle" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -1086,8 +1103,8 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260721104116"></script>
-<script defer src="js/hero-curve.js?v=20260721104116"></script>
+<script type="module" src="js/panels.js?v=20260721172218"></script>
+<script defer src="js/hero-curve.js?v=20260721172218"></script>
 
 </body>
 </html>
