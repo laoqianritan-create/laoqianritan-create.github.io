@@ -20,10 +20,13 @@ export function initPanelStyleEtf(data) {
     const gridColor  = cssVar('--chart-grid') || '#f0f0f0';
     const mobile     = isMobile();
 
+    const base = data.base || 100;
     const series = data.tickers.map((t, index) => {
       const seriesData = t.series.map(pt => [pt.date, pt.value]);
       const latest     = seriesData[seriesData.length - 1];
-      const labelText  = `${t.name_zh} ${Math.round(latest[1])}`;
+      const pct        = latest[1] - base;     // 基期=100 → 累计涨幅百分点
+      const sign       = pct >= 0 ? '+' : '';
+      const labelText  = `${t.name_zh} ${sign}${Math.round(pct)}%`;
 
       return {
         name: `${t.name_zh}（${t.symbol}）`,
