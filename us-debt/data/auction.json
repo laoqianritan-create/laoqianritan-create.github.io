@@ -1,18 +1,12 @@
 {
-  "updated": "2026-07-27",
+  "updated": "2026-07-28",
   "source": "TreasuryDirect TA_WS API",
   "weekly": [
     {
-      "week": "2025-W05",
-      "date": "2025-01-28",
-      "avg_btc": 2.83,
-      "amount_billion": 74.0
-    },
-    {
       "week": "2025-W07",
-      "date": "2025-02-11",
-      "avg_btc": 2.53,
-      "amount_billion": 125.0
+      "date": "2025-02-13",
+      "avg_btc": 2.33,
+      "amount_billion": 25.0
     },
     {
       "week": "2025-W08",
@@ -385,6 +379,12 @@
       "date": "2026-07-20",
       "avg_btc": 2.69,
       "amount_billion": 582.0
+    },
+    {
+      "week": "2026-W31",
+      "date": "2026-07-27",
+      "avg_btc": 2.78,
+      "amount_billion": 310.0
     }
   ]
 }
