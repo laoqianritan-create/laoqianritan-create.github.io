@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-07-28 09:41:53",
+  "generated_at": "2026-07-28 22:10:43",
   "today": "2026-07-28",
-  "overall": "critical",
-  "stale_count": 1,
+  "overall": "healthy",
+  "stale_count": 0,
   "sources": [
     {
       "file": "sp500_price.json",
       "label": "标普 500 日线",
-      "updated": "2026-07-27",
-      "days_old": 1,
+      "updated": "2026-07-28",
+      "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "sp500_century.json",
       "label": "标普 500 月线百年",
-      "updated": "2026-07-24",
-      "days_old": 4,
-      "status": "recent"
+      "updated": "2026-07-27",
+      "days_old": 1,
+      "status": "fresh"
     },
     {
       "file": "sp500_pe.json",
@@ -35,9 +35,9 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-07-24",
-      "days_old": 4,
-      "status": "dead"
+      "updated": "2026-07-27",
+      "days_old": 1,
+      "status": "fresh"
     },
     {
       "file": "sp500_annual_returns_long.json",
@@ -49,8 +49,8 @@
     {
       "file": "buffett.json",
       "label": "巴菲特指标",
-      "updated": "2026-07-27",
-      "days_old": 1,
+      "updated": "2026-07-28",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -70,8 +70,8 @@
     {
       "file": "nasdaq100_panels.json",
       "label": "纳指 100 成分股",
-      "updated": "2026-07-27",
-      "days_old": 1,
+      "updated": "2026-07-28",
+      "days_old": 0,
       "status": "fresh"
     },
     {
