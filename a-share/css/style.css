@@ -184,62 +184,58 @@ html, body {
   color: var(--text-faint);
 }
 
-/* ─── 相关看板卡片 ─── */
-.related-boards {
-  margin-top: 48px;
-  padding-top: 28px;
+/* ─── 抄底数学题 section ─── */
+.math-section {
+  margin-top: 56px;
+  padding-top: 40px;
   border-top: 1px solid var(--border);
 }
-.related-title {
-  font-size: 15px;
-  font-weight: 500;
+.section-hdr {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 28px;
+}
+.section-title {
+  font-family: 'AlibabaPuHuiTi', 'Microsoft YaHei', sans-serif;
+  font-weight: 900;
+  font-size: 32px;
   color: var(--text);
-  margin-bottom: 16px;
   letter-spacing: 0.4px;
+  margin-bottom: 14px;
 }
-.related-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 14px;
+.section-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 300;
+  line-height: 1.85;
 }
-.related-card {
-  display: block;
-  padding: 18px 20px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
+.loss-table-wrap {
   background: #ffffff;
-  text-decoration: none;
-  transition: border-color .18s, transform .12s, box-shadow .18s;
-  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 20px 16px;
+  overflow-x: auto;
 }
-.related-card:hover {
-  border-color: #4A6FE2;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(74,111,226,0.10);
+#lossTable {
+  display: block;
+  width: 100%;
+  height: auto;
 }
-.related-card-tag {
-  display: inline-block;
-  font-size: 10.5px;
-  color: #4A6FE2;
-  background: rgba(74,111,226,0.08);
-  padding: 2px 8px;
-  border-radius: 999px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-  margin-bottom: 10px;
-}
-.related-card-title {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 8px;
-  line-height: 1.4;
-}
-.related-card-desc {
+.loss-table-note {
+  margin-top: 14px;
   font-size: 12.5px;
   color: var(--text-muted);
   font-weight: 300;
-  line-height: 1.65;
+  text-align: center;
+}
+.loss-table-note b { color: #155a1a; font-weight: 600; }
+.loss-table-note code {
+  font-family: 'SF Mono', Menlo, monospace;
+  font-size: 12px;
+  padding: 1px 5px;
+  background: #f4f5f7;
+  border-radius: 3px;
 }
 
 /* ─── 页脚 ─── */

@@ -42,9 +42,34 @@
         });
       });
 
-      // 导图按钮
+      // 导图按钮 · 热力图
       const btn = document.getElementById('btnExport');
       btn.addEventListener('click', () => exportHighRes(btn));
+
+      // 抄底数学题 · 屏幕渲染
+      const lossCanvas = document.getElementById('lossTable');
+      if (lossCanvas && window.SW_drawLossTable) {
+        window.SW_drawLossTable(lossCanvas, {
+          exportMode: false,
+          scale: window.devicePixelRatio || 1
+        });
+        // 尺寸变化也重绘
+        window.addEventListener('resize', () => {
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(() => {
+            window.SW_drawLossTable(lossCanvas, {
+              exportMode: false,
+              scale: window.devicePixelRatio || 1
+            });
+          });
+        });
+      }
+
+      // 导图按钮 · 抄底表
+      const btnLoss = document.getElementById('btnExportLossTable');
+      if (btnLoss) {
+        btnLoss.addEventListener('click', () => exportLossHighRes(btnLoss));
+      }
 
     } catch (err) {
       console.error('[A 股看板] 初始化失败', err);
@@ -129,6 +154,40 @@
           const a = document.createElement('a');
           a.href = url;
           a.download = `申万一级行业年度涨跌幅_2005-2026.png`;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+          btn.textContent = '✓ 已下载';
+          setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 1500);
+        }, 'image/png');
+      } catch (e) {
+        console.error(e);
+        btn.textContent = '导出失败';
+        setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 2000);
+      }
+    }, 50);
+  }
+
+  function exportLossHighRes(btn) {
+    const origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = '正在生成 3000px 高清图…';
+    setTimeout(() => {
+      try {
+        const offscreen = document.createElement('canvas');
+        window.SW_drawLossTable(offscreen, { exportMode: true, scale: 1 });
+        offscreen.toBlob((blob) => {
+          if (!blob) {
+            btn.textContent = '导出失败,请重试';
+            setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 2000);
+            return;
+          }
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = '关于抄底的一道基础数学题.png';
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);

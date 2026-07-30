@@ -6,7 +6,7 @@
   <title>申万一级行业年度涨跌幅 · A 股看板</title>
   <meta name="description" content="申万一级行业 2005—2026 年度涨跌幅热力图，蓝跌红涨，一眼看完 22 年 A 股行业轮动。">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20260730131041">
+  <link rel="stylesheet" href="css/style.css?v=20260730134626">
 </head>
 <body>
 
@@ -37,14 +37,23 @@
     <span class="action-hint">PNG 格式 · 适合公众号长图 / 微信群分享</span>
   </section>
 
-  <section class="related-boards">
-    <h2 class="related-title">相关看板</h2>
-    <div class="related-grid">
-      <a class="related-card" href="math-lesson/">
-        <div class="related-card-tag">静态 · 认知</div>
-        <h3 class="related-card-title">关于抄底的一道基础数学题</h3>
-        <p class="related-card-desc">不同买入价与现价的亏损对照表——跌得越多,反弹回本越难。任何加仓决定前值得算一遍的题。</p>
-      </a>
+  <section class="math-section">
+    <div class="section-hdr">
+      <h2 class="section-title">关于抄底的一道基础数学题</h2>
+      <p class="section-desc">
+        一只股票从 100 元跌到 10 元,并不是"再跌 90% 就归零"——而是"你如果 10 元买入,也要涨回 100 元才回本"。
+        这张表把这道谁都会算但很少有人在下单前真的算过的题拉出来给你看。
+      </p>
+    </div>
+    <div class="loss-table-wrap">
+      <canvas id="lossTable" aria-label="抄底数学题:不同买入价下的亏损幅度对照"></canvas>
+    </div>
+    <div class="loss-table-note">
+      注: <b>/</b> 表示该买入价尚未被触及；表内数值 = <code>(现价 − 买入价) / 买入价</code>
+    </div>
+    <div class="action-bar">
+      <button id="btnExportLossTable" class="btn-primary" type="button">下载 3000px 抄底表</button>
+      <span class="action-hint">PNG · 适合公众号长图 / 微信群分享</span>
     </div>
   </section>
 
@@ -72,9 +81,10 @@
 
 </main>
 
-<script src="js/data.js?v=20260730131041"></script>
-<script src="js/heatmap.js?v=20260730131041"></script>
-<script src="js/main.js?v=20260730131041"></script>
+<script src="js/data.js?v=20260730134626"></script>
+<script src="js/heatmap.js?v=20260730134626"></script>
+<script src="js/loss-table.js?v=20260730134626"></script>
+<script src="js/main.js?v=20260730134626"></script>
 
 </body>
 </html>
