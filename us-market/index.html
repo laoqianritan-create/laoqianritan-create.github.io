@@ -8,14 +8,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260730110628">
-<link rel="stylesheet" href="css/chronicle.css?v=20260730110628">
+<link rel="stylesheet" href="style.css?v=20260730130311">
+<link rel="stylesheet" href="css/chronicle.css?v=20260730130311">
 </head>
 <body>
 
 <header class="header" id="header">
   <div class="header-inner">
     <div class="header-title">Big Picture</div>
+    <div class="header-freshness" id="headerFreshness" title="数据更新时间(每日 09:30 + 22:00 自动刷)">
+      <span class="hf-dot" aria-hidden="true"></span>
+      <span class="hf-text">加载中…</span>
+    </div>
     <nav class="nav" id="nav">
       <div class="nav-group active" data-category="sp500">
         <a class="nav-item active" href="#panel-price" data-panel="panel-price">走势</a>
@@ -1103,8 +1107,9 @@
   </div>
 </footer>
 
-<script type="module" src="js/panels.js?v=20260730110628"></script>
-<script defer src="js/hero-curve.js?v=20260730110628"></script>
+<script src="js/freshness.js?v=20260730130311"></script>
+<script type="module" src="js/panels.js?v=20260730130311"></script>
+<script defer src="js/hero-curve.js?v=20260730130311"></script>
 
 </body>
 </html>
