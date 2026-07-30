@@ -2,10 +2,10 @@
   "series_id": "IORB",
   "friendly": "iorb",
   "source": "FRED",
-  "fetched": "2026-07-29",
-  "count": 1827,
+  "fetched": "2026-07-30",
+  "count": 1828,
   "latest": {
-    "date": "2026-07-29",
+    "date": "2026-07-30",
     "value": 3.65
   },
   "data": [
@@ -7315,6 +7315,10 @@
     },
     {
       "date": "2026-07-29",
+      "value": 3.65
+    },
+    {
+      "date": "2026-07-30",
       "value": 3.65
     }
   ]
