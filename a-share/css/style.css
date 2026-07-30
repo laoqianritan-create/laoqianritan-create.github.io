@@ -71,6 +71,39 @@ html, body {
   letter-spacing: 0.3px;
 }
 
+/* ─── 数据更新时间(顶部显眼) ─── */
+.freshness-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #f5f7fa;
+  border: 1px solid #e5e7eb;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text);
+}
+.freshness-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34,197,94,0.15);
+}
+.freshness-strip.is-stale .freshness-dot { background: #f59e0b; box-shadow: 0 0 0 4px rgba(245,158,11,0.15); }
+.freshness-strip.is-old   .freshness-dot { background: #e65a56; box-shadow: 0 0 0 4px rgba(230,90,86,0.15); }
+.freshness-text b {
+  font-weight: 600;
+  color: var(--text);
+}
+.freshness-hint {
+  color: var(--text-muted);
+  font-weight: 300;
+  margin-left: 6px;
+}
+
 /* ─── 色条 ─── */
 .legend-bar {
   display: flex;

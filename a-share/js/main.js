@@ -20,6 +20,9 @@
         }
       }
 
+      // 顶部数据新鲜度徽章
+      renderFreshness(dataPayload);
+
       // 屏幕渲染
       const canvas = document.getElementById('heatmap');
       window.SW_drawHeatmap(canvas, dataPayload, {
@@ -53,6 +56,49 @@
         </div>`;
       }
     }
+  }
+
+  /** 计算数据陈旧度并渲染顶部徽章 */
+  function renderFreshness(payload) {
+    const strip = document.getElementById('freshnessStrip');
+    if (!strip) return;
+    const asOf = payload.ytdAsOf || payload.updated;
+    if (!asOf) {
+      strip.querySelector('.freshness-text').textContent = '数据日期未知';
+      strip.classList.add('is-old');
+      return;
+    }
+    const asOfDate = new Date(asOf + 'T00:00:00');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const diffDays = Math.round((today - asOfDate) / 86400000);
+
+    // 计算 diff 里的交易日数（跳过周末，近似估算）
+    let tdDiff = 0;
+    const cur = new Date(asOfDate);
+    while (cur < today) {
+      cur.setDate(cur.getDate() + 1);
+      if (cur.getDay() !== 0 && cur.getDay() !== 6) tdDiff++;
+    }
+
+    let cls = '';
+    let statusText = '';
+    if (tdDiff === 0) {
+      statusText = '最新';
+    } else if (tdDiff <= 2) {
+      statusText = `${tdDiff} 个交易日前`;
+    } else if (tdDiff <= 5) {
+      cls = 'is-stale';
+      statusText = `${tdDiff} 个交易日前`;
+    } else {
+      cls = 'is-old';
+      statusText = `${tdDiff} 个交易日前 · 可能延迟`;
+    }
+
+    if (cls) strip.classList.add(cls);
+    strip.querySelector('.freshness-text').innerHTML =
+      `数据更新至 <b>${asOf}</b>` +
+      `<span class="freshness-hint">· ${statusText} · 每交易日 16:00 自动刷新</span>`;
   }
 
   function exportHighRes(btn) {
