@@ -1,14 +1,14 @@
 {
-  "updated": "2026-05-16",
+  "updated": "2026-08-03",
   "ticker": "^NDX",
   "source": "Year-end levels from ndx_daily.json (price-return basis, excluding dividends)",
   "latestYear": 2026,
-  "latestDate": "2026-05-15",
+  "latestDate": "2026-07-31",
   "latestIsYtd": true,
-  "average": 18.21,
+  "average": 18.13,
   "positiveYears": 34,
   "totalYears": 41,
-  "withinAvgPlusMinus2": 5,
+  "withinAvgPlusMinus2": 4,
   "buckets": [
     {
       "key": "lt_-40",
@@ -302,7 +302,7 @@
     },
     {
       "year": 2026,
-      "value": 15.35
+      "value": 11.98
     }
   ]
 }

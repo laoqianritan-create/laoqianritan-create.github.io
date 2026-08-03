@@ -1,16 +1,16 @@
 {
-  "updated": "2026-04-02",
+  "updated": "2026-08-03",
   "source": {
     "name": "State Street SPDR S&P 500 ETF Trust",
-    "url": "https://www.ssga.com/us/en/intermediary/etfs/spdr-sp-500-etf-trust-spy",
-    "note": "Index Sector Breakdown as of 2026-04-02"
+    "url": "https://finance.yahoo.com/quote/SPY/holdings",
+    "note": "Index Sector Breakdown as of 2026-08-03"
   },
   "sectors": [
     {
       "id": "information-technology",
       "name": "Information Technology",
       "english": "Information Technology",
-      "weight": 33.27,
+      "weight": 38.55,
       "color": "#2563eb",
       "examples": [
         "NVIDIA",
@@ -23,7 +23,7 @@
       "id": "financials",
       "name": "Financials",
       "english": "Financials",
-      "weight": 12.55,
+      "weight": 11.55,
       "color": "#0f766e",
       "examples": [
         "Berkshire Hathaway",
@@ -36,7 +36,7 @@
       "id": "communication-services",
       "name": "Communication Services",
       "english": "Communication Services",
-      "weight": 10.37,
+      "weight": 9.9,
       "color": "#7c3aed",
       "examples": [
         "Alphabet",
@@ -49,7 +49,7 @@
       "id": "consumer-discretionary",
       "name": "Consumer Discretionary",
       "english": "Consumer Discretionary",
-      "weight": 9.76,
+      "weight": 9.49,
       "color": "#f97316",
       "examples": [
         "Amazon",
@@ -62,7 +62,7 @@
       "id": "health-care",
       "name": "Health Care",
       "english": "Health Care",
-      "weight": 9.32,
+      "weight": 8.89,
       "color": "#dc2626",
       "examples": [
         "Eli Lilly",
@@ -75,7 +75,7 @@
       "id": "industrials",
       "name": "Industrials",
       "english": "Industrials",
-      "weight": 9.06,
+      "weight": 8.45,
       "color": "#475569",
       "examples": [
         "GE Aerospace",
@@ -88,7 +88,7 @@
       "id": "consumer-staples",
       "name": "Consumer Staples",
       "english": "Consumer Staples",
-      "weight": 5.23,
+      "weight": 4.52,
       "color": "#65a30d",
       "examples": [
         "Walmart",
@@ -101,7 +101,7 @@
       "id": "energy",
       "name": "Energy",
       "english": "Energy",
-      "weight": 3.86,
+      "weight": 2.98,
       "color": "#b45309",
       "examples": [
         "Exxon Mobil",
@@ -114,7 +114,7 @@
       "id": "utilities",
       "name": "Utilities",
       "english": "Utilities",
-      "weight": 2.52,
+      "weight": 2.2,
       "color": "#0891b2",
       "examples": [
         "NextEra Energy",
@@ -124,28 +124,28 @@
       "note": "Steady dividends and high rate sensitivity."
     },
     {
-      "id": "materials",
-      "name": "Materials",
-      "english": "Materials",
-      "weight": 2.08,
-      "color": "#9333ea",
-      "examples": [
-        "Linde",
-        "Sherwin-Williams",
-        "Ecolab"
-      ],
-      "note": "Chemicals, industrial gases, and coatings drive the weight."
-    },
-    {
       "id": "real-estate",
-      "name": "Real Estate",
+      "name": "Materials",
       "english": "Real Estate",
-      "weight": 1.97,
+      "weight": 1.83,
       "color": "#ec4899",
       "examples": [
         "Prologis",
         "American Tower",
         "Equinix"
+      ],
+      "note": "Chemicals, industrial gases, and coatings drive the weight."
+    },
+    {
+      "id": "materials",
+      "name": "Real Estate",
+      "english": "Materials",
+      "weight": 1.65,
+      "color": "#9333ea",
+      "examples": [
+        "Linde",
+        "Sherwin-Williams",
+        "Ecolab"
       ],
       "note": "REITs remain a small weight under rate pressure."
     }
