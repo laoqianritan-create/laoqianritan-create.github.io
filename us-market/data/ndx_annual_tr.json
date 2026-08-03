@@ -3,9 +3,9 @@
   "ticker": "^NDX",
   "source": "ndx_daily.json 年末点位（价格回报口径，不含股息）",
   "latestYear": 2026,
-  "latestDate": "2026-07-31",
+  "latestDate": "2026-08-03",
   "latestIsYtd": true,
-  "average": 18.13,
+  "average": 18.14,
   "positiveYears": 34,
   "totalYears": 41,
   "withinAvgPlusMinus2": 4,
@@ -302,7 +302,7 @@
     },
     {
       "year": 2026,
-      "value": 11.98
+      "value": 12.59
     }
   ]
 }
