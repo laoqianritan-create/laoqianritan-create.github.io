@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-03",
+  "updated": "2026-08-04",
   "label": "AIAE - Aggregate Investor Allocation to Equities",
   "source": "FRED Z.1 Financial Accounts of US (5 borrower classes + Nonfin Corp Equity Liability)",
   "formula": "Equity MV / (Equity MV + Sum of 5 Borrower Liabilities)",
@@ -11,8 +11,8 @@
     "historical_min": 0.200493,
     "historical_max": 0.477616,
     "historical_percentile": 0.9803,
-    "current_10y_yield": 0.046799999999999994,
-    "implied_equity_risk_premium": -0.06869,
+    "current_10y_yield": 0.0475,
+    "implied_equity_risk_premium": -0.06939,
     "regression": {
       "alpha": 0.266338,
       "beta": -0.62745,
