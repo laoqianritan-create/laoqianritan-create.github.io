@@ -1,16 +1,16 @@
 {
-  "updated": "2026-08-06",
+  "updated": "2026-08-07",
   "source": {
     "name": "State Street SPDR S&P 500 ETF Trust",
     "url": "https://finance.yahoo.com/quote/SPY/holdings",
-    "note": "Index Sector Breakdown as of 2026-08-06"
+    "note": "Index Sector Breakdown as of 2026-08-07"
   },
   "sectors": [
     {
       "id": "information-technology",
       "name": "Information Technology",
       "english": "Information Technology",
-      "weight": 38.55,
+      "weight": 37.4,
       "color": "#2563eb",
       "examples": [
         "NVIDIA",
@@ -23,7 +23,7 @@
       "id": "financials",
       "name": "Financials",
       "english": "Financials",
-      "weight": 11.55,
+      "weight": 12.24,
       "color": "#0f766e",
       "examples": [
         "Berkshire Hathaway",
@@ -36,7 +36,7 @@
       "id": "communication-services",
       "name": "Communication Services",
       "english": "Communication Services",
-      "weight": 9.9,
+      "weight": 9.91,
       "color": "#7c3aed",
       "examples": [
         "Alphabet",
@@ -49,7 +49,7 @@
       "id": "consumer-discretionary",
       "name": "Consumer Discretionary",
       "english": "Consumer Discretionary",
-      "weight": 9.49,
+      "weight": 9.57,
       "color": "#f97316",
       "examples": [
         "Amazon",
@@ -62,7 +62,7 @@
       "id": "health-care",
       "name": "Health Care",
       "english": "Health Care",
-      "weight": 8.89,
+      "weight": 9.1,
       "color": "#dc2626",
       "examples": [
         "Eli Lilly",
@@ -75,7 +75,7 @@
       "id": "industrials",
       "name": "Industrials",
       "english": "Industrials",
-      "weight": 8.45,
+      "weight": 8.16,
       "color": "#475569",
       "examples": [
         "GE Aerospace",
@@ -88,7 +88,7 @@
       "id": "consumer-staples",
       "name": "Consumer Staples",
       "english": "Consumer Staples",
-      "weight": 4.52,
+      "weight": 4.61,
       "color": "#65a30d",
       "examples": [
         "Walmart",
@@ -101,7 +101,7 @@
       "id": "energy",
       "name": "Energy",
       "english": "Energy",
-      "weight": 2.98,
+      "weight": 3.36,
       "color": "#b45309",
       "examples": [
         "Exxon Mobil",
@@ -114,7 +114,7 @@
       "id": "utilities",
       "name": "Utilities",
       "english": "Utilities",
-      "weight": 2.2,
+      "weight": 2.15,
       "color": "#0891b2",
       "examples": [
         "NextEra Energy",
@@ -127,7 +127,7 @@
       "id": "real-estate",
       "name": "Materials",
       "english": "Real Estate",
-      "weight": 1.83,
+      "weight": 1.88,
       "color": "#ec4899",
       "examples": [
         "Prologis",
@@ -140,7 +140,7 @@
       "id": "materials",
       "name": "Real Estate",
       "english": "Materials",
-      "weight": 1.65,
+      "weight": 1.62,
       "color": "#9333ea",
       "examples": [
         "Linde",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-07 10:25:24",
+  "generated_at": "2026-08-07 10:38:32",
   "today": "2026-08-07",
   "overall": "critical",
   "stale_count": 1,
@@ -7,8 +7,8 @@
     {
       "file": "sp500_price.json",
       "label": "S&P 500 Daily",
-      "updated": "2026-08-05",
-      "days_old": 2,
+      "updated": "2026-08-06",
+      "days_old": 1,
       "status": "fresh"
     },
     {
@@ -49,8 +49,8 @@
     {
       "file": "buffett.json",
       "label": "Buffett Indicator",
-      "updated": "2026-08-05",
-      "days_old": 2,
+      "updated": "2026-08-06",
+      "days_old": 1,
       "status": "fresh"
     },
     {
@@ -63,8 +63,8 @@
     {
       "file": "ndx_daily.json",
       "label": "Nasdaq 100 Daily",
-      "updated": "2026-08-06",
-      "days_old": 1,
+      "updated": "2026-08-07",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -77,8 +77,8 @@
     {
       "file": "nasdaq_composite.json",
       "label": "Nasdaq Composite Monthly",
-      "updated": "2026-08-06",
-      "days_old": 1,
+      "updated": "2026-08-07",
+      "days_old": 0,
       "status": "fresh"
     },
     {
