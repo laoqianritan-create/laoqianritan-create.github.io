@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-08 00:14:14",
+  "generated_at": "2026-08-08 11:38:13",
   "today": "2026-08-08",
   "overall": "critical",
   "stale_count": 1,
@@ -21,8 +21,8 @@
     {
       "file": "sp500_pe.json",
       "label": "Shiller PE",
-      "updated": "2026-08-06",
-      "days_old": 2,
+      "updated": "2026-08-07",
+      "days_old": 1,
       "status": "fresh"
     },
     {
@@ -42,8 +42,8 @@
     {
       "file": "sp500_annual_returns_long.json",
       "label": "S&P 500 Annual Returns",
-      "updated": "2026-08-07",
-      "days_old": 1,
+      "updated": "2026-08-08",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -56,15 +56,15 @@
     {
       "file": "aiae.json",
       "label": "AIAE Allocation",
-      "updated": "2026-08-07",
-      "days_old": 1,
+      "updated": "2026-08-08",
+      "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ndx_daily.json",
       "label": "Nasdaq 100 Daily",
-      "updated": "2026-08-07",
-      "days_old": 1,
+      "updated": "2026-08-08",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -77,16 +77,16 @@
     {
       "file": "nasdaq_composite.json",
       "label": "Nasdaq Composite Monthly",
-      "updated": "2026-08-07",
-      "days_old": 1,
+      "updated": "2026-08-08",
+      "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "dow_jones_century.json",
       "label": "Dow Jones Century",
-      "updated": "2026-08-05",
-      "days_old": 3,
-      "status": "recent"
+      "updated": "2026-08-06",
+      "days_old": 2,
+      "status": "fresh"
     }
   ]
 }
