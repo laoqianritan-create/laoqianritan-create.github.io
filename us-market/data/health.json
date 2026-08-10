@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-10 01:33:34",
+  "generated_at": "2026-08-10 10:14:48",
   "today": "2026-08-10",
   "overall": "critical",
   "stale_count": 2,
@@ -42,8 +42,8 @@
     {
       "file": "sp500_annual_returns_long.json",
       "label": "标普 500 年回报",
-      "updated": "2026-08-09",
-      "days_old": 1,
+      "updated": "2026-08-10",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -56,15 +56,15 @@
     {
       "file": "aiae.json",
       "label": "AIAE 仓位",
-      "updated": "2026-08-09",
-      "days_old": 1,
+      "updated": "2026-08-10",
+      "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ndx_daily.json",
       "label": "纳指 100 日线",
-      "updated": "2026-08-09",
-      "days_old": 1,
+      "updated": "2026-08-10",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -77,8 +77,8 @@
     {
       "file": "nasdaq_composite.json",
       "label": "纳指综指月线",
-      "updated": "2026-08-09",
-      "days_old": 1,
+      "updated": "2026-08-10",
+      "days_old": 0,
       "status": "fresh"
     },
     {
