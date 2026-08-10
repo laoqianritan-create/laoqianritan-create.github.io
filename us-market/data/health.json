@@ -1,83 +1,83 @@
 {
-  "generated_at": "2026-08-09 12:41:08",
-  "today": "2026-08-09",
+  "generated_at": "2026-08-10 01:33:34",
+  "today": "2026-08-10",
   "overall": "critical",
-  "stale_count": 1,
+  "stale_count": 2,
   "sources": [
     {
       "file": "sp500_price.json",
       "label": "标普 500 日线",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "sp500_century.json",
       "label": "标普 500 月线百年",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "sp500_pe.json",
       "label": "席勒市盈率",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "sp500_eps.json",
       "label": "标普 500 EPS",
       "updated": "2026-03-31",
-      "days_old": 131,
+      "days_old": 132,
       "status": "dead"
     },
     {
       "file": "sp500_vix.json",
       "label": "VIX",
       "updated": "2026-08-06",
-      "days_old": 3,
-      "status": "recent"
+      "days_old": 4,
+      "status": "dead"
     },
     {
       "file": "sp500_annual_returns_long.json",
       "label": "标普 500 年回报",
       "updated": "2026-08-09",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "buffett.json",
       "label": "巴菲特指标",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "aiae.json",
       "label": "AIAE 仓位",
       "updated": "2026-08-09",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ndx_daily.json",
       "label": "纳指 100 日线",
       "updated": "2026-08-09",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "nasdaq100_panels.json",
       "label": "纳指 100 成分股",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "nasdaq_composite.json",
       "label": "纳指综指月线",
-      "updated": "2026-08-08",
+      "updated": "2026-08-09",
       "days_old": 1,
       "status": "fresh"
     },
@@ -85,8 +85,8 @@
       "file": "dow_jones_century.json",
       "label": "道指百年",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     }
   ]
 }

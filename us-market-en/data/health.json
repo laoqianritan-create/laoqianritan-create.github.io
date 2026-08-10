@@ -1,83 +1,83 @@
 {
-  "generated_at": "2026-08-09 12:41:08",
-  "today": "2026-08-09",
+  "generated_at": "2026-08-10 01:33:34",
+  "today": "2026-08-10",
   "overall": "critical",
-  "stale_count": 1,
+  "stale_count": 2,
   "sources": [
     {
       "file": "sp500_price.json",
       "label": "S&P 500 Daily",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "sp500_century.json",
       "label": "S&P 500 Monthly (Century)",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "sp500_pe.json",
       "label": "Shiller PE",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "sp500_eps.json",
       "label": "S&P 500 EPS",
       "updated": "2026-03-31",
-      "days_old": 131,
+      "days_old": 132,
       "status": "dead"
     },
     {
       "file": "sp500_vix.json",
       "label": "VIX",
       "updated": "2026-08-06",
-      "days_old": 3,
-      "status": "recent"
+      "days_old": 4,
+      "status": "dead"
     },
     {
       "file": "sp500_annual_returns_long.json",
       "label": "S&P 500 Annual Returns",
       "updated": "2026-08-09",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "buffett.json",
       "label": "Buffett Indicator",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "aiae.json",
       "label": "AIAE Allocation",
       "updated": "2026-08-09",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ndx_daily.json",
       "label": "Nasdaq 100 Daily",
       "updated": "2026-08-09",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "nasdaq100_panels.json",
       "label": "Nasdaq 100 Constituents",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     },
     {
       "file": "nasdaq_composite.json",
       "label": "Nasdaq Composite Monthly",
-      "updated": "2026-08-08",
+      "updated": "2026-08-09",
       "days_old": 1,
       "status": "fresh"
     },
@@ -85,8 +85,8 @@
       "file": "dow_jones_century.json",
       "label": "Dow Jones Century",
       "updated": "2026-08-07",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent"
     }
   ]
 }

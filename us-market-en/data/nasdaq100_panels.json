@@ -155,7 +155,7 @@
       "subsector": "Software",
       "price": 499.99,
       "marketCap": null,
-      "dividendYield": 0.73,
+      "dividendYield": null,
       "return1y": -3.41,
       "ytdReturn": 6.19,
       "qqqWeight": 5.58,
@@ -646,8 +646,8 @@
       "price": 214.42,
       "marketCap": null,
       "dividendYield": 0.78,
-      "return1y": 0.78,
-      "ytdReturn": 1.18,
+      "return1y": null,
+      "ytdReturn": null,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1214,7 +1214,7 @@
     },
     {
       "ticker": "PAYX",
-      "name": "Paychex, Inc.",
+      "name": "Paychex",
       "industry": "Industrials",
       "subsector": "Diversified Commercial Services",
       "price": 120.04,
