@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-11 01:29:42",
+  "generated_at": "2026-08-11 12:40:48",
   "today": "2026-08-11",
   "overall": "critical",
   "stale_count": 2,
@@ -21,9 +21,9 @@
     {
       "file": "sp500_pe.json",
       "label": "Shiller PE",
-      "updated": "2026-08-07",
-      "days_old": 4,
-      "status": "recent"
+      "updated": "2026-08-10",
+      "days_old": 1,
+      "status": "fresh"
     },
     {
       "file": "sp500_eps.json",
