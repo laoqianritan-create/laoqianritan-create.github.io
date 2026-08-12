@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-11T17:05:37Z",
+  "updated": "2026-08-12T17:22:32Z",
   "source": "Wikipedia / WGC (fallback)",
   "source_url": "https://en.wikipedia.org/wiki/Gold_reserve",
   "method": "wikipedia-fallback",
@@ -11,14 +11,14 @@
     "国际货币基金组织": 2814.0,
     "意大利": 2451.8,
     "法国": 2437.0,
-    "俄罗斯": 2304.7,
-    "中国": 2313.4,
+    "俄罗斯": 2283.0,
+    "中国": 2366.3,
     "瑞士": 1039.9,
     "印度": 880.5,
     "日本": 845.9,
-    "其他": 19258.1
+    "其他": 19646.3
   },
-  "snapshot_total_tons": 45829.1,
+  "snapshot_total_tons": 46248.5,
   "all_countries": [
     {
       "country": "United States",
@@ -42,11 +42,11 @@
     },
     {
       "country": "China",
-      "tons": 2313.4
+      "tons": 2366.3
     },
     {
       "country": "Russia",
-      "tons": 2304.7
+      "tons": 2283.0
     },
     {
       "country": "Switzerland",
@@ -62,7 +62,7 @@
     },
     {
       "country": "Poland",
-      "tons": 632.0
+      "tons": 632.4
     },
     {
       "country": "Netherlands",
@@ -70,15 +70,19 @@
     },
     {
       "country": "Turkey",
-      "tons": 534.8
+      "tons": 530.6
     },
     {
       "country": "European Central Bank",
-      "tons": 508.4
+      "tons": 506.5
     },
     {
       "country": "Uzbekistan",
-      "tons": 415.5
+      "tons": 431.7
+    },
+    {
+      "country": "Taiwan",
+      "tons": 423.9
     },
     {
       "country": "Portugal",
@@ -86,7 +90,7 @@
     },
     {
       "country": "Kazakhstan",
-      "tons": 353.5
+      "tons": 368.4
     },
     {
       "country": "Saudi Arabia",
@@ -117,16 +121,12 @@
       "tons": 227.4
     },
     {
-      "country": "Azerbaijan",
-      "tons": 200.0
-    },
-    {
       "country": "Singapore",
-      "tons": 193.8
+      "tons": 203.7
     },
     {
-      "country": "Iraq",
-      "tons": 174.6
+      "country": "Azerbaijan",
+      "tons": 178.1
     },
     {
       "country": "Algeria",
@@ -135,6 +135,10 @@
     {
       "country": "Brazil",
       "tons": 172.4
+    },
+    {
+      "country": "Iraq",
+      "tons": 170.9
     },
     {
       "country": "Libya",
@@ -182,7 +186,11 @@
     },
     {
       "country": "Indonesia",
-      "tons": 87.0
+      "tons": 87.1
+    },
+    {
+      "country": "Czech Republic",
+      "tons": 82.4
     },
     {
       "country": "Australia",
@@ -193,16 +201,12 @@
       "tons": 79.0
     },
     {
-      "country": "Czech Republic",
-      "tons": 76.6
-    },
-    {
       "country": "United Arab Emirates",
       "tons": 74.5
     },
     {
       "country": "Jordan",
-      "tons": 70.8
+      "tons": 73.1
     },
     {
       "country": "Denmark",
@@ -218,15 +222,11 @@
     },
     {
       "country": "Serbia",
-      "tons": 54.6
+      "tons": 54.8
     },
     {
       "country": "Cambodia",
       "tons": 54.4
-    },
-    {
-      "country": "Belarus",
-      "tons": 53.8
     },
     {
       "country": "Euro area (including the ECB)",
