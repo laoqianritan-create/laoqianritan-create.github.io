@@ -1,11 +1,11 @@
 {
-  "updated": "2026-08-12",
+  "updated": "2026-08-13",
   "ticker": "^NDX",
   "source": {
     "name": "yfinance ^NDX daily",
     "note": "Price-return basis (excluding dividends)"
   },
-  "average": 18.25,
+  "average": 18.27,
   "positiveYears": 34,
   "negativeYears": 7,
   "best": {
@@ -221,7 +221,7 @@
     },
     {
       "date": "2026-12-31",
-      "value": 16.93,
+      "value": 17.86,
       "year": 2026
     }
   ]
