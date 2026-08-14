@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-13T19:00:16Z",
+  "updated": "2026-08-14T16:59:20Z",
   "source": "FRED OECD Long-Term Interest Rates · IRLTLT01* monthly series + DGS10 daily (US)",
   "source_url": "https://fred.stlouisfed.org/release?rid=205",
   "frequency": "monthly_plus_us_daily",
@@ -12880,11 +12880,15 @@
     {
       "date": "2026-08-11",
       "value": 4.7
+    },
+    {
+      "date": "2026-08-12",
+      "value": 4.68
     }
   ],
   "us_daily_latest": {
-    "date": "2026-08-11",
-    "value": 4.7
+    "date": "2026-08-12",
+    "value": 4.68
   },
   "latest": {
     "by_country": {
