@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-14",
+  "updated": "2026-08-15",
   "label": "S&P 500 Intrayear Max Drawdown vs. Full-Year Return (1928+)",
   "source": "yfinance ^GSPC daily close",
   "summary": {
@@ -1005,10 +1005,10 @@
     {
       "year": 2026,
       "dd": -0.091,
-      "tr": 0.1393,
+      "tr": 0.1378,
       "trough_date": "2026-03-30",
-      "year_end_close": 7798.99,
-      "year_end_date": "2026-08-13",
+      "year_end_close": 7788.91,
+      "year_end_date": "2026-08-14",
       "ongoing": true,
       "ath": 27
     }
