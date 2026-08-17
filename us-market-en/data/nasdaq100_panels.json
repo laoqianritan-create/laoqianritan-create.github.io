@@ -15,7 +15,7 @@
       "previousClose": 732.07,
       "changePercent": -0.14,
       "date": "2026-08-14",
-      "updatedLabel": "https://www.tipranks.com/news/stock-market-today-spy-qqq-stumble-as-consumer-sentiment-slips-and-retail-sales-slide"
+      "updatedLabel": "https://www.tipranks.com/news/voo-vs-qqq-which-etf-could-build-more-wealth-for-long-term-investors"
     }
   },
   "source": {
@@ -40,43 +40,51 @@
   "sectors": [
     {
       "name": "Technology",
-      "weight": 59.37
-    },
-    {
-      "name": "Communication Services",
-      "weight": 12.66
+      "weight": 53.6
     },
     {
       "name": "Consumer Discretionary",
-      "weight": 10.78
+      "weight": 13.04
+    },
+    {
+      "name": "Communication Services",
+      "weight": 12.61
     },
     {
       "name": "Consumer Staples",
-      "weight": 6.38
+      "weight": 4.99
     },
     {
       "name": "Industrials",
-      "weight": 4.12
+      "weight": 4.58
     },
     {
       "name": "Healthcare",
-      "weight": 3.86
+      "weight": 4.28
+    },
+    {
+      "name": "Other",
+      "weight": 3.22
     },
     {
       "name": "Utilities",
-      "weight": 1.13
+      "weight": 1.38
     },
     {
       "name": "Materials",
-      "weight": 0.95
+      "weight": 1.25
     },
     {
       "name": "Energy",
-      "weight": 0.51
+      "weight": 0.47
     },
     {
       "name": "Financials",
-      "weight": 0.23
+      "weight": 0.37
+    },
+    {
+      "name": "Real Estate",
+      "weight": 0.21
     }
   ],
   "countries": [
@@ -119,7 +127,7 @@
       "subsector": "Semiconductors",
       "price": 225.16,
       "marketCap": null,
-      "dividendYield": 0.44,
+      "dividendYield": null,
       "return1y": 23.87,
       "ytdReturn": 19.37,
       "qqqWeight": 8.5,
@@ -133,7 +141,7 @@
       "subsector": "Computer Hardware",
       "price": 305.93,
       "marketCap": null,
-      "dividendYield": 0.35,
+      "dividendYield": null,
       "return1y": 32.99,
       "ytdReturn": 13.19,
       "qqqWeight": 6.99,
@@ -147,7 +155,7 @@
       "subsector": "Software",
       "price": 495.4,
       "marketCap": null,
-      "dividendYield": 0.73,
+      "dividendYield": null,
       "return1y": -3.43,
       "ytdReturn": 5.22,
       "qqqWeight": 5.75,
@@ -161,7 +169,7 @@
       "subsector": "Semiconductors",
       "price": 971.66,
       "marketCap": null,
-      "dividendYield": 0.05,
+      "dividendYield": null,
       "return1y": 687.71,
       "ytdReturn": 208.23,
       "qqqWeight": 4.61,
@@ -203,7 +211,7 @@
       "subsector": "Software",
       "price": 345.9,
       "marketCap": null,
-      "dividendYield": 0.25,
+      "dividendYield": null,
       "return1y": 70.46,
       "ytdReturn": 9.9,
       "qqqWeight": 3.14,
@@ -217,7 +225,7 @@
       "subsector": "Semiconductors",
       "price": 392.99,
       "marketCap": null,
-      "dividendYield": 0.66,
+      "dividendYield": null,
       "return1y": 29.47,
       "ytdReturn": 13.47,
       "qqqWeight": 3.09,
@@ -329,7 +337,7 @@
       "subsector": "Semiconductors",
       "price": 507.18,
       "marketCap": null,
-      "dividendYield": 0.42,
+      "dividendYield": null,
       "return1y": 212.42,
       "ytdReturn": 89.1,
       "qqqWeight": 1.83,
@@ -497,7 +505,7 @@
       "subsector": "Semiconductors",
       "price": 389.39,
       "marketCap": null,
-      "dividendYield": 1.15,
+      "dividendYield": 1.13,
       "return1y": 70.42,
       "ytdReturn": 43.08,
       "qqqWeight": null,
@@ -511,7 +519,7 @@
       "subsector": "Diversified Commercial Services",
       "price": 272.96,
       "marketCap": null,
-      "dividendYield": 2.46,
+      "dividendYield": 2.49,
       "return1y": -7.3,
       "ytdReturn": 9.66,
       "qqqWeight": null,
@@ -581,7 +589,7 @@
       "subsector": "Biotechnology",
       "price": 415.21,
       "marketCap": null,
-      "dividendYield": 2.41,
+      "dividendYield": 2.43,
       "return1y": 46.16,
       "ytdReturn": 28.57,
       "qqqWeight": null,
@@ -694,8 +702,8 @@
       "price": 324.82,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": null,
-      "ytdReturn": null,
+      "return1y": -8.82,
+      "ytdReturn": 4.65,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -792,8 +800,8 @@
       "price": 217.02,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": null,
-      "ytdReturn": null,
+      "return1y": -14.34,
+      "ytdReturn": -1.26,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -833,7 +841,7 @@
       "subsector": "Power Generation",
       "price": 45.86,
       "marketCap": null,
-      "dividendYield": 3.68,
+      "dividendYield": 3.66,
       "return1y": 7.03,
       "ytdReturn": 6.3,
       "qqqWeight": null,
@@ -861,7 +869,7 @@
       "subsector": "Construction & Materials",
       "price": 51.02,
       "marketCap": null,
-      "dividendYield": 1.87,
+      "dividendYield": 1.88,
       "return1y": 6.15,
       "ytdReturn": 28.24,
       "qqqWeight": null,
@@ -1267,7 +1275,7 @@
       "subsector": "Soft Drinks",
       "price": 140.79,
       "marketCap": null,
-      "dividendYield": 4.21,
+      "dividendYield": 4.2,
       "return1y": -2.13,
       "ytdReturn": 0.92,
       "qqqWeight": null,
@@ -1324,8 +1332,8 @@
       "price": 80.25,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": null,
-      "ytdReturn": null,
+      "return1y": 78.45,
+      "ytdReturn": 5.61,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1337,7 +1345,7 @@
       "subsector": "Software",
       "price": 399.34,
       "marketCap": null,
-      "dividendYield": 0.92,
+      "dividendYield": 0.91,
       "return1y": -24.32,
       "ytdReturn": -7.64,
       "qqqWeight": null,
@@ -1449,7 +1457,7 @@
       "subsector": "Software",
       "price": 103.61,
       "marketCap": null,
-      "dividendYield": 2.47,
+      "dividendYield": 2.53,
       "return1y": -37.76,
       "ytdReturn": -15.47,
       "qqqWeight": null,
