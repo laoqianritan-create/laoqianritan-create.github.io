@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-18 01:09:48",
+  "generated_at": "2026-08-18 12:37:56",
   "today": "2026-08-18",
   "overall": "critical",
   "stale_count": 2,
@@ -21,9 +21,9 @@
     {
       "file": "sp500_pe.json",
       "label": "席勒市盈率",
-      "updated": "2026-08-14",
-      "days_old": 4,
-      "status": "recent"
+      "updated": "2026-08-17",
+      "days_old": 1,
+      "status": "fresh"
     },
     {
       "file": "sp500_eps.json",
@@ -42,29 +42,29 @@
     {
       "file": "sp500_annual_returns_long.json",
       "label": "标普 500 年回报",
-      "updated": "2026-08-17",
-      "days_old": 1,
+      "updated": "2026-08-18",
+      "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "buffett.json",
       "label": "巴菲特指标",
-      "updated": "2026-08-14",
-      "days_old": 4,
-      "status": "recent"
-    },
-    {
-      "file": "aiae.json",
-      "label": "AIAE 仓位",
       "updated": "2026-08-17",
       "days_old": 1,
       "status": "fresh"
     },
     {
+      "file": "aiae.json",
+      "label": "AIAE 仓位",
+      "updated": "2026-08-18",
+      "days_old": 0,
+      "status": "fresh"
+    },
+    {
       "file": "ndx_daily.json",
       "label": "纳指 100 日线",
-      "updated": "2026-08-17",
-      "days_old": 1,
+      "updated": "2026-08-18",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -77,8 +77,8 @@
     {
       "file": "nasdaq_composite.json",
       "label": "纳指综指月线",
-      "updated": "2026-08-17",
-      "days_old": 1,
+      "updated": "2026-08-18",
+      "days_old": 0,
       "status": "fresh"
     },
     {

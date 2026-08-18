@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-17",
+  "updated": "2026-08-18",
   "ticker": "^IXIC",
   "start": {
     "date": "1971-02-05",
@@ -7,9 +7,9 @@
   },
   "latest": {
     "date": "2026-08-17",
-    "value": 26741.46
+    "value": 26644.91
   },
-  "cagr": 10.59,
+  "cagr": 10.58,
   "scale": "logarithmic",
   "source": "yfinance ^IXIC daily (replaces the earlier Macrotrends monthly series)",
   "series": [
@@ -56007,7 +56007,7 @@
     },
     {
       "date": "2026-08-17",
-      "value": 26741.46
+      "value": 26644.91
     }
   ]
 }
