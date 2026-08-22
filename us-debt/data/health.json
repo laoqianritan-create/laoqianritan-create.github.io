@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-21T19:07:27Z",
+  "updated": "2026-08-22T19:56:22Z",
   "sources": [
     {
       "name": "debt-total",
@@ -8,9 +8,9 @@
       "panels": [
         "panel-debt-total"
       ],
-      "latest_data": "2026-08-19",
-      "elapsed_sec": 7.0,
-      "started_at": "2026-08-21T16:45:01Z",
+      "latest_data": "2026-08-20",
+      "elapsed_sec": 5.3,
+      "started_at": "2026-08-22T16:40:46Z",
       "error": null
     },
     {
@@ -20,9 +20,9 @@
       "panels": [
         "panel-auction"
       ],
-      "latest_data": "2026-08-21",
-      "elapsed_sec": 4.1,
-      "started_at": "2026-08-21T16:45:08Z",
+      "latest_data": "2026-08-22",
+      "elapsed_sec": 1067.9,
+      "started_at": "2026-08-22T16:40:51Z",
       "error": null
     },
     {
@@ -32,9 +32,9 @@
       "panels": [
         "panel-rate-by-type"
       ],
-      "latest_data": "2026-08-21",
-      "elapsed_sec": 2.0,
-      "started_at": "2026-08-21T16:45:12Z",
+      "latest_data": "2026-08-22",
+      "elapsed_sec": 1089.8,
+      "started_at": "2026-08-22T16:58:39Z",
       "error": null
     },
     {
@@ -44,9 +44,9 @@
       "panels": [
         "panel-yield-curve"
       ],
-      "latest_data": "2026-08-19",
-      "elapsed_sec": 971.0,
-      "started_at": "2026-08-21T16:45:14Z",
+      "latest_data": "2026-08-20",
+      "elapsed_sec": 543.6,
+      "started_at": "2026-08-22T17:16:49Z",
       "error": null
     },
     {
@@ -60,9 +60,9 @@
         "panel-deficit-gdp",
         "panel-debt-gdp"
       ],
-      "latest_data": "2026-08-21T17:01:36Z",
-      "elapsed_sec": 11.0,
-      "started_at": "2026-08-21T17:01:25Z",
+      "latest_data": "2026-08-22T17:42:55Z",
+      "elapsed_sec": 1022.5,
+      "started_at": "2026-08-22T17:25:53Z",
       "error": null
     },
     {
@@ -72,9 +72,9 @@
       "panels": [
         "panel-holders-foreign"
       ],
-      "latest_data": "2026-08-21T17:01:49Z",
-      "elapsed_sec": 12.9,
-      "started_at": "2026-08-21T17:01:36Z",
+      "latest_data": "2026-08-22T17:43:24Z",
+      "elapsed_sec": 29.1,
+      "started_at": "2026-08-22T17:42:55Z",
       "error": null
     },
     {
@@ -84,9 +84,9 @@
       "panels": [
         "panel-mandatory"
       ],
-      "latest_data": "2026-08-21T17:01:50Z",
-      "elapsed_sec": 1.1,
-      "started_at": "2026-08-21T17:01:49Z",
+      "latest_data": "2026-08-22T17:43:26Z",
+      "elapsed_sec": 1.4,
+      "started_at": "2026-08-22T17:43:24Z",
       "error": null
     },
     {
@@ -96,24 +96,24 @@
       "panels": [
         "panel-reserve-currency"
       ],
-      "latest_data": "2026-08-21T17:01:50Z",
+      "latest_data": "2026-08-22T17:43:26Z",
       "elapsed_sec": 0.0,
-      "started_at": "2026-08-21T17:01:50Z",
+      "started_at": "2026-08-22T17:43:26Z",
       "error": null
     },
     {
       "name": "mts-detail",
-      "ok": true,
+      "ok": false,
       "critical": false,
       "panels": [
         "panel-revenue-breakdown",
         "panel-spending-breakdown",
         "panel-sankey"
       ],
-      "latest_data": "2026-08-21T17:31:13Z",
-      "elapsed_sec": 1763.1,
-      "started_at": "2026-08-21T17:01:50Z",
-      "error": null
+      "latest_data": null,
+      "elapsed_sec": 6439.6,
+      "started_at": "2026-08-22T17:43:26Z",
+      "error": "timeout after 600s"
     },
     {
       "name": "gold-reserves",
@@ -122,9 +122,9 @@
       "panels": [
         "panel-gold-reserves"
       ],
-      "latest_data": "2026-08-21T17:31:15Z",
-      "elapsed_sec": 1.8,
-      "started_at": "2026-08-21T17:31:13Z",
+      "latest_data": "2026-08-22T19:30:49Z",
+      "elapsed_sec": 3.3,
+      "started_at": "2026-08-22T19:30:45Z",
       "error": null
     },
     {
@@ -136,9 +136,9 @@
         "panel-maturity",
         "panel-maturity-schedule"
       ],
-      "latest_data": "2026-08-21T17:31:24Z",
-      "elapsed_sec": 9.1,
-      "started_at": "2026-08-21T17:31:15Z",
+      "latest_data": "2026-08-22T19:31:03Z",
+      "elapsed_sec": 14.4,
+      "started_at": "2026-08-22T19:30:49Z",
       "error": null
     },
     {
@@ -148,9 +148,9 @@
       "panels": [
         "panel-holders-domestic"
       ],
-      "latest_data": "2026-08-21T17:31:27Z",
-      "elapsed_sec": 3.3,
-      "started_at": "2026-08-21T17:31:24Z",
+      "latest_data": "2026-08-22T19:31:03Z",
+      "elapsed_sec": 0.1,
+      "started_at": "2026-08-22T19:31:03Z",
       "error": null
     },
     {
@@ -162,8 +162,8 @@
         "P29-P37"
       ],
       "latest_data": null,
-      "elapsed_sec": 1098.3,
-      "started_at": "2026-08-21T17:31:28Z",
+      "elapsed_sec": 28.6,
+      "started_at": "2026-08-22T19:31:03Z",
       "error": null
     },
     {
@@ -173,9 +173,9 @@
       "panels": [
         "lab-bills-coupons"
       ],
-      "latest_data": "2026-08-21T19:06:56Z",
-      "elapsed_sec": 4630.7,
-      "started_at": "2026-08-21T17:49:46Z",
+      "latest_data": "2026-08-22T19:55:46Z",
+      "elapsed_sec": 1454.3,
+      "started_at": "2026-08-22T19:31:32Z",
       "error": null
     },
     {
@@ -185,9 +185,9 @@
       "panels": [
         "lab-g7-yields"
       ],
-      "latest_data": "2026-08-21T19:07:09Z",
-      "elapsed_sec": 12.3,
-      "started_at": "2026-08-21T19:06:56Z",
+      "latest_data": "2026-08-22T19:56:01Z",
+      "elapsed_sec": 15.0,
+      "started_at": "2026-08-22T19:55:46Z",
       "error": null
     },
     {
@@ -197,9 +197,9 @@
       "panels": [
         "panel-treasury-issuance"
       ],
-      "latest_data": "2026-08-21T19:07:27Z",
-      "elapsed_sec": 18.0,
-      "started_at": "2026-08-21T19:07:09Z",
+      "latest_data": "2026-08-22T19:56:22Z",
+      "elapsed_sec": 21.1,
+      "started_at": "2026-08-22T19:56:01Z",
       "error": null
     },
     {
@@ -209,7 +209,7 @@
       "panels": [],
       "latest_data": null,
       "elapsed_sec": 0.1,
-      "started_at": "2026-08-21T19:07:27Z",
+      "started_at": "2026-08-22T19:56:22Z",
       "error": null
     },
     {
@@ -219,13 +219,13 @@
       "panels": [],
       "latest_data": null,
       "elapsed_sec": 0.0,
-      "started_at": "2026-08-21T19:07:27Z",
+      "started_at": "2026-08-22T19:56:22Z",
       "error": null
     }
   ],
   "summary": {
-    "ok": 18,
-    "fail": 0,
+    "ok": 17,
+    "fail": 1,
     "total": 18
   }
 }
