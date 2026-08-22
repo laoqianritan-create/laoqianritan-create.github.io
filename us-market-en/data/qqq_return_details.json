@@ -162,7 +162,7 @@
       "year": 2022,
       "priceReturn": -33.07,
       "dividendReturn": 0.49,
-      "buybackYield": 0.94,
+      "buybackYield": 0.93,
       "totalReturn": -32.58
     },
     {
@@ -176,31 +176,31 @@
       "year": 2024,
       "priceReturn": 24.84,
       "dividendReturn": 0.74,
-      "buybackYield": 0.76,
+      "buybackYield": 0.75,
       "totalReturn": 25.58
     },
     {
       "year": 2025,
       "priceReturn": 20.16,
       "dividendReturn": 0.61,
-      "buybackYield": 0.86,
+      "buybackYield": 0.85,
       "totalReturn": 20.77
     },
     {
       "year": 2026,
-      "priceReturn": 16.07,
+      "priceReturn": 16.14,
       "dividendReturn": 0.27,
-      "buybackYield": 0.78,
-      "totalReturn": 16.34
+      "buybackYield": 0.84,
+      "totalReturn": 16.41
     }
   ],
   "summary": {
     "startYear": 2000,
     "endYear": 2026,
     "years": 27,
-    "avgPriceReturn": 11.86,
+    "avgPriceReturn": 11.87,
     "avgDividendReturn": 0.75,
-    "avgBuybackYield": 0.69,
+    "avgBuybackYield": 0.7,
     "avgTotalReturn": 12.61,
     "positiveTotalYears": 21,
     "bestYear": {
