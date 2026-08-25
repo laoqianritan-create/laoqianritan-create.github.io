@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24",
+  "updated": "2026-08-25",
   "stocks": [
     {
       "ticker": "AAPL",
@@ -8,7 +8,7 @@
       "return1y": 0.5079,
       "equity": 88190000000.0,
       "weight": 6.0897,
-      "price": 309.35,
+      "price": 310.34,
       "nameEn": "Apple Inc."
     },
     {
@@ -18,7 +18,7 @@
       "return1y": 0.0638,
       "equity": 390875000000.0,
       "weight": 5.918,
-      "price": 483.24,
+      "price": 487.31,
       "nameEn": "Microsoft Corporation"
     },
     {
@@ -28,7 +28,7 @@
       "return1y": 0.8912,
       "equity": 157293000000.0,
       "weight": 5.6871,
-      "price": 214.72,
+      "price": 208.48,
       "nameEn": "NVIDIA Corporation"
     },
     {
@@ -38,7 +38,7 @@
       "return1y": 0.2964,
       "equity": 411065000000.0,
       "weight": 4.1287,
-      "price": 258.63,
+      "price": 262.07,
       "nameEn": "Amazon.com, Inc."
     },
     {
@@ -48,7 +48,7 @@
       "return1y": 1.2005,
       "equity": 415265000000.0,
       "weight": 3.9441,
-      "price": 344.82,
+      "price": 348.06,
       "nameEn": "Alphabet Inc."
     },
     {
@@ -58,7 +58,7 @@
       "return1y": 0.2034,
       "equity": 217243000000.0,
       "weight": 3.0256,
-      "price": 549.9,
+      "price": 559.02,
       "nameEn": "Meta Platforms, Inc."
     },
     {
@@ -68,7 +68,7 @@
       "return1y": -0.0262,
       "equity": 717419000000.0,
       "weight": 2.2937,
-      "price": 495.82,
+      "price": 504.32,
       "nameEn": "Berkshire Hathaway Inc. New"
     },
     {
@@ -78,7 +78,7 @@
       "return1y": 0.5471,
       "equity": 82137000000.0,
       "weight": 1.7849,
-      "price": 362.86,
+      "price": 348.95,
       "nameEn": "Tesla, Inc."
     },
     {
@@ -88,7 +88,7 @@
       "return1y": 1.2651,
       "equity": 79872000000.0,
       "weight": 1.7748,
-      "price": 368.45,
+      "price": 358.76,
       "nameEn": "Broadcom Inc."
     },
     {
@@ -98,7 +98,7 @@
       "return1y": 0.5699,
       "equity": 99617000000.0,
       "weight": 1.4644,
-      "price": 103.7,
+      "price": 106.49,
       "nameEn": "Walmart Inc."
     },
     {
@@ -108,7 +108,7 @@
       "return1y": 0.3196,
       "equity": 26535000000.0,
       "weight": 1.4569,
-      "price": 1255.4,
+      "price": 1246.93,
       "nameEn": "Eli Lilly and Company"
     },
     {
@@ -118,7 +118,7 @@
       "return1y": 0.4406,
       "equity": 362438000000.0,
       "weight": 1.3358,
-      "price": 351.58,
+      "price": 356.39,
       "nameEn": "JP Morgan Chase & Co."
     },
     {
@@ -128,7 +128,7 @@
       "return1y": 0.0097,
       "equity": 38777000000.0,
       "weight": 1.2779,
-      "price": 371.04,
+      "price": 382.41,
       "nameEn": "Visa Inc."
     },
     {
@@ -138,7 +138,7 @@
       "return1y": -0.4312,
       "equity": 94110000000.0,
       "weight": 1.0788,
-      "price": 390.11,
+      "price": 398.76,
       "nameEn": "UnitedHealth Group Incorporated"
     },
     {
@@ -148,7 +148,7 @@
       "return1y": 0.0611,
       "equity": 7737000000.0,
       "weight": 0.958,
-      "price": 580.63,
+      "price": 599.86,
       "nameEn": "Mastercard Incorporated"
     },
     {
@@ -158,7 +158,7 @@
       "return1y": 0.6037,
       "equity": 259386000000.0,
       "weight": 0.9359,
-      "price": 165.11,
+      "price": 164.05,
       "nameEn": "ExxonMobil Holdings Corporation"
     },
     {
@@ -168,7 +168,7 @@
       "return1y": 0.1399,
       "equity": 32087000000.0,
       "weight": 0.873,
-      "price": 947.74,
+      "price": 971.4,
       "nameEn": "Costco Wholesale Corporation"
     },
     {
@@ -178,7 +178,7 @@
       "return1y": 0.1419,
       "equity": 26615488000.0,
       "weight": 0.8245,
-      "price": 79.59,
+      "price": 80.01,
       "nameEn": "Netflix, Inc."
     },
     {
@@ -188,7 +188,7 @@
       "return1y": 0.1612,
       "equity": 38495000000.0,
       "weight": 0.7986,
-      "price": 146.47,
+      "price": 142.45,
       "nameEn": "Oracle Corporation"
     },
     {
@@ -198,7 +198,7 @@
       "return1y": -0.0603,
       "equity": 53041000000.0,
       "weight": 0.7759,
-      "price": 144.68,
+      "price": 146.6,
       "nameEn": "Procter & Gamble Company (The)"
     },
     {
@@ -208,7 +208,7 @@
       "return1y": 0.6534,
       "equity": 81544000000.0,
       "weight": 0.741,
-      "price": 270.24,
+      "price": 273.04,
       "nameEn": "Johnson & Johnson"
     },
     {
@@ -218,7 +218,7 @@
       "return1y": 0.0215,
       "equity": 12813000000.0,
       "weight": 0.7202,
-      "price": 335.61,
+      "price": 337.43,
       "nameEn": "Home Depot, Inc. (The)"
     },
     {
@@ -228,7 +228,7 @@
       "return1y": 0.2342,
       "equity": -3270000000.0,
       "weight": 0.6472,
-      "price": 264.96,
+      "price": 264.52,
       "nameEn": "AbbVie Inc."
     },
     {
@@ -238,7 +238,7 @@
       "return1y": 0.1623,
       "equity": 32169000000.0,
       "weight": 0.6133,
-      "price": 91.1,
+      "price": 91.99,
       "nameEn": "Coca-Cola Company (The)"
     },
     {
@@ -248,7 +248,7 @@
       "return1y": -0.1835,
       "equity": 59203000000.0,
       "weight": 0.5933,
-      "price": 183.04,
+      "price": 182.62,
       "nameEn": "T-Mobile US, Inc."
     },
     {
@@ -258,7 +258,7 @@
       "return1y": 0.5056,
       "equity": 303243000000.0,
       "weight": 0.5759,
-      "price": 61.69,
+      "price": 62.33,
       "nameEn": "Bank of America Corporation"
     },
     {
@@ -268,7 +268,7 @@
       "return1y": 0.4543,
       "equity": 186450000000.0,
       "weight": 0.5241,
-      "price": 205.27,
+      "price": 203.09,
       "nameEn": "Chevron Corporation"
     },
     {
@@ -278,7 +278,7 @@
       "return1y": -0.2748,
       "equity": 59142000000.0,
       "weight": 0.5195,
-      "price": 209.17,
+      "price": 209.06,
       "nameEn": "Salesforce, Inc."
     },
     {
@@ -288,7 +288,7 @@
       "return1y": 0.1168,
       "equity": -9994000000.0,
       "weight": 0.4812,
-      "price": 188.23,
+      "price": 191.46,
       "nameEn": "Philip Morris International Inc"
     },
     {
@@ -298,7 +298,7 @@
       "return1y": 0.6084,
       "equity": 47723000000.0,
       "weight": 0.4715,
-      "price": 111.04,
+      "price": 110.23,
       "nameEn": "Cisco Systems, Inc."
     },
     {
@@ -308,7 +308,7 @@
       "return1y": -0.1526,
       "equity": 52771000000.0,
       "weight": 0.4492,
-      "price": 116.64,
+      "price": 116.67,
       "nameEn": "Abbott Laboratories"
     },
     {
@@ -318,7 +318,7 @@
       "return1y": 0.1133,
       "equity": 32648000000.0,
       "weight": 0.4448,
-      "price": 235.68,
+      "price": 231.04,
       "nameEn": "International Business Machines"
     },
     {
@@ -328,7 +328,7 @@
       "return1y": 0.3932,
       "equity": 181117000000.0,
       "weight": 0.4446,
-      "price": 83.84,
+      "price": 84.72,
       "nameEn": "Wells Fargo & Company"
     },
     {
@@ -338,7 +338,7 @@
       "return1y": 0.0414,
       "equity": -1791000000.0,
       "weight": 0.4427,
-      "price": 270.95,
+      "price": 272.54,
       "nameEn": "McDonald's Corporation"
     },
     {
@@ -348,7 +348,7 @@
       "return1y": 0.8205,
       "equity": 7387268000.0,
       "weight": 0.4399,
-      "price": 179.94,
+      "price": 175.89,
       "nameEn": "Palantir Technologies Inc."
     },
     {
@@ -358,7 +358,7 @@
       "return1y": 0.2269,
       "equity": 38245000000.0,
       "weight": 0.43,
-      "price": 487.57,
+      "price": 490.03,
       "nameEn": "Linde plc"
     },
     {
@@ -368,7 +368,7 @@
       "return1y": 0.6007,
       "equity": 52606000000.0,
       "weight": 0.4218,
-      "price": 152.55,
+      "price": 150.66,
       "nameEn": "Merck & Company, Inc."
     },
     {
@@ -378,7 +378,7 @@
       "return1y": -0.3111,
       "equity": 31210676000.0,
       "weight": 0.415,
-      "price": 185.28,
+      "price": 186.53,
       "nameEn": "Accenture plc"
     },
     {
@@ -388,7 +388,7 @@
       "return1y": 0.8258,
       "equity": 18677000000.0,
       "weight": 0.4098,
-      "price": 348.37,
+      "price": 341.84,
       "nameEn": "GE Aerospace"
     },
     {
@@ -398,7 +398,7 @@
       "return1y": 0.1479,
       "equity": 20406000000.0,
       "weight": 0.4071,
-      "price": 143.48,
+      "price": 144.67,
       "nameEn": "Pepsico, Inc."
     },
     {
@@ -408,7 +408,7 @@
       "return1y": 0.0817,
       "equity": 110533000000.0,
       "weight": 0.3874,
-      "price": 25.29,
+      "price": 25.69,
       "nameEn": "AT&T Inc."
     },
     {
@@ -418,7 +418,7 @@
       "return1y": 0.0102,
       "equity": 17824000000.0,
       "weight": 0.3802,
-      "price": 378.81,
+      "price": 373.57,
       "nameEn": "Intuitive Surgical, Inc."
     },
     {
@@ -428,7 +428,7 @@
       "return1y": 0.378,
       "equity": 33474000000.0,
       "weight": 0.3758,
-      "price": 336.0,
+      "price": 337.33,
       "nameEn": "American Express Company"
     },
     {
@@ -438,7 +438,7 @@
       "return1y": 0.217,
       "equity": 104460000000.0,
       "weight": 0.3681,
-      "price": 49.45,
+      "price": 50.15,
       "nameEn": "Verizon Communications Inc."
     },
     {
@@ -448,7 +448,7 @@
       "return1y": 0.7898,
       "equity": 111632000000.0,
       "weight": 0.3673,
-      "price": 214.2,
+      "price": 214.08,
       "nameEn": "Morgan Stanley"
     },
     {
@@ -458,7 +458,7 @@
       "return1y": 0.7178,
       "equity": 65245000000.0,
       "weight": 0.3488,
-      "price": 209.91,
+      "price": 209.22,
       "nameEn": "RTX Corporation"
     },
     {
@@ -468,7 +468,7 @@
       "return1y": 0.205,
       "equity": 53407000000.0,
       "weight": 0.3488,
-      "price": 629.27,
+      "price": 628.74,
       "nameEn": "Thermo Fisher Scientific Inc"
     },
     {
@@ -478,7 +478,7 @@
       "return1y": -0.3302,
       "equity": 12964000000.0,
       "weight": 0.3469,
-      "price": 128.48,
+      "price": 128.05,
       "nameEn": "ServiceNow, Inc."
     },
     {
@@ -488,7 +488,7 @@
       "return1y": -0.2789,
       "equity": 19055000000.0,
       "weight": 0.3399,
-      "price": 367.0,
+      "price": 369.92,
       "nameEn": "Intuit Inc."
     },
     {
@@ -498,7 +498,7 @@
       "return1y": 0.2219,
       "equity": 108476000000.0,
       "weight": 0.337,
-      "price": 107.78,
+      "price": 110.61,
       "nameEn": "Walt Disney Company (The)"
     },
     {
@@ -508,7 +508,7 @@
       "return1y": 0.9904,
       "equity": 124972000000.0,
       "weight": 0.3288,
-      "price": 1039.28,
+      "price": 1036.28,
       "nameEn": "Goldman Sachs Group, Inc. (The)"
     },
     {
@@ -518,7 +518,7 @@
       "return1y": 0.0464,
       "equity": 23073000000.0,
       "weight": 0.3238,
-      "price": 160.75,
+      "price": 158.53,
       "nameEn": "QUALCOMM Incorporated"
     },
     {
@@ -528,7 +528,7 @@
       "return1y": -0.1899,
       "equity": 30323000000.0,
       "weight": 0.3228,
-      "price": 219.28,
+      "price": 223.92,
       "nameEn": "Progressive Corporation (The)"
     },
     {
@@ -538,7 +538,7 @@
       "return1y": 1.9641,
       "equity": 62999000000.0,
       "weight": 0.3199,
-      "price": 473.25,
+      "price": 456.75,
       "nameEn": "Advanced Micro Devices, Inc."
     },
     {
@@ -548,7 +548,7 @@
       "return1y": 0.2874,
       "equity": 8658000000.0,
       "weight": 0.3188,
-      "price": 439.33,
+      "price": 443.84,
       "nameEn": "Amgen Inc."
     },
     {
@@ -558,7 +558,7 @@
       "return1y": -0.2961,
       "equity": 11433000000.0,
       "weight": 0.3168,
-      "price": 275.3,
+      "price": 276.27,
       "nameEn": "Adobe Inc."
     },
     {
@@ -568,7 +568,7 @@
       "return1y": 0.4742,
       "equity": 16273000000.0,
       "weight": 0.3146,
-      "price": 264.36,
+      "price": 258.94,
       "nameEn": "Texas Instruments Incorporated"
     },
     {
@@ -578,7 +578,7 @@
       "return1y": 0.1123,
       "equity": 27041000000.0,
       "weight": 0.3095,
-      "price": 78.8,
+      "price": 79.29,
       "nameEn": "Uber Technologies, Inc."
     },
     {
@@ -588,7 +588,7 @@
       "return1y": 0.0951,
       "equity": -5578000000.0,
       "weight": 0.3088,
-      "price": 209.62,
+      "price": 213.36,
       "nameEn": "Booking Holdings Inc. Common St"
     },
     {
@@ -598,7 +598,7 @@
       "return1y": 1.8349,
       "equity": 21318000000.0,
       "weight": 0.2976,
-      "price": 827.9,
+      "price": 811.02,
       "nameEn": "Caterpillar, Inc."
     },
     {
@@ -608,7 +608,7 @@
       "return1y": -0.0044,
       "equity": 31127000000.0,
       "weight": 0.2967,
-      "price": 431.29,
+      "price": 435.42,
       "nameEn": "S&P Global Inc."
     },
     {
@@ -618,7 +618,7 @@
       "return1y": -0.3098,
       "equity": 24233000000.0,
       "weight": 0.2911,
-      "price": 50.37,
+      "price": 49.01,
       "nameEn": "Boston Scientific Corporation"
     },
     {
@@ -628,7 +628,7 @@
       "return1y": 0.3587,
       "equity": 10190000000.0,
       "weight": 0.2871,
-      "price": 140.53,
+      "price": 140.71,
       "nameEn": "TJX Companies, Inc. (The)"
     },
     {
@@ -638,7 +638,7 @@
       "return1y": 0.2475,
       "equity": 55888000000.0,
       "weight": 0.2839,
-      "price": 1156.55,
+      "price": 1172.61,
       "nameEn": "BlackRock, Inc."
     },
     {
@@ -648,7 +648,7 @@
       "return1y": 0.501,
       "equity": 54608000000.0,
       "weight": 0.2834,
-      "price": 83.65,
+      "price": 84.1,
       "nameEn": "NextEra Energy, Inc."
     },
     {
@@ -658,7 +658,7 @@
       "return1y": 0.015,
       "equity": 22420000000.0,
       "weight": 0.2824,
-      "price": 329.45,
+      "price": 327.81,
       "nameEn": "Stryker Corporation"
     },
     {
@@ -668,7 +668,7 @@
       "return1y": 0.1309,
       "equity": 52534000000.0,
       "weight": 0.2796,
-      "price": 218.85,
+      "price": 215.11,
       "nameEn": "Danaher Corporation"
     },
     {
@@ -678,7 +678,7 @@
       "return1y": 0.3998,
       "equity": 49425000000.0,
       "weight": 0.2782,
-      "price": 112.3,
+      "price": 113.65,
       "nameEn": "Charles Schwab Corporation (The"
     },
     {
@@ -688,7 +688,7 @@
       "return1y": 0.2243,
       "equity": 18467000000.0,
       "weight": 0.2754,
-      "price": 308.05,
+      "price": 309.86,
       "nameEn": "Union Pacific Corporation"
     },
     {
@@ -698,7 +698,7 @@
       "return1y": -0.1118,
       "equity": 96903000000.0,
       "weight": 0.2712,
-      "price": 26.85,
+      "price": 27.02,
       "nameEn": "Comcast Corporation"
     },
     {
@@ -708,7 +708,7 @@
       "return1y": 0.4087,
       "equity": 22703000000.0,
       "weight": 0.2672,
-      "price": 146.12,
+      "price": 146.74,
       "nameEn": "Gilead Sciences, Inc."
     },
     {
@@ -718,7 +718,7 @@
       "return1y": 0.2988,
       "equity": 13904000000.0,
       "weight": 0.2638,
-      "price": 215.9,
+      "price": 214.77,
       "nameEn": "Honeywell International Inc."
     },
     {
@@ -728,7 +728,7 @@
       "return1y": 0.3045,
       "equity": 86476000000.0,
       "weight": 0.2598,
-      "price": 28.07,
+      "price": 27.97,
       "nameEn": "Pfizer, Inc."
     },
     {
@@ -738,7 +738,7 @@
       "return1y": 0.1628,
       "equity": -9917000000.0,
       "weight": 0.2547,
-      "price": 216.09,
+      "price": 216.98,
       "nameEn": "Lowe's Companies, Inc."
     },
     {
@@ -748,7 +748,7 @@
       "return1y": -0.0602,
       "equity": 18665800000.0,
       "weight": 0.2525,
-      "price": 548.05,
+      "price": 547.59,
       "nameEn": "Vertex Pharmaceuticals Incorpor"
     },
     {
@@ -758,7 +758,7 @@
       "return1y": 0.4892,
       "equity": 26300000000.0,
       "weight": 0.2504,
-      "price": 647.47,
+      "price": 648.64,
       "nameEn": "Deere & Company"
     },
     {
@@ -768,7 +768,7 @@
       "return1y": 2.0172,
       "equity": 21717000000.0,
       "weight": 0.248,
-      "price": 492.32,
+      "price": 484.19,
       "nameEn": "Applied Materials, Inc."
     },
     {
@@ -778,7 +778,7 @@
       "return1y": 1.1387,
       "equity": 212291000000.0,
       "weight": 0.2464,
-      "price": 131.65,
+      "price": 131.72,
       "nameEn": "Citigroup, Inc."
     },
     {
@@ -788,7 +788,7 @@
       "return1y": 0.5625,
       "equity": 5454000000.0,
       "weight": 0.2459,
-      "price": 214.2,
+      "price": 210.46,
       "nameEn": "Boeing Company (The)"
     },
     {
@@ -798,7 +798,7 @@
       "return1y": -0.2562,
       "equity": 6393000000.0,
       "weight": 0.2444,
-      "price": 280.81,
+      "price": 283.01,
       "nameEn": "Automatic Data Processing, Inc."
     },
     {
@@ -808,7 +808,7 @@
       "return1y": -0.7105,
       "equity": 25792000000.0,
       "weight": 0.2407,
-      "price": 52.58,
+      "price": 52.96,
       "nameEn": "Fiserv, Inc."
     },
     {
@@ -818,7 +818,7 @@
       "return1y": 0.5533,
       "equity": 64487000000.0,
       "weight": 0.2374,
-      "price": 134.87,
+      "price": 133.35,
       "nameEn": "ConocoPhillips"
     },
     {
@@ -828,7 +828,7 @@
       "return1y": 0.1393,
       "equity": 9393000000.0,
       "weight": 0.2335,
-      "price": 357.87,
+      "price": 350.9,
       "nameEn": "Palo Alto Networks, Inc."
     },
     {
@@ -838,7 +838,7 @@
       "return1y": 0.2254,
       "equity": 73757000000.0,
       "weight": 0.2323,
-      "price": 340.99,
+      "price": 345.83,
       "nameEn": "Chubb Limited"
     },
     {
@@ -848,7 +848,7 @@
       "return1y": -0.1958,
       "equity": 15100000000.0,
       "weight": 0.2298,
-      "price": 192.01,
+      "price": 194.67,
       "nameEn": "Marsh"
     },
     {
@@ -858,7 +858,7 @@
       "return1y": 0.5433,
       "equity": 19425000000.0,
       "weight": 0.2266,
-      "price": 419.2,
+      "price": 408.67,
       "nameEn": "Eaton Corporation, PLC"
     },
     {
@@ -868,7 +868,7 @@
       "return1y": 0.0913,
       "equity": 48985000000.0,
       "weight": 0.223,
-      "price": 93.35,
+      "price": 92.9,
       "nameEn": "Medtronic plc."
     },
     {
@@ -878,7 +878,7 @@
       "return1y": 0.1405,
       "equity": 18473000000.0,
       "weight": 0.2223,
-      "price": 67.01,
+      "price": 67.28,
       "nameEn": "Bristol-Myers Squibb Company"
     },
     {
@@ -888,7 +888,7 @@
       "return1y": 0.446,
       "equity": 6721000000.0,
       "weight": 0.2218,
-      "price": 563.57,
+      "price": 564.14,
       "nameEn": "Lockheed Martin Corporation"
     },
     {
@@ -898,7 +898,7 @@
       "return1y": 0.2541,
       "equity": -8388700000.0,
       "weight": 0.2054,
-      "price": 107.08,
+      "price": 107.49,
       "nameEn": "Starbucks Corporation"
     },
     {
@@ -908,7 +908,7 @@
       "return1y": 0.0063,
       "equity": 8665526000.0,
       "weight": 0.2043,
-      "price": 143.38,
+      "price": 143.64,
       "nameEn": "Blackstone Inc."
     },
     {
@@ -918,7 +918,7 @@
       "return1y": -0.2458,
       "equity": 43882000000.0,
       "weight": 0.2019,
-      "price": 400.54,
+      "price": 402.63,
       "nameEn": "Elevance Health, Inc."
     },
     {
@@ -928,7 +928,7 @@
       "return1y": -0.0013,
       "equity": 30902561000.0,
       "weight": 0.2,
-      "price": 108.48,
+      "price": 107.32,
       "nameEn": "KKR & Co. Inc."
     },
     {
@@ -938,7 +938,7 @@
       "return1y": 1.1169,
       "equity": 33787259000.0,
       "weight": 0.1988,
-      "price": 373.09,
+      "price": 371.17,
       "nameEn": "Analog Devices, Inc."
     },
     {
@@ -948,7 +948,7 @@
       "return1y": -0.1091,
       "equity": 3652500000.0,
       "weight": 0.1977,
-      "price": 175.8,
+      "price": 178.39,
       "nameEn": "American Tower Corporation (REI"
     },
     {
@@ -958,7 +958,7 @@
       "return1y": 0.1366,
       "equity": 36016000000.0,
       "weight": 0.1963,
-      "price": 88.94,
+      "price": 90.1,
       "nameEn": "Southern Company (The)"
     },
     {
@@ -968,7 +968,7 @@
       "return1y": 1.0873,
       "equity": 12370500000.0,
       "weight": 0.1954,
-      "price": 188.65,
+      "price": 188.15,
       "nameEn": "Arista Networks, Inc."
     },
     {
@@ -978,7 +978,7 @@
       "return1y": 0.2857,
       "equity": -3502000000.0,
       "weight": 0.1943,
-      "price": 66.09,
+      "price": 68.47,
       "nameEn": "Altria Group, Inc."
     },
     {
@@ -988,7 +988,7 @@
       "return1y": 0.3122,
       "equity": 4428390000.0,
       "weight": 0.191,
-      "price": 191.95,
+      "price": 190.68,
       "nameEn": "CrowdStrike Holdings, Inc."
     },
     {
@@ -998,7 +998,7 @@
       "return1y": 1.8109,
       "equity": 5465731000.0,
       "weight": 0.1905,
-      "price": 183.99,
+      "price": 181.57,
       "nameEn": "KLA Corporation"
     },
     {
@@ -1008,7 +1008,7 @@
       "return1y": 2.2515,
       "equity": 114281000000.0,
       "weight": 0.1901,
-      "price": 90.07,
+      "price": 87.26,
       "nameEn": "Intel Corporation"
     },
     {
@@ -1018,7 +1018,7 @@
       "return1y": 0.2344,
       "equity": 28728200000.0,
       "weight": 0.1867,
-      "price": 274.98,
+      "price": 279.17,
       "nameEn": "CME Group Inc."
     },
     {
@@ -1028,7 +1028,7 @@
       "return1y": 3.1205,
       "equity": 10145426000.0,
       "weight": 0.1861,
-      "price": 314.0,
+      "price": 310.17,
       "nameEn": "Lam Research Corporation"
     },
     {
@@ -1038,7 +1038,7 @@
       "return1y": 0.5839,
       "equity": 53193178000.0,
       "weight": 0.1856,
-      "price": 141.8,
+      "price": 143.36,
       "nameEn": "Prologis, Inc."
     },
     {
@@ -1048,7 +1048,7 @@
       "return1y": 0.5247,
       "equity": 42129498000.0,
       "weight": 0.185,
-      "price": 239.22,
+      "price": 240.01,
       "nameEn": "Welltower Inc."
     },
     {
@@ -1058,7 +1058,7 @@
       "return1y": 0.175,
       "equity": 51842000000.0,
       "weight": 0.1841,
-      "price": 119.85,
+      "price": 121.97,
       "nameEn": "Duke Energy Corporation (Holdin"
     },
     {
@@ -1068,7 +1068,7 @@
       "return1y": 0.0774,
       "equity": 9990000000.0,
       "weight": 0.184,
-      "price": 224.06,
+      "price": 226.46,
       "nameEn": "Waste Management, Inc."
     },
     {
@@ -1078,7 +1078,7 @@
       "return1y": 2.2724,
       "equity": 11178000000.0,
       "weight": 0.1838,
-      "price": 956.85,
+      "price": 942.1,
       "nameEn": "GE Vernova Inc."
     },
     {
@@ -1088,7 +1088,7 @@
       "return1y": 0.1196,
       "equity": 28915000000.0,
       "weight": 0.1837,
-      "price": 161.25,
+      "price": 162.99,
       "nameEn": "Intercontinental Exchange Inc."
     },
     {
@@ -1098,7 +1098,7 @@
       "return1y": 0.1971,
       "equity": 75214000000.0,
       "weight": 0.1804,
-      "price": 93.02,
+      "price": 94.11,
       "nameEn": "CVS Health Corporation"
     },
     {
@@ -1108,7 +1108,7 @@
       "return1y": -0.1012,
       "equity": 41713000000.0,
       "weight": 0.1785,
-      "price": 277.51,
+      "price": 280.45,
       "nameEn": "The Cigna Group"
     },
     {
@@ -1118,7 +1118,7 @@
       "return1y": -0.175,
       "equity": 14090000000.0,
       "weight": 0.1785,
-      "price": 40.76,
+      "price": 40.75,
       "nameEn": "Nike, Inc."
     },
     {
@@ -1128,7 +1128,7 @@
       "return1y": 5.2192,
       "equity": 72459000000.0,
       "weight": 0.1774,
-      "price": 966.78,
+      "price": 910.43,
       "nameEn": "Micron Technology, Inc."
     },
     {
@@ -1138,7 +1138,7 @@
       "return1y": -0.0514,
       "equity": 25838000000.0,
       "weight": 0.1745,
-      "price": 64.45,
+      "price": 64.7,
       "nameEn": "Mondelez International, Inc."
     },
     {
@@ -1148,7 +1148,7 @@
       "return1y": 0.1478,
       "equity": 16227000000.0,
       "weight": 0.1735,
-      "price": 102.01,
+      "price": 102.72,
       "nameEn": "United Parcel Service, Inc."
     },
     {
@@ -1158,7 +1158,7 @@
       "return1y": 0.0803,
       "equity": 4598300000.0,
       "weight": 0.1723,
-      "price": 346.59,
+      "price": 346.73,
       "nameEn": "Sherwin-Williams Company (The)"
     },
     {
@@ -1168,7 +1168,7 @@
       "return1y": 0.3397,
       "equity": -1298000000.0,
       "weight": 0.1716,
-      "price": 858.9,
+      "price": 873.79,
       "nameEn": "McKesson Corporation"
     },
     {
@@ -1178,7 +1178,7 @@
       "return1y": 0.5309,
       "equity": -6027000000.0,
       "weight": 0.1714,
-      "price": 429.19,
+      "price": 429.24,
       "nameEn": "HCA Healthcare, Inc."
     },
     {
@@ -1188,7 +1188,7 @@
       "return1y": -0.2842,
       "equity": 23321000000.0,
       "weight": 0.1681,
-      "price": 263.81,
+      "price": 271.99,
       "nameEn": "Arthur J. Gallagher & Co."
     },
     {
@@ -1198,7 +1198,7 @@
       "return1y": -0.0737,
       "equity": 4788383000.0,
       "weight": 0.1679,
-      "price": 203.79,
+      "price": 207.4,
       "nameEn": "Cintas Corporation"
     },
     {
@@ -1208,7 +1208,7 @@
       "return1y": -0.0846,
       "equity": 9352000000.0,
       "weight": 0.1644,
-      "price": 355.11,
+      "price": 359.1,
       "nameEn": "Aon plc"
     },
     {
@@ -1218,7 +1218,7 @@
       "return1y": 1.2686,
       "equity": 13413100000.0,
       "weight": 0.1634,
-      "price": 157.01,
+      "price": 155.55,
       "nameEn": "Amphenol Corporation"
     },
     {
@@ -1228,7 +1228,7 @@
       "return1y": -0.0305,
       "equity": 10033000000.0,
       "weight": 0.1615,
-      "price": 223.49,
+      "price": 229.06,
       "nameEn": "DoorDash, Inc."
     },
     {
@@ -1238,7 +1238,7 @@
       "return1y": 0.1373,
       "equity": 4054000000.0,
       "weight": 0.1609,
-      "price": 503.32,
+      "price": 511.35,
       "nameEn": "Moody's Corporation"
     },
     {
@@ -1248,7 +1248,7 @@
       "return1y": 0.4066,
       "equity": 14156000000.0,
       "weight": 0.1582,
-      "price": 1065.39,
+      "price": 1055.2,
       "nameEn": "Equinix, Inc."
     },
     {
@@ -1258,7 +1258,7 @@
       "return1y": 0.0614,
       "equity": -763352000.0,
       "weight": 0.1574,
-      "price": 89.11,
+      "price": 90.68,
       "nameEn": "O'Reilly Automotive, Inc."
     },
     {
@@ -1268,7 +1268,7 @@
       "return1y": -0.0526,
       "equity": 1237500000.0,
       "weight": 0.1567,
-      "price": 153.51,
+      "price": 151.99,
       "nameEn": "Fortinet, Inc."
     },
     {
@@ -1278,7 +1278,7 @@
       "return1y": 0.4294,
       "equity": 8579200000.0,
       "weight": 0.1567,
-      "price": 453.43,
+      "price": 452.96,
       "nameEn": "Trane Technologies plc"
     },
     {
@@ -1288,7 +1288,7 @@
       "return1y": 0.8509,
       "equity": 14311000000.0,
       "weight": 0.1565,
-      "price": 1001.74,
+      "price": 1014.24,
       "nameEn": "Parker-Hannifin Corporation"
     },
     {
@@ -1298,7 +1298,7 @@
       "return1y": 0.2433,
       "equity": 8199000000.0,
       "weight": 0.1559,
-      "price": 187.3,
+      "price": 190.21,
       "nameEn": "Airbnb, Inc."
     },
     {
@@ -1308,7 +1308,7 @@
       "return1y": 0.1948,
       "equity": 4702000000.0,
       "weight": 0.1531,
-      "price": 178.96,
+      "price": 179.01,
       "nameEn": "3M Company"
     },
     {
@@ -1318,7 +1318,7 @@
       "return1y": -0.0368,
       "equity": 11968000000.0,
       "weight": 0.1523,
-      "price": 220.67,
+      "price": 223.08,
       "nameEn": "Republic Services, Inc."
     },
     {
@@ -1328,7 +1328,7 @@
       "return1y": 0.4198,
       "equity": 16674000000.0,
       "weight": 0.1512,
-      "price": 551.03,
+      "price": 549.28,
       "nameEn": "Northrop Grumman Corporation"
     },
     {
@@ -1338,7 +1338,7 @@
       "return1y": -0.0096,
       "equity": -9270000000.0,
       "weight": 0.1506,
-      "price": 1200.35,
+      "price": 1199.08,
       "nameEn": "Transdigm Group Incorporated"
     },
     {
@@ -1348,7 +1348,7 @@
       "return1y": 0.3876,
       "equity": 25622000000.0,
       "weight": 0.1496,
-      "price": 384.29,
+      "price": 383.77,
       "nameEn": "General Dynamics Corporation"
     },
     {
@@ -1358,7 +1358,7 @@
       "return1y": -0.0191,
       "equity": 23341000000.0,
       "weight": 0.1494,
-      "price": 132.69,
+      "price": 132.79,
       "nameEn": "Apollo Global Management, Inc. "
     },
     {
@@ -1368,7 +1368,7 @@
       "return1y": -0.0222,
       "equity": 54000000.0,
       "weight": 0.1493,
-      "price": 91.08,
+      "price": 92.55,
       "nameEn": "Colgate-Palmolive Company"
     },
     {
@@ -1378,7 +1378,7 @@
       "return1y": 0.2498,
       "equity": 5474181000.0,
       "weight": 0.1479,
-      "price": 319.02,
+      "price": 315.92,
       "nameEn": "Cadence Design Systems, Inc."
     },
     {
@@ -1388,7 +1388,7 @@
       "return1y": 0.1464,
       "equity": 2410000000.0,
       "weight": 0.142,
-      "price": 480.47,
+      "price": 481.52,
       "nameEn": "Motorola Solutions, Inc."
     },
     {
@@ -1398,7 +1398,7 @@
       "return1y": -0.2651,
       "equity": 2830607000.0,
       "weight": 0.1407,
-      "price": 36.9,
+      "price": 38.02,
       "nameEn": "Chipotle Mexican Grill, Inc."
     },
     {
@@ -1408,7 +1408,7 @@
       "return1y": 0.2651,
       "equity": 3225000000.0,
       "weight": 0.1405,
-      "price": 282.29,
+      "price": 283.95,
       "nameEn": "Illinois Tool Works Inc."
     },
     {
@@ -1418,7 +1418,7 @@
       "return1y": 0.3876,
       "equity": 12807000000.0,
       "weight": 0.1403,
-      "price": 70.49,
+      "price": 70.97,
       "nameEn": "Williams Companies, Inc. (The)"
     },
     {
@@ -1428,7 +1428,7 @@
       "return1y": -0.1626,
       "equity": 3331000000.0,
       "weight": 0.1402,
-      "price": 77.73,
+      "price": 77.17,
       "nameEn": "Zoetis Inc."
     },
     {
@@ -1438,7 +1438,7 @@
       "return1y": 0.5448,
       "equity": 14527000000.0,
       "weight": 0.1374,
-      "price": 272.88,
+      "price": 273.43,
       "nameEn": "Constellation Energy Corporatio"
     },
     {
@@ -1448,7 +1448,7 @@
       "return1y": 0.2245,
       "equity": 9770800000.0,
       "weight": 0.137,
-      "price": 281.63,
+      "price": 286.98,
       "nameEn": "Ecolab Inc."
     },
     {
@@ -1458,7 +1458,7 @@
       "return1y": 0.2764,
       "equity": 113616000000.0,
       "weight": 0.136,
-      "price": 217.91,
+      "price": 216.27,
       "nameEn": "Capital One Financial Corporati"
     },
     {
@@ -1468,7 +1468,7 @@
       "return1y": 0.0749,
       "equity": 30548827000.0,
       "weight": 0.1351,
-      "price": 397.87,
+      "price": 394.51,
       "nameEn": "Synopsys, Inc."
     },
     {
@@ -1478,7 +1478,7 @@
       "return1y": 0.6663,
       "equity": -3771000000.0,
       "weight": 0.1312,
-      "price": 356.39,
+      "price": 360.2,
       "nameEn": "Marriott International"
     },
     {
@@ -1488,7 +1488,7 @@
       "return1y": 0.4869,
       "equity": 60585000000.0,
       "weight": 0.1293,
-      "price": 243.13,
+      "price": 243.68,
       "nameEn": "PNC Financial Services Group, I"
     },
     {
@@ -1498,7 +1498,7 @@
       "return1y": -0.197,
       "equity": 20256000000.0,
       "weight": 0.129,
-      "price": 61.55,
+      "price": 61.68,
       "nameEn": "PayPal Holdings, Inc."
     },
     {
@@ -1508,7 +1508,7 @@
       "return1y": 0.3491,
       "equity": 29833000000.0,
       "weight": 0.1288,
-      "price": 153.05,
+      "price": 150.21,
       "nameEn": "EOG Resources, Inc."
     },
     {
@@ -1518,7 +1518,7 @@
       "return1y": 0.4008,
       "equity": 31256900000.0,
       "weight": 0.1285,
-      "price": 834.04,
+      "price": 828.5,
       "nameEn": "Regeneron Pharmaceuticals, Inc."
     },
     {
@@ -1528,7 +1528,7 @@
       "return1y": -0.4338,
       "equity": 7805000000.0,
       "weight": 0.1255,
-      "price": 200.01,
+      "price": 199.15,
       "nameEn": "Workday, Inc."
     },
     {
@@ -1538,7 +1538,7 @@
       "return1y": 0.585,
       "equity": 65193000000.0,
       "weight": 0.125,
-      "price": 62.05,
+      "price": 62.42,
       "nameEn": "U.S. Bancorp"
     },
     {
@@ -1548,7 +1548,7 @@
       "return1y": 0.2243,
       "equity": 15411300000.0,
       "weight": 0.1225,
-      "price": 305.1,
+      "price": 306.24,
       "nameEn": "Air Products and Chemicals, Inc"
     },
     {
@@ -1558,7 +1558,7 @@
       "return1y": -0.1994,
       "equity": 25282000000.0,
       "weight": 0.1225,
-      "price": 192.0,
+      "price": 190.74,
       "nameEn": "Becton, Dickinson and Company"
     },
     {
@@ -1568,7 +1568,7 @@
       "return1y": -0.0098,
       "equity": -2908770000.0,
       "weight": 0.1219,
-      "price": 2957.95,
+      "price": 3009.44,
       "nameEn": "AutoZone, Inc."
     },
     {
@@ -1578,7 +1578,7 @@
       "return1y": -0.3092,
       "equity": 19881500000.0,
       "weight": 0.1212,
-      "price": 411.79,
+      "price": 415.51,
       "nameEn": "Roper Technologies, Inc."
     },
     {
@@ -1588,7 +1588,7 @@
       "return1y": 0.5404,
       "equity": 20277000000.0,
       "weight": 0.1201,
-      "price": 157.26,
+      "price": 157.57,
       "nameEn": "Emerson Electric Company"
     },
     {
@@ -1598,7 +1598,7 @@
       "return1y": 1.5641,
       "equity": -2470000000.0,
       "weight": 0.1198,
-      "price": 442.08,
+      "price": 433.19,
       "nameEn": "Dell Technologies Inc."
     },
     {
@@ -1608,7 +1608,7 @@
       "return1y": 0.3642,
       "equity": 31162000000.0,
       "weight": 0.1189,
-      "price": 30.98,
+      "price": 31.0,
       "nameEn": "Kinder Morgan, Inc."
     },
     {
@@ -1618,7 +1618,7 @@
       "return1y": 0.1508,
       "equity": 29490000000.0,
       "weight": 0.1173,
-      "price": 116.07,
+      "price": 118.2,
       "nameEn": "AFLAC Incorporated"
     },
     {
@@ -1638,7 +1638,7 @@
       "return1y": 0.3659,
       "equity": 8254108000.0,
       "weight": 0.1156,
-      "price": 47.79,
+      "price": 48.92,
       "nameEn": "Monster Beverage Corporation"
     },
     {
@@ -1648,7 +1648,7 @@
       "return1y": -0.3924,
       "equity": 9789045000.0,
       "weight": 0.1153,
-      "price": 33.8,
+      "price": 33.26,
       "nameEn": "Copart, Inc."
     },
     {
@@ -1658,7 +1658,7 @@
       "return1y": 0.573,
       "equity": 10037000000.0,
       "weight": 0.1149,
-      "price": 292.0,
+      "price": 293.0,
       "nameEn": "Royal Caribbean Cruises Ltd."
     },
     {
@@ -1668,7 +1668,7 @@
       "return1y": 0.2953,
       "equity": 32894000000.0,
       "weight": 0.1147,
-      "price": 363.58,
+      "price": 370.55,
       "nameEn": "The Travelers Companies, Inc."
     },
     {
@@ -1678,7 +1678,7 @@
       "return1y": 0.0076,
       "equity": 3045000000.0,
       "weight": 0.1144,
-      "price": 253.82,
+      "price": 254.42,
       "nameEn": "Autodesk, Inc."
     },
     {
@@ -1688,7 +1688,7 @@
       "return1y": 1.6626,
       "equity": 33867000000.0,
       "weight": 0.112,
-      "price": 131.58,
+      "price": 131.84,
       "nameEn": "Newmont Corporation"
     },
     {
@@ -1698,7 +1698,7 @@
       "return1y": 0.3747,
       "equity": null,
       "weight": 0.1112,
-      "price": 120.94,
+      "price": 121.98,
       "nameEn": "American Electric Power Company"
     },
     {
@@ -1708,7 +1708,7 @@
       "return1y": 0.6026,
       "equity": 13160000000.0,
       "weight": 0.1107,
-      "price": 51.59,
+      "price": 51.44,
       "nameEn": "CSX Corporation"
     },
     {
@@ -1718,7 +1718,7 @@
       "return1y": 0.1912,
       "equity": 1908328000.0,
       "weight": 0.1083,
-      "price": 318.04,
+      "price": 323.77,
       "nameEn": "Cencora, Inc."
     },
     {
@@ -1728,7 +1728,7 @@
       "return1y": 0.1496,
       "equity": 22485000000.0,
       "weight": 0.108,
-      "price": 93.33,
+      "price": 93.02,
       "nameEn": "ONEOK, Inc."
     },
     {
@@ -1738,7 +1738,7 @@
       "return1y": 0.0568,
       "equity": 13804000000.0,
       "weight": 0.1076,
-      "price": 60.37,
+      "price": 59.97,
       "nameEn": "Carrier Global Corporation"
     },
     {
@@ -1748,7 +1748,7 @@
       "return1y": -0.3207,
       "equity": 4013600000.0,
       "weight": 0.1073,
-      "price": 124.47,
+      "price": 126.01,
       "nameEn": "Paychex, Inc."
     },
     {
@@ -1758,7 +1758,7 @@
       "return1y": 0.5784,
       "equity": -5388000000.0,
       "weight": 0.1072,
-      "price": 326.63,
+      "price": 330.07,
       "nameEn": "Hilton Worldwide Holdings Inc."
     },
     {
@@ -1768,7 +1768,7 @@
       "return1y": 0.9274,
       "equity": 29804000000.0,
       "weight": 0.1065,
-      "price": 325.08,
+      "price": 334.05,
       "nameEn": "FedEx Corporation"
     },
     {
@@ -1778,7 +1778,7 @@
       "return1y": 0.9598,
       "equity": 13204000000.0,
       "weight": 0.1062,
-      "price": 143.05,
+      "price": 142.99,
       "nameEn": "Johnson Controls International "
     },
     {
@@ -1788,7 +1788,7 @@
       "return1y": 1.1864,
       "equity": 5353000000.0,
       "weight": 0.1058,
-      "price": 271.68,
+      "price": 263.29,
       "nameEn": "Howmet Aerospace Inc."
     },
     {
@@ -1798,7 +1798,7 @@
       "return1y": 0.1189,
       "equity": 28398000000.0,
       "weight": 0.1045,
-      "price": 94.34,
+      "price": 96.21,
       "nameEn": "MetLife, Inc."
     },
     {
@@ -1808,7 +1808,7 @@
       "return1y": 0.1786,
       "equity": 30610000000.0,
       "weight": 0.1043,
-      "price": 253.83,
+      "price": 260.19,
       "nameEn": "Allstate Corporation (The)"
     },
     {
@@ -1818,7 +1818,7 @@
       "return1y": 0.6592,
       "equity": 26109000000.0,
       "weight": 0.1028,
-      "price": 53.87,
+      "price": 54.0,
       "nameEn": "SLB Limited"
     },
     {
@@ -1828,7 +1828,7 @@
       "return1y": 0.4385,
       "equity": 15547000000.0,
       "weight": 0.1025,
-      "price": 350.72,
+      "price": 352.98,
       "nameEn": "Norfolk Southern Corporation"
     },
     {
@@ -1838,7 +1838,7 @@
       "return1y": 0.4513,
       "equity": 5208268000.0,
       "weight": 0.1019,
-      "price": 218.29,
+      "price": 220.73,
       "nameEn": "Simon Property Group, Inc."
     },
     {
@@ -1848,7 +1848,7 @@
       "return1y": 0.4793,
       "equity": 65189000000.0,
       "weight": 0.1011,
-      "price": 50.42,
+      "price": 50.81,
       "nameEn": "Truist Financial Corporation"
     },
     {
@@ -1858,7 +1858,7 @@
       "return1y": 0.1349,
       "equity": 9248128000.0,
       "weight": 0.1009,
-      "price": 322.49,
+      "price": 324.97,
       "nameEn": "Public Storage"
     },
     {
@@ -1868,7 +1868,7 @@
       "return1y": 0.4741,
       "equity": 19264000000.0,
       "weight": 0.1005,
-      "price": 131.03,
+      "price": 129.94,
       "nameEn": "PACCAR Inc."
     },
     {
@@ -1878,7 +1878,7 @@
       "return1y": -0.311,
       "equity": 16054000000.0,
       "weight": 0.1004,
-      "price": 150.17,
+      "price": 150.3,
       "nameEn": "Charter Communications, Inc."
     },
     {
@@ -1888,7 +1888,7 @@
       "return1y": 0.0193,
       "equity": 41139000000.0,
       "weight": 0.1002,
-      "price": 76.12,
+      "price": 77.38,
       "nameEn": "American International Group, I"
     },
     {
@@ -1898,7 +1898,7 @@
       "return1y": 0.4036,
       "equity": 22925663000.0,
       "weight": 0.1,
-      "price": 190.62,
+      "price": 188.55,
       "nameEn": "Digital Realty Trust, Inc."
     },
     {
@@ -1908,7 +1908,7 @@
       "return1y": 1.2523,
       "equity": 18899000000.0,
       "weight": 0.0988,
-      "price": 76.66,
+      "price": 77.8,
       "nameEn": "Freeport-McMoRan, Inc."
     },
     {
@@ -1918,7 +1918,7 @@
       "return1y": 0.2692,
       "equity": 39438695000.0,
       "weight": 0.0981,
-      "price": 62.6,
+      "price": 63.17,
       "nameEn": "Realty Income Corporation"
     },
     {
@@ -1928,7 +1928,7 @@
       "return1y": 0.3559,
       "equity": 10056000000.0,
       "weight": 0.0961,
-      "price": 225.56,
+      "price": 222.44,
       "nameEn": "NXP Semiconductors N.V."
     },
     {
@@ -1938,7 +1938,7 @@
       "return1y": -0.2047,
       "equity": 25516000000.0,
       "weight": 0.0959,
-      "price": 32.04,
+      "price": 32.51,
       "nameEn": "Keurig Dr Pepper Inc."
     },
     {
@@ -1948,7 +1948,7 @@
       "return1y": 0.2545,
       "equity": 3736000000.0,
       "weight": 0.0949,
-      "price": 1312.24,
+      "price": 1321.9,
       "nameEn": "W.W. Grainger, Inc."
     },
     {
@@ -1958,7 +1958,7 @@
       "return1y": 0.8249,
       "equity": 61119000000.0,
       "weight": 0.0928,
-      "price": 87.93,
+      "price": 86.98,
       "nameEn": "General Motors Company"
     },
     {
@@ -1968,7 +1968,7 @@
       "return1y": 0.0774,
       "equity": 6549000000.0,
       "weight": 0.0927,
-      "price": 555.59,
+      "price": 561.13,
       "nameEn": "Ameriprise Financial, Inc."
     },
     {
@@ -1978,7 +1978,7 @@
       "return1y": -0.3489,
       "equity": -1808134000.0,
       "weight": 0.092,
-      "price": 1172.67,
+      "price": 1166.4,
       "nameEn": "Fair Isaac Corporation"
     },
     {
@@ -1988,7 +1988,7 @@
       "return1y": 0.787,
       "equity": 6187443000.0,
       "weight": 0.0918,
-      "price": 239.04,
+      "price": 241.52,
       "nameEn": "Ross Stores, Inc."
     },
     {
@@ -1998,7 +1998,7 @@
       "return1y": 0.1645,
       "equity": 32540000000.0,
       "weight": 0.0915,
-      "price": 17.6,
+      "price": 18.11,
       "nameEn": "Pacific Gas & Electric Co."
     },
     {
@@ -2008,7 +2008,7 @@
       "return1y": -0.239,
       "equity": 1502000000.0,
       "weight": 0.0914,
-      "price": 109.31,
+      "price": 111.37,
       "nameEn": "Kimberly-Clark Corporation"
     },
     {
@@ -2018,7 +2018,7 @@
       "return1y": 0.3165,
       "equity": 29083000000.0,
       "weight": 0.0908,
-      "price": 66.6,
+      "price": 66.61,
       "nameEn": "Dominion Energy, Inc."
     },
     {
@@ -2028,7 +2028,7 @@
       "return1y": 0.1454,
       "equity": 28798000000.0,
       "weight": 0.0908,
-      "price": 43.78,
+      "price": 44.34,
       "nameEn": "Exelon Corporation"
     },
     {
@@ -2038,7 +2038,7 @@
       "return1y": 0.4513,
       "equity": 16165000000.0,
       "weight": 0.0907,
-      "price": 165.44,
+      "price": 169.89,
       "nameEn": "Target Corporation"
     },
     {
@@ -2048,7 +2048,7 @@
       "return1y": 0.5848,
       "equity": 31594000000.0,
       "weight": 0.0904,
-      "price": 82.89,
+      "price": 84.57,
       "nameEn": "DBA Sempra"
     },
     {
@@ -2058,7 +2058,7 @@
       "return1y": 0.3816,
       "equity": 3943600000.0,
       "weight": 0.0894,
-      "price": 51.26,
+      "price": 51.28,
       "nameEn": "Fastenal Company"
     },
     {
@@ -2068,7 +2068,7 @@
       "return1y": 0.0909,
       "equity": 5927000000.0,
       "weight": 0.0887,
-      "price": 57.9,
+      "price": 59.08,
       "nameEn": "Kroger Company (The)"
     },
     {
@@ -2090,7 +2090,7 @@
       "return1y": -0.2232,
       "equity": 3242658000.0,
       "weight": 0.0875,
-      "price": 627.75,
+      "price": 597.59,
       "nameEn": "Axon Enterprise, Inc."
     },
     {
@@ -2100,7 +2100,7 @@
       "return1y": 0.1098,
       "equity": -2654540000.0,
       "weight": 0.087,
-      "price": 563.49,
+      "price": 571.36,
       "nameEn": "MSCI Inc."
     },
     {
@@ -2122,7 +2122,7 @@
       "return1y": 0.8574,
       "equity": 29093000000.0,
       "weight": 0.0857,
-      "price": 242.87,
+      "price": 241.96,
       "nameEn": "Phillips 66"
     },
     {
@@ -2132,7 +2132,7 @@
       "return1y": -0.1658,
       "equity": 10765000000.0,
       "weight": 0.0849,
-      "price": 19.06,
+      "price": 19.43,
       "nameEn": "Kenvue Inc."
     },
     {
@@ -2142,7 +2142,7 @@
       "return1y": -0.0559,
       "equity": -1635000000.0,
       "weight": 0.0848,
-      "price": 75.51,
+      "price": 76.4,
       "nameEn": "Crown Castle Inc."
     },
     {
@@ -2152,7 +2152,7 @@
       "return1y": 0.343,
       "equity": 12227000000.0,
       "weight": 0.0844,
-      "price": 98.22,
+      "price": 98.79,
       "nameEn": "Nasdaq, Inc."
     },
     {
@@ -2162,7 +2162,7 @@
       "return1y": 0.2183,
       "equity": 10337600000.0,
       "weight": 0.0838,
-      "price": 89.79,
+      "price": 90.5,
       "nameEn": "Edwards Lifesciences Corporatio"
     },
     {
@@ -2172,7 +2172,7 @@
       "return1y": 0.9991,
       "equity": 17314000000.0,
       "weight": 0.0837,
-      "price": 360.72,
+      "price": 362.52,
       "nameEn": "Marathon Petroleum Corporation"
     },
     {
@@ -2182,7 +2182,7 @@
       "return1y": 0.09,
       "equity": 16982000000.0,
       "weight": 0.0832,
-      "price": 72.61,
+      "price": 73.53,
       "nameEn": "Public Service Enterprise Group"
     },
     {
@@ -2192,7 +2192,7 @@
       "return1y": 1.2753,
       "equity": 12349000000.0,
       "weight": 0.0831,
-      "price": 587.68,
+      "price": 571.62,
       "nameEn": "Cummins Inc."
     },
     {
@@ -2202,7 +2202,7 @@
       "return1y": 0.1453,
       "equity": -7325000000.0,
       "weight": 0.0828,
-      "price": 152.99,
+      "price": 157.35,
       "nameEn": "Yum! Brands, Inc."
     },
     {
@@ -2212,7 +2212,7 @@
       "return1y": -0.3617,
       "equity": 309000000.0,
       "weight": 0.0827,
-      "price": 187.5,
+      "price": 189.55,
       "nameEn": "Verisk Analytics, Inc."
     },
     {
@@ -2222,7 +2222,7 @@
       "return1y": 0.8339,
       "equity": 19635000000.0,
       "weight": 0.0823,
-      "price": 266.73,
+      "price": 262.83,
       "nameEn": "L3Harris Technologies, Inc."
     },
     {
@@ -2232,7 +2232,7 @@
       "return1y": 0.5197,
       "equity": 24144000000.0,
       "weight": 0.0818,
-      "price": 81.79,
+      "price": 82.81,
       "nameEn": "Corteva, Inc."
     },
     {
@@ -2242,7 +2242,7 @@
       "return1y": 0.5333,
       "equity": 5097000000.0,
       "weight": 0.0816,
-      "price": 136.21,
+      "price": 135.66,
       "nameEn": "Vistra Corp."
     },
     {
@@ -2252,7 +2252,7 @@
       "return1y": 1.3538,
       "equity": 8938249000.0,
       "weight": 0.0815,
-      "price": 639.34,
+      "price": 616.78,
       "nameEn": "Quanta Services, Inc."
     },
     {
@@ -2262,7 +2262,7 @@
       "return1y": 0.8354,
       "equity": 12987000000.0,
       "weight": 0.0814,
-      "price": 203.52,
+      "price": 202.41,
       "nameEn": "TE Connectivity plc"
     },
     {
@@ -2272,7 +2272,7 @@
       "return1y": 0.3876,
       "equity": 8968000000.0,
       "weight": 0.0814,
-      "price": 1098.51,
+      "price": 1083.56,
       "nameEn": "United Rentals, Inc."
     },
     {
@@ -2282,7 +2282,7 @@
       "return1y": 0.2529,
       "equity": 23609000000.0,
       "weight": 0.0803,
-      "price": 76.3,
+      "price": 77.33,
       "nameEn": "Xcel Energy Inc."
     },
     {
@@ -2292,7 +2292,7 @@
       "return1y": 0.6068,
       "equity": 36972000000.0,
       "weight": 0.0796,
-      "price": 210.72,
+      "price": 205.6,
       "nameEn": "Diamondback Energy, Inc."
     },
     {
@@ -2302,7 +2302,7 @@
       "return1y": 0.8404,
       "equity": 18834000000.0,
       "weight": 0.0782,
-      "price": 62.34,
+      "price": 61.98,
       "nameEn": "Baker Hughes Company"
     },
     {
@@ -2312,7 +2312,7 @@
       "return1y": -0.2924,
       "equity": 13899000000.0,
       "weight": 0.0782,
-      "price": 41.34,
+      "price": 41.4,
       "nameEn": "Fidelity National Information S"
     },
     {
@@ -2322,7 +2322,7 @@
       "return1y": 0.2542,
       "equity": 23995500000.0,
       "weight": 0.0778,
-      "price": 148.35,
+      "price": 148.97,
       "nameEn": "D.R. Horton, Inc."
     },
     {
@@ -2332,7 +2332,7 @@
       "return1y": 0.5555,
       "equity": 3067900000.0,
       "weight": 0.0772,
-      "price": 299.1,
+      "price": 294.26,
       "nameEn": "Targa Resources, Inc."
     },
     {
@@ -2342,7 +2342,7 @@
       "return1y": 0.4522,
       "equity": 35952000000.0,
       "weight": 0.077,
-      "price": 14.41,
+      "price": 13.93,
       "nameEn": "Ford Motor Company"
     },
     {
@@ -2352,7 +2352,7 @@
       "return1y": 0.6907,
       "equity": 36034000000.0,
       "weight": 0.077,
-      "price": 61.3,
+      "price": 60.11,
       "nameEn": "Occidental Petroleum Corporatio"
     },
     {
@@ -2362,7 +2362,7 @@
       "return1y": -0.1085,
       "equity": -5392000000.0,
       "weight": 0.0762,
-      "price": 71.49,
+      "price": 72.19,
       "nameEn": "Otis Worldwide Corporation"
     },
     {
@@ -2372,7 +2372,7 @@
       "return1y": 0.5295,
       "equity": 10628786000.0,
       "weight": 0.0757,
-      "price": 239.55,
+      "price": 242.33,
       "nameEn": "AMETEK, Inc."
     },
     {
@@ -2382,7 +2382,7 @@
       "return1y": 0.4732,
       "equity": 8972564000.0,
       "weight": 0.0756,
-      "price": 294.85,
+      "price": 291.25,
       "nameEn": "Garmin Ltd."
     },
     {
@@ -2392,7 +2392,7 @@
       "return1y": 3.2779,
       "equity": 11807000000.0,
       "weight": 0.0755,
-      "price": 149.84,
+      "price": 145.55,
       "nameEn": "Corning Incorporated"
     },
     {
@@ -2402,7 +2402,7 @@
       "return1y": 0.0703,
       "equity": 32438000000.0,
       "weight": 0.075,
-      "price": 121.15,
+      "price": 122.67,
       "nameEn": "Prudential Financial, Inc."
     },
     {
@@ -2412,7 +2412,7 @@
       "return1y": 0.03,
       "equity": 3495600000.0,
       "weight": 0.0749,
-      "price": 239.62,
+      "price": 233.5,
       "nameEn": "Take-Two Interactive Software, "
     },
     {
@@ -2422,7 +2422,7 @@
       "return1y": 0.0973,
       "equity": 24190000000.0,
       "weight": 0.0748,
-      "price": 106.35,
+      "price": 107.71,
       "nameEn": "Consolidated Edison, Inc."
     },
     {
@@ -2432,7 +2432,7 @@
       "return1y": 1.307,
       "equity": 23725000000.0,
       "weight": 0.0744,
-      "price": 348.86,
+      "price": 346.0,
       "nameEn": "Valero Energy Corporation"
     },
     {
@@ -2442,7 +2442,7 @@
       "return1y": 0.2506,
       "equity": 8878000000.0,
       "weight": 0.0742,
-      "price": 152.1,
+      "price": 151.93,
       "nameEn": "CBRE Group Inc"
     },
     {
@@ -2452,7 +2452,7 @@
       "return1y": -0.0661,
       "equity": 15015000000.0,
       "weight": 0.0735,
-      "price": 61.87,
+      "price": 62.2,
       "nameEn": "Cognizant Technology Solutions "
     },
     {
@@ -2472,7 +2472,7 @@
       "return1y": 0.4089,
       "equity": 4311057000.0,
       "weight": 0.0717,
-      "price": 206.47,
+      "price": 201.48,
       "nameEn": "Old Dominion Freight Line, Inc."
     },
     {
@@ -2482,7 +2482,7 @@
       "return1y": -0.115,
       "equity": 41664000000.0,
       "weight": 0.0709,
-      "price": 25.58,
+      "price": 25.67,
       "nameEn": "The Kraft Heinz Company"
     },
     {
@@ -2492,7 +2492,7 @@
       "return1y": 0.1297,
       "equity": 2283000000.0,
       "weight": 0.0709,
-      "price": 84.1,
+      "price": 83.86,
       "nameEn": "Sysco Corporation"
     },
     {
@@ -2502,7 +2502,7 @@
       "return1y": 0.4601,
       "equity": 16923076000.0,
       "weight": 0.0706,
-      "price": 104.62,
+      "price": 105.79,
       "nameEn": "Entergy Corporation"
     },
     {
@@ -2512,7 +2512,7 @@
       "return1y": -0.2851,
       "equity": 17657000000.0,
       "weight": 0.0702,
-      "price": 378.88,
+      "price": 386.61,
       "nameEn": "Humana Inc."
     },
     {
@@ -2522,7 +2522,7 @@
       "return1y": 0.1409,
       "equity": 24206000000.0,
       "weight": 0.07,
-      "price": 99.39,
+      "price": 101.14,
       "nameEn": "Arch Capital Group Ltd."
     },
     {
@@ -2532,7 +2532,7 @@
       "return1y": -0.3928,
       "equity": 12547000000.0,
       "weight": 0.068,
-      "price": 72.92,
+      "price": 74.62,
       "nameEn": "Brown & Brown, Inc."
     },
     {
@@ -2542,7 +2542,7 @@
       "return1y": 0.2828,
       "equity": 18979000000.0,
       "weight": 0.0677,
-      "price": 136.1,
+      "price": 138.98,
       "nameEn": "The Hartford Insurance Group, I"
     },
     {
@@ -2552,7 +2552,7 @@
       "return1y": 0.3423,
       "equity": 4636750000.0,
       "weight": 0.0677,
-      "price": 186.46,
+      "price": 189.94,
       "nameEn": "The Hershey Company"
     },
     {
@@ -2562,7 +2562,7 @@
       "return1y": -0.1104,
       "equity": 7710800000.0,
       "weight": 0.0676,
-      "price": 135.66,
+      "price": 137.6,
       "nameEn": "Constellation Brands, Inc."
     },
     {
@@ -2572,7 +2572,7 @@
       "return1y": 0.1675,
       "equity": 13613600000.0,
       "weight": 0.0676,
-      "price": 106.01,
+      "price": 107.58,
       "nameEn": "WEC Energy Group, Inc."
     },
     {
@@ -2582,7 +2582,7 @@
       "return1y": 0.0007,
       "equity": 27797640000.0,
       "weight": 0.0663,
-      "price": 26.51,
+      "price": 26.78,
       "nameEn": "VICI Properties Inc."
     },
     {
@@ -2592,7 +2592,7 @@
       "return1y": -0.4699,
       "equity": 8334000000.0,
       "weight": 0.0658,
-      "price": 32.26,
+      "price": 32.84,
       "nameEn": "CoStar Group, Inc."
     },
     {
@@ -2602,7 +2602,7 @@
       "return1y": 0.6393,
       "equity": 1605383000.0,
       "weight": 0.0658,
-      "price": 556.93,
+      "price": 559.51,
       "nameEn": "IDEXX Laboratories, Inc."
     },
     {
@@ -2612,7 +2612,7 @@
       "return1y": -0.3372,
       "equity": 9343300000.0,
       "weight": 0.0648,
-      "price": 39.97,
+      "price": 40.92,
       "nameEn": "General Mills, Inc."
     },
     {
@@ -2622,7 +2622,7 @@
       "return1y": 0.1381,
       "equity": 6320879000.0,
       "weight": 0.0648,
-      "price": 231.52,
+      "price": 232.45,
       "nameEn": "ResMed Inc."
     },
     {
@@ -2632,7 +2632,7 @@
       "return1y": -0.3584,
       "equity": 4961840000.0,
       "weight": 0.0645,
-      "price": 121.07,
+      "price": 122.78,
       "nameEn": "lululemon athletica inc."
     },
     {
@@ -2642,7 +2642,7 @@
       "return1y": 0.2943,
       "equity": 8525100000.0,
       "weight": 0.0645,
-      "price": 276.04,
+      "price": 275.94,
       "nameEn": "Vulcan Materials Company (Holdi"
     },
     {
@@ -2652,7 +2652,7 @@
       "return1y": 0.7405,
       "equity": -2884000000.0,
       "weight": 0.0642,
-      "price": 229.51,
+      "price": 232.37,
       "nameEn": "Cardinal Health, Inc."
     },
     {
@@ -2662,7 +2662,7 @@
       "return1y": -0.026,
       "equity": 7976000000.0,
       "weight": 0.064,
-      "price": 341.99,
+      "price": 350.75,
       "nameEn": "Willis Towers Watson Public Lim"
     },
     {
@@ -2672,7 +2672,7 @@
       "return1y": -0.6042,
       "equity": 319908000.0,
       "weight": 0.0636,
-      "price": 195.9,
+      "price": 202.78,
       "nameEn": "Gartner, Inc."
     },
     {
@@ -2682,7 +2682,7 @@
       "return1y": -0.4026,
       "equity": 19953000000.0,
       "weight": 0.0633,
-      "price": 65.02,
+      "price": 65.65,
       "nameEn": "Centene Corporation"
     },
     {
@@ -2692,7 +2692,7 @@
       "return1y": 0.3767,
       "equity": 271007000.0,
       "weight": 0.0627,
-      "price": 181.82,
+      "price": 184.59,
       "nameEn": "Live Nation Entertainment, Inc."
     },
     {
@@ -2702,7 +2702,7 @@
       "return1y": 0.1868,
       "equity": 6908000000.0,
       "weight": 0.0622,
-      "price": 159.0,
+      "price": 153.43,
       "nameEn": "Agilent Technologies, Inc."
     },
     {
@@ -2712,7 +2712,7 @@
       "return1y": 0.6914,
       "equity": 11142000000.0,
       "weight": 0.0612,
-      "price": 297.57,
+      "price": 297.62,
       "nameEn": "Westinghouse Air Brake Technolo"
     },
     {
@@ -2722,7 +2722,7 @@
       "return1y": 0.2783,
       "equity": 23752677000.0,
       "weight": 0.0611,
-      "price": 53.72,
+      "price": 53.79,
       "nameEn": "EQT Corporation"
     },
     {
@@ -2732,7 +2732,7 @@
       "return1y": 0.2582,
       "equity": 10379000000.0,
       "weight": 0.0606,
-      "price": 74.82,
+      "price": 74.19,
       "nameEn": "GE HealthCare Technologies Inc."
     },
     {
@@ -2742,7 +2742,7 @@
       "return1y": 0.2697,
       "equity": 10089800000.0,
       "weight": 0.0603,
-      "price": 80.51,
+      "price": 79.99,
       "nameEn": "Ingersoll Rand Inc."
     },
     {
@@ -2752,7 +2752,7 @@
       "return1y": 0.3872,
       "equity": 10032000000.0,
       "weight": 0.0599,
-      "price": 534.92,
+      "price": 533.11,
       "nameEn": "Martin Marietta Materials, Inc."
     },
     {
@@ -2762,7 +2762,7 @@
       "return1y": 0.2091,
       "equity": 1458907000.0,
       "weight": 0.0592,
-      "price": 383.64,
+      "price": 373.45,
       "nameEn": "Texas Pacific Land Corporation"
     },
     {
@@ -2772,7 +2772,7 @@
       "return1y": 0.9206,
       "equity": 20853000000.0,
       "weight": 0.0589,
-      "price": 82.41,
+      "price": 82.48,
       "nameEn": "Delta Air Lines, Inc."
     },
     {
@@ -2782,7 +2782,7 @@
       "return1y": 0.6487,
       "equity": 4615000000.0,
       "weight": 0.0589,
-      "price": 104.13,
+      "price": 107.08,
       "nameEn": "eBay Inc."
     },
     {
@@ -2792,7 +2792,7 @@
       "return1y": 0.1259,
       "equity": 13433166000.0,
       "weight": 0.0586,
-      "price": 146.81,
+      "price": 146.25,
       "nameEn": "Extra Space Storage Inc"
     },
     {
@@ -2802,7 +2802,7 @@
       "return1y": 0.3532,
       "equity": 12527253000.0,
       "weight": 0.0585,
-      "price": 93.06,
+      "price": 93.47,
       "nameEn": "Ventas, Inc."
     },
     {
@@ -2812,7 +2812,7 @@
       "return1y": -0.1241,
       "equity": 21959417000.0,
       "weight": 0.0584,
-      "price": 87.02,
+      "price": 88.16,
       "nameEn": "Lennar Corporation"
     },
     {
@@ -2844,7 +2844,7 @@
       "return1y": 0.1923,
       "equity": 12570000000.0,
       "weight": 0.0569,
-      "price": 175.2,
+      "price": 176.68,
       "nameEn": "Raymond James Financial, Inc."
     },
     {
@@ -2854,7 +2854,7 @@
       "return1y": -0.0964,
       "equity": 4604300000.0,
       "weight": 0.0567,
-      "price": 192.62,
+      "price": 194.63,
       "nameEn": "Equifax, Inc."
     },
     {
@@ -2864,7 +2864,7 @@
       "return1y": 0.1941,
       "equity": 6503000000.0,
       "weight": 0.0564,
-      "price": 259.82,
+      "price": 260.24,
       "nameEn": "IQVIA Holdings, Inc."
     },
     {
@@ -2874,7 +2874,7 @@
       "return1y": 0.4415,
       "equity": 29177000000.0,
       "weight": 0.0563,
-      "price": 240.34,
+      "price": 241.79,
       "nameEn": "M&T Bank Corporation"
     },
     {
@@ -2884,7 +2884,7 @@
       "return1y": 0.7941,
       "equity": 3746000000.0,
       "weight": 0.0559,
-      "price": 437.08,
+      "price": 429.69,
       "nameEn": "Rockwell Automation, Inc."
     },
     {
@@ -2894,7 +2894,7 @@
       "return1y": -0.0405,
       "equity": 2581293000.0,
       "weight": 0.0557,
-      "price": 34.98,
+      "price": 35.92,
       "nameEn": "Tractor Supply Company"
     },
     {
@@ -2904,7 +2904,7 @@
       "return1y": -0.2461,
       "equity": 2879200000.0,
       "weight": 0.0554,
-      "price": 182.18,
+      "price": 185.45,
       "nameEn": "Broadridge Financial Solutions,"
     },
     {
@@ -2926,7 +2926,7 @@
       "return1y": -0.0076,
       "equity": 10837000000.0,
       "weight": 0.0552,
-      "price": 135.39,
+      "price": 139.91,
       "nameEn": "American Water Works Company, I"
     },
     {
@@ -2936,7 +2936,7 @@
       "return1y": 0.2064,
       "equity": 12303000000.0,
       "weight": 0.0551,
-      "price": 135.22,
+      "price": 135.66,
       "nameEn": "DTE Energy Company"
     },
     {
@@ -2946,7 +2946,7 @@
       "return1y": 1.9032,
       "equity": 3531497000.0,
       "weight": 0.0548,
-      "price": 1316.28,
+      "price": 1285.03,
       "nameEn": "Monolithic Power Systems, Inc."
     },
     {
@@ -2956,7 +2956,7 @@
       "return1y": 0.2518,
       "equity": 11480000000.0,
       "weight": 0.0548,
-      "price": 113.42,
+      "price": 114.18,
       "nameEn": "Xylem Inc."
     },
     {
@@ -2966,7 +2966,7 @@
       "return1y": 0.7822,
       "equity": 20936000000.0,
       "weight": 0.0543,
-      "price": 243.63,
+      "price": 244.64,
       "nameEn": "Nucor Corporation"
     },
     {
@@ -2976,7 +2976,7 @@
       "return1y": 0.6873,
       "equity": 13031000000.0,
       "weight": 0.0542,
-      "price": 25.73,
+      "price": 25.71,
       "nameEn": "Carnival Corporation Ltd."
     },
     {
@@ -2986,7 +2986,7 @@
       "return1y": 0.0842,
       "equity": 2746000000.0,
       "weight": 0.0532,
-      "price": 92.34,
+      "price": 91.06,
       "nameEn": "DexCom, Inc."
     },
     {
@@ -2996,7 +2996,7 @@
       "return1y": 0.2323,
       "equity": 13401000000.0,
       "weight": 0.053,
-      "price": 106.13,
+      "price": 107.16,
       "nameEn": "Ameren Corporation"
     },
     {
@@ -3006,7 +3006,7 @@
       "return1y": -0.1233,
       "equity": 13919000000.0,
       "weight": 0.0528,
-      "price": 138.33,
+      "price": 136.67,
       "nameEn": "DuPont de Nemours, Inc."
     },
     {
@@ -3016,7 +3016,7 @@
       "return1y": -0.1423,
       "equity": 14827000000.0,
       "weight": 0.0526,
-      "price": 41.49,
+      "price": 41.04,
       "nameEn": "International Paper Company"
     },
     {
@@ -3026,7 +3026,7 @@
       "return1y": 0.0897,
       "equity": 1374321000.0,
       "weight": 0.0524,
-      "price": 36.91,
+      "price": 37.26,
       "nameEn": "Rollins, Inc."
     },
     {
@@ -3046,7 +3046,7 @@
       "return1y": 0.4323,
       "equity": 3737381000.0,
       "weight": 0.0518,
-      "price": 193.14,
+      "price": 193.42,
       "nameEn": "TKO Group Holdings, Inc."
     },
     {
@@ -3056,7 +3056,7 @@
       "return1y": 0.0565,
       "equity": 9700818000.0,
       "weight": 0.0517,
-      "price": 68.6,
+      "price": 69.7,
       "nameEn": "W.R. Berkley Corporation"
     },
     {
@@ -3066,7 +3066,7 @@
       "return1y": 0.1947,
       "equity": 14881000000.0,
       "weight": 0.0514,
-      "price": 34.38,
+      "price": 35.04,
       "nameEn": "PPL Corporation"
     },
     {
@@ -3076,7 +3076,7 @@
       "return1y": -0.0608,
       "equity": 4002200000.0,
       "weight": 0.0511,
-      "price": 98.8,
+      "price": 102.53,
       "nameEn": "Church & Dwight Company, Inc."
     },
     {
@@ -3086,7 +3086,7 @@
       "return1y": 0.4278,
       "equity": -981007000.0,
       "weight": 0.0506,
-      "price": 122.02,
+      "price": 121.19,
       "nameEn": "Iron Mountain Incorporated (Del"
     },
     {
@@ -3096,7 +3096,7 @@
       "return1y": -0.5014,
       "equity": 215100000.0,
       "weight": 0.0502,
-      "price": 97.07,
+      "price": 100.52,
       "nameEn": "GoDaddy Inc."
     },
     {
@@ -3106,7 +3106,7 @@
       "return1y": 1.4877,
       "equity": 6205000000.0,
       "weight": 0.0502,
-      "price": 316.13,
+      "price": 310.66,
       "nameEn": "Keysight Technologies Inc."
     },
     {
@@ -3116,7 +3116,7 @@
       "return1y": -0.3715,
       "equity": 3702789000.0,
       "weight": 0.0495,
-      "price": 350.73,
+      "price": 355.79,
       "nameEn": "Tyler Technologies, Inc."
     },
     {
@@ -3126,7 +3126,7 @@
       "return1y": 0.0318,
       "equity": 18578000000.0,
       "weight": 0.0492,
-      "price": 96.09,
+      "price": 96.33,
       "nameEn": "Expand Energy Corporation"
     },
     {
@@ -3136,7 +3136,7 @@
       "return1y": 0.8061,
       "equity": 1590000000.0,
       "weight": 0.0492,
-      "price": 47.03,
+      "price": 46.97,
       "nameEn": "Las Vegas Sands Corp."
     },
     {
@@ -3146,7 +3146,7 @@
       "return1y": 1.0577,
       "equity": 6560400000.0,
       "weight": 0.0492,
-      "price": 76.08,
+      "price": 74.21,
       "nameEn": "Microchip Technology Incorporat"
     },
     {
@@ -3156,7 +3156,7 @@
       "return1y": 0.5291,
       "equity": 21724000000.0,
       "weight": 0.0486,
-      "price": 54.82,
+      "price": 54.9,
       "nameEn": "Fifth Third Bancorp"
     },
     {
@@ -3166,7 +3166,7 @@
       "return1y": 0.8436,
       "equity": 27841000000.0,
       "weight": 0.0484,
-      "price": 187.13,
+      "price": 190.92,
       "nameEn": "State Street Corporation"
     },
     {
@@ -3176,7 +3176,7 @@
       "return1y": 0.3202,
       "equity": 14282892000.0,
       "weight": 0.0482,
-      "price": 166.85,
+      "price": 167.82,
       "nameEn": "Atmos Energy Corporation"
     },
     {
@@ -3186,7 +3186,7 @@
       "return1y": 0.2287,
       "equity": 11153000000.0,
       "weight": 0.0482,
-      "price": 38.77,
+      "price": 39.1,
       "nameEn": "CenterPoint Energy, Inc (Holdin"
     },
     {
@@ -3196,7 +3196,7 @@
       "return1y": 0.2366,
       "equity": 7941000000.0,
       "weight": 0.0477,
-      "price": 113.63,
+      "price": 113.23,
       "nameEn": "PPG Industries, Inc."
     },
     {
@@ -3206,7 +3206,7 @@
       "return1y": 0.281,
       "equity": 10928000000.0,
       "weight": 0.0476,
-      "price": 68.54,
+      "price": 69.21,
       "nameEn": "Fox Corporation"
     },
     {
@@ -3216,7 +3216,7 @@
       "return1y": 0.715,
       "equity": 15282000000.0,
       "weight": 0.0473,
-      "price": 113.17,
+      "price": 113.57,
       "nameEn": "United Airlines Holdings, Inc."
     },
     {
@@ -3226,7 +3226,7 @@
       "return1y": 0.1647,
       "equity": -2154200000.0,
       "weight": 0.0472,
-      "price": 281.8,
+      "price": 290.79,
       "nameEn": "VeriSign, Inc."
     },
     {
@@ -3236,7 +3236,7 @@
       "return1y": -0.0479,
       "equity": 6453400000.0,
       "weight": 0.047,
-      "price": 60.08,
+      "price": 60.46,
       "nameEn": "Fortive Corporation"
     },
     {
@@ -3246,7 +3246,7 @@
       "return1y": 0.0725,
       "equity": 2104000000.0,
       "weight": 0.0468,
-      "price": 221.6,
+      "price": 225.56,
       "nameEn": "Darden Restaurants, Inc."
     },
     {
@@ -3256,7 +3256,7 @@
       "return1y": -0.0931,
       "equity": -766000000.0,
       "weight": 0.0467,
-      "price": 29.71,
+      "price": 28.58,
       "nameEn": "HP Inc."
     },
     {
@@ -3266,7 +3266,7 @@
       "return1y": 0.0738,
       "equity": -4853519000.0,
       "weight": 0.0465,
-      "price": 182.59,
+      "price": 185.07,
       "nameEn": "SBA Communications Corporation"
     },
     {
@@ -3276,7 +3276,7 @@
       "return1y": 0.4494,
       "equity": 7405206000.0,
       "weight": 0.0464,
-      "price": 201.92,
+      "price": 203.62,
       "nameEn": "Dover Corporation"
     },
     {
@@ -3286,7 +3286,7 @@
       "return1y": 0.3963,
       "equity": 12510000000.0,
       "weight": 0.0463,
-      "price": 45.96,
+      "price": 46.57,
       "nameEn": "FirstEnergy Corp."
     },
     {
@@ -3296,7 +3296,7 @@
       "return1y": 2.5826,
       "equity": 35919000000.0,
       "weight": 0.0463,
-      "price": 28.55,
+      "price": 28.7,
       "nameEn": "Warner Bros. Discovery, Inc. - "
     },
     {
@@ -3306,7 +3306,7 @@
       "return1y": 0.0737,
       "equity": 3883864000.0,
       "weight": 0.0461,
-      "price": 417.13,
+      "price": 413.92,
       "nameEn": "Corpay, Inc."
     },
     {
@@ -3316,7 +3316,7 @@
       "return1y": 0.0632,
       "equity": 3105000000.0,
       "weight": 0.046,
-      "price": 98.77,
+      "price": 99.37,
       "nameEn": "Veralto Corp"
     },
     {
@@ -3326,7 +3326,7 @@
       "return1y": -0.1733,
       "equity": 22888767000.0,
       "weight": 0.0456,
-      "price": 93.49,
+      "price": 94.3,
       "nameEn": "Global Payments Inc."
     },
     {
@@ -3336,7 +3336,7 @@
       "return1y": 0.1282,
       "equity": 18327000000.0,
       "weight": 0.0454,
-      "price": 49.39,
+      "price": 48.69,
       "nameEn": "Smurfit WestRock plc"
     },
     {
@@ -3346,7 +3346,7 @@
       "return1y": 0.3602,
       "equity": -23636000.0,
       "weight": 0.0453,
-      "price": 1395.25,
+      "price": 1398.89,
       "nameEn": "Mettler-Toledo International, I"
     },
     {
@@ -3356,7 +3356,7 @@
       "return1y": 0.5161,
       "equity": 10513900000.0,
       "weight": 0.0448,
-      "price": 636.15,
+      "price": 625.21,
       "nameEn": "Teledyne Technologies Incorpora"
     },
     {
@@ -3366,7 +3366,7 @@
       "return1y": 0.0818,
       "equity": 7154500000.0,
       "weight": 0.0447,
-      "price": 237.93,
+      "price": 237.87,
       "nameEn": "STERIS plc (Ireland)"
     },
     {
@@ -3376,7 +3376,7 @@
       "return1y": -0.263,
       "equity": 6992015000.0,
       "weight": 0.0444,
-      "price": 37.24,
+      "price": 35.17,
       "nameEn": "Super Micro Computer, Inc."
     },
     {
@@ -3386,7 +3386,7 @@
       "return1y": 0.4744,
       "equity": 17579000000.0,
       "weight": 0.044,
-      "price": 71.59,
+      "price": 73.97,
       "nameEn": "Edison International"
     },
     {
@@ -3396,7 +3396,7 @@
       "return1y": 0.4303,
       "equity": 5138300000.0,
       "weight": 0.0439,
-      "price": 300.74,
+      "price": 308.09,
       "nameEn": "Cboe Global Markets, Inc."
     },
     {
@@ -3406,7 +3406,7 @@
       "return1y": 0.7767,
       "equity": 22740000000.0,
       "weight": 0.0434,
-      "price": 80.3,
+      "price": 78.16,
       "nameEn": "Archer-Daniels-Midland Company"
     },
     {
@@ -3416,7 +3416,7 @@
       "return1y": 0.0083,
       "equity": 3864869000.0,
       "weight": 0.0434,
-      "price": 6358.51,
+      "price": 6397.59,
       "nameEn": "NVR, Inc."
     },
     {
@@ -3426,7 +3426,7 @@
       "return1y": 0.1509,
       "equity": 18023000000.0,
       "weight": 0.0434,
-      "price": 58.48,
+      "price": 57.87,
       "nameEn": "Tyson Foods, Inc."
     },
     {
@@ -3436,7 +3436,7 @@
       "return1y": 0.1568,
       "equity": 9144000000.0,
       "weight": 0.0433,
-      "price": 68.27,
+      "price": 68.42,
       "nameEn": "CMS Energy Corporation"
     },
     {
@@ -3446,7 +3446,7 @@
       "return1y": -0.1176,
       "equity": 2606100000.0,
       "weight": 0.0431,
-      "price": 137.25,
+      "price": 132.51,
       "nameEn": "CDW Corporation"
     },
     {
@@ -3456,7 +3456,7 @@
       "return1y": 0.3136,
       "equity": 15911000000.0,
       "weight": 0.043,
-      "price": 168.29,
+      "price": 171.21,
       "nameEn": "Cincinnati Financial Corporatio"
     },
     {
@@ -3466,7 +3466,7 @@
       "return1y": 0.5623,
       "equity": 16008000000.0,
       "weight": 0.0428,
-      "price": 32.35,
+      "price": 31.44,
       "nameEn": "Dow Inc."
     },
     {
@@ -3476,7 +3476,7 @@
       "return1y": 0.7474,
       "equity": 1284000000.0,
       "weight": 0.0425,
-      "price": 321.63,
+      "price": 339.12,
       "nameEn": "Expedia Group, Inc."
     },
     {
@@ -3486,7 +3486,7 @@
       "return1y": 0.3328,
       "equity": 16197271000.0,
       "weight": 0.0421,
-      "price": 70.21,
+      "price": 71.25,
       "nameEn": "Eversource Energy (D/B/A)"
     },
     {
@@ -3506,7 +3506,7 @@
       "return1y": -0.2864,
       "equity": 6980300000.0,
       "weight": 0.0415,
-      "price": 55.41,
+      "price": 56.2,
       "nameEn": "McCormick & Company, Incorporat"
     },
     {
@@ -3516,7 +3516,7 @@
       "return1y": 0.4426,
       "equity": 4031000000.0,
       "weight": 0.0412,
-      "price": 101.94,
+      "price": 104.13,
       "nameEn": "Estee Lauder Companies, Inc. (T"
     },
     {
@@ -3526,7 +3526,7 @@
       "return1y": 0.8213,
       "equity": 15528000000.0,
       "weight": 0.0411,
-      "price": 49.1,
+      "price": 48.23,
       "nameEn": "Devon Energy Corporation"
     },
     {
@@ -3536,7 +3536,7 @@
       "return1y": 0.2045,
       "equity": 10860100000.0,
       "weight": 0.0409,
-      "price": 111.51,
+      "price": 112.3,
       "nameEn": "T. Rowe Price Group, Inc."
     },
     {
@@ -3546,7 +3546,7 @@
       "return1y": 0.0352,
       "equity": 2561242000.0,
       "weight": 0.0408,
-      "price": 410.7,
+      "price": 410.75,
       "nameEn": "Waters Corporation"
     },
     {
@@ -3556,7 +3556,7 @@
       "return1y": -0.0518,
       "equity": 1163100000.0,
       "weight": 0.0407,
-      "price": 402.87,
+      "price": 399.1,
       "nameEn": "Lennox International, Inc."
     },
     {
@@ -3566,7 +3566,7 @@
       "return1y": 0.3581,
       "equity": 24342000000.0,
       "weight": 0.0406,
-      "price": 17.03,
+      "price": 17.04,
       "nameEn": "Huntington Bancshares Incorpora"
     },
     {
@@ -3586,7 +3586,7 @@
       "return1y": -0.1262,
       "equity": 9530132000.0,
       "weight": 0.0403,
-      "price": 30.11,
+      "price": 30.46,
       "nameEn": "Invitation Homes Inc."
     },
     {
@@ -3596,7 +3596,7 @@
       "return1y": 0.3193,
       "equity": 12985442000.0,
       "weight": 0.0401,
-      "price": 129.0,
+      "price": 129.61,
       "nameEn": "PulteGroup, Inc."
     },
     {
@@ -3606,7 +3606,7 @@
       "return1y": 0.6719,
       "equity": 16766000000.0,
       "weight": 0.04,
-      "price": 79.47,
+      "price": 80.02,
       "nameEn": "Synchrony Financial"
     },
     {
@@ -3616,7 +3616,7 @@
       "return1y": 0.3561,
       "equity": 2082559000.0,
       "weight": 0.0398,
-      "price": 237.58,
+      "price": 237.77,
       "nameEn": "Williams-Sonoma, Inc."
     },
     {
@@ -3626,7 +3626,7 @@
       "return1y": 0.4811,
       "equity": 10082000000.0,
       "weight": 0.0395,
-      "price": 67.53,
+      "price": 65.2,
       "nameEn": "LyondellBasell Industries NV"
     },
     {
@@ -3636,7 +3636,7 @@
       "return1y": 0.2722,
       "equity": 8619800000.0,
       "weight": 0.0393,
-      "price": 336.34,
+      "price": 339.34,
       "nameEn": "Labcorp Holdings Inc."
     },
     {
@@ -3646,7 +3646,7 @@
       "return1y": 0.8841,
       "equity": 1681000000.0,
       "weight": 0.0393,
-      "price": 113.11,
+      "price": 111.78,
       "nameEn": "NRG Energy, Inc."
     },
     {
@@ -3656,7 +3656,7 @@
       "return1y": 0.0202,
       "equity": 9426000000.0,
       "weight": 0.0393,
-      "price": 24.43,
+      "price": 24.39,
       "nameEn": "Weyerhaeuser Company"
     },
     {
@@ -3666,7 +3666,7 @@
       "return1y": 0.9997,
       "equity": 10461000000.0,
       "weight": 0.0391,
-      "price": 35.34,
+      "price": 34.63,
       "nameEn": "Halliburton Company"
     },
     {
@@ -3676,7 +3676,7 @@
       "return1y": 1.0435,
       "equity": 24774000000.0,
       "weight": 0.0388,
-      "price": 53.45,
+      "price": 52.43,
       "nameEn": "Hewlett Packard Enterprise Comp"
     },
     {
@@ -3686,7 +3686,7 @@
       "return1y": 0.4243,
       "equity": 8511962000.0,
       "weight": 0.0386,
-      "price": 123.41,
+      "price": 125.33,
       "nameEn": "Dollar General Corporation"
     },
     {
@@ -3696,7 +3696,7 @@
       "return1y": 0.67,
       "equity": 3847900000.0,
       "weight": 0.0385,
-      "price": 470.03,
+      "price": 466.76,
       "nameEn": "Hubbell Inc"
     },
     {
@@ -3706,7 +3706,7 @@
       "return1y": -0.5538,
       "equity": 4069000000.0,
       "weight": 0.0385,
-      "price": 200.29,
+      "price": 198.5,
       "nameEn": "Molina Healthcare Inc"
     },
     {
@@ -3716,7 +3716,7 @@
       "return1y": 0.1224,
       "equity": 14154000000.0,
       "weight": 0.038,
-      "price": 84.28,
+      "price": 85.81,
       "nameEn": "International Flavors & Fragran"
     },
     {
@@ -3726,7 +3726,7 @@
       "return1y": -0.3214,
       "equity": 2283374000.0,
       "weight": 0.0379,
-      "price": 264.85,
+      "price": 268.64,
       "nameEn": "Erie Indemnity Company"
     },
     {
@@ -3736,7 +3736,7 @@
       "return1y": -0.1762,
       "equity": 1515200000.0,
       "weight": 0.0379,
-      "price": 148.16,
+      "price": 145.42,
       "nameEn": "Insulet Corporation"
     },
     {
@@ -3746,7 +3746,7 @@
       "return1y": -0.1399,
       "equity": 5662851000.0,
       "weight": 0.0376,
-      "price": 131.31,
+      "price": 133.16,
       "nameEn": "Mid-America Apartment Communiti"
     },
     {
@@ -3756,7 +3756,7 @@
       "return1y": 0.3513,
       "equity": 18686000000.0,
       "weight": 0.0375,
-      "price": 109.83,
+      "price": 111.45,
       "nameEn": "Loews Corporation"
     },
     {
@@ -3766,7 +3766,7 @@
       "return1y": 0.723,
       "equity": 8957182000.0,
       "weight": 0.0375,
-      "price": 228.68,
+      "price": 229.27,
       "nameEn": "Steel Dynamics, Inc."
     },
     {
@@ -3776,7 +3776,7 @@
       "return1y": 0.2162,
       "equity": 4916000000.0,
       "weight": 0.0374,
-      "price": 141.39,
+      "price": 138.43,
       "nameEn": "Leidos Holdings, Inc."
     },
     {
@@ -3786,7 +3786,7 @@
       "return1y": 0.8393,
       "equity": 12957900000.0,
       "weight": 0.0372,
-      "price": 183.9,
+      "price": 186.66,
       "nameEn": "Northern Trust Corporation"
     },
     {
@@ -3796,7 +3796,7 @@
       "return1y": 0.2608,
       "equity": 7170000000.0,
       "weight": 0.0371,
-      "price": 244.39,
+      "price": 243.87,
       "nameEn": "Quest Diagnostics Incorporated"
     },
     {
@@ -3806,7 +3806,7 @@
       "return1y": 0.5619,
       "equity": 19043000000.0,
       "weight": 0.0369,
-      "price": 30.41,
+      "price": 30.63,
       "nameEn": "Regions Financial Corporation"
     },
     {
@@ -3816,7 +3816,7 @@
       "return1y": 0.0554,
       "equity": 3842419000.0,
       "weight": 0.0366,
-      "price": 154.68,
+      "price": 154.31,
       "nameEn": "PTC Inc."
     },
     {
@@ -3826,7 +3826,7 @@
       "return1y": 0.3318,
       "equity": 9450100000.0,
       "weight": 0.0365,
-      "price": 40.62,
+      "price": 40.83,
       "nameEn": "NiSource Inc"
     },
     {
@@ -3836,7 +3836,7 @@
       "return1y": 0.5774,
       "equity": 18256800000.0,
       "weight": 0.036,
-      "price": 216.78,
+      "price": 218.12,
       "nameEn": "Biogen Inc."
     },
     {
@@ -3846,7 +3846,7 @@
       "return1y": 0.0439,
       "equity": 2609454000.0,
       "weight": 0.0359,
-      "price": 91.68,
+      "price": 92.08,
       "nameEn": "Deckers Outdoor Corporation"
     },
     {
@@ -3856,7 +3856,7 @@
       "return1y": 0.018,
       "equity": 5541372000.0,
       "weight": 0.0357,
-      "price": 289.0,
+      "price": 293.61,
       "nameEn": "Essex Property Trust, Inc."
     },
     {
@@ -3866,7 +3866,7 @@
       "return1y": 0.3317,
       "equity": 1158000000.0,
       "weight": 0.0357,
-      "price": 192.27,
+      "price": 186.86,
       "nameEn": "NetApp, Inc."
     },
     {
@@ -3876,7 +3876,7 @@
       "return1y": 0.4051,
       "equity": 11883900000.0,
       "weight": 0.0355,
-      "price": 110.75,
+      "price": 111.89,
       "nameEn": "Principal Financial Group Inc"
     },
     {
@@ -3886,7 +3886,7 @@
       "return1y": 0.2555,
       "equity": 5931800000.0,
       "weight": 0.0352,
-      "price": 393.39,
+      "price": 394.49,
       "nameEn": "Snap-On Incorporated"
     },
     {
@@ -3896,7 +3896,7 @@
       "return1y": -0.2018,
       "equity": -125000000.0,
       "weight": 0.0351,
-      "price": 106.69,
+      "price": 107.17,
       "nameEn": "Clorox Company (The)"
     },
     {
@@ -3906,7 +3906,7 @@
       "return1y": 0.2281,
       "equity": 4598000000.0,
       "weight": 0.0347,
-      "price": 252.79,
+      "price": 248.88,
       "nameEn": "Packaging Corporation of Americ"
     },
     {
@@ -3916,7 +3916,7 @@
       "return1y": 0.6655,
       "equity": 7981000000.0,
       "weight": 0.0345,
-      "price": 40.38,
+      "price": 40.71,
       "nameEn": "Southwest Airlines Company"
     },
     {
@@ -3926,7 +3926,7 @@
       "return1y": 1.1402,
       "equity": 7673300000.0,
       "weight": 0.0337,
-      "price": 74.21,
+      "price": 71.93,
       "nameEn": "ON Semiconductor Corporation"
     },
     {
@@ -3936,7 +3936,7 @@
       "return1y": 0.6244,
       "equity": 2803451000.0,
       "weight": 0.0335,
-      "price": 521.46,
+      "price": 538.76,
       "nameEn": "Ulta Beauty, Inc."
     },
     {
@@ -3946,7 +3946,7 @@
       "return1y": 0.8887,
       "equity": 26317000000.0,
       "weight": 0.0334,
-      "price": 69.86,
+      "price": 70.23,
       "nameEn": "Citizens Financial Group, Inc."
     },
     {
@@ -3956,7 +3956,7 @@
       "return1y": -0.2432,
       "equity": 7938500000.0,
       "weight": 0.0333,
-      "price": 23.88,
+      "price": 24.09,
       "nameEn": "Hormel Foods Corporation"
     },
     {
@@ -3966,7 +3966,7 @@
       "return1y": -0.4364,
       "equity": 2129112000.0,
       "weight": 0.033,
-      "price": 299.91,
+      "price": 305.31,
       "nameEn": "FactSet Research Systems Inc."
     },
     {
@@ -3976,7 +3976,7 @@
       "return1y": -0.1179,
       "equity": 4082000000.0,
       "weight": 0.0329,
-      "price": 28.44,
+      "price": 28.75,
       "nameEn": "Brown Forman Inc"
     },
     {
@@ -3996,7 +3996,7 @@
       "return1y": 0.0515,
       "equity": 4422991000.0,
       "weight": 0.0322,
-      "price": 133.96,
+      "price": 135.69,
       "nameEn": "Genuine Parts Company"
     },
     {
@@ -4006,7 +4006,7 @@
       "return1y": -0.3755,
       "equity": 6129000000.0,
       "weight": 0.0321,
-      "price": 26.34,
+      "price": 26.49,
       "nameEn": "Baxter International Inc."
     },
     {
@@ -4016,7 +4016,7 @@
       "return1y": 6.5495,
       "equity": 459000000.0,
       "weight": 0.0321,
-      "price": 850.0,
+      "price": 794.65,
       "nameEn": "Seagate Technology Holdings PLC"
     },
     {
@@ -4026,7 +4026,7 @@
       "return1y": -0.1109,
       "equity": -3901142000.0,
       "weight": 0.0319,
-      "price": 341.85,
+      "price": 349.01,
       "nameEn": "Domino's Pizza Inc"
     },
     {
@@ -4036,7 +4036,7 @@
       "return1y": -0.181,
       "equity": 2332000000.0,
       "weight": 0.0319,
-      "price": 28.93,
+      "price": 29.11,
       "nameEn": "Gen Digital Inc."
     },
     {
@@ -4046,7 +4046,7 @@
       "return1y": 0.0032,
       "equity": 8363800000.0,
       "weight": 0.0318,
-      "price": 76.22,
+      "price": 75.8,
       "nameEn": "The Cooper Companies, Inc."
     },
     {
@@ -4056,7 +4056,7 @@
       "return1y": 0.5154,
       "equity": 3754900000.0,
       "weight": 0.0318,
-      "price": 131.48,
+      "price": 136.75,
       "nameEn": "Dollar Tree, Inc."
     },
     {
@@ -4066,7 +4066,7 @@
       "return1y": 0.2816,
       "equity": 7334000000.0,
       "weight": 0.0316,
-      "price": 67.86,
+      "price": 68.42,
       "nameEn": "Alliant Energy Corporation"
     },
     {
@@ -4076,7 +4076,7 @@
       "return1y": 0.2618,
       "equity": 3538264000.0,
       "weight": 0.031,
-      "price": 384.63,
+      "price": 379.04,
       "nameEn": "F5, Inc."
     },
     {
@@ -4086,7 +4086,7 @@
       "return1y": 0.4356,
       "equity": 2355633000.0,
       "weight": 0.0309,
-      "price": 187.81,
+      "price": 187.83,
       "nameEn": "Expeditors International of Was"
     },
     {
@@ -4096,7 +4096,7 @@
       "return1y": 0.2108,
       "equity": 5836200000.0,
       "weight": 0.0308,
-      "price": 60.25,
+      "price": 60.67,
       "nameEn": "Trimble Inc."
     },
     {
@@ -4106,7 +4106,7 @@
       "return1y": 0.1354,
       "equity": 12045800000.0,
       "weight": 0.0307,
-      "price": 87.54,
+      "price": 88.94,
       "nameEn": "Omnicom Group Inc."
     },
     {
@@ -4116,7 +4116,7 @@
       "return1y": 0.3424,
       "equity": 10221300000.0,
       "weight": 0.0306,
-      "price": 80.92,
+      "price": 81.39,
       "nameEn": "Evergy, Inc."
     },
     {
@@ -4126,7 +4126,7 @@
       "return1y": 0.0158,
       "equity": 15461000000.0,
       "weight": 0.0305,
-      "price": 370.06,
+      "price": 376.79,
       "nameEn": "Everest Group, Ltd."
     },
     {
@@ -4136,7 +4136,7 @@
       "return1y": 0.0464,
       "equity": 8792000000.0,
       "weight": 0.0303,
-      "price": 30.38,
+      "price": 30.76,
       "nameEn": "News Corporation"
     },
     {
@@ -4146,7 +4146,7 @@
       "return1y": 1.3896,
       "equity": 1344000000.0,
       "weight": 0.0301,
-      "price": 313.21,
+      "price": 304.89,
       "nameEn": "Jabil Inc."
     },
     {
@@ -4156,7 +4156,7 @@
       "return1y": 0.4017,
       "equity": 3176000000.0,
       "weight": 0.03,
-      "price": 353.08,
+      "price": 353.32,
       "nameEn": "West Pharmaceutical Services, I"
     },
     {
@@ -4166,7 +4166,7 @@
       "return1y": 0.1952,
       "equity": 3443900000.0,
       "weight": 0.0296,
-      "price": 150.08,
+      "price": 151.61,
       "nameEn": "Jacobs Solutions Inc."
     },
     {
@@ -4176,7 +4176,7 @@
       "return1y": -0.2701,
       "equity": 4352251000.0,
       "weight": 0.0289,
-      "price": 70.21,
+      "price": 70.22,
       "nameEn": "Builders FirstSource, Inc."
     },
     {
@@ -4186,7 +4186,7 @@
       "return1y": 0.7544,
       "equity": 3565085000.0,
       "weight": 0.0289,
-      "price": 275.45,
+      "price": 259.88,
       "nameEn": "J.B. Hunt Transport Services, I"
     },
     {
@@ -4196,7 +4196,7 @@
       "return1y": -0.3994,
       "equity": 15470070000.0,
       "weight": 0.0285,
-      "price": 53.49,
+      "price": 54.04,
       "nameEn": "Alexandria Real Estate Equities"
     },
     {
@@ -4206,7 +4206,7 @@
       "return1y": 1.5207,
       "equity": 551200000.0,
       "weight": 0.0284,
-      "price": 130.17,
+      "price": 132.16,
       "nameEn": "Tapestry, Inc."
     },
     {
@@ -4216,7 +4216,7 @@
       "return1y": 0.6679,
       "equity": 9537993000.0,
       "weight": 0.0283,
-      "price": 214.28,
+      "price": 208.31,
       "nameEn": "First Solar, Inc."
     },
     {
@@ -4226,7 +4226,7 @@
       "return1y": 0.1912,
       "equity": 3869200000.0,
       "weight": 0.0282,
-      "price": 64.4,
+      "price": 63.31,
       "nameEn": "Pentair plc."
     },
     {
@@ -4236,7 +4236,7 @@
       "return1y": 0.2555,
       "equity": 10391836000.0,
       "weight": 0.0279,
-      "price": 24.02,
+      "price": 24.22,
       "nameEn": "Kimco Realty Corporation (HC)"
     },
     {
@@ -4246,7 +4246,7 @@
       "return1y": -0.0609,
       "equity": 3288462000.0,
       "weight": 0.0277,
-      "price": 37.77,
+      "price": 38.39,
       "nameEn": "UDR, Inc."
     },
     {
@@ -4256,7 +4256,7 @@
       "return1y": 0.0743,
       "equity": -185000000.0,
       "weight": 0.0276,
-      "price": 73.29,
+      "price": 73.21,
       "nameEn": "Masco Corporation"
     },
     {
@@ -4266,7 +4266,7 @@
       "return1y": 0.211,
       "equity": 2964000000.0,
       "weight": 0.0274,
-      "price": 85.89,
+      "price": 87.48,
       "nameEn": "Best Buy Co., Inc."
     },
     {
@@ -4276,7 +4276,7 @@
       "return1y": 0.1102,
       "equity": 2242100000.0,
       "weight": 0.0272,
-      "price": 183.71,
+      "price": 183.69,
       "nameEn": "Avery Dennison Corporation"
     },
     {
@@ -4296,7 +4296,7 @@
       "return1y": 0.4023,
       "equity": 5421000000.0,
       "weight": 0.0269,
-      "price": 63.59,
+      "price": 64.42,
       "nameEn": "Ball Corporation"
     },
     {
@@ -4306,7 +4306,7 @@
       "return1y": 0.2409,
       "equity": 4027500000.0,
       "weight": 0.0269,
-      "price": 234.39,
+      "price": 233.69,
       "nameEn": "IDEX Corporation"
     },
     {
@@ -4316,7 +4316,7 @@
       "return1y": 0.0018,
       "equity": 11636000000.0,
       "weight": 0.0266,
-      "price": 48.59,
+      "price": 47.91,
       "nameEn": "Amcor plc"
     },
     {
@@ -4326,7 +4326,7 @@
       "return1y": -0.0168,
       "equity": 7500094000.0,
       "weight": 0.0266,
-      "price": 21.4,
+      "price": 21.63,
       "nameEn": "Healthpeak Properties, Inc."
     },
     {
@@ -4336,7 +4336,7 @@
       "return1y": 1.0827,
       "equity": 2888400000.0,
       "weight": 0.0262,
-      "price": 372.59,
+      "price": 370.82,
       "nameEn": "Ralph Lauren Corporation"
     },
     {
@@ -4346,7 +4346,7 @@
       "return1y": 4.2905,
       "equity": 2795752000.0,
       "weight": 0.0262,
-      "price": 375.74,
+      "price": 364.9,
       "nameEn": "Teradyne, Inc."
     },
     {
@@ -4356,7 +4356,7 @@
       "return1y": 0.2384,
       "equity": 6906890000.0,
       "weight": 0.0258,
-      "price": 76.06,
+      "price": 76.69,
       "nameEn": "Regency Centers Corporation"
     },
     {
@@ -4366,7 +4366,7 @@
       "return1y": 9.7787,
       "equity": 7111000000.0,
       "weight": 0.0257,
-      "price": 459.44,
+      "price": 435.38,
       "nameEn": "Western Digital Corporation"
     },
     {
@@ -4376,7 +4376,7 @@
       "return1y": 0.2303,
       "equity": 9207000000.0,
       "weight": 0.0255,
-      "price": 48.28,
+      "price": 47.34,
       "nameEn": "Aptiv PLC"
     },
     {
@@ -4386,7 +4386,7 @@
       "return1y": -0.3862,
       "equity": 1731500000.0,
       "weight": 0.0255,
-      "price": 229.07,
+      "price": 229.62,
       "nameEn": "Paycom Software, Inc."
     },
     {
@@ -4396,7 +4396,7 @@
       "return1y": 0.0356,
       "equity": 3588000000.0,
       "weight": 0.0255,
-      "price": 368.51,
+      "price": 363.3,
       "nameEn": "Zebra Technologies Corporation"
     },
     {
@@ -4406,7 +4406,7 @@
       "return1y": -0.0203,
       "equity": 2203058000.0,
       "weight": 0.0254,
-      "price": 166.2,
+      "price": 170.51,
       "nameEn": "Jack Henry & Associates, Inc."
     },
     {
@@ -4416,7 +4416,7 @@
       "return1y": -0.3965,
       "equity": 6064534000.0,
       "weight": 0.0251,
-      "price": 62.13,
+      "price": 62.8,
       "nameEn": "CarMax Inc"
     },
     {
@@ -4426,7 +4426,7 @@
       "return1y": -0.3296,
       "equity": 8164100000.0,
       "weight": 0.025,
-      "price": 16.43,
+      "price": 16.67,
       "nameEn": "ConAgra Brands, Inc."
     },
     {
@@ -4436,7 +4436,7 @@
       "return1y": -0.1145,
       "equity": 5236100000.0,
       "weight": 0.025,
-      "price": 124.32,
+      "price": 125.87,
       "nameEn": "The J.M. Smucker Company"
     },
     {
@@ -4446,7 +4446,7 @@
       "return1y": 0.0314,
       "equity": -651082000.0,
       "weight": 0.0249,
-      "price": 173.82,
+      "price": 176.5,
       "nameEn": "DaVita Inc."
     },
     {
@@ -4456,7 +4456,7 @@
       "return1y": 0.501,
       "equity": 7875000000.0,
       "weight": 0.0249,
-      "price": 82.95,
+      "price": 82.13,
       "nameEn": "Textron Inc."
     },
     {
@@ -4466,7 +4466,7 @@
       "return1y": 0.2253,
       "equity": 4049147000.0,
       "weight": 0.0248,
-      "price": 162.55,
+      "price": 159.64,
       "nameEn": "Align Technology, Inc."
     },
     {
@@ -4476,7 +4476,7 @@
       "return1y": -0.0131,
       "equity": 7250360000.0,
       "weight": 0.0248,
-      "price": 124.75,
+      "price": 123.0,
       "nameEn": "Revvity, Inc."
     },
     {
@@ -4486,7 +4486,7 @@
       "return1y": 0.8745,
       "equity": 4838000000.0,
       "weight": 0.0244,
-      "price": 129.6,
+      "price": 129.24,
       "nameEn": "CF Industries Holdings, Inc."
     },
     {
@@ -4496,7 +4496,7 @@
       "return1y": -0.0111,
       "equity": 4362523000.0,
       "weight": 0.0243,
-      "price": 107.59,
+      "price": 109.15,
       "nameEn": "Camden Property Trust"
     },
     {
@@ -4506,7 +4506,7 @@
       "return1y": 0.083,
       "equity": 7275792000.0,
       "weight": 0.0243,
-      "price": 177.26,
+      "price": 176.4,
       "nameEn": "Universal Health Services, Inc."
     },
     {
@@ -4516,7 +4516,7 @@
       "return1y": 0.0355,
       "equity": 5049000000.0,
       "weight": 0.0242,
-      "price": 89.57,
+      "price": 91.25,
       "nameEn": "Solventum Corporation"
     },
     {
@@ -4526,7 +4526,7 @@
       "return1y": -0.266,
       "equity": 1185229000.0,
       "weight": 0.0241,
-      "price": 187.98,
+      "price": 188.24,
       "nameEn": "Pool Corporation"
     },
     {
@@ -4548,7 +4548,7 @@
       "return1y": -0.2198,
       "equity": 10230300000.0,
       "weight": 0.0238,
-      "price": 42.94,
+      "price": 42.99,
       "nameEn": "Molson Coors Beverage Company"
     },
     {
@@ -4558,7 +4558,7 @@
       "return1y": 0.7006,
       "equity": 4977371000.0,
       "weight": 0.0234,
-      "price": 110.42,
+      "price": 105.66,
       "nameEn": "Akamai Technologies, Inc."
     },
     {
@@ -4568,7 +4568,7 @@
       "return1y": -0.4048,
       "equity": 4005000000.0,
       "weight": 0.0233,
-      "price": 23.95,
+      "price": 24.16,
       "nameEn": "The Campbell's Company"
     },
     {
@@ -4578,7 +4578,7 @@
       "return1y": 0.6832,
       "equity": 5167478000.0,
       "weight": 0.0232,
-      "price": 127.81,
+      "price": 127.98,
       "nameEn": "Incyte Corporation"
     },
     {
@@ -4588,7 +4588,7 @@
       "return1y": 1.0201,
       "equity": 1845647000.0,
       "weight": 0.0222,
-      "price": 141.63,
+      "price": 142.86,
       "nameEn": "C.H. Robinson Worldwide, Inc."
     },
     {
@@ -4598,7 +4598,7 @@
       "return1y": -0.2054,
       "equity": 6537000000.0,
       "weight": 0.022,
-      "price": 25.77,
+      "price": 25.74,
       "nameEn": "LKQ Corporation"
     },
     {
@@ -4608,7 +4608,7 @@
       "return1y": 0.1961,
       "equity": 8881638000.0,
       "weight": 0.022,
-      "price": 97.36,
+      "price": 97.71,
       "nameEn": "Pinnacle West Capital Corporati"
     },
     {
@@ -4618,7 +4618,7 @@
       "return1y": 0.2237,
       "equity": 2067600000.0,
       "weight": 0.0219,
-      "price": 162.31,
+      "price": 162.63,
       "nameEn": "Allegion plc"
     },
     {
@@ -4628,7 +4628,7 @@
       "return1y": 0.6617,
       "equity": 3112106000.0,
       "weight": 0.0217,
-      "price": 332.24,
+      "price": 333.93,
       "nameEn": "Nordson Corporation"
     },
     {
@@ -4638,7 +4638,7 @@
       "return1y": 0.3162,
       "equity": 5974579000.0,
       "weight": 0.021,
-      "price": 171.08,
+      "price": 173.13,
       "nameEn": "Globe Life Inc."
     },
     {
@@ -4648,7 +4648,7 @@
       "return1y": 1.1144,
       "equity": 8650000000.0,
       "weight": 0.021,
-      "price": 145.13,
+      "price": 138.89,
       "nameEn": "Moderna, Inc."
     },
     {
@@ -4658,7 +4658,7 @@
       "return1y": 0.8533,
       "equity": 15904000000.0,
       "weight": 0.0203,
-      "price": 113.11,
+      "price": 110.16,
       "nameEn": "Bunge Limited"
     },
     {
@@ -4668,7 +4668,7 @@
       "return1y": 0.3095,
       "equity": 9054600000.0,
       "weight": 0.0202,
-      "price": 100.02,
+      "price": 98.51,
       "nameEn": "Stanley Black & Decker, Inc."
     },
     {
@@ -4678,7 +4678,7 @@
       "return1y": 0.6359,
       "equity": 6558000000.0,
       "weight": 0.0201,
-      "price": 23.21,
+      "price": 23.19,
       "nameEn": "Host Hotels & Resorts, Inc."
     },
     {
@@ -4688,7 +4688,7 @@
       "return1y": 0.2641,
       "equity": 5871600000.0,
       "weight": 0.02,
-      "price": 284.04,
+      "price": 287.81,
       "nameEn": "Assurant, Inc."
     },
     {
@@ -4698,7 +4698,7 @@
       "return1y": 0.5762,
       "equity": 12134900000.0,
       "weight": 0.0199,
-      "price": 34.31,
+      "price": 34.62,
       "nameEn": "Franklin Templeton, Inc."
     },
     {
@@ -4708,7 +4708,7 @@
       "return1y": -0.0314,
       "equity": 5147190000.0,
       "weight": 0.0199,
-      "price": 67.67,
+      "price": 69.99,
       "nameEn": "BXP, Inc."
     },
     {
@@ -4718,7 +4718,7 @@
       "return1y": 0.1991,
       "equity": 5758900000.0,
       "weight": 0.0198,
-      "price": 67.14,
+      "price": 66.86,
       "nameEn": "Skyworks Solutions, Inc."
     },
     {
@@ -4728,7 +4728,7 @@
       "return1y": 0.0715,
       "equity": 5961000000.0,
       "weight": 0.0191,
-      "price": 74.09,
+      "price": 72.69,
       "nameEn": "Eastman Chemical Company"
     },
     {
@@ -4750,7 +4750,7 @@
       "return1y": 0.9269,
       "equity": 14711300000.0,
       "weight": 0.019,
-      "price": 16.32,
+      "price": 16.54,
       "nameEn": "Viatris Inc."
     },
     {
@@ -4772,7 +4772,7 @@
       "return1y": 0.1309,
       "equity": 1858000000.0,
       "weight": 0.0184,
-      "price": 63.08,
+      "price": 62.72,
       "nameEn": "A.O. Smith Corporation"
     },
     {
@@ -4782,7 +4782,7 @@
       "return1y": -0.0931,
       "equity": 3677226000.0,
       "weight": 0.0184,
-      "price": 110.34,
+      "price": 111.26,
       "nameEn": "EPAM Systems, Inc."
     },
     {
@@ -4804,7 +4804,7 @@
       "return1y": 0.4385,
       "equity": 2429917000.0,
       "weight": 0.0174,
-      "price": 43.74,
+      "price": 43.69,
       "nameEn": "MGM Resorts International"
     },
     {
@@ -4814,7 +4814,7 @@
       "return1y": 0.1377,
       "equity": 2010989000.0,
       "weight": 0.0174,
-      "price": 72.32,
+      "price": 72.39,
       "nameEn": "Bio-Techne Corp"
     },
     {
@@ -4824,7 +4824,7 @@
       "return1y": 0.2046,
       "equity": 3245000000.0,
       "weight": 0.0167,
-      "price": 88.5,
+      "price": 89.51,
       "nameEn": "Henry Schein, Inc."
     },
     {
@@ -4834,7 +4834,7 @@
       "return1y": 0.2973,
       "equity": 2209888000.0,
       "weight": 0.0165,
-      "price": 17.24,
+      "price": 17.22,
       "nameEn": "Norwegian Cruise Line Holdings "
     },
     {
@@ -4844,7 +4844,7 @@
       "return1y": 0.6068,
       "equity": -275492000.0,
       "weight": 0.0164,
-      "price": 100.28,
+      "price": 99.41,
       "nameEn": "Wynn Resorts, Limited"
     },
     {
@@ -4854,7 +4854,7 @@
       "return1y": 0.4825,
       "equity": 4063000000.0,
       "weight": 0.0162,
-      "price": 14.77,
+      "price": 14.75,
       "nameEn": "The AES Corporation"
     },
     {
@@ -4864,7 +4864,7 @@
       "return1y": 1.2111,
       "equity": 5073000000.0,
       "weight": 0.016,
-      "price": 298.2,
+      "price": 294.63,
       "nameEn": "Huntington Ingalls Industries, "
     },
     {
@@ -4874,7 +4874,7 @@
       "return1y": -0.1904,
       "equity": 1827100000.0,
       "weight": 0.0159,
-      "price": 53.68,
+      "price": 54.8,
       "nameEn": "Lamb Weston Holdings, Inc."
     },
     {
@@ -4884,7 +4884,7 @@
       "return1y": 0.1945,
       "equity": 12084900000.0,
       "weight": 0.0159,
-      "price": 24.41,
+      "price": 24.0,
       "nameEn": "Mosaic Company (The)"
     },
     {
@@ -4894,7 +4894,7 @@
       "return1y": 0.3287,
       "equity": 3248731000.0,
       "weight": 0.0158,
-      "price": 116.74,
+      "price": 117.54,
       "nameEn": "Federal Realty Investment Trust"
     },
     {
@@ -4904,7 +4904,7 @@
       "return1y": 0.9167,
       "equity": 565500000.0,
       "weight": 0.0157,
-      "price": 93.54,
+      "price": 95.41,
       "nameEn": "Hasbro, Inc."
     },
     {
@@ -4914,7 +4914,7 @@
       "return1y": -0.1284,
       "equity": 1145667000.0,
       "weight": 0.0156,
-      "price": 162.11,
+      "price": 162.46,
       "nameEn": "MarketAxess Holdings, Inc."
     },
     {
@@ -4924,7 +4924,7 @@
       "return1y": 0.0409,
       "equity": 16705000000.0,
       "weight": 0.0152,
-      "price": 1.3,
+      "price": 1.2,
       "nameEn": "Banzai International, Inc."
     },
     {
@@ -4934,7 +4934,7 @@
       "return1y": 0.2385,
       "equity": -253504000.0,
       "weight": 0.0149,
-      "price": 40.87,
+      "price": 41.73,
       "nameEn": "Match Group, Inc."
     },
     {
@@ -4944,7 +4944,7 @@
       "return1y": -0.3425,
       "equity": 1087023000.0,
       "weight": 0.0146,
-      "price": 38.61,
+      "price": 37.18,
       "nameEn": "Enphase Energy, Inc."
     },
     {
@@ -4954,7 +4954,7 @@
       "return1y": 2.5573,
       "equity": 9533365000.0,
       "weight": 0.0145,
-      "price": 143.25,
+      "price": 141.51,
       "nameEn": "Albemarle Corporation"
     },
     {
@@ -4964,7 +4964,7 @@
       "return1y": 0.4163,
       "equity": 3164630000.0,
       "weight": 0.0145,
-      "price": 295.19,
+      "price": 298.58,
       "nameEn": "Charles River Laboratories Inte"
     },
     {
@@ -4974,7 +4974,7 @@
       "return1y": 0.9911,
       "equity": 2632422000.0,
       "weight": 0.0139,
-      "price": 205.98,
+      "price": 203.56,
       "nameEn": "Generac Holdlings Inc."
     },
     {
@@ -4984,7 +4984,7 @@
       "return1y": 0.0238,
       "equity": 8373300000.0,
       "weight": 0.0139,
-      "price": 136.22,
+      "price": 134.07,
       "nameEn": "Mohawk Industries, Inc."
     },
     {
@@ -4994,7 +4994,7 @@
       "return1y": 1.0762,
       "equity": 12231000000.0,
       "weight": 0.0125,
-      "price": 32.02,
+      "price": 32.45,
       "nameEn": "Invesco Ltd"
     },
     {
@@ -5004,7 +5004,7 @@
       "return1y": 1.9011,
       "equity": 6093000000.0,
       "weight": 0.0124,
-      "price": 43.39,
+      "price": 42.96,
       "nameEn": "APA Corporation"
     },
     {
@@ -5014,7 +5014,7 @@
       "return1y": 0.1421,
       "equity": 3504000000.0,
       "weight": 0.0119,
-      "price": 29.76,
+      "price": 29.66,
       "nameEn": "Caesars Entertainment, Inc."
     }
   ],
