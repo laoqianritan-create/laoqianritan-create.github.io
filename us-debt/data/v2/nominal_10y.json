@@ -3,10 +3,10 @@
   "friendly": "nominal_10y",
   "source": "FRED",
   "fetched": "2026-08-26",
-  "count": 9166,
+  "count": 9167,
   "latest": {
-    "date": "2026-08-21",
-    "value": 4.74
+    "date": "2026-08-24",
+    "value": 4.7
   },
   "data": [
     {
@@ -36672,6 +36672,10 @@
     {
       "date": "2026-08-21",
       "value": 4.74
+    },
+    {
+      "date": "2026-08-24",
+      "value": 4.7
     }
   ]
 }
