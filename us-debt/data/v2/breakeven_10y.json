@@ -3,10 +3,10 @@
   "friendly": "breakeven_10y",
   "source": "FRED",
   "fetched": "2026-08-28",
-  "count": 5917,
+  "count": 5918,
   "latest": {
-    "date": "2026-08-26",
-    "value": 2.32
+    "date": "2026-08-27",
+    "value": 2.33
   },
   "data": [
     {
@@ -23676,6 +23676,10 @@
     {
       "date": "2026-08-26",
       "value": 2.32
+    },
+    {
+      "date": "2026-08-27",
+      "value": 2.33
     }
   ]
 }
