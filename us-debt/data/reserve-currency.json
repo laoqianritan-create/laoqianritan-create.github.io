@@ -1,11 +1,11 @@
 {
-  "updated": "2026-08-30T16:31:27Z",
+  "updated": "2026-09-01T01:33:41Z",
   "source": "IMF COFER (Currency Composition of Official Foreign Exchange Reserves)",
   "source_url": "https://data.imf.org/COFER",
   "source_mode": "api",
   "methodology": "IMF COFER 7.x（BPM7 重述口径，非报告国估算计入）",
   "manual_maintenance": false,
-  "months_since_last_snapshot": 5,
+  "months_since_last_snapshot": 6,
   "stale_warning": false,
   "note": "季度发布，发布滞后约 3 个月；API 路径每日自动拉取",
   "periods": [

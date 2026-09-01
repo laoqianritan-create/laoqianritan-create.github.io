@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30T16:33:54Z",
+  "updated": "2026-09-01T01:37:30Z",
   "source": "Treasury Fiscal Data API · auctions_query (auction-level gross issuance, total_accepted)",
   "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query",
   "frequency": "calendar quarterly",
@@ -22,18 +22,18 @@
   },
   "audit": {
     "records_total": 11097,
-    "records_skipped_no_amount": 5,
+    "records_skipped_no_amount": 3,
     "records_by_bucket": {
       "notes_10y": 356,
       "bonds_20_30y": 392,
-      "bills": 8313,
+      "bills": 8315,
       "notes_2_3y": 868,
       "notes_5_7y": 741,
       "tips_frn": 422
     },
     "unmapped_term_samples": [],
     "earliest_auction_date": "1979-10-31",
-    "latest_auction_date": "2026-08-27"
+    "latest_auction_date": "2026-08-31"
   },
   "quarterly": [
     {
@@ -3200,19 +3200,19 @@
     },
     {
       "quarter": "2026-Q3",
-      "bills": 4973.92,
+      "bills": 5155.23,
       "notes_2_3y": 291.2,
       "notes_5_7y": 255.26,
       "notes_10y": 95.68,
       "bonds_20_30y": 86.67,
       "tips_frn": 93.67,
-      "total": 5796.4,
-      "bills_pct": 85.81,
-      "notes_2_3y_pct": 5.02,
-      "notes_5_7y_pct": 4.4,
-      "notes_10y_pct": 1.65,
-      "bonds_20_30y_pct": 1.5,
-      "tips_frn_pct": 1.62,
+      "total": 5977.71,
+      "bills_pct": 86.24,
+      "notes_2_3y_pct": 4.87,
+      "notes_5_7y_pct": 4.27,
+      "notes_10y_pct": 1.6,
+      "bonds_20_30y_pct": 1.45,
+      "tips_frn_pct": 1.57,
       "partial": true
     }
   ]
