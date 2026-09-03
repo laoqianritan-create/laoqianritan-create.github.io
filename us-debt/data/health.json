@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-02T01:36:58Z",
+  "updated": "2026-09-03T01:36:39Z",
   "sources": [
     {
       "name": "debt-total",
@@ -8,9 +8,9 @@
       "panels": [
         "panel-debt-total"
       ],
-      "latest_data": "2026-08-31",
+      "latest_data": "2026-09-01",
       "elapsed_sec": 3.8,
-      "started_at": "2026-09-02T01:30:01Z",
+      "started_at": "2026-09-03T01:30:03Z",
       "error": null
     },
     {
@@ -20,9 +20,9 @@
       "panels": [
         "panel-auction"
       ],
-      "latest_data": "2026-09-02",
-      "elapsed_sec": 9.7,
-      "started_at": "2026-09-02T01:30:05Z",
+      "latest_data": "2026-09-03",
+      "elapsed_sec": 33.5,
+      "started_at": "2026-09-03T01:30:07Z",
       "error": null
     },
     {
@@ -32,9 +32,9 @@
       "panels": [
         "panel-rate-by-type"
       ],
-      "latest_data": "2026-09-02",
-      "elapsed_sec": 1.5,
-      "started_at": "2026-09-02T01:30:15Z",
+      "latest_data": "2026-09-03",
+      "elapsed_sec": 1.6,
+      "started_at": "2026-09-03T01:30:40Z",
       "error": null
     },
     {
@@ -44,14 +44,14 @@
       "panels": [
         "panel-yield-curve"
       ],
-      "latest_data": "2026-08-31",
-      "elapsed_sec": 31.8,
-      "started_at": "2026-09-02T01:30:16Z",
+      "latest_data": "2026-09-01",
+      "elapsed_sec": 24.7,
+      "started_at": "2026-09-03T01:30:42Z",
       "error": null
     },
     {
       "name": "macro-annual",
-      "ok": true,
+      "ok": false,
       "critical": false,
       "panels": [
         "panel-revenue",
@@ -60,10 +60,10 @@
         "panel-deficit-gdp",
         "panel-debt-gdp"
       ],
-      "latest_data": "2026-09-02T01:30:58Z",
-      "elapsed_sec": 10.0,
-      "started_at": "2026-09-02T01:30:48Z",
-      "error": null
+      "latest_data": null,
+      "elapsed_sec": 113.8,
+      "started_at": "2026-09-03T01:31:06Z",
+      "error": "validation failed: all data arrays empty in macro-annual.json"
     },
     {
       "name": "tic-holders",
@@ -72,9 +72,9 @@
       "panels": [
         "panel-holders-foreign"
       ],
-      "latest_data": "2026-09-02T01:32:10Z",
-      "elapsed_sec": 71.7,
-      "started_at": "2026-09-02T01:30:58Z",
+      "latest_data": "2026-09-03T01:33:13Z",
+      "elapsed_sec": 12.7,
+      "started_at": "2026-09-03T01:33:00Z",
       "error": null
     },
     {
@@ -84,9 +84,9 @@
       "panels": [
         "panel-mandatory"
       ],
-      "latest_data": "2026-09-02T01:32:11Z",
-      "elapsed_sec": 1.2,
-      "started_at": "2026-09-02T01:32:10Z",
+      "latest_data": "2026-09-03T01:33:14Z",
+      "elapsed_sec": 1.1,
+      "started_at": "2026-09-03T01:33:13Z",
       "error": null
     },
     {
@@ -96,9 +96,9 @@
       "panels": [
         "panel-reserve-currency"
       ],
-      "latest_data": "2026-09-02T01:33:09Z",
-      "elapsed_sec": 57.9,
-      "started_at": "2026-09-02T01:32:11Z",
+      "latest_data": "2026-09-03T01:33:20Z",
+      "elapsed_sec": 5.6,
+      "started_at": "2026-09-03T01:33:14Z",
       "error": null
     },
     {
@@ -110,9 +110,9 @@
         "panel-spending-breakdown",
         "panel-sankey"
       ],
-      "latest_data": "2026-09-02T01:34:05Z",
-      "elapsed_sec": 56.3,
-      "started_at": "2026-09-02T01:33:09Z",
+      "latest_data": "2026-09-03T01:34:10Z",
+      "elapsed_sec": 49.9,
+      "started_at": "2026-09-03T01:33:20Z",
       "error": null
     },
     {
@@ -122,9 +122,9 @@
       "panels": [
         "panel-gold-reserves"
       ],
-      "latest_data": "2026-09-02T01:34:08Z",
-      "elapsed_sec": 2.4,
-      "started_at": "2026-09-02T01:34:05Z",
+      "latest_data": "2026-09-03T01:34:11Z",
+      "elapsed_sec": 1.8,
+      "started_at": "2026-09-03T01:34:10Z",
       "error": null
     },
     {
@@ -136,9 +136,9 @@
         "panel-maturity",
         "panel-maturity-schedule"
       ],
-      "latest_data": "2026-09-02T01:34:17Z",
-      "elapsed_sec": 9.3,
-      "started_at": "2026-09-02T01:34:08Z",
+      "latest_data": "2026-09-03T01:34:24Z",
+      "elapsed_sec": 12.2,
+      "started_at": "2026-09-03T01:34:11Z",
       "error": null
     },
     {
@@ -148,9 +148,9 @@
       "panels": [
         "panel-holders-domestic"
       ],
-      "latest_data": "2026-09-02T01:34:17Z",
+      "latest_data": "2026-09-03T01:34:24Z",
       "elapsed_sec": 0.1,
-      "started_at": "2026-09-02T01:34:17Z",
+      "started_at": "2026-09-03T01:34:24Z",
       "error": null
     },
     {
@@ -162,8 +162,8 @@
         "P29-P37"
       ],
       "latest_data": null,
-      "elapsed_sec": 23.6,
-      "started_at": "2026-09-02T01:34:17Z",
+      "elapsed_sec": 28.8,
+      "started_at": "2026-09-03T01:34:24Z",
       "error": null
     },
     {
@@ -173,9 +173,9 @@
       "panels": [
         "lab-bills-coupons"
       ],
-      "latest_data": "2026-09-02T01:36:25Z",
-      "elapsed_sec": 104.3,
-      "started_at": "2026-09-02T01:34:41Z",
+      "latest_data": "2026-09-03T01:36:08Z",
+      "elapsed_sec": 75.6,
+      "started_at": "2026-09-03T01:34:52Z",
       "error": null
     },
     {
@@ -185,9 +185,9 @@
       "panels": [
         "lab-g7-yields"
       ],
-      "latest_data": "2026-09-02T01:36:37Z",
-      "elapsed_sec": 11.8,
-      "started_at": "2026-09-02T01:36:25Z",
+      "latest_data": "2026-09-03T01:36:20Z",
+      "elapsed_sec": 11.7,
+      "started_at": "2026-09-03T01:36:08Z",
       "error": null
     },
     {
@@ -197,9 +197,9 @@
       "panels": [
         "panel-treasury-issuance"
       ],
-      "latest_data": "2026-09-02T01:36:57Z",
-      "elapsed_sec": 20.8,
-      "started_at": "2026-09-02T01:36:37Z",
+      "latest_data": "2026-09-03T01:36:39Z",
+      "elapsed_sec": 19.0,
+      "started_at": "2026-09-03T01:36:20Z",
       "error": null
     },
     {
@@ -209,7 +209,7 @@
       "panels": [],
       "latest_data": null,
       "elapsed_sec": 0.1,
-      "started_at": "2026-09-02T01:36:57Z",
+      "started_at": "2026-09-03T01:36:39Z",
       "error": null
     },
     {
@@ -219,13 +219,13 @@
       "panels": [],
       "latest_data": null,
       "elapsed_sec": 0.0,
-      "started_at": "2026-09-02T01:36:58Z",
+      "started_at": "2026-09-03T01:36:39Z",
       "error": null
     }
   ],
   "summary": {
-    "ok": 18,
-    "fail": 0,
+    "ok": 17,
+    "fail": 1,
     "total": 18
   }
 }

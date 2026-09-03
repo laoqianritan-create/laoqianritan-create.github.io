@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-02T01:36:57Z",
+  "updated": "2026-09-03T01:36:39Z",
   "source": "Treasury Fiscal Data auctions_query (monthly gross issuance, total_accepted) + FRED GDP (nominal SAAR)",
   "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query",
   "frequency": "monthly",
@@ -8,8 +8,8 @@
   "caveat": "gross issuance 含 bills rollover（短债滚动重发），总量远大于净融资；与 bills-coupons 面板的分桶 total 口径略有差异（此处不做归类过滤，故略高）",
   "audit": {
     "records_total": 11099,
-    "records_counted": 11095,
-    "records_skipped_no_amount": 4,
+    "records_counted": 11096,
+    "records_skipped_no_amount": 3,
     "earliest_month": "1979-10",
     "latest_month": "2026-09"
   },
@@ -3936,7 +3936,7 @@
     },
     {
       "month": "2026-09",
-      "issuance": 145.26,
+      "issuance": 221.57,
       "gdp_saar": null,
       "pct_gdp": null,
       "partial": true
