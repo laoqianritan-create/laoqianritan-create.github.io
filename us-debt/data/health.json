@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-03T01:36:39Z",
+  "updated": "2026-09-03T03:22:09Z",
   "sources": [
     {
       "name": "debt-total",
@@ -9,8 +9,8 @@
         "panel-debt-total"
       ],
       "latest_data": "2026-09-01",
-      "elapsed_sec": 3.8,
-      "started_at": "2026-09-03T01:30:03Z",
+      "elapsed_sec": 3.3,
+      "started_at": "2026-09-03T03:15:53Z",
       "error": null
     },
     {
@@ -21,8 +21,8 @@
         "panel-auction"
       ],
       "latest_data": "2026-09-03",
-      "elapsed_sec": 33.5,
-      "started_at": "2026-09-03T01:30:07Z",
+      "elapsed_sec": 7.1,
+      "started_at": "2026-09-03T03:15:57Z",
       "error": null
     },
     {
@@ -33,8 +33,8 @@
         "panel-rate-by-type"
       ],
       "latest_data": "2026-09-03",
-      "elapsed_sec": 1.6,
-      "started_at": "2026-09-03T01:30:40Z",
+      "elapsed_sec": 1.5,
+      "started_at": "2026-09-03T03:16:04Z",
       "error": null
     },
     {
@@ -45,13 +45,13 @@
         "panel-yield-curve"
       ],
       "latest_data": "2026-09-01",
-      "elapsed_sec": 24.7,
-      "started_at": "2026-09-03T01:30:42Z",
+      "elapsed_sec": 42.9,
+      "started_at": "2026-09-03T03:16:05Z",
       "error": null
     },
     {
       "name": "macro-annual",
-      "ok": false,
+      "ok": true,
       "critical": false,
       "panels": [
         "panel-revenue",
@@ -60,10 +60,10 @@
         "panel-deficit-gdp",
         "panel-debt-gdp"
       ],
-      "latest_data": null,
-      "elapsed_sec": 113.8,
-      "started_at": "2026-09-03T01:31:06Z",
-      "error": "validation failed: all data arrays empty in macro-annual.json"
+      "latest_data": "2026-09-03T03:16:57Z",
+      "elapsed_sec": 8.8,
+      "started_at": "2026-09-03T03:16:48Z",
+      "error": null
     },
     {
       "name": "tic-holders",
@@ -72,9 +72,9 @@
       "panels": [
         "panel-holders-foreign"
       ],
-      "latest_data": "2026-09-03T01:33:13Z",
-      "elapsed_sec": 12.7,
-      "started_at": "2026-09-03T01:33:00Z",
+      "latest_data": "2026-09-03T03:17:11Z",
+      "elapsed_sec": 13.6,
+      "started_at": "2026-09-03T03:16:57Z",
       "error": null
     },
     {
@@ -84,9 +84,9 @@
       "panels": [
         "panel-mandatory"
       ],
-      "latest_data": "2026-09-03T01:33:14Z",
-      "elapsed_sec": 1.1,
-      "started_at": "2026-09-03T01:33:13Z",
+      "latest_data": "2026-09-03T03:17:12Z",
+      "elapsed_sec": 1.6,
+      "started_at": "2026-09-03T03:17:11Z",
       "error": null
     },
     {
@@ -96,9 +96,9 @@
       "panels": [
         "panel-reserve-currency"
       ],
-      "latest_data": "2026-09-03T01:33:20Z",
-      "elapsed_sec": 5.6,
-      "started_at": "2026-09-03T01:33:14Z",
+      "latest_data": "2026-09-03T03:18:06Z",
+      "elapsed_sec": 54.0,
+      "started_at": "2026-09-03T03:17:12Z",
       "error": null
     },
     {
@@ -110,9 +110,9 @@
         "panel-spending-breakdown",
         "panel-sankey"
       ],
-      "latest_data": "2026-09-03T01:34:10Z",
-      "elapsed_sec": 49.9,
-      "started_at": "2026-09-03T01:33:20Z",
+      "latest_data": "2026-09-03T03:18:57Z",
+      "elapsed_sec": 51.2,
+      "started_at": "2026-09-03T03:18:06Z",
       "error": null
     },
     {
@@ -122,9 +122,9 @@
       "panels": [
         "panel-gold-reserves"
       ],
-      "latest_data": "2026-09-03T01:34:11Z",
-      "elapsed_sec": 1.8,
-      "started_at": "2026-09-03T01:34:10Z",
+      "latest_data": "2026-09-03T03:18:59Z",
+      "elapsed_sec": 1.9,
+      "started_at": "2026-09-03T03:18:57Z",
       "error": null
     },
     {
@@ -136,9 +136,9 @@
         "panel-maturity",
         "panel-maturity-schedule"
       ],
-      "latest_data": "2026-09-03T01:34:24Z",
-      "elapsed_sec": 12.2,
-      "started_at": "2026-09-03T01:34:11Z",
+      "latest_data": "2026-09-03T03:19:10Z",
+      "elapsed_sec": 11.1,
+      "started_at": "2026-09-03T03:18:59Z",
       "error": null
     },
     {
@@ -148,9 +148,9 @@
       "panels": [
         "panel-holders-domestic"
       ],
-      "latest_data": "2026-09-03T01:34:24Z",
+      "latest_data": "2026-09-03T03:19:10Z",
       "elapsed_sec": 0.1,
-      "started_at": "2026-09-03T01:34:24Z",
+      "started_at": "2026-09-03T03:19:10Z",
       "error": null
     },
     {
@@ -162,8 +162,8 @@
         "P29-P37"
       ],
       "latest_data": null,
-      "elapsed_sec": 28.8,
-      "started_at": "2026-09-03T01:34:24Z",
+      "elapsed_sec": 35.1,
+      "started_at": "2026-09-03T03:19:10Z",
       "error": null
     },
     {
@@ -173,9 +173,9 @@
       "panels": [
         "lab-bills-coupons"
       ],
-      "latest_data": "2026-09-03T01:36:08Z",
-      "elapsed_sec": 75.6,
-      "started_at": "2026-09-03T01:34:52Z",
+      "latest_data": "2026-09-03T03:21:23Z",
+      "elapsed_sec": 97.8,
+      "started_at": "2026-09-03T03:19:46Z",
       "error": null
     },
     {
@@ -185,9 +185,9 @@
       "panels": [
         "lab-g7-yields"
       ],
-      "latest_data": "2026-09-03T01:36:20Z",
-      "elapsed_sec": 11.7,
-      "started_at": "2026-09-03T01:36:08Z",
+      "latest_data": "2026-09-03T03:21:48Z",
+      "elapsed_sec": 24.8,
+      "started_at": "2026-09-03T03:21:23Z",
       "error": null
     },
     {
@@ -197,9 +197,9 @@
       "panels": [
         "panel-treasury-issuance"
       ],
-      "latest_data": "2026-09-03T01:36:39Z",
-      "elapsed_sec": 19.0,
-      "started_at": "2026-09-03T01:36:20Z",
+      "latest_data": "2026-09-03T03:22:09Z",
+      "elapsed_sec": 20.6,
+      "started_at": "2026-09-03T03:21:48Z",
       "error": null
     },
     {
@@ -209,7 +209,7 @@
       "panels": [],
       "latest_data": null,
       "elapsed_sec": 0.1,
-      "started_at": "2026-09-03T01:36:39Z",
+      "started_at": "2026-09-03T03:22:09Z",
       "error": null
     },
     {
@@ -219,13 +219,13 @@
       "panels": [],
       "latest_data": null,
       "elapsed_sec": 0.0,
-      "started_at": "2026-09-03T01:36:39Z",
+      "started_at": "2026-09-03T03:22:09Z",
       "error": null
     }
   ],
   "summary": {
-    "ok": 17,
-    "fail": 1,
+    "ok": 18,
+    "fail": 0,
     "total": 18
   }
 }
