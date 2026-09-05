@@ -2,11 +2,11 @@
   "series_id": "DGS10",
   "friendly": "nominal_10y",
   "source": "FRED",
-  "fetched": "2026-09-04",
-  "count": 9174,
+  "fetched": "2026-09-05",
+  "count": 9175,
   "latest": {
-    "date": "2026-09-02",
-    "value": 4.79
+    "date": "2026-09-03",
+    "value": 4.77
   },
   "data": [
     {
@@ -36704,6 +36704,10 @@
     {
       "date": "2026-09-02",
       "value": 4.79
+    },
+    {
+      "date": "2026-09-03",
+      "value": 4.77
     }
   ]
 }
