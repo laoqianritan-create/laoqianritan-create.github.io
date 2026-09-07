@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-06T01:31:49Z",
+  "updated": "2026-09-07T01:32:00Z",
   "source": "Wikipedia / WGC (fallback)",
   "source_url": "https://en.wikipedia.org/wiki/Gold_reserve",
   "method": "wikipedia-fallback",
@@ -11,14 +11,14 @@
     "国际货币基金组织": 2814.0,
     "意大利": 2451.8,
     "法国": 2437.0,
-    "俄罗斯": 2842.9,
+    "俄罗斯": 2282.0,
     "中国": 2346.4,
     "瑞士": 1039.9,
     "印度": 880.5,
     "日本": 845.9,
     "其他": 19736.4
   },
-  "snapshot_total_tons": 46878.5,
+  "snapshot_total_tons": 46317.6,
   "all_countries": [
     {
       "country": "United States",
@@ -46,7 +46,7 @@
     },
     {
       "country": "Russia",
-      "tons": 2842.9
+      "tons": 2282.0
     },
     {
       "country": "Switzerland",
