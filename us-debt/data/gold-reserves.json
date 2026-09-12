@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11T06:11:32Z",
+  "updated": "2026-09-12T01:31:58Z",
   "source": "Wikipedia / WGC (fallback)",
   "source_url": "https://en.wikipedia.org/wiki/Gold_reserve",
   "method": "wikipedia-fallback",
@@ -16,9 +16,9 @@
     "瑞士": 1039.9,
     "印度": 880.5,
     "日本": 845.9,
-    "其他": 8167.0
+    "其他": 8342.2
   },
-  "snapshot_total_tons": 34790.2,
+  "snapshot_total_tons": 34965.4,
   "all_countries": [
     {
       "country": "United States",
@@ -125,6 +125,10 @@
       "tons": 178.1
     },
     {
+      "country": "Iraq",
+      "tons": 175.0
+    },
+    {
       "country": "Algeria",
       "tons": 173.6
     },
@@ -214,7 +218,7 @@
     },
     {
       "country": "Serbia",
-      "tons": 54.8
+      "tons": 55.0
     },
     {
       "country": "Cambodia",
