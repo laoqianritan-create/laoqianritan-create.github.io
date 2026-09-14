@@ -45,6 +45,11 @@ import { initPanelChronicle } from './panels/chronicle.js';
 
 import { initPanelStyleEtf, initPanelStyleEtfScatter } from './panels/style_etf.js';
 
+import {
+  initPanelIciRiskAppetite, initPanelIciDomesticWorld, initPanelIciMmf,
+  initPanelIciActiveIndex, initPanelIciPassivization,
+} from './panels/flows.js';
+
 // ─────────────────────────────────────────────────────────────
 // § 1  Data store — key/value + callback notifications
 // ─────────────────────────────────────────────────────────────
@@ -132,6 +137,10 @@ const FILES = {
   ndxBreadth:     'data/ndx_breadth.json',
   // Style ETF
   styleEtf:       'data/style_etf.json',
+  // ICI Flows（资金流）
+  iciFlows:       'data/ici_flows.json',
+  iciMmf:         'data/ici_mmf.json',
+  iciActiveIndex: 'data/ici_active_index.json',
   // Chronicle
   chronicleYears: 'data/chronicle/years.json',
 };
@@ -424,6 +433,27 @@ const PANELS = {
   'panel-style-etf-scatter': {
     requires: ['styleEtf'],
     init() { if (D.styleEtf) initPanelStyleEtfScatter(D.styleEtf); },
+  },
+  // ── ICI 资金流 ─────────────────────────────────────────────
+  'panel-ici-risk-appetite': {
+    requires: ['iciFlows'],
+    init() { if (D.iciFlows) initPanelIciRiskAppetite(D.iciFlows); },
+  },
+  'panel-ici-domestic-world': {
+    requires: ['iciFlows'],
+    init() { if (D.iciFlows) initPanelIciDomesticWorld(D.iciFlows); },
+  },
+  'panel-ici-mmf': {
+    requires: ['iciMmf'],
+    init() { if (D.iciMmf) initPanelIciMmf(D.iciMmf); },
+  },
+  'panel-ici-active-index': {
+    requires: ['iciActiveIndex'],
+    init() { if (D.iciActiveIndex) initPanelIciActiveIndex(D.iciActiveIndex); },
+  },
+  'panel-ici-passivization': {
+    requires: ['iciActiveIndex'],
+    init() { if (D.iciActiveIndex) initPanelIciPassivization(D.iciActiveIndex); },
   },
   // ── Chronicle ──────────────────────────────────────────────
   'panel-chronicle': {

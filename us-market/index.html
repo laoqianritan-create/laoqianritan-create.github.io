@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260914094227">
-<link rel="stylesheet" href="css/chronicle.css?v=20260914094227">
+<link rel="stylesheet" href="style.css?v=20260914192418">
+<link rel="stylesheet" href="css/chronicle.css?v=20260914192418">
 </head>
 <body>
 
@@ -72,6 +72,13 @@
         <a class="nav-item active" href="#panel-style-etf" data-panel="panel-style-etf">主流风格ETF</a>
         <a class="nav-item" href="#panel-style-etf-scatter" data-panel="panel-style-etf-scatter">风险收益平面</a>
       </div>
+      <div class="nav-group" data-category="flows">
+        <a class="nav-item active" href="#panel-ici-risk-appetite" data-panel="panel-ici-risk-appetite">权益·债券·混合</a>
+        <a class="nav-item" href="#panel-ici-domestic-world" data-panel="panel-ici-domestic-world">本土 vs 海外</a>
+        <a class="nav-item" href="#panel-ici-mmf" data-panel="panel-ici-mmf">货币基金蓄水池</a>
+        <a class="nav-item" href="#panel-ici-active-index" data-panel="panel-ici-active-index">主动 vs 指数</a>
+        <a class="nav-item" href="#panel-ici-passivization" data-panel="panel-ici-passivization">被动化率</a>
+      </div>
       <div class="nav-group" data-category="chronicle">
         <a class="nav-item active" href="#panel-chronicle" data-panel="panel-chronicle">日历</a>
       </div>
@@ -119,6 +126,7 @@
     <button class="category-tab active" data-category="sp500">标普500</button>
     <button class="category-tab" data-category="cross">纳斯达克100与道琼斯</button>
     <button class="category-tab" data-category="style-etf">风格ETF</button>
+    <button class="category-tab" data-category="flows">资金流</button>
     <button class="category-tab" data-category="chronicle">编年史</button>
     <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
       <a class="lang-opt active" data-lang="zh" href="#" aria-current="true">中</a>
@@ -1076,6 +1084,99 @@
     </div>
   </section>
 
+  <!-- ── 资金流分类：ICI 数据（2026-09-14 新增） ── -->
+  <section class="panel" id="panel-ici-risk-appetite" data-category="flows" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">权益 · 债券 · 混合 资金流</h2>
+          <p class="panel-desc">ICI 每周汇总 98% 长期基金 + ETF 净流量。绿柱 = 净流入，红柱 = 净流出。</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group" id="iciRiskAppetiteFreq">
+            <button class="btn active" data-freq="monthly">月度</button>
+            <button class="btn" data-freq="weekly">周度</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartIciRiskAppetite" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero" id="chartIciRiskAppetite"></div>
+      <div class="metric-strip" id="iciRiskAppetiteSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-ici-domestic-world" data-category="flows" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">美股本土 vs 海外股票 资金流</h2>
+          <p class="panel-desc">美国投资者对本土股票（Domestic）与海外股票（World）基金的净流量对照。差值 = 「美国例外论」的资金端温度计。</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group" id="iciDomesticWorldFreq">
+            <button class="btn active" data-freq="monthly">月度</button>
+            <button class="btn" data-freq="weekly">周度</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartIciDomesticWorld" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero" id="chartIciDomesticWorld"></div>
+      <div class="metric-strip" id="iciDomesticWorldSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-ici-mmf" data-category="flows" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">货币基金总规模 · 避险蓄水池</h2>
+          <p class="panel-desc">Total Net Assets（TNA）· 长历史 = FRED Z.1 Flow of Funds MMMFFAQ027S 季度序列（1974 Q1 起）· 近期 = ICI 每周 xls · 分 Government / Prime / Tax-Exempt 三类堆叠</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group" id="iciMmfRange">
+            <button class="btn active" data-range="history">长历史 · 51 年</button>
+            <button class="btn" data-range="recent">近期 · 20 周</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartIciMmf" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero" id="chartIciMmf"></div>
+      <div class="metric-strip" id="iciMmfSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-ici-active-index" data-category="flows" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">主动 vs 指数 资金流</h2>
+          <p class="panel-desc">ICI 月度：主动管理基金（Active）vs 被动指数基金（Index）净流量对照。「主动 → 被动大迁徙」的月度切片。</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartIciActiveIndex" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero" id="chartIciActiveIndex"></div>
+      <div class="metric-strip" id="iciActiveIndexSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-ici-passivization" data-category="flows" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">被动化率 · Index 占总 TNA 百分比</h2>
+          <p class="panel-desc">分类别（Domestic / World / Bond / Hybrid）指数基金占该类总资产的百分比演化。</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartIciPassivization" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero" id="chartIciPassivization"></div>
+      <div class="metric-strip" id="iciPassivizationSummary"></div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-chronicle" data-category="chronicle" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -1107,9 +1208,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20260914094227"></script>
-<script type="module" src="js/panels.js?v=20260914094227"></script>
-<script defer src="js/hero-curve.js?v=20260914094227"></script>
+<script src="js/freshness.js?v=20260914192418"></script>
+<script type="module" src="js/panels.js?v=20260914192418"></script>
+<script defer src="js/hero-curve.js?v=20260914192418"></script>
 
 </body>
 </html>
