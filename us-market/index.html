@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260914192418">
-<link rel="stylesheet" href="css/chronicle.css?v=20260914192418">
+<link rel="stylesheet" href="style.css?v=20260914194628">
+<link rel="stylesheet" href="css/chronicle.css?v=20260914194628">
 </head>
 <body>
 
@@ -78,6 +78,7 @@
         <a class="nav-item" href="#panel-ici-mmf" data-panel="panel-ici-mmf">货币基金蓄水池</a>
         <a class="nav-item" href="#panel-ici-active-index" data-panel="panel-ici-active-index">主动 vs 指数</a>
         <a class="nav-item" href="#panel-ici-passivization" data-panel="panel-ici-passivization">被动化率</a>
+        <a class="nav-item" href="#panel-ownership" data-panel="panel-ownership">美股所有权结构</a>
       </div>
       <div class="nav-group" data-category="chronicle">
         <a class="nav-item active" href="#panel-chronicle" data-panel="panel-chronicle">日历</a>
@@ -1177,6 +1178,22 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-ownership" data-category="flows" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">美股所有权结构 · 谁持有美股</h2>
+          <p class="panel-desc">Fed Z.1 Financial Accounts of the United States · Corporate Equities · 1945-Q4 起季度 · 100% 归一化 · 家庭直接持股用残差法(总市值 − 全部机构),与联储 Guide to Financial Accounts 一致。</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartOwnership" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero" id="chartOwnership"></div>
+      <div class="metric-strip" id="ownershipSummary"></div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-chronicle" data-category="chronicle" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -1208,9 +1225,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20260914192418"></script>
-<script type="module" src="js/panels.js?v=20260914192418"></script>
-<script defer src="js/hero-curve.js?v=20260914192418"></script>
+<script src="js/freshness.js?v=20260914194628"></script>
+<script type="module" src="js/panels.js?v=20260914194628"></script>
+<script defer src="js/hero-curve.js?v=20260914194628"></script>
 
 </body>
 </html>

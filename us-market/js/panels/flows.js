@@ -596,3 +596,126 @@ export function initPanelIciPassivization(data) {
   ];
   renderMetricStrip('iciPassivizationSummary', cards);
 }
+
+
+// ─────────────────────────────────────────────────────────────
+// ⑥ 美股所有权结构 · 100% 堆叠面积图 1945-2026
+// 数据源：data/ownership.json (fetch_ownership.py → FRED Z.1 · 14 系列)
+// ─────────────────────────────────────────────────────────────
+
+// 7 类归并（原始 12 sector + 家庭残差 → 展示 7 类）
+const OWNERSHIP_GROUPS = [
+  { key: 'household',   name: '家庭直接持股',       color: BLUE,      keys: ['household'] },
+  { key: 'foreign',     name: '外国投资者',         color: '#f59e0b', keys: ['foreign'] },
+  { key: 'mutual_fund', name: '共同基金',           color: '#0891b2', keys: ['mutual_fund'] },
+  { key: 'etf',         name: 'ETF',                color: GREEN,     keys: ['etf'] },
+  { key: 'pension',     name: '养老金合计',         color: '#8b5cf6', keys: ['private_pension', 'state_pension', 'fed_pension'] },
+  { key: 'insurance',   name: '保险公司',           color: '#d97706', keys: ['life_insurance', 'pc_insurance'] },
+  { key: 'other',       name: '其他',               color: '#94a3b8', keys: ['closed_end', 'broker_dealer', 'bank_mmf', 'nonfin_corp'] },
+];
+
+// 里程碑标注（放在第一条 series 的 markLine）
+const OWNERSHIP_MILESTONES = [
+  { xAxis: '1980-01-01', label: '1980\nMMF+机构崛起' },
+  { xAxis: '2000-01-01', label: '2000\nETF 起飞前夜' },
+  { xAxis: '2010-01-01', label: '2010\n外资突破 15%' },
+  { xAxis: '2020-01-01', label: '2020\n疫情放水' },
+];
+
+export function initPanelOwnership(data) {
+  if (!data || !Array.isArray(data.ownership_pct) || !data.ownership_pct.length) return;
+  const chart = registerChart(echarts.init(document.getElementById('chartOwnership')));
+
+  const rows = data.ownership_pct;
+  const dates = rows.map(r => r.date);
+
+  // 合并成 7 组
+  const groupedData = rows.map(r => {
+    const merged = { date: r.date };
+    OWNERSHIP_GROUPS.forEach(g => {
+      merged[g.key] = g.keys.reduce((acc, k) => acc + (r[k] || 0), 0);
+    });
+    return merged;
+  });
+
+  const series = OWNERSHIP_GROUPS.map((g, i) => ({
+    name: g.name,
+    type: 'line',
+    stack: 'total',
+    smooth: true,
+    showSymbol: false,
+    areaStyle: { color: g.color, opacity: 0.85 },
+    lineStyle: { width: 0.3, color: g.color },
+    itemStyle: { color: g.color },
+    data: groupedData.map(r => [r.date, r[g.key]]),
+    z: OWNERSHIP_GROUPS.length - i,
+    // 里程碑挂在第一条 series
+    markLine: i === 0 ? {
+      symbol: 'none',
+      silent: true,
+      lineStyle: { color: BLACK, type: 'dashed', width: 0.8, opacity: 0.35 },
+      label: { formatter: (p) => p.data.label, color: BLACK, fontSize: 10,
+               fontFamily: CHART_FONT, position: 'insideEndTop', distance: 6 },
+      data: OWNERSHIP_MILESTONES,
+    } : undefined,
+  }));
+
+  chart.setOption({
+    animation: false,
+    grid: { left: 50, right: 30, top: 46, bottom: 66 },
+    legend: getLineLegendConfig({ top: 4, right: 8 }),
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'line' },
+      formatter: (params) => {
+        if (!params.length) return '';
+        const d = params[0].axisValueLabel || params[0].axisValue;
+        let html = `<div style="font-weight:600">${d}</div>`;
+        params.forEach(p => {
+          html += `<div style="display:flex;justify-content:space-between;gap:16px">
+            <span>${p.marker} ${p.seriesName}</span>
+            <span style="font-variant-numeric:tabular-nums">${(p.value[1] ?? p.value).toFixed(1)}%</span>
+          </div>`;
+        });
+        return html;
+      },
+    },
+    xAxis: {
+      type: 'time',
+      axisLabel: { fontSize: 11, color: GRAY, fontFamily: CHART_FONT },
+      axisTick: { show: false },
+      splitLine: { show: true, lineStyle: { color: cssVar('--chart-grid') || '#f0f0f0', type: 'dashed' } },
+    },
+    yAxis: {
+      type: 'value',
+      name: '占美股总市值 %', nameGap: 12,
+      nameTextStyle: { color: GRAY, fontFamily: CHART_FONT, fontSize: 11 },
+      min: 0, max: 100,
+      axisLabel: { fontSize: 11, color: GRAY, fontFamily: CHART_FONT, formatter: '{value}%' },
+      splitLine: { lineStyle: { color: cssVar('--chart-grid') || '#f0f0f0' } },
+    },
+    series,
+    dataZoom: [{
+      type: 'slider', height: 24, bottom: 8,
+      borderColor: 'transparent',
+      backgroundColor: cssVar('--bg-section') || '#fafafa',
+      fillerColor: cssVar('--accent-light') || 'rgba(71,88,224,0.08)',
+      handleStyle: { color: cssVar('--accent') || '#4758e0' },
+      textStyle: { fontSize: 11, color: GRAY, fontFamily: CHART_FONT },
+    }],
+  });
+
+  // Summary strip：4 张卡片（家庭/外国/基金合计/养老金合计）+ 总市值
+  const latest = groupedData[groupedData.length - 1];
+  const totalLatest = data.total_liability[data.total_liability.length - 1];
+  const totalT = totalLatest.value_millions / 1e6;
+  const fund_total = (latest.mutual_fund || 0) + (latest.etf || 0);
+
+  const cards = [
+    buildMetricCard('总市值', `${totalT.toFixed(1)} 万亿美元`, `Fed Z.1 · ${latest.date}`),
+    buildMetricCard('家庭直接持股', `${latest.household.toFixed(1)}%`, `1945 年约 90%`),
+    buildMetricCard('外国投资者', `${latest.foreign.toFixed(1)}%`, `1970 年 < 5%`),
+    buildMetricCard('共同基金 + ETF', `${fund_total.toFixed(1)}%`, `MF ${latest.mutual_fund.toFixed(1)}% + ETF ${latest.etf.toFixed(1)}%`),
+  ];
+  renderMetricStrip('ownershipSummary', cards);
+}

@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20260914192418">
-<link rel="stylesheet" href="css/chronicle.css?v=20260914192418">
+<link rel="stylesheet" href="style.css?v=20260914194628">
+<link rel="stylesheet" href="css/chronicle.css?v=20260914194628">
 </head>
 <body>
 
@@ -78,6 +78,7 @@
         <a class="nav-item" href="#panel-ici-mmf" data-panel="panel-ici-mmf">Money Market</a>
         <a class="nav-item" href="#panel-ici-active-index" data-panel="panel-ici-active-index">Active vs Index</a>
         <a class="nav-item" href="#panel-ici-passivization" data-panel="panel-ici-passivization">Index Share</a>
+        <a class="nav-item" href="#panel-ownership" data-panel="panel-ownership">Ownership</a>
       </div>
       <div class="nav-group" data-category="chronicle">
         <a class="nav-item active" href="#panel-chronicle" data-panel="panel-chronicle">Calendar</a>
@@ -1177,6 +1178,22 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-ownership" data-category="flows" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Who Owns US Equities · Ownership Breakdown</h2>
+          <p class="panel-desc">Fed Z.1 Financial Accounts · Corporate Equities · Quarterly from 1945-Q4 · 100% normalized · Household direct ownership computed as residual (Total − all sectors), per Fed Guide to Financial Accounts.</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartOwnership" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-hero" id="chartOwnership"></div>
+      <div class="metric-strip" id="ownershipSummary"></div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-chronicle" data-category="chronicle" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -1208,9 +1225,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20260914192418"></script>
-<script type="module" src="js/panels.js?v=20260914192418"></script>
-<script defer src="js/hero-curve.js?v=20260914192418"></script>
+<script src="js/freshness.js?v=20260914194628"></script>
+<script type="module" src="js/panels.js?v=20260914194628"></script>
+<script defer src="js/hero-curve.js?v=20260914194628"></script>
 
 </body>
 </html>

@@ -47,7 +47,7 @@ import { initPanelStyleEtf, initPanelStyleEtfScatter } from './panels/style_etf.
 
 import {
   initPanelIciRiskAppetite, initPanelIciDomesticWorld, initPanelIciMmf,
-  initPanelIciActiveIndex, initPanelIciPassivization,
+  initPanelIciActiveIndex, initPanelIciPassivization, initPanelOwnership,
 } from './panels/flows.js';
 
 // ─────────────────────────────────────────────────────────────
@@ -141,6 +141,7 @@ const FILES = {
   iciFlows:       'data/ici_flows.json',
   iciMmf:         'data/ici_mmf.json',
   iciActiveIndex: 'data/ici_active_index.json',
+  ownership:      'data/ownership.json',
   // Chronicle
   chronicleYears: 'data/chronicle/years.json',
 };
@@ -457,6 +458,10 @@ const PANELS = {
   'panel-ici-passivization': {
     requires: ['iciActiveIndex'],
     init() { if (D.iciActiveIndex) initPanelIciPassivization(D.iciActiveIndex); },
+  },
+  'panel-ownership': {
+    requires: ['ownership'],
+    init() { if (D.ownership) initPanelOwnership(D.ownership); },
   },
   // ── Chronicle ──────────────────────────────────────────────
   'panel-chronicle': {

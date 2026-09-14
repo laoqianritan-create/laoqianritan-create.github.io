@@ -480,3 +480,111 @@ export function initPanelIciPassivization(data) {
   ];
   renderMetricStrip('iciPassivizationSummary', cards);
 }
+
+
+// ⑥ US Equity Ownership Structure · 100% stacked area 1945-2026
+// Source: data/ownership.json (fetch_ownership.py → FRED Z.1 · 14 series)
+
+const OWNERSHIP_GROUPS = [
+  { key: 'household',   name: 'Households (Direct)', color: BLUE,      keys: ['household'] },
+  { key: 'foreign',     name: 'Foreign Investors',   color: '#f59e0b', keys: ['foreign'] },
+  { key: 'mutual_fund', name: 'Mutual Funds',        color: '#0891b2', keys: ['mutual_fund'] },
+  { key: 'etf',         name: 'ETFs',                color: GREEN,     keys: ['etf'] },
+  { key: 'pension',     name: 'Pension Funds',       color: '#8b5cf6', keys: ['private_pension', 'state_pension', 'fed_pension'] },
+  { key: 'insurance',   name: 'Insurance Companies', color: '#d97706', keys: ['life_insurance', 'pc_insurance'] },
+  { key: 'other',       name: 'Other',               color: '#94a3b8', keys: ['closed_end', 'broker_dealer', 'bank_mmf', 'nonfin_corp'] },
+];
+
+const OWNERSHIP_MILESTONES = [
+  { xAxis: '1980-01-01', label: '1980\nMMF + institutional rise' },
+  { xAxis: '2000-01-01', label: '2000\nETF era begins' },
+  { xAxis: '2010-01-01', label: '2010\nForeign > 15%' },
+  { xAxis: '2020-01-01', label: '2020\nPandemic liquidity' },
+];
+
+export function initPanelOwnership(data) {
+  if (!data || !Array.isArray(data.ownership_pct) || !data.ownership_pct.length) return;
+  const chart = registerChart(echarts.init(document.getElementById('chartOwnership')));
+  const rows = data.ownership_pct;
+
+  const groupedData = rows.map(r => {
+    const merged = { date: r.date };
+    OWNERSHIP_GROUPS.forEach(g => {
+      merged[g.key] = g.keys.reduce((acc, k) => acc + (r[k] || 0), 0);
+    });
+    return merged;
+  });
+
+  const series = OWNERSHIP_GROUPS.map((g, i) => ({
+    name: g.name,
+    type: 'line', stack: 'total', smooth: true, showSymbol: false,
+    areaStyle: { color: g.color, opacity: 0.85 },
+    lineStyle: { width: 0.3, color: g.color },
+    itemStyle: { color: g.color },
+    data: groupedData.map(r => [r.date, r[g.key]]),
+    z: OWNERSHIP_GROUPS.length - i,
+    markLine: i === 0 ? {
+      symbol: 'none', silent: true,
+      lineStyle: { color: BLACK, type: 'dashed', width: 0.8, opacity: 0.35 },
+      label: { formatter: (p) => p.data.label, color: BLACK, fontSize: 10, fontFamily: CHART_FONT, position: 'insideEndTop', distance: 6 },
+      data: OWNERSHIP_MILESTONES,
+    } : undefined,
+  }));
+
+  chart.setOption({
+    animation: false,
+    grid: { left: 50, right: 30, top: 46, bottom: 66 },
+    legend: getLineLegendConfig({ top: 4, right: 8 }),
+    tooltip: {
+      trigger: 'axis', axisPointer: { type: 'line' },
+      formatter: (params) => {
+        if (!params.length) return '';
+        const d = params[0].axisValueLabel || params[0].axisValue;
+        let html = `<div style="font-weight:600">${d}</div>`;
+        params.forEach(p => {
+          html += `<div style="display:flex;justify-content:space-between;gap:16px">
+            <span>${p.marker} ${p.seriesName}</span>
+            <span style="font-variant-numeric:tabular-nums">${(p.value[1] ?? p.value).toFixed(1)}%</span>
+          </div>`;
+        });
+        return html;
+      },
+    },
+    xAxis: {
+      type: 'time',
+      axisLabel: { fontSize: 11, color: GRAY, fontFamily: CHART_FONT },
+      axisTick: { show: false },
+      splitLine: { show: true, lineStyle: { color: cssVar('--chart-grid') || '#f0f0f0', type: 'dashed' } },
+    },
+    yAxis: {
+      type: 'value',
+      name: '% of Total US Equity', nameGap: 12,
+      nameTextStyle: { color: GRAY, fontFamily: CHART_FONT, fontSize: 11 },
+      min: 0, max: 100,
+      axisLabel: { fontSize: 11, color: GRAY, fontFamily: CHART_FONT, formatter: '{value}%' },
+      splitLine: { lineStyle: { color: cssVar('--chart-grid') || '#f0f0f0' } },
+    },
+    series,
+    dataZoom: [{
+      type: 'slider', height: 24, bottom: 8,
+      borderColor: 'transparent',
+      backgroundColor: cssVar('--bg-section') || '#fafafa',
+      fillerColor: cssVar('--accent-light') || 'rgba(71,88,224,0.08)',
+      handleStyle: { color: cssVar('--accent') || '#4758e0' },
+      textStyle: { fontSize: 11, color: GRAY, fontFamily: CHART_FONT },
+    }],
+  });
+
+  const latest = groupedData[groupedData.length - 1];
+  const totalLatest = data.total_liability[data.total_liability.length - 1];
+  const totalT = totalLatest.value_millions / 1e6;
+  const fund_total = (latest.mutual_fund || 0) + (latest.etf || 0);
+
+  const cards = [
+    buildMetricCard('Total US Equity', `$${totalT.toFixed(1)}T`, `Fed Z.1 · ${latest.date}`),
+    buildMetricCard('Households Direct', `${latest.household.toFixed(1)}%`, `~90% in 1945`),
+    buildMetricCard('Foreign', `${latest.foreign.toFixed(1)}%`, `<5% in 1970`),
+    buildMetricCard('Mutual Funds + ETFs', `${fund_total.toFixed(1)}%`, `MF ${latest.mutual_fund.toFixed(1)}% + ETF ${latest.etf.toFixed(1)}%`),
+  ];
+  renderMetricStrip('ownershipSummary', cards);
+}
