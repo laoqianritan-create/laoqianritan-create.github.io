@@ -274,6 +274,6 @@
   },
   "note": "Primary source Macrotrends，Fallback Damodaran/MSCI",
   "notes": [
-    "Macrotrends ROE fetch failed: Macrotrends iframe missing originalData payload"
+    "Macrotrends ROE 获取失败: HTTP Error 403: Forbidden"
   ]
 }
