@@ -334,9 +334,9 @@
       "decline": -0.113,
       "category": "narrative_break",
       "cause": "",
-      "active": false,
-      "recovery_days": 55,
-      "recovery_date": "2026-09-22"
+      "active": true,
+      "recovery_days": null,
+      "recovery_date": null
     },
     {
       "period": "2019: May 3 – Jun 3",
