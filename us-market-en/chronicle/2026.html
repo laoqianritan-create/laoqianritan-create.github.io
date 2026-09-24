@@ -8,8 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="../style.css?v=20260924110224">
-<link rel="stylesheet" href="../css/chronicle.css?v=20260924110224">
+<link rel="stylesheet" href="../style.css?v=20260924165317">
+<link rel="stylesheet" href="../css/chronicle.css?v=20260924165317">
 <script>
 </script>
 </head>
@@ -44,11 +44,11 @@
         <div class="year-hero-stats">
           <span class="year-hero-stat">
             <span class="year-hero-stat-label">S&P 500</span>
-            <span class="year-hero-stat-value year-hero-stat-value--green">+8.08%</span>
+            <span class="year-hero-stat-value year-hero-stat-value--green">+12.57%</span>
           </span>
           <span class="year-hero-stat">
             <span class="year-hero-stat-label">Range</span>
-            <span class="year-hero-stat-value">YTD through 2026-05</span>
+            <span class="year-hero-stat-value">YTD through 2026-09</span>
           </span>
           <span class="year-hero-stat">
             <span class="year-hero-stat-label">Status</span>
@@ -56,7 +56,7 @@
           </span>
           <span class="year-hero-stat">
             <span class="year-hero-stat-label">Main Theme</span>
-            <span class="year-hero-stat-value">Tariff Digestion + AI Continuation</span>
+            <span class="year-hero-stat-value">Tariff Setback · U.S.–Iran War · AI Capex</span>
           </span>
         </div>
       </div>
@@ -79,13 +79,13 @@
       <div class="panel-header">
         <div>
           <h2 class="panel-title">Overview</h2>
-          <p class="panel-desc">First anniversary of Trump's second term · Tariff effects feed into the data · AI capex narrative continues (year still in progress)</p>
+          <p class="panel-desc">Supreme Court strikes down tariffs · U.S.–Iran war runs all year · AI capex continues (year still in progress)</p>
         </div>
       </div>
-      <div class="year-summary">
-        <p>2026 is the second full year of Trump's second term. The year opens with the question of whether the previous year's tariff effects will start to show up in real economic data. On Jan 20, Trump marks his first anniversary in office; a week later the year's first FOMC meeting <strong>holds rates</strong>, pushing back expectations for the next cut.</p>
-        <p>The January CPI released in February prints at <strong>2.9%, above market expectations</strong>, providing evidence that tariff costs are passing through to consumers. The same month the US and China launch a second phase of trade talks, easing some external-sector concern. The March FOMC announces a <strong>pause to the cutting cycle</strong>, closing the 2H 2025 easing window; in April, tariff-shock concerns recede and broadly better-than-expected Q1 earnings restore <strong>risk appetite</strong>. A mid-April North Korean nuclear-test scare briefly stirs safe-haven flows and then fades.</p>
-        <p>As of 2026-05, the <strong>AI capex narrative</strong> is sustained in hyperscaler Q1 reports and capex guidance. The S&P 500 is +8.08% YTD, with the overall pattern being "tariff digestion plus AI continuation". The year is still in progress; the second-half watch list includes the Fed policy path, second-order tariff effects, AI-capex earnings delivery, and Nvidia's late-May Q1 report.</p>
+          <div class="year-summary">
+        <p>2026 is the second full year of Trump's second term. Markets began the year still absorbing the delayed effects of the 2025 tariffs, with the January FOMC holding rates steady. On 20 February the Supreme Court ruled 6–3 that the president lacks authority to impose tariffs under IEEPA, striking down most of the 2025 duties. <strong>On 28 February the U.S. and Israel launched airstrikes on Iran, and the Middle East war became the thread running through the year</strong>, disrupting shipping through the Strait of Hormuz and driving oil steadily higher.</p>
+        <p>March brought the weakest stretch, with the S&amp;P 500 bottoming at 6,343.72 on 30 March, about 7.5% below the start of the year. A two-week U.S.–Iran ceasefire on 8 April lifted <strong>April to a 10.42% gain, the strongest month of the year</strong>. In May Trump made a state visit to China and Kevin Warsh succeeded Jerome Powell as Fed chair; in June SpaceX completed the largest IPO in history at a valuation of about $1.77tn, and the June FOMC dot plot turned sharply hawkish.</p>
+        <p>Through the second half the index ground higher amid war and policy crosscurrents, setting a year high of 7,798.99 on 13 August. In September the U.S.–Iran conflict re-escalated and the Fed raised rates 25bp to 3.75–4% on 16 September, its first hike since July 2023. Through 2026-09 the S&amp;P 500 is <strong>+12.57% year to date</strong>, with the pattern of "war shock — ceasefire repair — high-level churn". Watch points ahead: the 3 November midterms, the war and oil, and AI-capex earnings delivery.</p>
       </div>
       <div class="chart-container chart-medium" id="chartYear2026" style="margin-top:24px;"></div>
       <p class="chart-band-note">Bands = price-trend segments · <span style="color:var(--green);">green</span> uptrend periods (≥5%) · <span style="color:var(--red);">red</span> downtrend periods (≥5%)</p>
@@ -108,74 +108,156 @@
         <span class="timeline-legend-item" style="color:var(--gray);">(Events also mark the chart below)</span>
       </div>
 
-      <div class="year-timeline" id="yearTimeline">
+            <div class="year-timeline" id="yearTimeline">
 
-        <div class="timeline-item timeline-item--key"
+        <div class="timeline-item"
              data-chart-date="2026-01-20"
-             data-chart-label="One year of Trump 2.0"
-             data-chart-show-label="true">
+             data-chart-label="One year of Trump 2.0">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Jan 20</div>
           <div class="timeline-title">First anniversary of Trump's second term</div>
-          <div class="timeline-desc">Tariffs, immigration, tax reform, and other agendas since January 2025 enter their second implementation year.</div>
+          <div class="timeline-desc">Tariffs, immigration, tax reform and other agendas since January 2025 enter their second implementation year.</div>
         </div>
 
         <div class="timeline-item timeline-item--down"
              data-chart-date="2026-01-28"
-             data-chart-label="FOMC holds"
-             data-chart-show-label="true">
+             data-chart-label="FOMC holds">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Jan 28</div>
           <div class="timeline-title">First FOMC meeting of the year</div>
-          <div class="timeline-desc">Rates held unchanged with no clear timing for the next cut; the easing window is pushed back.</div>
-        </div>
-
-        <div class="timeline-item timeline-item--down"
-             data-chart-date="2026-02-11"
-             data-chart-label="CPI 2.9% above consensus"
-             data-chart-show-label="true">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Feb</div>
-          <div class="timeline-title">January CPI prints 2.9%, above expectations</div>
-          <div class="timeline-desc">The pass-through of tariff costs to consumers shows up in the inflation data.</div>
+          <div class="timeline-desc">Rates held at 3.50–3.75% with no clear timing for the next cut; the easing window is pushed back.</div>
         </div>
 
         <div class="timeline-item"
-             data-chart-date="2026-02-14"
-             data-chart-label="US-China Phase Two">
+             data-chart-date="2026-02-13"
+             data-chart-label="CPI 2.4%">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">Feb 14</div>
-          <div class="timeline-title">US and China launch Phase Two trade talks</div>
-          <div class="timeline-desc">Technical-detail negotiations begin under the 2025 trade framework.</div>
+          <div class="timeline-date">Feb 13</div>
+          <div class="timeline-title">January CPI at 2.4%, in line with expectations</div>
+          <div class="timeline-desc">Inflation keeps easing; tariff pass-through has yet to show up in price data.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2026-02-20"
+             data-chart-label="Tariffs struck down"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb 20</div>
+          <div class="timeline-title">Supreme Court strikes down the tariffs</div>
+          <div class="timeline-desc">A 6–3 ruling finds the president lacks authority to levy tariffs under IEEPA, voiding most of the 2025 duties.</div>
         </div>
 
         <div class="timeline-item timeline-item--key timeline-item--down"
-             data-chart-date="2026-03-18"
-             data-chart-label="Pause to cuts"
+             data-chart-date="2026-02-28"
+             data-chart-label="US–Iran war"
              data-chart-show-label="true">
           <div class="timeline-dot"></div>
+          <div class="timeline-date">Feb 28</div>
+          <div class="timeline-title">U.S. and Israel strike Iran</div>
+          <div class="timeline-desc">Operation Epic Fury begins and Supreme Leader Khamenei is killed; Iran retaliates with missiles and drones against U.S. bases in the Gulf.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--down"
+             data-chart-date="2026-03-18"
+             data-chart-label="Cuts paused">
+          <div class="timeline-dot"></div>
           <div class="timeline-date">Mar 18</div>
-          <div class="timeline-title">Fed pauses the cutting cycle</div>
-          <div class="timeline-desc">The March FOMC ends the 2H 2025 cadence of cuts and re-emphasizes inflation risk.</div>
+          <div class="timeline-title">Fed holds rates steady</div>
+          <div class="timeline-desc">The funds rate stays at 3.50–3.75%; the median dot implies just one cut this year, ending the 2H 2025 easing cadence.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--up"
+             data-chart-date="2026-04-08"
+             data-chart-label="US–Iran truce"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Apr 8</div>
+          <div class="timeline-title">Two-week U.S.–Iran ceasefire agreed</div>
+          <div class="timeline-desc">Oil falls more than 15% in a session as risk appetite returns.</div>
         </div>
 
         <div class="timeline-item timeline-item--up"
              data-chart-date="2026-04-15"
-             data-chart-label="Q1 earnings beat"
-             data-chart-show-label="true">
+             data-chart-label="Q1 beats">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Apr</div>
           <div class="timeline-title">Q1 earnings broadly beat; tariff concerns recede</div>
-          <div class="timeline-desc">Large-cap tech and consumer leaders show Q1 earnings resilience beyond expectations; the second-order tariff hit to corporate earnings has yet to materialize.</div>
+          <div class="timeline-desc">Large-cap tech and consumer leaders show earnings resilience; the second-order tariff hit does not materialize.</div>
         </div>
 
-        <div class="timeline-item timeline-item--down"
-             data-chart-date="2026-04-15"
-             data-chart-label="DPRK nuclear test">
+        <div class="timeline-item"
+             data-chart-date="2026-04-18"
+             data-chart-label="NK missile tests">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">Apr 15</div>
-          <div class="timeline-title">North Korean nuclear-test scare</div>
-          <div class="timeline-desc">North Korea conducts nuclear-related activity, briefly elevating East Asian geopolitical tension.</div>
+          <div class="timeline-date">Apr 18</div>
+          <div class="timeline-title">North Korea test-fires short-range ballistic missiles</div>
+          <div class="timeline-desc">Two rounds of launches in April briefly raise regional tensions.</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2026-05-13"
+             data-chart-label="Trump in Beijing">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May 13</div>
+          <div class="timeline-title">Trump makes a state visit to China</div>
+          <div class="timeline-desc">The 13–15 May visit produces preliminary deals on agricultural purchases, aircraft orders and tariffs.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2026-05-22"
+             data-chart-label="Warsh takes over"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">May 22</div>
+          <div class="timeline-title">Kevin Warsh sworn in as Fed chair</div>
+          <div class="timeline-desc">He succeeds Jerome Powell for a term running through May 2030.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2026-06-12"
+             data-chart-label="SpaceX IPO"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jun 12</div>
+          <div class="timeline-title">SpaceX completes the largest IPO ever</div>
+          <div class="timeline-desc">Priced at $135 a share, it raises $75bn on Nasdaq at a valuation of about $1.77tn.</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2026-06-17"
+             data-chart-label="Hawkish dots">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jun 17</div>
+          <div class="timeline-title">June dot plot turns sharply hawkish</div>
+          <div class="timeline-desc">Rates are held, but the median 2026 dot rises to 3.8% from 3.4%, with most officials open to further hikes.</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2026-08-26"
+             data-chart-label="Nvidia Q2">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Aug 26</div>
+          <div class="timeline-title">Nvidia posts $96.2bn quarterly revenue</div>
+          <div class="timeline-desc">Data-center revenue of $89bn, up 117% year over year, sustains the AI capital-expenditure narrative.</div>
+        </div>
+
+        <div class="timeline-item"
+             data-chart-date="2026-09-01"
+             data-chart-label="War re-escalates">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Sep 1</div>
+          <div class="timeline-title">U.S.–Iran conflict re-escalates</div>
+          <div class="timeline-desc">After U.S. strikes on Iran, Tehran launches its largest barrage since the April ceasefire, then hits U.S. bases in Kuwait and the UAE.</div>
+        </div>
+
+        <div class="timeline-item timeline-item--key"
+             data-chart-date="2026-09-16"
+             data-chart-label="First hike since 2023"
+             data-chart-show-label="true">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Sep 16</div>
+          <div class="timeline-title">Fed raises rates 25bp to 3.75–4%</div>
+          <div class="timeline-desc">The first increase since July 2023, approved 12–0; Chair Warsh says inflation is “too high”.</div>
         </div>
 
       </div>
@@ -219,7 +301,7 @@
   </div>
 </footer>
 
-<script defer src="../js/chronicle-year.js?v=20260924110224"></script>
+<script defer src="../js/chronicle-year.js?v=20260924165317"></script>
 
 </body>
 </html>
