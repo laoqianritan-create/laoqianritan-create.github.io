@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-09-24 09:44:08",
+  "generated_at": "2026-09-24 17:24:01",
   "today": "2026-09-24",
-  "overall": "critical",
-  "stale_count": 1,
+  "overall": "healthy",
+  "stale_count": 0,
   "sources": [
     {
       "file": "sp500_price.json",
@@ -28,9 +28,9 @@
     {
       "file": "sp500_eps.json",
       "label": "S&P 500 EPS",
-      "updated": "2026-03-31",
-      "days_old": 177,
-      "status": "dead"
+      "updated": "2026-06-30",
+      "days_old": 86,
+      "status": "recent"
     },
     {
       "file": "sp500_vix.json",
