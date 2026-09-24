@@ -45,7 +45,7 @@
         strip.classList.add('is-old');
       }
 
-      textEl.innerHTML = '<b>' + asOf + '</b> · ' + status;
+      textEl.innerHTML = '<b>' + asOf + '</b><span class="hf-status"> · ' + status + '</span>';
     })
     .catch((err) => {
       console.warn('[freshness] load failed', err);

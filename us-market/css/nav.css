@@ -164,3 +164,7 @@
 
 /* 编年史年页 header 内的 lang-toggle 单独定位 */
 .header-inner .lang-toggle { margin-left: 12px; flex-shrink: 0; }
+
+/* ── 手机端导航组件（☰ 按钮 + 目录抽屉）──
+   DOM 由 js/mobile-nav.js 注入；桌面端隐藏，≤768px 的样式在 responsive.css */
+.nav-menu-btn, .nav-drawer { display: none; }

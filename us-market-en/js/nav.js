@@ -91,6 +91,14 @@ export function initNav() {
       }
     }
 
+    // 手机端：分类栏是横滑的，把当前分类滚进视野（桌面端分类栏放得下，这段自动不生效）
+    const catInner = document.querySelector('.category-inner');
+    const activeTab = categoryTabs.find(tab => tab.dataset.category === category);
+    if (catInner && activeTab && catInner.scrollWidth > catInner.clientWidth + 4) {
+      const left = activeTab.offsetLeft - (catInner.clientWidth - activeTab.offsetWidth) / 2;
+      catInner.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+    }
+
     // 切换分类后强制全量重绘：resize + 重新 setOption
     // 背景：ECharts 在 hidden(display:none) 的容器上初始化时画布为 0×0，
     // 仅 resize() 不够，需要再调 _refreshTheme 触发完整 setOption。

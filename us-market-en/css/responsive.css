@@ -30,38 +30,194 @@
   .chart-ranking-tall { height: 72vh; min-height: 420px; }
   .chart-medium { height: 40vh; min-height: 280px; }
   .chart-standard { height: 50vh; min-height: 320px; }
-  /* Mobile: sidebar reverts to a top horizontal bar */
+  /* ══ Mobile top navigation (2026-09-24 redesign) ══════════════════
+     Layout: 48px top bar (brand · data date · 中/EN · ☰) + 44px category bar
+     (single line, horizontally scrollable). Panel links move into the ☰ drawer
+     (injected by js/mobile-nav.js). The two bars pin to their own offsets —
+     top bar top:0, category bar top:48px — so they no longer overlap.
+     ═════════════════════════════════════════════════════════════════ */
   .header {
     position: sticky;
     top: 0;
     left: auto;
     width: 100%;
     height: auto;
+    z-index: 120;
     border-right: none;
-    border-bottom: 1px solid var(--border);
-    overflow-y: visible;
-    overflow-x: auto;
+    border-bottom: none;
+    overflow: visible;
+    background: rgba(255, 255, 255, 0.94);
   }
   .header-inner {
     flex-direction: row;
     align-items: center;
-    padding: 0 12px;
-    gap: 12px;
-    height: 44px;
+    padding: 0 14px;
+    gap: 10px;
+    height: 48px;
+    border-bottom: 1px solid var(--border);
   }
-  .header-title { font-size: 14px; padding-bottom: 0; border-bottom: none; }
-  .nav {
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: visible;
-    flex: 1;
+  .header-title {
+    font-size: 13px;
+    padding-bottom: 0;
+    border-bottom: none;
+    letter-spacing: 0.01em;
   }
-  .nav-group { flex-direction: row; gap: 4px; min-width: 100%; }
-  .nav-item { font-size: 12px; padding: 5px 8px; }
+  /* On mobile the badge keeps only the date; status is conveyed by the dot colour */
+  .header-freshness { padding: 0; border-bottom: none; min-height: 0; font-size: 11px; gap: 5px; }
+  .header-freshness .hf-dot { width: 6px; height: 6px; }
+  .header-freshness .hf-status { display: none; }
+  .header-freshness.is-stale .hf-status,
+  .header-freshness.is-old .hf-status { display: inline; }
+  /* Language switch moves into the top bar (DOM moved by mobile-nav.js,
+     only when it originally lived in the category bar) */
+  .header-inner .lang-toggle { margin-left: auto; flex: 0 0 auto; font-size: 12px; gap: 4px; }
+  .header-inner .lang-toggle .lang-opt { padding: 4px 7px; }
+
+  /* ☰ contents button (injected by mobile-nav.js; absent without the script) */
+  .nav-menu-btn {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .nav-menu-btn svg { width: 16px; height: 16px; display: block; }
+
+  /* Panel nav now lives in the drawer → hide the header scroller
+     (if the script never runs, the old horizontal scroller stays: graceful fallback) */
+  .mobile-nav-ready #nav { display: none; }
+
+  /* ── Category bar: single line · no wrapping · horizontal scroll ── */
   .main, .hero-banner, .footer, .category-bar { margin-left: 0; }
-  .category-inner { padding: 10px 16px; }
-  .category-tab { font-size: 12px; padding: 6px 12px; }
-  html { scroll-padding-top: 88px; }
+  .category-bar { top: 48px; z-index: 110; overflow: hidden; }
+  .category-inner {
+    max-width: none;
+    height: 44px;
+    padding: 0 34px 0 14px;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .category-inner::-webkit-scrollbar { display: none; }
+  .category-tab {
+    flex: 0 0 auto;
+    height: 30px;
+    padding: 0 13px;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 30px;
+    white-space: nowrap;
+    border: none;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-secondary);
+  }
+  .category-tab.active { color: var(--accent); background: var(--accent-light); }
+  /* Right-edge fade: hints that the row scrolls sideways */
+  .category-bar::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 28px;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.97));
+  }
+
+  /* ── ☰ contents drawer ── */
+  .nav-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: transform 0.26s cubic-bezier(0.32, 0.72, 0, 1), visibility 0.26s;
+  }
+  .nav-drawer.open { transform: translateY(0); visibility: visible; }
+  .nav-drawer-head {
+    flex: 0 0 auto;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-drawer-title { font-size: 15px; font-weight: 700; }
+  .nav-drawer-close {
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    font-size: 15px;
+    line-height: 1;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+  .nav-drawer-cats {
+    flex: 0 0 auto;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 14px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-drawer-cats::-webkit-scrollbar { display: none; }
+  .nav-drawer-body { flex: 1; overflow-y: auto; padding: 14px; }
+  .nav-drawer-sec {
+    font-size: 12px;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+  }
+  .nav-drawer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .nav-drawer-item {
+    font: inherit;
+    font-size: 13px;
+    text-align: left;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--text);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .nav-drawer-item.active {
+    border-color: var(--accent);
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  body.nav-drawer-open { overflow: hidden; }
+
+  html { scroll-padding-top: 104px; }
   .sector-layout,
   .breadth-layout,
   .rules-highlights,
