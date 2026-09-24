@@ -26,6 +26,51 @@ export function initNav() {
     });
   }
 
+  // ── 滚动定位（2026-09-24 修：点导航跳不到目标面板）──
+  // 病因：① 全站 scroll-padding-top 只有 16px，而顶部有 position: sticky 的分类栏
+  //        挡住约 60px → 面板顶部被压在栏下面；
+  //       ② 原生锚点跳转会「一次性」算出目标位置，而面板是懒加载的，滚动途中下面
+  //        的面板陆续初始化把文档撑高，落点于是偏出去几千 px。
+  // 对策：自己算偏移 + 立即定位 + 两次纠偏（图表初始化后文档高度还会变）。
+  function topOffset() {
+    let off = 12;
+    const catBar = document.getElementById('categoryBar');
+    if (catBar && getComputedStyle(catBar).position === 'sticky') off += catBar.offsetHeight;
+    const header = document.getElementById('header');
+    if (header && getComputedStyle(header).position === 'sticky') off += header.offsetHeight;
+    return off;
+  }
+
+  function scrollToPanel(panel, behavior = 'auto') {
+    if (!panel) return;
+    const y = panel.getBoundingClientRect().top + window.scrollY - topOffset();
+    window.scrollTo({ top: Math.max(0, y), behavior });
+  }
+
+  // 让原生锚点跳转（站内其它 #panel-xxx 链接）也用同一个偏移
+  function syncScrollPadding() {
+    document.documentElement.style.scrollPaddingTop = `${topOffset()}px`;
+  }
+  syncScrollPadding();
+  window.addEventListener('resize', syncScrollPadding, { passive: true });
+
+  function jumpToPanel(panel, withCorrections = true) {
+    if (!panel) return;
+    scrollToPanel(panel, 'auto');
+    if (!withCorrections) return;
+    // 懒加载/图表 resize 会改变文档高度 → 补两次纠偏，确保最终停在面板顶部
+    [260, 700, 1400].forEach(delay => {
+      setTimeout(() => {
+        if (panel.hidden) return;
+        const drift = panel.getBoundingClientRect().top - topOffset();
+        if (Math.abs(drift) > 4) scrollToPanel(panel);
+      }, delay);
+    });
+    if (window.history?.replaceState) {
+      window.history.replaceState(null, '', `#${panel.id}`);
+    }
+  }
+
   function setCategory(category, shouldScroll = true) {
     currentCategory = category;
     navGroups.forEach(group => {
@@ -42,7 +87,7 @@ export function initNav() {
     if (firstVisible) {
       setActivePanel(firstVisible.id);
       if (shouldScroll) {
-        firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        jumpToPanel(firstVisible);
       }
     }
 
@@ -94,15 +139,29 @@ export function initNav() {
   });
 
   document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', ev => {
+      // 接管原生锚点跳转（见上方 jumpToPanel 说明），保证落到面板顶部
+      ev.preventDefault();
       const target = document.getElementById(item.dataset.panel);
-      if (target?.dataset.category && target.dataset.category !== currentCategory) {
+      if (!target) return;
+      if (target.dataset.category && target.dataset.category !== currentCategory) {
         setCategory(target.dataset.category, false);
       }
+      setActivePanel(target.id);
+      jumpToPanel(target);
     });
   });
 
   setCategory(currentCategory, false);
+
+  // 深链接（带 #panel-xxx 直接进站）也要正确定位
+  if (window.location.hash) {
+    let hashPanel = null;
+    try { hashPanel = document.querySelector(window.location.hash); } catch (_) { hashPanel = null; }
+    if (hashPanel?.classList?.contains('panel')) {
+      setTimeout(() => jumpToPanel(hashPanel, false), 350);
+    }
+  }
 }
 
 // 保留占位（历史上这里有 scroll-snap 逻辑，被禁用了但仍保留导出以防外部调用）
