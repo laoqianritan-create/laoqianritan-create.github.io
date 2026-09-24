@@ -218,6 +218,7 @@ export function initFedHikesPanel(containerId, summaryId, fedData, priceData, op
           lineStyle: { width: 1.6, color: GREEN },
           areaStyle: { color: 'rgba(56,158,13,0.24)' },
           z: 3,
+          markArea: hikeMarkAreas.length ? { silent: true, data: hikeMarkAreas } : undefined,
         },
         {
           name: L.posRate,
@@ -229,6 +230,7 @@ export function initFedHikesPanel(containerId, summaryId, fedData, priceData, op
           areaStyle: { origin: 'start', color: 'rgba(207,19,34,0.42)' },
           connectNulls: false,
           z: 2,
+          markArea: hikeMarkAreas.length ? { silent: true, data: hikeMarkAreas } : undefined,
         },
         {
           name: L.negRate,
