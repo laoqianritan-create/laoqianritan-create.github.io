@@ -45,6 +45,8 @@ import { initPanelChronicle } from './panels/chronicle.js';
 
 import { initPanelStyleEtf, initPanelStyleEtfScatter } from './panels/style_etf.js';
 
+import { initFedHikesPanel } from './panels/fed_hikes.js';
+
 import {
   initPanelIciRiskAppetite, initPanelIciDomesticWorld, initPanelIciMmf,
   initPanelIciActiveIndex, initPanelIciPassivization, initPanelOwnership,
@@ -142,6 +144,8 @@ const FILES = {
   iciMmf:         'data/ici_mmf.json',
   iciActiveIndex: 'data/ici_active_index.json',
   ownership:      'data/ownership.json',
+  // Fed hikes（加息×股指）
+  fedHikes:       'data/fed_hikes.json',
   // Chronicle
   chronicleYears: 'data/chronicle/years.json',
 };
@@ -460,6 +464,56 @@ const PANELS = {
     requires: ['ownership'],
     init() { if (D.ownership) initPanelOwnership(D.ownership); },
   },
+  // ── Fed hikes（加息×股指）──────────────────────────────────
+  'panel-spx-hikes': {
+    requires: ['fedHikes', 'price'],
+    init() { if (D.fedHikes) initFedHikesPanel('chartSpxHikes', 'spxHikesSummary', D.fedHikes, D.price, {
+      start: '1954-01-01',
+      indexLabel: '标普500',
+      anns: [
+        { date: '1972-06-01', label: '1972–73 加息后遭遇滞胀，1973–74 熊市 −48%', y: 4.5 },
+        { date: '1979-08-06', label: '1979.08 沃尔克就任，利率加到 20%', y: 1.15 },
+        { date: '2000-05-16', label: '2000.05 最后一轮加息，互联网泡沫破裂', y: 20 },
+        { date: '2004-06-30', label: '2004.06 连续 17 次加息，两年后次贷危机', y: 11 },
+        { date: '2015-12-16', label: '2015.12 时隔九年重启加息', y: 30 },
+        { date: '2022-03-17', label: '2022.03 四十年最快加息周期', y: 62, side: 'left' },
+        { date: '2026-09-17', label: '2026.09 再度加息', y: 135 },
+      ],
+      labels: {
+        nav: '净值（对数）', dd: '回撤幅度',
+        posRate: '实际利率为正（钱贵）', negRate: '实际利率为负（钱便宜）',
+        hikeDay: '美联储宣布加息日', realRate: '实际利率',
+        after1d: '加息后 1 日（{index}）', after1y: '加息后 1 年（{index}）',
+        winrate: '胜率', median: '中位', hikeNoun: '次加息', hikeNounFull: '次有满一年数据',
+        sinceStart: '起点', annualized: '年化', maxDd: '区间最大回撤',
+        realRateNow: '实际利率（当前）', histHi: '历史最高', histLo: '最低',
+      },
+    }); },
+  },
+  'panel-ndx-hikes': {
+    requires: ['fedHikes', 'ndxPrice'],
+    init() { if (D.fedHikes) initFedHikesPanel('chartNdxHikes', 'ndxHikesSummary', D.fedHikes, D.ndxPrice, {
+      start: '1985-10-01',
+      indexLabel: '纳指100',
+      anns: [
+        { date: '2000-03-27', label: '2000.03 互联网泡沫见顶，随后最大回撤 −83%', y: 30 },
+        { date: '2004-06-30', label: '2004.06 连续 17 次加息', y: 14 },
+        { date: '2015-12-16', label: '2015.12 时隔九年重启加息', y: 45 },
+        { date: '2018-12-19', label: '2018.12 年内第四次加息，年末急跌', y: 80 },
+        { date: '2022-03-17', label: '2022.03 四十年最快加息周期', y: 115 },
+        { date: '2026-09-17', label: '2026.09 再度加息', y: 200 },
+      ],
+      labels: {
+        nav: '净值（对数）', dd: '回撤幅度',
+        posRate: '实际利率为正（钱贵）', negRate: '实际利率为负（钱便宜）',
+        hikeDay: '美联储宣布加息日', realRate: '实际利率',
+        after1d: '加息后 1 日（{index}）', after1y: '加息后 1 年（{index}）',
+        winrate: '胜率', median: '中位', hikeNoun: '次加息', hikeNounFull: '次有满一年数据',
+        sinceStart: '起点', annualized: '年化', maxDd: '区间最大回撤',
+        realRateNow: '实际利率（当前）', histHi: '历史最高', histLo: '最低',
+      },
+    }); },
+  },
   // ── Chronicle ──────────────────────────────────────────────
   'panel-chronicle': {
     requires: ['annualReturns', 'chronicleYears'],
@@ -530,7 +584,7 @@ const DEFERRED_KEYS = [
   'ndxAnnualLong', 'ndxAnnualTr', 'ndxDaily', 'ndxPrice',
   'ndxVolatility', 'ndxMonthly', 'ndxDrawdowns', 'ndxRolling5y',
   'ndxIntrayearDd', 'ndxVxn', 'qqqDetails',
-  'nasdaq100', 'dowCentury',
+  'nasdaq100', 'dowCentury', 'fedHikes',
   // Style ETF
   'styleEtf',
 ];

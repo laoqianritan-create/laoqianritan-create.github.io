@@ -45,6 +45,8 @@ import { initPanelChronicle } from './panels/chronicle.js';
 
 import { initPanelStyleEtf, initPanelStyleEtfScatter } from './panels/style_etf.js';
 
+import { initFedHikesPanel } from './panels/fed_hikes.js';
+
 import {
   initPanelIciRiskAppetite, initPanelIciDomesticWorld, initPanelIciMmf,
   initPanelIciActiveIndex, initPanelIciPassivization, initPanelOwnership,
@@ -142,6 +144,8 @@ const FILES = {
   iciMmf:         'data/ici_mmf.json',
   iciActiveIndex: 'data/ici_active_index.json',
   ownership:      'data/ownership.json',
+  // Fed hikes
+  fedHikes:       'data/fed_hikes.json',
   // Chronicle
   chronicleYears: 'data/chronicle/years.json',
 };
@@ -463,6 +467,56 @@ const PANELS = {
     requires: ['ownership'],
     init() { if (D.ownership) initPanelOwnership(D.ownership); },
   },
+  // ── Fed hikes ──────────────────────────────────────────────
+  'panel-spx-hikes': {
+    requires: ['fedHikes', 'price'],
+    init() { if (D.fedHikes) initFedHikesPanel('chartSpxHikes', 'spxHikesSummary', D.fedHikes, D.price, {
+      start: '1954-01-01',
+      indexLabel: 'S&P 500',
+      anns: [
+        { date: '1972-06-01', label: '1972–73 stagflation after hikes; 1973–74 bear −48%', y: 4.5 },
+        { date: '1979-08-06', label: 'Aug 1979 Volcker takes over; rates to 20%', y: 1.15 },
+        { date: '2000-05-16', label: 'May 2000 final hike; dot-com bust follows', y: 20 },
+        { date: '2004-06-30', label: 'Jun 2004 17 straight hikes; GFC two years later', y: 11 },
+        { date: '2015-12-16', label: 'Dec 2015 first hike in nine years', y: 30 },
+        { date: '2022-03-17', label: 'Mar 2022 fastest hiking cycle in 40 years', y: 62, side: 'left' },
+        { date: '2026-09-17', label: 'Sep 2026 hiking again', y: 135 },
+      ],
+      labels: {
+        nav: 'NAV (log)', dd: 'Drawdown',
+        posRate: 'Real rate positive (money tight)', negRate: 'Real rate negative (money easy)',
+        hikeDay: 'Fed hike announcement day', realRate: 'Real rate',
+        after1d: '1 day after hike ({index})', after1y: '1 year after hike ({index})',
+        winrate: 'Win rate', median: 'median', hikeNoun: 'hikes', hikeNounFull: 'with full-year data',
+        sinceStart: 'Since', annualized: 'CAGR', maxDd: 'Max drawdown',
+        realRateNow: 'Real rate (current)', histHi: 'Record high', histLo: 'low',
+      },
+    }); },
+  },
+  'panel-ndx-hikes': {
+    requires: ['fedHikes', 'ndxPrice'],
+    init() { if (D.fedHikes) initFedHikesPanel('chartNdxHikes', 'ndxHikesSummary', D.fedHikes, D.ndxPrice, {
+      start: '1985-10-01',
+      indexLabel: 'Nasdaq 100',
+      anns: [
+        { date: '2000-03-27', label: 'Mar 2000 dot-com peak; max drawdown −83%', y: 30 },
+        { date: '2004-06-30', label: 'Jun 2004 17 straight hikes', y: 14 },
+        { date: '2015-12-16', label: 'Dec 2015 first hike in nine years', y: 45 },
+        { date: '2018-12-19', label: 'Dec 2018 fourth hike of the year; year-end slide', y: 80 },
+        { date: '2022-03-17', label: 'Mar 2022 fastest hiking cycle in 40 years', y: 115 },
+        { date: '2026-09-17', label: 'Sep 2026 hiking again', y: 200 },
+      ],
+      labels: {
+        nav: 'NAV (log)', dd: 'Drawdown',
+        posRate: 'Real rate positive (money tight)', negRate: 'Real rate negative (money easy)',
+        hikeDay: 'Fed hike announcement day', realRate: 'Real rate',
+        after1d: '1 day after hike ({index})', after1y: '1 year after hike ({index})',
+        winrate: 'Win rate', median: 'median', hikeNoun: 'hikes', hikeNounFull: 'with full-year data',
+        sinceStart: 'Since', annualized: 'CAGR', maxDd: 'Max drawdown',
+        realRateNow: 'Real rate (current)', histHi: 'Record high', histLo: 'low',
+      },
+    }); },
+  },
   // ── Chronicle ──────────────────────────────────────────────
   'panel-chronicle': {
     requires: ['annualReturns', 'chronicleYears'],
@@ -534,7 +588,7 @@ const DEFERRED_KEYS = [
   'ndxAnnualLong', 'ndxAnnualTr', 'ndxDaily', 'ndxPrice',
   'ndxVolatility', 'ndxMonthly', 'ndxDrawdowns', 'ndxRolling5y',
   'ndxIntrayearDd', 'ndxVxn', 'qqqDetails',
-  'nasdaq100', 'dowCentury',
+  'nasdaq100', 'dowCentury', 'fedHikes',
   // Style ETF
   'styleEtf',
 ];
