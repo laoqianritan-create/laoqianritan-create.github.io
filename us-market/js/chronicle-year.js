@@ -262,7 +262,12 @@
       if (sec.type === 'paragraphs') {
         (sec.body || []).forEach(p => parts.push(`<p>${p}</p>`));
       } else if (sec.type === 'list') {
-        const isHist = sec.heading && sec.heading.indexOf('关键史实') >= 0;
+        // 关键史实小节：中文标题 / 英文标题都认，并加一条按数据形状的兜底（items 带 date+title 即为史实列表），
+        // 这样将来新增语言的时代背景文件不需要再改这里。
+        const firstItem = (sec.items || [])[0] || {};
+        const isHist = (sec.heading && (sec.heading.indexOf('关键史实') >= 0 ||
+                                       /key historical facts/i.test(sec.heading)))
+                       || (!!firstItem.date && !!firstItem.title);
         if (isHist) {
           const items = (sec.items || []).map(it => {
             const date = it.date || it.strong || '';
