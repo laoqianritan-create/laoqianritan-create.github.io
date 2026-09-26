@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-25",
+  "updated": "2026-09-26",
   "label": "AIAE - Aggregate Investor Allocation to Equities",
   "source": "FRED Z.1 Financial Accounts of US (5 borrower classes + Nonfin Corp Equity Liability)",
   "formula": "Equity MV / (Equity MV + Sum of 5 Borrower Liabilities)",
@@ -11,11 +11,11 @@
     "historical_min": 0.200493,
     "historical_max": 0.49588,
     "historical_percentile": 0.9967,
-    "current_10y_yield": 0.051100000000000007,
-    "implied_equity_risk_premium": -0.094765,
+    "current_10y_yield": 0.0518,
+    "implied_equity_risk_premium": -0.095465,
     "regression": {
       "alpha": 0.265398,
-      "beta": -0.623262,
+      "beta": -0.623264,
       "n_obs": 267,
       "note": "subsequent_10y_ann = alpha + beta * AIAE (full-sample OLS)"
     },
@@ -165,7 +165,7 @@
       "date": "1956-01-01",
       "aiae": 0.32222,
       "subsequent_10y_ann": 0.078015,
-      "implied_10y_forecast": 0.064571
+      "implied_10y_forecast": 0.06457
     },
     {
       "date": "1956-04-01",
@@ -249,7 +249,7 @@
       "date": "1959-07-01",
       "aiae": 0.337517,
       "subsequent_10y_ann": 0.042595,
-      "implied_10y_forecast": 0.055037
+      "implied_10y_forecast": 0.055036
     },
     {
       "date": "1959-10-01",
@@ -285,7 +285,7 @@
       "date": "1961-01-01",
       "aiae": 0.36413,
       "subsequent_10y_ann": 0.044932,
-      "implied_10y_forecast": 0.03845
+      "implied_10y_forecast": 0.038449
     },
     {
       "date": "1961-04-01",
@@ -303,7 +303,7 @@
       "date": "1961-10-01",
       "aiae": 0.368077,
       "subsequent_10y_ann": 0.032224,
-      "implied_10y_forecast": 0.03599
+      "implied_10y_forecast": 0.035989
     },
     {
       "date": "1962-01-01",
@@ -351,7 +351,7 @@
       "date": "1963-10-01",
       "aiae": 0.353401,
       "subsequent_10y_ann": 0.038795,
-      "implied_10y_forecast": 0.045137
+      "implied_10y_forecast": 0.045136
     },
     {
       "date": "1964-01-01",
@@ -363,7 +363,7 @@
       "date": "1964-04-01",
       "aiae": 0.367482,
       "subsequent_10y_ann": 0.012882,
-      "implied_10y_forecast": 0.036361
+      "implied_10y_forecast": 0.03636
     },
     {
       "date": "1964-07-01",
@@ -399,7 +399,7 @@
       "date": "1965-10-01",
       "aiae": 0.390278,
       "subsequent_10y_ann": -0.003719,
-      "implied_10y_forecast": 0.022153
+      "implied_10y_forecast": 0.022152
     },
     {
       "date": "1966-01-01",
@@ -411,7 +411,7 @@
       "date": "1966-04-01",
       "aiae": 0.365465,
       "subsequent_10y_ann": 0.011052,
-      "implied_10y_forecast": 0.037618
+      "implied_10y_forecast": 0.037617
     },
     {
       "date": "1966-07-01",
@@ -429,7 +429,7 @@
       "date": "1967-01-01",
       "aiae": 0.373046,
       "subsequent_10y_ann": 0.01652,
-      "implied_10y_forecast": 0.032893
+      "implied_10y_forecast": 0.032892
     },
     {
       "date": "1967-04-01",
@@ -441,7 +441,7 @@
       "date": "1967-07-01",
       "aiae": 0.385078,
       "subsequent_10y_ann": 0.004245,
-      "implied_10y_forecast": 0.025394
+      "implied_10y_forecast": 0.025393
     },
     {
       "date": "1967-10-01",
@@ -453,13 +453,13 @@
       "date": "1968-01-01",
       "aiae": 0.365603,
       "subsequent_10y_ann": -0.00329,
-      "implied_10y_forecast": 0.037532
+      "implied_10y_forecast": 0.037531
     },
     {
       "date": "1968-04-01",
       "aiae": 0.388099,
       "subsequent_10y_ann": -0.000648,
-      "implied_10y_forecast": 0.023511
+      "implied_10y_forecast": 0.02351
     },
     {
       "date": "1968-07-01",
@@ -519,7 +519,7 @@
       "date": "1970-10-01",
       "aiae": 0.340519,
       "subsequent_10y_ann": 0.043524,
-      "implied_10y_forecast": 0.053166
+      "implied_10y_forecast": 0.053165
     },
     {
       "date": "1971-01-01",
@@ -555,13 +555,13 @@
       "date": "1972-04-01",
       "aiae": 0.361741,
       "subsequent_10y_ann": 0.007861,
-      "implied_10y_forecast": 0.039939
+      "implied_10y_forecast": 0.039938
     },
     {
       "date": "1972-07-01",
       "aiae": 0.361879,
       "subsequent_10y_ann": -0.00028,
-      "implied_10y_forecast": 0.039853
+      "implied_10y_forecast": 0.039852
     },
     {
       "date": "1972-10-01",
@@ -591,7 +591,7 @@
       "date": "1973-10-01",
       "aiae": 0.312404,
       "subsequent_10y_ann": 0.042092,
-      "implied_10y_forecast": 0.070689
+      "implied_10y_forecast": 0.070688
     },
     {
       "date": "1974-01-01",
@@ -873,7 +873,7 @@
       "date": "1985-07-01",
       "aiae": 0.203904,
       "subsequent_10y_ann": 0.11402,
-      "implied_10y_forecast": 0.138312
+      "implied_10y_forecast": 0.138313
     },
     {
       "date": "1985-10-01",
@@ -1023,7 +1023,7 @@
       "date": "1991-10-01",
       "aiae": 0.265281,
       "subsequent_10y_ann": 0.104443,
-      "implied_10y_forecast": 0.100059
+      "implied_10y_forecast": 0.100058
     },
     {
       "date": "1992-01-01",
@@ -1053,7 +1053,7 @@
       "date": "1993-01-01",
       "aiae": 0.275357,
       "subsequent_10y_ann": 0.069073,
-      "implied_10y_forecast": 0.093779
+      "implied_10y_forecast": 0.093778
     },
     {
       "date": "1993-04-01",
@@ -1203,7 +1203,7 @@
       "date": "1999-04-01",
       "aiae": 0.436594,
       "subsequent_10y_ann": -0.041619,
-      "implied_10y_forecast": -0.006714
+      "implied_10y_forecast": -0.006715
     },
     {
       "date": "1999-07-01",
@@ -1233,7 +1233,7 @@
       "date": "2000-07-01",
       "aiae": 0.457476,
       "subsequent_10y_ann": -0.02581,
-      "implied_10y_forecast": -0.019729
+      "implied_10y_forecast": -0.01973
     },
     {
       "date": "2000-10-01",
@@ -1269,7 +1269,7 @@
       "date": "2002-01-01",
       "aiae": 0.380157,
       "subsequent_10y_ann": 0.015059,
-      "implied_10y_forecast": 0.028461
+      "implied_10y_forecast": 0.02846
     },
     {
       "date": "2002-04-01",
@@ -1317,7 +1317,7 @@
       "date": "2004-01-01",
       "aiae": 0.341212,
       "subsequent_10y_ann": 0.046535,
-      "implied_10y_forecast": 0.052734
+      "implied_10y_forecast": 0.052733
     },
     {
       "date": "2004-04-01",
@@ -1371,7 +1371,7 @@
       "date": "2006-04-01",
       "aiae": 0.336965,
       "subsequent_10y_ann": 0.046528,
-      "implied_10y_forecast": 0.055381
+      "implied_10y_forecast": 0.05538
     },
     {
       "date": "2006-07-01",
@@ -1407,7 +1407,7 @@
       "date": "2007-10-01",
       "aiae": 0.341597,
       "subsequent_10y_ann": 0.052123,
-      "implied_10y_forecast": 0.052494
+      "implied_10y_forecast": 0.052493
     },
     {
       "date": "2008-01-01",
@@ -1449,7 +1449,7 @@
       "date": "2009-07-01",
       "aiae": 0.271118,
       "subsequent_10y_ann": 0.116797,
-      "implied_10y_forecast": 0.096421
+      "implied_10y_forecast": 0.09642
     },
     {
       "date": "2009-10-01",
@@ -1503,7 +1503,7 @@
       "date": "2011-10-01",
       "aiae": 0.288029,
       "subsequent_10y_ann": 0.138993,
-      "implied_10y_forecast": 0.085881
+      "implied_10y_forecast": 0.08588
     },
     {
       "date": "2012-01-01",
@@ -1593,7 +1593,7 @@
       "date": "2015-07-01",
       "aiae": 0.341857,
       "subsequent_10y_ann": 0.116615,
-      "implied_10y_forecast": 0.052332
+      "implied_10y_forecast": 0.052331
     },
     {
       "date": "2015-10-01",
@@ -1605,7 +1605,7 @@
       "date": "2016-01-01",
       "aiae": 0.350558,
       "subsequent_10y_ann": 0.135911,
-      "implied_10y_forecast": 0.046909
+      "implied_10y_forecast": 0.046908
     },
     {
       "date": "2016-04-01",
@@ -1622,8 +1622,8 @@
     {
       "date": "2016-10-01",
       "aiae": 0.354744,
-      "subsequent_10y_ann": 0.137427,
-      "implied_10y_forecast": 0.0443
+      "subsequent_10y_ann": 0.137399,
+      "implied_10y_forecast": 0.044299
     },
     {
       "date": "2017-01-01",
@@ -1653,13 +1653,13 @@
       "date": "2018-01-01",
       "aiae": 0.373067,
       "subsequent_10y_ann": null,
-      "implied_10y_forecast": 0.03288
+      "implied_10y_forecast": 0.032879
     },
     {
       "date": "2018-04-01",
       "aiae": 0.377842,
       "subsequent_10y_ann": null,
-      "implied_10y_forecast": 0.029904
+      "implied_10y_forecast": 0.029903
     },
     {
       "date": "2018-07-01",
@@ -1749,7 +1749,7 @@
       "date": "2022-01-01",
       "aiae": 0.43235,
       "subsequent_10y_ann": null,
-      "implied_10y_forecast": -0.004069
+      "implied_10y_forecast": -0.00407
     },
     {
       "date": "2022-04-01",
@@ -1809,13 +1809,13 @@
       "date": "2024-07-01",
       "aiae": 0.446503,
       "subsequent_10y_ann": null,
-      "implied_10y_forecast": -0.01289
+      "implied_10y_forecast": -0.012891
     },
     {
       "date": "2024-10-01",
       "aiae": 0.450113,
       "subsequent_10y_ann": null,
-      "implied_10y_forecast": -0.01514
+      "implied_10y_forecast": -0.015141
     },
     {
       "date": "2025-01-01",
@@ -1827,7 +1827,7 @@
       "date": "2025-04-01",
       "aiae": 0.453696,
       "subsequent_10y_ann": null,
-      "implied_10y_forecast": -0.017373
+      "implied_10y_forecast": -0.017374
     },
     {
       "date": "2025-07-01",
