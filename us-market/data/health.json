@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-09-29 09:39:44",
+  "generated_at": "2026-09-29 11:03:43",
   "today": "2026-09-29",
-  "overall": "critical",
-  "stale_count": 1,
+  "overall": "healthy",
+  "stale_count": 0,
   "sources": [
     {
       "file": "sp500_price.json",
@@ -35,9 +35,9 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-09-22",
-      "days_old": 7,
-      "status": "dead"
+      "updated": "2026-09-28",
+      "days_old": 1,
+      "status": "fresh"
     },
     {
       "file": "sp500_annual_returns_long.json",
