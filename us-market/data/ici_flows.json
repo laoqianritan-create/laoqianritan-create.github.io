@@ -367,15 +367,27 @@
     },
     {
       "date": "2026-07-31",
-      "total": 94175.0,
-      "equity": 34028.0,
-      "equity_domestic": 33522.0,
-      "equity_world": 506.0,
+      "total": 94128.0,
+      "equity": 33984.0,
+      "equity_domestic": 33517.0,
+      "equity_world": 467.0,
       "hybrid": -3436.0,
-      "bond": 62191.0,
-      "bond_taxable": 53913.0,
+      "bond": 62188.0,
+      "bond_taxable": 53910.0,
       "bond_municipal": 8277.0,
       "commodity": 1392.0
+    },
+    {
+      "date": "2026-08-31",
+      "total": 75125.0,
+      "equity": -5612.0,
+      "equity_domestic": -14038.0,
+      "equity_world": 8427.0,
+      "hybrid": -6073.0,
+      "bond": 77169.0,
+      "bond_taxable": 68895.0,
+      "bond_municipal": 8274.0,
+      "commodity": 9641.0
     }
   ],
   "weekly": [
@@ -453,15 +465,27 @@
     },
     {
       "date": "2026-09-16",
-      "total": -10098.0,
-      "equity": -13297.0,
-      "equity_domestic": -12147.0,
-      "equity_world": -1150.0,
+      "total": -9450.0,
+      "equity": -12650.0,
+      "equity_domestic": -11487.0,
+      "equity_world": -1163.0,
       "hybrid": -2169.0,
       "bond": 3244.0,
       "bond_taxable": 3796.0,
       "bond_municipal": -552.0,
       "commodity": 2124.0
+    },
+    {
+      "date": "2026-09-23",
+      "total": 20137.0,
+      "equity": 12875.0,
+      "equity_domestic": 5783.0,
+      "equity_world": 7093.0,
+      "hybrid": -1856.0,
+      "bond": 8162.0,
+      "bond_taxable": 7262.0,
+      "bond_municipal": 900.0,
+      "commodity": 956.0
     }
   ]
 }

@@ -6,10 +6,10 @@
     "value": 100.0
   },
   "latest": {
-    "date": "2026-09-29",
-    "value": 26797.54
+    "date": "2026-09-30",
+    "value": 27073.54
   },
-  "cagr": 10.57,
+  "cagr": 10.59,
   "scale": "logarithmic",
   "source": "yfinance ^IXIC daily (replaces the earlier Macrotrends monthly series)",
   "series": [
@@ -56128,6 +56128,10 @@
     {
       "date": "2026-09-29",
       "value": 26797.54
+    },
+    {
+      "date": "2026-09-30",
+      "value": 27073.54
     }
   ]
 }
