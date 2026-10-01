@@ -1,11 +1,11 @@
 {
-  "updated": "2026-09-30T01:31:03Z",
+  "updated": "2026-10-01T01:31:05Z",
   "source": "IMF COFER (Currency Composition of Official Foreign Exchange Reserves)",
   "source_url": "https://data.imf.org/COFER",
   "source_mode": "api",
   "methodology": "IMF COFER 7.x（BPM7 重述口径，非报告国估算计入）",
   "manual_maintenance": false,
-  "months_since_last_snapshot": 6,
+  "months_since_last_snapshot": 4,
   "stale_warning": false,
   "note": "季度发布，发布滞后约 3 个月；API 路径每日自动拉取",
   "periods": [
@@ -117,16 +117,17 @@
     "2025-Q2",
     "2025-Q3",
     "2025-Q4",
-    "2026-Q1"
+    "2026-Q1",
+    "2026-Q2"
   ],
-  "latest_period": "2026-Q1",
+  "latest_period": "2026-Q2",
   "latest": {
-    "usd": 57.1,
-    "eur": 20.0,
-    "jpy": 5.4,
-    "gbp": 4.4,
-    "other": 13.0,
-    "cny": 2.0
+    "usd": 56.7,
+    "eur": 20.6,
+    "jpy": 5.0,
+    "gbp": 4.6,
+    "other": 13.2,
+    "cny": 2.1
   },
   "series": {
     "usd": [
@@ -560,11 +561,15 @@
       },
       {
         "period": "2025-Q4",
-        "value": 56.4
+        "value": 56.5
       },
       {
         "period": "2026-Q1",
-        "value": 57.1
+        "value": 57.2
+      },
+      {
+        "period": "2026-Q2",
+        "value": 56.7
       }
     ],
     "eur": [
@@ -998,11 +1003,15 @@
       },
       {
         "period": "2025-Q4",
-        "value": 20.4
+        "value": 20.3
       },
       {
         "period": "2026-Q1",
         "value": 20.0
+      },
+      {
+        "period": "2026-Q2",
+        "value": 20.6
       }
     ],
     "jpy": [
@@ -1441,6 +1450,10 @@
       {
         "period": "2026-Q1",
         "value": 5.4
+      },
+      {
+        "period": "2026-Q2",
+        "value": 5.0
       }
     ],
     "gbp": [
@@ -1879,6 +1892,10 @@
       {
         "period": "2026-Q1",
         "value": 4.4
+      },
+      {
+        "period": "2026-Q2",
+        "value": 4.6
       }
     ],
     "other": [
@@ -2316,7 +2333,11 @@
       },
       {
         "period": "2026-Q1",
-        "value": 13.0
+        "value": 12.9
+      },
+      {
+        "period": "2026-Q2",
+        "value": 13.2
       }
     ]
   }

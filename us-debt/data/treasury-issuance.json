@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-30T01:33:54Z",
+  "updated": "2026-10-01T01:33:55Z",
   "source": "Treasury Fiscal Data auctions_query (monthly gross issuance, total_accepted) + FRED GDP (nominal SAAR)",
   "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query",
   "frequency": "monthly",
@@ -8,8 +8,8 @@
   "caveat": "gross issuance 含 bills rollover（短债滚动重发），总量远大于净融资；与 bills-coupons 面板的分桶 total 口径略有差异（此处不做归类过滤，故略高）",
   "audit": {
     "records_total": 11133,
-    "records_counted": 11129,
-    "records_skipped_no_amount": 4,
+    "records_counted": 11130,
+    "records_skipped_no_amount": 3,
     "earliest_month": "1979-10",
     "latest_month": "2026-09"
   },
@@ -3461,463 +3461,463 @@
     {
       "month": "2021-01",
       "issuance": 1671.93,
-      "gdp_saar": 22680.7,
-      "pct_gdp": 7.37,
+      "gdp_saar": 22704.7,
+      "pct_gdp": 7.36,
       "partial": false
     },
     {
       "month": "2021-02",
       "issuance": 1605.51,
-      "gdp_saar": 22680.7,
-      "pct_gdp": 7.08,
+      "gdp_saar": 22704.7,
+      "pct_gdp": 7.07,
       "partial": false
     },
     {
       "month": "2021-03",
       "issuance": 1696.24,
-      "gdp_saar": 22680.7,
-      "pct_gdp": 7.48,
+      "gdp_saar": 22704.7,
+      "pct_gdp": 7.47,
       "partial": false
     },
     {
       "month": "2021-04",
       "issuance": 1704.67,
-      "gdp_saar": 23425.9,
-      "pct_gdp": 7.28,
+      "gdp_saar": 23456.7,
+      "pct_gdp": 7.27,
       "partial": false
     },
     {
       "month": "2021-05",
       "issuance": 1660.7,
-      "gdp_saar": 23425.9,
-      "pct_gdp": 7.09,
+      "gdp_saar": 23456.7,
+      "pct_gdp": 7.08,
       "partial": false
     },
     {
       "month": "2021-06",
       "issuance": 1780.53,
-      "gdp_saar": 23425.9,
-      "pct_gdp": 7.6,
+      "gdp_saar": 23456.7,
+      "pct_gdp": 7.59,
       "partial": false
     },
     {
       "month": "2021-07",
       "issuance": 1602.36,
-      "gdp_saar": 23982.4,
+      "gdp_saar": 23998.8,
       "pct_gdp": 6.68,
       "partial": false
     },
     {
       "month": "2021-08",
       "issuance": 1679.6,
-      "gdp_saar": 23982.4,
+      "gdp_saar": 23998.8,
       "pct_gdp": 7.0,
       "partial": false
     },
     {
       "month": "2021-09",
       "issuance": 1294.56,
-      "gdp_saar": 23982.4,
-      "pct_gdp": 5.4,
+      "gdp_saar": 23998.8,
+      "pct_gdp": 5.39,
       "partial": false
     },
     {
       "month": "2021-10",
       "issuance": 1567.61,
-      "gdp_saar": 24813.6,
+      "gdp_saar": 24823.2,
       "pct_gdp": 6.32,
       "partial": false
     },
     {
       "month": "2021-11",
       "issuance": 1674.16,
-      "gdp_saar": 24813.6,
-      "pct_gdp": 6.75,
+      "gdp_saar": 24823.2,
+      "pct_gdp": 6.74,
       "partial": false
     },
     {
       "month": "2021-12",
       "issuance": 1583.32,
-      "gdp_saar": 24813.6,
+      "gdp_saar": 24823.2,
       "pct_gdp": 6.38,
       "partial": false
     },
     {
       "month": "2022-01",
       "issuance": 1595.25,
-      "gdp_saar": 25250.3,
+      "gdp_saar": 25260.0,
       "pct_gdp": 6.32,
       "partial": false
     },
     {
       "month": "2022-02",
       "issuance": 1475.99,
-      "gdp_saar": 25250.3,
-      "pct_gdp": 5.85,
+      "gdp_saar": 25260.0,
+      "pct_gdp": 5.84,
       "partial": false
     },
     {
       "month": "2022-03",
       "issuance": 1427.72,
-      "gdp_saar": 25250.3,
+      "gdp_saar": 25260.0,
       "pct_gdp": 5.65,
       "partial": false
     },
     {
       "month": "2022-04",
       "issuance": 1258.78,
-      "gdp_saar": 25861.3,
+      "gdp_saar": 25869.4,
       "pct_gdp": 4.87,
       "partial": false
     },
     {
       "month": "2022-05",
       "issuance": 1336.78,
-      "gdp_saar": 25861.3,
+      "gdp_saar": 25869.4,
       "pct_gdp": 5.17,
       "partial": false
     },
     {
       "month": "2022-06",
       "issuance": 1233.75,
-      "gdp_saar": 25861.3,
+      "gdp_saar": 25869.4,
       "pct_gdp": 4.77,
       "partial": false
     },
     {
       "month": "2022-07",
       "issuance": 1275.01,
-      "gdp_saar": 26336.3,
+      "gdp_saar": 26335.4,
       "pct_gdp": 4.84,
       "partial": false
     },
     {
       "month": "2022-08",
       "issuance": 1585.96,
-      "gdp_saar": 26336.3,
+      "gdp_saar": 26335.4,
       "pct_gdp": 6.02,
       "partial": false
     },
     {
       "month": "2022-09",
       "issuance": 1335.03,
-      "gdp_saar": 26336.3,
+      "gdp_saar": 26335.4,
       "pct_gdp": 5.07,
       "partial": false
     },
     {
       "month": "2022-10",
       "issuance": 1463.64,
-      "gdp_saar": 26770.5,
+      "gdp_saar": 26774.1,
       "pct_gdp": 5.47,
       "partial": false
     },
     {
       "month": "2022-11",
       "issuance": 1537.14,
-      "gdp_saar": 26770.5,
+      "gdp_saar": 26774.1,
       "pct_gdp": 5.74,
       "partial": false
     },
     {
       "month": "2022-12",
       "issuance": 1328.75,
-      "gdp_saar": 26770.5,
+      "gdp_saar": 26774.1,
       "pct_gdp": 4.96,
       "partial": false
     },
     {
       "month": "2023-01",
       "issuance": 1632.23,
-      "gdp_saar": 27216.4,
-      "pct_gdp": 6.0,
+      "gdp_saar": 27241.3,
+      "pct_gdp": 5.99,
       "partial": false
     },
     {
       "month": "2023-02",
       "issuance": 1584.6,
-      "gdp_saar": 27216.4,
+      "gdp_saar": 27241.3,
       "pct_gdp": 5.82,
       "partial": false
     },
     {
       "month": "2023-03",
       "issuance": 1598.95,
-      "gdp_saar": 27216.4,
+      "gdp_saar": 27241.3,
       "pct_gdp": 5.87,
       "partial": false
     },
     {
       "month": "2023-04",
       "issuance": 1403.77,
-      "gdp_saar": 27530.1,
+      "gdp_saar": 27533.9,
       "pct_gdp": 5.1,
       "partial": false
     },
     {
       "month": "2023-05",
       "issuance": 1748.07,
-      "gdp_saar": 27530.1,
+      "gdp_saar": 27533.9,
       "pct_gdp": 6.35,
       "partial": false
     },
     {
       "month": "2023-06",
       "issuance": 1859.82,
-      "gdp_saar": 27530.1,
-      "pct_gdp": 6.76,
+      "gdp_saar": 27533.9,
+      "pct_gdp": 6.75,
       "partial": false
     },
     {
       "month": "2023-07",
       "issuance": 1885.97,
-      "gdp_saar": 28074.8,
+      "gdp_saar": 28064.0,
       "pct_gdp": 6.72,
       "partial": false
     },
     {
       "month": "2023-08",
       "issuance": 2201.96,
-      "gdp_saar": 28074.8,
-      "pct_gdp": 7.84,
+      "gdp_saar": 28064.0,
+      "pct_gdp": 7.85,
       "partial": false
     },
     {
       "month": "2023-09",
       "issuance": 1923.68,
-      "gdp_saar": 28074.8,
+      "gdp_saar": 28064.0,
       "pct_gdp": 6.85,
       "partial": false
     },
     {
       "month": "2023-10",
       "issuance": 2452.87,
-      "gdp_saar": 28424.7,
-      "pct_gdp": 8.63,
+      "gdp_saar": 28464.3,
+      "pct_gdp": 8.62,
       "partial": false
     },
     {
       "month": "2023-11",
       "issuance": 2436.01,
-      "gdp_saar": 28424.7,
-      "pct_gdp": 8.57,
+      "gdp_saar": 28464.3,
+      "pct_gdp": 8.56,
       "partial": false
     },
     {
       "month": "2023-12",
       "issuance": 2099.25,
-      "gdp_saar": 28424.7,
-      "pct_gdp": 7.39,
+      "gdp_saar": 28464.3,
+      "pct_gdp": 7.38,
       "partial": false
     },
     {
       "month": "2024-01",
       "issuance": 2482.95,
-      "gdp_saar": 28708.2,
-      "pct_gdp": 8.65,
+      "gdp_saar": 28793.2,
+      "pct_gdp": 8.62,
       "partial": false
     },
     {
       "month": "2024-02",
       "issuance": 2542.46,
-      "gdp_saar": 28708.2,
-      "pct_gdp": 8.86,
+      "gdp_saar": 28793.2,
+      "pct_gdp": 8.83,
       "partial": false
     },
     {
       "month": "2024-03",
       "issuance": 2227.19,
-      "gdp_saar": 28708.2,
-      "pct_gdp": 7.76,
+      "gdp_saar": 28793.2,
+      "pct_gdp": 7.74,
       "partial": false
     },
     {
       "month": "2024-04",
       "issuance": 2319.47,
-      "gdp_saar": 29147.0,
-      "pct_gdp": 7.96,
+      "gdp_saar": 29233.0,
+      "pct_gdp": 7.93,
       "partial": false
     },
     {
       "month": "2024-05",
       "issuance": 2414.98,
-      "gdp_saar": 29147.0,
-      "pct_gdp": 8.29,
+      "gdp_saar": 29233.0,
+      "pct_gdp": 8.26,
       "partial": false
     },
     {
       "month": "2024-06",
       "issuance": 2047.81,
-      "gdp_saar": 29147.0,
-      "pct_gdp": 7.03,
+      "gdp_saar": 29233.0,
+      "pct_gdp": 7.01,
       "partial": false
     },
     {
       "month": "2024-07",
       "issuance": 2559.15,
-      "gdp_saar": 29511.7,
-      "pct_gdp": 8.67,
+      "gdp_saar": 29568.3,
+      "pct_gdp": 8.66,
       "partial": false
     },
     {
       "month": "2024-08",
       "issuance": 2552.73,
-      "gdp_saar": 29511.7,
-      "pct_gdp": 8.65,
+      "gdp_saar": 29568.3,
+      "pct_gdp": 8.63,
       "partial": false
     },
     {
       "month": "2024-09",
       "issuance": 2307.26,
-      "gdp_saar": 29511.7,
-      "pct_gdp": 7.82,
+      "gdp_saar": 29568.3,
+      "pct_gdp": 7.8,
       "partial": false
     },
     {
       "month": "2024-10",
       "issuance": 2771.18,
-      "gdp_saar": 29825.2,
-      "pct_gdp": 9.29,
+      "gdp_saar": 29929.6,
+      "pct_gdp": 9.26,
       "partial": false
     },
     {
       "month": "2024-11",
       "issuance": 2532.92,
-      "gdp_saar": 29825.2,
-      "pct_gdp": 8.49,
+      "gdp_saar": 29929.6,
+      "pct_gdp": 8.46,
       "partial": false
     },
     {
       "month": "2024-12",
       "issuance": 2430.81,
-      "gdp_saar": 29825.2,
-      "pct_gdp": 8.15,
+      "gdp_saar": 29929.6,
+      "pct_gdp": 8.12,
       "partial": false
     },
     {
       "month": "2025-01",
       "issuance": 2754.39,
-      "gdp_saar": 30042.1,
-      "pct_gdp": 9.17,
+      "gdp_saar": 30172.0,
+      "pct_gdp": 9.13,
       "partial": false
     },
     {
       "month": "2025-02",
       "issuance": 2377.78,
-      "gdp_saar": 30042.1,
-      "pct_gdp": 7.91,
+      "gdp_saar": 30172.0,
+      "pct_gdp": 7.88,
       "partial": false
     },
     {
       "month": "2025-03",
       "issuance": 2316.46,
-      "gdp_saar": 30042.1,
-      "pct_gdp": 7.71,
+      "gdp_saar": 30172.0,
+      "pct_gdp": 7.68,
       "partial": false
     },
     {
       "month": "2025-04",
       "issuance": 2473.65,
-      "gdp_saar": 30485.7,
-      "pct_gdp": 8.11,
+      "gdp_saar": 30630.2,
+      "pct_gdp": 8.08,
       "partial": false
     },
     {
       "month": "2025-05",
       "issuance": 2455.21,
-      "gdp_saar": 30485.7,
-      "pct_gdp": 8.05,
+      "gdp_saar": 30630.2,
+      "pct_gdp": 8.02,
       "partial": false
     },
     {
       "month": "2025-06",
       "issuance": 2200.59,
-      "gdp_saar": 30485.7,
-      "pct_gdp": 7.22,
+      "gdp_saar": 30630.2,
+      "pct_gdp": 7.18,
       "partial": false
     },
     {
       "month": "2025-07",
       "issuance": 2615.71,
-      "gdp_saar": 31098.0,
-      "pct_gdp": 8.41,
+      "gdp_saar": 31180.5,
+      "pct_gdp": 8.39,
       "partial": false
     },
     {
       "month": "2025-08",
       "issuance": 2493.38,
-      "gdp_saar": 31098.0,
-      "pct_gdp": 8.02,
+      "gdp_saar": 31180.5,
+      "pct_gdp": 8.0,
       "partial": false
     },
     {
       "month": "2025-09",
       "issuance": 2723.71,
-      "gdp_saar": 31098.0,
-      "pct_gdp": 8.76,
+      "gdp_saar": 31180.5,
+      "pct_gdp": 8.74,
       "partial": false
     },
     {
       "month": "2025-10",
       "issuance": 2869.4,
-      "gdp_saar": 31422.5,
-      "pct_gdp": 9.13,
+      "gdp_saar": 31462.5,
+      "pct_gdp": 9.12,
       "partial": false
     },
     {
       "month": "2025-11",
       "issuance": 2619.19,
-      "gdp_saar": 31422.5,
-      "pct_gdp": 8.34,
+      "gdp_saar": 31462.5,
+      "pct_gdp": 8.32,
       "partial": false
     },
     {
       "month": "2025-12",
       "issuance": 2846.63,
-      "gdp_saar": 31422.5,
-      "pct_gdp": 9.06,
+      "gdp_saar": 31462.5,
+      "pct_gdp": 9.05,
       "partial": false
     },
     {
       "month": "2026-01",
       "issuance": 2518.68,
-      "gdp_saar": 31865.7,
-      "pct_gdp": 7.9,
+      "gdp_saar": 31906.3,
+      "pct_gdp": 7.89,
       "partial": false
     },
     {
       "month": "2026-02",
       "issuance": 2627.23,
-      "gdp_saar": 31865.7,
-      "pct_gdp": 8.24,
+      "gdp_saar": 31906.3,
+      "pct_gdp": 8.23,
       "partial": false
     },
     {
       "month": "2026-03",
       "issuance": 2770.39,
-      "gdp_saar": 31865.7,
-      "pct_gdp": 8.69,
+      "gdp_saar": 31906.3,
+      "pct_gdp": 8.68,
       "partial": false
     },
     {
       "month": "2026-04",
       "issuance": 2614.38,
-      "gdp_saar": 32486.1,
-      "pct_gdp": 8.05,
+      "gdp_saar": 32563.0,
+      "pct_gdp": 8.03,
       "partial": false
     },
     {
       "month": "2026-05",
       "issuance": 2591.56,
-      "gdp_saar": 32486.1,
-      "pct_gdp": 7.98,
+      "gdp_saar": 32563.0,
+      "pct_gdp": 7.96,
       "partial": false
     },
     {
       "month": "2026-06",
       "issuance": 2634.93,
-      "gdp_saar": 32486.1,
-      "pct_gdp": 8.11,
+      "gdp_saar": 32563.0,
+      "pct_gdp": 8.09,
       "partial": false
     },
     {
@@ -3936,15 +3936,15 @@
     },
     {
       "month": "2026-09",
-      "issuance": 2742.95,
+      "issuance": 2821.76,
       "gdp_saar": null,
       "pct_gdp": null,
-      "partial": true
+      "partial": false
     }
   ],
   "latest_issuance": {
-    "month": "2026-08",
-    "issuance": 2970.73,
+    "month": "2026-09",
+    "issuance": 2821.76,
     "gdp_saar": null,
     "pct_gdp": null,
     "partial": false
@@ -3952,8 +3952,8 @@
   "latest_pct_gdp": {
     "month": "2026-06",
     "issuance": 2634.93,
-    "gdp_saar": 32486.1,
-    "pct_gdp": 8.11,
+    "gdp_saar": 32563.0,
+    "pct_gdp": 8.09,
     "partial": false
   },
   "peak_issuance": {
