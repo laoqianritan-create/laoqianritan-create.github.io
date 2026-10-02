@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-09-30",
+  "as_of": "2026-10-01",
   "current": {
-    "ratio_classic": 232.04,
-    "ratio_modified": 192.23,
-    "tmc": 75557.73,
+    "ratio_classic": 232.62,
+    "ratio_modified": 192.71,
+    "tmc": 75747.52,
     "gdp": 32563.03,
     "fed_ta": 6743.03
   },
@@ -5533,6 +5533,14 @@
       "fed_ta": 6743.03,
       "ratio_classic": 232.04,
       "ratio_modified": 192.23
+    },
+    {
+      "date": "2026-10-01",
+      "tmc": 75747.52,
+      "gdp": 32563.03,
+      "fed_ta": 6743.03,
+      "ratio_classic": 232.62,
+      "ratio_modified": 192.71
     }
   ],
   "source": {
