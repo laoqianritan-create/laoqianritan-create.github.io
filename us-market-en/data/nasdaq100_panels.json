@@ -4,12 +4,12 @@
     "symbol": "QQQ",
     "name": "Invesco QQQ Trust Series I",
     "count": 104,
-    "top10Weight": 46.69,
-    "top25Weight": 72.22,
-    "otherWeight": 27.78,
+    "top10Weight": 46.64,
+    "top25Weight": 72.2,
+    "otherWeight": 27.8,
     "aum": 500944241401.0,
     "peRatio": 31.36,
-    "holdingsDate": "Sep 30, 2026",
+    "holdingsDate": "Oct 1, 2026",
     "quote": {
       "price": 749.58,
       "previousClose": 742.03,
@@ -40,27 +40,27 @@
   "sectors": [
     {
       "name": "Technology",
-      "weight": 60.26
+      "weight": 60.66
     },
     {
       "name": "Communication Services",
-      "weight": 12.55
+      "weight": 12.38
     },
     {
       "name": "Consumer Discretionary",
-      "weight": 10.06
+      "weight": 9.99
     },
     {
       "name": "Consumer Staples",
-      "weight": 5.54
+      "weight": 5.53
     },
     {
       "name": "Industrials",
-      "weight": 5.26
+      "weight": 5.21
     },
     {
       "name": "Healthcare",
-      "weight": 3.78
+      "weight": 3.68
     },
     {
       "name": "Utilities",
@@ -68,11 +68,11 @@
     },
     {
       "name": "Materials",
-      "weight": 0.91
+      "weight": 0.9
     },
     {
       "name": "Energy",
-      "weight": 0.44
+      "weight": 0.45
     },
     {
       "name": "Financials",
@@ -120,10 +120,10 @@
       "price": 233.95,
       "marketCap": null,
       "dividendYield": 0.43,
-      "return1y": 23.34,
-      "ytdReturn": 22.53,
-      "qqqWeight": 8.33,
-      "qqqShares": 182342078,
+      "return1y": 24.99,
+      "ytdReturn": 24.17,
+      "qqqWeight": 8.39,
+      "qqqShares": 182842133,
       "weightRank": 1
     },
     {
@@ -133,11 +133,11 @@
       "subsector": "Computer Hardware",
       "price": 333.69,
       "marketCap": null,
-      "dividendYield": 0.33,
-      "return1y": 28.49,
-      "ytdReturn": 22.22,
-      "qqqWeight": 7.35,
-      "qqqShares": 110420418,
+      "dividendYield": 0.32,
+      "return1y": 29.8,
+      "ytdReturn": 23.46,
+      "qqqWeight": 7.27,
+      "qqqShares": 110723226,
       "weightRank": 2
     },
     {
@@ -148,10 +148,10 @@
       "price": 517.53,
       "marketCap": null,
       "dividendYield": 0.76,
-      "return1y": -0.06,
-      "ytdReturn": 9.12,
-      "qqqWeight": 5.76,
-      "qqqShares": 56182106,
+      "return1y": 0.86,
+      "ytdReturn": 10.12,
+      "qqqWeight": 5.74,
+      "qqqShares": 56336174,
       "weightRank": 3
     },
     {
@@ -161,11 +161,11 @@
       "subsector": "Semiconductors",
       "price": 1074.89,
       "marketCap": null,
-      "dividendYield": 0.05,
-      "return1y": 484.82,
-      "ytdReturn": 248.11,
-      "qqqWeight": 5.02,
-      "qqqShares": 23590175,
+      "dividendYield": 0.06,
+      "return1y": 472.83,
+      "ytdReturn": 240.98,
+      "qqqWeight": 5.16,
+      "qqqShares": 23654851,
       "weightRank": 4
     },
     {
@@ -176,10 +176,10 @@
       "price": 633.91,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 273.92,
-      "ytdReturn": 175.53,
-      "qqqWeight": 4.17,
-      "qqqShares": 34098329,
+      "return1y": 284.96,
+      "ytdReturn": 183.67,
+      "qqqWeight": 4.19,
+      "qqqShares": 34191828,
       "weightRank": 5
     },
     {
@@ -190,10 +190,10 @@
       "price": 251.52,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 13.08,
-      "ytdReturn": 9.59,
-      "qqqWeight": 4.07,
-      "qqqShares": 81609936,
+      "return1y": 14.58,
+      "ytdReturn": 11.05,
+      "qqqWeight": 4.04,
+      "qqqShares": 81833749,
       "weightRank": 6
     },
     {
@@ -204,10 +204,10 @@
       "price": 728.08,
       "marketCap": null,
       "dividendYield": 0.29,
-      "return1y": 2.51,
-      "ytdReturn": 11.9,
+      "return1y": 2.81,
+      "ytdReturn": 12.23,
       "qqqWeight": 3.26,
-      "qqqShares": 22498280,
+      "qqqShares": 22559996,
       "weightRank": 7
     },
     {
@@ -218,25 +218,11 @@
       "price": 343.5,
       "marketCap": null,
       "dividendYield": 0.26,
-      "return1y": 38.22,
-      "ytdReturn": 7.54,
-      "qqqWeight": 3.05,
-      "qqqShares": 44397683,
+      "return1y": 40.37,
+      "ytdReturn": 9.21,
+      "qqqWeight": 2.99,
+      "qqqShares": 44519450,
       "weightRank": 8
-    },
-    {
-      "ticker": "GOOG",
-      "name": "Alphabet Inc.",
-      "industry": "Technology",
-      "subsector": "Software",
-      "price": 340.35,
-      "marketCap": null,
-      "dividendYield": 0.26,
-      "return1y": 36.26,
-      "ytdReturn": 6.43,
-      "qqqWeight": 2.85,
-      "qqqShares": 41817535,
-      "weightRank": 9
     },
     {
       "ticker": "TSLA",
@@ -246,10 +232,24 @@
       "price": 370.59,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -17.62,
-      "ytdReturn": -19.17,
-      "qqqWeight": 2.82,
-      "qqqShares": 39746602,
+      "return1y": -13.78,
+      "ytdReturn": -15.4,
+      "qqqWeight": 2.81,
+      "qqqShares": 39855604,
+      "weightRank": 9
+    },
+    {
+      "ticker": "GOOG",
+      "name": "Alphabet Inc.",
+      "industry": "Technology",
+      "subsector": "Software",
+      "price": 340.35,
+      "marketCap": null,
+      "dividendYield": 0.26,
+      "return1y": 38.46,
+      "ytdReturn": 8.15,
+      "qqqWeight": 2.79,
+      "qqqShares": 41932198,
       "weightRank": 10
     },
     {
@@ -260,10 +260,10 @@
       "price": 158.96,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -8.0,
-      "ytdReturn": -8.0,
-      "qqqWeight": 2.7,
-      "qqqShares": 89604741,
+      "return1y": -1.24,
+      "ytdReturn": -1.24,
+      "qqqWeight": 2.64,
+      "qqqShares": 89850458,
       "weightRank": 11
     },
     {
@@ -274,10 +274,10 @@
       "price": 119.33,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 225.82,
-      "ytdReturn": 204.72,
-      "qqqWeight": 2.64,
-      "qqqShares": 109754181,
+      "return1y": 224.0,
+      "ytdReturn": 203.02,
+      "qqqWeight": 2.63,
+      "qqqShares": 110055176,
       "weightRank": 12
     },
     {
@@ -287,11 +287,11 @@
       "subsector": "Semiconductors",
       "price": 355.14,
       "marketCap": null,
-      "dividendYield": 0.76,
-      "return1y": 2.31,
-      "ytdReturn": -0.6,
-      "qqqWeight": 2.53,
-      "qqqShares": 35996151,
+      "dividendYield": 0.73,
+      "return1y": 5.74,
+      "ytdReturn": 2.73,
+      "qqqWeight": 2.47,
+      "qqqShares": 36094867,
       "weightRank": 13
     },
     {
@@ -305,7 +305,7 @@
       "return1y": 3.01,
       "ytdReturn": -6.95,
       "qqqWeight": 2.11,
-      "qqqShares": 101581650,
+      "qqqShares": 101860223,
       "weightRank": 14
     },
     {
@@ -316,10 +316,10 @@
       "price": 188.75,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 9.81,
-      "ytdReturn": 13.21,
-      "qqqWeight": 1.8,
-      "qqqShares": 48056262,
+      "return1y": 9.06,
+      "ytdReturn": 12.44,
+      "qqqWeight": 1.82,
+      "qqqShares": 48188056,
       "weightRank": 15
     },
     {
@@ -329,11 +329,11 @@
       "subsector": "Computer Communications Equipment",
       "price": 112.2,
       "marketCap": null,
-      "dividendYield": 1.54,
-      "return1y": 62.46,
-      "ytdReturn": 44.34,
-      "qqqWeight": 1.77,
-      "qqqShares": 82326895,
+      "dividendYield": 1.5,
+      "return1y": 68.25,
+      "ytdReturn": 49.49,
+      "qqqWeight": 1.78,
+      "qqqShares": 82552669,
       "weightRank": 16
     },
     {
@@ -343,11 +343,11 @@
       "subsector": "Industrial Machinery",
       "price": 347.49,
       "marketCap": null,
-      "dividendYield": 0.39,
-      "return1y": 134.33,
-      "ytdReturn": 84.32,
-      "qqqWeight": 1.72,
-      "qqqShares": 26136973,
+      "dividendYield": 0.38,
+      "return1y": 139.42,
+      "ytdReturn": 88.33,
+      "qqqWeight": 1.77,
+      "qqqShares": 26208642,
       "weightRank": 17
     },
     {
@@ -357,11 +357,11 @@
       "subsector": "Semiconductors",
       "price": 540.04,
       "marketCap": null,
-      "dividendYield": 0.4,
-      "return1y": 144.67,
-      "ytdReturn": 97.56,
-      "qqqWeight": 1.7,
-      "qqqShares": 16576367,
+      "dividendYield": 0.39,
+      "return1y": 149.63,
+      "ytdReturn": 101.57,
+      "qqqWeight": 1.75,
+      "qqqShares": 16621840,
       "weightRank": 18
     },
     {
@@ -372,10 +372,10 @@
       "price": 920.65,
       "marketCap": null,
       "dividendYield": 0.64,
-      "return1y": 0.54,
-      "ytdReturn": 7.55,
+      "return1y": 1.16,
+      "ytdReturn": 8.22,
       "qqqWeight": 1.69,
-      "qqqShares": 9263258,
+      "qqqShares": 9288677,
       "weightRank": 19
     },
     {
@@ -386,10 +386,10 @@
       "price": 403.24,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 91.25,
-      "ytdReturn": 120.91,
-      "qqqWeight": 1.35,
-      "qqqShares": 17023397,
+      "return1y": 94.62,
+      "ytdReturn": 124.81,
+      "qqqWeight": 1.34,
+      "qqqShares": 17070091,
       "weightRank": 20
     },
     {
@@ -400,10 +400,10 @@
       "price": 67.06,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -41.17,
-      "ytdReturn": -25.43,
-      "qqqWeight": 1.21,
-      "qqqShares": 86974420,
+      "return1y": -41.85,
+      "ytdReturn": -26.3,
+      "qqqWeight": 1.18,
+      "qqqShares": 87212922,
       "weightRank": 21
     },
     {
@@ -414,25 +414,11 @@
       "price": 270.04,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 117.27,
-      "ytdReturn": 134.66,
+      "return1y": 120.49,
+      "ytdReturn": 138.14,
       "qqqWeight": 1.13,
-      "qqqShares": 21387442,
+      "qqqShares": 21446087,
       "weightRank": 22
-    },
-    {
-      "ticker": "TXN",
-      "name": "Texas Instruments Incorporated",
-      "industry": "Technology",
-      "subsector": "Semiconductors",
-      "price": 293.8,
-      "marketCap": null,
-      "dividendYield": 2.16,
-      "return1y": 60.05,
-      "ytdReturn": 61.13,
-      "qqqWeight": 1.07,
-      "qqqShares": 19075537,
-      "weightRank": 23
     },
     {
       "ticker": "KLAC",
@@ -441,12 +427,12 @@
       "subsector": "Electronic Components",
       "price": 206.89,
       "marketCap": null,
-      "dividendYield": 0.46,
-      "return1y": 82.84,
-      "ytdReturn": 57.77,
-      "qqqWeight": 1.06,
-      "qqqShares": 27290595,
-      "weightRank": 25
+      "dividendYield": 0.44,
+      "return1y": 88.83,
+      "ytdReturn": 62.94,
+      "qqqWeight": 1.09,
+      "qqqShares": 27365446,
+      "weightRank": 24
     },
     {
       "ticker": "SNDK",
@@ -456,11 +442,25 @@
       "price": 1719.99,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 1292.17,
-      "ytdReturn": 549.5,
-      "qqqWeight": 1.06,
-      "qqqShares": 3058368,
-      "weightRank": 24
+      "return1y": 1239.45,
+      "ytdReturn": 524.91,
+      "qqqWeight": 1.09,
+      "qqqShares": 3066767,
+      "weightRank": 23
+    },
+    {
+      "ticker": "TXN",
+      "name": "Texas Instruments Incorporated",
+      "industry": "Technology",
+      "subsector": "Semiconductors",
+      "price": 293.8,
+      "marketCap": null,
+      "dividendYield": 2.07,
+      "return1y": 67.15,
+      "ytdReturn": 68.29,
+      "qqqWeight": 1.07,
+      "qqqShares": 19127855,
+      "weightRank": 25
     },
     {
       "ticker": "ABNB",
@@ -470,8 +470,8 @@
       "price": 162.43,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 33.48,
-      "ytdReturn": 20.65,
+      "return1y": 35.11,
+      "ytdReturn": 22.12,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -484,8 +484,8 @@
       "price": 237.69,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -30.41,
-      "ytdReturn": -27.61,
+      "return1y": -31.45,
+      "ytdReturn": -28.69,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -497,9 +497,9 @@
       "subsector": "Semiconductors",
       "price": 417.15,
       "marketCap": null,
-      "dividendYield": 1.09,
-      "return1y": 69.29,
-      "ytdReturn": 49.13,
+      "dividendYield": 1.05,
+      "return1y": 74.54,
+      "ytdReturn": 53.75,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -511,9 +511,9 @@
       "subsector": "Diversified Commercial Services",
       "price": 257.68,
       "marketCap": null,
-      "dividendYield": 2.58,
-      "return1y": -6.76,
-      "ytdReturn": 6.72,
+      "dividendYield": 2.64,
+      "return1y": -8.98,
+      "ytdReturn": 4.18,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -526,8 +526,8 @@
       "price": 212.0,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -33.74,
-      "ytdReturn": -26.3,
+      "return1y": -33.52,
+      "ytdReturn": -26.06,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -539,9 +539,9 @@
       "subsector": "Electric Utilities",
       "price": 119.57,
       "marketCap": null,
-      "dividendYield": 3.17,
-      "return1y": 8.25,
-      "ytdReturn": 5.78,
+      "dividendYield": 3.18,
+      "return1y": 8.08,
+      "ytdReturn": 5.62,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -554,8 +554,8 @@
       "price": 350.33,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 77.55,
-      "ytdReturn": 98.5,
+      "return1y": 74.52,
+      "ytdReturn": 95.1,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -568,8 +568,8 @@
       "price": 219.72,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -49.34,
-      "ytdReturn": -42.23,
+      "return1y": -51.85,
+      "ytdReturn": -45.09,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -581,9 +581,9 @@
       "subsector": "Biotechnology",
       "price": 403.04,
       "marketCap": null,
-      "dividendYield": 2.48,
-      "return1y": 40.51,
-      "ytdReturn": 26.85,
+      "dividendYield": 2.5,
+      "return1y": 39.05,
+      "ytdReturn": 25.53,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -596,8 +596,8 @@
       "price": 268.22,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -58.8,
-      "ytdReturn": -54.5,
+      "return1y": -60.72,
+      "ytdReturn": -56.62,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -610,8 +610,8 @@
       "price": 307.49,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 91.52,
-      "ytdReturn": 154.81,
+      "return1y": 101.45,
+      "ytdReturn": 168.01,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -623,9 +623,9 @@
       "subsector": "Industrial Machinery",
       "price": 1867.31,
       "marketCap": null,
-      "dividendYield": 0.5,
-      "return1y": 76.36,
-      "ytdReturn": 56.14,
+      "dividendYield": 0.49,
+      "return1y": 82.09,
+      "ytdReturn": 61.22,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -638,8 +638,8 @@
       "price": 413.35,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -40.99,
-      "ytdReturn": -25.07,
+      "return1y": -42.23,
+      "ytdReturn": -26.64,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -651,9 +651,9 @@
       "subsector": "Transportation Services",
       "price": 159.02,
       "marketCap": null,
-      "dividendYield": 1.05,
-      "return1y": -25.37,
-      "ytdReturn": -24.18,
+      "dividendYield": 1.06,
+      "return1y": -25.95,
+      "ytdReturn": -24.78,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -665,9 +665,9 @@
       "subsector": "Oil Equipment & Services",
       "price": 56.0,
       "marketCap": null,
-      "dividendYield": 1.65,
-      "return1y": 16.47,
-      "ytdReturn": 19.27,
+      "dividendYield": 1.64,
+      "return1y": 17.27,
+      "ytdReturn": 20.08,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -679,9 +679,9 @@
       "subsector": "Soft Drinks",
       "price": 101.06,
       "marketCap": null,
-      "dividendYield": 2.39,
-      "return1y": 17.9,
-      "ytdReturn": 15.48,
+      "dividendYield": 2.38,
+      "return1y": 18.22,
+      "ytdReturn": 15.79,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -694,8 +694,8 @@
       "price": 351.35,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 1.0,
-      "ytdReturn": 12.99,
+      "return1y": 1.17,
+      "ytdReturn": 13.19,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -708,8 +708,8 @@
       "price": 257.49,
       "marketCap": null,
       "dividendYield": 0.66,
-      "return1y": -27.68,
-      "ytdReturn": -28.99,
+      "return1y": -28.08,
+      "ytdReturn": -29.38,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -721,9 +721,9 @@
       "subsector": "Cable & Other Pay Television Services",
       "price": 21.57,
       "marketCap": null,
-      "dividendYield": 6.08,
-      "return1y": -22.26,
-      "ytdReturn": -18.68,
+      "dividendYield": 6.12,
+      "return1y": -22.73,
+      "ytdReturn": -19.17,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -736,8 +736,8 @@
       "price": 27.22,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -39.5,
-      "ytdReturn": -27.75,
+      "return1y": -39.66,
+      "ytdReturn": -27.93,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -750,8 +750,8 @@
       "price": 89.62,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -34.29,
-      "ytdReturn": 11.66,
+      "return1y": -33.51,
+      "ytdReturn": 12.99,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -763,9 +763,9 @@
       "subsector": "Railroads",
       "price": 47.43,
       "marketCap": null,
-      "dividendYield": 1.2,
-      "return1y": 30.9,
-      "ytdReturn": 29.49,
+      "dividendYield": 1.18,
+      "return1y": 33.41,
+      "ytdReturn": 31.96,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -777,9 +777,9 @@
       "subsector": "Garments & Clothing",
       "price": 193.02,
       "marketCap": null,
-      "dividendYield": 1.06,
-      "return1y": -2.49,
-      "ytdReturn": 6.61,
+      "dividendYield": 1.08,
+      "return1y": -3.78,
+      "ytdReturn": 5.2,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -792,8 +792,8 @@
       "price": 189.15,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -32.83,
-      "ytdReturn": -17.11,
+      "return1y": -30.26,
+      "ytdReturn": -13.94,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -806,8 +806,8 @@
       "price": 277.22,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 82.1,
-      "ytdReturn": 106.67,
+      "return1y": 82.6,
+      "ytdReturn": 107.24,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -820,8 +820,8 @@
       "price": 85.36,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 28.61,
-      "ytdReturn": 29.59,
+      "return1y": 27.31,
+      "ytdReturn": 28.28,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -833,9 +833,9 @@
       "subsector": "Power Generation",
       "price": 40.73,
       "marketCap": null,
-      "dividendYield": 4.15,
-      "return1y": -7.46,
-      "ytdReturn": -5.3,
+      "dividendYield": 4.12,
+      "return1y": -6.87,
+      "ytdReturn": -4.69,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -847,9 +847,9 @@
       "subsector": "Oil & Gas Production",
       "price": 184.71,
       "marketCap": null,
-      "dividendYield": 2.37,
-      "return1y": 28.83,
-      "ytdReturn": 23.85,
+      "dividendYield": 2.38,
+      "return1y": 28.27,
+      "ytdReturn": 23.32,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -861,9 +861,9 @@
       "subsector": "Construction & Materials",
       "price": 50.75,
       "marketCap": null,
-      "dividendYield": 1.91,
-      "return1y": 7.19,
-      "ytdReturn": 26.25,
+      "dividendYield": 1.89,
+      "return1y": 8.3,
+      "ytdReturn": 27.56,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -875,9 +875,9 @@
       "subsector": "Military, Government, Technical",
       "price": 53.64,
       "marketCap": null,
-      "dividendYield": 3.13,
-      "return1y": -9.7,
-      "ytdReturn": -17.18,
+      "dividendYield": 3.09,
+      "return1y": -8.5,
+      "ytdReturn": -16.09,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -890,8 +890,8 @@
       "price": 180.95,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 108.32,
-      "ytdReturn": 129.48,
+      "return1y": 110.92,
+      "ytdReturn": 132.34,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -904,8 +904,8 @@
       "price": 64.29,
       "marketCap": null,
       "dividendYield": 0.25,
-      "return1y": -16.27,
-      "ytdReturn": -22.64,
+      "return1y": -15.87,
+      "ytdReturn": -22.26,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -917,9 +917,9 @@
       "subsector": "Biotechnology",
       "price": 144.74,
       "marketCap": null,
-      "dividendYield": 2.22,
-      "return1y": 34.12,
-      "ytdReturn": 23.48,
+      "dividendYield": 2.27,
+      "return1y": 31.62,
+      "ytdReturn": 21.17,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -932,8 +932,8 @@
       "price": 213.99,
       "marketCap": null,
       "dividendYield": 1.31,
-      "return1y": 5.49,
-      "ytdReturn": 5.48,
+      "return1y": 5.59,
+      "ytdReturn": 5.57,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -946,8 +946,8 @@
       "price": 154.63,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -22.97,
-      "ytdReturn": -22.97,
+      "return1y": -22.68,
+      "ytdReturn": -22.68,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -960,8 +960,8 @@
       "price": 518.39,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -17.97,
-      "ytdReturn": -22.72,
+      "return1y": -17.87,
+      "ytdReturn": -22.63,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -973,9 +973,9 @@
       "subsector": "Computer Software",
       "price": 281.08,
       "marketCap": null,
-      "dividendYield": 1.95,
-      "return1y": -57.94,
-      "ytdReturn": -54.65,
+      "dividendYield": 1.96,
+      "return1y": -58.2,
+      "ytdReturn": -54.93,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -988,8 +988,8 @@
       "price": 391.95,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -11.3,
-      "ytdReturn": -28.6,
+      "return1y": -13.35,
+      "ytdReturn": -30.26,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1001,9 +1001,9 @@
       "subsector": "Soft Drinks",
       "price": 30.37,
       "marketCap": null,
-      "dividendYield": 3.0,
-      "return1y": 22.55,
-      "ytdReturn": 13.26,
+      "dividendYield": 3.03,
+      "return1y": 21.28,
+      "ytdReturn": 12.08,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1015,9 +1015,9 @@
       "subsector": "Major Chemicals",
       "price": 479.48,
       "marketCap": null,
-      "dividendYield": 1.36,
-      "return1y": 1.95,
-      "ytdReturn": 10.48,
+      "dividendYield": 1.33,
+      "return1y": 4.13,
+      "ytdReturn": 12.84,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1030,8 +1030,8 @@
       "price": 1085.42,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 538.41,
-      "ytdReturn": 170.85,
+      "return1y": 562.61,
+      "ytdReturn": 181.12,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1043,9 +1043,9 @@
       "subsector": "Hotels/Resorts",
       "price": 358.96,
       "marketCap": null,
-      "dividendYield": 0.82,
-      "return1y": 33.7,
-      "ytdReturn": 13.88,
+      "dividendYield": 0.81,
+      "return1y": 35.27,
+      "ytdReturn": 15.22,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1057,9 +1057,9 @@
       "subsector": "Semiconductors",
       "price": 81.32,
       "marketCap": null,
-      "dividendYield": 2.32,
-      "return1y": 21.06,
-      "ytdReturn": 22.77,
+      "dividendYield": 2.24,
+      "return1y": 25.41,
+      "ytdReturn": 27.18,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1071,9 +1071,9 @@
       "subsector": "Packaged Foods",
       "price": 58.19,
       "marketCap": null,
-      "dividendYield": 3.6,
-      "return1y": -4.56,
-      "ytdReturn": 10.47,
+      "dividendYield": 3.57,
+      "return1y": -3.85,
+      "ytdReturn": 11.29,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1086,8 +1086,8 @@
       "price": 1696.56,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -22.44,
-      "ytdReturn": -14.62,
+      "return1y": -21.92,
+      "ytdReturn": -14.04,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1100,8 +1100,8 @@
       "price": 42.94,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 25.47,
-      "ytdReturn": 10.66,
+      "return1y": 27.85,
+      "ytdReturn": 12.76,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1113,9 +1113,9 @@
       "subsector": "Semiconductors",
       "price": 1439.73,
       "marketCap": null,
-      "dividendYield": 0.59,
-      "return1y": 49.11,
-      "ytdReturn": 46.08,
+      "dividendYield": 0.56,
+      "return1y": 57.74,
+      "ytdReturn": 54.54,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1128,8 +1128,8 @@
       "price": 272.29,
       "marketCap": null,
       "dividendYield": 0.09,
-      "return1y": 211.59,
-      "ytdReturn": 200.34,
+      "return1y": 216.48,
+      "ytdReturn": 205.06,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1142,8 +1142,8 @@
       "price": 160.01,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -54.36,
-      "ytdReturn": 2.13,
+      "return1y": -54.49,
+      "ytdReturn": 1.81,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1156,8 +1156,8 @@
       "price": 242.81,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 81.5,
-      "ytdReturn": 158.23,
+      "return1y": 89.72,
+      "ytdReturn": 169.94,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1169,9 +1169,9 @@
       "subsector": "Semiconductors",
       "price": 243.66,
       "marketCap": null,
-      "dividendYield": 1.7,
-      "return1y": 6.35,
-      "ytdReturn": 9.51,
+      "dividendYield": 1.66,
+      "return1y": 8.33,
+      "ytdReturn": 11.56,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1183,9 +1183,9 @@
       "subsector": "Trucking",
       "price": 180.48,
       "marketCap": null,
-      "dividendYield": 0.65,
-      "return1y": 26.8,
-      "ytdReturn": 12.35,
+      "dividendYield": 0.64,
+      "return1y": 28.49,
+      "ytdReturn": 13.85,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1198,8 +1198,8 @@
       "price": 84.9,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -18.86,
-      "ytdReturn": -5.88,
+      "return1y": -18.98,
+      "ytdReturn": -6.02,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1211,9 +1211,9 @@
       "subsector": "Diversified Commercial Services",
       "price": 98.94,
       "marketCap": null,
-      "dividendYield": 4.72,
-      "return1y": -15.51,
-      "ytdReturn": -3.98,
+      "dividendYield": 4.81,
+      "return1y": -17.1,
+      "ytdReturn": -5.79,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1225,9 +1225,9 @@
       "subsector": "Motor Vehicles",
       "price": 109.68,
       "marketCap": null,
-      "dividendYield": 1.27,
-      "return1y": 14.84,
-      "ytdReturn": -0.63,
+      "dividendYield": 1.28,
+      "return1y": 14.57,
+      "ytdReturn": -0.86,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1240,8 +1240,8 @@
       "price": 75.38,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -43.02,
-      "ytdReturn": -33.91,
+      "return1y": -43.85,
+      "ytdReturn": -34.88,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1253,9 +1253,9 @@
       "subsector": "Soft Drinks",
       "price": 125.89,
       "marketCap": null,
-      "dividendYield": 4.71,
-      "return1y": -7.95,
-      "ytdReturn": -9.0,
+      "dividendYield": 4.7,
+      "return1y": -7.74,
+      "ytdReturn": -8.79,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1268,8 +1268,8 @@
       "price": 52.8,
       "marketCap": null,
       "dividendYield": 1.06,
-      "return1y": -22.52,
-      "ytdReturn": -7.93,
+      "return1y": -22.9,
+      "ytdReturn": -8.38,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1281,9 +1281,9 @@
       "subsector": "Semiconductors",
       "price": 184.87,
       "marketCap": null,
-      "dividendYield": 2.02,
-      "return1y": 9.87,
-      "ytdReturn": 6.91,
+      "dividendYield": 1.99,
+      "return1y": 11.55,
+      "ytdReturn": 8.54,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1296,8 +1296,8 @@
       "price": 735.2,
       "marketCap": null,
       "dividendYield": 0.51,
-      "return1y": 23.1,
-      "ytdReturn": -4.98,
+      "return1y": 23.16,
+      "ytdReturn": -4.93,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1310,8 +1310,8 @@
       "price": 73.92,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 25.46,
-      "ytdReturn": -7.28,
+      "return1y": 31.62,
+      "ytdReturn": -2.72,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1323,9 +1323,9 @@
       "subsector": "Software",
       "price": 354.32,
       "marketCap": null,
-      "dividendYield": 1.0,
-      "return1y": -26.96,
-      "ytdReturn": -16.14,
+      "dividendYield": 1.03,
+      "return1y": -28.44,
+      "ytdReturn": -17.84,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1337,9 +1337,9 @@
       "subsector": "Clothing/Shoe/Accessory Stores",
       "price": 228.54,
       "marketCap": null,
-      "dividendYield": 0.76,
-      "return1y": 54.64,
-      "ytdReturn": 28.88,
+      "dividendYield": 0.78,
+      "return1y": 50.97,
+      "ytdReturn": 25.82,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1351,9 +1351,9 @@
       "subsector": "Restaurants",
       "price": 94.71,
       "marketCap": null,
-      "dividendYield": 2.61,
-      "return1y": 12.59,
-      "ytdReturn": 15.05,
+      "dividendYield": 2.62,
+      "return1y": 12.39,
+      "ytdReturn": 14.84,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1366,8 +1366,8 @@
       "price": 151.39,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -7.48,
-      "ytdReturn": -5.16,
+      "return1y": -6.05,
+      "ytdReturn": -3.7,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1380,8 +1380,8 @@
       "price": 489.9,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 4.55,
-      "ytdReturn": 2.11,
+      "return1y": 4.42,
+      "ytdReturn": 1.97,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1393,9 +1393,9 @@
       "subsector": "Electronic Components",
       "price": 848.99,
       "marketCap": null,
-      "dividendYield": 0.31,
-      "return1y": 276.26,
-      "ytdReturn": 229.92,
+      "dividendYield": 0.35,
+      "return1y": 237.83,
+      "ytdReturn": 196.22,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1407,9 +1407,9 @@
       "subsector": "Semiconductors",
       "price": 449.04,
       "marketCap": null,
-      "dividendYield": 0.13,
-      "return1y": 186.04,
-      "ytdReturn": 100.56,
+      "dividendYield": 0.12,
+      "return1y": 208.92,
+      "ytdReturn": 116.6,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1421,9 +1421,9 @@
       "subsector": "Telecommunications Services",
       "price": 163.64,
       "marketCap": null,
-      "dividendYield": 2.89,
-      "return1y": -28.28,
-      "ytdReturn": -17.66,
+      "dividendYield": 2.86,
+      "return1y": -27.43,
+      "ytdReturn": -16.69,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1435,9 +1435,9 @@
       "subsector": "Software",
       "price": 97.62,
       "marketCap": null,
-      "dividendYield": 2.64,
-      "return1y": -32.31,
-      "ytdReturn": -18.41,
+      "dividendYield": 2.68,
+      "return1y": -33.5,
+      "ytdReturn": -19.84,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1450,8 +1450,8 @@
       "price": 202.73,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -20.98,
-      "ytdReturn": -19.07,
+      "return1y": -21.32,
+      "ytdReturn": -19.42,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1464,8 +1464,8 @@
       "price": 504.73,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 25.65,
-      "ytdReturn": 12.08,
+      "return1y": 25.15,
+      "ytdReturn": 11.63,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1478,8 +1478,8 @@
       "price": 30.94,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 62.98,
-      "ytdReturn": 8.56,
+      "return1y": 62.93,
+      "ytdReturn": 8.52,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1492,8 +1492,8 @@
       "price": 186.14,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -21.03,
-      "ytdReturn": -9.25,
+      "return1y": -21.29,
+      "ytdReturn": -9.55,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1505,9 +1505,9 @@
       "subsector": "Electronic Components",
       "price": 415.29,
       "marketCap": null,
-      "dividendYield": 0.13,
-      "return1y": 252.92,
-      "ytdReturn": 146.7,
+      "dividendYield": 0.14,
+      "return1y": 216.86,
+      "ytdReturn": 121.49,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1519,9 +1519,9 @@
       "subsector": "Conventional Electricity",
       "price": 71.4,
       "marketCap": null,
-      "dividendYield": 3.36,
-      "return1y": -9.37,
-      "ytdReturn": -3.34,
+      "dividendYield": 3.32,
+      "return1y": -8.28,
+      "ytdReturn": -2.18,
       "qqqWeight": null,
       "qqqShares": null,
       "weightRank": null
@@ -1532,176 +1532,176 @@
       "rank": 1,
       "name": "NVIDIA Corporation",
       "ticker": "NVDA",
-      "weight": 8.33,
-      "shares": 182342078
+      "weight": 8.39,
+      "shares": 182842133
     },
     {
       "rank": 2,
       "name": "Apple Inc.",
       "ticker": "AAPL",
-      "weight": 7.35,
-      "shares": 110420418
+      "weight": 7.27,
+      "shares": 110723226
     },
     {
       "rank": 3,
       "name": "Microsoft Corporation",
       "ticker": "MSFT",
-      "weight": 5.76,
-      "shares": 56182106
+      "weight": 5.74,
+      "shares": 56336174
     },
     {
       "rank": 4,
       "name": "Micron Technology, Inc.",
       "ticker": "MU",
-      "weight": 5.02,
-      "shares": 23590175
+      "weight": 5.16,
+      "shares": 23654851
     },
     {
       "rank": 5,
       "name": "Advanced Micro Devices, Inc.",
       "ticker": "AMD",
-      "weight": 4.17,
-      "shares": 34098329
+      "weight": 4.19,
+      "shares": 34191828
     },
     {
       "rank": 6,
       "name": "Amazon.com, Inc.",
       "ticker": "AMZN",
-      "weight": 4.07,
-      "shares": 81609936
+      "weight": 4.04,
+      "shares": 81833749
     },
     {
       "rank": 7,
       "name": "Meta Platforms, Inc.",
       "ticker": "META",
       "weight": 3.26,
-      "shares": 22498280
+      "shares": 22559996
     },
     {
       "rank": 8,
       "name": "Alphabet Inc.",
       "ticker": "GOOGL",
-      "weight": 3.05,
-      "shares": 44397683
+      "weight": 2.99,
+      "shares": 44519450
     },
     {
       "rank": 9,
-      "name": "Alphabet Inc.",
-      "ticker": "GOOG",
-      "weight": 2.85,
-      "shares": 41817535
+      "name": "Tesla, Inc.",
+      "ticker": "TSLA",
+      "weight": 2.81,
+      "shares": 39855604
     },
     {
       "rank": 10,
-      "name": "Tesla, Inc.",
-      "ticker": "TSLA",
-      "weight": 2.82,
-      "shares": 39746602
+      "name": "Alphabet Inc.",
+      "ticker": "GOOG",
+      "weight": 2.79,
+      "shares": 41932198
     },
     {
       "rank": 11,
       "name": "Space Exploration Technologies Corp.",
       "ticker": "SPCX",
-      "weight": 2.7,
-      "shares": 89604741
+      "weight": 2.64,
+      "shares": 89850458
     },
     {
       "rank": 12,
       "name": "Intel Corporation",
       "ticker": "INTC",
-      "weight": 2.64,
-      "shares": 109754181
+      "weight": 2.63,
+      "shares": 110055176
     },
     {
       "rank": 13,
       "name": "Broadcom Inc.",
       "ticker": "AVGO",
-      "weight": 2.53,
-      "shares": 35996151
+      "weight": 2.47,
+      "shares": 36094867
     },
     {
       "rank": 14,
       "name": "Walmart Inc.",
       "ticker": "WMT",
       "weight": 2.11,
-      "shares": 101581650
+      "shares": 101860223
     },
     {
       "rank": 15,
       "name": "Palantir Technologies Inc.",
       "ticker": "PLTR",
-      "weight": 1.8,
-      "shares": 48056262
+      "weight": 1.82,
+      "shares": 48188056
     },
     {
       "rank": 16,
       "name": "Cisco Systems, Inc.",
       "ticker": "CSCO",
-      "weight": 1.77,
-      "shares": 82326895
+      "weight": 1.78,
+      "shares": 82552669
     },
     {
       "rank": 17,
       "name": "Lam Research Corporation",
       "ticker": "LRCX",
-      "weight": 1.72,
-      "shares": 26136973
+      "weight": 1.77,
+      "shares": 26208642
     },
     {
       "rank": 18,
       "name": "Applied Materials, Inc.",
       "ticker": "AMAT",
-      "weight": 1.7,
-      "shares": 16576367
+      "weight": 1.75,
+      "shares": 16621840
     },
     {
       "rank": 19,
       "name": "Costco Wholesale Corporation",
       "ticker": "COST",
       "weight": 1.69,
-      "shares": 9263258
+      "shares": 9288677
     },
     {
       "rank": 20,
       "name": "Palo Alto Networks, Inc.",
       "ticker": "PANW",
-      "weight": 1.35,
-      "shares": 17023397
+      "weight": 1.34,
+      "shares": 17070091
     },
     {
       "rank": 21,
       "name": "Netflix, Inc.",
       "ticker": "NFLX",
-      "weight": 1.21,
-      "shares": 86974420
+      "weight": 1.18,
+      "shares": 87212922
     },
     {
       "rank": 22,
       "name": "CrowdStrike Holdings, Inc.",
       "ticker": "CRWD",
       "weight": 1.13,
-      "shares": 21387442
+      "shares": 21446087
     },
     {
       "rank": 23,
-      "name": "Texas Instruments Incorporated",
-      "ticker": "TXN",
-      "weight": 1.07,
-      "shares": 19075537
+      "name": "Sandisk Corporation",
+      "ticker": "SNDK",
+      "weight": 1.09,
+      "shares": 3066767
     },
     {
       "rank": 24,
-      "name": "Sandisk Corporation",
-      "ticker": "SNDK",
-      "weight": 1.06,
-      "shares": 3058368
+      "name": "KLA Corporation",
+      "ticker": "KLAC",
+      "weight": 1.09,
+      "shares": 27365446
     },
     {
       "rank": 25,
-      "name": "KLA Corporation",
-      "ticker": "KLAC",
-      "weight": 1.06,
-      "shares": 27290595
+      "name": "Texas Instruments Incorporated",
+      "ticker": "TXN",
+      "weight": 1.07,
+      "shares": 19127855
     }
   ],
   "cumulativeWeights": [
@@ -1709,188 +1709,188 @@
       "rank": 1,
       "ticker": "NVDA",
       "name": "NVIDIA Corporation",
-      "weight": 8.33,
-      "cumulativeWeight": 8.33
+      "weight": 8.39,
+      "cumulativeWeight": 8.39
     },
     {
       "rank": 2,
       "ticker": "AAPL",
       "name": "Apple Inc.",
-      "weight": 7.35,
-      "cumulativeWeight": 15.68
+      "weight": 7.27,
+      "cumulativeWeight": 15.66
     },
     {
       "rank": 3,
       "ticker": "MSFT",
       "name": "Microsoft Corporation",
-      "weight": 5.76,
-      "cumulativeWeight": 21.44
+      "weight": 5.74,
+      "cumulativeWeight": 21.4
     },
     {
       "rank": 4,
       "ticker": "MU",
       "name": "Micron Technology, Inc.",
-      "weight": 5.02,
-      "cumulativeWeight": 26.46
+      "weight": 5.16,
+      "cumulativeWeight": 26.56
     },
     {
       "rank": 5,
       "ticker": "AMD",
       "name": "Advanced Micro Devices, Inc.",
-      "weight": 4.17,
-      "cumulativeWeight": 30.63
+      "weight": 4.19,
+      "cumulativeWeight": 30.75
     },
     {
       "rank": 6,
       "ticker": "AMZN",
       "name": "Amazon.com, Inc.",
-      "weight": 4.07,
-      "cumulativeWeight": 34.7
+      "weight": 4.04,
+      "cumulativeWeight": 34.79
     },
     {
       "rank": 7,
       "ticker": "META",
       "name": "Meta Platforms, Inc.",
       "weight": 3.26,
-      "cumulativeWeight": 37.96
+      "cumulativeWeight": 38.05
     },
     {
       "rank": 8,
       "ticker": "GOOGL",
       "name": "Alphabet Inc.",
-      "weight": 3.05,
-      "cumulativeWeight": 41.01
+      "weight": 2.99,
+      "cumulativeWeight": 41.04
     },
     {
       "rank": 9,
-      "ticker": "GOOG",
-      "name": "Alphabet Inc.",
-      "weight": 2.85,
-      "cumulativeWeight": 43.86
+      "ticker": "TSLA",
+      "name": "Tesla, Inc.",
+      "weight": 2.81,
+      "cumulativeWeight": 43.85
     },
     {
       "rank": 10,
-      "ticker": "TSLA",
-      "name": "Tesla, Inc.",
-      "weight": 2.82,
-      "cumulativeWeight": 46.68
+      "ticker": "GOOG",
+      "name": "Alphabet Inc.",
+      "weight": 2.79,
+      "cumulativeWeight": 46.64
     },
     {
       "rank": 11,
       "ticker": "SPCX",
       "name": "Space Exploration Technologies Corp.",
-      "weight": 2.7,
-      "cumulativeWeight": 49.38
+      "weight": 2.64,
+      "cumulativeWeight": 49.28
     },
     {
       "rank": 12,
       "ticker": "INTC",
       "name": "Intel Corporation",
-      "weight": 2.64,
-      "cumulativeWeight": 52.02
+      "weight": 2.63,
+      "cumulativeWeight": 51.91
     },
     {
       "rank": 13,
       "ticker": "AVGO",
       "name": "Broadcom Inc.",
-      "weight": 2.53,
-      "cumulativeWeight": 54.55
+      "weight": 2.47,
+      "cumulativeWeight": 54.38
     },
     {
       "rank": 14,
       "ticker": "WMT",
       "name": "Walmart Inc.",
       "weight": 2.11,
-      "cumulativeWeight": 56.66
+      "cumulativeWeight": 56.49
     },
     {
       "rank": 15,
       "ticker": "PLTR",
       "name": "Palantir Technologies Inc.",
-      "weight": 1.8,
-      "cumulativeWeight": 58.46
+      "weight": 1.82,
+      "cumulativeWeight": 58.31
     },
     {
       "rank": 16,
       "ticker": "CSCO",
       "name": "Cisco Systems, Inc.",
-      "weight": 1.77,
-      "cumulativeWeight": 60.23
+      "weight": 1.78,
+      "cumulativeWeight": 60.09
     },
     {
       "rank": 17,
       "ticker": "LRCX",
       "name": "Lam Research Corporation",
-      "weight": 1.72,
-      "cumulativeWeight": 61.95
+      "weight": 1.77,
+      "cumulativeWeight": 61.86
     },
     {
       "rank": 18,
       "ticker": "AMAT",
       "name": "Applied Materials, Inc.",
-      "weight": 1.7,
-      "cumulativeWeight": 63.65
+      "weight": 1.75,
+      "cumulativeWeight": 63.61
     },
     {
       "rank": 19,
       "ticker": "COST",
       "name": "Costco Wholesale Corporation",
       "weight": 1.69,
-      "cumulativeWeight": 65.34
+      "cumulativeWeight": 65.3
     },
     {
       "rank": 20,
       "ticker": "PANW",
       "name": "Palo Alto Networks, Inc.",
-      "weight": 1.35,
-      "cumulativeWeight": 66.69
+      "weight": 1.34,
+      "cumulativeWeight": 66.64
     },
     {
       "rank": 21,
       "ticker": "NFLX",
       "name": "Netflix, Inc.",
-      "weight": 1.21,
-      "cumulativeWeight": 67.9
+      "weight": 1.18,
+      "cumulativeWeight": 67.82
     },
     {
       "rank": 22,
       "ticker": "CRWD",
       "name": "CrowdStrike Holdings, Inc.",
       "weight": 1.13,
-      "cumulativeWeight": 69.03
+      "cumulativeWeight": 68.95
     },
     {
       "rank": 23,
-      "ticker": "TXN",
-      "name": "Texas Instruments Incorporated",
-      "weight": 1.07,
-      "cumulativeWeight": 70.1
+      "ticker": "SNDK",
+      "name": "Sandisk Corporation",
+      "weight": 1.09,
+      "cumulativeWeight": 70.04
     },
     {
       "rank": 24,
-      "ticker": "SNDK",
-      "name": "Sandisk Corporation",
-      "weight": 1.06,
-      "cumulativeWeight": 71.16
+      "ticker": "KLAC",
+      "name": "KLA Corporation",
+      "weight": 1.09,
+      "cumulativeWeight": 71.13
     },
     {
       "rank": 25,
-      "ticker": "KLAC",
-      "name": "KLA Corporation",
-      "weight": 1.06,
-      "cumulativeWeight": 72.22
+      "ticker": "TXN",
+      "name": "Texas Instruments Incorporated",
+      "weight": 1.07,
+      "cumulativeWeight": 72.2
     },
     {
       "rank": 26,
       "ticker": "OTHERS",
       "name": "Other 79 combined",
-      "weight": 27.78,
+      "weight": 27.8,
       "cumulativeWeight": 100.0
     }
   ],
   "annualReturns": {
-    "updated": "2026-10-01",
-    "average": 15.15,
+    "updated": "2026-10-02",
+    "average": 15.2,
     "positiveYears": 22,
     "negativeYears": 6,
     "best": {
@@ -2041,8 +2041,8 @@
       },
       {
         "year": 2026,
-        "date": "2026-10-01",
-        "value": 21.2
+        "date": "2026-10-02",
+        "value": 22.44
       }
     ],
     "proxy": {
