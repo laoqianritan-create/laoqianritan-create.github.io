@@ -1,12 +1,12 @@
 {
-  "updated": "2026-10-02",
+  "updated": "2026-10-03",
   "ticker": "^NDX",
   "latest": {
     "date": "2026-10-02",
-    "value": 14.34,
+    "value": 14.22,
     "startDate": "2021-10-29",
     "startPrice": 15850.47,
-    "endPrice": 30975.34
+    "endPrice": 30807.93
   },
   "average": 14.36,
   "negativePercent": 12.2,
@@ -3038,10 +3038,10 @@
     },
     {
       "date": "2026-10-02",
-      "value": 14.34,
+      "value": 14.22,
       "startDate": "2021-10-29",
       "startPrice": 15850.47,
-      "endPrice": 30975.34
+      "endPrice": 30807.93
     }
   ]
 }
