@@ -1,6 +1,6 @@
 /**
  * 热力图渲染器（canvas）
- * 蓝(#4A6FE2) → 浅蓝 → 白 → 浅红 → 红(#e65a56)，TwoSlopeNorm 以 0 为对称轴。
+ * 绿(#2FBF71) → 浅绿 → 白 → 浅红 → 红(#E65A56)，TwoSlopeNorm 以 0 为对称轴。
  * 年度涨跌幅区: VMIN=-50, VMAX=105 (大波动)
  * CAGR 区:     VMIN_M=-12, VMAX_M=18  (年化复合,数值小)
  * 单元格内数值 1 位小数；亮度 > 0.55 用深字，否则白字。
@@ -19,11 +19,12 @@
   const VMIN_M = -12;
   const VMAX_M = 18;
 
+  // 红涨绿跌，0 对称：绿 → 浅绿 → 白 → 浅红 → 红
   const STOPS = [
-    [0.00, [74, 111, 226]],
-    [0.35, [192, 207, 250]],
+    [0.00, [47, 191, 113]],
+    [0.40, [201, 240, 218]],
     [0.50, [255, 255, 255]],
-    [0.65, [245, 192, 190]],
+    [0.60, [247, 205, 203]],
     [1.00, [230, 90, 86]]
   ];
 
@@ -143,7 +144,7 @@
 
       ctx.fillStyle = '#555555';
       ctx.font = '300 30px NotoSansSC, "Microsoft YaHei", sans-serif';
-      ctx.fillText('2005 — 2026 · 31 个一级行业 · 蓝跌红涨 · 右侧 4 列为年化复合收益率', L.W / 2, 175);
+      ctx.fillText('2005 — 2026 · 31 个一级行业 · 红涨绿跌 · 右侧 4 列为年化复合收益率', L.W / 2, 175);
 
       drawLegendBar(ctx, L);
     }
@@ -277,11 +278,11 @@
     const barY = 220;
 
     const grad = ctx.createLinearGradient(barX, 0, barX + barW, 0);
-    grad.addColorStop(0.00, '#4A6FE2');
-    grad.addColorStop(0.35, '#C0CFFA');
+    grad.addColorStop(0.00, '#2FBF71');
+    grad.addColorStop(0.40, '#C9F0DA');
     grad.addColorStop(0.50, '#FFFFFF');
-    grad.addColorStop(0.65, '#F5C0BE');
-    grad.addColorStop(1.00, '#e65a56');
+    grad.addColorStop(0.60, '#F7CDCB');
+    grad.addColorStop(1.00, '#E65A56');
     ctx.fillStyle = grad;
     ctx.fillRect(barX, barY, barW, barH);
     ctx.strokeStyle = '#E5E5E5';

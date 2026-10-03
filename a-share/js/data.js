@@ -19,6 +19,9 @@
     '有色金属'
   ];
 
+  // 暴露给 main.js（热力图行排序保持一致）
+  window.SW_ROW_ORDER = ROW_ORDER;
+
   window.SW_loadData = async function () {
     const buster = `?v=${Date.now()}`;
     const url = `data/sw_returns.json${buster}`;

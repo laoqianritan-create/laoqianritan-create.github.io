@@ -1,216 +1,170 @@
 /**
- * 主控：加载数据 → 渲染屏幕版 → 绑定导图按钮
+ * A股看板 · 主控
+ * 加载全部面板数据 → 渲染新鲜度 → 逐面板渲染 → 绑定导出
  */
 (function () {
   'use strict';
 
-  let dataPayload = null;
+  const AK = window.AK;
+
+  const DATA = {
+    heatmap: 'data/sw_returns.json',
+    longgrowth: 'data/panel_longgrowth.json',
+    industry: 'data/industry_heat.json',
+    turnover: 'data/market_turnover.json',
+    returnDecomp: 'data/return_decomp.json',
+    investor: 'data/investor_structure.json'
+  };
 
   async function init() {
     try {
-      dataPayload = await window.SW_loadData();
-
-      // 更新右下角提示文字
-      const note = document.getElementById('updateNote');
-      if (note) {
-        if (dataPayload.ytdAsOf) {
-          note.textContent = `2026 年为年初至今涨跌幅（截至 ${dataPayload.ytdAsOf}）`;
+      // 并行加载核心数据（热力图失败不阻塞其他面板）
+      const payloads = await Promise.allSettled(
+        Object.entries(DATA).map(([k, url]) => AK.fetchJSON(url).then((d) => [k, d]))
+      );
+      const data = {};
+      const asOfList = [];
+      payloads.forEach((p) => {
+        if (p.status === 'fulfilled') {
+          const [k, d] = p.value;
+          data[k] = d;
+          if (d && d.generated) asOfList.push(String(d.generated).slice(0, 10));
+          if (d && d.asOf) asOfList.push(d.asOf);
         } else {
-          note.textContent = '2026 年为年初至今涨跌幅';
+          console.warn('[A股看板] 数据加载失败:', p.reason && p.reason.message);
         }
-      }
-
-      // 顶部数据新鲜度徽章
-      renderFreshness(dataPayload);
-
-      // 屏幕渲染
-      const canvas = document.getElementById('heatmap');
-      window.SW_drawHeatmap(canvas, dataPayload, {
-        exportMode: false,
-        scale: window.devicePixelRatio || 1
       });
 
-      // 监听窗口尺寸变化（rAF 节流）
-      let rafId = null;
-      window.addEventListener('resize', () => {
-        if (rafId) cancelAnimationFrame(rafId);
-        rafId = requestAnimationFrame(() => {
-          window.SW_drawHeatmap(canvas, dataPayload, {
-            exportMode: false,
-            scale: window.devicePixelRatio || 1
-          });
-        });
-      });
+      // 顶部新鲜度
+      AK.renderFreshness(asOfList);
 
-      // 导图按钮 · 热力图
-      const btn = document.getElementById('btnExport');
-      btn.addEventListener('click', () => exportHighRes(btn));
+      // 各面板渲染（缺失数据的面板显示占位；单个面板报错不阻断其余）
+      try { if (data.heatmap) renderHeatmap(data.heatmap); else showPanelError('panel-heatmap', '热力图数据加载失败'); }
+      catch (e) { console.error('[heatmap]', e); showPanelError('panel-heatmap', '热力图渲染失败：' + e.message); }
 
-      // 抄底数学题 · 屏幕渲染
-      const lossCanvas = document.getElementById('lossTable');
-      if (lossCanvas && window.SW_drawLossTable) {
-        window.SW_drawLossTable(lossCanvas, {
-          exportMode: false,
-          scale: window.devicePixelRatio || 1
-        });
-        // 尺寸变化也重绘
-        window.addEventListener('resize', () => {
-          if (rafId) cancelAnimationFrame(rafId);
-          rafId = requestAnimationFrame(() => {
-            window.SW_drawLossTable(lossCanvas, {
-              exportMode: false,
-              scale: window.devicePixelRatio || 1
-            });
-          });
-        });
+      if (window.SW_drawLossTable) {
+        try { renderLossTable(); } catch (e) { console.error('[loss]', e); }
       }
 
-      // 导图按钮 · 抄底表
-      const btnLoss = document.getElementById('btnExportLossTable');
-      if (btnLoss) {
-        btnLoss.addEventListener('click', () => exportLossHighRes(btnLoss));
-      }
+      try {
+        if (data.longgrowth && window.LG_render) window.LG_render(data.longgrowth);
+        else if (!data.longgrowth) showPanelError('panel-long', '长周期数据加载失败');
+      } catch (e) { console.error('[longgrowth]', e); showPanelError('panel-long', '长周期渲染失败：' + e.message); }
+
+      try {
+        if (data.industry && window.IH_render) window.IH_render(data.industry);
+        else if (!data.industry) showPanelError('panel-industry', '行业热度数据加载失败');
+      } catch (e) { console.error('[industry]', e); showPanelError('panel-industry', '行业热度渲染失败：' + e.message); }
+
+      try {
+        if (data.turnover && window.MT_render) window.MT_render(data.turnover);
+        else if (!data.turnover) showPanelError('panel-turnover', '成交换手数据加载失败');
+      } catch (e) { console.error('[turnover]', e); showPanelError('panel-turnover', '成交换手渲染失败：' + e.message); }
+
+      try {
+        if (data.returnDecomp && window.RD_render) window.RD_render(data.returnDecomp);
+        else if (!data.returnDecomp) showPanelError('panel-return', '收益拆解数据加载失败');
+      } catch (e) { console.error('[return]', e); showPanelError('panel-return', '收益拆解渲染失败：' + e.message); }
+
+      try {
+        if (data.investor && window.IS_render) window.IS_render(data.investor);
+        else if (!data.investor) showPanelError('panel-investor', '投资者结构数据加载失败');
+      } catch (e) { console.error('[investor]', e); showPanelError('panel-investor', '投资者结构渲染失败：' + e.message); }
 
     } catch (err) {
-      console.error('[A 股看板] 初始化失败', err);
-      const wrap = document.querySelector('.heatmap-wrap');
-      if (wrap) {
-        wrap.innerHTML = `<div style="padding:40px;text-align:center;color:#e65a56;font-size:14px;">
-          数据加载失败：${err.message}<br>
-          <small style="color:#999;">请刷新重试，或联系老钱</small>
-        </div>`;
-      }
+      console.error('[A股看板] 初始化失败', err);
+      showPanelError('panel-heatmap', '初始化失败：' + err.message);
     }
   }
 
-  /** 计算数据陈旧度并渲染顶部徽章 */
-  function renderFreshness(payload) {
-    const strip = document.getElementById('freshnessStrip');
-    if (!strip) return;
-    const asOf = payload.ytdAsOf || payload.updated;
-    if (!asOf) {
-      strip.querySelector('.freshness-text').textContent = '数据日期未知';
-      strip.classList.add('is-old');
-      return;
-    }
-    const asOfDate = new Date(asOf + 'T00:00:00');
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    const diffDays = Math.round((today - asOfDate) / 86400000);
+  function renderHeatmap(raw) {
+    const canvas = document.getElementById('heatmap');
+    if (!canvas) return;
+    // 原始 JSON → heatmap.js 期望的 { years, rows, metricsMeta } 结构
+    const payload = normalizeHeatmap(raw);
+    const draw = (opts) => window.SW_drawHeatmap(canvas, payload, opts);
+    draw({ exportMode: false, scale: window.devicePixelRatio || 1 });
 
-    // 计算 diff 里的交易日数（跳过周末，近似估算）
-    let tdDiff = 0;
-    const cur = new Date(asOfDate);
-    while (cur < today) {
-      cur.setDate(cur.getDate() + 1);
-      if (cur.getDay() !== 0 && cur.getDay() !== 6) tdDiff++;
-    }
+    let rafId = null;
+    window.addEventListener('resize', () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => draw({ exportMode: false, scale: window.devicePixelRatio || 1 }));
+    });
 
-    let cls = '';
-    let statusText = '';
-    if (tdDiff === 0) {
-      statusText = '最新';
-    } else if (tdDiff <= 2) {
-      statusText = `${tdDiff} 个交易日前`;
-    } else if (tdDiff <= 5) {
-      cls = 'is-stale';
-      statusText = `${tdDiff} 个交易日前`;
-    } else {
-      cls = 'is-old';
-      statusText = `${tdDiff} 个交易日前 · 可能延迟`;
-    }
-
-    if (cls) strip.classList.add(cls);
-    strip.querySelector('.freshness-text').innerHTML =
-      `数据更新至 <b>${asOf}</b>` +
-      `<span class="freshness-hint">· ${statusText} · 每交易日 16:00 自动刷新</span>`;
-  }
-
-  function exportHighRes(btn) {
-    if (!dataPayload) return;
-
-    const origText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = '正在生成 3000px 高清图…';
-
-    // 用一个离屏 canvas 绘制 3000px 版
-    setTimeout(() => {
-      try {
-        const offscreen = document.createElement('canvas');
-        window.SW_drawHeatmap(offscreen, dataPayload, {
-          exportMode: true,
-          scale: 1,
-          ytdAsOf: dataPayload.ytdAsOf
-        });
-
-        // 触发下载
-        offscreen.toBlob((blob) => {
-          if (!blob) {
-            btn.textContent = '导出失败，请重试';
-            setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 2000);
-            return;
-          }
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `申万一级行业年度涨跌幅_2005-2026.png`;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          setTimeout(() => URL.revokeObjectURL(url), 1000);
-
+    const btn = document.getElementById('btnExportHeatmap');
+    if (btn) {
+      btn.addEventListener('click', async () => {
+        btn.disabled = true; btn.textContent = '正在生成 3000px 高清图…';
+        try {
+          await AK.exportPNG(canvas, 3000, '申万一级行业年度涨跌幅_2005-2026.png', (off, scale) => {
+            window.SW_drawHeatmap(off, payload, { exportMode: true, scale: 1, ytdAsOf: payload.ytdAsOf });
+          });
           btn.textContent = '✓ 已下载';
-          setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 1500);
-        }, 'image/png');
-      } catch (e) {
-        console.error(e);
-        btn.textContent = '导出失败';
-        setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 2000);
-      }
-    }, 50);
+        } catch (e) {
+          console.error(e); btn.textContent = '导出失败';
+        }
+        setTimeout(() => { btn.disabled = false; btn.textContent = '下载 3000px 高清图'; }, 1500);
+      });
+    }
   }
 
-  function exportLossHighRes(btn) {
-    const origText = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = '正在生成 3000px 高清图…';
-    setTimeout(() => {
-      try {
-        const offscreen = document.createElement('canvas');
-        window.SW_drawLossTable(offscreen, { exportMode: true, scale: 1 });
-        offscreen.toBlob((blob) => {
-          if (!blob) {
-            btn.textContent = '导出失败,请重试';
-            setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 2000);
-            return;
-          }
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = '关于抄底的一道基础数学题.png';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          setTimeout(() => URL.revokeObjectURL(url), 1000);
+  // 原始 sw_returns.json → heatmap.js 结构（与 data.js SW_loadData 同逻辑）
+  function normalizeHeatmap(raw) {
+    const yearsBase = (raw.years || []).map(String);
+    const years = [...yearsBase, '2026*'];
+    const metricsMeta = raw.metrics_meta && raw.metrics_meta.columns ? raw.metrics_meta.columns : [];
+    const names = window.SW_ROW_ORDER && window.SW_ROW_ORDER.length
+      ? window.SW_ROW_ORDER : Object.keys(raw.data || {});
+    const rows = names.map((name) => {
+      const item = raw.data[name];
+      if (!item) throw new Error('数据缺少行业: ' + name);
+      const rets = [...(item.rets || [])];
+      rets.push(item.ytd2026 !== undefined && item.ytd2026 !== null ? item.ytd2026 : null);
+      const metrics = metricsMeta.map((col) =>
+        item.metrics && item.metrics[col.key] !== undefined ? item.metrics[col.key] : null);
+      return { name, rets, metrics };
+    });
+    return { years, rows, metricsMeta, updated: raw.updated || null, ytdAsOf: raw.ytd_as_of || null };
+  }
 
+  function renderLossTable() {
+    const canvas = document.getElementById('lossTable');
+    if (!canvas) return;
+    const draw = (opts) => window.SW_drawLossTable(canvas, opts);
+    draw({ exportMode: false, scale: window.devicePixelRatio || 1 });
+
+    let rafId = null;
+    window.addEventListener('resize', () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => draw({ exportMode: false, scale: window.devicePixelRatio || 1 }));
+    });
+
+    const btn = document.getElementById('btnExportLossTable');
+    if (btn) {
+      btn.addEventListener('click', async () => {
+        btn.disabled = true; btn.textContent = '正在生成 3000px 高清图…';
+        try {
+          await AK.exportPNG(canvas, 3000, '关于抄底的一道基础数学题.png', (off) => {
+            window.SW_drawLossTable(off, { exportMode: true, scale: 1 });
+          });
           btn.textContent = '✓ 已下载';
-          setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 1500);
-        }, 'image/png');
-      } catch (e) {
-        console.error(e);
-        btn.textContent = '导出失败';
-        setTimeout(() => { btn.disabled = false; btn.textContent = origText; }, 2000);
-      }
-    }, 50);
+        } catch (e) {
+          console.error(e); btn.textContent = '导出失败';
+        }
+        setTimeout(() => { btn.disabled = false; btn.textContent = '下载 3000px 抄底表'; }, 1500);
+      });
+    }
   }
 
-  // 等字体加载完再画（避免首屏文字闪烁）
-  if (document.fonts && document.fonts.ready) {
-    Promise.race([
-      document.fonts.ready,
-      new Promise((resolve) => setTimeout(resolve, 1500))
-    ]).then(init);
-  } else {
-    init();
+  function showPanelError(panelId, msg) {
+    const panel = document.getElementById(panelId);
+    if (!panel) return;
+    const body = panel.querySelector('.panel-body');
+    if (body) {
+      body.innerHTML = `<div style="padding:30px;text-align:center;color:#E65A56;font-size:13px;">${msg}<br>
+        <small style="color:#999;">请刷新重试，或联系老钱</small></div>`;
+    }
   }
+
+  AK.fontsReady().then(init);
 })();
