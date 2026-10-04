@@ -1166,7 +1166,7 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
     }
 
     series.push({
-      name: '标普500 EPS (TTM)',
+      name: '标普500 EPS (TTM · 通胀调整口径)',
       type: 'line',
       xAxisIndex: 0,
       yAxisIndex: 0,
@@ -1207,7 +1207,7 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
     return {
       animation: false,
       legend: getLineLegendConfig({
-        data: ['标普500 EPS (TTM)', '标普500 指数（对数）', 'EPS 同比增长率'],
+        data: ['标普500 EPS (TTM · 通胀调整口径)', '标普500 指数（对数）', 'EPS 同比增长率'],
       }),
       grid: [
         { left: 64, right: 64, top: 36, height: '52%' },
@@ -1275,7 +1275,7 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
         },
         formatter: params => {
           const date = params?.[0]?.axisValueLabel || '';
-          const eps = params.find(p => p.seriesName === '标普500 EPS (TTM)');
+          const eps = params.find(p => p.seriesName === '标普500 EPS (TTM · 通胀调整口径)');
           const sp  = params.find(p => p.seriesName === '标普500 指数（对数）');
           const yoy = params.find(p => p.seriesName === 'EPS 同比增长率');
           const lines = [date];

@@ -1166,7 +1166,7 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
     }
 
     series.push({
-      name: 'S&P 500 EPS (TTM)',
+      name: 'S&P 500 EPS (TTM · Inflation-Adjusted)',
       type: 'line',
       xAxisIndex: 0,
       yAxisIndex: 0,
@@ -1207,7 +1207,7 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
     return {
       animation: false,
       legend: getLineLegendConfig({
-        data: ['S&P 500 EPS (TTM)', 'S&P 500 Index (Log)', 'EPS YoY Growth'],
+        data: ['S&P 500 EPS (TTM · Inflation-Adjusted)', 'S&P 500 Index (Log)', 'EPS YoY Growth'],
       }),
       grid: [
         { left: 64, right: 64, top: 36, height: '52%' },
@@ -1275,7 +1275,7 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
         },
         formatter: params => {
           const date = params?.[0]?.axisValueLabel || '';
-          const eps = params.find(p => p.seriesName === 'S&P 500 EPS (TTM)');
+          const eps = params.find(p => p.seriesName === 'S&P 500 EPS (TTM · Inflation-Adjusted)');
           const sp  = params.find(p => p.seriesName === 'S&P 500 Index (Log)');
           const yoy = params.find(p => p.seriesName === 'EPS YoY Growth');
           const lines = [date];
