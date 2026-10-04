@@ -164,6 +164,30 @@
       ctx.textAlign = 'right';
       ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 64);
     }
+
+    // ── 悬浮数值提示（屏幕版）：最近交易日 → 成交额 / 换手 ──
+    if (!exportMode && opts.bindHover !== false) {
+      canvasEl.__mtData = { dates, amount, turnover, xs };
+      if (!canvasEl.__hoverBound) {
+        canvasEl.__hoverBound = true;
+        canvasEl.addEventListener('mousemove', (ev) => {
+          const D = canvasEl.__mtData;
+          if (!D || !D.dates.length) return;
+          const { x } = window.AK.canvasXY(canvasEl, ev);
+          const sx = x / (window.devicePixelRatio || 1);
+          if (sx < padL || sx > W - padR) { window.AK.tooltip.hide(); return; }
+          const n = D.dates.length;
+          const idx = Math.round((sx - padL) / (W - padL - padR) * (n - 1));
+          const i = Math.max(0, Math.min(n - 1, idx));
+          const amt = D.amount[i];
+          const tr = D.turnover[i];
+          let html = `<b>${D.dates[i]}</b><br>成交金额：<b>${(amt / 1e4).toFixed(2)} 万亿</b>`;
+          if (tr !== null && tr !== undefined) html += `<br>换手率：<b>${tr.toFixed(2)}%</b>`;
+          window.AK.tooltip.show(ev, html);
+        });
+        canvasEl.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+      }
+    }
   }
 
   window.MT_render = function (data) {

@@ -201,6 +201,30 @@
       ctx.textAlign = 'right';
       ctx.fillText('公众号「老钱日日谈」播客「面基」', L.W - L.padR, footY);
     }
+
+    // ── 悬浮数值提示（屏幕版） ──
+    if (!exportMode && opts.bindHover !== false) {
+      canvas.__layout = L;
+      if (!canvas.__hoverBound) {
+        canvas.__hoverBound = true;
+        canvas.addEventListener('mousemove', (ev) => {
+          const L2 = canvas.__layout;
+          if (!L2) return;
+          const { x, y } = window.AK.canvasXY(canvas, ev);
+          const sx = x / (window.devicePixelRatio || 1);
+          const sy = y / (window.devicePixelRatio || 1);
+          const i = Math.floor((sy - L2.matrixTop) / L2.cellH);
+          const j = Math.floor((sx - L2.padL) / L2.cellW);
+          if (i < 0 || i >= ROW_LBLS.length || j < 0 || j >= COL_LBLS.length) {
+            window.AK.tooltip.hide(); return;
+          }
+          const val = DATA[i][j];
+          window.AK.tooltip.show(ev,
+            `<b>${ROW_LBLS[i]}</b> · ${COL_LBLS[j]}<br>当前亏损：<b>${fmtVal(val)}</b>`);
+        });
+        canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+      }
+    }
   };
 
   function drawLegend(ctx, startX, y, exportMode) {

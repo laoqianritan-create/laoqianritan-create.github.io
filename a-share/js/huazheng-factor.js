@@ -1,22 +1,22 @@
 /**
- * 长周期对数增长面板（七条线）
- * 数据：panel_longgrowth.json { generated, series: { code: {name, unit, dates[], values[]} } }
- * 展示：全部指标 2006-01 归一 = 1，纵轴对数，斜率即年化增速。
+ * 华证六因子面板
+ * 数据：panel_huazheng.json { generated, baseDate, factors: { 成长: {name, dates[], nav[]} }, note }
+ * 展示：成长/价值/低波/动量/质量/红利 6 因子净值（大中小微 4 档等权合成），对数坐标，2005-01-04=1
+ * 交互：鼠标悬停查看最近交易日各因子净值；图例横向罗列
  */
 (function () {
   'use strict';
 
   const COLORS = {
-    M2: '#E65A56', 存款: '#D96A29', GDP: '#5AAEF3', 总市值: '#6D61E4',
-    一线房价: '#2FBF71', 二线房价: '#5CBF6E', 黄金: '#E8B93A',
-    中证全指全收益: '#2C6E8F'
+    成长: '#E65A56', 价值: '#5AAEF3', 低波: '#2FBF71',
+    动量: '#6D61E4', 质量: '#E8B93A', 红利: '#D96A29'
   };
 
   function draw(canvas, data, opts) {
     const exportMode = opts.exportMode;
     const scale = opts.scale || 1;
     const W = exportMode ? 3000 : 1480;
-    const H = exportMode ? 1600 : 720;
+    const H = exportMode ? 1500 : 680;
     const padL = exportMode ? 170 : 90;
     const padR = exportMode ? 160 : 80;
     const padT = exportMode ? 220 : 60;
@@ -35,48 +35,15 @@
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, W, H);
 
-    // 收集全部序列，取共同起点（2006-01 或最早）
-    const codes = Object.keys(data.series || {});
-    let startIdx = 0;
-    const baseDate = data.baseDate || '2006-01';
-    // 每条序列独立归一（以自身首个有效点 = 1）
-    const series = codes.map((code) => {
-      const s = data.series[code];
-      const vals = s.values;
-      let first = -1;
-      for (let i = 0; i < vals.length; i++) {
-        if (vals[i] !== null && vals[i] !== undefined && !Number.isNaN(vals[i])) { first = i; break; }
-      }
-      const base = first >= 0 ? vals[first] : 1;
-      const norm = vals.map((v) => (v === null || v === undefined || Number.isNaN(v)) ? null : v / base);
-      return { code, name: s.name, unit: s.unit, dates: s.dates, norm };
-    });
-
-    // 日期轴（取覆盖最全的序列作 master；每条线按日期二分对齐 x 位置）
-    const master = series.reduce((a, b) => (b.dates.length > a.dates.length ? b : a), series[0]);
-    const dates = master.dates;
+    const factors = Object.keys(data.factors || {});
+    const dates = factors.length ? data.factors[factors[0]].dates : [];
     const n = dates.length;
     const xs = (i) => padL + (n === 1 ? 0.5 : i / (n - 1)) * (W - padL - padR);
-    // 日期 → master 索引（二分最近）
-    const idxOf = (d) => {
-      if (d <= dates[0]) return 0;
-      if (d >= dates[n - 1]) return n - 1;
-      let lo = 0, hi = n - 1;
-      while (hi - lo > 1) {
-        const m = (lo + hi) >> 1;
-        if (dates[m] <= d) lo = m; else hi = m;
-      }
-      return (d - dates[lo] <= dates[hi] - d) ? lo : hi;
-    };
-    // 每条线预计算 x 索引数组
-    series.forEach((s) => {
-      s.xidx = s.dates.map((d) => idxOf(d));
-    });
 
-    // y 范围：对数（以 2 为底？不，直接自然对数求范围）
+    // y 范围（对数）
     let yMin = Infinity, yMax = -Infinity;
-    series.forEach((s) => {
-      s.norm.forEach((v) => {
+    factors.forEach((f) => {
+      (data.factors[f].nav || []).forEach((v) => {
         if (v === null || v <= 0) return;
         const lv = Math.log(v);
         if (lv < yMin) yMin = lv;
@@ -88,8 +55,8 @@
     yMin -= yPad; yMax += yPad;
     const ys = (v) => padT + (1 - (Math.log(v) - yMin) / (yMax - yMin)) * (H - padT - padB);
 
-    // 网格线（对数刻度：0.5x/1x/2x/4x/8x/16x/32x）
-    const gridLevels = [0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256];
+    // 网格（对数刻度）
+    const gridLevels = [1, 2, 4, 8, 16, 32, 64];
     ctx.lineWidth = 1;
     gridLevels.forEach((lv) => {
       if (lv < Math.exp(yMin) || lv > Math.exp(yMax)) return;
@@ -102,7 +69,7 @@
       ctx.fillText(`${lv}x`, padL - 10, y);
     });
 
-    // x 轴年份刻度
+    // x 轴年份刻度（隔年显示防重叠）
     const yearTicks = new Set();
     dates.forEach((d, i) => {
       const y = d.slice(0, 4);
@@ -111,54 +78,53 @@
     ctx.fillStyle = '#999999';
     ctx.font = (exportMode ? 22 : 11) + 'px NotoSansSC, sans-serif';
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-    yearTicks.forEach(([y, i]) => {
-      ctx.fillText(y, xs(i), H - padB + 8);
-    });
+    yearTicks.forEach(([y, i]) => ctx.fillText(y, xs(i), H - padB + 8));
 
     // 标题（导出版）
     if (exportMode) {
       ctx.fillStyle = '#1a1a1a';
       ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('不同事物的增长情况', W / 2, 90);
+      ctx.fillText('华证 A股六因子', W / 2, 90);
       ctx.fillStyle = '#555555';
       ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText('2006-01 = 1 · 纵轴对数 · 斜率即年化增速', W / 2, 160);
+      ctx.fillText(`${data.baseDate || '2005-01-04'} = 1 · 大中小微4档等权合成 · 纵轴对数 · 华证价格指数`, W / 2, 160);
     }
 
     // 画线
-    series.forEach((s) => {
-      const color = COLORS[s.code] || '#888888';
+    factors.forEach((f) => {
+      const color = COLORS[f] || '#888888';
+      const nav = data.factors[f].nav || [];
       ctx.strokeStyle = color;
       ctx.lineWidth = exportMode ? 6 : 2.2;
       ctx.lineJoin = 'round';
       ctx.beginPath();
       let started = false;
-      for (let i = 0; i < s.norm.length; i++) {
-        const v = s.norm[i];
+      for (let i = 0; i < n; i++) {
+        const v = nav[i];
         if (v === null || v <= 0) { started = false; continue; }
-        const x = xs(s.xidx[i]), y = ys(v);
+        const x = xs(i), y = ys(v);
         if (!started) { ctx.moveTo(x, y); started = true; }
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
     });
 
-    // 图例（横向罗列，两行排不下自动换行）
+    // 图例（横向罗列，自动换行）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 245 : 20;
-    const lh = exportMode ? 50 : 22;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.font = (exportMode ? 26 : 12.5) + 'px NotoSansSC, sans-serif';
     let lx = lx0, ly = ly0;
     const lgap = exportMode ? 52 : 24;
-    ctx.font = (exportMode ? 26 : 12.5) + 'px NotoSansSC, sans-serif';
-    series.forEach((s) => {
-      const color = COLORS[s.code] || '#888888';
-      const last = s.norm[s.norm.length - 1];
+    factors.forEach((f) => {
+      const color = COLORS[f] || '#888888';
+      const nav = data.factors[f].nav || [];
+      const last = nav[nav.length - 1];
       const mult = last !== null && last !== undefined ? last : null;
-      const label = `${s.name}${mult ? `  ${mult.toFixed(1)}x` : ''}`;
+      const label = `${f}${mult ? `  ${mult.toFixed(1)}x` : ''}`;
       const tw = ctx.measureText(label).width + (exportMode ? 56 : 24);
-      if (lx + tw > W - padR - 10) { lx = lx0; ly += lh; }
+      if (lx + tw > W - padR - 10) { lx = lx0; ly += 52; }
       ctx.fillStyle = color;
       ctx.fillRect(lx, ly - (exportMode ? 8 : 4), exportMode ? 40 : 16, exportMode ? 8 : 3);
       ctx.fillStyle = '#333333';
@@ -172,18 +138,18 @@
       ctx.font = '300 24px NotoSansSC, sans-serif';
       ctx.textAlign = 'left';
       const asOf = (data.generated || '').slice(0, 10);
-      ctx.fillText(`数据截至 ${asOf} · M2/存款/GDP/总市值 月度 · 房价 月度（统计局，滞后约1–2个月）· 黄金 人民币口径`, padL, H - 60);
+      ctx.fillText(`数据截至 ${asOf} · 微盘红利 2014 前为 3 档等权 · 华证指数 IDMT 公开接口`, padL, H - 60);
       ctx.textAlign = 'right';
       ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 60);
     }
 
-    // ── 悬浮数值提示（屏幕版）：鼠标 x → 最近 master 交易日 → 每条线按自身日期就近取值 ──
-    if (!exportMode && opts.bindHover !== false) {
-      canvas.__lgData = { series, dates };
+    // ── 悬浮数值提示（屏幕版） ──
+    if (!exportMode) {
+      canvas.__hzData = { factors, dates, xs, nav: data.factors };
       if (!canvas.__hoverBound) {
         canvas.__hoverBound = true;
         canvas.addEventListener('mousemove', (ev) => {
-          const D = canvas.__lgData;
+          const D = canvas.__hzData;
           if (!D || !D.dates.length) return;
           const { x } = window.AK.canvasXY(canvas, ev);
           const sx = x / (window.devicePixelRatio || 1);
@@ -191,16 +157,11 @@
           const nn = D.dates.length;
           const idx = Math.round((sx - padL) / (W - padL - padR) * (nn - 1));
           const i = Math.max(0, Math.min(nn - 1, idx));
-          const date = D.dates[i];
-          let html = `<b>${date}</b><br>`;
-          D.series.forEach((s) => {
-            let v = null;
-            if (s.norm.length) {
-              const j = nearestIdx(s, date);
-              v = (j >= 0) ? s.norm[j] : null;
-            }
+          let html = `<b>${D.dates[i]}</b><br>`;
+          D.factors.forEach((f) => {
+            const v = (D.nav[f].nav || [])[i];
             if (v === null || v === undefined) return;
-            html += `<span style="color:${COLORS[s.code] || '#888'}">●</span> ${s.name}：<b>${v.toFixed(1)}x</b><br>`;
+            html += `<span style="color:${COLORS[f] || '#888'}">●</span> ${f}：<b>${v.toFixed(1)}x</b><br>`;
           });
           window.AK.tooltip.show(ev, html.slice(0, -4));
         });
@@ -209,25 +170,12 @@
     }
   }
 
-  // 该线自身 dates（升序）中距离目标日期最近的点索引
-  function nearestIdx(s, t) {
-    const d = s.dates;
-    if (!d.length || t < d[0]) return 0;
-    if (t > d[d.length - 1]) return d.length - 1;
-    let lo = 0, hi = d.length - 1;
-    while (hi - lo > 1) {
-      const m = (lo + hi) >> 1;
-      if (d[m] <= t) lo = m; else hi = m;
-    }
-    return (t - d[lo] <= d[hi] - t) ? lo : hi;
-  }
-
-  window.LG_render = function (data) {
-    const wrap = document.getElementById('panelLongBody');
+  window.HZ_render = function (data) {
+    const wrap = document.getElementById('panelHuazhengBody');
     if (!wrap) return;
     wrap.innerHTML = '';
     const canvas = document.createElement('canvas');
-    canvas.id = 'longGrowth';
+    canvas.id = 'huazhengFactor';
     wrap.appendChild(canvas);
     draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
 
@@ -238,7 +186,7 @@
     });
 
     window.AK.bindExportButtons({
-      longGrowth: (off, scale) => draw(off, data, { exportMode: true, scale: 1 })
+      huazhengFactor: (off) => draw(off, data, { exportMode: true, scale: 1 })
     });
   };
 })();

@@ -16,13 +16,14 @@
   const METRICS = [
     { key: 'turnover_pctile', label: '7日换手率分位', sub: '自由流通换手率7日均值 · expanding 分位' },
     { key: 'amount_share_pctile', label: '成交金额占比分位', sub: '行业成交额/全市场 · expanding 分位' },
-    { key: 'rps', label: 'RPS', sub: '250日涨幅行业排名百分位' }
+    { key: 'rps', label: 'RPS', sub: '250日涨幅行业排名百分位' },
+    { key: 'ma20_above', label: 'MA20站上率', sub: '行业指数收盘站上20日均线天数占比(250日)' }
   ];
   const PERIODS = [3, 5, 10, 20, 60, 120, 250];
 
   let state = {
     metric: 'turnover_pctile',
-    days: 63,           // 默认近 3 个月 ≈ 63 交易日
+    days: 60,           // 默认 60 个交易日
     showNumbers: true,
     level: 1,
     parent: null        // 一级代码（二级时）
@@ -121,11 +122,13 @@
 
     const matrixTop = titleH + legendH + colHdrH;
 
-    // 列标题（日期）
+    // 列标题（日期；60 日以上跳格显示防重叠）
     ctx.fillStyle = '#555555';
     ctx.font = (exportMode ? 20 : 10.5) + 'px NotoSansSC, sans-serif';
     ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+    const tickStep = nCols > 250 ? 20 : (nCols > 120 ? 10 : (nCols > 60 ? 5 : (nCols > 30 ? 2 : 1)));
     dates.forEach((d, j) => {
+      if (j % tickStep !== 0 && j !== nCols - 1) return;
       const x = padL + (j + 0.5) * colW;
       const label = exportMode ? d : d.slice(5);
       ctx.fillText(label, x, matrixTop - 6);
@@ -210,7 +213,7 @@
     PERIODS.forEach((p) => {
       const b = document.createElement('button');
       b.textContent = p;
-      if (p === 63) b.classList.add('active');
+      if (p === state.days) b.classList.add('active');
       b.addEventListener('click', () => {
         state.days = p;
         periodSeg.querySelectorAll('button').forEach((x) => x.classList.remove('active'));
@@ -229,6 +232,48 @@
 
   // ── 穿透逻辑：点击行名进入二级 ──
   function bindDrilldown(canvasEl) {
+    // 一级行 hover 变小手 + 悬浮数值提示
+    canvasEl.addEventListener('mousemove', (ev) => {
+      const rect = canvasEl.getBoundingClientRect();
+      const scaleX = canvasEl.width / rect.width;
+      const scaleY = canvasEl.height / rect.height;
+      const mx = (ev.clientX - rect.left) * scaleX;
+      const my = (ev.clientY - rect.top) * scaleY;
+      const dpr = window.devicePixelRatio || 1;
+      const sx = mx / dpr, sy = my / dpr;
+
+      const exportMode = false;
+      const codes = state.level === 1 ? sortedL1 : (l2ByParent[state.parent] || []);
+      const firstCode = codes[0];
+      const allDates = firstCode && payload.metrics[firstCode] ? payload.metrics[firstCode].dates : [];
+      const nDays = Math.min(state.days, allDates.length);
+      const startIdx = allDates.length - nDays;
+      const nRows = codes.length;
+      const nCols = nDays;
+      const W = 1480;
+      const rowH = 34, colW = Math.max(9, (W - 240) / Math.max(nCols, 1));
+      const padL = 170, padR = 30, colHdrH = 46;
+      const matrixTop = colHdrH;
+      const rowIdx = Math.floor((sy - matrixTop) / rowH);
+      if (rowIdx < 0 || rowIdx >= nRows) { canvasEl.style.cursor = 'default'; window.AK.tooltip.hide(); return; }
+      const code = codes[rowIdx];
+      const row = payload.metrics[code];
+      const colIdx = Math.floor((sx - padL) / colW);
+      if (colIdx < 0 || colIdx >= nCols) { window.AK.tooltip.hide(); return; }
+
+      // 一级行 → 小手
+      if (state.level === 1) canvasEl.style.cursor = 'pointer';
+      else canvasEl.style.cursor = 'default';
+
+      // 数值提示（行业名 + 日期 + 当前指标值）
+      const m = METRICS.find((x) => x.key === state.metric);
+      const v = row[state.metric] ? row[state.metric][startIdx + colIdx] : null;
+      const date = row.dates ? row.dates[startIdx + colIdx] : '';
+      window.AK.tooltip.show(ev,
+        `<b>${row.name}</b> · ${date}<br>${m.label}：<b>${v === null || v === undefined ? '—' : Math.round(v * 10) / 10}</b>`);
+    });
+    canvasEl.addEventListener('mouseleave', () => { canvasEl.style.cursor = 'default'; window.AK.tooltip.hide(); });
+
     const hitL2 = (e) => {
       const rect = canvasEl.getBoundingClientRect();
       const scaleX = canvasEl.width / rect.width;

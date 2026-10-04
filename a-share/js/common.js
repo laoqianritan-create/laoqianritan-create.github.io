@@ -62,17 +62,17 @@
         const id = btn.getAttribute('data-canvas');
         const canvas = document.getElementById(id);
         if (!canvas) return;
-        const orig = btn.textContent;
-        btn.disabled = true; btn.textContent = '正在生成 3000px 高清图…';
+        const orig = btn.innerHTML;
+        btn.disabled = true; btn.textContent = '…';
         try {
           const fn = drawMap && drawMap[id];
           await AK.exportPNG(canvas, 3000, btn.getAttribute('data-name') || (id + '.png'), fn);
-          btn.textContent = '✓ 已下载';
+          btn.textContent = '✓';
         } catch (e) {
           console.error(e);
-          btn.textContent = '导出失败';
+          btn.textContent = '!';
         }
-        setTimeout(() => { btn.disabled = false; btn.textContent = orig; }, 1500);
+        setTimeout(() => { btn.disabled = false; btn.innerHTML = orig; }, 1200);
       });
     });
   };
@@ -144,5 +144,38 @@
       return Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1500))]);
     }
     return Promise.resolve();
+  };
+
+  /** 悬浮数值提示（所有 canvas 面板共用） */
+  const tipEl = null;
+  AK.tooltip = {
+    el: null,
+    _ensure() {
+      if (this.el) return;
+      this.el = document.createElement('div');
+      this.el.className = 'canvas-tooltip';
+      document.body.appendChild(this.el);
+    },
+    show(ev, html) {
+      this._ensure();
+      this.el.innerHTML = html;
+      this.el.style.display = 'block';
+      const r = this.el.getBoundingClientRect();
+      let px = ev.clientX + 14, py = ev.clientY + 14;
+      if (px + r.width > window.innerWidth - 8) px = ev.clientX - r.width - 14;
+      if (py + r.height > window.innerHeight - 8) py = ev.clientY - r.height - 14;
+      this.el.style.left = px + 'px';
+      this.el.style.top = py + 'px';
+    },
+    hide() { if (this.el) this.el.style.display = 'none'; }
+  };
+
+  /** canvas 鼠标坐标 → 绘制坐标系（CSS 像素 → 画布逻辑像素） */
+  AK.canvasXY = function (canvas, ev) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: (ev.clientX - rect.left) / rect.width * canvas.width,
+      y: (ev.clientY - rect.top) / rect.height * canvas.height
+    };
   };
 })();

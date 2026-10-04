@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>A股看板 · 老钱日日谈</title>
-  <meta name="description" content="A股看板：申万行业热力图、长周期对数增长、行业交易热度、全市场成交换手、收益来源拆解、投资者结构。每交易日自动更新。">
+  <meta name="description" content="A股看板：申万行业热力图、不同事物的增长情况、行业交易热度、全市场成交换手、收益来源拆解、投资者结构、华证六因子。每交易日自动更新。">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=2026100322">
+  <link rel="stylesheet" href="css/style.css?v=20261004d">
 </head>
 <body>
 
@@ -14,16 +14,17 @@
   <div class="header-inner">
     <div class="brand">
       <h1 class="site-title">A股看板</h1>
-      <p class="site-subtitle">申万行业 · 长周期 · 交易热度 · 成交换手 · 收益拆解 · 投资者结构</p>
+      <p class="site-subtitle">行业热力 · 长周期增长 · 交易热度 · 成交换手 · 收益拆解 · 投资者结构 · 华证六因子</p>
     </div>
     <nav class="site-nav" aria-label="面板导航">
-      <a href="#panel-heatmap">行业热力图</a>
-      <a href="#panel-loss">抄底数学题</a>
-      <a href="#panel-long">长周期对数增长</a>
-      <a href="#panel-industry">行业交易热度</a>
-      <a href="#panel-turnover">全市场成交换手</a>
-      <a href="#panel-return">收益来源拆解</a>
-      <a href="#panel-investor">投资者结构</a>
+      <a href="#panel-heatmap">1 行业热力图</a>
+      <a href="#panel-loss">2 抄底数学题</a>
+      <a href="#panel-long">3 增长情况</a>
+      <a href="#panel-industry">4 行业交易热度</a>
+      <a href="#panel-turnover">5 全市场成交换手</a>
+      <a href="#panel-return">6 收益来源拆解</a>
+      <a href="#panel-investor">7 投资者结构</a>
+      <a href="#panel-huazheng">8 华证六因子</a>
     </nav>
   </div>
   <div class="freshness-strip" id="freshnessStrip">
@@ -37,8 +38,8 @@
   <!-- ═══════════ 面板 1：申万行业年度涨跌幅热力图 ═══════════ -->
   <section class="panel" id="panel-heatmap">
     <div class="panel-head">
-      <h2 class="panel-title">申万一级行业年度涨跌幅 · 长期 CAGR</h2>
-      <p class="panel-desc">2005 — 2026 · 31 个一级行业 · 红涨绿跌 · 右侧 4 列为年化复合收益率</p>
+      <h2 class="panel-title"><span class="panel-no">1.</span> 申万一级行业年度涨跌幅 · 长期 CAGR</h2>
+      <p class="panel-desc">2005 — 2026 · 31 个一级行业 · 红涨绿跌 · 右侧 4 列为年化复合收益率 · 鼠标悬停查看数值</p>
     </div>
     <div class="legend-bar">
       <span class="legend-label">−50%</span>
@@ -50,8 +51,7 @@
       <canvas id="heatmap" aria-label="申万一级行业年度涨跌幅热力图"></canvas>
     </div>
     <div class="panel-actions">
-      <button id="btnExportHeatmap" class="btn-primary" type="button">下载 3000px 高清图</button>
-      <span class="action-hint">PNG 格式 · 适合公众号长图 / 微信群分享</span>
+      <button id="btnExportHeatmap" class="btn-download js-icon-export" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
@@ -68,29 +68,27 @@
   <!-- ═══════════ 面板 2：抄底数学题 ═══════════ -->
   <section class="panel" id="panel-loss">
     <div class="panel-head">
-      <h2 class="panel-title">关于抄底的一道基础数学题</h2>
-      <p class="panel-desc">一只股票从 100 元跌到 10 元，并不是"再跌 90% 就归零"——而是"你如果 10 元买入，也要涨回 100 元才回本"。</p>
+      <h2 class="panel-title"><span class="panel-no">2.</span> 关于抄底的一道基础数学题</h2>
+      <p class="panel-desc">一只股票从 100 元跌到 10 元，并不是"再跌 90% 就归零"——而是"你如果 10 元买入，也要涨回 100 元才回本"。鼠标悬停查看数值。</p>
     </div>
     <div class="panel-body loss-table-wrap">
       <canvas id="lossTable" aria-label="抄底数学题:不同买入价下的亏损幅度对照"></canvas>
     </div>
     <div class="loss-table-note">注: <b>/</b> 表示该买入价尚未被触及；表内数值 = <code>(现价 − 买入价) / 买入价</code></div>
     <div class="panel-actions">
-      <button id="btnExportLossTable" class="btn-primary" type="button">下载 3000px 抄底表</button>
-      <span class="action-hint">PNG · 适合公众号长图 / 微信群分享</span>
+      <button id="btnExportLossTable" class="btn-download js-icon-export" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
   </section>
 
-  <!-- ═══════════ 面板 3：长周期对数增长 ═══════════ -->
+  <!-- ═══════════ 面板 3：不同事物的增长情况 ═══════════ -->
   <section class="panel" id="panel-long">
     <div class="panel-head">
-      <h2 class="panel-title">长周期对数增长 · 七条线</h2>
-      <p class="panel-desc">M2 · 人民币存款 · GDP年化 · A股总市值 · 一线房价 · 二线房价 · 人民币金价（对数坐标 · 2006-01=1）</p>
+      <h2 class="panel-title"><span class="panel-no">3.</span> 不同事物的增长情况</h2>
+      <p class="panel-desc">M2 · 人民币存款 · GDP年化 · A股总市值 · 一线房价 · 二线房价 · 人民币金价 · 中证全指全收益（对数坐标 · 2006-01=1 · 鼠标悬停查看数值）</p>
     </div>
     <div class="panel-body" id="panelLongBody"></div>
     <div class="panel-actions">
-      <button class="btn-primary js-export" data-canvas="longGrowth" type="button">下载 3000px 高清图</button>
-      <span class="action-hint">PNG · 对数纵轴</span>
+      <button class="btn-download js-export" data-canvas="longGrowth" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
@@ -99,6 +97,7 @@
         <li>M2 与人民币存款两条线高度重合（年化 12.7% vs 12.7%，存款是 M2 的主要构成），图中两条都保留。</li>
         <li>GDP 为名义 GDP 年化（累计→当季→年化）。</li>
         <li>A股总市值 = 全 A 总市值（乐咕口径），含大股东锁定股份。</li>
+        <li>中证全指全收益 = 中证官网 H00985（全收益指数，含股息再投资）。</li>
         <li>房价 = 国家统计局 70 城二手住宅价格链式定基指数（2006-01=100）等权合成：一线 = 北上广深 4 城；二线 = 统计局口径 31 城。</li>
         <li>黄金 = COMEX 金价（美元/盎司）÷ 31.1035 × 美元兑人民币（人民币口径，元/克）。</li>
         <li>房价月度更新（统计局发布滞后约 1–2 个月），其余指标随行情自动更新。</li>
@@ -109,22 +108,20 @@
   <!-- ═══════════ 面板 4：行业交易热度 ═══════════ -->
   <section class="panel" id="panel-industry">
     <div class="panel-head">
-      <h2 class="panel-title">行业交易热度</h2>
-      <p class="panel-desc">申万一级/二级行业 × 交易日 · 热度四指标 · 点击一级行业穿透二级</p>
+      <h2 class="panel-title"><span class="panel-no">4.</span> 行业交易热度</h2>
+      <p class="panel-desc">申万一级/二级行业 × 交易日 · 换手分位 / 成交额占比分位 / RPS / MA20 站上率 · 点击一级行业行穿透二级（鼠标悬停查看数值）</p>
     </div>
     <div class="panel-body" id="panelIndustryBody"></div>
     <div class="panel-actions">
-      <button class="btn-primary js-export" data-canvas="industryHeat" type="button">下载 3000px 高清图</button>
-      <span class="action-hint">PNG · 默认近 3 个月</span>
+      <button class="btn-download js-export" data-canvas="industryHeat" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
       <ul>
-        <li>热度指标：① 7日换手率分位数（行业自由流通换手率 7 日均值，取该值在截至当日的全部历史中的百分位）；② 成交金额占比分位数（行业成交额 / 全市场成交额，expanding 分位，仅一级可算）；③ RPS（行业 250 日涨幅在全部行业中的排名百分位）。</li>
-        <li>周期可选 3 / 5 / 10 / 20 / 60 / 120 / 250 个交易日；日期区间可选。</li>
+        <li>热度指标：① 7日换手率分位数（行业自由流通换手率 7 日均值，取该值在截至当日的全部历史中的百分位）；② 成交金额占比分位数（行业成交额 / 全市场成交额，expanding 分位，仅一级可算）；③ RPS（行业 250 日涨幅在全部行业中的排名百分位）；④ MA20 站上率（行业指数收盘价站上 20 日均线的天数占近 250 交易日的比例）。</li>
+        <li>周期可选 3 / 5 / 10 / 20 / 60 / 120 / 250 个交易日；默认 60 日。</li>
         <li>样本不足 120 个交易日的 expanding 分位显示为空格（不做假数）。</li>
-        <li>一级行业：1999 起（收盘/成交额，申万官网）+ 2024 起（换手率，FTShare）；二级行业：2024 起（FTShare，含换手率/成交额，成交金额占比因历史较短暂缺）。</li>
-        <li>MA20 站上率暂未提供（需个股级收盘数据，后续版本补充）。</li>
+        <li>一级行业：1999 起（收盘/成交额，申万官网）+ 2024 起（换手率，FTShare）；二级行业：2024 起（FTShare）。</li>
       </ul>
     </details>
   </section>
@@ -132,13 +129,12 @@
   <!-- ═══════════ 面板 5：全市场成交换手 ═══════════ -->
   <section class="panel" id="panel-turnover">
     <div class="panel-head">
-      <h2 class="panel-title">全市场成交金额 / 换手</h2>
-      <p class="panel-desc">两市成交额 · 换手率（成交额 / 全市场总市值）· 可切 3 / 5 / 7 / 10 / 20 年</p>
+      <h2 class="panel-title"><span class="panel-no">5.</span> 全市场成交金额 / 换手</h2>
+      <p class="panel-desc">两市成交额 · 换手率（成交额 / 全市场总市值）· 可切 3 / 5 / 7 / 10 / 20 年 · 鼠标悬停查看数值</p>
     </div>
     <div class="panel-body" id="panelTurnoverBody"></div>
     <div class="panel-actions">
-      <button class="btn-primary js-export" data-canvas="turnover" type="button">下载 3000px 高清图</button>
-      <span class="action-hint">PNG</span>
+      <button class="btn-download js-export" data-canvas="turnover" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
@@ -154,19 +150,19 @@
   <!-- ═══════════ 面板 6：收益来源拆解 ═══════════ -->
   <section class="panel" id="panel-return">
     <div class="panel-head">
-      <h2 class="panel-title">指数收益来源拆解</h2>
-      <p class="panel-desc">长期全收益 = 股息 + 盈利增长 + 估值变化 · 多宽基横向对比 + 单指数瀑布</p>
+      <h2 class="panel-title"><span class="panel-no">6.</span> 指数收益来源拆解</h2>
+      <p class="panel-desc">长期全收益 = 股息 + 盈利增长 + 估值变化 · 沪深300 / 中证500 / 中证1000 / 中证2000 / 中证全指 / 中证A500 · 鼠标悬停查看数值</p>
     </div>
     <div class="panel-body" id="panelReturnBody"></div>
     <div class="panel-actions">
-      <button class="btn-primary js-export" data-canvas="returnDecomp" type="button">下载 3000px 高清图</button>
-      <span class="action-hint">PNG</span>
+      <button class="btn-download js-export" data-canvas="returnDecomp" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
       <ul>
         <li>全收益 = 股息 + 盈利 + 估值：区间总收益近似拆为 股息贡献（累计股息率）+ 盈利贡献（EPS 增长）+ 估值贡献（PE 变化，残差）。</li>
         <li>价格指数与全收益指数来自中证指数官网；PE 取 TTM 口径，股息率取中证官网 indicator.xls。</li>
+        <li>中证2000 全收益指数未发布，股息贡献暂缺（显示 0），其余指数为完整拆解。</li>
         <li>PE 数据自 2011 年起（中证官网历史起点），更长区间估值贡献为残差估计。</li>
         <li>每日自动更新（中证官网指数日线 + 估值文件）。</li>
       </ul>
@@ -176,13 +172,12 @@
   <!-- ═══════════ 面板 7：投资者结构 ═══════════ -->
   <section class="panel" id="panel-investor">
     <div class="panel-head">
-      <h2 class="panel-title">投资者结构</h2>
-      <p class="panel-desc">谁在持有 · 谁在定价 · 谁在交易 · 新增投资者 vs 上证指数</p>
+      <h2 class="panel-title"><span class="panel-no">7.</span> 投资者结构</h2>
+      <p class="panel-desc">谁在持有 · 谁在定价 · 谁在交易 · 新增投资者 vs 上证指数 · 鼠标悬停查看数值</p>
     </div>
     <div class="panel-body" id="panelInvestorBody"></div>
     <div class="panel-actions">
-      <button class="btn-primary js-export" data-canvas="investor" type="button">下载 3000px 高清图</button>
-      <span class="action-hint">PNG</span>
+      <button class="btn-download js-export" data-canvas="investor" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
@@ -194,25 +189,47 @@
     </details>
   </section>
 
+  <!-- ═══════════ 面板 8：华证六因子 ═══════════ -->
+  <section class="panel" id="panel-huazheng">
+    <div class="panel-head">
+      <h2 class="panel-title"><span class="panel-no">8.</span> 华证六因子</h2>
+      <p class="panel-desc">成长 / 价值 / 低波 / 动量 / 质量 / 红利 · 大中小微 4 档等权合成净值 · 对数坐标 · 2005-01-04 起 · 鼠标悬停查看数值</p>
+    </div>
+    <div class="panel-body" id="panelHuazhengBody"></div>
+    <div class="panel-actions">
+      <button class="btn-download js-export" data-canvas="huazhengFactor" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+    </div>
+    <details class="panel-notes">
+      <summary>口径说明（点开阅读）</summary>
+      <ul>
+        <li>六因子 = 成长 / 价值 / 低波 / 动量 / 质量 / 红利；每个因子为「大盘 / 中盘 / 小盘 / 微盘」4 档自由流通市值加权（9FF）单因子指数日收益的等权平均，链式合成净值（起点 2005-01-04 = 1）。</li>
+        <li>微盘红利 2014-01 才有数据 → 红利线 2005—2013 为 3 档等权，2014 起 4 档。</li>
+        <li>华证指数为价格指数（不含分红），全收益版为 T 前缀代码；数据来自华证指数 IDMT 公开后端，每日自动更新。</li>
+        <li>纵轴取对数，斜率即年化超额。</li>
+      </ul>
+    </details>
+  </section>
+
 </main>
 
 <footer class="site-footer">
   <div class="footer-left">
-    <span>数据来源：申万宏源 / 中证指数 / 沪深交易所 / 国家统计局 / FTShare / 乐咕，详见各面板口径说明</span>
+    <span>数据来源：申万宏源 / 中证指数 / 华证指数 / 沪深交易所 / 国家统计局 / FTShare / 乐咕，详见各面板口径说明</span>
   </div>
   <div class="footer-right">公众号「老钱日日谈」播客「面基」</div>
 </footer>
 
-<script src="js/data.js?v=2026100322"></script>
-<script src="js/common.js?v=2026100322"></script>
-<script src="js/heatmap.js?v=2026100322"></script>
-<script src="js/loss-table.js?v=2026100322"></script>
-<script src="js/longgrowth.js?v=2026100322"></script>
-<script src="js/industry-heat.js?v=2026100322"></script>
-<script src="js/market-turnover.js?v=2026100322"></script>
-<script src="js/return-decomp.js?v=2026100322"></script>
-<script src="js/investor-structure.js?v=2026100322"></script>
-<script src="js/main.js?v=2026100322"></script>
+<script src="js/data.js?v=20261004d"></script>
+<script src="js/common.js?v=20261004d"></script>
+<script src="js/heatmap.js?v=20261004d"></script>
+<script src="js/loss-table.js?v=20261004d"></script>
+<script src="js/longgrowth.js?v=20261004d"></script>
+<script src="js/industry-heat.js?v=20261004d"></script>
+<script src="js/market-turnover.js?v=20261004d"></script>
+<script src="js/return-decomp.js?v=20261004d"></script>
+<script src="js/investor-structure.js?v=20261004d"></script>
+<script src="js/huazheng-factor.js?v=20261004d"></script>
+<script src="js/main.js?v=20261004d"></script>
 
 </body>
 </html>

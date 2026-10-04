@@ -13,7 +13,8 @@
     industry: 'data/industry_heat.json',
     turnover: 'data/market_turnover.json',
     returnDecomp: 'data/return_decomp.json',
-    investor: 'data/investor_structure.json'
+    investor: 'data/investor_structure.json',
+    huazheng: 'data/panel_huazheng.json'
   };
 
   async function init() {
@@ -71,6 +72,11 @@
         else if (!data.investor) showPanelError('panel-investor', '投资者结构数据加载失败');
       } catch (e) { console.error('[investor]', e); showPanelError('panel-investor', '投资者结构渲染失败：' + e.message); }
 
+      try {
+        if (data.huazheng && window.HZ_render) window.HZ_render(data.huazheng);
+        else if (!data.huazheng) showPanelError('panel-huazheng', '华证六因子数据加载失败');
+      } catch (e) { console.error('[huazheng]', e); showPanelError('panel-huazheng', '华证六因子渲染失败：' + e.message); }
+
     } catch (err) {
       console.error('[A股看板] 初始化失败', err);
       showPanelError('panel-heatmap', '初始化失败：' + err.message);
@@ -94,16 +100,17 @@
     const btn = document.getElementById('btnExportHeatmap');
     if (btn) {
       btn.addEventListener('click', async () => {
-        btn.disabled = true; btn.textContent = '正在生成 3000px 高清图…';
+        const orig = btn.innerHTML;
+        btn.disabled = true; btn.textContent = '…';
         try {
           await AK.exportPNG(canvas, 3000, '申万一级行业年度涨跌幅_2005-2026.png', (off, scale) => {
             window.SW_drawHeatmap(off, payload, { exportMode: true, scale: 1, ytdAsOf: payload.ytdAsOf });
           });
-          btn.textContent = '✓ 已下载';
+          btn.textContent = '✓';
         } catch (e) {
-          console.error(e); btn.textContent = '导出失败';
+          console.error(e); btn.textContent = '!';
         }
-        setTimeout(() => { btn.disabled = false; btn.textContent = '下载 3000px 高清图'; }, 1500);
+        setTimeout(() => { btn.disabled = false; btn.innerHTML = orig; }, 1200);
       });
     }
   }
@@ -142,16 +149,17 @@
     const btn = document.getElementById('btnExportLossTable');
     if (btn) {
       btn.addEventListener('click', async () => {
-        btn.disabled = true; btn.textContent = '正在生成 3000px 高清图…';
+        const orig = btn.innerHTML;
+        btn.disabled = true; btn.textContent = '…';
         try {
           await AK.exportPNG(canvas, 3000, '关于抄底的一道基础数学题.png', (off) => {
             window.SW_drawLossTable(off, { exportMode: true, scale: 1 });
           });
-          btn.textContent = '✓ 已下载';
+          btn.textContent = '✓';
         } catch (e) {
-          console.error(e); btn.textContent = '导出失败';
+          console.error(e); btn.textContent = '!';
         }
-        setTimeout(() => { btn.disabled = false; btn.textContent = '下载 3000px 抄底表'; }, 1500);
+        setTimeout(() => { btn.disabled = false; btn.innerHTML = orig; }, 1200);
       });
     }
   }

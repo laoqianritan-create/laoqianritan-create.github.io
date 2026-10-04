@@ -269,6 +269,47 @@
       ctx.textAlign = 'right';
       ctx.fillText('公众号「老钱日日谈」播客「面基」', L.W - L.padR, footY);
     }
+
+    // ── 悬浮数值提示（屏幕版） ──
+    if (!exportMode && opts.bindHover !== false) {
+      canvas.__layout = L;
+      canvas.__payload = { years, rows, metricsMeta };
+      if (!canvas.__hoverBound) {
+        canvas.__hoverBound = true;
+        canvas.addEventListener('mousemove', (ev) => {
+          const L2 = canvas.__layout;
+          const P = canvas.__payload;
+          if (!L2 || !P) return;
+          const { x, y } = window.AK.canvasXY(canvas, ev);
+          const sx = x / (window.devicePixelRatio || 1);
+          const sy = y / (window.devicePixelRatio || 1);
+          // 行
+          const i = Math.floor((sy - L2.matrixTop) / L2.cellH);
+          if (i < 0 || i >= P.rows.length) { window.AK.tooltip.hide(); return; }
+          const row = P.rows[i];
+          // 年度区
+          if (sx >= L2.padL && sx < L2.metricStartX) {
+            const j = Math.floor((sx - L2.padL) / L2.yearCellW);
+            if (j < 0 || j >= P.years.length) { window.AK.tooltip.hide(); return; }
+            const v = row.rets[j];
+            window.AK.tooltip.show(ev,
+              `<b>${row.name}</b> · ${P.years[j]}<br>涨跌幅：<b>${fmtVal(v)}%</b>`);
+            return;
+          }
+          // CAGR 区
+          const mj = Math.floor((sx - L2.metricStartX) / L2.metricCellW);
+          if (mj >= 0 && mj < P.metricsMeta.length) {
+            const v = (row.metrics || [])[mj];
+            const col = P.metricsMeta[mj];
+            window.AK.tooltip.show(ev,
+              `<b>${row.name}</b> · ${col.label}<br>年化：<b>${v === null || v === undefined ? '—' : v.toFixed(1) + '%'}</b>`);
+            return;
+          }
+          window.AK.tooltip.hide();
+        });
+        canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+      }
+    }
   };
 
   function drawLegendBar(ctx, L) {

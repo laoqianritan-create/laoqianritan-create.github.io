@@ -130,14 +130,24 @@
       ctx.fillText(Math.round(v), W - padR + 12, yR(v));
     }
 
-    // 图例
+    // 图例（横向罗列）
     ctx.font = (exportMode ? 24 : 11.5) + 'px NotoSansSC, sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const ly = exportMode ? 240 : 18;
-    ctx.fillStyle = '#E65A56'; ctx.fillRect(padL, ly - 8, exportMode ? 36 : 14, exportMode ? 7 : 3);
-    ctx.fillStyle = '#444'; ctx.fillText('新增开户（万户）', padL + (exportMode ? 48 : 20), ly);
-    ctx.fillStyle = '#5AAEF3'; ctx.fillRect(padL, ly + (exportMode ? 40 : 16), exportMode ? 36 : 14, exportMode ? 7 : 3);
-    ctx.fillStyle = '#444'; ctx.fillText('上证指数（右轴）', padL + (exportMode ? 48 : 20), ly + (exportMode ? 40 : 16));
+    const lg0 = padL;
+    const items = [
+      { color: '#E65A56', label: '新增开户（万户）' },
+      { color: '#5AAEF3', label: '上证指数（右轴）' }
+    ];
+    let lx = lg0;
+    items.forEach((it) => {
+      const tw = ctx.measureText(it.label).width + (exportMode ? 48 : 20);
+      ctx.fillStyle = it.color;
+      ctx.fillRect(lx, ly - (exportMode ? 8 : 4), exportMode ? 36 : 14, exportMode ? 7 : 3);
+      ctx.fillStyle = '#444';
+      ctx.fillText(it.label, lx + (exportMode ? 48 : 20), ly);
+      lx += tw + (exportMode ? 60 : 30);
+    });
 
     // x 轴年份
     ctx.fillStyle = '#999999';
@@ -158,6 +168,31 @@
       ctx.fillText(`数据截至 ${asOf} · ${na.breakDate ? '口径分界：' + na.breakDate + '（前中证登全市场 / 后上交所沪市）' : ''}`, padL, H - 62);
       ctx.textAlign = 'right';
       ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 62);
+    }
+
+    // ── 悬浮数值提示（屏幕版）：最近月份 → 新增开户 / 上证指数 ──
+    if (!exportMode) {
+      canvasEl.__isData = { dates: na.dates, newWan: na.newWan, index: na.index };
+      if (!canvasEl.__hoverBound) {
+        canvasEl.__hoverBound = true;
+        canvasEl.addEventListener('mousemove', (ev) => {
+          const D = canvasEl.__isData;
+          if (!D || !D.dates.length) return;
+          const { x } = window.AK.canvasXY(canvasEl, ev);
+          const sx = x / (window.devicePixelRatio || 1);
+          if (sx < padL || sx > W - padR) { window.AK.tooltip.hide(); return; }
+          const nn = D.dates.length;
+          const idx = Math.round((sx - padL) / (W - padL - padR) * (nn - 1));
+          const i = Math.max(0, Math.min(nn - 1, idx));
+          const v = D.newWan[i];
+          const iv = D.index[i];
+          let html = `<b>${D.dates[i]}</b>`;
+          if (v !== null && v !== undefined) html += `<br>新增开户：<b>${v.toFixed(0)} 万户</b>`;
+          if (iv !== null && iv !== undefined) html += `<br>上证指数：<b>${Math.round(iv)}</b>`;
+          window.AK.tooltip.show(ev, html);
+        });
+        canvasEl.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+      }
     }
   }
 
