@@ -4,12 +4,12 @@
     "symbol": "QQQ",
     "name": "Invesco QQQ Trust Series I",
     "count": 104,
-    "top10Weight": 46.64,
-    "top25Weight": 72.2,
-    "otherWeight": 27.8,
+    "top10Weight": 46.71,
+    "top25Weight": 72.46,
+    "otherWeight": 27.54,
     "aum": 500944241401.0,
     "peRatio": 31.36,
-    "holdingsDate": "Oct 1, 2026",
+    "holdingsDate": "Oct 2, 2026",
     "quote": {
       "price": 749.58,
       "previousClose": 742.03,
@@ -40,27 +40,27 @@
   "sectors": [
     {
       "name": "Technology",
-      "weight": 60.66
+      "weight": 60.56
     },
     {
       "name": "Communication Services",
-      "weight": 12.38
+      "weight": 12.34
     },
     {
       "name": "Consumer Discretionary",
-      "weight": 9.99
+      "weight": 10.07
     },
     {
       "name": "Consumer Staples",
-      "weight": 5.53
+      "weight": 5.51
     },
     {
       "name": "Industrials",
-      "weight": 5.21
+      "weight": 5.35
     },
     {
       "name": "Healthcare",
-      "weight": 3.68
+      "weight": 3.61
     },
     {
       "name": "Utilities",
@@ -68,11 +68,11 @@
     },
     {
       "name": "Materials",
-      "weight": 0.9
+      "weight": 0.91
     },
     {
       "name": "Energy",
-      "weight": 0.45
+      "weight": 0.44
     },
     {
       "name": "Financials",
@@ -122,8 +122,8 @@
       "dividendYield": 0.43,
       "return1y": 26.39,
       "ytdReturn": 24.17,
-      "qqqWeight": 8.39,
-      "qqqShares": 182842133,
+      "qqqWeight": 8.42,
+      "qqqShares": 182220443,
       "weightRank": 1
     },
     {
@@ -137,7 +137,7 @@
       "return1y": 30.48,
       "ytdReturn": 23.46,
       "qqqWeight": 7.27,
-      "qqqShares": 110723226,
+      "qqqShares": 110346762,
       "weightRank": 2
     },
     {
@@ -151,7 +151,7 @@
       "return1y": -1.28,
       "ytdReturn": 10.12,
       "qqqWeight": 5.74,
-      "qqqShares": 56336174,
+      "qqqShares": 56144630,
       "weightRank": 3
     },
     {
@@ -164,8 +164,8 @@
       "dividendYield": 0.06,
       "return1y": 463.44,
       "ytdReturn": 240.98,
-      "qqqWeight": 5.16,
-      "qqqShares": 23654851,
+      "qqqWeight": 5.0,
+      "qqqShares": 23574443,
       "weightRank": 4
     },
     {
@@ -178,8 +178,8 @@
       "dividendYield": null,
       "return1y": 211.18,
       "ytdReturn": 183.67,
-      "qqqWeight": 4.19,
-      "qqqShares": 34191828,
+      "qqqWeight": 4.27,
+      "qqqShares": 34075586,
       "weightRank": 5
     },
     {
@@ -192,8 +192,8 @@
       "dividendYield": null,
       "return1y": 13.86,
       "ytdReturn": 11.05,
-      "qqqWeight": 4.04,
-      "qqqShares": 81833749,
+      "qqqWeight": 4.05,
+      "qqqShares": 81555495,
       "weightRank": 6
     },
     {
@@ -206,8 +206,8 @@
       "dividendYield": 0.29,
       "return1y": 2.08,
       "ytdReturn": 12.23,
-      "qqqWeight": 3.26,
-      "qqqShares": 22559996,
+      "qqqWeight": 3.23,
+      "qqqShares": 22483268,
       "weightRank": 7
     },
     {
@@ -220,8 +220,8 @@
       "dividendYield": 0.26,
       "return1y": 37.52,
       "ytdReturn": 9.21,
-      "qqqWeight": 2.99,
-      "qqqShares": 44519450,
+      "qqqWeight": 3.01,
+      "qqqShares": 44368064,
       "weightRank": 8
     },
     {
@@ -234,8 +234,8 @@
       "dividendYield": null,
       "return1y": -18.24,
       "ytdReturn": -15.4,
-      "qqqWeight": 2.81,
-      "qqqShares": 39855604,
+      "qqqWeight": 2.91,
+      "qqqShares": 39720088,
       "weightRank": 9
     },
     {
@@ -248,9 +248,9 @@
       "dividendYield": 0.26,
       "return1y": 35.68,
       "ytdReturn": 8.15,
-      "qqqWeight": 2.79,
-      "qqqShares": 41932198,
-      "weightRank": 10
+      "qqqWeight": 2.81,
+      "qqqShares": 41789644,
+      "weightRank": 11
     },
     {
       "ticker": "SPCX",
@@ -262,9 +262,9 @@
       "dividendYield": null,
       "return1y": -1.24,
       "ytdReturn": -1.24,
-      "qqqWeight": 2.64,
-      "qqqShares": 89850458,
-      "weightRank": 11
+      "qqqWeight": 2.81,
+      "qqqShares": 89544972,
+      "weightRank": 10
     },
     {
       "ticker": "INTC",
@@ -276,8 +276,8 @@
       "dividendYield": null,
       "return1y": 226.13,
       "ytdReturn": 203.02,
-      "qqqWeight": 2.63,
-      "qqqShares": 110055176,
+      "qqqWeight": 2.58,
+      "qqqShares": 109680966,
       "weightRank": 12
     },
     {
@@ -290,8 +290,8 @@
       "dividendYield": 0.73,
       "return1y": 6.64,
       "ytdReturn": 2.73,
-      "qqqWeight": 2.47,
-      "qqqShares": 36094867,
+      "qqqWeight": 2.52,
+      "qqqShares": 35972139,
       "weightRank": 13
     },
     {
@@ -304,23 +304,9 @@
       "dividendYield": 0.95,
       "return1y": 2.37,
       "ytdReturn": -6.95,
-      "qqqWeight": 2.11,
-      "qqqShares": 101860223,
+      "qqqWeight": 2.09,
+      "qqqShares": 101513889,
       "weightRank": 14
-    },
-    {
-      "ticker": "PLTR",
-      "name": "Palantir Technologies Inc.",
-      "industry": "Technology",
-      "subsector": "Software",
-      "price": 188.75,
-      "marketCap": null,
-      "dividendYield": null,
-      "return1y": 5.14,
-      "ytdReturn": 12.44,
-      "qqqWeight": 1.82,
-      "qqqShares": 48188056,
-      "weightRank": 15
     },
     {
       "ticker": "CSCO",
@@ -332,9 +318,9 @@
       "dividendYield": 1.5,
       "return1y": 65.84,
       "ytdReturn": 49.49,
-      "qqqWeight": 1.78,
-      "qqqShares": 82552669,
-      "weightRank": 16
+      "qqqWeight": 1.82,
+      "qqqShares": 82271977,
+      "weightRank": 15
     },
     {
       "ticker": "LRCX",
@@ -346,8 +332,22 @@
       "dividendYield": 0.38,
       "return1y": 134.06,
       "ytdReturn": 88.33,
-      "qqqWeight": 1.77,
-      "qqqShares": 26208642,
+      "qqqWeight": 1.79,
+      "qqqShares": 26119540,
+      "weightRank": 16
+    },
+    {
+      "ticker": "PLTR",
+      "name": "Palantir Technologies Inc.",
+      "industry": "Technology",
+      "subsector": "Software",
+      "price": 188.75,
+      "marketCap": null,
+      "dividendYield": null,
+      "return1y": 5.14,
+      "ytdReturn": 12.44,
+      "qqqWeight": 1.79,
+      "qqqShares": 48024204,
       "weightRank": 17
     },
     {
@@ -360,8 +360,8 @@
       "dividendYield": 0.39,
       "return1y": 142.52,
       "ytdReturn": 101.57,
-      "qqqWeight": 1.75,
-      "qqqShares": 16621840,
+      "qqqWeight": 1.77,
+      "qqqShares": 16565306,
       "weightRank": 18
     },
     {
@@ -374,8 +374,8 @@
       "dividendYield": 0.64,
       "return1y": 1.66,
       "ytdReturn": 8.22,
-      "qqqWeight": 1.69,
-      "qqqShares": 9288677,
+      "qqqWeight": 1.68,
+      "qqqShares": 9257075,
       "weightRank": 19
     },
     {
@@ -388,8 +388,8 @@
       "dividendYield": null,
       "return1y": 89.69,
       "ytdReturn": 124.81,
-      "qqqWeight": 1.34,
-      "qqqShares": 17070091,
+      "qqqWeight": 1.35,
+      "qqqShares": 17012039,
       "weightRank": 20
     },
     {
@@ -402,8 +402,8 @@
       "dividendYield": null,
       "return1y": -42.35,
       "ytdReturn": -26.3,
-      "qqqWeight": 1.18,
-      "qqqShares": 87212922,
+      "qqqWeight": 1.15,
+      "qqqShares": 86916406,
       "weightRank": 21
     },
     {
@@ -416,8 +416,8 @@
       "dividendYield": null,
       "return1y": 117.8,
       "ytdReturn": 138.14,
-      "qqqWeight": 1.13,
-      "qqqShares": 21446087,
+      "qqqWeight": 1.14,
+      "qqqShares": 21373177,
       "weightRank": 22
     },
     {
@@ -430,22 +430,8 @@
       "dividendYield": 0.44,
       "return1y": 82.51,
       "ytdReturn": 62.94,
-      "qqqWeight": 1.09,
-      "qqqShares": 27365446,
-      "weightRank": 24
-    },
-    {
-      "ticker": "SNDK",
-      "name": "Sandisk Corporation",
-      "industry": "Technology",
-      "subsector": "Electronic Components",
-      "price": 1719.99,
-      "marketCap": null,
-      "dividendYield": null,
-      "return1y": 1319.49,
-      "ytdReturn": 524.91,
-      "qqqWeight": 1.09,
-      "qqqShares": 3066767,
+      "qqqWeight": 1.11,
+      "qqqShares": 27272388,
       "weightRank": 23
     },
     {
@@ -458,8 +444,22 @@
       "dividendYield": 2.07,
       "return1y": 65.78,
       "ytdReturn": 68.29,
-      "qqqWeight": 1.07,
-      "qqqShares": 19127855,
+      "qqqWeight": 1.11,
+      "qqqShares": 19062811,
+      "weightRank": 24
+    },
+    {
+      "ticker": "SNDK",
+      "name": "Sandisk Corporation",
+      "industry": "Technology",
+      "subsector": "Electronic Components",
+      "price": 1719.99,
+      "marketCap": null,
+      "dividendYield": null,
+      "return1y": 1319.49,
+      "ytdReturn": 524.91,
+      "qqqWeight": 1.04,
+      "qqqShares": 3056325,
       "weightRank": 25
     },
     {
@@ -1532,176 +1532,176 @@
       "rank": 1,
       "name": "NVIDIA Corporation",
       "ticker": "NVDA",
-      "weight": 8.39,
-      "shares": 182842133
+      "weight": 8.42,
+      "shares": 182220443
     },
     {
       "rank": 2,
       "name": "Apple Inc.",
       "ticker": "AAPL",
       "weight": 7.27,
-      "shares": 110723226
+      "shares": 110346762
     },
     {
       "rank": 3,
       "name": "Microsoft Corporation",
       "ticker": "MSFT",
       "weight": 5.74,
-      "shares": 56336174
+      "shares": 56144630
     },
     {
       "rank": 4,
       "name": "Micron Technology, Inc.",
       "ticker": "MU",
-      "weight": 5.16,
-      "shares": 23654851
+      "weight": 5.0,
+      "shares": 23574443
     },
     {
       "rank": 5,
       "name": "Advanced Micro Devices, Inc.",
       "ticker": "AMD",
-      "weight": 4.19,
-      "shares": 34191828
+      "weight": 4.27,
+      "shares": 34075586
     },
     {
       "rank": 6,
       "name": "Amazon.com, Inc.",
       "ticker": "AMZN",
-      "weight": 4.04,
-      "shares": 81833749
+      "weight": 4.05,
+      "shares": 81555495
     },
     {
       "rank": 7,
       "name": "Meta Platforms, Inc.",
       "ticker": "META",
-      "weight": 3.26,
-      "shares": 22559996
+      "weight": 3.23,
+      "shares": 22483268
     },
     {
       "rank": 8,
       "name": "Alphabet Inc.",
       "ticker": "GOOGL",
-      "weight": 2.99,
-      "shares": 44519450
+      "weight": 3.01,
+      "shares": 44368064
     },
     {
       "rank": 9,
       "name": "Tesla, Inc.",
       "ticker": "TSLA",
-      "weight": 2.81,
-      "shares": 39855604
+      "weight": 2.91,
+      "shares": 39720088
     },
     {
       "rank": 10,
-      "name": "Alphabet Inc.",
-      "ticker": "GOOG",
-      "weight": 2.79,
-      "shares": 41932198
+      "name": "Space Exploration Technologies Corp.",
+      "ticker": "SPCX",
+      "weight": 2.81,
+      "shares": 89544972
     },
     {
       "rank": 11,
-      "name": "Space Exploration Technologies Corp.",
-      "ticker": "SPCX",
-      "weight": 2.64,
-      "shares": 89850458
+      "name": "Alphabet Inc.",
+      "ticker": "GOOG",
+      "weight": 2.81,
+      "shares": 41789644
     },
     {
       "rank": 12,
       "name": "Intel Corporation",
       "ticker": "INTC",
-      "weight": 2.63,
-      "shares": 110055176
+      "weight": 2.58,
+      "shares": 109680966
     },
     {
       "rank": 13,
       "name": "Broadcom Inc.",
       "ticker": "AVGO",
-      "weight": 2.47,
-      "shares": 36094867
+      "weight": 2.52,
+      "shares": 35972139
     },
     {
       "rank": 14,
       "name": "Walmart Inc.",
       "ticker": "WMT",
-      "weight": 2.11,
-      "shares": 101860223
+      "weight": 2.09,
+      "shares": 101513889
     },
     {
       "rank": 15,
-      "name": "Palantir Technologies Inc.",
-      "ticker": "PLTR",
+      "name": "Cisco Systems, Inc.",
+      "ticker": "CSCO",
       "weight": 1.82,
-      "shares": 48188056
+      "shares": 82271977
     },
     {
       "rank": 16,
-      "name": "Cisco Systems, Inc.",
-      "ticker": "CSCO",
-      "weight": 1.78,
-      "shares": 82552669
+      "name": "Lam Research Corporation",
+      "ticker": "LRCX",
+      "weight": 1.79,
+      "shares": 26119540
     },
     {
       "rank": 17,
-      "name": "Lam Research Corporation",
-      "ticker": "LRCX",
-      "weight": 1.77,
-      "shares": 26208642
+      "name": "Palantir Technologies Inc.",
+      "ticker": "PLTR",
+      "weight": 1.79,
+      "shares": 48024204
     },
     {
       "rank": 18,
       "name": "Applied Materials, Inc.",
       "ticker": "AMAT",
-      "weight": 1.75,
-      "shares": 16621840
+      "weight": 1.77,
+      "shares": 16565306
     },
     {
       "rank": 19,
       "name": "Costco Wholesale Corporation",
       "ticker": "COST",
-      "weight": 1.69,
-      "shares": 9288677
+      "weight": 1.68,
+      "shares": 9257075
     },
     {
       "rank": 20,
       "name": "Palo Alto Networks, Inc.",
       "ticker": "PANW",
-      "weight": 1.34,
-      "shares": 17070091
+      "weight": 1.35,
+      "shares": 17012039
     },
     {
       "rank": 21,
       "name": "Netflix, Inc.",
       "ticker": "NFLX",
-      "weight": 1.18,
-      "shares": 87212922
+      "weight": 1.15,
+      "shares": 86916406
     },
     {
       "rank": 22,
       "name": "CrowdStrike Holdings, Inc.",
       "ticker": "CRWD",
-      "weight": 1.13,
-      "shares": 21446087
+      "weight": 1.14,
+      "shares": 21373177
     },
     {
       "rank": 23,
-      "name": "Sandisk Corporation",
-      "ticker": "SNDK",
-      "weight": 1.09,
-      "shares": 3066767
+      "name": "KLA Corporation",
+      "ticker": "KLAC",
+      "weight": 1.11,
+      "shares": 27272388
     },
     {
       "rank": 24,
-      "name": "KLA Corporation",
-      "ticker": "KLAC",
-      "weight": 1.09,
-      "shares": 27365446
+      "name": "Texas Instruments Incorporated",
+      "ticker": "TXN",
+      "weight": 1.11,
+      "shares": 19062811
     },
     {
       "rank": 25,
-      "name": "Texas Instruments Incorporated",
-      "ticker": "TXN",
-      "weight": 1.07,
-      "shares": 19127855
+      "name": "Sandisk Corporation",
+      "ticker": "SNDK",
+      "weight": 1.04,
+      "shares": 3056325
     }
   ],
   "cumulativeWeights": [
@@ -1709,182 +1709,182 @@
       "rank": 1,
       "ticker": "NVDA",
       "name": "NVIDIA Corporation",
-      "weight": 8.39,
-      "cumulativeWeight": 8.39
+      "weight": 8.42,
+      "cumulativeWeight": 8.42
     },
     {
       "rank": 2,
       "ticker": "AAPL",
       "name": "Apple Inc.",
       "weight": 7.27,
-      "cumulativeWeight": 15.66
+      "cumulativeWeight": 15.69
     },
     {
       "rank": 3,
       "ticker": "MSFT",
       "name": "Microsoft Corporation",
       "weight": 5.74,
-      "cumulativeWeight": 21.4
+      "cumulativeWeight": 21.43
     },
     {
       "rank": 4,
       "ticker": "MU",
       "name": "Micron Technology, Inc.",
-      "weight": 5.16,
-      "cumulativeWeight": 26.56
+      "weight": 5.0,
+      "cumulativeWeight": 26.43
     },
     {
       "rank": 5,
       "ticker": "AMD",
       "name": "Advanced Micro Devices, Inc.",
-      "weight": 4.19,
-      "cumulativeWeight": 30.75
+      "weight": 4.27,
+      "cumulativeWeight": 30.7
     },
     {
       "rank": 6,
       "ticker": "AMZN",
       "name": "Amazon.com, Inc.",
-      "weight": 4.04,
-      "cumulativeWeight": 34.79
+      "weight": 4.05,
+      "cumulativeWeight": 34.75
     },
     {
       "rank": 7,
       "ticker": "META",
       "name": "Meta Platforms, Inc.",
-      "weight": 3.26,
-      "cumulativeWeight": 38.05
+      "weight": 3.23,
+      "cumulativeWeight": 37.98
     },
     {
       "rank": 8,
       "ticker": "GOOGL",
       "name": "Alphabet Inc.",
-      "weight": 2.99,
-      "cumulativeWeight": 41.04
+      "weight": 3.01,
+      "cumulativeWeight": 40.99
     },
     {
       "rank": 9,
       "ticker": "TSLA",
       "name": "Tesla, Inc.",
-      "weight": 2.81,
-      "cumulativeWeight": 43.85
+      "weight": 2.91,
+      "cumulativeWeight": 43.9
     },
     {
       "rank": 10,
-      "ticker": "GOOG",
-      "name": "Alphabet Inc.",
-      "weight": 2.79,
-      "cumulativeWeight": 46.64
+      "ticker": "SPCX",
+      "name": "Space Exploration Technologies Corp.",
+      "weight": 2.81,
+      "cumulativeWeight": 46.71
     },
     {
       "rank": 11,
-      "ticker": "SPCX",
-      "name": "Space Exploration Technologies Corp.",
-      "weight": 2.64,
-      "cumulativeWeight": 49.28
+      "ticker": "GOOG",
+      "name": "Alphabet Inc.",
+      "weight": 2.81,
+      "cumulativeWeight": 49.52
     },
     {
       "rank": 12,
       "ticker": "INTC",
       "name": "Intel Corporation",
-      "weight": 2.63,
-      "cumulativeWeight": 51.91
+      "weight": 2.58,
+      "cumulativeWeight": 52.1
     },
     {
       "rank": 13,
       "ticker": "AVGO",
       "name": "Broadcom Inc.",
-      "weight": 2.47,
-      "cumulativeWeight": 54.38
+      "weight": 2.52,
+      "cumulativeWeight": 54.62
     },
     {
       "rank": 14,
       "ticker": "WMT",
       "name": "Walmart Inc.",
-      "weight": 2.11,
-      "cumulativeWeight": 56.49
+      "weight": 2.09,
+      "cumulativeWeight": 56.71
     },
     {
       "rank": 15,
-      "ticker": "PLTR",
-      "name": "Palantir Technologies Inc.",
+      "ticker": "CSCO",
+      "name": "Cisco Systems, Inc.",
       "weight": 1.82,
-      "cumulativeWeight": 58.31
+      "cumulativeWeight": 58.53
     },
     {
       "rank": 16,
-      "ticker": "CSCO",
-      "name": "Cisco Systems, Inc.",
-      "weight": 1.78,
-      "cumulativeWeight": 60.09
+      "ticker": "LRCX",
+      "name": "Lam Research Corporation",
+      "weight": 1.79,
+      "cumulativeWeight": 60.32
     },
     {
       "rank": 17,
-      "ticker": "LRCX",
-      "name": "Lam Research Corporation",
-      "weight": 1.77,
-      "cumulativeWeight": 61.86
+      "ticker": "PLTR",
+      "name": "Palantir Technologies Inc.",
+      "weight": 1.79,
+      "cumulativeWeight": 62.11
     },
     {
       "rank": 18,
       "ticker": "AMAT",
       "name": "Applied Materials, Inc.",
-      "weight": 1.75,
-      "cumulativeWeight": 63.61
+      "weight": 1.77,
+      "cumulativeWeight": 63.88
     },
     {
       "rank": 19,
       "ticker": "COST",
       "name": "Costco Wholesale Corporation",
-      "weight": 1.69,
-      "cumulativeWeight": 65.3
+      "weight": 1.68,
+      "cumulativeWeight": 65.56
     },
     {
       "rank": 20,
       "ticker": "PANW",
       "name": "Palo Alto Networks, Inc.",
-      "weight": 1.34,
-      "cumulativeWeight": 66.64
+      "weight": 1.35,
+      "cumulativeWeight": 66.91
     },
     {
       "rank": 21,
       "ticker": "NFLX",
       "name": "Netflix, Inc.",
-      "weight": 1.18,
-      "cumulativeWeight": 67.82
+      "weight": 1.15,
+      "cumulativeWeight": 68.06
     },
     {
       "rank": 22,
       "ticker": "CRWD",
       "name": "CrowdStrike Holdings, Inc.",
-      "weight": 1.13,
-      "cumulativeWeight": 68.95
+      "weight": 1.14,
+      "cumulativeWeight": 69.2
     },
     {
       "rank": 23,
-      "ticker": "SNDK",
-      "name": "Sandisk Corporation",
-      "weight": 1.09,
-      "cumulativeWeight": 70.04
+      "ticker": "KLAC",
+      "name": "KLA Corporation",
+      "weight": 1.11,
+      "cumulativeWeight": 70.31
     },
     {
       "rank": 24,
-      "ticker": "KLAC",
-      "name": "KLA Corporation",
-      "weight": 1.09,
-      "cumulativeWeight": 71.13
+      "ticker": "TXN",
+      "name": "Texas Instruments Incorporated",
+      "weight": 1.11,
+      "cumulativeWeight": 71.42
     },
     {
       "rank": 25,
-      "ticker": "TXN",
-      "name": "Texas Instruments Incorporated",
-      "weight": 1.07,
-      "cumulativeWeight": 72.2
+      "ticker": "SNDK",
+      "name": "Sandisk Corporation",
+      "weight": 1.04,
+      "cumulativeWeight": 72.46
     },
     {
       "rank": 26,
       "ticker": "OTHERS",
       "name": "Other 79 combined",
-      "weight": 27.8,
+      "weight": 27.54,
       "cumulativeWeight": 100.0
     }
   ],
