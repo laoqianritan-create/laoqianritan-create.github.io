@@ -84,6 +84,15 @@
     ctx.strokeStyle = '#999999'; ctx.lineWidth = 1.5;
     ctx.beginPath(); ctx.moveTo(padL, y0); ctx.lineTo(W - padR, y0); ctx.stroke();
 
+    // 纵向虚线分组（每 2 个指数一组：沪深300+中证500 / 中证1000+中证2000 / 中证全指+中证A500）
+    ctx.strokeStyle = '#CCCCCC'; ctx.lineWidth = 1;
+    ctx.setLineDash([6, 6]);
+    for (let i = 1; i < n; i += 2) {
+      const gx = padL + i * groupW;
+      ctx.beginPath(); ctx.moveTo(gx, padT); ctx.lineTo(gx, H - padB); ctx.stroke();
+    }
+    ctx.setLineDash([]);
+
     // 分组柱
     idx.forEach((r, i) => {
       const gx = padL + i * groupW + groupW / 2;

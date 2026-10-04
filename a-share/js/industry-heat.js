@@ -3,7 +3,7 @@
  * 数据：industry_heat.json { generated, metrics: { code: {name, dates[], turnover_pctile[], amount_share_pctile[], rps[], ma20_above[]} } }
  *
  * 交互：
- *  · 指标切换：7日换手率分位 / 成交金额占比分位 / RPS / MA20站上率
+ *  · 指标切换：成交金额占比分位 / RPS / MA20站上率
  *  · 周期切换：3 / 5 / 10 / 20 / 60 / 120 / 250 个交易日
  *  · 显示/隐藏数字
  *  · 一级矩阵点击行业行 → 二级矩阵；二级返回一级
@@ -14,7 +14,6 @@
   'use strict';
 
   const METRICS = [
-    { key: 'turnover_pctile', label: '7日换手率分位', sub: '自由流通换手率7日均值 · expanding 分位' },
     { key: 'amount_share_pctile', label: '成交金额占比分位', sub: '行业成交额/全市场 · expanding 分位' },
     { key: 'rps', label: 'RPS', sub: '250日涨幅行业排名百分位' },
     { key: 'ma20_above', label: 'MA20站上率', sub: '行业指数收盘站上20日均线天数占比(250日)' }
@@ -22,7 +21,7 @@
   const PERIODS = [3, 5, 10, 20, 60, 120, 250];
 
   let state = {
-    metric: 'turnover_pctile',
+    metric: 'amount_share_pctile',
     days: 60,           // 默认 60 个交易日
     showNumbers: true,
     level: 1,

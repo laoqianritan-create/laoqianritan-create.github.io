@@ -4,7 +4,7 @@
  *   generated, cards: [{title, items: [{label, value, note}]}],
  *   newAccounts: { dates[], newWan[], index[], breakDate }
  * }
- * 展示：三张总览卡（谁在持有 / 谁在定价 / 谁在交易）+ 新增投资者 vs 上证指数双轴图
+ * 展示：三张总览卡（谁在持有 / 谁在定价 / 谁在交易）+ 新增投资者 vs 中证全指双轴图
  */
 (function () {
   'use strict';
@@ -42,10 +42,10 @@
       ctx.fillStyle = '#1a1a1a';
       ctx.font = '900 64px AlibabaPuHuiTi, sans-serif';
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('新增投资者 vs 上证指数', W / 2, 80);
+      ctx.fillText('新增投资者 vs 中证全指', W / 2, 80);
       ctx.fillStyle = '#555555';
       ctx.font = '300 26px NotoSansSC, sans-serif';
-      ctx.fillText('月度 · 左轴：新增开户（万户） · 右轴：上证指数（收盘）', W / 2, 145);
+      ctx.fillText('月度 · 左轴：新增开户（万户） · 右轴：中证全指（收盘）', W / 2, 145);
     }
 
     const n = na.dates.length;
@@ -56,7 +56,7 @@
     let vMax = Math.max(...vals, 1);
     const yL = (v) => padT + (1 - v / vMax) * (H - padT - padB);
 
-    // 右轴：上证指数
+    // 右轴：中证全指
     const idxVals = na.index.filter((v) => v !== null && v !== undefined);
     let iMin = Math.min(...idxVals), iMax = Math.max(...idxVals);
     const iPad = (iMax - iMin) * 0.05 || 100;
@@ -94,7 +94,7 @@
       });
     }
 
-    // 上证指数折线（右轴）
+    // 中证全指折线（右轴）
     ctx.strokeStyle = '#5AAEF3'; ctx.lineWidth = exportMode ? 4 : 1.8;
     ctx.lineJoin = 'round';
     ctx.beginPath();
@@ -137,7 +137,7 @@
     const lg0 = padL;
     const items = [
       { color: '#E65A56', label: '新增开户（万户）' },
-      { color: '#5AAEF3', label: '上证指数（右轴）' }
+      { color: '#5AAEF3', label: '中证全指（右轴）' }
     ];
     let lx = lg0;
     items.forEach((it) => {
@@ -170,7 +170,7 @@
       ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 62);
     }
 
-    // ── 悬浮数值提示（屏幕版）：最近月份 → 新增开户 / 上证指数 ──
+    // ── 悬浮数值提示（屏幕版）：最近月份 → 新增开户 / 中证全指 ──
     if (!exportMode) {
       canvasEl.__isData = { dates: na.dates, newWan: na.newWan, index: na.index };
       if (!canvasEl.__hoverBound) {
@@ -188,7 +188,7 @@
           const iv = D.index[i];
           let html = `<b>${D.dates[i]}</b>`;
           if (v !== null && v !== undefined) html += `<br>新增开户：<b>${v.toFixed(0)} 万户</b>`;
-          if (iv !== null && iv !== undefined) html += `<br>上证指数：<b>${Math.round(iv)}</b>`;
+          if (iv !== null && iv !== undefined) html += `<br>中证全指：<b>${Math.round(iv)}</b>`;
           window.AK.tooltip.show(ev, html);
         });
         canvasEl.addEventListener('mouseleave', () => window.AK.tooltip.hide());

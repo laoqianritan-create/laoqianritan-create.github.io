@@ -6,10 +6,11 @@
 (function () {
   'use strict';
 
+  // Laoqian Chart 取色规范：按数据系列顺序取色（蓝/深灰/红/紫/深蓝灰/青绿/绿/青蓝）
   const COLORS = {
-    M2: '#E65A56', 存款: '#D96A29', GDP: '#5AAEF3', 总市值: '#6D61E4',
-    一线房价: '#2FBF71', 二线房价: '#5CBF6E', 黄金: '#E8B93A',
-    中证全指全收益: '#2C6E8F'
+    M2: '#5AAEF3', 存款: '#333333', GDP: '#E65A56', 总市值: '#6D61E4',
+    一线房价: '#5B6E96', 二线房价: '#62D9AD', 黄金: '#30CB13',
+    中证全指全收益: '#23C2DB'
   };
 
   function draw(canvas, data, opts) {
@@ -18,7 +19,7 @@
     const W = exportMode ? 3000 : 1480;
     const H = exportMode ? 1600 : 720;
     const padL = exportMode ? 170 : 90;
-    const padR = exportMode ? 160 : 80;
+    const padR = exportMode ? 200 : 118;   // 右侧留出 CAGR 标签空间
     const padT = exportMode ? 220 : 60;
     const padB = exportMode ? 110 : 46;
 
@@ -142,6 +143,72 @@
         else ctx.lineTo(x, y);
       }
       ctx.stroke();
+    });
+
+    // ── 末端 CAGR 标签（每个数字，防重叠：按末端 y 排序 + 左右交替 + 间距挤开）──
+    const ends = [];
+    series.forEach((s) => {
+      let li = -1;
+      for (let i = s.norm.length - 1; i >= 0; i--) {
+        if (s.norm[i] !== null && s.norm[i] > 0) { li = i; break; }
+      }
+      if (li < 0) return;
+      let fi = -1;
+      for (let i = 0; i <= li; i++) {
+        if (s.norm[i] !== null && s.norm[i] > 0) { fi = i; break; }
+      }
+      if (fi < 0) return;
+      const v0 = s.norm[fi], v1 = s.norm[li];
+      const y0 = Date.parse(s.dates[fi]), y1 = Date.parse(s.dates[li]);
+      const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
+      const cagr = (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
+      ends.push({
+        s, x: xs(s.xidx[li]), y: ys(v1), v1, cagr,
+        color: COLORS[s.code] || '#888888'
+      });
+    });
+    ends.sort((a, b) => b.y - a.y);   // 像素 y 从高到低
+    const lh2 = exportMode ? 34 : 16; // 标签行高
+    const used = [];                   // 已占用的标签 y 中心
+    const dotColor = (c) => (c === '#E65A56' ? '#5AAEF3' : '#E65A56'); // 末端点与曲线反色
+    ctx.font = (exportMode ? 28 : 13) + 'px NotoSansSC, sans-serif';
+    ends.forEach((e, i) => {
+      const txt = `${(e.cagr * 100).toFixed(1)}%`;
+      const tw = ctx.measureText(txt).width;
+      const side = (i % 2 === 0) ? 1 : -1;                 // 0/2/4… 右侧，1/3/5… 左侧（交替分散）
+      const bx = side === 1 ? e.x + (exportMode ? 20 : 12) : e.x - (exportMode ? 20 : 12) - tw;
+      const ha = side === 1 ? 'left' : 'right';
+      // 检查是否与已放标签重叠，重叠则上下挤开
+      let dy = 0;
+      for (let k = 0; k < 24; k++) {
+        const cand = e.y + dy;
+        const clash = used.some((u) => Math.abs(u - cand) < lh2 * 1.15);
+        if (!clash) break;
+        dy = (k % 2 === 0) ? dy - lh2 * 1.15 : dy + lh2 * 1.15;
+        if (k > 10) dy += lh2 * 1.15;   // 持续不够就逐步下移
+      }
+      const labelY = e.y + dy;
+      used.push(labelY);
+      // 末端点（与曲线反色）
+      ctx.fillStyle = dotColor(e.color);
+      ctx.beginPath();
+      ctx.arc(e.x, e.y, exportMode ? 9 : 4.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#FFFFFF';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      // 连接线（标签与数据点）
+      ctx.strokeStyle = '#AAAAAA';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(e.x + (side === 1 ? (exportMode ? 8 : 6) : -(exportMode ? 8 : 6)), e.y);
+      ctx.lineTo(side === 1 ? e.x + (exportMode ? 20 : 12) : e.x - (exportMode ? 20 : 12), labelY);
+      ctx.stroke();
+      // 标签
+      ctx.fillStyle = e.color;
+      ctx.textAlign = ha;
+      ctx.textBaseline = 'middle';
+      ctx.fillText(txt, bx, labelY);
     });
 
     // 图例（横向罗列，两行排不下自动换行）

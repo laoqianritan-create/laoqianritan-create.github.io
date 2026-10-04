@@ -98,6 +98,19 @@
     ctx.font = (exportMode ? 30 : 14) + 'px NotoSansSC, sans-serif';
     ctx.fillText('全市场成交金额（两市合计）', padL, top1 - 8);
 
+    // 上图：最新值水平虚线（红色）
+    const lastAmt = amount[n - 1];
+    if (lastAmt !== null && lastAmt !== undefined) {
+      const ly = y1(lastAmt);
+      ctx.strokeStyle = '#E65A56'; ctx.lineWidth = exportMode ? 3 : 1.6;
+      ctx.setLineDash([8, 6]);
+      ctx.beginPath(); ctx.moveTo(padL, ly); ctx.lineTo(W - padR, ly); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#E65A56'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+      ctx.font = (exportMode ? 26 : 12) + 'px NotoSansSC, sans-serif';
+      ctx.fillText(`最新 ${(lastAmt / 1e4).toFixed(2)} 万亿`, W - padR, ly - 8);
+    }
+
     // ── 下图：换手率折线 + 均值 + 分位带 ──
     const h2 = (H - padT - padB) * 0.44;
     const top2 = top1 + h1 + (H - padT - padB) * 0.06;
@@ -117,18 +130,18 @@
       ctx.fillText(v.toFixed(1) + '%', padL - 10, y);
     }
 
-    // 窗口均值虚线
+    // 窗口均值虚线（灰色，区别于最新值虚线）
     const mean = vals.reduce((a, b) => a + b, 0) / vals.length;
     const my = y2(mean);
-    ctx.strokeStyle = '#6D61E4'; ctx.lineWidth = exportMode ? 2 : 1.2;
-    ctx.setLineDash([6, 6]);
+    ctx.strokeStyle = '#999999'; ctx.lineWidth = exportMode ? 2 : 1.2;
+    ctx.setLineDash([5, 5]);
     ctx.beginPath(); ctx.moveTo(padL, my); ctx.lineTo(W - padR, my); ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = '#6D61E4'; ctx.textAlign = 'right';
+    ctx.fillStyle = '#999999'; ctx.textAlign = 'right';
     ctx.fillText(`均值 ${mean.toFixed(2)}%`, W - padR, my - 8);
 
-    // 换手率折线
-    ctx.strokeStyle = '#E65A56'; ctx.lineWidth = exportMode ? 4 : 1.8;
+    // 换手率折线（黑色）
+    ctx.strokeStyle = '#333333'; ctx.lineWidth = exportMode ? 4 : 1.8;
     ctx.lineJoin = 'round';
     ctx.beginPath();
     let started = false;
@@ -138,6 +151,22 @@
       if (!started) { ctx.moveTo(x, y); started = true; } else ctx.lineTo(x, y);
     });
     ctx.stroke();
+
+    // 下图：最新值水平虚线（黑色）
+    let lastTr = null, lastTrIdx = -1;
+    for (let i = n - 1; i >= 0; i--) {
+      if (turnover[i] !== null && turnover[i] !== undefined) { lastTr = turnover[i]; lastTrIdx = i; break; }
+    }
+    if (lastTr !== null) {
+      const ly = y2(lastTr);
+      ctx.strokeStyle = '#333333'; ctx.lineWidth = exportMode ? 3 : 1.6;
+      ctx.setLineDash([8, 6]);
+      ctx.beginPath(); ctx.moveTo(padL, ly); ctx.lineTo(W - padR, ly); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#333333'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+      ctx.font = (exportMode ? 26 : 12) + 'px NotoSansSC, sans-serif';
+      ctx.fillText(`最新 ${lastTr.toFixed(2)}%`, W - padR, ly - 8);
+    }
 
     // 下图标题
     ctx.fillStyle = '#333333'; ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';

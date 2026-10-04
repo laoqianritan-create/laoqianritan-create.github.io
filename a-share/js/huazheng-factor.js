@@ -7,9 +7,10 @@
 (function () {
   'use strict';
 
+  // Laoqian Chart 取色规范：按数据系列顺序取色（蓝/深灰/红/紫/深蓝灰/青绿）
   const COLORS = {
-    成长: '#E65A56', 价值: '#5AAEF3', 低波: '#2FBF71',
-    动量: '#6D61E4', 质量: '#E8B93A', 红利: '#D96A29'
+    成长: '#5AAEF3', 价值: '#333333', 低波: '#E65A56',
+    动量: '#6D61E4', 质量: '#5B6E96', 红利: '#62D9AD'
   };
 
   function draw(canvas, data, opts) {
@@ -18,7 +19,7 @@
     const W = exportMode ? 3000 : 1480;
     const H = exportMode ? 1500 : 680;
     const padL = exportMode ? 170 : 90;
-    const padR = exportMode ? 160 : 80;
+    const padR = exportMode ? 200 : 118;   // 右侧留出 CAGR 标签空间
     const padT = exportMode ? 220 : 60;
     const padB = exportMode ? 110 : 46;
 
@@ -110,7 +111,65 @@
       ctx.stroke();
     });
 
-    // 图例（横向罗列，自动换行）
+    // ── 末端 CAGR 标签（一个数字，防重叠：按末端 y 排序 + 左右交替 + 间距挤开）──
+    const ends = [];
+    factors.forEach((f) => {
+      const nav = data.factors[f].nav || [];
+      let li = -1;
+      for (let i = nav.length - 1; i >= 0; i--) {
+        if (nav[i] !== null && nav[i] > 0) { li = i; break; }
+      }
+      if (li < 0) return;
+      let fi = -1;
+      for (let i = 0; i <= li; i++) {
+        if (nav[i] !== null && nav[i] > 0) { fi = i; break; }
+      }
+      if (fi < 0) return;
+      const v0 = nav[fi], v1 = nav[li];
+      const y0 = Date.parse(dates[fi]), y1 = Date.parse(dates[li]);
+      const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
+      const cagr = (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
+      ends.push({ f, x: xs(li), y: ys(v1), v1, cagr, color: COLORS[f] || '#888888' });
+    });
+    ends.sort((a, b) => b.y - a.y);
+    const lh2 = exportMode ? 34 : 16;
+    const used = [];
+    const dotColor = (c) => (c === '#E65A56' ? '#5AAEF3' : '#E65A56');
+    ctx.font = (exportMode ? 28 : 13) + 'px NotoSansSC, sans-serif';
+    ends.forEach((e, i) => {
+      const txt = `${(e.cagr * 100).toFixed(1)}%`;
+      const tw = ctx.measureText(txt).width;
+      const side = (i % 2 === 0) ? 1 : -1;
+      const bx = side === 1 ? e.x + (exportMode ? 20 : 12) : e.x - (exportMode ? 20 : 12) - tw;
+      const ha = side === 1 ? 'left' : 'right';
+      let dy = 0;
+      for (let k = 0; k < 24; k++) {
+        const cand = e.y + dy;
+        const clash = used.some((u) => Math.abs(u - cand) < lh2 * 1.15);
+        if (!clash) break;
+        dy = (k % 2 === 0) ? dy - lh2 * 1.15 : dy + lh2 * 1.15;
+        if (k > 10) dy += lh2 * 1.15;
+      }
+      const labelY = e.y + dy;
+      used.push(labelY);
+      ctx.fillStyle = dotColor(e.color);
+      ctx.beginPath();
+      ctx.arc(e.x, e.y, exportMode ? 9 : 4.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#FFFFFF';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.strokeStyle = '#AAAAAA';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(e.x + (side === 1 ? (exportMode ? 8 : 6) : -(exportMode ? 8 : 6)), e.y);
+      ctx.lineTo(side === 1 ? e.x + (exportMode ? 20 : 12) : e.x - (exportMode ? 20 : 12), labelY);
+      ctx.stroke();
+      ctx.fillStyle = e.color;
+      ctx.textAlign = ha;
+      ctx.textBaseline = 'middle';
+      ctx.fillText(txt, bx, labelY);
+    });
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 245 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
