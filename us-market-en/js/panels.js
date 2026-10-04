@@ -215,7 +215,11 @@ const PANELS = {
   },
   'panel-drawdown': {
     requires: ['price', 'drawdown'],
-    init() { initPanelDrawdown(D.price, D.drawdown); },
+    init() {
+      initPanelDrawdown(D.price, D.drawdown, {
+        scatterId: 'chartDdScatter', tableToggleId: 'ddTableToggle', ddMin: -90,
+      });
+    },
   },
   'panel-intrayear-dd': {
     requires: ['intrayearDd'],
@@ -355,6 +359,7 @@ const PANELS = {
         initPanelDrawdown(D.ndxPrice, D.ndxDrawdowns, {
           chartId: 'chartNdxDrawdown', tbodyId: 'ndxDrawdownTbody',
           tableId: 'ndxDrawdownTable', ddMin: -85, hideCause: true,
+          scatterId: 'chartNdxDdScatter', tableToggleId: 'ndxTableToggle',
         });
       }
     },

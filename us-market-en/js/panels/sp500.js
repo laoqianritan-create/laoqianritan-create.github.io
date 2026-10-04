@@ -218,8 +218,25 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
   const chartId = opts.chartId || 'chartDrawdown';
   const tbodyId = opts.tbodyId || 'drawdownTbody';
   const tableId = opts.tableId || 'drawdownTable';
+  const scatterId = opts.scatterId || 'chartDdScatter';
+  const toggleId = opts.tableToggleId || 'ddTableToggle';
   const ddMin = opts.ddMin ?? -80;
   const hideCause = !!opts.hideCause;
+  // Edge guard: quietly return on missing/empty data (panels.js guards the normal path)
+  if (!priceData?.series?.length || !drawdownData?.drawdowns?.length) return;
+  const TABLE_COLLAPSED_COUNT = opts.tableCollapsedCount ?? 12;
+  const labels = {
+    daysUnit: 'd',
+    yearUnit: 'y',
+    ongoing: 'Ongoing',
+    scatterX: 'Days to trough (log scale)',
+    scatterY: 'Decline',
+    tooltipDecline: 'Decline',
+    tooltipRecover: 'Days to new high',
+    collapse: total => `Show all ${total} events`,
+    expand: 'Collapse',
+    ...(opts.labels || {}),
+  };
   const chart = registerChart(echarts.init(document.getElementById(chartId)));
   const series = priceData.series;
 
@@ -325,45 +342,215 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
   drawdownData.categories.forEach(category => {
     catNames[category.id] = category.name;
   });
+  // Scatter colors mirror the table's category badges (css/panel.css .cat-*)
+  const CAT_COLORS = {
+    mechanical_scare: '#d48806',
+    narrative_break: '#d46b08',
+    policy_shift: '#cf1322',
+    credit_destruction: '#820014',
+    exogenous_shock: '#722ed1',
+  };
+  const majorDrawdowns = drawdownData.drawdowns
+    .filter(item => Math.abs(item.decline) >= 0.10)
+    .slice()
+    .sort((a, b) => a.decline - b.decline); // deepest first so labels claim space early
+
+  // ── Scatter: x = days to trough (log) · y = decline % · colors = category badges · yyyy.mm labels with greedy collision avoidance ──
+  const scatterChartEl = document.getElementById(scatterId);
+  if (scatterChartEl) {
+    const scatterChart = registerChart(echarts.init(scatterChartEl));
+    // Greedy avoidance: deepest declines claim label space first; collisions degrade to tooltip-only
+    const placedBoxes = [];
+    const CH_W = 960;
+    const CH_H = 430;
+    const PLOT = { left: 80, right: 40, top: 30, bottom: 55 };
+    const labelEstW = text => 15 + text.length * 7.2;
+
+    const scatterData = majorDrawdowns.map((item) => {
+      const days = Math.max(item.days, 1);
+      const pct = Math.abs(item.decline) * 100;
+      // Labels come from peak_date (language-agnostic; CN periods embed CJK month glyphs)
+      const labelText = item.peak_date
+        ? `${item.peak_date.slice(0, 4)}.${item.peak_date.slice(5, 7)}`
+        : item.period;
+      const x = PLOT.left + (Math.log10(days) / Math.log10(10000)) * (CH_W - PLOT.left - PLOT.right);
+      const y = PLOT.top + (1 - pct / Math.abs(ddMin)) * (CH_H - PLOT.top - PLOT.bottom);
+      const box = { x0: x - labelEstW(labelText) / 2, x1: x + labelEstW(labelText) / 2, y0: y - 9, y1: y + 9 };
+      const showLabel = !placedBoxes.some(b =>
+        box.x0 < b.x1 && b.x0 < box.x1 && box.y0 < b.y1 && b.y0 < b.y1);
+      if (showLabel) placedBoxes.push(box);
+      const color = CAT_COLORS[item.category] || cssVar('--red') || '#cf1322';
+      return {
+        value: [days, pct],
+        name: item.period,
+        item: item,
+        labelText: labelText,
+        itemStyle: { color: color, opacity: 0.88 },
+        symbolSize: Math.max(7, Math.min(15, 5 + Math.sqrt(pct) * 0.9)),
+        label: {
+          show: showLabel,
+          formatter: labelText,
+          fontSize: 11,
+          color: cssVar('--text') || '#1a1a1a',
+          fontFamily: CHART_FONT,
+          position: 'top',
+          distance: 5,
+        },
+      };
+    });
+
+    const seriesByCategory = {};
+    scatterData.forEach(point => {
+      const cat = point.item.category;
+      (seriesByCategory[cat] = seriesByCategory[cat] || []).push(point);
+    });
+
+    function getScatterOption() {
+      const gridColor = cssVar('--chart-grid') || '#f0f0f0';
+      const grayColor = cssVar('--gray') || '#999';
+      return {
+        animation: false,
+        grid: { left: PLOT.left, right: PLOT.right, top: PLOT.top + 24, bottom: PLOT.bottom },
+        legend: {
+          top: 0,
+          left: 'center',
+          itemWidth: 12,
+          itemHeight: 8,
+          textStyle: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        },
+        xAxis: {
+          type: 'log',
+          name: labels.scatterX,
+          nameLocation: 'center',
+          nameGap: 32,
+          nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
+          min: Math.max(1, Math.floor(Math.min(...scatterData.map(p => p.value[0])))),
+          max: Math.ceil(Math.max(...scatterData.map(p => p.value[0]))),
+          axisLabel: {
+            fontSize: 11,
+            color: grayColor,
+            fontFamily: CHART_FONT,
+            formatter: value => `${formatCompactNumber(value)}${labels.daysUnit}`,
+          },
+          splitLine: { lineStyle: { color: gridColor } },
+        },
+        yAxis: {
+          type: 'value',
+          name: labels.scatterY,
+          nameLocation: 'center',
+          nameGap: 40,
+          nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
+          min: 0,
+          max: Math.ceil(Math.max(...scatterData.map(p => p.value[1])) / 10) * 10,
+          axisLabel: {
+            formatter: '{value}%',
+            fontSize: 11,
+            color: grayColor,
+            fontFamily: CHART_FONT,
+          },
+          splitLine: { lineStyle: { color: gridColor } },
+        },
+        series: drawdownData.categories
+          .filter(category => seriesByCategory[category.id])
+          .map(category => ({
+            name: category.name,
+            type: 'scatter',
+            data: seriesByCategory[category.id],
+            itemStyle: {
+              color: CAT_COLORS[category.id] || cssVar('--red') || '#cf1322',
+              opacity: 0.88,
+            },
+            markLine: category === drawdownData.categories[0] ? {
+              silent: true,
+              symbol: 'none',
+              lineStyle: { color: grayColor, type: 'dashed', width: 1 },
+              data: [{ xAxis: 100, label: { show: false } }],
+            } : undefined,
+          })),
+        tooltip: {
+          trigger: 'item',
+          backgroundColor: cssVar('--card-bg') || '#fff',
+          borderColor: cssVar('--border') || '#e8e8e8',
+          textStyle: {
+            fontSize: 13,
+            color: cssVar('--text') || '#1a1a1a',
+            fontFamily: CHART_FONT,
+          },
+          formatter: params => {
+            const point = params.data;
+            const item = point.item;
+            const recovery = item.recovery_days != null
+              ? `${item.recovery_days}${labels.daysUnit}${item.recovery_days > 365 ? ` (${(item.recovery_days / 365).toFixed(1)}${labels.yearUnit})` : ''}`
+              : labels.ongoing;
+            let html = `<b>${item.period}</b>`;
+            html += `<br/>${labels.tooltipDecline}: <b style="color:${CAT_COLORS[item.category]}">${formatPercent(item.decline * 100, 1)}</b>`;
+            html += `<br/>${labels.scatterX.split(' (')[0]}: ${item.days}${labels.daysUnit}`;
+            html += `<br/>${labels.tooltipRecover}: ${recovery}`;
+            if (!hideCause && item.cause) html += `<br/>${item.cause}`;
+            return html;
+          },
+        },
+      };
+    }
+
+    scatterChart.setOption(getScatterOption());
+    scatterChart._refreshTheme = () => scatterChart.setOption(getScatterOption(), true);
+  }
 
   const tbody = document.getElementById(tbodyId);
   if (!tbody) return;
   tbody.innerHTML = '';
 
-  // Filter out small moves with |drawdown| < 10% to avoid bloating the table
-  drawdownData.drawdowns
-    .filter(item => Math.abs(item.decline) >= 0.10)
-    .forEach(item => {
-    const absDecline = Math.abs(item.decline);
-    const alpha = 0.18 + Math.min(absDecline / 0.6, 1) * 0.28;
-    const tr = document.createElement('tr');
-    if (item.active) {
-      tr.classList.add('row-active');
-    }
+  // Collapsible table: show the most recent N ≥10% events by default, one click expands all
+  let tableExpanded = false;
+  function renderDrawdownTable() {
+    tbody.innerHTML = '';
+    const rows = tableExpanded ? majorDrawdowns : majorDrawdowns.slice(0, TABLE_COLLAPSED_COUNT);
+    rows.forEach(item => {
+      const absDecline = Math.abs(item.decline);
+      const alpha = 0.18 + Math.min(absDecline / 0.6, 1) * 0.28;
+      const tr = document.createElement('tr');
+      if (item.active) {
+        tr.classList.add('row-active');
+      }
 
-    // recovery_days display: null = not yet recovered (still active); > 365 shows year equivalent
-    let recoveryCell;
-    if (item.recovery_days == null) {
-      recoveryCell = '<span style="color:var(--text-secondary)">Ongoing</span>';
-    } else if (item.recovery_days > 365) {
-      recoveryCell = `${item.recovery_days} (${(item.recovery_days / 365).toFixed(1)}y)`;
-    } else {
-      recoveryCell = `${item.recovery_days}`;
+      // recovery_days display: null = not yet recovered (still active); > 365 shows year equivalent
+      let recoveryCell;
+      if (item.recovery_days == null) {
+        recoveryCell = `<span style="color:var(--text-secondary)">${labels.ongoing}</span>`;
+      } else if (item.recovery_days > 365) {
+        recoveryCell = `${item.recovery_days} (${(item.recovery_days / 365).toFixed(1)}${labels.yearUnit})`;
+      } else {
+        recoveryCell = `${item.recovery_days}`;
+      }
+      // data-label provides inline labels for mobile cards; no visual impact on desktop
+      const highLabel = opts.highLabel || 'S&P High';
+      const lowLabel = opts.lowLabel || 'S&P Low';
+      tr.innerHTML = `
+        <td data-label="Period" style="white-space:nowrap">${item.period}</td>
+        <td data-label="${highLabel}" style="text-align:right">${item.high}</td>
+        <td data-label="${lowLabel}" style="text-align:right">${item.low}</td>
+        <td data-label="Days to Trough" style="text-align:right">${item.days}</td>
+        <td data-label="Decline" class="decline-cell" style="text-align:right;color:var(--red);background:rgba(207,19,34,${alpha.toFixed(2)})">${formatPercent(item.decline * 100, 1)}</td>
+        <td data-label="Days to New High" style="text-align:right;white-space:nowrap">${recoveryCell}</td>
+        <td data-label="Category"><span class="cat-badge cat-${item.category}">${catNames[item.category] || item.category}</span></td>
+        ${hideCause ? '' : `<td data-label="Cause" class="cause-cell">${item.cause || ''}</td>`}
+      `;
+      tbody.appendChild(tr);
+    });
+    const toggleBtn = document.getElementById(toggleId);
+    if (toggleBtn) {
+      const total = majorDrawdowns.length;
+      const hidden = total - Math.min(TABLE_COLLAPSED_COUNT, total);
+      toggleBtn.style.display = total > TABLE_COLLAPSED_COUNT ? '' : 'none';
+      toggleBtn.textContent = tableExpanded ? labels.expand : labels.collapse(total);
+      toggleBtn.dataset.hiddenCount = String(hidden);
     }
-    // data-label provides inline labels for mobile cards; no visual impact on desktop
-    const highLabel = opts.highLabel || 'S&P High';
-    const lowLabel = opts.lowLabel || 'S&P Low';
-    tr.innerHTML = `
-      <td data-label="Period" style="white-space:nowrap">${item.period}</td>
-      <td data-label="${highLabel}" style="text-align:right">${item.high}</td>
-      <td data-label="${lowLabel}" style="text-align:right">${item.low}</td>
-      <td data-label="Days to Trough" style="text-align:right">${item.days}</td>
-      <td data-label="Decline" class="decline-cell" style="text-align:right;color:var(--red);background:rgba(207,19,34,${alpha.toFixed(2)})">${formatPercent(item.decline * 100, 1)}</td>
-      <td data-label="Days to New High" style="text-align:right;white-space:nowrap">${recoveryCell}</td>
-      <td data-label="Category"><span class="cat-badge cat-${item.category}">${catNames[item.category] || item.category}</span></td>
-      ${hideCause ? '' : `<td data-label="Cause" class="cause-cell">${item.cause || ''}</td>`}
-    `;
-    tbody.appendChild(tr);
+  }
+  renderDrawdownTable();
+  document.getElementById(toggleId)?.addEventListener('click', () => {
+    tableExpanded = !tableExpanded;
+    renderDrawdownTable();
   });
 
   document.querySelectorAll(`#${tableId} th[data-sort]`).forEach(th => {

@@ -218,8 +218,25 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
   const chartId = opts.chartId || 'chartDrawdown';
   const tbodyId = opts.tbodyId || 'drawdownTbody';
   const tableId = opts.tableId || 'drawdownTable';
+  const scatterId = opts.scatterId || 'chartDdScatter';
+  const toggleId = opts.tableToggleId || 'ddTableToggle';
   const ddMin = opts.ddMin ?? -80;
   const hideCause = !!opts.hideCause;
+  // 边界守卫：空/缺数据安静返回（panels.js 正常路径有 require 守卫，这里兜底）
+  if (!priceData?.series?.length || !drawdownData?.drawdowns?.length) return;
+  const TABLE_COLLAPSED_COUNT = opts.tableCollapsedCount ?? 12;
+  const labels = {
+    daysUnit: '天',
+    yearUnit: '年',
+    ongoing: '进行中',
+    scatterX: '下跌时长（天 · 对数轴）',
+    scatterY: '下跌幅度',
+    tooltipDecline: '跌幅',
+    tooltipRecover: '再创新高',
+    collapse: total => `展开全部 ${total} 个事件`,
+    expand: '收起',
+    ...(opts.labels || {}),
+  };
   const chart = registerChart(echarts.init(document.getElementById(chartId)));
   const series = priceData.series;
 
@@ -325,45 +342,215 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
   drawdownData.categories.forEach(category => {
     catNames[category.id] = category.name;
   });
+  // 散点配色直接复用表格「分类」徽章的色号（site/css/panel.css .cat-*）
+  const CAT_COLORS = {
+    mechanical_scare: '#d48806',
+    narrative_break: '#d46b08',
+    policy_shift: '#cf1322',
+    credit_destruction: '#820014',
+    exogenous_shock: '#722ed1',
+  };
+  const majorDrawdowns = drawdownData.drawdowns
+    .filter(item => Math.abs(item.decline) >= 0.10)
+    .slice()
+    .sort((a, b) => a.decline - b.decline); // 跌幅深的排前，标签优先展示
+
+  // ── 散点图：横轴下跌时长（对数）· 纵轴跌幅 · 色泽同分类徽章 · 标签 yyyy.mm 贪心避让 ──
+  const scatterChartEl = document.getElementById(scatterId);
+  if (scatterChartEl) {
+    const scatterChart = registerChart(echarts.init(scatterChartEl));
+    // 贪心避让：按跌幅深→浅逐个尝试展示标签，与已放行标签的包围盒重叠则降级为 tooltip
+    const placedBoxes = [];
+    const CH_W = 960;   // 与桌面 grid 左右留白近似（移动端更挤，此值偏保守即可）
+    const CH_H = 430;
+    const PLOT = { left: 80, right: 40, top: 30, bottom: 55 };
+    const labelEstW = text => 15 + text.length * 7.2;
+
+    const scatterData = majorDrawdowns.map((item) => {
+      const days = Math.max(item.days, 1);
+      const pct = Math.abs(item.decline) * 100;
+      // 标签统一从 peak_date 取（语言无关；EN 站 period 是 "Sep 16" 格式没有"月"）
+      const labelText = item.peak_date
+        ? `${item.peak_date.slice(0, 4)}.${item.peak_date.slice(5, 7)}`
+        : item.period;
+      const x = PLOT.left + (Math.log10(days) / Math.log10(10000)) * (CH_W - PLOT.left - PLOT.right);
+      const y = PLOT.top + (1 - pct / Math.abs(ddMin)) * (CH_H - PLOT.top - PLOT.bottom);
+      const box = { x0: x - labelEstW(labelText) / 2, x1: x + labelEstW(labelText) / 2, y0: y - 9, y1: y + 9 };
+      const showLabel = !placedBoxes.some(b =>
+        box.x0 < b.x1 && b.x0 < box.x1 && box.y0 < b.y1 && b.y0 < b.y1);
+      if (showLabel) placedBoxes.push(box);
+      const color = CAT_COLORS[item.category] || cssVar('--red') || '#cf1322';
+      return {
+        value: [days, pct],
+        name: item.period,
+        item: item,
+        labelText: labelText,
+        itemStyle: { color: color, opacity: 0.88 },
+        symbolSize: Math.max(7, Math.min(15, 5 + Math.sqrt(pct) * 0.9)),
+        label: {
+          show: showLabel,
+          formatter: labelText,
+          fontSize: 11,
+          color: cssVar('--text') || '#1a1a1a',
+          fontFamily: CHART_FONT,
+          position: 'top',
+          distance: 5,
+        },
+      };
+    });
+
+    const seriesByCategory = {};
+    scatterData.forEach(point => {
+      const cat = point.item.category;
+      (seriesByCategory[cat] = seriesByCategory[cat] || []).push(point);
+    });
+
+    function getScatterOption() {
+      const gridColor = cssVar('--chart-grid') || '#f0f0f0';
+      const grayColor = cssVar('--gray') || '#999';
+      return {
+        animation: false,
+        grid: { left: PLOT.left, right: PLOT.right, top: PLOT.top + 24, bottom: PLOT.bottom },
+        legend: {
+          top: 0,
+          left: 'center',
+          itemWidth: 12,
+          itemHeight: 8,
+          textStyle: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        },
+        xAxis: {
+          type: 'log',
+          name: labels.scatterX,
+          nameLocation: 'center',
+          nameGap: 32,
+          nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
+          min: Math.max(1, Math.floor(Math.min(...scatterData.map(p => p.value[0])))),
+          max: Math.ceil(Math.max(...scatterData.map(p => p.value[0]))),
+          axisLabel: {
+            fontSize: 11,
+            color: grayColor,
+            fontFamily: CHART_FONT,
+            formatter: value => `${formatCompactNumber(value)}${labels.daysUnit}`,
+          },
+          splitLine: { lineStyle: { color: gridColor } },
+        },
+        yAxis: {
+          type: 'value',
+          name: labels.scatterY,
+          nameLocation: 'center',
+          nameGap: 40,
+          nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
+          min: 0,
+          max: Math.ceil(Math.max(...scatterData.map(p => p.value[1])) / 10) * 10,
+          axisLabel: {
+            formatter: '{value}%',
+            fontSize: 11,
+            color: grayColor,
+            fontFamily: CHART_FONT,
+          },
+          splitLine: { lineStyle: { color: gridColor } },
+        },
+        series: drawdownData.categories
+          .filter(category => seriesByCategory[category.id])
+          .map(category => ({
+            name: category.name,
+            type: 'scatter',
+            data: seriesByCategory[category.id],
+            itemStyle: {
+              color: CAT_COLORS[category.id] || cssVar('--red') || '#cf1322',
+              opacity: 0.88,
+            },
+            markLine: category === drawdownData.categories[0] ? {
+              silent: true,
+              symbol: 'none',
+              lineStyle: { color: grayColor, type: 'dashed', width: 1 },
+              data: [{ xAxis: 100, label: { show: false } }],
+            } : undefined,
+          })),
+        tooltip: {
+          trigger: 'item',
+          backgroundColor: cssVar('--card-bg') || '#fff',
+          borderColor: cssVar('--border') || '#e8e8e8',
+          textStyle: {
+            fontSize: 13,
+            color: cssVar('--text') || '#1a1a1a',
+            fontFamily: CHART_FONT,
+          },
+          formatter: params => {
+            const point = params.data;
+            const item = point.item;
+            const recovery = item.recovery_days != null
+              ? `${item.recovery_days}${labels.daysUnit}${item.recovery_days > 365 ? ` (${(item.recovery_days / 365).toFixed(1)}${labels.yearUnit})` : ''}`
+              : labels.ongoing;
+            let html = `<b>${item.period}</b>`;
+            html += `<br/>${labels.tooltipDecline}: <b style="color:${CAT_COLORS[item.category]}">${formatPercent(item.decline * 100, 1)}</b>`;
+            html += `<br/>${labels.scatterX.split('（')[0]}: ${item.days}${labels.daysUnit}`;
+            html += `<br/>${labels.tooltipRecover}: ${recovery}`;
+            if (!hideCause && item.cause) html += `<br/>${item.cause}`;
+            return html;
+          },
+        },
+      };
+    }
+
+    scatterChart.setOption(getScatterOption());
+    scatterChart._refreshTheme = () => scatterChart.setOption(getScatterOption(), true);
+  }
 
   const tbody = document.getElementById(tbodyId);
   if (!tbody) return;
   tbody.innerHTML = '';
 
-  // 过滤掉 |回撤| < 10% 的小波动，避免表格过长
-  drawdownData.drawdowns
-    .filter(item => Math.abs(item.decline) >= 0.10)
-    .forEach(item => {
-    const absDecline = Math.abs(item.decline);
-    const alpha = 0.18 + Math.min(absDecline / 0.6, 1) * 0.28;
-    const tr = document.createElement('tr');
-    if (item.active) {
-      tr.classList.add('row-active');
-    }
+  // 折叠表格：默认只显示最近 N 个 ≥10% 事件，一键展开/收起全部
+  let tableExpanded = false;
+  function renderDrawdownTable() {
+    tbody.innerHTML = '';
+    const rows = tableExpanded ? majorDrawdowns : majorDrawdowns.slice(0, TABLE_COLLAPSED_COUNT);
+    rows.forEach(item => {
+      const absDecline = Math.abs(item.decline);
+      const alpha = 0.18 + Math.min(absDecline / 0.6, 1) * 0.28;
+      const tr = document.createElement('tr');
+      if (item.active) {
+        tr.classList.add('row-active');
+      }
 
-    // recovery_days 显示：null = 未恢复（active 进行中）；> 365 显示带"年"换算
-    let recoveryCell;
-    if (item.recovery_days == null) {
-      recoveryCell = '<span style="color:var(--text-secondary)">进行中</span>';
-    } else if (item.recovery_days > 365) {
-      recoveryCell = `${item.recovery_days} (${(item.recovery_days / 365).toFixed(1)}年)`;
-    } else {
-      recoveryCell = `${item.recovery_days}`;
+      // recovery_days 显示：null = 未恢复（active 进行中）；> 365 显示带"年"换算
+      let recoveryCell;
+      if (item.recovery_days == null) {
+        recoveryCell = `<span style="color:var(--text-secondary)">${labels.ongoing}</span>`;
+      } else if (item.recovery_days > 365) {
+        recoveryCell = `${item.recovery_days} (${(item.recovery_days / 365).toFixed(1)}${labels.yearUnit})`;
+      } else {
+        recoveryCell = `${item.recovery_days}`;
+      }
+      // data-label 为 mobile-cards 提供行内标签；desktop 下无视觉影响
+      const highLabel = opts.highLabel || '标普高点';
+      const lowLabel = opts.lowLabel || '标普低点';
+      tr.innerHTML = `
+        <td data-label="回调区间" style="white-space:nowrap">${item.period}</td>
+        <td data-label="${highLabel}" style="text-align:right">${item.high}</td>
+        <td data-label="${lowLabel}" style="text-align:right">${item.low}</td>
+        <td data-label="创新低天数" style="text-align:right">${item.days}</td>
+        <td data-label="跌幅" class="decline-cell" style="text-align:right;color:var(--red);background:rgba(207,19,34,${alpha.toFixed(2)})">${formatPercent(item.decline * 100, 1)}</td>
+        <td data-label="再创新高天数" style="text-align:right;white-space:nowrap">${recoveryCell}</td>
+        <td data-label="分类"><span class="cat-badge cat-${item.category}">${catNames[item.category] || item.category}</span></td>
+        ${hideCause ? '' : `<td data-label="下跌原因" class="cause-cell">${item.cause || ''}</td>`}
+      `;
+      tbody.appendChild(tr);
+    });
+    const toggleBtn = document.getElementById(toggleId);
+    if (toggleBtn) {
+      const total = majorDrawdowns.length;
+      const hidden = total - Math.min(TABLE_COLLAPSED_COUNT, total);
+      toggleBtn.style.display = total > TABLE_COLLAPSED_COUNT ? '' : 'none';
+      toggleBtn.textContent = tableExpanded ? labels.expand : labels.collapse(total);
+      toggleBtn.dataset.hiddenCount = String(hidden);
     }
-    // data-label 为 mobile-cards 提供行内标签；desktop 下无视觉影响
-    const highLabel = opts.highLabel || '标普高点';
-    const lowLabel = opts.lowLabel || '标普低点';
-    tr.innerHTML = `
-      <td data-label="回调区间" style="white-space:nowrap">${item.period}</td>
-      <td data-label="${highLabel}" style="text-align:right">${item.high}</td>
-      <td data-label="${lowLabel}" style="text-align:right">${item.low}</td>
-      <td data-label="创新低天数" style="text-align:right">${item.days}</td>
-      <td data-label="跌幅" class="decline-cell" style="text-align:right;color:var(--red);background:rgba(207,19,34,${alpha.toFixed(2)})">${formatPercent(item.decline * 100, 1)}</td>
-      <td data-label="再创新高天数" style="text-align:right;white-space:nowrap">${recoveryCell}</td>
-      <td data-label="分类"><span class="cat-badge cat-${item.category}">${catNames[item.category] || item.category}</span></td>
-      ${hideCause ? '' : `<td data-label="下跌原因" class="cause-cell">${item.cause || ''}</td>`}
-    `;
-    tbody.appendChild(tr);
+  }
+  renderDrawdownTable();
+  document.getElementById(toggleId)?.addEventListener('click', () => {
+    tableExpanded = !tableExpanded;
+    renderDrawdownTable();
   });
 
   document.querySelectorAll(`#${tableId} th[data-sort]`).forEach(th => {

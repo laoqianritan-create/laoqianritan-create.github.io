@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261004093922">
-<link rel="stylesheet" href="css/chronicle.css?v=20261004093922">
-<script defer src="js/mobile-nav.js?v=20261004093922"></script>
+<link rel="stylesheet" href="style.css?v=20261004152048">
+<link rel="stylesheet" href="css/chronicle.css?v=20261004152048">
+<script defer src="js/mobile-nav.js?v=20261004152048"></script>
 </head>
 <body>
 
@@ -351,16 +351,20 @@
       <div class="panel-header">
         <div>
           <h2 class="panel-title">标普500自高点回撤</h2>
-          <p class="panel-desc">每个交易日距历史最高点的跌幅 · 五档回撤分类</p>
+          <p class="panel-desc">每个交易日距历史最高点的跌幅 · 五档回撤分类 · 散点图统计 1928 年以来全部 ≥10% 回撤</p>
         </div>
         <div class="panel-controls">
           <button class="btn btn-export" data-chart="chartDrawdown" title="导出PNG">&#8681;</button>
         </div>
       </div>
       <div class="chart-container chart-medium" id="chartDrawdown"></div>
+      <div class="chart-container chart-medium" id="chartDdScatter" style="margin-top:28px"></div>
       <div class="table-toolbar">
-        <div style="font-size:13px;color:var(--text-secondary)">回撤 ≥ 10% 的重大事件清单</div>
-        <button class="btn btn-export" data-export-element="drawdownTableWrap" title="导出表格 PNG">&#8681;</button>
+        <div style="font-size:13px;color:var(--text-secondary)">回撤 ≥ 10% 的重大事件清单 · 默认展示最近 12 个，展开看全部</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="ddTableToggle" style="display:none">展开全部</button>
+          <button class="btn btn-export" data-export-element="drawdownTableWrap" title="导出表格 PNG">&#8681;</button>
+        </div>
       </div>
       <div class="drawdown-table-wrap" id="drawdownTableWrap">
         <table class="data-table mobile-cards" id="drawdownTable">
@@ -813,16 +817,20 @@
       <div class="panel-header">
         <div>
           <h2 class="panel-title">纳斯达克100自高点回撤</h2>
-          <p class="panel-desc">每个交易日距历史最高点的跌幅 · 互联网泡沫 2000-2002 累计回撤 -82.9%，用时 4,775 天（13 年）才再创新高</p>
+          <p class="panel-desc">每个交易日距历史最高点的跌幅 · 互联网泡沫 2000-2002 累计回撤 -82.9%，用时 4,775 天（13 年）才再创新高 · 散点图统计 1985 年以来全部 ≥10% 回撤</p>
         </div>
         <div class="panel-controls">
           <button class="btn btn-export" data-chart="chartNdxDrawdown" title="导出PNG">&#8681;</button>
         </div>
       </div>
       <div class="chart-container chart-medium" id="chartNdxDrawdown"></div>
+      <div class="chart-container chart-medium" id="chartNdxDdScatter" style="margin-top:28px"></div>
       <div class="table-toolbar">
-        <div style="font-size:13px;color:var(--text-secondary)">回撤 ≥ 10% 的重大事件清单</div>
-        <button class="btn btn-export" data-export-element="ndxDrawdownTableWrap" title="导出表格 PNG">&#8681;</button>
+        <div style="font-size:13px;color:var(--text-secondary)">回撤 ≥ 10% 的重大事件清单 · 默认展示最近 12 个，展开看全部</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="ndxTableToggle" style="display:none">展开全部</button>
+          <button class="btn btn-export" data-export-element="ndxDrawdownTableWrap" title="导出表格 PNG">&#8681;</button>
+        </div>
       </div>
       <div class="drawdown-table-wrap" id="ndxDrawdownTableWrap">
         <table class="data-table mobile-cards" id="ndxDrawdownTable">
@@ -1263,9 +1271,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261004093922"></script>
-<script type="module" src="js/panels.js?v=20261004093922"></script>
-<script defer src="js/hero-curve.js?v=20261004093922"></script>
+<script src="js/freshness.js?v=20261004152048"></script>
+<script type="module" src="js/panels.js?v=20261004152048"></script>
+<script defer src="js/hero-curve.js?v=20261004152048"></script>
 
 </body>
 </html>

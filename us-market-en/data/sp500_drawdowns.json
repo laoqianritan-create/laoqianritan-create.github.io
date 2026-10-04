@@ -7,10 +7,11 @@
       "low": 6317,
       "decline": -0.098,
       "category": "narrative_break",
-      "cause": "Iran war, oil spike, private-credit turmoil, AI-disruption fears",
+      "cause": "Iran strike, oil spike, private-credit jitters, AI-disruption fears",
       "active": false,
       "recovery_days": 77,
-      "recovery_date": "2026-04-15"
+      "recovery_date": "2026-04-15",
+      "peak_date": "2026-01-28"
     },
     {
       "period": "2025: Oct 29 – Nov 21",
@@ -22,7 +23,8 @@
       "cause": "AI bubble fears",
       "active": false,
       "recovery_days": 56,
-      "recovery_date": "2025-12-24"
+      "recovery_date": "2025-12-24",
+      "peak_date": "2025-10-29"
     },
     {
       "period": "2025: Feb 19 – Apr 7",
@@ -34,7 +36,8 @@
       "cause": "Tariffs, trade war, and global recession fears",
       "active": false,
       "recovery_days": 128,
-      "recovery_date": "2025-06-27"
+      "recovery_date": "2025-06-27",
+      "peak_date": "2025-02-19"
     },
     {
       "period": "2024: Jul 16 – Aug 5",
@@ -46,7 +49,8 @@
       "cause": "Recession fears, Fed seen behind the curve, Nikkei crash",
       "active": false,
       "recovery_days": 65,
-      "recovery_date": "2024-09-19"
+      "recovery_date": "2024-09-19",
+      "peak_date": "2024-07-16"
     },
     {
       "period": "2024: Mar 28 – Apr 19",
@@ -58,7 +62,21 @@
       "cause": "Sticky inflation, Fed delays rate cuts, Iran/Israel conflict",
       "active": false,
       "recovery_days": 48,
-      "recovery_date": "2024-05-15"
+      "recovery_date": "2024-05-15",
+      "peak_date": "2024-03-28"
+    },
+    {
+      "period": "2023: Jul 31 – Oct 27",
+      "days": 88,
+      "high": 4588.96,
+      "low": 4117.37,
+      "decline": -0.103,
+      "category": "narrative_break",
+      "cause": "Surging long-term yields",
+      "active": false,
+      "recovery_days": 123,
+      "recovery_date": "2023-12-01",
+      "peak_date": "2023-07-31"
     },
     {
       "period": "2022: Jan 4 – Oct 13",
@@ -70,7 +88,8 @@
       "cause": "Inflation, rate hikes / Fed tightening, Russia-Ukraine war, recession fears",
       "active": false,
       "recovery_days": 745,
-      "recovery_date": "2024-01-19"
+      "recovery_date": "2024-01-19",
+      "peak_date": "2022-01-04"
     },
     {
       "period": "2021: Nov 22 – Dec 3",
@@ -82,7 +101,8 @@
       "cause": "COVID Omicron variant, Fed taper fears",
       "active": false,
       "recovery_days": 35,
-      "recovery_date": "2021-12-27"
+      "recovery_date": "2021-12-27",
+      "peak_date": "2021-11-22"
     },
     {
       "period": "2021: Sep 2 – Oct 4",
@@ -94,7 +114,8 @@
       "cause": "China contagion fears, Fed taper fears, COVID Delta variant",
       "active": false,
       "recovery_days": 49,
-      "recovery_date": "2021-10-21"
+      "recovery_date": "2021-10-21",
+      "peak_date": "2021-09-02"
     },
     {
       "period": "2021: Feb 16 – Mar 4",
@@ -106,7 +127,8 @@
       "cause": "Inflation fears, rising rates",
       "active": false,
       "recovery_days": 27,
-      "recovery_date": "2021-03-15"
+      "recovery_date": "2021-03-15",
+      "peak_date": "2021-02-16"
     },
     {
       "period": "2020: Sep 2 – Sep 24",
@@ -118,7 +140,8 @@
       "cause": "COVID pandemic, no new stimulus, election anxiety",
       "active": false,
       "recovery_days": 75,
-      "recovery_date": "2020-11-16"
+      "recovery_date": "2020-11-16",
+      "peak_date": "2020-09-02"
     },
     {
       "period": "2020: Feb 19 – Mar 23",
@@ -130,7 +153,8 @@
       "cause": "COVID pandemic, fears of global depression",
       "active": false,
       "recovery_days": 184,
-      "recovery_date": "2020-08-21"
+      "recovery_date": "2020-08-21",
+      "peak_date": "2020-02-19"
     },
     {
       "period": "2019: Jul 26 – Aug 5",
@@ -142,7 +166,8 @@
       "cause": "Trade war, tariffs, RMB devaluation, recession fears",
       "active": false,
       "recovery_days": 94,
-      "recovery_date": "2019-10-28"
+      "recovery_date": "2019-10-28",
+      "peak_date": "2019-07-26"
     },
     {
       "period": "2019: May 1 – Jun 3",
@@ -154,7 +179,8 @@
       "cause": "Trade war, tariffs, yield-curve inversion, global slowdown / recession fears",
       "active": false,
       "recovery_days": 50,
-      "recovery_date": "2019-06-20"
+      "recovery_date": "2019-06-20",
+      "peak_date": "2019-05-01"
     },
     {
       "period": "2018: Sep 21 – Dec 26",
@@ -166,7 +192,8 @@
       "cause": "Rising rates, China slowdown, trade war / tariffs, housing slowdown",
       "active": false,
       "recovery_days": 220,
-      "recovery_date": "2019-04-29"
+      "recovery_date": "2019-04-29",
+      "peak_date": "2018-09-21"
     },
     {
       "period": "2018: Jan 26 – Feb 9",
@@ -178,7 +205,8 @@
       "cause": "Inflation fears, rising rates",
       "active": false,
       "recovery_days": 210,
-      "recovery_date": "2018-08-24"
+      "recovery_date": "2018-08-24",
+      "peak_date": "2018-01-26"
     },
     {
       "period": "2016: Aug 15 – Nov 4",
@@ -190,7 +218,8 @@
       "cause": "Election anxiety",
       "active": false,
       "recovery_days": 98,
-      "recovery_date": "2016-11-21"
+      "recovery_date": "2016-11-21",
+      "peak_date": "2016-08-15"
     },
     {
       "period": "2015/16: May 20 – Feb 11",
@@ -202,7 +231,8 @@
       "cause": "Greek default, China A-share crash, EM currency stress, falling oil, North Korea",
       "active": false,
       "recovery_days": 418,
-      "recovery_date": "2016-07-11"
+      "recovery_date": "2016-07-11",
+      "peak_date": "2015-05-20"
     },
     {
       "period": "2014/15: Dec 29 – Feb 2",
@@ -214,7 +244,8 @@
       "cause": "Falling oil, stronger dollar, weak earnings",
       "active": false,
       "recovery_days": 46,
-      "recovery_date": "2015-02-13"
+      "recovery_date": "2015-02-13",
+      "peak_date": "2014-12-29"
     },
     {
       "period": "2014: Dec 5 – Dec 16",
@@ -226,7 +257,8 @@
       "cause": "Falling oil, stronger dollar",
       "active": false,
       "recovery_days": 18,
-      "recovery_date": "2014-12-23"
+      "recovery_date": "2014-12-23",
+      "peak_date": "2014-12-05"
     },
     {
       "period": "2014: Sep 19 – Oct 15",
@@ -238,7 +270,8 @@
       "cause": "Ebola, global-growth fears, falling oil",
       "active": false,
       "recovery_days": 47,
-      "recovery_date": "2014-11-05"
+      "recovery_date": "2014-11-05",
+      "peak_date": "2014-09-19"
     },
     {
       "period": "2014: Jan 15 – Feb 5",
@@ -250,7 +283,8 @@
       "cause": "Fed taper, European deflation fears, EM currency turmoil",
       "active": false,
       "recovery_days": 43,
-      "recovery_date": "2014-02-27"
+      "recovery_date": "2014-02-27",
+      "peak_date": "2014-01-15"
     },
     {
       "period": "2013: May 22 – Jun 24",
@@ -262,7 +296,8 @@
       "cause": "Fed taper fears",
       "active": false,
       "recovery_days": 57,
-      "recovery_date": "2013-07-18"
+      "recovery_date": "2013-07-18",
+      "peak_date": "2013-05-22"
     },
     {
       "period": "2012: Sep 14 – Nov 16",
@@ -274,7 +309,8 @@
       "cause": "Fiscal-cliff worries, Obama reelected",
       "active": false,
       "recovery_days": 125,
-      "recovery_date": "2013-01-17"
+      "recovery_date": "2013-01-17",
+      "peak_date": "2012-09-14"
     },
     {
       "period": "2012: Apr 2 – Jun 4",
@@ -286,7 +322,8 @@
       "cause": "European sovereign debt crisis",
       "active": false,
       "recovery_days": 157,
-      "recovery_date": "2012-09-06"
+      "recovery_date": "2012-09-06",
+      "peak_date": "2012-04-02"
     },
     {
       "period": "2011: May 2 – Oct 4",
@@ -298,7 +335,8 @@
       "cause": "European debt crisis, double-dip recession fears, US sovereign downgrade",
       "active": false,
       "recovery_days": 302,
-      "recovery_date": "2012-02-28"
+      "recovery_date": "2012-02-28",
+      "peak_date": "2011-05-02"
     },
     {
       "period": "2011: Feb 18 – Mar 16",
@@ -310,7 +348,8 @@
       "cause": "Libya intervention (civil war), Japan earthquake / nuclear disaster",
       "active": false,
       "recovery_days": 67,
-      "recovery_date": "2011-04-26"
+      "recovery_date": "2011-04-26",
+      "peak_date": "2011-02-18"
     },
     {
       "period": "2010: Apr 26 – Jul 1",
@@ -322,7 +361,8 @@
       "cause": "European debt crisis, Flash Crash, growth worries",
       "active": false,
       "recovery_days": 192,
-      "recovery_date": "2010-11-04"
+      "recovery_date": "2010-11-04",
+      "peak_date": "2010-04-26"
     },
     {
       "period": "2010: Jan 19 – Feb 5",
@@ -334,7 +374,8 @@
       "cause": "China credit tightening, Obama bank-regulation plan",
       "active": false,
       "recovery_days": 51,
-      "recovery_date": "2010-03-11"
+      "recovery_date": "2010-03-11",
+      "peak_date": "2010-01-19"
     },
     {
       "period": "2009: Oct 21 – Nov 2",
@@ -346,7 +387,8 @@
       "cause": "Concerns about the recovery",
       "active": false,
       "recovery_days": 26,
-      "recovery_date": "2009-11-16"
+      "recovery_date": "2009-11-16",
+      "peak_date": "2009-10-21"
     },
     {
       "period": "2009: Sep 23 – Oct 2",
@@ -358,7 +400,8 @@
       "cause": "Concerns about the recovery",
       "active": false,
       "recovery_days": 21,
-      "recovery_date": "2009-10-14"
+      "recovery_date": "2009-10-14",
+      "peak_date": "2009-09-23"
     },
     {
       "period": "2009: Jun 11 – Jul 7",
@@ -370,7 +413,8 @@
       "cause": "World Bank's negative-growth forecast, fears market is running ahead of the recovery",
       "active": false,
       "recovery_days": 42,
-      "recovery_date": "2009-07-23"
+      "recovery_date": "2009-07-23",
+      "peak_date": "2009-06-11"
     },
     {
       "period": "2009: May 8 – 15",
@@ -382,7 +426,8 @@
       "cause": "Fears that the rally is too fast",
       "active": false,
       "recovery_days": 24,
-      "recovery_date": "2009-06-01"
+      "recovery_date": "2009-06-01",
+      "peak_date": "2009-05-08"
     },
     {
       "period": "2007: Oct 9 – Mar 9, 2009",
@@ -394,7 +439,8 @@
       "cause": "Global Financial Crisis: subprime collapse, Bear Stearns rescue, Fannie/Freddie conservatorship, Lehman bankruptcy, AIG bailout, global credit freeze, wave of bank failures, global recession",
       "active": false,
       "recovery_days": 1997,
-      "recovery_date": "2013-03-28"
+      "recovery_date": "2013-03-28",
+      "peak_date": "2007-10-09"
     },
     {
       "period": "2007: Jul 19 – Aug 15",
@@ -406,7 +452,8 @@
       "cause": "First major eruption of the subprime crisis, Bear Stearns hedge-fund collapse, BNP Paribas freezes funds",
       "active": false,
       "recovery_days": 78,
-      "recovery_date": "2007-10-05"
+      "recovery_date": "2007-10-05",
+      "peak_date": "2007-07-19"
     },
     {
       "period": "2007: Feb 20 – Mar 5",
@@ -418,7 +465,8 @@
       "cause": "Shanghai Composite plunges 9% triggering a global selloff, Greenspan warns of recession",
       "active": false,
       "recovery_days": 55,
-      "recovery_date": "2007-04-16"
+      "recovery_date": "2007-04-16",
+      "peak_date": "2007-02-20"
     },
     {
       "period": "2006: May 5 – Jun 13",
@@ -430,7 +478,8 @@
       "cause": "Inflation fears, Fed hikes to 5.0%, broad EM selloff",
       "active": false,
       "recovery_days": 143,
-      "recovery_date": "2006-09-25"
+      "recovery_date": "2006-09-25",
+      "peak_date": "2006-05-05"
     },
     {
       "period": "2005: Aug 3 – Oct 13",
@@ -442,7 +491,8 @@
       "cause": "Hurricane Katrina damages energy infrastructure, oil surges, Fed continues hiking",
       "active": false,
       "recovery_days": 107,
-      "recovery_date": "2005-11-18"
+      "recovery_date": "2005-11-18",
+      "peak_date": "2005-08-03"
     },
     {
       "period": "2005: Mar 7 – Apr 20",
@@ -454,7 +504,8 @@
       "cause": "GM/Ford credit downgrades, signs of economic slowdown, rising oil and inflation worries",
       "active": false,
       "recovery_days": 129,
-      "recovery_date": "2005-07-14"
+      "recovery_date": "2005-07-14",
+      "peak_date": "2005-03-07"
     },
     {
       "period": "2004: Feb 11 – Aug 12",
@@ -466,7 +517,21 @@
       "cause": "Fed-hike expectations, oil spike, Madrid bombings",
       "active": false,
       "recovery_days": 267,
-      "recovery_date": "2004-11-04"
+      "recovery_date": "2004-11-04",
+      "peak_date": "2004-02-11"
+    },
+    {
+      "period": "2002: Nov 27 – Mar 11, 2003",
+      "days": 104,
+      "high": 938.87,
+      "low": 800.73,
+      "decline": -0.147,
+      "category": "narrative_break",
+      "cause": "War worries; soft economic data",
+      "active": false,
+      "recovery_days": 166,
+      "recovery_date": "2003-05-12",
+      "peak_date": "2002-11-27"
     },
     {
       "period": "2000: Mar 24 – Oct 9, 2002",
@@ -478,7 +543,8 @@
       "cause": "Dot-com bubble bursts, tech valuations collapse, 9/11 terror attacks, Enron/WorldCom accounting scandals",
       "active": false,
       "recovery_days": 2623,
-      "recovery_date": "2007-05-30"
+      "recovery_date": "2007-05-30",
+      "peak_date": "2000-03-24"
     },
     {
       "period": "2000: Jan 14 – Feb 25",
@@ -490,16 +556,525 @@
       "cause": "Consecutive Fed hikes, fading Y2K spending, extreme tech valuations",
       "active": false,
       "recovery_days": 67,
-      "recovery_date": "2000-03-21"
+      "recovery_date": "2000-03-21",
+      "peak_date": "2000-01-14"
+    },
+    {
+      "period": "1999: Jul 16 – Oct 15",
+      "days": 91,
+      "high": 1418.78,
+      "low": 1247.41,
+      "decline": -0.121,
+      "category": "narrative_break",
+      "cause": "Fed hiking cycle",
+      "active": false,
+      "recovery_days": 123,
+      "recovery_date": "1999-11-16",
+      "peak_date": "1999-07-16"
+    },
+    {
+      "period": "1998: Sep 23 – Oct 8",
+      "days": 15,
+      "high": 1066.09,
+      "low": 959.44,
+      "decline": -0.1,
+      "category": "narrative_break",
+      "cause": "LTCM rescue week",
+      "active": false,
+      "recovery_days": 28,
+      "recovery_date": "1998-10-21",
+      "peak_date": "1998-09-23"
+    },
+    {
+      "period": "1998: Jul 17 – Aug 31",
+      "days": 45,
+      "high": 1186.75,
+      "low": 957.28,
+      "decline": -0.193,
+      "category": "policy_shift",
+      "cause": "LTCM and the Russian default",
+      "active": false,
+      "recovery_days": 129,
+      "recovery_date": "1998-11-23",
+      "peak_date": "1998-07-17"
+    },
+    {
+      "period": "1997: Oct 7 – Oct 27",
+      "days": 20,
+      "high": 983.12,
+      "low": 876.99,
+      "decline": -0.108,
+      "category": "narrative_break",
+      "cause": "Asian financial crisis",
+      "active": false,
+      "recovery_days": 59,
+      "recovery_date": "1997-12-05",
+      "peak_date": "1997-10-07"
+    },
+    {
+      "period": "1990: Jul 16 – Oct 11",
+      "days": 87,
+      "high": 368.95,
+      "low": 295.46,
+      "decline": -0.199,
+      "category": "policy_shift",
+      "cause": "Gulf War recession",
+      "active": false,
+      "recovery_days": 212,
+      "recovery_date": "1991-02-13",
+      "peak_date": "1990-07-16"
+    },
+    {
+      "period": "1989: Oct 9 – Jan 30, 1990",
+      "days": 113,
+      "high": 359.8,
+      "low": 322.98,
+      "decline": -0.102,
+      "category": "narrative_break",
+      "cause": "LBO-financing worries",
+      "active": false,
+      "recovery_days": 232,
+      "recovery_date": "1990-05-29",
+      "peak_date": "1989-10-09"
+    },
+    {
+      "period": "1987: Aug 25 – Dec 4",
+      "days": 101,
+      "high": 336.77,
+      "low": 223.92,
+      "decline": -0.335,
+      "category": "exogenous_shock",
+      "cause": "Black Monday",
+      "active": false,
+      "recovery_days": 701,
+      "recovery_date": "1989-07-26",
+      "peak_date": "1987-08-25"
+    },
+    {
+      "period": "1983: Oct 10 – Jul 24, 1984",
+      "days": 288,
+      "high": 172.65,
+      "low": 147.82,
+      "decline": -0.144,
+      "category": "narrative_break",
+      "cause": "Overheating; rate-hike fears",
+      "active": false,
+      "recovery_days": 469,
+      "recovery_date": "1985-01-21",
+      "peak_date": "1983-10-10"
+    },
+    {
+      "period": "1980: Nov 28 – Aug 12, 1982",
+      "days": 622,
+      "high": 140.52,
+      "low": 102.42,
+      "decline": -0.271,
+      "category": "policy_shift",
+      "cause": "Double-dip recession; sky-high rates",
+      "active": false,
+      "recovery_days": 705,
+      "recovery_date": "1982-11-03",
+      "peak_date": "1980-11-28"
+    },
+    {
+      "period": "1980: Feb 13 – Mar 27",
+      "days": 43,
+      "high": 118.44,
+      "low": 98.22,
+      "decline": -0.171,
+      "category": "policy_shift",
+      "cause": "Early Volcker tightening",
+      "active": false,
+      "recovery_days": 152,
+      "recovery_date": "1980-07-14",
+      "peak_date": "1980-02-13"
+    },
+    {
+      "period": "1979: Oct 5 – Nov 7",
+      "days": 33,
+      "high": 111.27,
+      "low": 99.87,
+      "decline": -0.102,
+      "category": "narrative_break",
+      "cause": "Second oil shock (1979)",
+      "active": false,
+      "recovery_days": 108,
+      "recovery_date": "1980-01-21",
+      "peak_date": "1979-10-05"
+    },
+    {
+      "period": "1978: Sep 12 – Nov 14",
+      "days": 63,
+      "high": 106.99,
+      "low": 92.49,
+      "decline": -0.136,
+      "category": "narrative_break",
+      "cause": "Dollar crisis; runaway inflation fears",
+      "active": false,
+      "recovery_days": 335,
+      "recovery_date": "1979-08-13",
+      "peak_date": "1978-09-12"
+    },
+    {
+      "period": "1976: Sep 21 – Mar 6, 1978",
+      "days": 531,
+      "high": 107.83,
+      "low": 86.9,
+      "decline": -0.194,
+      "category": "policy_shift",
+      "cause": "The 1978 correction; stubborn inflation",
+      "active": false,
+      "recovery_days": 1058,
+      "recovery_date": "1979-08-15",
+      "peak_date": "1976-09-21"
+    },
+    {
+      "period": "1975: Jul 15 – Sep 16",
+      "days": 63,
+      "high": 95.61,
+      "low": 82.09,
+      "decline": -0.141,
+      "category": "narrative_break",
+      "cause": "Recovery doubts",
+      "active": false,
+      "recovery_days": 181,
+      "recovery_date": "1976-01-12",
+      "peak_date": "1975-07-15"
+    },
+    {
+      "period": "1974: Nov 7 – Dec 6",
+      "days": 29,
+      "high": 75.21,
+      "low": 65.01,
+      "decline": -0.136,
+      "category": "narrative_break",
+      "cause": "Late-recession relapse",
+      "active": false,
+      "recovery_days": 81,
+      "recovery_date": "1975-01-27",
+      "peak_date": "1974-11-07"
+    },
+    {
+      "period": "1973: Jan 11 – Oct 3, 1974",
+      "days": 630,
+      "high": 120.24,
+      "low": 62.28,
+      "decline": -0.482,
+      "category": "credit_destruction",
+      "cause": "Oil crisis and stagflation bear market",
+      "active": false,
+      "recovery_days": 2744,
+      "recovery_date": "1980-07-17",
+      "peak_date": "1973-01-11"
+    },
+    {
+      "period": "1971: Apr 28 – Nov 23",
+      "days": 209,
+      "high": 104.77,
+      "low": 90.16,
+      "decline": -0.139,
+      "category": "narrative_break",
+      "cause": "Stagflation worries; dollar strains build",
+      "active": false,
+      "recovery_days": 282,
+      "recovery_date": "1972-02-04",
+      "peak_date": "1971-04-28"
+    },
+    {
+      "period": "1968: Nov 29 – May 26, 1970",
+      "days": 543,
+      "high": 108.37,
+      "low": 69.29,
+      "decline": -0.361,
+      "category": "exogenous_shock",
+      "cause": "Vietnam escalation; inflation and hikes",
+      "active": false,
+      "recovery_days": 1193,
+      "recovery_date": "1972-03-06",
+      "peak_date": "1968-11-29"
+    },
+    {
+      "period": "1967: Sep 25 – Mar 5, 1968",
+      "days": 162,
+      "high": 97.59,
+      "low": 87.72,
+      "decline": -0.101,
+      "category": "narrative_break",
+      "cause": "Sterling devaluation; rate-hike fears",
+      "active": false,
+      "recovery_days": 217,
+      "recovery_date": "1968-04-29",
+      "peak_date": "1967-09-25"
+    },
+    {
+      "period": "1966: Feb 9 – Oct 7",
+      "days": 240,
+      "high": 94.06,
+      "low": 73.2,
+      "decline": -0.222,
+      "category": "policy_shift",
+      "cause": "The credit crunch of 1966",
+      "active": false,
+      "recovery_days": 449,
+      "recovery_date": "1967-05-04",
+      "peak_date": "1966-02-09"
+    },
+    {
+      "period": "1962: Aug 22 – Oct 23",
+      "days": 62,
+      "high": 59.78,
+      "low": 53.49,
+      "decline": -0.105,
+      "category": "narrative_break",
+      "cause": "Cuban Missile Crisis",
+      "active": false,
+      "recovery_days": 84,
+      "recovery_date": "1962-11-14",
+      "peak_date": "1962-08-22"
+    },
+    {
+      "period": "1961: Dec 12 – Jun 26, 1962",
+      "days": 196,
+      "high": 72.64,
+      "low": 52.32,
+      "decline": -0.28,
+      "category": "policy_shift",
+      "cause": "Kennedy slide; Cuban Missile Crisis",
+      "active": false,
+      "recovery_days": 630,
+      "recovery_date": "1963-09-03",
+      "peak_date": "1961-12-12"
+    },
+    {
+      "period": "1959: Aug 3 – Oct 25, 1960",
+      "days": 449,
+      "high": 60.71,
+      "low": 52.2,
+      "decline": -0.14,
+      "category": "narrative_break",
+      "cause": "Rate hikes; 1960 recession fears",
+      "active": false,
+      "recovery_days": 543,
+      "recovery_date": "1961-01-27",
+      "peak_date": "1959-08-03"
+    },
+    {
+      "period": "1956: Aug 3 – Oct 22, 1957",
+      "days": 445,
+      "high": 49.64,
+      "low": 38.98,
+      "decline": -0.215,
+      "category": "policy_shift",
+      "cause": "Suez crisis; the 1957-58 recession",
+      "active": false,
+      "recovery_days": 782,
+      "recovery_date": "1958-09-24",
+      "peak_date": "1956-08-03"
+    },
+    {
+      "period": "1955: Sep 23 – Oct 11",
+      "days": 18,
+      "high": 45.63,
+      "low": 40.8,
+      "decline": -0.106,
+      "category": "narrative_break",
+      "cause": "Eisenhower heart attack",
+      "active": false,
+      "recovery_days": 52,
+      "recovery_date": "1955-11-14",
+      "peak_date": "1955-09-23"
+    },
+    {
+      "period": "1953: Jan 5 – Sep 14",
+      "days": 252,
+      "high": 26.66,
+      "low": 22.71,
+      "decline": -0.148,
+      "category": "narrative_break",
+      "cause": "Postwar tightening; Korean armistice digestion",
+      "active": false,
+      "recovery_days": 430,
+      "recovery_date": "1954-03-11",
+      "peak_date": "1953-01-05"
+    },
+    {
+      "period": "1950: Jun 12 – Jul 17",
+      "days": 35,
+      "high": 19.4,
+      "low": 16.68,
+      "decline": -0.14,
+      "category": "narrative_break",
+      "cause": "Korean War outbreak",
+      "active": false,
+      "recovery_days": 102,
+      "recovery_date": "1950-09-22",
+      "peak_date": "1950-06-12"
+    },
+    {
+      "period": "1946: May 29 – Jun 13, 1949",
+      "days": 1111,
+      "high": 19.25,
+      "low": 13.55,
+      "decline": -0.296,
+      "category": "policy_shift",
+      "cause": "The postwar recession",
+      "active": false,
+      "recovery_days": 1472,
+      "recovery_date": "1950-06-09",
+      "peak_date": "1946-05-29"
+    },
+    {
+      "period": "1946: Feb 5 – Feb 26",
+      "days": 21,
+      "high": 18.7,
+      "low": 16.81,
+      "decline": -0.101,
+      "category": "narrative_break",
+      "cause": "First postwar-reconversion scare",
+      "active": false,
+      "recovery_days": 63,
+      "recovery_date": "1946-04-09",
+      "peak_date": "1946-02-05"
+    },
+    {
+      "period": "1943: Jul 14 – Nov 29",
+      "days": 138,
+      "high": 12.64,
+      "low": 10.99,
+      "decline": -0.131,
+      "category": "narrative_break",
+      "cause": "Wartime inflation and price-control worries",
+      "active": false,
+      "recovery_days": 335,
+      "recovery_date": "1944-06-13",
+      "peak_date": "1943-07-14"
+    },
+    {
+      "period": "1937: Mar 10 – Apr 28, 1942",
+      "days": 1875,
+      "high": 18.67,
+      "low": 7.47,
+      "decline": -0.6,
+      "category": "credit_destruction",
+      "cause": "Fed tightening; the 1937 recession",
+      "active": false,
+      "recovery_days": 3247,
+      "recovery_date": "1946-01-29",
+      "peak_date": "1937-03-10"
+    },
+    {
+      "period": "1936: Apr 6 – Apr 29",
+      "days": 23,
+      "high": 15.51,
+      "low": 13.53,
+      "decline": -0.128,
+      "category": "narrative_break",
+      "cause": "Excess-reserve tightening fears",
+      "active": false,
+      "recovery_days": 99,
+      "recovery_date": "1936-07-14",
+      "peak_date": "1936-04-06"
+    },
+    {
+      "period": "1933: Jul 18 – Mar 14, 1935",
+      "days": 604,
+      "high": 12.2,
+      "low": 8.06,
+      "decline": -0.339,
+      "category": "exogenous_shock",
+      "cause": "Overheated recovery; real rates spike",
+      "active": false,
+      "recovery_days": 826,
+      "recovery_date": "1935-10-22",
+      "peak_date": "1933-07-18"
+    },
+    {
+      "period": "1933: Jun 12 – Jun 15",
+      "days": 3,
+      "high": 10.89,
+      "low": 9.74,
+      "decline": -0.106,
+      "category": "narrative_break",
+      "cause": "World Economic Conference breakdown fears",
+      "active": false,
+      "recovery_days": 15,
+      "recovery_date": "1933-06-27",
+      "peak_date": "1933-06-12"
+    },
+    {
+      "period": "1933: Mar 16 – Mar 31",
+      "days": 15,
+      "high": 6.93,
+      "low": 5.85,
+      "decline": -0.156,
+      "category": "policy_shift",
+      "cause": "Policy whiplash after the bank holiday",
+      "active": false,
+      "recovery_days": 34,
+      "recovery_date": "1933-04-19",
+      "peak_date": "1933-03-16"
+    },
+    {
+      "period": "1932: Sep 7 – Feb 27, 1933",
+      "days": 173,
+      "high": 9.31,
+      "low": 5.53,
+      "decline": -0.406,
+      "category": "exogenous_shock",
+      "cause": "New Deal uncertainty; renewed bank fears",
+      "active": false,
+      "recovery_days": 261,
+      "recovery_date": "1933-05-26",
+      "peak_date": "1932-09-07"
+    },
+    {
+      "period": "1932: Jun 16 – Jul 8",
+      "days": 22,
+      "high": 5.12,
+      "low": 4.41,
+      "decline": -0.139,
+      "category": "narrative_break",
+      "cause": "Failed rally within the Depression",
+      "active": false,
+      "recovery_days": 36,
+      "recovery_date": "1932-07-22",
+      "peak_date": "1932-06-16"
+    },
+    {
+      "period": "1929: Sep 16 – Jun 1, 1932",
+      "days": 989,
+      "high": 31.86,
+      "low": 4.4,
+      "decline": -0.862,
+      "category": "credit_destruction",
+      "cause": "The Great Depression",
+      "active": false,
+      "recovery_days": 9137,
+      "recovery_date": "1954-09-22",
+      "peak_date": "1929-09-16"
+    },
+    {
+      "period": "1928: May 14 – Jun 12",
+      "days": 29,
+      "high": 20.44,
+      "low": 18.34,
+      "decline": -0.103,
+      "category": "narrative_break",
+      "cause": "Post-war-scare pullback",
+      "active": false,
+      "recovery_days": 106,
+      "recovery_date": "1928-08-28",
+      "peak_date": "1928-05-14"
     }
   ],
   "summary": {
-    "totalCount": 41,
-    "medianDays": 27,
-    "medianDecline": -0.076,
-    "maxDecline": -0.568,
-    "maxDuration": 929,
-    "bearMarkets": 5
+    "totalCount": 82,
+    "medianDays": 47,
+    "medianDecline": -0.109,
+    "maxDecline": -0.862,
+    "maxDuration": 1875,
+    "bearMarkets": 19,
+    "lastDataDate": "2026-10-02"
   },
   "categories": [
     {
@@ -512,29 +1087,29 @@
     {
       "id": "narrative_break",
       "name": "Narrative Break",
-      "range": "7%-15%",
+      "range": "10%-15%",
       "duration": "1–3 months",
       "color": "#fa8c16"
     },
     {
       "id": "policy_shift",
       "name": "Policy Shift",
-      "range": "15%-25%",
+      "range": "15%-30%",
       "duration": "3–10 months",
       "color": "#f5222d"
     },
     {
       "id": "credit_destruction",
       "name": "Credit Destruction",
-      "range": "40%-60%",
+      "range": "≥45%",
       "duration": "1.5–2.5 years",
       "color": "#820014"
     },
     {
       "id": "exogenous_shock",
       "name": "Exogenous Shock",
-      "range": "Deep but quick recovery",
-      "duration": "Variable",
+      "range": "30%-45% · fast recovery",
+      "duration": "Uncertain",
       "color": "#722ed1"
     }
   ]

@@ -3,7 +3,9 @@
   "ticker": "^NDX",
   "drawdowns": [
     {
-      "period": "2000: Mar 27 – Oct 7",
+      "period": "2000: Mar 27 – Oct 7, 2002",
+      "peak_date": "2000-03-27",
+      "trough_date": "2002-10-07",
       "days": 924,
       "high": 4704.73,
       "low": 804.64,
@@ -16,6 +18,8 @@
     },
     {
       "period": "1987: Oct 5 – Oct 26",
+      "peak_date": "1987-10-05",
+      "trough_date": "1987-10-26",
       "days": 21,
       "high": 213.81,
       "low": 128.43,
@@ -27,7 +31,9 @@
       "recovery_date": "1989-05-26"
     },
     {
-      "period": "2021: Nov 19 – Dec 28",
+      "period": "2021: Nov 19 – Dec 28, 2022",
+      "peak_date": "2021-11-19",
+      "trough_date": "2022-12-28",
       "days": 404,
       "high": 16573.34,
       "low": 10679.34,
@@ -40,6 +46,8 @@
     },
     {
       "period": "1990: Jul 16 – Oct 11",
+      "peak_date": "1990-07-16",
+      "trough_date": "1990-10-11",
       "days": 87,
       "high": 246.18,
       "low": 165.2,
@@ -52,6 +60,8 @@
     },
     {
       "period": "2020: Feb 19 – Mar 20",
+      "peak_date": "2020-02-19",
+      "trough_date": "2020-03-20",
       "days": 30,
       "high": 9718.73,
       "low": 6994.29,
@@ -64,6 +74,8 @@
     },
     {
       "period": "1998: Jul 20 – Oct 8",
+      "peak_date": "1998-07-20",
+      "trough_date": "1998-10-08",
       "days": 80,
       "high": 1465.89,
       "low": 1128.88,
@@ -76,6 +88,8 @@
     },
     {
       "period": "2018: Aug 29 – Dec 24",
+      "peak_date": "2018-08-29",
+      "trough_date": "2018-12-24",
       "days": 117,
       "high": 7660.18,
       "low": 5899.35,
@@ -88,6 +102,8 @@
     },
     {
       "period": "2025: Feb 19 – Apr 8",
+      "peak_date": "2025-02-19",
+      "trough_date": "2025-04-08",
       "days": 48,
       "high": 22175.6,
       "low": 17090.4,
@@ -100,6 +116,8 @@
     },
     {
       "period": "1992: Feb 12 – Jun 26",
+      "peak_date": "1992-02-12",
+      "trough_date": "1992-06-26",
       "days": 135,
       "high": 355.98,
       "low": 290.03,
@@ -112,6 +130,8 @@
     },
     {
       "period": "1997: Oct 9 – Dec 24",
+      "peak_date": "1997-10-09",
+      "trough_date": "1997-12-24",
       "days": 76,
       "high": 1148.21,
       "low": 938.99,
@@ -124,6 +144,8 @@
     },
     {
       "period": "1986: Jul 3 – Sep 15",
+      "peak_date": "1986-07-03",
+      "trough_date": "1986-09-15",
       "days": 74,
       "high": 164.51,
       "low": 134.94,
@@ -135,7 +157,9 @@
       "recovery_date": "1987-01-19"
     },
     {
-      "period": "1989: Oct 9 – Jan 30",
+      "period": "1989: Oct 9 – Jan 30, 1990",
+      "peak_date": "1989-10-09",
+      "trough_date": "1990-01-30",
       "days": 113,
       "high": 236.79,
       "low": 197.65,
@@ -147,7 +171,9 @@
       "recovery_date": "1990-05-24"
     },
     {
-      "period": "2015: Nov 3 – Feb 9",
+      "period": "2015: Nov 3 – Feb 9, 2016",
+      "peak_date": "2015-11-03",
+      "trough_date": "2016-02-09",
       "days": 98,
       "high": 4719.05,
       "low": 3947.8,
@@ -160,6 +186,8 @@
     },
     {
       "period": "1994: Mar 17 – Jun 24",
+      "peak_date": "1994-03-17",
+      "trough_date": "1994-06-24",
       "days": 99,
       "high": 418.45,
       "low": 351.76,
@@ -172,6 +200,8 @@
     },
     {
       "period": "1997: Jan 22 – Apr 2",
+      "peak_date": "1997-01-22",
+      "trough_date": "1997-04-02",
       "days": 70,
       "high": 925.52,
       "low": 783.92,
@@ -184,6 +214,8 @@
     },
     {
       "period": "1996: Jun 5 – Jul 23",
+      "peak_date": "1996-06-05",
+      "trough_date": "1996-07-23",
       "days": 48,
       "high": 699.35,
       "low": 598.34,
@@ -196,6 +228,8 @@
     },
     {
       "period": "1993: Jan 14 – Apr 26",
+      "peak_date": "1993-01-14",
+      "trough_date": "1993-04-26",
       "days": 102,
       "high": 381.34,
       "low": 327.28,
@@ -207,7 +241,9 @@
       "recovery_date": "1993-09-27"
     },
     {
-      "period": "1995: Nov 3 – Jan 9",
+      "period": "1995: Nov 3 – Jan 9, 1996",
+      "peak_date": "1995-11-03",
+      "trough_date": "1996-01-09",
       "days": 67,
       "high": 621.71,
       "low": 534.42,
@@ -220,6 +256,8 @@
     },
     {
       "period": "2024: Jul 10 – Aug 7",
+      "peak_date": "2024-07-10",
+      "trough_date": "2024-08-07",
       "days": 28,
       "high": 20675.38,
       "low": 17867.37,
@@ -232,6 +270,8 @@
     },
     {
       "period": "2020: Sep 2 – Sep 23",
+      "peak_date": "2020-09-02",
+      "trough_date": "2020-09-23",
       "days": 21,
       "high": 12420.54,
       "low": 10833.33,
@@ -243,7 +283,9 @@
       "recovery_date": "2020-12-01"
     },
     {
-      "period": "2025: Oct 29 – Mar 30",
+      "period": "2025: Oct 29 – Mar 30, 2026",
+      "peak_date": "2025-10-29",
+      "trough_date": "2026-03-30",
       "days": 152,
       "high": 26119.85,
       "low": 22953.38,
@@ -256,6 +298,8 @@
     },
     {
       "period": "1999: Jul 16 – Aug 10",
+      "peak_date": "1999-07-16",
+      "trough_date": "1999-08-10",
       "days": 25,
       "high": 2459.48,
       "low": 2163.77,
@@ -268,6 +312,8 @@
     },
     {
       "period": "1999: Apr 9 – Apr 19",
+      "peak_date": "1999-04-09",
+      "trough_date": "1999-04-19",
       "days": 10,
       "high": 2232.47,
       "low": 1967.58,
@@ -280,6 +326,8 @@
     },
     {
       "period": "2000: Jan 3 – Jan 6",
+      "peak_date": "2000-01-03",
+      "trough_date": "2000-01-06",
       "days": 3,
       "high": 3790.55,
       "low": 3340.81,
@@ -292,6 +340,8 @@
     },
     {
       "period": "1999: Apr 26 – May 25",
+      "peak_date": "1999-04-26",
+      "trough_date": "1999-05-25",
       "days": 29,
       "high": 2260.66,
       "low": 1999.04,
@@ -304,6 +354,8 @@
     },
     {
       "period": "1991: Apr 17 – Jun 24",
+      "peak_date": "1991-04-17",
+      "trough_date": "1991-06-24",
       "days": 68,
       "high": 283.39,
       "low": 250.88,
@@ -316,6 +368,8 @@
     },
     {
       "period": "1999: Feb 1 – Mar 2",
+      "peak_date": "1999-02-01",
+      "trough_date": "1999-03-02",
       "days": 29,
       "high": 2130.93,
       "low": 1888.66,
@@ -328,6 +382,8 @@
     },
     {
       "period": "2026: Jun 2 – Jul 29",
+      "peak_date": "2026-06-02",
+      "trough_date": "2026-07-29",
       "days": 57,
       "high": 30660.6,
       "low": 27192.31,
@@ -340,6 +396,8 @@
     },
     {
       "period": "2019: May 3 – Jun 3",
+      "peak_date": "2019-05-03",
+      "trough_date": "2019-06-03",
       "days": 31,
       "high": 7845.73,
       "low": 6978.02,
@@ -352,6 +410,8 @@
     },
     {
       "period": "2021: Feb 12 – Mar 8",
+      "peak_date": "2021-02-12",
+      "trough_date": "2021-03-08",
       "days": 24,
       "high": 13807.7,
       "low": 12299.08,
@@ -364,6 +424,8 @@
     },
     {
       "period": "2000: Jan 21 – Jan 28",
+      "peak_date": "2000-01-21",
+      "trough_date": "2000-01-28",
       "days": 7,
       "high": 3849.96,
       "low": 3446.13,
@@ -376,6 +438,8 @@
     },
     {
       "period": "2018: Mar 12 – Apr 2",
+      "peak_date": "2018-03-12",
+      "trough_date": "2018-04-02",
       "days": 21,
       "high": 7131.12,
       "low": 6390.84,
@@ -388,6 +452,8 @@
     },
     {
       "period": "1995: Sep 11 – Oct 9",
+      "peak_date": "1995-09-11",
+      "trough_date": "1995-10-09",
       "days": 28,
       "high": 609.75,
       "low": 546.93,
@@ -400,6 +466,8 @@
     },
     {
       "period": "2018: Jan 26 – Feb 8",
+      "peak_date": "2018-01-26",
+      "trough_date": "2018-02-08",
       "days": 13,
       "high": 7022.97,
       "low": 6306.1,
@@ -412,6 +480,8 @@
     },
     {
       "period": "2000: Mar 10 – Mar 15",
+      "peak_date": "2000-03-10",
+      "trough_date": "2000-03-15",
       "days": 5,
       "high": 4587.16,
       "low": 4130.01,
@@ -424,6 +494,8 @@
     },
     {
       "period": "1998: Apr 22 – Jun 3",
+      "peak_date": "1998-04-22",
+      "trough_date": "1998-06-03",
       "days": 42,
       "high": 1290.9,
       "low": 1163.98,
@@ -436,6 +508,8 @@
     },
     {
       "period": "1999: Oct 11 – Oct 18",
+      "peak_date": "1999-10-11",
+      "trough_date": "1999-10-18",
       "days": 7,
       "high": 2578.88,
       "low": 2362.11,
@@ -448,6 +522,8 @@
     },
     {
       "period": "1995: Jul 17 – Jul 19",
+      "peak_date": "1995-07-17",
+      "trough_date": "1995-07-19",
       "days": 2,
       "high": 596.91,
       "low": 547.12,
@@ -460,6 +536,8 @@
     },
     {
       "period": "1996: Feb 22 – Mar 8",
+      "peak_date": "1996-02-22",
+      "trough_date": "1996-03-08",
       "days": 15,
       "high": 643.41,
       "low": 591.71,
@@ -472,6 +550,8 @@
     },
     {
       "period": "1992: Jan 15 – Jan 21",
+      "peak_date": "1992-01-15",
+      "trough_date": "1992-01-21",
       "days": 6,
       "high": 355.6,
       "low": 328.04,
@@ -484,6 +564,8 @@
     },
     {
       "period": "2021: Sep 7 – Oct 4",
+      "peak_date": "2021-09-07",
+      "trough_date": "2021-10-04",
       "days": 27,
       "high": 15675.76,
       "low": 14472.12,
@@ -496,6 +578,8 @@
     },
     {
       "period": "2019: Jul 26 – Aug 5",
+      "peak_date": "2019-07-26",
+      "trough_date": "2019-08-05",
       "days": 10,
       "high": 8016.95,
       "low": 7415.69,
@@ -508,6 +592,8 @@
     },
     {
       "period": "2021: Apr 16 – May 12",
+      "peak_date": "2021-04-16",
+      "trough_date": "2021-05-12",
       "days": 26,
       "high": 14041.91,
       "low": 13001.63,
@@ -520,6 +606,8 @@
     },
     {
       "period": "2024: Mar 22 – Apr 19",
+      "peak_date": "2024-03-22",
+      "trough_date": "2024-04-19",
       "days": 28,
       "high": 18339.44,
       "low": 17037.65,
@@ -532,6 +620,8 @@
     },
     {
       "period": "1989: Jun 7 – Jun 30",
+      "peak_date": "1989-06-07",
+      "trough_date": "1989-06-30",
       "days": 23,
       "high": 219.88,
       "low": 204.59,
@@ -544,6 +634,8 @@
     },
     {
       "period": "1987: Aug 26 – Sep 21",
+      "peak_date": "1987-08-26",
+      "trough_date": "1987-09-21",
       "days": 26,
       "high": 211.16,
       "low": 197.26,
@@ -556,6 +648,8 @@
     },
     {
       "period": "1998: Feb 26 – Mar 5",
+      "peak_date": "1998-02-26",
+      "trough_date": "1998-03-05",
       "days": 7,
       "high": 1206.97,
       "low": 1126.83,
@@ -568,6 +662,8 @@
     },
     {
       "period": "1991: Nov 13 – Nov 25",
+      "peak_date": "1991-11-13",
+      "trough_date": "1991-11-25",
       "days": 12,
       "high": 302.83,
       "low": 283.02,
@@ -580,6 +676,8 @@
     },
     {
       "period": "1997: Aug 20 – Aug 28",
+      "peak_date": "1997-08-20",
+      "trough_date": "1997-08-28",
       "days": 8,
       "high": 1145.07,
       "low": 1070.57,
@@ -592,6 +690,8 @@
     },
     {
       "period": "1997: May 27 – Jun 4",
+      "peak_date": "1997-05-27",
+      "trough_date": "1997-06-04",
       "days": 8,
       "high": 984.61,
       "low": 921.96,
@@ -604,6 +704,8 @@
     },
     {
       "period": "1987: Apr 3 – Apr 27",
+      "peak_date": "1987-04-03",
+      "trough_date": "1987-04-27",
       "days": 24,
       "high": 191.36,
       "low": 179.55,
@@ -616,6 +718,8 @@
     },
     {
       "period": "1996: Dec 9 – Dec 16",
+      "peak_date": "1996-12-09",
+      "trough_date": "1996-12-16",
       "days": 7,
       "high": 856.64,
       "low": 804.78,
@@ -627,7 +731,9 @@
       "recovery_date": "1997-01-07"
     },
     {
-      "period": "2024: Dec 16 – Jan 14",
+      "period": "2024: Dec 16 – Jan 14, 2025",
+      "peak_date": "2024-12-16",
+      "trough_date": "2025-01-14",
       "days": 29,
       "high": 22096.66,
       "low": 20757.41,
@@ -640,6 +746,8 @@
     },
     {
       "period": "1999: Sep 20 – Sep 29",
+      "peak_date": "1999-09-20",
+      "trough_date": "1999-09-29",
       "days": 9,
       "high": 2545.41,
       "low": 2398.78,
@@ -652,6 +760,8 @@
     },
     {
       "period": "1996: Oct 15 – Oct 29",
+      "peak_date": "1996-10-15",
+      "trough_date": "1996-10-29",
       "days": 14,
       "high": 775.08,
       "low": 731.21,
@@ -664,6 +774,8 @@
     },
     {
       "period": "1997: Aug 6 – Aug 15",
+      "peak_date": "1997-08-06",
+      "trough_date": "1997-08-15",
       "days": 9,
       "high": 1141.82,
       "low": 1076.67,
@@ -676,6 +788,8 @@
     },
     {
       "period": "1993: Nov 2 – Nov 22",
+      "peak_date": "1993-11-02",
+      "trough_date": "1993-11-22",
       "days": 20,
       "high": 395.32,
       "low": 373.37,
@@ -688,6 +802,8 @@
     },
     {
       "period": "1991: Mar 7 – Mar 12",
+      "peak_date": "1991-03-07",
+      "trough_date": "1991-03-12",
       "days": 5,
       "high": 264.57,
       "low": 250.67,
@@ -700,6 +816,8 @@
     },
     {
       "period": "2016: Oct 24 – Nov 4",
+      "peak_date": "2016-10-24",
+      "trough_date": "2016-11-04",
       "days": 11,
       "high": 4909.97,
       "low": 4660.46,
@@ -712,6 +830,8 @@
     },
     {
       "period": "2020: Jun 10 – Jun 11",
+      "peak_date": "2020-06-10",
+      "trough_date": "2020-06-11",
       "days": 1,
       "high": 10094.26,
       "low": 9588.48,
@@ -757,7 +877,7 @@
       "id": "exogenous_shock",
       "name": "Exogenous Shock",
       "range": "30%-45%",
-      "duration": "Variable",
+      "duration": "Uncertain",
       "color": "#722ed1"
     },
     {

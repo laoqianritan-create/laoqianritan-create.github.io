@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261004093922">
-<link rel="stylesheet" href="css/chronicle.css?v=20261004093922">
-<script defer src="js/mobile-nav.js?v=20261004093922"></script>
+<link rel="stylesheet" href="style.css?v=20261004152048">
+<link rel="stylesheet" href="css/chronicle.css?v=20261004152048">
+<script defer src="js/mobile-nav.js?v=20261004152048"></script>
 </head>
 <body>
 
@@ -351,16 +351,20 @@
       <div class="panel-header">
         <div>
           <h2 class="panel-title">S&amp;P 500 Drawdowns from All-Time High</h2>
-          <p class="panel-desc">Daily drawdown from the prior all-time high, classified into five severity buckets.</p>
+          <p class="panel-desc">Daily drawdown from the prior all-time high, classified into five severity buckets. The scatter covers every ≥10% drawdown since 1928.</p>
         </div>
         <div class="panel-controls">
           <button class="btn btn-export" data-chart="chartDrawdown" title="Export PNG">&#8681;</button>
         </div>
       </div>
       <div class="chart-container chart-medium" id="chartDrawdown"></div>
+      <div class="chart-container chart-medium" id="chartDdScatter" style="margin-top:28px"></div>
       <div class="table-toolbar">
-        <div style="font-size:13px;color:var(--text-secondary)">Major drawdowns ≥ 10%</div>
-        <button class="btn btn-export" data-export-element="drawdownTableWrap" title="Export Table PNG">&#8681;</button>
+        <div style="font-size:13px;color:var(--text-secondary)">Major drawdowns ≥ 10% · showing the latest 12, expand for all</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="ddTableToggle" style="display:none">Show all</button>
+          <button class="btn btn-export" data-export-element="drawdownTableWrap" title="Export Table PNG">&#8681;</button>
+        </div>
       </div>
       <div class="drawdown-table-wrap" id="drawdownTableWrap">
         <table class="data-table mobile-cards" id="drawdownTable">
@@ -813,16 +817,20 @@
       <div class="panel-header">
         <div>
           <h2 class="panel-title">Nasdaq 100 Drawdowns from All-Time High</h2>
-          <p class="panel-desc">Daily drawdown from the prior all-time high. The 2000–2002 dot-com bust cumulated a -82.9% drawdown that took 4,775 days (13 years) to recover.</p>
+          <p class="panel-desc">Daily drawdown from the prior all-time high. The 2000–2002 dot-com bust cumulated a -82.9% drawdown that took 4,775 days (13 years) to recover. The scatter covers every ≥10% drawdown since 1985.</p>
         </div>
         <div class="panel-controls">
           <button class="btn btn-export" data-chart="chartNdxDrawdown" title="Export PNG">&#8681;</button>
         </div>
       </div>
       <div class="chart-container chart-medium" id="chartNdxDrawdown"></div>
+      <div class="chart-container chart-medium" id="chartNdxDdScatter" style="margin-top:28px"></div>
       <div class="table-toolbar">
-        <div style="font-size:13px;color:var(--text-secondary)">Major drawdowns ≥ 10%</div>
-        <button class="btn btn-export" data-export-element="ndxDrawdownTableWrap" title="Export Table PNG">&#8681;</button>
+        <div style="font-size:13px;color:var(--text-secondary)">Major drawdowns ≥ 10% · showing the latest 12, expand for all</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="ndxTableToggle" style="display:none">Show all</button>
+          <button class="btn btn-export" data-export-element="ndxDrawdownTableWrap" title="Export Table PNG">&#8681;</button>
+        </div>
       </div>
       <div class="drawdown-table-wrap" id="ndxDrawdownTableWrap">
         <table class="data-table mobile-cards" id="ndxDrawdownTable">
@@ -1263,9 +1271,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261004093922"></script>
-<script type="module" src="js/panels.js?v=20261004093922"></script>
-<script defer src="js/hero-curve.js?v=20261004093922"></script>
+<script src="js/freshness.js?v=20261004152048"></script>
+<script type="module" src="js/panels.js?v=20261004152048"></script>
+<script defer src="js/hero-curve.js?v=20261004152048"></script>
 
 </body>
 </html>
