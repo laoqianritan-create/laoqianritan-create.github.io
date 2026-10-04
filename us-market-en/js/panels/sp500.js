@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261004165741';
+} from '../utils.js?v=20261004171104';
 
 import {
   registerChart,
@@ -33,9 +33,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261004165741';
+} from '../chart-helpers.js?v=20261004171104';
 
-import { isMobile } from '../mobile.js?v=20261004165741';
+import { isMobile } from '../mobile.js?v=20261004171104';
 
 export function initPanelPrice(data, recessionData, centuryData, equalWeightData) {
   const chart = registerChart(echarts.init(document.getElementById('chartPrice')));
@@ -366,7 +366,15 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
     const PLOT = { left: 80, right: 40, top: 30, bottom: 55 };
     const labelEstW = text => 15 + text.length * 7.2;
 
-    const scatterData = majorDrawdowns.map((item) => {
+    // Scatter x-axis floor (2026-10-04 instruction): axis starts at 10 days; events
+    // below the floor are not plotted. Only one point is affected — 1933-06-12
+    // (3 days, -10.6%, World Economic Conference collapse) — which hugged the left
+    // edge and forced the axis to start at 1 day. Next shortest event: 2018-01-26 (14d).
+    // (Scatter only; the table below still lists that event.)
+    const SCATTER_MIN_DAYS = 10;
+    const scatterData = majorDrawdowns
+      .filter(item => (item.days ?? 0) >= SCATTER_MIN_DAYS)
+      .map((item) => {
       const days = Math.max(item.days, 1);
       const pct = Math.abs(item.decline) * 100;
       // Labels come from peak_date (language-agnostic; CN periods embed CJK month glyphs)
@@ -426,7 +434,7 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
           nameLocation: 'center',
           nameGap: 32,
           nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
-          min: Math.max(1, Math.floor(Math.min(...scatterData.map(p => p.value[0])))),
+          min: SCATTER_MIN_DAYS,   // fixed start at 10 days (2026-10-04 instruction)
           max: Math.ceil(Math.max(...scatterData.map(p => p.value[0]))),
           axisLabel: {
             fontSize: 11,
@@ -1134,6 +1142,34 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
     });
   }
 
+  // ── YoY axis window (2026-10-04 instruction) ─────────────────────────
+  // The 2009-2010 low-base rebound (+784%) blew up the axis and flattened every
+  // other year. Fix: pin the axis to [-80%, +70%]; shade the off-scale periods in
+  // red on the YoY sub-chart only.
+  const YOY_FLOOR = -80;
+  const YOY_CEIL = 70;
+  const yoyBands = (() => {
+    const bands = [];
+    let cur = null;
+    yoySeries.forEach((item, idx) => {
+      const out = item.value > YOY_CEIL || item.value < YOY_FLOOR;
+      if (out) {
+        if (!cur) {
+          cur = { start: idx > 0 ? yoySeries[idx - 1].date : item.date, end: item.date, peak: item.value };
+        } else {
+          cur.end = item.date;
+          if (Math.abs(item.value) > Math.abs(cur.peak)) cur.peak = item.value;
+        }
+      } else if (cur) {
+        cur.end = item.date;
+        bands.push(cur);
+        cur = null;
+      }
+    });
+    if (cur) bands.push(cur);
+    return bands;
+  })();
+
   function getOption() {
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
     const grayColor = cssVar('--gray') || '#999';
@@ -1201,6 +1237,31 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
       itemStyle: {
         color: params => (params.value[1] >= 0 ? greenColor : redColor),
       },
+      // Off-axis periods (outside -80% ~ +70%) → red shading (2026-10-04 instruction, YoY only)
+      markArea: yoyBands.length ? {
+        silent: true,
+        itemStyle: {
+          color: 'rgba(207, 19, 34, 0.10)',
+          borderColor: 'rgba(207, 19, 34, 0.35)',
+          borderWidth: 1,
+          borderType: 'dashed',
+        },
+        data: yoyBands.map(b => [
+          {
+            xAxis: b.start,
+            label: {
+              show: true,
+              position: 'insideTop',
+              color: redColor,
+              fontSize: 10,
+              fontWeight: 'bold',
+              fontFamily: CHART_FONT,
+              formatter: `${b.peak >= 0 ? '+' : '−'}${Math.abs(Math.round(b.peak))}%`,
+            },
+          },
+          { xAxis: b.end },
+        ]),
+      } : undefined,
       z: 3,
     });
 
@@ -1252,6 +1313,8 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
           gridIndex: 1,
           name: 'YoY (%)',
           position: 'left',
+          min: YOY_FLOOR,          // pinned axis (2026-10-04): off-scale periods are shaded red
+          max: YOY_CEIL,
           nameTextStyle: { fontSize: 10, color: grayColor, fontFamily: CHART_FONT },
           axisLabel: {
             formatter: '{value}%',
@@ -1287,7 +1350,9 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
           }
           if (yoy && yoy.value && yoy.value[1] != null) {
             const color = yoy.value[1] >= 0 ? greenColor : redColor;
-            lines.push(`EPS YoY: <b style="color:${color}">${formatPercent(yoy.value[1], 1)}</b>`);
+            const offScale = yoy.value[1] > YOY_CEIL || yoy.value[1] < YOY_FLOOR
+              ? ' (off-scale)' : '';
+            lines.push(`EPS YoY: <b style="color:${color}">${formatPercent(yoy.value[1], 1)}</b>${offScale}`);
           }
           return lines.join('<br/>');
         },

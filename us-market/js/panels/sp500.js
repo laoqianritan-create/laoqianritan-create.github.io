@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261004165741';
+} from '../utils.js?v=20261004171104';
 
 import {
   registerChart,
@@ -33,9 +33,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261004165741';
+} from '../chart-helpers.js?v=20261004171104';
 
-import { isMobile } from '../mobile.js?v=20261004165741';
+import { isMobile } from '../mobile.js?v=20261004171104';
 
 export function initPanelPrice(data, recessionData, centuryData, equalWeightData) {
   const chart = registerChart(echarts.init(document.getElementById('chartPrice')));
@@ -366,7 +366,14 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
     const PLOT = { left: 80, right: 40, top: 30, bottom: 55 };
     const labelEstW = text => 15 + text.length * 7.2;
 
-    const scatterData = majorDrawdowns.map((item) => {
+    // 散点横轴下限（2026-10-04 老钱指令）：X 轴从 10 天起，低于下限的事件不进散点。
+    // 实际只影响一个点——1933-06-12（3 天，-10.6%，世界经济会议破裂担忧），
+    // 它贴在左边缘且把整条 X 轴压到 1 天起，删掉后其余最短事件是 2018-01-26（14 天）。
+    // （只作用于散点图；下方表格仍保留该事件。）
+    const SCATTER_MIN_DAYS = 10;
+    const scatterData = majorDrawdowns
+      .filter(item => (item.days ?? 0) >= SCATTER_MIN_DAYS)
+      .map((item) => {
       const days = Math.max(item.days, 1);
       const pct = Math.abs(item.decline) * 100;
       // 标签统一从 peak_date 取（语言无关；EN 站 period 是 "Sep 16" 格式没有"月"）
@@ -426,7 +433,7 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
           nameLocation: 'center',
           nameGap: 32,
           nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
-          min: Math.max(1, Math.floor(Math.min(...scatterData.map(p => p.value[0])))),
+          min: SCATTER_MIN_DAYS,   // 固定从 10 天起（2026-10-04 老钱指令）
           max: Math.ceil(Math.max(...scatterData.map(p => p.value[0]))),
           axisLabel: {
             fontSize: 11,
@@ -1134,6 +1141,34 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
   }
   const yoyStart = yoySeries.length ? yoySeries[0].date : epsStart;
 
+  // ── YoY 纵轴口径（2026-10-04 老钱指令）─────────────────────────────
+  // 2009-2010 低基数反弹（+784%）把整条纵轴拉爆，其他年份的同比被压成一条平线。
+  // 处置：纵轴钉死在 [-80%, +70%]；超界时段在 YoY 子图上用红色阴影标注。
+  const YOY_FLOOR = -80;
+  const YOY_CEIL = 70;
+  const yoyBands = (() => {
+    const bands = [];
+    let cur = null;
+    yoySeries.forEach((item, idx) => {
+      const out = item.value > YOY_CEIL || item.value < YOY_FLOOR;
+      if (out) {
+        if (!cur) {
+          // 起点左移一格，让阴影覆盖柱体宽度
+          cur = { start: idx > 0 ? yoySeries[idx - 1].date : item.date, end: item.date, peak: item.value };
+        } else {
+          cur.end = item.date;
+          if (Math.abs(item.value) > Math.abs(cur.peak)) cur.peak = item.value;
+        }
+      } else if (cur) {
+        cur.end = item.date;      // 右端延伸到回归区间后的第一个点
+        bands.push(cur);
+        cur = null;
+      }
+    });
+    if (cur) bands.push(cur);
+    return bands;
+  })();
+
   function getOption() {
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
     const grayColor = cssVar('--gray') || '#999';
@@ -1201,6 +1236,31 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
       itemStyle: {
         color: params => (params.value[1] >= 0 ? greenColor : redColor),
       },
+      // 超出纵轴区间（-80% ~ +70%）的时段 → 红色阴影标记（2026-10-04 老钱指令，仅 YoY 模块）
+      markArea: yoyBands.length ? {
+        silent: true,
+        itemStyle: {
+          color: 'rgba(207, 19, 34, 0.10)',
+          borderColor: 'rgba(207, 19, 34, 0.35)',
+          borderWidth: 1,
+          borderType: 'dashed',
+        },
+        data: yoyBands.map(b => [
+          {
+            xAxis: b.start,
+            label: {
+              show: true,
+              position: 'insideTop',
+              color: redColor,
+              fontSize: 10,
+              fontWeight: 'bold',
+              fontFamily: CHART_FONT,
+              formatter: `${b.peak >= 0 ? '+' : '−'}${Math.abs(Math.round(b.peak))}%`,
+            },
+          },
+          { xAxis: b.end },
+        ]),
+      } : undefined,
       z: 3,
     });
 
@@ -1252,6 +1312,8 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
           gridIndex: 1,
           name: 'YoY (%)',
           position: 'left',
+          min: YOY_FLOOR,          // 纵轴钉死（2026-10-04）：超界时段用红色阴影标注
+          max: YOY_CEIL,
           nameTextStyle: { fontSize: 10, color: grayColor, fontFamily: CHART_FONT },
           axisLabel: {
             formatter: '{value}%',
@@ -1287,7 +1349,9 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
           }
           if (yoy && yoy.value && yoy.value[1] != null) {
             const color = yoy.value[1] >= 0 ? greenColor : redColor;
-            lines.push(`EPS YoY: <b style="color:${color}">${formatPercent(yoy.value[1], 1)}</b>`);
+            const offScale = yoy.value[1] > YOY_CEIL || yoy.value[1] < YOY_FLOOR
+              ? '（超出纵轴区间）' : '';
+            lines.push(`EPS YoY: <b style="color:${color}">${formatPercent(yoy.value[1], 1)}</b>${offScale}`);
           }
           return lines.join('<br/>');
         },
