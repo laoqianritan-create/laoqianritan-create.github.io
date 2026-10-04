@@ -1,17 +1,21 @@
 /**
- * A股恐贪指数面板（面板 9）
+ * A股恐贪指数面板（面板 10）
  * 数据：fear_greed.json { series: { fear_greed: {dates, values}, csi_all: {dates, values} } }
- * 展示：恐贪指数 0-100（左轴，含分档色带）+ 中证全指（右轴，红涨绿跌），hover 数值
+ * 展示：恐贪指数 0-100（左轴，含分档色带 + 80/20 买卖参考虚线）+ 中证全指（右轴，红涨绿跌）
+ * 交互：时间轴滑动（选择显示起点）、hover 数值
  */
 (function () {
   'use strict';
 
-  const FG_COLOR = '#333333';      // 恐贪线（深灰）
+  const FG_COLOR = '#333333';      // 恐贪线（深灰，1px）
   const CSI_COLOR = '#E65A56';     // 中证全指（红，红涨）
+  const BUY_COLOR = '#30CB13';     // 20 恐惧买入（绿虚线）
+  const SELL_COLOR = '#E65A56';    // 80 贪婪卖出（红虚线）
 
   function draw(canvas, data, opts) {
     const exportMode = opts.exportMode;
     const scale = opts.scale || 1;
+    const startIdx = opts.startIdx || 0;
     const W = exportMode ? 3000 : 1480;
     const H = exportMode ? 1400 : 640;
     const padL = exportMode ? 170 : 90;
@@ -37,13 +41,22 @@
     const dates = fg.dates;
     const n = dates.length;
     if (!n) return;
-    const xs = (i) => padL + (n === 1 ? 0.5 : i / (n - 1)) * (W - padL - padR);
+
+    // 时间窗口 [startIdx, n-1]
+    const s0 = Math.max(0, Math.min(startIdx, n - 1));
+    const span = Math.max(1, n - 1 - s0);
+    const xs = (i) => padL + ((i - s0) / span) * (W - padL - padR);
 
     // 恐贪 y（0-100 固定）
     const yFg = (v) => padT + (1 - v / 100) * (H - padT - padB);
-    // 中证全指 y（数据范围）
-    const csiVals = csi.values.filter((v) => v !== null && v !== undefined && !Number.isNaN(v));
-    let cMin = Math.min(...csiVals), cMax = Math.max(...csiVals);
+    // 中证全指 y（数据范围，窗口内）
+    const csiVals = [];
+    for (let i = s0; i < n; i++) {
+      const v = csi.values[i];
+      if (v !== null && v !== undefined && !Number.isNaN(v)) csiVals.push(v);
+    }
+    let cMin = csiVals.length ? Math.min(...csiVals) : 0;
+    let cMax = csiVals.length ? Math.max(...csiVals) : 1;
     const cPad = (cMax - cMin) * 0.05 || 1;
     cMin -= cPad; cMax += cPad;
     const yCsi = (v) => padT + (1 - (v - cMin) / (cMax - cMin)) * (H - padT - padB);
@@ -62,6 +75,22 @@
       ctx.fillRect(padL, yFg(b.hi), W - padL - padR, yFg(b.lo) - yFg(b.hi));
       ctx.globalAlpha = 1;
     });
+
+    // ── 80 / 20 买卖参考虚线（附件范式：红=贪婪卖出、绿=恐惧买入）──
+    ctx.setLineDash(exportMode ? [14, 10] : [7, 5]);
+    ctx.lineWidth = exportMode ? 3 : 1.4;
+    ctx.strokeStyle = SELL_COLOR;
+    ctx.beginPath(); ctx.moveTo(padL, yFg(80)); ctx.lineTo(W - padR, yFg(80)); ctx.stroke();
+    ctx.strokeStyle = BUY_COLOR;
+    ctx.beginPath(); ctx.moveTo(padL, yFg(20)); ctx.lineTo(W - padR, yFg(20)); ctx.stroke();
+    ctx.setLineDash([]);
+    // 标签
+    ctx.font = (exportMode ? 26 : 12) + 'px NotoSansSC, sans-serif';
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = SELL_COLOR;
+    ctx.fillText('80 · 贪婪 → 卖出', W - padR - (exportMode ? 8 : 4), yFg(80) - (exportMode ? 26 : 12));
+    ctx.fillStyle = BUY_COLOR;
+    ctx.fillText('20 · 恐惧 → 买入', W - padR - (exportMode ? 8 : 4), yFg(20) + (exportMode ? 26 : 12));
 
     // ── 网格 + 恐贪刻度 ──
     ctx.lineWidth = 1;
@@ -84,26 +113,23 @@
       ctx.fillText(v >= 10000 ? (v / 10000).toFixed(2) + '万' : v.toFixed(0), W - padR + 12, y);
     });
 
-    // x 轴年份
+    // x 轴年份（窗口内）
     const yearTicks = new Set();
-    dates.forEach((d, i) => {
-      const y = d.slice(0, 4);
-      if ((i === 0 || y !== dates[i - 1].slice(0, 4)) && +y % 2 === 0) yearTicks.add([y, i]);
-    });
+    for (let i = s0; i < n; i++) {
+      const y = dates[i].slice(0, 4);
+      if ((i === s0 || y !== dates[i - 1].slice(0, 4)) && +y % 2 === 0) yearTicks.add([y, i]);
+    }
     ctx.fillStyle = '#999999';
     ctx.font = (exportMode ? 22 : 11) + 'px NotoSansSC, sans-serif';
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
     yearTicks.forEach(([y, i]) => ctx.fillText(y, xs(i), H - padB + 8));
 
-    // 标题（导出版）
+    // 标题（导出版，无副标题）
     if (exportMode) {
       ctx.fillStyle = '#1a1a1a';
       ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText('A股恐贪指数', W / 2, 88);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText('0 恐慌 — 100 贪婪 · 叠加中证全指', W / 2, 158);
     }
 
     // ── 曲线 ──
@@ -113,7 +139,7 @@
       ctx.lineJoin = 'round';
       ctx.beginPath();
       let started = false;
-      for (let i = 0; i < values.length; i++) {
+      for (let i = s0; i < n; i++) {
         const v = values[i];
         if (v === null || v === undefined || Number.isNaN(v)) { started = false; continue; }
         const x = xf(i), y = yf(v);
@@ -121,7 +147,7 @@
       }
       ctx.stroke();
     }
-    poly(fg.values, xs, yFg, FG_COLOR, exportMode ? 5 : 2);
+    poly(fg.values, xs, yFg, FG_COLOR, exportMode ? 3 : 1);   // 恐贪曲线 1px
     poly(csi.values, xs, yCsi, CSI_COLOR, exportMode ? 4 : 1.6);
 
     // 末端点 + 最新值标签
@@ -150,12 +176,13 @@
     // 图例（横向单行）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 225 : 18;
-    const lh = exportMode ? 46 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
     const items = [
       { c: FG_COLOR, label: `A股恐贪指数  ${fgLast !== null ? fgLast.toFixed(1) : '—'}` },
       { c: CSI_COLOR, label: `中证全指  ${csiLast !== null ? (csiLast >= 10000 ? (csiLast / 10000).toFixed(2) + '万' : csiLast.toFixed(0)) : '—'}` },
+      { c: SELL_COLOR, label: '80 贪婪卖出' },
+      { c: BUY_COLOR, label: '20 恐惧买入' },
     ];
     let lx = lx0, ly = ly0;
     items.forEach((it) => {
@@ -178,7 +205,7 @@
 
     // ── hover 悬浮（屏幕版）──
     if (!exportMode && opts.bindHover !== false) {
-      canvas.__fgData = { fg, csi, dates, yFg, yCsi, xs };
+      canvas.__fgData = { fg, csi, dates, s0, n, span, yFg, yCsi, xs };
       if (!canvas.__hoverBound) {
         canvas.__hoverBound = true;
         canvas.addEventListener('mousemove', (ev) => {
@@ -186,9 +213,10 @@
           const { x } = window.AK.canvasXY(canvas, ev);
           const sx = x / (window.devicePixelRatio || 1);
           if (sx < padL || sx > W - padR) { window.AK.tooltip.hide(); return; }
-          const idx = Math.max(0, Math.min(D.dates.length - 1, Math.round((sx - padL) / (W - padL - padR) * (D.dates.length - 1))));
-          const fv = D.fg.values[idx], cv = D.csi.values[idx];
-          let html = `<b>${D.dates[idx]}</b><br>`;
+          const idx = Math.round((sx - padL) / (W - padL - padR) * D.span) + D.s0;
+          const i = Math.max(D.s0, Math.min(D.n - 1, idx));
+          const fv = D.fg.values[i], cv = D.csi.values[i];
+          let html = `<b>${D.dates[i]}</b><br>`;
           if (fv !== null && fv !== undefined) html += `<span style="color:#333">●</span> 恐贪指数：<b>${fv.toFixed(1)}</b><br>`;
           if (cv !== null && cv !== undefined) html += `<span style="color:#E65A56">●</span> 中证全指：<b>${cv.toFixed(0)}</b>`;
           window.AK.tooltip.show(ev, html.replace(/<br>$/, ''));
@@ -202,19 +230,54 @@
     const wrap = document.getElementById('panelFearBody');
     if (!wrap) return;
     wrap.innerHTML = '';
+    const fg = data.series.fear_greed;
+    const n = fg.dates.length;
+
+    // 时间轴滑块控件
+    const ctrl = document.createElement('div');
+    ctrl.className = 'fg-controls';
+    const lbl = document.createElement('span');
+    lbl.className = 'fg-range-label';
+    lbl.id = 'fgRangeLabel';
+    lbl.textContent = `显示 ${fg.dates[0].slice(0, 4)} — ${fg.dates[n - 1].slice(0, 4)}`;
+    const slider = document.createElement('input');
+    slider.type = 'range';
+    slider.id = 'fgRange';
+    slider.min = '0';
+    slider.max = String(n - 1);
+    slider.value = '0';
+    slider.step = '1';
+    slider.className = 'fg-range';
+    ctrl.appendChild(lbl);
+    ctrl.appendChild(slider);
+    wrap.appendChild(ctrl);
+
     const canvas = document.createElement('canvas');
     canvas.id = 'fearGreed';
     wrap.appendChild(canvas);
-    draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+
+    let curStart = 0;
+    const redraw = (start) => {
+      curStart = start;
+      draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1, startIdx: start });
+      lbl.textContent = `显示 ${fg.dates[start].slice(0, 4)} — ${fg.dates[n - 1].slice(0, 4)}`;
+    };
+    redraw(0);
+
+    slider.addEventListener('input', () => {
+      const v = parseInt(slider.value, 10);
+      lbl.textContent = `显示 ${fg.dates[v].slice(0, 4)} — ${fg.dates[n - 1].slice(0, 4)}`;
+      draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1, startIdx: v });
+    });
 
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1, startIdx: curStart }));
     });
 
     window.AK.bindExportButtons({
-      fearGreed: (off, scale) => draw(off, data, { exportMode: true, scale: 1 })
+      fearGreed: (off) => draw(off, data, { exportMode: true, scale: 1, startIdx: curStart })
     });
   };
 })();

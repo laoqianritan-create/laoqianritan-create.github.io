@@ -221,3 +221,74 @@ body {
   .legend-gradient { max-width: 200px; }
   .site-footer { flex-direction: column; align-items: flex-start; padding: 16px 14px 40px; }
 }
+
+/* ─── 恐贪时间轴滑块 ─────────────────────── */
+.fg-controls {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 6px; padding: 6px 8px;
+  background: #fafafa; border: 1px solid #eee; border-radius: 8px;
+  flex-wrap: wrap;
+}
+.fg-range-label { font-size: 12.5px; color: #555; white-space: nowrap; min-width: 108px; }
+.fg-range { flex: 1; min-width: 160px; height: 4px; accent-color: var(--red, #e65a56); cursor: pointer; }
+
+/* ─── 顶部动态 Banner ─────────────────────── */
+.hero-banner {
+  position: relative;
+  margin: 14px auto 6px;
+  max-width: 1280px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(120deg, #1b2233 0%, #24314f 45%, #3a2d56 100%);
+  color: #fff;
+  padding: 26px 30px 22px;
+  box-shadow: 0 6px 24px rgba(20, 30, 60, 0.18);
+}
+.hero-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(560px 200px at 12% -20%, rgba(90, 174, 243, 0.35), transparent 70%),
+    radial-gradient(480px 180px at 88% 120%, rgba(224, 92, 87, 0.30), transparent 70%),
+    radial-gradient(300px 140px at 60% -10%, rgba(98, 217, 173, 0.22), transparent 70%);
+  animation: heroGlow 9s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes heroGlow {
+  0%   { opacity: 0.75; transform: translateX(-2%); }
+  100% { opacity: 1;    transform: translateX(2%); }
+}
+.hero-inner { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.hero-title { font-size: 27px; font-weight: 900; letter-spacing: 1px; margin: 0; font-family: 'AlibabaPuHuiTi', 'PingFang SC', sans-serif; }
+.hero-sub { font-size: 13px; font-weight: 400; color: rgba(255, 255, 255, 0.72); margin-left: 12px; letter-spacing: 0.5px; }
+.hero-ticker { display: flex; gap: 10px 26px; flex-wrap: wrap; align-items: center; }
+.ticker-item { font-size: 13px; color: rgba(255, 255, 255, 0.82); display: inline-flex; align-items: center; gap: 7px; }
+.ticker-item b { color: #fff; font-size: 14.5px; font-variant-numeric: tabular-nums; }
+.tick-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #62d9ad;
+  box-shadow: 0 0 8px rgba(98, 217, 173, 0.9);
+  animation: tickPulse 2.4s ease-in-out infinite;
+  display: inline-block;
+}
+@keyframes tickPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+/* ─── 相关资源 ───────────────────────────── */
+.related-resources {
+  max-width: 1280px; margin: 26px auto 10px;
+  background: #f7f8fa; border: 1px solid #e8eaef; border-radius: 12px;
+  padding: 20px 26px 24px;
+}
+.rr-title { font-size: 15px; font-weight: 700; margin: 0 0 14px; color: #1a1a1a; }
+.rr-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.rr-list li { font-size: 13px; }
+.rr-list a { color: #4a5b85; text-decoration: none; border-bottom: 1px solid rgba(74, 91, 133, 0.25); }
+.rr-list a:hover { color: #e65a56; border-bottom-color: #e65a56; }
+
+@media (max-width: 768px) {
+  .hero-banner { padding: 18px 16px 16px; }
+  .hero-title { font-size: 21px; }
+  .hero-sub { display: block; margin: 4px 0 0; }
+  .hero-ticker { margin-top: 10px; gap: 8px 16px; }
+  .related-resources { padding: 16px 14px 18px; }
+}

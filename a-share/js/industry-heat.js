@@ -45,6 +45,19 @@
     return `rgb(${Math.round(255 - (255 - 230) * (1 - k))},${Math.round(255 - (255 - 90) * (1 - k))},${Math.round(255 - (255 - 86) * (1 - k))})`;
   }
 
+  // ── 按日期对齐取值（行业 dates 长度不同、换手率仅 2024 起 → 索引对齐会越界空白）──
+  function getValByDate(row, metricKey, date) {
+    if (!row.__maps) row.__maps = {};
+    if (!row.__maps[metricKey]) {
+      const m = new Map();
+      const dts = row.dates || [];
+      const vals = row[metricKey] || [];
+      for (let i = 0; i < dts.length; i++) m.set(dts[i], vals[i]);
+      row.__maps[metricKey] = m;
+    }
+    return row.__maps[metricKey].get(date);
+  }
+
   function draw(canvasEl, opts) {
     const exportMode = opts.exportMode;
     const scale = opts.scale || 1;
@@ -147,7 +160,7 @@
 
       const vals = row[metricKey] || [];
       for (let j = 0; j < nCols; j++) {
-        const v = vals[startIdx + j];
+        const v = getValByDate(row, metricKey, dates[j]);
         const x = padL + j * colW;
         ctx.fillStyle = heatColor(v);
         ctx.fillRect(x, y, colW, rowH);
@@ -258,16 +271,18 @@
       const code = codes[rowIdx];
       const row = payload.metrics[code];
       const colIdx = Math.floor((sx - padL) / colW);
-      if (colIdx < 0 || colIdx >= nCols) { window.AK.tooltip.hide(); return; }
 
-      // 一级行 → 小手
+      // 一级行 → 小手（含行标签区）
       if (state.level === 1) canvasEl.style.cursor = 'pointer';
       else canvasEl.style.cursor = 'default';
 
-      // 数值提示（行业名 + 日期 + 当前指标值）
+      if (colIdx < 0 || colIdx >= nCols) { window.AK.tooltip.hide(); return; }
+
+      // 数值提示（行业名 + 日期 + 当前指标值，按日期对齐取值）
       const m = METRICS.find((x) => x.key === state.metric);
-      const v = row[state.metric] ? row[state.metric][startIdx + colIdx] : null;
-      const date = row.dates ? row.dates[startIdx + colIdx] : '';
+      const winDates = allDates.slice(startIdx);
+      const date = winDates[colIdx] || '';
+      const v = date ? getValByDate(row, state.metric, date) : null;
       window.AK.tooltip.show(ev,
         `<b>${row.name}</b> · ${date}<br>${m.label}：<b>${v === null || v === undefined ? '—' : Math.round(v * 10) / 10}</b>`);
     });
