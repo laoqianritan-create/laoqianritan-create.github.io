@@ -17,14 +17,14 @@ import {
   CHART_FONT,
   cssVar,
   formatNumber,
-} from '../utils.js?v=20261004165637';
+} from '../utils.js?v=20261004165741';
 
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getLineLegendConfig,
-} from '../chart-helpers.js?v=20261004165637';
+} from '../chart-helpers.js?v=20261004165741';
 
 const GREEN = '#389e0d';
 const RED = '#cf1322';
