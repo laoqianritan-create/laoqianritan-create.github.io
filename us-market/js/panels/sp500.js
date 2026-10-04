@@ -374,10 +374,12 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
         ? `${item.peak_date.slice(0, 4)}.${item.peak_date.slice(5, 7)}`
         : item.period;
       const x = PLOT.left + (Math.log10(days) / Math.log10(10000)) * (CH_W - PLOT.left - PLOT.right);
-      const y = PLOT.top + (1 - pct / Math.abs(ddMin)) * (CH_H - PLOT.top - PLOT.bottom);
+      // 0% 在顶部、跌得越深越靠下（与回撤面积图方向一致）
+      const y = PLOT.top + (pct / Math.abs(ddMin)) * (CH_H - PLOT.top - PLOT.bottom);
       const box = { x0: x - labelEstW(labelText) / 2, x1: x + labelEstW(labelText) / 2, y0: y - 9, y1: y + 9 };
+      // AABB 相交判定：x 区间与 y 区间同时重叠才算碰撞
       const showLabel = !placedBoxes.some(b =>
-        box.x0 < b.x1 && b.x0 < box.x1 && box.y0 < b.y1 && b.y0 < b.y1);
+        box.x0 < b.x1 && b.x0 < box.x1 && box.y0 < b.y1 && b.y0 < box.y1);
       if (showLabel) placedBoxes.push(box);
       const color = CAT_COLORS[item.category] || cssVar('--red') || '#cf1322';
       return {
@@ -442,6 +444,7 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
           nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
           min: 0,
           max: Math.ceil(Math.max(...scatterData.map(p => p.value[1])) / 10) * 10,
+          inverse: true, // 0% 在顶部，与回撤面积图方向一致
           axisLabel: {
             formatter: '{value}%',
             fontSize: 11,
