@@ -3,8 +3,8 @@
 // Title + description (panel-desc) + date + centered content + footer URL watermark
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261004171104';
-import { chartInstances } from './chart-helpers.js?v=20261004171104';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261004174434';
+import { chartInstances } from './chart-helpers.js?v=20261004174434';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // Horizontal padding
@@ -47,6 +47,17 @@ function getPanelMeta(panelEl) {
     .map(p => p.innerText.trim().replace(/\s+/g, ' '))
     .filter(Boolean);
   return { title, descs };
+}
+
+// Pull the title + description from an in-panel sub-chart header (.scatter-subheader)
+// When a sub-chart (e.g. the drawdown scatter) is exported as its own image,
+// use the sub-title rather than the panel's main title.
+function getSubHeaderMeta(subEl) {
+  if (!subEl) return null;
+  const title = subEl.querySelector('.scatter-subtitle')?.textContent.trim();
+  if (!title) return null;
+  const desc = subEl.querySelector('.scatter-subdesc')?.textContent.trim().replace(/\s+/g, ' ') || '';
+  return { title, descs: desc ? [desc] : [] };
 }
 
 // Find extra HTML elements inside a panel that need to be rendered (metric-strip,
@@ -198,7 +209,7 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
   link.click();
 }
 
-export async function exportChartAsPng(chartInstance, panelEl) {
+export async function exportChartAsPng(chartInstance, panelEl, opts = {}) {
   const chartImg = await new Promise((resolve, reject) => {
     const img = new Image();
     img.src = chartInstance.getDataURL({
@@ -211,19 +222,26 @@ export async function exportChartAsPng(chartInstance, panelEl) {
     img.onerror = reject;
   });
 
-  // Collect bottom explainer elements (VXN explainer table, drawdown-events table,
-  // etc.) and render them sequentially via html2canvas
-  let extras = [];
-  const extraEls = getPanelExtras(panelEl);
-  for (const el of extraEls) {
+  // Sub-chart mode (in-panel scatter exported standalone): use the sub-title,
+  // and never drag along the table or other panel extras.
+  const meta = opts.subHeader ? getSubHeaderMeta(opts.subHeader) || getPanelMeta(panelEl) : getPanelMeta(panelEl);
+  const extras = opts.subHeader ? [] : await renderPanelExtras(panelEl);
+
+  buildFrameAndDownload(chartImg, chartImg.naturalWidth, chartImg.naturalHeight, meta, extras);
+}
+
+// Collect bottom explainer elements (VXN explainer table, drawdown-events table,
+// etc.) and render them sequentially via html2canvas
+async function renderPanelExtras(panelEl) {
+  const extras = [];
+  for (const el of getPanelExtras(panelEl)) {
     try {
       extras.push(await renderElementToImage(el));
     } catch (err) {
       console.warn('Extra element render failed; skipping', el, err);
     }
   }
-
-  buildFrameAndDownload(chartImg, chartImg.naturalWidth, chartImg.naturalHeight, getPanelMeta(panelEl), extras);
+  return extras;
 }
 
 // ── HTML element (table-style panels) → PNG ──
@@ -307,6 +325,17 @@ export function initExportButtons() {
         const chart = chartInstances.find(instance => instance.getDom().id === chartId);
         if (chart) {
           exportChartAsPng(chart, panel);
+          return;
+        }
+      }
+
+      // data-chart-sub: export an in-panel sub-chart as its own image
+      // (title comes from the sub-header; the rest of the panel is not included)
+      const subChartId = btn.dataset.chartSub;
+      if (subChartId) {
+        const chart = chartInstances.find(instance => instance.getDom().id === subChartId);
+        if (chart) {
+          exportChartAsPng(chart, panel, { subHeader: btn.closest('.scatter-subheader') });
           return;
         }
       }

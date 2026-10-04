@@ -3,8 +3,8 @@
 // 标题 + 描述（panel-desc）+ 日期 + 内容居中 + footer URL 水印
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261004171104';
-import { chartInstances } from './chart-helpers.js?v=20261004171104';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261004174434';
+import { chartInstances } from './chart-helpers.js?v=20261004174434';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // 两侧留白
@@ -46,6 +46,16 @@ function getPanelMeta(panelEl) {
     .map(p => p.innerText.trim().replace(/\s+/g, ' '))
     .filter(Boolean);
   return { title, descs };
+}
+
+// 从面板内子图小标题（.scatter-subheader）抽标题 + 描述
+// 子图（如回撤散点）单独成图时，用小标题而非面板大标题
+function getSubHeaderMeta(subEl) {
+  if (!subEl) return null;
+  const title = subEl.querySelector('.scatter-subtitle')?.textContent.trim();
+  if (!title) return null;
+  const desc = subEl.querySelector('.scatter-subdesc')?.textContent.trim().replace(/\s+/g, ' ') || '';
+  return { title, descs: desc ? [desc] : [] };
 }
 
 // 找到面板内需要额外渲染的 HTML 元素（metric-strip、VXN 五档解读表等）
@@ -193,7 +203,7 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
   link.click();
 }
 
-export async function exportChartAsPng(chartInstance, panelEl) {
+export async function exportChartAsPng(chartInstance, panelEl, opts = {}) {
   const chartImg = await new Promise((resolve, reject) => {
     const img = new Image();
     img.src = chartInstance.getDataURL({
@@ -206,18 +216,24 @@ export async function exportChartAsPng(chartInstance, panelEl) {
     img.onerror = reject;
   });
 
-  // 收集底部附加说明元素（VXN 解读表、回撤事件表等），依次 html2canvas 渲染
-  let extras = [];
-  const extraEls = getPanelExtras(panelEl);
-  for (const el of extraEls) {
+  // 子图模式（面板内散点等单独成图）：标题用子标题，不拖表格等附加元素
+  const meta = opts.subHeader ? getSubHeaderMeta(opts.subHeader) || getPanelMeta(panelEl) : getPanelMeta(panelEl);
+  const extras = opts.subHeader ? [] : await renderPanelExtras(panelEl);
+
+  buildFrameAndDownload(chartImg, chartImg.naturalWidth, chartImg.naturalHeight, meta, extras);
+}
+
+// 收集底部附加说明元素（VXN 解读表、回撤事件表等），依次 html2canvas 渲染
+async function renderPanelExtras(panelEl) {
+  const extras = [];
+  for (const el of getPanelExtras(panelEl)) {
     try {
       extras.push(await renderElementToImage(el));
     } catch (err) {
       console.warn('附加元素渲染失败，跳过', el, err);
     }
   }
-
-  buildFrameAndDownload(chartImg, chartImg.naturalWidth, chartImg.naturalHeight, getPanelMeta(panelEl), extras);
+  return extras;
 }
 
 // ── HTML 元素（表格类面板）→ PNG ──
@@ -298,6 +314,16 @@ export function initExportButtons() {
         const chart = chartInstances.find(instance => instance.getDom().id === chartId);
         if (chart) {
           exportChartAsPng(chart, panel);
+          return;
+        }
+      }
+
+      // data-chart-sub：面板内子图单独成图（标题用子图小标题，不带面板其它内容）
+      const subChartId = btn.dataset.chartSub;
+      if (subChartId) {
+        const chart = chartInstances.find(instance => instance.getDom().id === subChartId);
+        if (chart) {
+          exportChartAsPng(chart, panel, { subHeader: btn.closest('.scatter-subheader') });
           return;
         }
       }

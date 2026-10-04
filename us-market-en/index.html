@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261004171104">
-<link rel="stylesheet" href="css/chronicle.css?v=20261004171104">
-<script defer src="js/mobile-nav.js?v=20261004171104"></script>
+<link rel="stylesheet" href="style.css?v=20261004174434">
+<link rel="stylesheet" href="css/chronicle.css?v=20261004174434">
+<script defer src="js/mobile-nav.js?v=20261004174434"></script>
 </head>
 <body>
 
@@ -358,7 +358,16 @@
         </div>
       </div>
       <div class="chart-container chart-medium" id="chartDrawdown"></div>
-      <div class="chart-container chart-medium" id="chartDdScatter" style="margin-top:28px"></div>
+      <div class="scatter-subheader">
+        <div>
+          <h3 class="scatter-subtitle">S&amp;P 500 Drawdown Events Scatter · every ≥10% drawdown since 1928</h3>
+          <p class="scatter-subdesc">X: days to trough (log scale) · Y: decline · colors = severity category · deeper drawdowns sit lower</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart-sub="chartDdScatter" title="Export scatter PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-medium" id="chartDdScatter"></div>
       <div class="table-toolbar">
         <div style="font-size:13px;color:var(--text-secondary)">Major drawdowns ≥ 10% · showing the latest 12, expand for all</div>
         <div style="display:flex;gap:8px">
@@ -824,7 +833,16 @@
         </div>
       </div>
       <div class="chart-container chart-medium" id="chartNdxDrawdown"></div>
-      <div class="chart-container chart-medium" id="chartNdxDdScatter" style="margin-top:28px"></div>
+      <div class="scatter-subheader">
+        <div>
+          <h3 class="scatter-subtitle">Nasdaq 100 Drawdown Events Scatter · every ≥10% drawdown since 1985</h3>
+          <p class="scatter-subdesc">X: days to trough (log scale) · Y: decline · colors = severity category · deeper drawdowns sit lower</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart-sub="chartNdxDdScatter" title="Export scatter PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-medium" id="chartNdxDdScatter"></div>
       <div class="table-toolbar">
         <div style="font-size:13px;color:var(--text-secondary)">Major drawdowns ≥ 10% · showing the latest 12, expand for all</div>
         <div style="display:flex;gap:8px">
@@ -1271,9 +1289,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261004171104"></script>
-<script type="module" src="js/panels.js?v=20261004171104"></script>
-<script defer src="js/hero-curve.js?v=20261004171104"></script>
+<script src="js/freshness.js?v=20261004174434"></script>
+<script type="module" src="js/panels.js?v=20261004174434"></script>
+<script defer src="js/hero-curve.js?v=20261004174434"></script>
 
 </body>
 </html>
