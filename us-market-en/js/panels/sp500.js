@@ -1287,7 +1287,7 @@ export function initPanelEps(data, sp500CenturyData, recessionData) {
           }
           if (yoy && yoy.value && yoy.value[1] != null) {
             const color = yoy.value[1] >= 0 ? greenColor : redColor;
-            lines.push(`EPS YoY: <b style="color:${color}">${formatPercent(yoy.value[1] / 100, 1)}</b>`);
+            lines.push(`EPS YoY: <b style="color:${color}">${formatPercent(yoy.value[1], 1)}</b>`);
           }
           return lines.join('<br/>');
         },
