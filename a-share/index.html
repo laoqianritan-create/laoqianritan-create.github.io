@@ -6,7 +6,7 @@
   <title>A股看板 · 老钱日日谈</title>
   <meta name="description" content="A股看板：申万行业热力图、不同事物的增长情况、行业交易热度、全市场成交换手、收益来源拆解、投资者结构、华证六因子。每交易日自动更新。">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261004e">
+  <link rel="stylesheet" href="css/style.css?v=20261004f">
 </head>
 <body>
 
@@ -14,7 +14,6 @@
   <div class="header-inner">
     <div class="brand">
       <h1 class="site-title">A股看板</h1>
-      <p class="site-subtitle">行业热力 · 长周期增长 · 交易热度 · 成交换手 · 收益拆解 · 投资者结构 · 华证六因子</p>
     </div>
     <nav class="site-nav" aria-label="面板导航">
       <a href="#panel-heatmap">1 行业热力图</a>
@@ -25,11 +24,10 @@
       <a href="#panel-turnover">6 全市场成交换手</a>
       <a href="#panel-return">7 收益来源拆解</a>
       <a href="#panel-investor">8 投资者结构</a>
+      <a href="#panel-fear">9 恐贪指数</a>
+      <a href="#panel-fund">10 基金指数</a>
+      <a href="#panel-coverage">11 宽基覆盖</a>
     </nav>
-  </div>
-  <div class="freshness-strip" id="freshnessStrip">
-    <span class="freshness-dot" aria-hidden="true"></span>
-    <span class="freshness-text">数据加载中…</span>
   </div>
 </header>
 
@@ -38,8 +36,13 @@
   <!-- ═══════════ 面板 1：申万行业年度涨跌幅热力图 ═══════════ -->
   <section class="panel" id="panel-heatmap">
     <div class="panel-head">
-      <h2 class="panel-title"><span class="panel-no">1.</span> 申万一级行业年度涨跌幅 · 长期 CAGR</h2>
-      <p class="panel-desc">2005 — 2026 · 31 个一级行业</p>
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">1.</span> 申万一级行业年度涨跌幅 · 长期 CAGR</h2>
+        <p class="panel-desc">2005 — 2026 · 31 个一级行业</p>
+      </div>
+      <div class="panel-actions">
+        <button id="btnExportHeatmap" class="btn-download js-icon-export" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
     </div>
     <div class="legend-bar">
       <span class="legend-label">−50%</span>
@@ -49,9 +52,6 @@
     </div>
     <div class="panel-body heatmap-wrap">
       <canvas id="heatmap" aria-label="申万一级行业年度涨跌幅热力图"></canvas>
-    </div>
-    <div class="panel-actions">
-      <button id="btnExportHeatmap" class="btn-download js-icon-export" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
@@ -68,7 +68,12 @@
   <!-- ═══════════ 面板 2：抄底数学题 ═══════════ -->
   <section class="panel" id="panel-loss">
     <div class="panel-head">
-      <h2 class="panel-title"><span class="panel-no">2.</span> 关于抄底的一道基础数学题</h2>
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">2.</span> 关于抄底的一道基础数学题</h2>
+      </div>
+      <div class="panel-actions">
+        <button id="btnExportLossTable" class="btn-download js-icon-export" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
     </div>
     <div class="panel-body loss-table-wrap">
       <canvas id="lossTable" aria-label="抄底数学题:不同买入价下的亏损幅度对照"></canvas>
@@ -82,12 +87,14 @@
   <!-- ═══════════ 面板 3：不同事物的增长情况 ═══════════ -->
   <section class="panel" id="panel-long">
     <div class="panel-head">
-      <h2 class="panel-title"><span class="panel-no">3.</span> 不同事物的增长情况</h2>
-    </div>
-    <div class="panel-body" id="panelLongBody"></div>
-    <div class="panel-actions">
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">3.</span> 不同事物的增长情况</h2>
+      </div>
+<div class="panel-actions">
       <button class="btn-download js-export" data-canvas="longGrowth" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
+    </div>
+    <div class="panel-body" id="panelLongBody"></div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
       <ul>
@@ -106,13 +113,15 @@
   <!-- ═══════════ 面板 4：华证六因子 ═══════════ -->
   <section class="panel" id="panel-huazheng">
     <div class="panel-head">
-      <h2 class="panel-title"><span class="panel-no">4.</span> 华证六因子</h2>
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">4.</span> 华证六因子</h2>
       <p class="panel-desc">成长 / 价值 / 低波 / 动量 / 质量 / 红利</p>
-    </div>
-    <div class="panel-body" id="panelHuazhengBody"></div>
-    <div class="panel-actions">
+      </div>
+<div class="panel-actions">
       <button class="btn-download js-export" data-canvas="huazhengFactor" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
+    </div>
+    <div class="panel-body" id="panelHuazhengBody"></div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
       <ul>
@@ -127,13 +136,15 @@
   <!-- ═══════════ 面板 5：行业交易热度 ═══════════ -->
   <section class="panel" id="panel-industry">
     <div class="panel-head">
-      <h2 class="panel-title"><span class="panel-no">5.</span> 行业交易热度</h2>
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">5.</span> 行业交易热度</h2>
       <p class="panel-desc">申万一级/二级行业 × 交易日 · 成交额占比分位 / RPS / MA20 站上率 · 点击一级行业行穿透二级</p>
-    </div>
-    <div class="panel-body" id="panelIndustryBody"></div>
-    <div class="panel-actions">
+      </div>
+<div class="panel-actions">
       <button class="btn-download js-export" data-canvas="industryHeat" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
+    </div>
+    <div class="panel-body" id="panelIndustryBody"></div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
       <ul>
@@ -148,13 +159,15 @@
   <!-- ═══════════ 面板 5：全市场成交换手 ═══════════ -->
   <section class="panel" id="panel-turnover">
     <div class="panel-head">
-      <h2 class="panel-title"><span class="panel-no">6.</span> 全市场成交金额 / 换手</h2>
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">6.</span> 全市场成交金额 / 换手</h2>
       <p class="panel-desc">两市成交额 · 换手率（成交额 / 全市场总市值）</p>
-    </div>
-    <div class="panel-body" id="panelTurnoverBody"></div>
-    <div class="panel-actions">
+      </div>
+<div class="panel-actions">
       <button class="btn-download js-export" data-canvas="turnover" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
+    </div>
+    <div class="panel-body" id="panelTurnoverBody"></div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
       <ul>
@@ -169,13 +182,15 @@
   <!-- ═══════════ 面板 6：收益来源拆解 ═══════════ -->
   <section class="panel" id="panel-return">
     <div class="panel-head">
-      <h2 class="panel-title"><span class="panel-no">7.</span> 指数收益来源拆解</h2>
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">7.</span> 指数收益来源拆解</h2>
       <p class="panel-desc">长期全收益 = 股息 + 盈利增长 + 估值变化 · 沪深300 / 中证500 / 中证1000 / 中证2000 / 中证全指 / 中证A500</p>
-    </div>
-    <div class="panel-body" id="panelReturnBody"></div>
-    <div class="panel-actions">
+      </div>
+<div class="panel-actions">
       <button class="btn-download js-export" data-canvas="returnDecomp" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
+    </div>
+    <div class="panel-body" id="panelReturnBody"></div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
       <ul>
@@ -191,13 +206,15 @@
   <!-- ═══════════ 面板 7：投资者结构 ═══════════ -->
   <section class="panel" id="panel-investor">
     <div class="panel-head">
-      <h2 class="panel-title"><span class="panel-no">8.</span> 投资者结构</h2>
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">8.</span> 投资者结构</h2>
       <p class="panel-desc">谁在持有 · 谁在定价 · 谁在交易</p>
-    </div>
-    <div class="panel-body" id="panelInvestorBody"></div>
-    <div class="panel-actions">
+      </div>
+<div class="panel-actions">
       <button class="btn-download js-export" data-canvas="investor" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
     </div>
+    </div>
+    <div class="panel-body" id="panelInvestorBody"></div>
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
       <ul>
@@ -208,26 +225,90 @@
     </details>
   </section>
 
+  <!-- ═══════════ 面板 9：A股恐贪指数 ═══════════ -->
+  <section class="panel" id="panel-fear">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">9.</span> A股恐贪指数</h2>
+        <p class="panel-desc">0 恐慌 — 100 贪婪 · 叠加中证全指</p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn-download js-export" data-canvas="fearGreed" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
+    </div>
+    <div class="panel-body" id="panelFearBody"></div>
+    <details class="panel-notes">
+      <summary>口径说明（点开阅读）</summary>
+      <ul>
+        <li>A股恐贪指数 0—100：数值越高越偏贪婪，越低越偏恐惧。分档：0-25 极度恐慌 / 26-45 恐慌 / 46-55 中性 / 56-75 贪婪 / 76-100 极度贪婪。</li>
+        <li>数据来源：百分位网（baifenwei.com）A股恐贪指数，由波动率、相对换手率、融资融券、市场宽度、RSI、涨跌停比 6 个子指标加权合成，每日更新。</li>
+        <li>中证全指（000985 价格指数）叠加用于对照情绪与市场走势。</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ═══════════ 面板 10：基金指数 ═══════════ -->
+  <section class="panel" id="panel-fund">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">10.</span> 基金指数</h2>
+        <p class="panel-desc">A500 全收益 vs 偏债基金 · 偏股混合 3 年滚动年化</p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn-download js-export" data-canvas="fundIndex" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
+    </div>
+    <div class="panel-body" id="panelFundBody"></div>
+    <details class="panel-notes">
+      <summary>口径说明（点开阅读）</summary>
+      <ul>
+        <li>中证A500全收益指数 vs 偏债混合基金指数（885003.WI）：2024-01 起归一为 100，对比两类资产的长期回报。</li>
+        <li>偏股混合基金指数（885001.WI）3 年滚动年化收益：每日计算近 756 个交易日（≈3 年）的年化复合收益率，观察公募偏股产品的赚钱效应。</li>
+        <li>数据来源：Wind AIFin（885001/885003，2005 起每日更新）；A500 全收益（Wind，2024 起）。</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ═══════════ 面板 11：宽基覆盖 ═══════════ -->
+  <section class="panel" id="panel-coverage">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">11.</span> 宽基指数覆盖范围</h2>
+        <p class="panel-desc">各宽基成分股 · 数量 / 市值覆盖 / 交叠关系</p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn-download js-export" data-canvas="coverage" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
+    </div>
+    <div class="panel-body" id="panelCoverageBody"></div>
+    <details class="panel-notes">
+      <summary>口径说明（点开阅读）</summary>
+      <ul>
+        <li>展示沪深300 / 中证500 / 中证1000 / 中证2000 / 中证A500 / 中证全指的成分股数量与市值覆盖。</li>
+        <li>交叠关系：计算两两指数成分股重合比例，识别「换汤不换药」的指数。</li>
+      </ul>
+    </details>
+  </section>
+
 </main>
 
-<footer class="site-footer">
-  <div class="footer-left">
-    <span>数据来源：申万宏源 / 中证指数 / 华证指数 / 沪深交易所 / 国家统计局 / FTShare / 乐咕，详见各面板口径说明</span>
-  </div>
-  <div class="footer-right">公众号「老钱日日谈」播客「面基」</div>
-</footer>
 
-<script src="js/data.js?v=20261004e"></script>
-<script src="js/common.js?v=20261004e"></script>
-<script src="js/heatmap.js?v=20261004e"></script>
-<script src="js/loss-table.js?v=20261004e"></script>
-<script src="js/longgrowth.js?v=20261004e"></script>
-<script src="js/industry-heat.js?v=20261004e"></script>
-<script src="js/market-turnover.js?v=20261004e"></script>
-<script src="js/return-decomp.js?v=20261004e"></script>
-<script src="js/investor-structure.js?v=20261004e"></script>
-<script src="js/huazheng-factor.js?v=20261004e"></script>
-<script src="js/main.js?v=20261004e"></script>
+
+<script src="js/data.js?v=20261004f"></script>
+<script src="js/common.js?v=20261004f"></script>
+<script src="js/heatmap.js?v=20261004f"></script>
+<script src="js/loss-table.js?v=20261004f"></script>
+<script src="js/longgrowth.js?v=20261004f"></script>
+<script src="js/industry-heat.js?v=20261004f"></script>
+<script src="js/market-turnover.js?v=20261004f"></script>
+<script src="js/return-decomp.js?v=20261004f"></script>
+<script src="js/investor-structure.js?v=20261004f"></script>
+<script src="js/huazheng-factor.js?v=20261004f"></script>
+<script src="js/fear-greed.js?v=20261004f"></script>
+<script src="js/fund-index.js?v=20261004f"></script>
+<script src="js/coverage.js?v=20261004f"></script>
+
+<script src="js/main.js?v=20261004f"></script>
 
 </body>
 </html>

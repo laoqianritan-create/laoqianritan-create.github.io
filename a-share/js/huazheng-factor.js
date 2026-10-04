@@ -170,25 +170,36 @@
       ctx.textBaseline = 'middle';
       ctx.fillText(txt, bx, labelY);
     });
+    // 图例（横向单行罗列：预计算总宽，超宽逐级缩短，不折行）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 245 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    ctx.font = (exportMode ? 26 : 12.5) + 'px NotoSansSC, sans-serif';
-    let lx = lx0, ly = ly0;
+    ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
     const lgap = exportMode ? 52 : 24;
-    factors.forEach((f) => {
-      const color = COLORS[f] || '#888888';
+    const lastVals = factors.map((f) => {
       const nav = data.factors[f].nav || [];
       const last = nav[nav.length - 1];
-      const mult = last !== null && last !== undefined ? last : null;
-      const label = `${f}${mult ? `  ${mult.toFixed(1)}x` : ''}`;
-      const tw = ctx.measureText(label).width + (exportMode ? 56 : 24);
-      if (lx + tw > W - padR - 10) { lx = lx0; ly += 52; }
+      return (last !== null && last !== undefined) ? last : null;
+    });
+    let legendNames = factors.slice();
+    const legendW = (ns) => ns.reduce((w, nm, i) => {
+      const label = `${nm}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
+      return w + ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
+    }, 0);
+    let minLen = 6;
+    while (legendW(legendNames) > W - padR - lx0 - 16 && minLen > 2) {
+      minLen--;
+      legendNames = legendNames.map((nm) => (nm.length > minLen ? nm.slice(0, minLen) : nm));
+    }
+    let lx = lx0, ly = ly0;
+    factors.forEach((f, i) => {
+      const color = COLORS[f] || '#888888';
+      const label = `${legendNames[i]}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
       ctx.fillStyle = color;
       ctx.fillRect(lx, ly - (exportMode ? 8 : 4), exportMode ? 40 : 16, exportMode ? 8 : 3);
       ctx.fillStyle = '#333333';
       ctx.fillText(label, lx + (exportMode ? 56 : 24), ly);
-      lx += tw + lgap;
+      lx += ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
     });
 
     // 页脚（导出版）

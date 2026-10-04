@@ -14,7 +14,10 @@
     turnover: 'data/market_turnover.json',
     returnDecomp: 'data/return_decomp.json',
     investor: 'data/investor_structure.json',
-    huazheng: 'data/panel_huazheng.json'
+    huazheng: 'data/panel_huazheng.json',
+    fearGreed: 'data/fear_greed.json',
+    fundIndex: 'data/fund_index.json',
+    coverage: 'data/coverage.json'
   };
 
   async function init() {
@@ -76,6 +79,21 @@
         if (data.huazheng && window.HZ_render) window.HZ_render(data.huazheng);
         else if (!data.huazheng) showPanelError('panel-huazheng', '华证六因子数据加载失败');
       } catch (e) { console.error('[huazheng]', e); showPanelError('panel-huazheng', '华证六因子渲染失败：' + e.message); }
+
+      try {
+        if (data.fearGreed && window.FG_render) window.FG_render(data.fearGreed);
+        else if (!data.fearGreed) showPanelError('panel-fear', '恐贪指数数据加载失败');
+      } catch (e) { console.error('[feargreed]', e); showPanelError('panel-fear', '恐贪指数渲染失败：' + e.message); }
+
+      try {
+        if (data.fundIndex && window.FI_render) window.FI_render(data.fundIndex);
+        else if (!data.fundIndex) showPanelError('panel-fund', '基金指数数据加载失败');
+      } catch (e) { console.error('[fundindex]', e); showPanelError('panel-fund', '基金指数渲染失败：' + e.message); }
+
+      try {
+        if (data.coverage && window.CV_render) window.CV_render(data.coverage);
+        else if (!data.coverage) showPanelError('panel-coverage', '宽基覆盖数据加载失败');
+      } catch (e) { console.error('[coverage]', e); showPanelError('panel-coverage', '宽基覆盖渲染失败：' + e.message); }
 
     } catch (err) {
       console.error('[A股看板] 初始化失败', err);

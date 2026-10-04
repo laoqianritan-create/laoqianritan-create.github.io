@@ -131,7 +131,7 @@
     }
 
     // 图例（横向罗列）
-    ctx.font = (exportMode ? 24 : 11.5) + 'px NotoSansSC, sans-serif';
+    ctx.font = (exportMode ? 26 : 13.5) + 'px NotoSansSC, sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const ly = exportMode ? 240 : 18;
     const lg0 = padL;
@@ -205,7 +205,7 @@
       box.style.cssText = 'border:1px solid #E5E5E5;border-radius:8px;padding:14px 16px;background:#FAFAFA;';
       let html = `<div style="font-weight:700;font-size:14px;margin-bottom:10px;">${c.title}</div>`;
       (c.items || []).forEach((it) => {
-        html += `<div style="display:flex;justify-content:space-between;font-size:12.5px;padding:3px 0;border-bottom:1px dashed #EEEEEE;">
+        html += `<div style="display:flex;justify-content:space-between;font-size:13.5px;padding:3px 0;border-bottom:1px dashed #EEEEEE;">
           <span style="color:#555;">${it.label}</span><span style="font-weight:600;">${it.value}</span></div>`;
         if (it.note) html += `<div style="font-size:11px;color:#999;margin-top:1px;">${it.note}</div>`;
       });

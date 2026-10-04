@@ -105,7 +105,8 @@ body {
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
-.panel-head { margin-bottom: 16px; }
+.panel-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+.panel-head-text { flex: 1; min-width: 0; }
 .panel-title { font-size: 21px; font-weight: 700; letter-spacing: 0.3px; }
 .panel-desc { font-size: 13px; color: var(--gray); margin-top: 4px; }
 
@@ -131,7 +132,7 @@ body {
 .seg button.active { background: var(--red); color: #fff; }
 .seg button:hover:not(.active) { background: #f5f5f5; }
 
-.panel-actions { margin-top: 14px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.panel-actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; margin-top: 2px; }
 .btn-primary {
   font-family: inherit; font-size: 14px; font-weight: 400;
   padding: 10px 22px; background: var(--ink); color: #fff;

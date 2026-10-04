@@ -12,6 +12,8 @@
     一线房价: '#5B6E96', 二线房价: '#62D9AD', 黄金: '#30CB13',
     中证全指全收益: '#23C2DB'
   };
+  // 图例显示名（单行放不下时缩短，不改曲线名）
+  const LEGEND_NAMES = { M2: 'M2', 存款: '存款', GDP: 'GDP', 总市值: '总市值', 一线房价: '一线房价', 二线房价: '二线房价', 黄金: '黄金', 中证全指全收益: '全收益' };
 
   function draw(canvas, data, opts) {
     const exportMode = opts.exportMode;
@@ -211,26 +213,37 @@
       ctx.fillText(txt, bx, labelY);
     });
 
-    // 图例（横向罗列，两行排不下自动换行）
+    // 图例（横向单行罗列：预计算总宽，超宽逐级缩短系列名，绝不折行）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 245 : 20;
     const lh = exportMode ? 50 : 22;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    let lx = lx0, ly = ly0;
     const lgap = exportMode ? 52 : 24;
-    ctx.font = (exportMode ? 26 : 12.5) + 'px NotoSansSC, sans-serif';
-    series.forEach((s) => {
-      const color = COLORS[s.code] || '#888888';
+    ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
+    const lastVals = series.map((s) => {
       const last = s.norm[s.norm.length - 1];
-      const mult = last !== null && last !== undefined ? last : null;
-      const label = `${s.name}${mult ? `  ${mult.toFixed(1)}x` : ''}`;
-      const tw = ctx.measureText(label).width + (exportMode ? 56 : 24);
-      if (lx + tw > W - padR - 10) { lx = lx0; ly += lh; }
+      return (last !== null && last !== undefined) ? last : null;
+    });
+    // 逐级缩短系列名直到单行放下（最短 4 字）
+    let legendNames = series.map((s) => LEGEND_NAMES[s.code] || s.name);
+    const legendW = (ns) => ns.reduce((w, nm, i) => {
+      const label = `${nm}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
+      return w + ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
+    }, 0);
+    let minLen = 8;
+    while (legendW(legendNames) > W - padR - lx0 - 16 && minLen > 4) {
+      minLen--;
+      legendNames = legendNames.map((nm) => (nm.length > minLen ? nm.slice(0, minLen) : nm));
+    }
+    let lx = lx0, ly = ly0;
+    series.forEach((s, i) => {
+      const color = COLORS[s.code] || '#888888';
+      const label = `${legendNames[i]}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
       ctx.fillStyle = color;
       ctx.fillRect(lx, ly - (exportMode ? 8 : 4), exportMode ? 40 : 16, exportMode ? 8 : 3);
       ctx.fillStyle = '#333333';
       ctx.fillText(label, lx + (exportMode ? 56 : 24), ly);
-      lx += tw + lgap;
+      lx += ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
     });
 
     // 页脚（导出版）

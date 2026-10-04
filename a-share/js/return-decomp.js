@@ -121,7 +121,7 @@
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly = exportMode ? 230 : 16;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    ctx.font = (exportMode ? 24 : 11.5) + 'px NotoSansSC, sans-serif';
+    ctx.font = (exportMode ? 26 : 13.5) + 'px NotoSansSC, sans-serif';
     let lx = lx0;
     const lgap = exportMode ? 56 : 26;
     SERIES.forEach((s) => {
