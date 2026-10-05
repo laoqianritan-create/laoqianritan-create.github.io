@@ -7,7 +7,7 @@
     "year_range": "1985-2026",
     "n_years": 42,
     "avg_dd": -0.1951,
-    "avg_tr": 0.1836,
+    "avg_tr": 0.1837,
     "positive_years": 35,
     "positive_years_pct": 83.3
   },
@@ -425,12 +425,12 @@
     {
       "year": 2026,
       "dd": -0.118,
-      "tr": 0.2201,
+      "tr": 0.2243,
       "trough_date": "2026-03-30",
-      "year_end_close": 30807.93,
-      "year_end_date": "2026-10-02",
+      "year_end_close": 30912.46,
+      "year_end_date": "2026-10-05",
       "ongoing": true,
-      "ath": 21
+      "ath": 22
     }
   ]
 }
