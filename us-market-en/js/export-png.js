@@ -3,8 +3,8 @@
 // Title + description (panel-desc) + date + centered content + footer URL watermark
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261004220951';
-import { chartInstances } from './chart-helpers.js?v=20261004220951';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261005093937';
+import { chartInstances } from './chart-helpers.js?v=20261005093937';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // Horizontal padding

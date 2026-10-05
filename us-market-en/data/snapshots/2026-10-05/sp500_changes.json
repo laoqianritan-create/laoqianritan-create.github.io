@@ -1,0 +1,121 @@
+{
+  "updated": "2026-02-09",
+  "source": {
+    "name": "S&P Dow Jones Indices Press Releases",
+    "note": "近期 S&P 500 样本变动，按官方新闻稿整理"
+  },
+  "changes": [
+    {
+      "effectiveDate": "2026-02-09",
+      "type": "并购触发",
+      "addition": {
+        "ticker": "CIEN",
+        "name": "Ciena",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "DAY",
+        "name": "Dayforce",
+        "sector": "Industrials"
+      },
+      "reason": "Thoma Bravo 收购 Dayforce；原 S&P MidCap 400 成分股 Ciena 调入 S&P 500。",
+      "sourceUrl": "https://press.spglobal.com/2026-02-04-Ciena-Set-to-Join-S-P-500-and-S-P-MidCap-400-Changes-Effective-February-10,-2026"
+    },
+    {
+      "effectiveDate": "2025-08-28",
+      "type": "并购触发",
+      "addition": {
+        "ticker": "IBKR",
+        "name": "Interactive Brokers Group",
+        "sector": "Financials"
+      },
+      "removal": {
+        "ticker": "WBA",
+        "name": "Walgreens Boots Alliance",
+        "sector": "Consumer Staples"
+      },
+      "reason": "Sycamore Partners 收购 Walgreens Boots Alliance，Interactive Brokers Group 由 S&P MidCap 400 调入。",
+      "sourceUrl": "https://press.spglobal.com/2025-08-25-Interactive-Brokers-Group-Set-to-Join-S-P-500,-Talen-Energy-to-Join-S-P-MidCap-400-and-Kinetik-Holdings-to-Join-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2025-07-23",
+      "type": "并购触发",
+      "addition": {
+        "ticker": "XYZ",
+        "name": "Block",
+        "sector": "Financials"
+      },
+      "removal": {
+        "ticker": "HES",
+        "name": "Hess",
+        "sector": "Energy"
+      },
+      "reason": "Chevron 完成对 Hess 的收购，Block 被调入 S&P 500。",
+      "sourceUrl": "https://press.spglobal.com/2025-07-18-Block-Set-to-Join-S-P-500"
+    },
+    {
+      "effectiveDate": "2025-07-18",
+      "type": "并购触发",
+      "addition": {
+        "ticker": "TTD",
+        "name": "The Trade Desk",
+        "sector": "Communication Services"
+      },
+      "removal": {
+        "ticker": "ANSS",
+        "name": "ANSYS",
+        "sector": "Information Technology"
+      },
+      "reason": "Synopsys 收购 ANSYS，The Trade Desk 被调入 S&P 500。",
+      "sourceUrl": "https://press.spglobal.com/2025-07-14-The-Trade-Desk-Set-to-Join-S-P-500"
+    },
+    {
+      "effectiveDate": "2025-07-09",
+      "type": "并购触发",
+      "addition": {
+        "ticker": "DDOG",
+        "name": "Datadog",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "JNPR",
+        "name": "Juniper Networks",
+        "sector": "Information Technology"
+      },
+      "reason": "Hewlett Packard Enterprise 收购 Juniper Networks，Datadog 调入 S&P 500。",
+      "sourceUrl": "https://press.spglobal.com/2025-07-02-Datadog-Set-to-Join-S-P-500"
+    },
+    {
+      "effectiveDate": "2024-12-23",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "APO",
+        "name": "Apollo Global Management",
+        "sector": "Financials"
+      },
+      "removal": {
+        "ticker": "QRVO",
+        "name": "Qorvo",
+        "sector": "Information Technology"
+      },
+      "reason": "季度再平衡中，Apollo 被认为更能代表大盘股空间，取代 Qorvo。",
+      "sourceUrl": "https://press.spglobal.com/2024-12-06-Apollo-Global-Management-and-Workday-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2024-12-23",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "WDAY",
+        "name": "Workday",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "AMTM",
+        "name": "Amentum Holdings",
+        "sector": "Industrials"
+      },
+      "reason": "季度再平衡中，Workday 被认为更能代表大盘股空间，取代 Amentum Holdings。",
+      "sourceUrl": "https://press.spglobal.com/2024-12-06-Apollo-Global-Management-and-Workday-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    }
+  ]
+}

@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261004220951';
+} from '../utils.js?v=20261005093937';
 
 import {
   registerChart,
@@ -32,9 +32,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261004220951';
+} from '../chart-helpers.js?v=20261005093937';
 
-import { isMobile } from '../mobile.js?v=20261004220951';
+import { isMobile } from '../mobile.js?v=20261005093937';
 
 export function initPanelM7(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartM7')));
