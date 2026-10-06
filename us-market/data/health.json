@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-06 14:33:37",
+  "generated_at": "2026-10-06 22:10:07",
   "today": "2026-10-06",
-  "overall": "critical",
-  "stale_count": 1,
+  "overall": "healthy",
+  "stale_count": 0,
   "sources": [
     {
       "file": "sp500_price.json",
@@ -35,9 +35,9 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-10-02",
-      "days_old": 4,
-      "status": "dead"
+      "updated": "2026-10-05",
+      "days_old": 1,
+      "status": "fresh"
     },
     {
       "file": "sp500_annual_returns_long.json",
@@ -49,9 +49,9 @@
     {
       "file": "buffett.json",
       "label": "巴菲特指标",
-      "updated": "2026-10-02",
-      "days_old": 4,
-      "status": "recent"
+      "updated": "2026-10-05",
+      "days_old": 1,
+      "status": "fresh"
     },
     {
       "file": "aiae.json",
@@ -70,8 +70,8 @@
     {
       "file": "nasdaq100_panels.json",
       "label": "纳指 100 成分股",
-      "updated": "2026-10-05",
-      "days_old": 1,
+      "updated": "2026-10-06",
+      "days_old": 0,
       "status": "fresh"
     },
     {
