@@ -33,14 +33,12 @@
   let l2ByParent = {}; // parentCode -> [codes]
   let metricBtns = []; // 指标切换按钮引用（二级禁用成交金额占比）
 
-  // ── 颜色：与看板1（申万热力图）同款发散色阶 ──
-  // 绿(冷)→浅绿→白(50 中心)→浅红→红(热)，vmin/vmax 按指标数据动态范围满幅映射：
-  // 值域窄的指标（如 MA20 挤在 25-70）也能拉满深浅，杜绝「高值泛白/像半透明」。
+  // ── 颜色：与看板1 同款红涨绿跌发散色阶，但取消白色过渡 ──
+  // 0 → 深绿、100 → 深红，中间经浅绿/浅红平滑过渡（无白色段）
   const STOPS = [
     [0.00, [47, 191, 113]],
-    [0.40, [201, 240, 218]],
-    [0.50, [255, 255, 255]],
-    [0.60, [247, 205, 203]],
+    [0.40, [188, 232, 205]],
+    [0.60, [242, 178, 174]],
     [1.00, [230, 90, 86]]
   ];
   function clamp01(x) { return Math.max(0, Math.min(1, x)); }
@@ -85,12 +83,16 @@
     return { lo: lo - pad, hi: hi + pad };
   }
 
-  // ── 按日期对齐取值（行业 dates 长度不同、换手率仅 2024 起 → 索引对齐会越界空白）──
+  // ── 按日期对齐取值（共享日期轴：date_groups[row.g]；行业 dates 长度不同 → 索引对齐会越界空白）──
+  function groupDates(row) {
+    const g = (payload.date_groups && payload.date_groups[row.g]) || row.dates || [];
+    return g;
+  }
   function getValByDate(row, metricKey, date) {
     if (!row.__maps) row.__maps = {};
     if (!row.__maps[metricKey]) {
       const m = new Map();
-      const dts = row.dates || [];
+      const dts = groupDates(row);
       const vals = row[metricKey] || [];
       for (let i = 0; i < dts.length; i++) m.set(dts[i], vals[i]);
       row.__maps[metricKey] = m;
@@ -108,7 +110,7 @@
     // 取日期轴（用第一个有数据的行业）
     const firstCode = codes[0];
     let allDates = [];
-    if (firstCode && payload.metrics[firstCode]) allDates = payload.metrics[firstCode].dates;
+    if (firstCode && payload.metrics[firstCode]) allDates = groupDates(payload.metrics[firstCode]);
 
     // 周期裁剪：取最近 N 个交易日
     const nDays = Math.min(state.days, allDates.length);
@@ -316,7 +318,7 @@
       const exportMode = false;
       const codes = state.level === 1 ? sortedL1 : (l2ByParent[state.parent] || []);
       const firstCode = codes[0];
-      const allDates = firstCode && payload.metrics[firstCode] ? payload.metrics[firstCode].dates : [];
+      const allDates = firstCode && payload.metrics[firstCode] ? groupDates(payload.metrics[firstCode]) : [];
       const nDays = Math.min(state.days, allDates.length);
       const startIdx = allDates.length - nDays;
       const nRows = codes.length;
@@ -359,7 +361,7 @@
       const exportMode = false;
       const codes = state.level === 1 ? sortedL1 : (l2ByParent[state.parent] || []);
       const firstCode = codes[0];
-      const allDates = firstCode && payload.metrics[firstCode] ? payload.metrics[firstCode].dates : [];
+      const allDates = firstCode && payload.metrics[firstCode] ? groupDates(payload.metrics[firstCode]) : [];
       const nDays = Math.min(state.days, allDates.length);
       const nRows = codes.length;
       const nCols = nDays;

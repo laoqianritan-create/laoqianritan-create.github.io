@@ -6,7 +6,7 @@
   <title>A股看板 · 老钱日日谈</title>
   <meta name="description" content="A股看板：申万行业热力图、不同事物的增长情况、行业交易热度、全市场成交换手、收益来源拆解、投资者结构、华证六因子。每交易日自动更新。">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261006l">
+  <link rel="stylesheet" href="css/style.css?v=20261006m">
 </head>
 <body>
 
@@ -70,7 +70,7 @@
       <canvas id="heatmap" aria-label="申万一级行业年度涨跌幅热力图"></canvas>
     </div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>2005—2014 数据来自 Wind 申万一级行业指数（2021 版）回溯重构合成指数。2021 版分类是申万宏源 2021 年启用并向前回算的，早年部分行业按现行口径合成回算，无幸存者偏差校正。</li>
         <li>2015—2025 为完整年度涨跌幅；2026 为年初至今（YTD），每日自动更新。</li>
@@ -109,7 +109,7 @@
     </div>
     <div class="panel-body" id="panelLongBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>全部指标按 2006-01 归一为 1，纵轴取对数，斜率即年化增速。</li>
         <li>M2 与人民币存款两条线高度重合（年化 12.7% vs 12.7%，存款是 M2 的主要构成），图中两条都保留。</li>
@@ -136,7 +136,7 @@
     </div>
     <div class="panel-body" id="panelHuazhengBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>六因子 = 成长 / 价值 / 低波 / 动量 / 质量 / 红利；每个因子为「大盘 / 中盘 / 小盘 / 微盘」4 档自由流通市值加权（9FF）单因子指数日收益的等权平均，链式合成净值（起点 2005-01-04 = 1）。</li>
         <li>微盘红利 2014-01 才有数据 → 红利线 2005—2013 为 3 档等权，2014 起 4 档。</li>
@@ -159,7 +159,7 @@
     </div>
     <div class="panel-body" id="panelIndustryBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>热度指标：① RPS（行业 N 日涨幅在全部行业中的排名百分位）；② MA20 站上率（行业指数收盘价站上 20 日均线的天数占近 250 交易日的比例）。</li>
         <li>周期可选 3 / 5 / 10 / 20 / 60 / 120 / 250 个交易日；默认 60 日。</li>
@@ -181,7 +181,7 @@
     </div>
     <div class="panel-body" id="panelTurnoverBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>两市成交额 = 上证 + 深证 成交金额（新浪口径，2002 起）。</li>
         <li>换手率 = 两市成交额 / 全市场总市值（乐咕日度全 A 总市值，2005 起）。</li>
@@ -204,7 +204,7 @@
     </div>
     <div class="panel-body" id="panelCoverageBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>1 格 = 50 只成分股；沪深300 → 中证500 → 中证1000 → 中证2000 按市值分层紧邻连续摆放（300 后紧接 500，500 后紧接 1000…），直观呈现大中小微盘梯度。</li>
         <li>中证全指从第 0 格全覆盖全市场；中证A500 为全市场选样（从第 0 格起）。</li>
@@ -226,7 +226,7 @@
     </div>
     <div class="panel-body" id="panelReturnBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>全收益 = 股息 + 盈利 + 估值：区间总收益近似拆为 股息贡献（累计股息率）+ 盈利贡献（EPS 增长）+ 估值贡献（PE 变化，残差）。</li>
         <li>价格指数与全收益指数来自中证指数官网；PE 取 TTM 口径，股息率取中证官网 indicator.xls。</li>
@@ -250,7 +250,7 @@
     </div>
     <div class="panel-body" id="panelWideBaseBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>各指数全收益净值以 2005-01-04 = 100 归一，纵轴对数，斜率即年化回报。</li>
         <li>中证2000 全收益指数未发布 → 用价格指数（2013-12 起），股息贡献缺失。</li>
@@ -274,7 +274,7 @@
     </div>
     <div class="panel-body" id="panelInvestorBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>谁在持有：流通市值按持有人类型拆（散户/机构/外资等）；谁在定价：成交额按投资者类型拆；谁在交易：活跃账户/新增投资者。</li>
         <li>新增投资者序列：2005—2023-08 为中证登"新增投资者数量"（全市场口径）；2023-09 起为上交所"股票账户新开户（A股个人）"（沪市口径）——两者口径不同，图中以分界线标注，不可跨段直接比量级。</li>
@@ -295,7 +295,7 @@
     </div>
     <div class="panel-body" id="panelFearBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>A股恐贪指数 0—100：数值越高越偏贪婪，越低越偏恐惧。分档：0-25 极度恐慌 / 26-45 恐慌 / 46-55 中性 / 56-75 贪婪 / 76-100 极度贪婪。</li>
         <li>数据来源：百分位网（baifenwei.com）A股恐贪指数，由波动率、相对换手率、融资融券、市场宽度、RSI、涨跌停比 6 个子指标加权合成，每日更新。</li>
@@ -316,7 +316,7 @@
     </div>
     <div class="panel-body" id="panelTimingBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>偏股混合基金指数（885001.WI，Wind，2005 起）每日计算近 756 个交易日（≈3 年）的年化复合收益率。</li>
         <li>高于 0 线 = 近 3 年买入偏股混合基金并持有有正收益；低于 0 线 = 近 3 年整体亏损。</li>
@@ -329,7 +329,7 @@
     <div class="panel-head">
       <div class="panel-head-text">
         <h2 class="panel-title">神奇择时指标</h2>
-        <p class="panel-desc">A500 全收益 vs 偏债混合基金（2005 起）</p>
+        <p class="panel-desc">A500 全收益 vs 偏债混合基金</p>
       </div>
       <div class="panel-actions">
         <button class="btn-download js-export" data-canvas="fundIndex" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
@@ -337,7 +337,7 @@
     </div>
     <div class="panel-body" id="panelFundBody"></div>
     <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
+      <summary>口径说明</summary>
       <ul>
         <li>中证A500全收益指数 vs 偏债混合基金指数（885003.WI）：2024-01 起归一为 100，对比两类资产的长期回报。</li>
         <li>偏股混合基金指数（885001.WI）3 年滚动年化收益：每日计算近 756 个交易日（≈3 年）的年化复合收益率，观察公募偏股产品的赚钱效应。</li>
@@ -370,24 +370,24 @@
 
 
 
-<script src="js/data.js?v=20261006l"></script>
-<script src="js/common.js?v=20261006l"></script>
-<script src="js/banner.js?v=20261006l"></script>
-<script src="js/heatmap.js?v=20261006l"></script>
-<script src="js/loss-table.js?v=20261006l"></script>
-<script src="js/longgrowth.js?v=20261006l"></script>
-<script src="js/industry-heat.js?v=20261006l"></script>
-<script src="js/market-turnover.js?v=20261006l"></script>
-<script src="js/return-decomp.js?v=20261006l"></script>
-<script src="js/investor-structure.js?v=20261006l"></script>
-<script src="js/huazheng-factor.js?v=20261006l"></script>
-<script src="js/wide-base.js?v=20261006l"></script>
-<script src="js/fear-greed.js?v=20261006l"></script>
-<script src="js/timing.js?v=20261006l"></script>
-<script src="js/fund-index.js?v=20261006l"></script>
-<script src="js/coverage.js?v=20261006l"></script>
+<script defer src="js/data.js?v=20261006m"></script>
+<script defer src="js/common.js?v=20261006m"></script>
+<script defer src="js/banner.js?v=20261006m"></script>
+<script defer src="js/heatmap.js?v=20261006m"></script>
+<script defer src="js/loss-table.js?v=20261006m"></script>
+<script defer src="js/longgrowth.js?v=20261006m"></script>
+<script defer src="js/industry-heat.js?v=20261006m"></script>
+<script defer src="js/market-turnover.js?v=20261006m"></script>
+<script defer src="js/return-decomp.js?v=20261006m"></script>
+<script defer src="js/investor-structure.js?v=20261006m"></script>
+<script defer src="js/huazheng-factor.js?v=20261006m"></script>
+<script defer src="js/wide-base.js?v=20261006m"></script>
+<script defer src="js/fear-greed.js?v=20261006m"></script>
+<script defer src="js/timing.js?v=20261006m"></script>
+<script defer src="js/fund-index.js?v=20261006m"></script>
+<script defer src="js/coverage.js?v=20261006m"></script>
 
-<script src="js/main.js?v=20261006l"></script>
+<script defer src="js/main.js?v=20261006m"></script>
 
 </body>
 </html>

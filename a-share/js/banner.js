@@ -52,10 +52,10 @@
     const n = Math.min(dates.length, red.length, csi.length);
     if (n < 2) return;
 
-    // ── 图表灌满画布：左侧留标题区，右侧留末端标签区 ──
-    const padL = exportMode ? 560 : 350;   // 左：标题文案区
+    // ── 图表灌满画布：左侧留标题区 + y 轴刻度，右侧留末端标签区 ──
+    const padL = exportMode ? 700 : 440;   // 左：标题 + y 轴刻度
     const padR = exportMode ? 320 : 190;   // 右：末端标签区
-    const padT = exportMode ? 64 : 40;
+    const padT = exportMode ? 235 : 150;   // 顶部：让出标题区，y 轴刻度从标题下方开始
     const padB = exportMode ? 60 : 36;
     const plotL = padL, plotR = W - padR;
     const plotT = padT, plotB = H - padB;
@@ -70,9 +70,9 @@
 
     // ── 左侧文案：追寻适应与夏普之路（左上）──
     const tx = exportMode ? 64 : 44;
-    const ty = exportMode ? 96 : 56;
+    const ty = exportMode ? 88 : 52;
     ctx.fillStyle = C_GOLD;
-    ctx.font = (exportMode ? 78 : 44) + 'px ' + FONT_TITLE;
+    ctx.font = (exportMode ? 56 : 34) + 'px ' + FONT_TITLE;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
     ctx.fillText('追寻适应与夏普之路', tx, ty);
@@ -82,12 +82,18 @@
     ctx.font = (exportMode ? 26 : 15) + 'px ' + FONT_BODY;
     ctx.fillText('ADAPTIVE ALLOCATION & SHARPE · 2006—2026', tx, ty + (exportMode ? 108 : 60));
 
-    // 浅色水平网格（价格刻度，不打数字标签——刻度数字已删）
+    // 浅色水平网格 + 左侧价格刻度标签（y 轴）
     ctx.strokeStyle = 'rgba(255,255,255,0.10)';
     ctx.lineWidth = 1;
+    ctx.font = (exportMode ? 22 : 11.5) + 'px ' + FONT_BODY;
+    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = 'rgba(255,255,255,0.5)';
     for (let g = 0; g <= 4; g++) {
       const y = plotB - (g / 4) * (plotB - plotT);
       ctx.beginPath(); ctx.moveTo(plotL, y); ctx.lineTo(plotR, y); ctx.stroke();
+      const val = (maxV * g) / 4;
+      const label = val >= 1000 ? (val / 1000).toFixed(val % 1000 === 0 ? 0 : 1) + 'k' : String(Math.round(val));
+      ctx.fillText(label, plotL - 12, y);
     }
 
     // 年份刻度（稀疏打点）
