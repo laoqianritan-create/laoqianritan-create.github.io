@@ -6,7 +6,7 @@
   <title>A股看板 · 老钱日日谈</title>
   <meta name="description" content="A股看板：申万行业热力图、不同事物的增长情况、行业交易热度、全市场成交换手、收益来源拆解、投资者结构、华证六因子。每交易日自动更新。">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261004g">
+  <link rel="stylesheet" href="css/style.css?v=20261006h">
 </head>
 <body>
 
@@ -38,7 +38,7 @@
 
 <div class="hero-banner" aria-hidden="false">
   <div class="hero-inner">
-    <h2 class="hero-title">A股看板 <span class="hero-sub">市场温度 · 每交易日自动更新</span></h2>
+    <div id="heroBanner"></div>
     <div class="hero-ticker" id="heroTicker">
       <span class="ticker-item"><i class="tick-dot"></i>恐贪 <b id="heroFG">--</b></span>
       <span class="ticker-item"><i class="tick-dot"></i>中证全指 <b id="heroCSI">--</b></span>
@@ -243,6 +243,27 @@
     </details>
   </section>
 
+<!-- ═══════════ 面板 13：宽基覆盖（格子网） ═══════════ -->
+  <section class="panel" id="panel-coverage">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title"><span class="panel-no">13.</span> 宽基指数覆盖范围</h2>
+        <p class="panel-desc">1 格 = 50 只 · 按市值分层连续摆放（300→500→1000→2000 紧邻衔接）</p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn-download js-export" data-canvas="coverage" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
+    </div>
+    <div class="panel-body" id="panelCoverageBody"></div>
+    <details class="panel-notes">
+      <summary>口径说明（点开阅读）</summary>
+      <ul>
+        <li>1 格 = 50 只成分股；沪深300 → 中证500 → 中证1000 → 中证2000 按市值分层紧邻连续摆放（300 后紧接 500，500 后紧接 1000…），直观呈现大中小微盘梯度。</li>
+        <li>中证全指从第 0 格全覆盖全市场；中证A500 为全市场选样（从第 0 格起）。</li>
+        <li>数据：中证指数官网成分股快照（akshare index_stock_cons_csindex）。</li>
+      </ul>
+    </details>
+  </section>
   <!-- ═══════════ 面板 7：投资者结构 ═══════════ -->
   <section class="panel" id="panel-investor">
     <div class="panel-head">
@@ -290,7 +311,7 @@
   <section class="panel" id="panel-timing">
     <div class="panel-head">
       <div class="panel-head-text">
-        <h2 class="panel-title"><span class="panel-no">11.</span> 偏股混合基金 3 年滚动年化</h2>
+        <h2 class="panel-title"><span class="panel-no">11.</span> 偏股混合基金滚动年化</h2>
       </div>
       <div class="panel-actions">
         <button class="btn-download js-export" data-canvas="timing" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
@@ -328,26 +349,7 @@
     </details>
   </section>
 
-  <!-- ═══════════ 面板 13：宽基覆盖（格子网） ═══════════ -->
-  <section class="panel" id="panel-coverage">
-    <div class="panel-head">
-      <div class="panel-head-text">
-        <h2 class="panel-title"><span class="panel-no">13.</span> 宽基指数覆盖范围</h2>
-        <p class="panel-desc">1 格 = 50 只成分股 · 各宽基覆盖范围对比</p>
-      </div>
-      <div class="panel-actions">
-        <button class="btn-download js-export" data-canvas="coverage" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
-      </div>
-    </div>
-    <div class="panel-body" id="panelCoverageBody"></div>
-    <details class="panel-notes">
-      <summary>口径说明（点开阅读）</summary>
-      <ul>
-        <li>展示沪深300 / 中证500 / 中证1000 / 中证2000 / 中证A500 / 中证全指的成分股数量与市值覆盖。</li>
-        <li>交叠关系：计算两两指数成分股重合比例，识别「换汤不换药」的指数。</li>
-      </ul>
-    </details>
-  </section>
+  
 
 
 <div class="related-resources">
@@ -357,12 +359,12 @@
       <li><a href="https://gold.laoqianriritan.com/" target="_blank" rel="noopener">黄金看板</a></li>
       <li><a href="https://stock.laoqianriritan.com/" target="_blank" rel="noopener">美股看板</a></li>
       <li><a href="https://debt.laoqianriritan.com/" target="_blank" rel="noopener">美债看板</a></li>
-      <li><a href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">老钱日日谈（公众号）</a></li>
-      <li><a href="https://www.xiaoyuzhoufm.com/" target="_blank" rel="noopener">播客「面基」</a></li>
-      <li><a href="https://www.trendanimal.com/" target="_blank" rel="noopener">趋势动物小程序</a></li>
+      <li><a href="https://mp.weixin.qq.com/s/ITxDnAyu3rbUBH7F96Wh9g" target="_blank" rel="noopener">老钱日日谈（公众号）</a></li>
+      <li><a href="https://www.xiaoyuzhoufm.com/podcast/6388760f22567e8ea6ad070f" target="_blank" rel="noopener">播客「面基」</a></li>
+      <li><a href="https://laoqianritan-create.github.io/qushi-animal-gallery/" target="_blank" rel="noopener">趋势动物小程序</a></li>
       <li><a href="https://youzhiyouxing.cn/" target="_blank" rel="noopener">有知有行 App</a></li>
       <li><a href="https://youzhiyouxing.cn/sbbi2025" target="_blank" rel="noopener">SBBI 中国大类资产投资2025年报</a></li>
-      <li><a href="https://redrocket.com/" target="_blank" rel="noopener">红色火箭</a></li>
+      <li><a href="https://www.hongsehuojian.com/red-rocket/home" target="_blank" rel="noopener">红色火箭</a></li>
     </ul>
   </div>
 </div>
@@ -371,23 +373,24 @@
 
 
 
-<script src="js/data.js?v=20261004g"></script>
-<script src="js/common.js?v=20261004g"></script>
-<script src="js/heatmap.js?v=20261004g"></script>
-<script src="js/loss-table.js?v=20261004g"></script>
-<script src="js/longgrowth.js?v=20261004g"></script>
-<script src="js/industry-heat.js?v=20261004g"></script>
-<script src="js/market-turnover.js?v=20261004g"></script>
-<script src="js/return-decomp.js?v=20261004g"></script>
-<script src="js/investor-structure.js?v=20261004g"></script>
-<script src="js/huazheng-factor.js?v=20261004g"></script>
-<script src="js/wide-base.js?v=20261004g"></script>
-<script src="js/fear-greed.js?v=20261004g"></script>
-<script src="js/timing.js?v=20261004g"></script>
-<script src="js/fund-index.js?v=20261004g"></script>
-<script src="js/coverage.js?v=20261004g"></script>
+<script src="js/data.js?v=20261006h"></script>
+<script src="js/common.js?v=20261006h"></script>
+<script src="js/banner.js?v=20261006h"></script>
+<script src="js/heatmap.js?v=20261006h"></script>
+<script src="js/loss-table.js?v=20261006h"></script>
+<script src="js/longgrowth.js?v=20261006h"></script>
+<script src="js/industry-heat.js?v=20261006h"></script>
+<script src="js/market-turnover.js?v=20261006h"></script>
+<script src="js/return-decomp.js?v=20261006h"></script>
+<script src="js/investor-structure.js?v=20261006h"></script>
+<script src="js/huazheng-factor.js?v=20261006h"></script>
+<script src="js/wide-base.js?v=20261006h"></script>
+<script src="js/fear-greed.js?v=20261006h"></script>
+<script src="js/timing.js?v=20261006h"></script>
+<script src="js/fund-index.js?v=20261006h"></script>
+<script src="js/coverage.js?v=20261006h"></script>
 
-<script src="js/main.js?v=20261004g"></script>
+<script src="js/main.js?v=20261006h"></script>
 
 </body>
 </html>

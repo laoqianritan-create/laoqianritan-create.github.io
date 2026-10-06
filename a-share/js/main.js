@@ -8,6 +8,7 @@
   const AK = window.AK;
 
   const DATA = {
+    banner: 'data/banner.json',
     heatmap: 'data/sw_returns.json',
     longgrowth: 'data/panel_longgrowth.json',
     industry: 'data/industry_heat.json',
@@ -39,6 +40,11 @@
           console.warn('[A股看板] 数据加载失败:', p.reason && p.reason.message);
         }
       });
+
+      // 顶部动态 Banner（深红 + 价格坐标双线 + 圆形 icon）
+      try {
+        if (data.banner && window.BN_render) window.BN_render(data.banner);
+      } catch (e) { console.error('[banner]', e); }
 
       // 顶部新鲜度
       AK.renderFreshness(asOfList);

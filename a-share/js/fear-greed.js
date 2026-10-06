@@ -233,13 +233,16 @@
     const fg = data.series.fear_greed;
     const n = fg.dates.length;
 
-    // 时间轴滑块控件
+    const canvas = document.createElement('canvas');
+    canvas.id = 'fearGreed';
+    wrap.appendChild(canvas);
+
+    // 时间轴滑块控件（放图表下方；默认显示 2024-01 至今）
     const ctrl = document.createElement('div');
     ctrl.className = 'fg-controls';
     const lbl = document.createElement('span');
     lbl.className = 'fg-range-label';
     lbl.id = 'fgRangeLabel';
-    lbl.textContent = `显示 ${fg.dates[0].slice(0, 4)} — ${fg.dates[n - 1].slice(0, 4)}`;
     const slider = document.createElement('input');
     slider.type = 'range';
     slider.id = 'fgRange';
@@ -252,17 +255,20 @@
     ctrl.appendChild(slider);
     wrap.appendChild(ctrl);
 
-    const canvas = document.createElement('canvas');
-    canvas.id = 'fearGreed';
-    wrap.appendChild(canvas);
+    // 默认起点：2024-01-01（用户反馈：默认 2024 至今避免曲线过密）
+    let defStart = 0;
+    for (let i = 0; i < n; i++) {
+      if (fg.dates[i] >= '2024-01-01') { defStart = i; break; }
+    }
+    slider.value = String(defStart);
 
-    let curStart = 0;
+    let curStart = defStart;
     const redraw = (start) => {
       curStart = start;
       draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1, startIdx: start });
       lbl.textContent = `显示 ${fg.dates[start].slice(0, 4)} — ${fg.dates[n - 1].slice(0, 4)}`;
     };
-    redraw(0);
+    redraw(defStart);
 
     slider.addEventListener('input', () => {
       const v = parseInt(slider.value, 10);

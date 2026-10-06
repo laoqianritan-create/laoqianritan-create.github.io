@@ -1,13 +1,20 @@
 /**
- * 面板 11：偏股混合基金 3 年滚动年化
- * 数据：fund_index.json { series: { '885001.WI': {dates, values, rolling3} } }
- * 展示：885001 每日 3 年滚动年化收益（%）；>0 红 / <0 绿；0 虚线
+ * 面板 11：偏股混合基金 滚动年化（1/3/5/7 年可切换）
+ * 数据：fund_index.json { series: { '885001.WI': {dates, values, rolling1, rolling3, rolling5, rolling7} } }
+ * 展示：885001 每日 N 年滚动年化收益（%）；>0 红 / <0 绿；0 虚线
  */
 (function () {
   'use strict';
 
   const C_PG = '#E65A56';   // 红（正）
   const C_NEG = '#30CB13';  // 绿（负）
+  const WINDOWS = [
+    { key: 'rolling1', label: '1年' },
+    { key: 'rolling3', label: '3年' },
+    { key: 'rolling5', label: '5年' },
+    { key: 'rolling7', label: '7年' },
+  ];
+  let state = { rollKey: 'rolling3' };
 
   function draw(canvas, data, opts) {
     const exportMode = opts.exportMode;
@@ -18,6 +25,8 @@
     const padR = exportMode ? 200 : 118;
     const padT = exportMode ? 220 : 60;
     const padB = exportMode ? 110 : 46;
+    const rollKey = opts.rollKey || state.rollKey;
+    const winLabel = (WINDOWS.find((w) => w.key === rollKey) || WINDOWS[1]).label;
 
     canvas.width = W * scale;
     canvas.height = H * scale;
@@ -35,8 +44,8 @@
     const pg = data.series && data.series['885001.WI'];
     if (!pg) return;
     const dates = pg.dates || [];
-    const rollRaw = pg.rolling3 || [];
-    // rolling3 可能为 {dates, values} 对象或数组
+    const rollRaw = pg[rollKey] || [];
+    // rolling 可能为 {dates, values} 对象或数组
     const roll = Array.isArray(rollRaw) ? rollRaw : (rollRaw.values || []);
     const n = Math.min(dates.length, roll.length);
 
@@ -98,10 +107,10 @@
       ctx.fillStyle = '#1a1a1a';
       ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('偏股混合基金 3 年滚动年化', W / 2, 90);
+      ctx.fillText(`偏股混合基金 ${winLabel}滚动年化`, W / 2, 90);
       ctx.fillStyle = '#555555';
       ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText('885001 偏股混合基金指数 · 每日近 756 个交易日（≈3 年）年化复合', W / 2, 160);
+      ctx.fillText('885001 偏股混合基金指数 · 每日滚动年化复合', W / 2, 160);
     }
 
     // 曲线（红正绿负）
@@ -134,8 +143,8 @@
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
     const items = [
-      { c: C_PG, label: '3年滚动年化 > 0' },
-      { c: C_NEG, label: '3年滚动年化 < 0' },
+      { c: C_PG, label: `${winLabel}滚动年化 > 0` },
+      { c: C_NEG, label: `${winLabel}滚动年化 < 0` },
     ];
     let lx = lx0;
     items.forEach((it) => {
@@ -151,14 +160,14 @@
       ctx.fillStyle = '#888888';
       ctx.font = '300 24px NotoSansSC, sans-serif';
       ctx.textAlign = 'left';
-      ctx.fillText(`数据截至 ${(data.generated || '').slice(0, 10)} · 885001 偏股混合基金指数（Wind AIFin）· 756 交易日窗口年化复合`, padL, H - 60);
+      ctx.fillText(`数据截至 ${(data.generated || '').slice(0, 10)} · 885001 偏股混合基金指数（Wind AIFin）· ${winLabel}交易日窗口年化复合`, padL, H - 60);
       ctx.textAlign = 'right';
       ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 60);
     }
 
     // hover（屏幕版）
     if (!exportMode) {
-      canvas.__tmData = { dates, roll, first, last, xs, yP };
+      canvas.__tmData = { dates, roll, first, last, xs, yP, rollKey, winLabel };
       if (!canvas.__hoverBound) {
         canvas.__hoverBound = true;
         canvas.addEventListener('mousemove', (ev) => {
@@ -171,7 +180,7 @@
           const v = D.roll[i];
           if (v === null || v === undefined || Number.isNaN(v)) { window.AK.tooltip.hide(); return; }
           const color = (v >= 0) ? C_PG : C_NEG;
-          window.AK.tooltip.show(ev, `<b>${D.dates[i]}</b><br><span style="color:${color}">●</span> 3年滚动年化：<b>${v.toFixed(2)}%</b>`);
+          window.AK.tooltip.show(ev, `<b>${D.dates[i]}</b><br><span style="color:${color}">●</span> ${D.winLabel}滚动年化：<b>${v.toFixed(2)}%</b>`);
         });
         canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
       }
@@ -185,16 +194,36 @@
     const canvas = document.createElement('canvas');
     canvas.id = 'timing';
     wrap.appendChild(canvas);
+
+    // 维度选择器（1/3/5/7 年）
+    const ctrl = document.createElement('div');
+    ctrl.className = 'panel-controls';
+    ctrl.innerHTML = `<div class="ctrl-group"><label>维度</label><span class="seg" id="tm-win"></span></div>`;
+    wrap.appendChild(ctrl);
+    const seg = ctrl.querySelector('#tm-win');
+    WINDOWS.forEach((w) => {
+      const b = document.createElement('button');
+      b.textContent = `${w.label}滚动年化`;
+      if (w.key === state.rollKey) b.classList.add('active');
+      b.addEventListener('click', () => {
+        state.rollKey = w.key;
+        seg.querySelectorAll('button').forEach((x) => x.classList.remove('active'));
+        b.classList.add('active');
+        draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1, rollKey: w.key });
+      });
+      seg.appendChild(b);
+    });
+
     draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
 
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1, rollKey: state.rollKey }));
     });
 
     window.AK.bindExportButtons({
-      timing: (off) => draw(off, data, { exportMode: true, scale: 1 })
+      timing: (off) => draw(off, data, { exportMode: true, scale: 1, rollKey: state.rollKey })
     });
   };
 })();

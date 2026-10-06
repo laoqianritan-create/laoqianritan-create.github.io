@@ -25,7 +25,7 @@
     const W = exportMode ? 3000 : 1480;
     const H = exportMode ? 1500 : 680;
     const padL = exportMode ? 170 : 90;
-    const padR = exportMode ? 200 : 118;
+    const padR = exportMode ? 240 : 150;
     const padT = exportMode ? 220 : 60;
     const padB = exportMode ? 110 : 46;
 
@@ -129,7 +129,7 @@
       ctx.stroke();
     });
 
-    // ── 末端 CAGR 标签（一个数字，防重叠）──
+    // ── 末端 CAGR 标签（一个数字，统一放最右侧空白区，防重叠、不遮曲线）──
     const ends = [];
     series.forEach((s) => {
       let li = -1;
@@ -153,12 +153,9 @@
     const used = [];
     const dotColor = (c) => (c === '#E65A56' ? '#5AAEF3' : '#E65A56');
     ctx.font = (exportMode ? 28 : 13) + 'px NotoSansSC, sans-serif';
+    const tagX = W - padR + (exportMode ? 28 : 16);   // 标签统一在最右侧
     ends.forEach((e, i) => {
       const txt = `${(e.cagr * 100).toFixed(1)}%`;
-      const tw = ctx.measureText(txt).width;
-      const side = (i % 2 === 0) ? 1 : -1;
-      const bx = side === 1 ? e.x + (exportMode ? 20 : 12) : e.x - (exportMode ? 20 : 12) - tw;
-      const ha = side === 1 ? 'left' : 'right';
       let dy = 0;
       for (let k = 0; k < 24; k++) {
         const cand = e.y + dy;
@@ -179,13 +176,13 @@
       ctx.strokeStyle = '#AAAAAA';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.moveTo(e.x + (side === 1 ? (exportMode ? 8 : 6) : -(exportMode ? 8 : 6)), e.y);
-      ctx.lineTo(side === 1 ? e.x + (exportMode ? 20 : 12) : e.x - (exportMode ? 20 : 12), labelY);
+      ctx.moveTo(e.x + (exportMode ? 8 : 6), e.y);
+      ctx.lineTo(tagX - (exportMode ? 6 : 4), labelY);
       ctx.stroke();
       ctx.fillStyle = e.color;
-      ctx.textAlign = ha;
+      ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
-      ctx.fillText(txt, bx, labelY);
+      ctx.fillText(txt, tagX, labelY);
     });
 
     // ── 图例（横向单行，自适缩短）──

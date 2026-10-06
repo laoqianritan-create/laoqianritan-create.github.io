@@ -16,6 +16,7 @@
   const METRICS = [
     { key: 'amount_share_pctile', label: '成交金额占比分位', sub: '行业成交额/全市场 · expanding 分位' },
     { key: 'rps', label: 'RPS', sub: '250日涨幅行业排名百分位' },
+    { key: 'turnover_pctile', label: '换手率分位', sub: '行业换手率历史分位（expanding）' },
     { key: 'ma20_above', label: 'MA20站上率', sub: '行业指数收盘站上20日均线天数占比(250日)' }
   ];
   const PERIODS = [3, 5, 10, 20, 60, 120, 250];
@@ -32,6 +33,7 @@
   let canvas = null;
   let sortedL1 = [];   // 一级行业排序后的代码
   let l2ByParent = {}; // parentCode -> [codes]
+  let metricBtns = []; // 指标切换按钮引用（二级禁用成交金额占比）
 
   // ── 颜色：分位 0-100 → 绿→白→红 ──
   function heatColor(pct) {
@@ -134,17 +136,29 @@
 
     const matrixTop = titleH + legendH + colHdrH;
 
-    // 列标题（日期；60 日以上跳格显示防重叠）
+    // 列标题（日期；按自然月取标签——每月首个交易日显示一次，任何窗口不重叠）
     ctx.fillStyle = '#555555';
     ctx.font = (exportMode ? 20 : 10.5) + 'px NotoSansSC, sans-serif';
     ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
-    const tickStep = nCols > 250 ? 20 : (nCols > 120 ? 10 : (nCols > 60 ? 5 : (nCols > 30 ? 2 : 1)));
-    dates.forEach((d, j) => {
-      if (j % tickStep !== 0 && j !== nCols - 1) return;
-      const x = padL + (j + 0.5) * colW;
-      const label = exportMode ? d : d.slice(5);
-      ctx.fillText(label, x, matrixTop - 6);
-    });
+    // 短窗口（≤30 列）逐列显示；60 日以上按自然月（每月第一个交易日）打点
+    const labelFmt = nCols > 120 ? (d) => d.slice(0, 7) : (d) => d.slice(5);
+    if (nCols <= 30) {
+      dates.forEach((d, j) => ctx.fillText(d.slice(5), padL + (j + 0.5) * colW, matrixTop - 6));
+    } else {
+      let prevMonth = '';
+      let lastTick = -1;
+      for (let j = 0; j < nCols; j++) {
+        const m = dates[j].slice(0, 7);
+        if (m === prevMonth) continue;
+        prevMonth = m;
+        ctx.fillText(labelFmt(dates[j]), padL + (j + 0.5) * colW, matrixTop - 6);
+        lastTick = j;
+      }
+      // 末端：若最后一个月首日与最右列间隔足够（≥8 列），补最右列标签
+      if (lastTick >= 0 && nCols - 1 - lastTick >= 8) {
+        ctx.fillText(labelFmt(dates[nCols - 1]), padL + (nCols - 0.5) * colW, matrixTop - 6);
+      }
+    }
 
     // 行 + 单元格
     codes.forEach((code, i) => {
@@ -208,6 +222,7 @@
     wrap.appendChild(ctrl);
 
     const metricSeg = ctrl.querySelector('#ih-metric');
+    metricBtns = [];
     METRICS.forEach((m, i) => {
       const b = document.createElement('button');
       b.textContent = m.label;
@@ -218,6 +233,7 @@
         b.classList.add('active');
         draw(canvas, { exportMode: false, scale: window.devicePixelRatio || 1 });
       });
+      metricBtns.push(b);
       metricSeg.appendChild(b);
     });
 
@@ -280,6 +296,7 @@
 
       // 数值提示（行业名 + 日期 + 当前指标值，按日期对齐取值）
       const m = METRICS.find((x) => x.key === state.metric);
+      if (!m) { window.AK.tooltip.hide(); return; }
       const winDates = allDates.slice(startIdx);
       const date = winDates[colIdx] || '';
       const v = date ? getValByDate(row, state.metric, date) : null;
@@ -310,18 +327,31 @@
       const rowIdx = Math.floor((my - matrixTop) / rowH);
       if (rowIdx < 0 || rowIdx >= nRows) return;
       const colIdx = Math.floor((mx - padL) / colW);
-      if (colIdx < 0 || colIdx >= nCols) return;
+      // 点击行名区（colIdx<0）或矩阵区均可穿透；仅右侧 padding 不触发
+      if (mx >= W - padR) return;
 
       if (state.level === 1) {
         const parent = sortedL1[rowIdx];
         const kids = l2ByParent[parent] || [];
         if (kids.length) {
           state.level = 2; state.parent = parent;
+          // 二级成交金额占比（FTShare 无二级成交额）→ 自动切到换手率分位
+          if (state.metric === 'amount_share_pctile') {
+            state.metric = 'turnover_pctile';
+            const seg = document.querySelector('#ih-metric');
+            if (seg) seg.querySelectorAll('button').forEach((x) => x.classList.remove('active'));
+            const ti = METRICS.findIndex((m) => m.key === 'turnover_pctile');
+            if (metricBtns[ti]) metricBtns[ti].classList.add('active');
+          }
           updateLevelLabel();
           draw(canvas, { exportMode: false, scale: window.devicePixelRatio || 1 });
         }
       } else {
         state.level = 1; state.parent = null;
+        // 返回一级：恢复默认成交金额占比
+        if (state.metric === 'turnover_pctile' && !state._fromL2Auto) {
+          // 保持当前指标（用户可能已手动切换）
+        }
         updateLevelLabel();
         draw(canvas, { exportMode: false, scale: window.devicePixelRatio || 1 });
       }
@@ -335,6 +365,8 @@
     el.textContent = state.level === 1
       ? '一级（点击行名穿透二级）'
       : `二级 · ${payload.metrics[state.parent].name}（点击返回一级）`;
+    // 二级时禁用成交金额占比按钮（数据源无二级成交额）
+    if (metricBtns[0]) metricBtns[0].disabled = state.level === 2;
   }
 
   window.IH_render = function (data) {

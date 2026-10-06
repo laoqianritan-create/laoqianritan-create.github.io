@@ -103,7 +103,17 @@
         const by = y(Math.max(0, v));
         const bh = Math.abs(y(v) - y0);
         ctx.fillStyle = s.color;
-        ctx.fillRect(bx, Math.min(by, y0), barW, Math.max(bh, 1));
+        // 圆角柱（左上/右上圆角，半径随柱宽，保持克制）
+        const rr = Math.max(2, Math.min(barW * 0.18, 6));
+        ctx.beginPath();
+        ctx.moveTo(bx, Math.min(by, y0) + Math.max(bh, 1));
+        ctx.lineTo(bx, Math.min(by, y0) + rr);
+        ctx.arcTo(bx, Math.min(by, y0), bx + rr, Math.min(by, y0), rr);
+        ctx.lineTo(bx + barW - rr, Math.min(by, y0));
+        ctx.arcTo(bx + barW, Math.min(by, y0), bx + barW, Math.min(by, y0) + rr, rr);
+        ctx.lineTo(bx + barW, Math.min(by, y0) + Math.max(bh, 1));
+        ctx.closePath();
+        ctx.fill();
         // 数值
         ctx.fillStyle = '#333333';
         ctx.font = (exportMode ? 20 : 9.5) + 'px NotoSansSC, sans-serif';
