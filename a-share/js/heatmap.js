@@ -94,7 +94,7 @@
     const metricCellW = yearCellW * 1.4;
     const cellH = 38;
     const colHdrH = 54;                     // 两行标题
-    const sortHdrH = 26;                    // 列头上方排序按钮区
+    const sortHdrH = 46;                    // 列头上方排序按钮区（独立空间，与年份标签留出间距）
     const matrixTop = sortHdrH + colHdrH;
     const matrixBot = matrixTop + cellH * n_rows;
     const H = matrixBot + 16;
@@ -196,8 +196,8 @@
     // ── 屏幕版：排序按钮区（▲▼ 在列头上方） ──
     const sortBtns = [];   // {cx, y, h, colIdx, dir, type:'year'|'metric'}
     if (!exportMode) {
-      const sTop = L.matrixTop - L.sortHdrH + 4;
-      const sH = L.sortHdrH - 4;
+      const sTop = L.matrixTop - L.sortHdrH + 2;
+      const sH = 18;                        // 按钮固定高度，其下方为年份标签（留 6px 间隙）
       const btnW = 16;
       years.forEach((y, j) => {
         const cx = L.padL + (j + 0.5) * L.yearCellW;

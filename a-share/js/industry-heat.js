@@ -33,18 +33,56 @@
   let l2ByParent = {}; // parentCode -> [codes]
   let metricBtns = []; // 指标切换按钮引用（二级禁用成交金额占比）
 
-  // ── 颜色：分位 0-100 → 绿→白→红（高值深红、低值深绿，非线性增强对比度）──
-  function heatColor(pct) {
-    if (pct === null || pct === undefined || Number.isNaN(pct)) return 'rgb(245,245,245)';
-    const x = Math.max(0, Math.min(100, pct)) / 100;      // 0..1
-    const d = (x - 0.5) / 0.5;                            // -1..1（相对 50 中心）
-    // 非线性增强：|d|^0.65 → 40~60 区间也有明显色差，避免大片近白
-    const e = Math.sign(d) * Math.pow(Math.abs(d), 0.65); // -1..1
-    const k = Math.abs(e);                                // 0..1（距中心强度）
-    if (e < 0) {                                          // 绿侧（低分位）
-      return `rgb(${Math.round(47 + (255 - 47) * k)},${Math.round(191 + (255 - 191) * k)},${Math.round(113 + (255 - 113) * k)})`;
+  // ── 颜色：与看板1（申万热力图）同款发散色阶 ──
+  // 绿(冷)→浅绿→白(50 中心)→浅红→红(热)，vmin/vmax 按指标数据动态范围满幅映射：
+  // 值域窄的指标（如 MA20 挤在 25-70）也能拉满深浅，杜绝「高值泛白/像半透明」。
+  const STOPS = [
+    [0.00, [47, 191, 113]],
+    [0.40, [201, 240, 218]],
+    [0.50, [255, 255, 255]],
+    [0.60, [247, 205, 203]],
+    [1.00, [230, 90, 86]]
+  ];
+  function clamp01(x) { return Math.max(0, Math.min(1, x)); }
+  function normVal(v, lo, hi) {
+    if (v >= 50) return 0.5 + ((v - 50) / Math.max(1e-6, hi - 50)) * 0.5;
+    return 0.5 + ((v - 50) / Math.max(1e-6, 50 - lo)) * 0.5;
+  }
+  function heatRGB(pct, lo, hi) {
+    if (pct === null || pct === undefined || Number.isNaN(pct)) return [245, 245, 245];
+    const t = clamp01(normVal(pct, lo, hi));
+    let i = 0;
+    while (i < STOPS.length - 1 && STOPS[i + 1][0] < t) i++;
+    const [t0, c0] = STOPS[i];
+    const [t1, c1] = STOPS[Math.min(i + 1, STOPS.length - 1)];
+    const k = (t - t0) / (t1 - t0 || 1);
+    return [
+      Math.round(c0[0] + (c1[0] - c0[0]) * k),
+      Math.round(c0[1] + (c1[1] - c0[1]) * k),
+      Math.round(c0[2] + (c1[2] - c0[2]) * k)
+    ];
+  }
+  function heatColor(pct, lo, hi) {
+    const c = heatRGB(pct, lo, hi);
+    return `rgb(${c[0]},${c[1]},${c[2]})`;
+  }
+  // 当前指标在当前日期窗口内的实际数值范围（动态 vmin/vmax，带 8% 边距）
+  function metricRange(metricKey, dates) {
+    let lo = Infinity, hi = -Infinity;
+    const codes = state.level === 2 ? (l2ByParent[state.parent] || []) : sortedL1;
+    for (const c of codes) {
+      const row = payload.metrics[c];
+      if (!row) continue;
+      for (const d of dates) {
+        const v = getValByDate(row, metricKey, d);
+        if (v === null || v === undefined || Number.isNaN(v)) continue;
+        if (v < lo) lo = v;
+        if (v > hi) hi = v;
+      }
     }
-    return `rgb(${Math.round(255 - (255 - 230) * k)},${Math.round(255 - (255 - 90) * k)},${Math.round(255 - (255 - 86) * k)})`;
+    if (!isFinite(lo)) return { lo: 50, hi: 50 };
+    const pad = (hi - lo) * 0.08;
+    return { lo: lo - pad, hi: hi + pad };
   }
 
   // ── 按日期对齐取值（行业 dates 长度不同、换手率仅 2024 起 → 索引对齐会越界空白）──
@@ -120,7 +158,7 @@
       const barW = 420, barH = 16;
       const bx = (W - barW) / 2, by = 175;
       const grad = ctx.createLinearGradient(bx, 0, bx + barW, 0);
-      grad.addColorStop(0, '#2FBF71'); grad.addColorStop(0.5, '#FFFFFF'); grad.addColorStop(1, '#E65A56');
+      STOPS.forEach(([t, c]) => grad.addColorStop(t, `rgb(${c[0]},${c[1]},${c[2]})`));
       ctx.fillStyle = grad;
       ctx.fillRect(bx, by, barW, barH);
       ctx.strokeStyle = '#E5E5E5'; ctx.lineWidth = 1;
@@ -160,6 +198,9 @@
       }
     }
 
+    // 当前指标动态色阶范围（窗口内）
+    const range = metricRange(metricKey, dates);
+
     // 行 + 单元格
     codes.forEach((code, i) => {
       const row = payload.metrics[code];
@@ -176,12 +217,14 @@
       for (let j = 0; j < nCols; j++) {
         const v = getValByDate(row, metricKey, dates[j]);
         const x = padL + j * colW;
-        ctx.fillStyle = heatColor(v);
+        const rgb = heatRGB(v, range.lo, range.hi);
+        ctx.fillStyle = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
         ctx.fillRect(x, y, colW, rowH);
         ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 1;
         ctx.strokeRect(x + 0.5, y + 0.5, colW - 1, rowH - 1);
         if (state.showNumbers && v !== null && v !== undefined) {
-          ctx.fillStyle = v > 80 || v < 20 ? '#FFFFFF' : '#222222';
+          const lum = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
+          ctx.fillStyle = lum > 0.55 ? '#222222' : '#FFFFFF';
           ctx.font = (exportMode ? 18 : 8.5) + 'px NotoSansSC, sans-serif';
           ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
           ctx.fillText(Math.round(v), x + colW / 2, y + rowH / 2);

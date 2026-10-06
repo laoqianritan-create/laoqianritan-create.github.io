@@ -178,14 +178,15 @@
     });
   }
 
-  // 字体注册（Xiaomaoxihuanfeng）后渲染
+  // 字体注册（Xiaomaoxihuanfeng）后渲染：等 fonts.ready + 显式 load，避免竞态回退到 Noto
   const ready = new Promise((resolve) => {
     try {
       if (document.fonts && document.fonts.load) {
         Promise.all([
+          document.fonts.ready,
           document.fonts.load('44px Xiaomaoxihuanfeng'),
           document.fonts.load('15px Xiaomaoxihuanfeng')
-        ]).then(() => resolve(true)).catch(() => resolve(false));
+        ]).then(() => resolve(true)).catch(() => resolve(true));
       } else resolve(true);
     } catch (e) { resolve(true); }
   });
@@ -197,7 +198,21 @@
     const canvas = document.createElement('canvas');
     canvas.id = 'heroBannerCanvas';
     wrap.appendChild(canvas);
-    const doDraw = () => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+    const doDraw = () => {
+      draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+      // 兜底：若字体仍未就绪，稍后重绘一次确保使用 Xiaomaoxihuanfeng
+      try {
+        if (document.fonts && document.fonts.check && !document.fonts.check('44px Xiaomaoxihuanfeng')) {
+          setTimeout(() => {
+            try {
+              if (document.fonts.check('44px Xiaomaoxihuanfeng')) {
+                draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+              }
+            } catch (e) { /* 忽略 */ }
+          }, 500);
+        }
+      } catch (e) { /* 忽略 */ }
+    };
     ready.then(doDraw);
 
     let rafId = null;
