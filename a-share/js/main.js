@@ -112,29 +112,8 @@
         else if (!data.wideBase) showPanelError('panel-widebase', '宽基净值数据加载失败');
       } catch (e) { console.error('[widebase]', e); showPanelError('panel-widebase', '宽基净值渲染失败：' + e.message); }
 
-      // 顶部 banner 关键数字
-      const fillHero = (id, txt) => { const el = document.getElementById(id); if (el) el.textContent = txt; };
-      if (data.fearGreed && data.fearGreed.series && data.fearGreed.series.fear_greed) {
-        const fgv = data.fearGreed.series.fear_greed.values;
-        const last = fgv[fgv.length - 1];
-        if (last !== null && last !== undefined) fillHero('heroFG', last.toFixed(1));
-      }
-      if (data.fearGreed && data.fearGreed.series && data.fearGreed.series.csi_all) {
-        const csv = data.fearGreed.series.csi_all.values;
-        const last = csv[csv.length - 1];
-        if (last !== null && last !== undefined) fillHero('heroCSI', last >= 10000 ? (last / 10000).toFixed(2) + '万' : last.toFixed(0));
-      }
-      if (data.fundIndex && data.fundIndex.series && data.fundIndex.series['885001.WI']) {
-        const r3 = data.fundIndex.series['885001.WI'].rolling3;
-        const r3v = (r3 && r3.values) ? r3.values : null;
-        let last = null;
-        if (r3v) { for (let i = r3v.length - 1; i >= 0; i--) { if (r3v[i] !== null && r3v[i] !== undefined && !Number.isNaN(r3v[i])) { last = r3v[i]; break; } } }
-        if (last !== null) fillHero('heroPG', last.toFixed(1) + '%');
-      }
-      if (data.wideBase && data.wideBase.series && data.wideBase.series['H30269.CSI']) {
-        const wv = data.wideBase.series['H30269.CSI'].values;
-        fillHero('heroHL', wv[wv.length - 1].toFixed(0));
-      }
+      // 顶部 banner 关键数字（ticker 条已移除，保留为空实现）
+      const fillHero = () => {};
 
     } catch (err) {
       console.error('[A股看板] 初始化失败', err);

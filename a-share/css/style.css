@@ -30,6 +30,12 @@
   font-weight: 300;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Xiaomaoxihuanfeng';
+  src: url('../fonts/Xiaomaoxihuanfeng-Light-2.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+}
 
 :root {
   --red: #E65A56;
@@ -251,21 +257,6 @@ body {
 }
 .hero-inner { position: relative; display: block; }
 .hero-banner canvas { display: block; width: 100%; }
-.hero-ticker {
-  display: flex; gap: 10px 26px; flex-wrap: wrap; align-items: center;
-  padding: 10px 18px 12px;
-  background: rgba(0, 0, 0, 0.16);
-}
-.ticker-item { font-size: 13px; color: rgba(255, 255, 255, 0.85); display: inline-flex; align-items: center; gap: 7px; }
-.ticker-item b { color: #fff; font-size: 14.5px; font-variant-numeric: tabular-nums; }
-.tick-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: #62d9ad;
-  box-shadow: 0 0 8px rgba(98, 217, 173, 0.9);
-  animation: tickPulse 2.4s ease-in-out infinite;
-  display: inline-block;
-}
-@keyframes tickPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
 /* ─── 相关资源 ───────────────────────────── */
 .related-resources {
@@ -281,8 +272,5 @@ body {
 
 @media (max-width: 768px) {
   .hero-banner { padding: 18px 16px 16px; }
-  .hero-title { font-size: 21px; }
-  .hero-sub { display: block; margin: 4px 0 0; }
-  .hero-ticker { margin-top: 10px; gap: 8px 16px; }
   .related-resources { padding: 16px 14px 18px; }
 }

@@ -94,14 +94,15 @@
     const metricCellW = yearCellW * 1.4;
     const cellH = 38;
     const colHdrH = 54;                     // 两行标题
-    const matrixTop = colHdrH;
+    const sortHdrH = 26;                    // 列头上方排序按钮区
+    const matrixTop = sortHdrH + colHdrH;
     const matrixBot = matrixTop + cellH * n_rows;
     const H = matrixBot + 16;
     const metricStartX = padL + n_year * yearCellW + gapW;
     return {
       W, H, padL, padR, gapW,
       yearCellW, metricCellW, cellH,
-      headerH: 0, legendH: 0, colHdrH, footerH: 0, padBot: 0,
+      headerH: 0, legendH: 0, colHdrH, sortHdrH, footerH: 0, padBot: 0,
       matrixTop, matrixBot,
       metricStartX, exportMode: false
     };
@@ -110,6 +111,40 @@
   function fmtVal(v) {
     if (v === null || v === undefined || Number.isNaN(v)) return '—';
     return v.toFixed(1);
+  }
+
+  // ── 列排序（升序/降序）──
+  let sortCol = null, sortDir = null, sortType = null;
+
+  function drawSortArrow(ctx, x, y, w, h, dir, redTint, active) {
+    const cx = x + w / 2, cy = y + h / 2;
+    ctx.save();
+    if (active) {
+      ctx.fillStyle = '#1a1a1a';
+      ctx.beginPath();
+      ctx.moveTo(x - 2, y - 1); ctx.arcTo(x + w + 2, y - 1, x + w + 2, y + h + 1, 3);
+      ctx.arcTo(x + w + 2, y + h + 1, x - 2, y + h + 1, 3); ctx.arcTo(x - 2, y + h + 1, x - 2, y - 1, 3);
+      ctx.closePath(); ctx.fill();
+    }
+    ctx.fillStyle = active ? '#FFFFFF' : (redTint ? '#E65A56' : '#888888');
+    ctx.beginPath();
+    if (dir === 1) {
+      ctx.moveTo(cx - 4.5, cy + 2); ctx.lineTo(cx + 4.5, cy + 2); ctx.lineTo(cx, cy - 4);
+    } else {
+      ctx.moveTo(cx - 4.5, cy - 2); ctx.lineTo(cx + 4.5, cy - 2); ctx.lineTo(cx, cy + 4);
+    }
+    ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+
+  function applySort(rows, colIdx, dir, type) {
+    return rows.slice().sort((a, b) => {
+      const av = type === 'year' ? a.rets[colIdx] : (a.metrics || [])[colIdx];
+      const bv = type === 'year' ? b.rets[colIdx] : (b.metrics || [])[colIdx];
+      const aN = (av === null || av === undefined || Number.isNaN(av)) ? (dir === 1 ? Infinity : -Infinity) : av;
+      const bN = (bv === null || bv === undefined || Number.isNaN(bv)) ? (dir === 1 ? Infinity : -Infinity) : bv;
+      return (aN - bN) * dir;
+    });
   }
 
   /** 主渲染 */
@@ -157,6 +192,35 @@
     ctx.textAlign = 'center';
     ctx.textBaseline = 'bottom';
     const colHdrBaseY = L.matrixTop - 6;
+
+    // ── 屏幕版：排序按钮区（▲▼ 在列头上方） ──
+    const sortBtns = [];   // {cx, y, h, colIdx, dir, type:'year'|'metric'}
+    if (!exportMode) {
+      const sTop = L.matrixTop - L.sortHdrH + 4;
+      const sH = L.sortHdrH - 4;
+      const btnW = 16;
+      years.forEach((y, j) => {
+        const cx = L.padL + (j + 0.5) * L.yearCellW;
+        const isYtd = y === '2026*';
+        sortBtns.push({ cx: cx - btnW / 2, y: sTop, w: btnW, h: sH, colIdx: j, dir: 1, type: 'year' });
+        sortBtns.push({ cx: cx + btnW / 2, y: sTop, w: btnW, h: sH, colIdx: j, dir: -1, type: 'year' });
+        drawSortArrow(ctx, cx - btnW / 2, sTop, btnW, sH, 1, isYtd,
+          sortCol === j && sortDir === 1 && sortType === 'year');
+        drawSortArrow(ctx, cx + btnW / 2, sTop, btnW, sH, -1, isYtd,
+          sortCol === j && sortDir === -1 && sortType === 'year');
+      });
+      metricsMeta.forEach((col, j) => {
+        const cx = L.metricStartX + (j + 0.5) * L.metricCellW;
+        sortBtns.push({ cx: cx - btnW / 2, y: sTop, w: btnW, h: sH, colIdx: j, dir: 1, type: 'metric' });
+        sortBtns.push({ cx: cx + btnW / 2, y: sTop, w: btnW, h: sH, colIdx: j, dir: -1, type: 'metric' });
+        drawSortArrow(ctx, cx - btnW / 2, sTop, btnW, sH, 1, false,
+          sortCol === j && sortDir === 1 && sortType === 'metric');
+        drawSortArrow(ctx, cx + btnW / 2, sTop, btnW, sH, -1, false,
+          sortCol === j && sortDir === -1 && sortType === 'metric');
+      });
+      canvas.__sortBtns = sortBtns;
+    }
+
     years.forEach((y, j) => {
       const cx = L.padL + (j + 0.5) * L.yearCellW;
       const isYtd = y === '2026*';
@@ -308,6 +372,21 @@
           window.AK.tooltip.hide();
         });
         canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+
+        // 排序按钮点击
+        canvas.addEventListener('click', (ev) => {
+          const L2 = canvas.__layout, P = canvas.__payload, btns = canvas.__sortBtns;
+          if (!L2 || !P || !btns || !btns.length) return;
+          const { x, y } = window.AK.canvasXY(canvas, ev);
+          const sx = x / (window.devicePixelRatio || 1);
+          const sy = y / (window.devicePixelRatio || 1);
+          const hit = btns.find((b) => sx >= b.cx && sx <= b.cx + b.w && sy >= b.y && sy <= b.y + b.h);
+          if (!hit) return;
+          sortCol = hit.colIdx; sortDir = hit.dir; sortType = hit.type;
+          const sorted = applySort(P.rows, hit.colIdx, hit.dir, hit.type);
+          P.rows.length = 0; P.rows.push(...sorted);
+          window.SW_drawHeatmap(canvas, { years: P.years, rows: P.rows, metricsMeta: P.metricsMeta }, {});
+        });
       }
     }
   };

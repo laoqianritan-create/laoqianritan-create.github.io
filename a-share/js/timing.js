@@ -191,11 +191,8 @@
     const wrap = document.getElementById('panelTimingBody');
     if (!wrap) return;
     wrap.innerHTML = '';
-    const canvas = document.createElement('canvas');
-    canvas.id = 'timing';
-    wrap.appendChild(canvas);
 
-    // 维度选择器（1/3/5/7 年）
+    // 维度选择器（1/3/5/7 年）——放在图表上方（老钱要求）
     const ctrl = document.createElement('div');
     ctrl.className = 'panel-controls';
     ctrl.innerHTML = `<div class="ctrl-group"><label>维度</label><span class="seg" id="tm-win"></span></div>`;
@@ -213,6 +210,10 @@
       });
       seg.appendChild(b);
     });
+
+    const canvas = document.createElement('canvas');
+    canvas.id = 'timing';
+    wrap.appendChild(canvas);
 
     draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
 

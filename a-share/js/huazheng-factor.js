@@ -139,7 +139,7 @@
     ends.forEach((e, i) => {
       const txt = `${(e.cagr * 100).toFixed(1)}%`;
       const tw = ctx.measureText(txt).width;
-      const side = (i % 2 === 0) ? 1 : -1;
+      const side = 1;                                       // 统一放曲线最右侧（老钱规范）
       const bx = side === 1 ? e.x + (exportMode ? 20 : 12) : e.x - (exportMode ? 20 : 12) - tw;
       const ha = side === 1 ? 'left' : 'right';
       let dy = 0;

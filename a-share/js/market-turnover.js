@@ -130,16 +130,6 @@
       ctx.fillText(v.toFixed(1) + '%', padL - 10, y);
     }
 
-    // 窗口均值虚线（灰色，区别于最新值虚线）
-    const mean = vals.reduce((a, b) => a + b, 0) / vals.length;
-    const my = y2(mean);
-    ctx.strokeStyle = '#999999'; ctx.lineWidth = exportMode ? 2 : 1.2;
-    ctx.setLineDash([5, 5]);
-    ctx.beginPath(); ctx.moveTo(padL, my); ctx.lineTo(W - padR, my); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = '#999999'; ctx.textAlign = 'right';
-    ctx.fillText(`均值 ${mean.toFixed(2)}%`, W - padR, my - 8);
-
     // 换手率折线（黑色）
     ctx.strokeStyle = '#333333'; ctx.lineWidth = exportMode ? 4 : 1.8;
     ctx.lineJoin = 'round';

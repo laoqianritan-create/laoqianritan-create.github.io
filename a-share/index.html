@@ -6,7 +6,7 @@
   <title>A股看板 · 老钱日日谈</title>
   <meta name="description" content="A股看板：申万行业热力图、不同事物的增长情况、行业交易热度、全市场成交换手、收益来源拆解、投资者结构、华证六因子。每交易日自动更新。">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261006h">
+  <link rel="stylesheet" href="css/style.css?v=20261006i">
 </head>
 <body>
 
@@ -39,12 +39,6 @@
 <div class="hero-banner" aria-hidden="false">
   <div class="hero-inner">
     <div id="heroBanner"></div>
-    <div class="hero-ticker" id="heroTicker">
-      <span class="ticker-item"><i class="tick-dot"></i>恐贪 <b id="heroFG">--</b></span>
-      <span class="ticker-item"><i class="tick-dot"></i>中证全指 <b id="heroCSI">--</b></span>
-      <span class="ticker-item"><i class="tick-dot"></i>偏股混合 3年滚动年化 <b id="heroPG">--</b></span>
-      <span class="ticker-item"><i class="tick-dot"></i>红利低波全收益 <b id="heroHL">--</b></span>
-    </div>
   </div>
 </div>
 
@@ -55,7 +49,7 @@
     <div class="panel-head">
       <div class="panel-head-text">
         <h2 class="panel-title"><span class="panel-no">1.</span> 申万一级行业年度涨跌幅 · 长期 CAGR</h2>
-        <p class="panel-desc">2005 — 2026 · 31 个一级行业</p>
+        <p class="panel-desc">2005 — 2026 · 31 个一级行业 · 列标题上方 ▲▼ 可按该列排序</p>
       </div>
       <div class="panel-actions">
         <button id="btnExportHeatmap" class="btn-download js-icon-export" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
@@ -155,7 +149,7 @@
     <div class="panel-head">
       <div class="panel-head-text">
         <h2 class="panel-title"><span class="panel-no">5.</span> 行业交易热度</h2>
-      <p class="panel-desc">申万一级/二级行业 × 交易日 · 成交额占比分位 / RPS / MA20 站上率 · 点击一级行业行穿透二级</p>
+      <p class="panel-desc">申万一级/二级行业 × 交易日 · RPS / MA20 站上率 · 点击一级行业行穿透二级</p>
       </div>
 <div class="panel-actions">
       <button class="btn-download js-export" data-canvas="industryHeat" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
@@ -165,10 +159,9 @@
     <details class="panel-notes">
       <summary>口径说明（点开阅读）</summary>
       <ul>
-        <li>热度指标：① 成交金额占比分位数（行业成交额 / 全市场成交额，expanding 分位，仅一级可算）；② RPS（行业 250 日涨幅在全部行业中的排名百分位）；③ MA20 站上率（行业指数收盘价站上 20 日均线的天数占近 250 交易日的比例）。</li>
+        <li>热度指标：① RPS（行业 N 日涨幅在全部行业中的排名百分位）；② MA20 站上率（行业指数收盘价站上 20 日均线的天数占近 250 交易日的比例）。</li>
         <li>周期可选 3 / 5 / 10 / 20 / 60 / 120 / 250 个交易日；默认 60 日。</li>
-        <li>样本不足 120 个交易日的 expanding 分位显示为空格（不做假数）。</li>
-        <li>一级行业：1999 起（收盘/成交额，申万官网）+ 2024 起（换手率，FTShare）；二级行业：2024 起（FTShare）。</li>
+        <li>一级行业：1999 起（收盘/成交额，申万官网）+ 2024 起（换手率，FTShare）；二级行业：2024 起（FTShare，部分二级指数收盘价由申万官网补齐）。</li>
       </ul>
     </details>
   </section>
@@ -373,24 +366,24 @@
 
 
 
-<script src="js/data.js?v=20261006h"></script>
-<script src="js/common.js?v=20261006h"></script>
-<script src="js/banner.js?v=20261006h"></script>
-<script src="js/heatmap.js?v=20261006h"></script>
-<script src="js/loss-table.js?v=20261006h"></script>
-<script src="js/longgrowth.js?v=20261006h"></script>
-<script src="js/industry-heat.js?v=20261006h"></script>
-<script src="js/market-turnover.js?v=20261006h"></script>
-<script src="js/return-decomp.js?v=20261006h"></script>
-<script src="js/investor-structure.js?v=20261006h"></script>
-<script src="js/huazheng-factor.js?v=20261006h"></script>
-<script src="js/wide-base.js?v=20261006h"></script>
-<script src="js/fear-greed.js?v=20261006h"></script>
-<script src="js/timing.js?v=20261006h"></script>
-<script src="js/fund-index.js?v=20261006h"></script>
-<script src="js/coverage.js?v=20261006h"></script>
+<script src="js/data.js?v=20261006i"></script>
+<script src="js/common.js?v=20261006i"></script>
+<script src="js/banner.js?v=20261006i"></script>
+<script src="js/heatmap.js?v=20261006i"></script>
+<script src="js/loss-table.js?v=20261006i"></script>
+<script src="js/longgrowth.js?v=20261006i"></script>
+<script src="js/industry-heat.js?v=20261006i"></script>
+<script src="js/market-turnover.js?v=20261006i"></script>
+<script src="js/return-decomp.js?v=20261006i"></script>
+<script src="js/investor-structure.js?v=20261006i"></script>
+<script src="js/huazheng-factor.js?v=20261006i"></script>
+<script src="js/wide-base.js?v=20261006i"></script>
+<script src="js/fear-greed.js?v=20261006i"></script>
+<script src="js/timing.js?v=20261006i"></script>
+<script src="js/fund-index.js?v=20261006i"></script>
+<script src="js/coverage.js?v=20261006i"></script>
 
-<script src="js/main.js?v=20261006h"></script>
+<script src="js/main.js?v=20261006i"></script>
 
 </body>
 </html>

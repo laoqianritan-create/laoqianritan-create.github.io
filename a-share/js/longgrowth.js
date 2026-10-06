@@ -177,7 +177,7 @@
     ends.forEach((e, i) => {
       const txt = `${(e.cagr * 100).toFixed(1)}%`;
       const tw = ctx.measureText(txt).width;
-      const side = (i % 2 === 0) ? 1 : -1;                 // 0/2/4… 右侧，1/3/5… 左侧（交替分散）
+      const side = 1;                                       // 统一放曲线最右侧（老钱规范）
       const bx = side === 1 ? e.x + (exportMode ? 20 : 12) : e.x - (exportMode ? 20 : 12) - tw;
       const ha = side === 1 ? 'left' : 'right';
       // 检查是否与已放标签重叠，重叠则上下挤开

@@ -14,19 +14,17 @@
   'use strict';
 
   const METRICS = [
-    { key: 'amount_share_pctile', label: '成交金额占比分位', sub: '行业成交额/全市场 · expanding 分位' },
     { key: 'rps', label: 'RPS', sub: '250日涨幅行业排名百分位' },
-    { key: 'turnover_pctile', label: '换手率分位', sub: '行业换手率历史分位（expanding）' },
     { key: 'ma20_above', label: 'MA20站上率', sub: '行业指数收盘站上20日均线天数占比(250日)' }
   ];
   const PERIODS = [3, 5, 10, 20, 60, 120, 250];
 
   let state = {
-    metric: 'amount_share_pctile',
-    days: 60,           // 默认 60 个交易日
+    metric: 'rps',          // 默认 RPS（250 日涨幅排名）
+    days: 60,               // 默认 60 个交易日
     showNumbers: true,
     level: 1,
-    parent: null        // 一级代码（二级时）
+    parent: null            // 一级代码（二级时）
   };
 
   let payload = null;
@@ -335,23 +333,11 @@
         const kids = l2ByParent[parent] || [];
         if (kids.length) {
           state.level = 2; state.parent = parent;
-          // 二级成交金额占比（FTShare 无二级成交额）→ 自动切到换手率分位
-          if (state.metric === 'amount_share_pctile') {
-            state.metric = 'turnover_pctile';
-            const seg = document.querySelector('#ih-metric');
-            if (seg) seg.querySelectorAll('button').forEach((x) => x.classList.remove('active'));
-            const ti = METRICS.findIndex((m) => m.key === 'turnover_pctile');
-            if (metricBtns[ti]) metricBtns[ti].classList.add('active');
-          }
           updateLevelLabel();
           draw(canvas, { exportMode: false, scale: window.devicePixelRatio || 1 });
         }
       } else {
         state.level = 1; state.parent = null;
-        // 返回一级：恢复默认成交金额占比
-        if (state.metric === 'turnover_pctile' && !state._fromL2Auto) {
-          // 保持当前指标（用户可能已手动切换）
-        }
         updateLevelLabel();
         draw(canvas, { exportMode: false, scale: window.devicePixelRatio || 1 });
       }
@@ -365,8 +351,6 @@
     el.textContent = state.level === 1
       ? '一级（点击行名穿透二级）'
       : `二级 · ${payload.metrics[state.parent].name}（点击返回一级）`;
-    // 二级时禁用成交金额占比按钮（数据源无二级成交额）
-    if (metricBtns[0]) metricBtns[0].disabled = state.level === 2;
   }
 
   window.IH_render = function (data) {

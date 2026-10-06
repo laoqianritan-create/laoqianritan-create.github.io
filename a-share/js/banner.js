@@ -1,15 +1,19 @@
 /**
- * 顶部 Banner：深酒红渐变 + 价格坐标双线（红利低波全收益 / 中证全指价格）+ 圆形 icon
+ * 顶部 Banner（第六轮重构）：深酒红渐变 + 价格坐标双线灌满画布
  * 数据：banner.json { dates[], redLow[], csiAll[] }（2006-01 起）
- * 设计参考：《追寻价值之路》（燕翔）封面气质——暖色底、大字标题、克制装饰。
+ * 文案：「追寻适应与夏普之路」（Xiaomaoxihuanfeng-Light-2.ttf，左上）
+ * 设计参考：《追寻价值之路》（燕翔）封面——暖色底、大字标题、克制装饰。
+ * 已删：圆 icon / 「A股看板」标题 / 副题 / 右侧竖排刻度 / ticker 条。
  */
 (function () {
   'use strict';
 
   const C_BG_1 = '#990C2E';   // 深酒红
   const C_BG_2 = '#6E0620';
-  const C_GOLD = '#ECD7A0';   // 金黄（红利低波）
+  const C_GOLD = '#ECD7A0';   // 金黄（红利低波 + 标题）
   const C_WHITE = '#FFFFFF';  // 白（中证全指）
+  const FONT_TITLE = 'Xiaomaoxihuanfeng, "Noto Sans SC", sans-serif';
+  const FONT_BODY = 'NotoSansSC, "Microsoft YaHei", sans-serif';
 
   function draw(canvas, data, opts) {
     const exportMode = opts.exportMode;
@@ -36,7 +40,7 @@
     ctx.fillRect(0, 0, W, H);
 
     // 微弱径向高光（顶部）
-    const gl = ctx.createRadialGradient(W * 0.55, -H * 0.3, 10, W * 0.55, -H * 0.3, W * 0.9);
+    const gl = ctx.createRadialGradient(W * 0.5, -H * 0.35, 10, W * 0.5, -H * 0.35, W * 0.95);
     gl.addColorStop(0, 'rgba(255,255,255,0.10)');
     gl.addColorStop(1, 'rgba(255,255,255,0)');
     ctx.fillStyle = gl;
@@ -48,72 +52,48 @@
     const n = Math.min(dates.length, red.length, csi.length);
     if (n < 2) return;
 
-    // ── 圆形 icon（左侧装饰：金圆「息」+ 白描边圆「A」）──
-    const rBig = exportMode ? 88 : 54;
-    const rSml = exportMode ? 58 : 35;
-    const cx1 = exportMode ? 190 : 120;
-    const cy1 = exportMode ? 300 : 160;
-    // 大金圆
-    ctx.beginPath();
-    ctx.arc(cx1, cy1, rBig, 0, Math.PI * 2);
-    ctx.fillStyle = C_GOLD;
-    ctx.fill();
-    ctx.fillStyle = '#7A0A24';
-    ctx.font = (exportMode ? 96 : 58) + 'px AlibabaPuHuiTi, sans-serif';
-    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-    ctx.fillText('息', cx1, cy1 + 2);
-    // 小白描边圆（右下错位）
-    const cx2 = cx1 + rBig * 0.9, cy2 = cy1 + rBig * 0.9;
-    ctx.beginPath();
-    ctx.arc(cx2, cy2, rSml, 0, Math.PI * 2);
-    ctx.strokeStyle = C_WHITE;
-    ctx.lineWidth = exportMode ? 5 : 3;
-    ctx.stroke();
-    ctx.fillStyle = C_WHITE;
-    ctx.font = (exportMode ? 64 : 38) + 'px AlibabaPuHuiTi, sans-serif';
-    ctx.fillText('A', cx2, cy2 + 2);
-
-    // ── 左侧大标题 ──
-    const titleX = exportMode ? 330 : 205;
-    const titleY = exportMode ? 300 : 158;
-    ctx.fillStyle = C_WHITE;
-    ctx.font = '900 ' + (exportMode ? 118 : 66) + 'px AlibabaPuHuiTi, sans-serif';
-    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    ctx.fillText('A股看板', titleX, titleY - (exportMode ? 52 : 30));
-    ctx.fillStyle = C_GOLD;
-    ctx.font = '400 ' + (exportMode ? 40 : 23) + 'px NotoSansSC, sans-serif';
-    ctx.fillText('市场温度 · 每交易日自动更新', titleX, titleY + (exportMode ? 58 : 33));
-
-    // ── 右侧曲线区（价格坐标，线性）──
-    const plotL = exportMode ? 900 : 540;
-    const plotR = W - (exportMode ? 210 : 120);
-    const plotT = exportMode ? 90 : 56;
-    const plotB = H - (exportMode ? 90 : 52);
+    // ── 图表灌满画布：左侧留标题区，右侧留末端标签区 ──
+    const padL = exportMode ? 560 : 350;   // 左：标题文案区
+    const padR = exportMode ? 320 : 190;   // 右：末端标签区
+    const padT = exportMode ? 64 : 40;
+    const padB = exportMode ? 60 : 36;
+    const plotL = padL, plotR = W - padR;
+    const plotT = padT, plotB = H - padB;
     const plotW = plotR - plotL;
 
-    // y 范围：0 ~ 红利低波最大值（价格坐标，0 起）
+    // y 范围：0 ~ 红利低波最大值（价格坐标，0 起，线性）
     let maxV = 0;
     for (let i = 0; i < n; i++) { if (red[i] > maxV) maxV = red[i]; }
-    maxV *= 1.05;
+    maxV *= 1.06;
     const xs = (i) => plotL + (i / (n - 1)) * plotW;
     const ys = (v) => plotB - (v / maxV) * (plotB - plotT);
 
-    // 浅色网格（价格刻度）
-    ctx.strokeStyle = 'rgba(255,255,255,0.14)';
-    ctx.lineWidth = 1;
-    ctx.font = (exportMode ? 26 : 14) + 'px NotoSansSC, sans-serif';
-    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
-    const ticks = [0, 0.25, 0.5, 0.75, 1];
-    ticks.forEach((t) => {
-      const y = plotB - t * (plotB - plotT);
-      ctx.beginPath(); ctx.moveTo(plotL, y); ctx.lineTo(plotR, y); ctx.stroke();
-      const val = Math.round(maxV * t);
-      ctx.fillStyle = 'rgba(255,255,255,0.55)';
-      ctx.fillText(val.toLocaleString(), plotL - 14, y);
-    });
+    // ── 左侧文案：追寻适应与夏普之路（左上）──
+    const tx = exportMode ? 64 : 44;
+    const ty = exportMode ? 96 : 56;
+    ctx.fillStyle = C_GOLD;
+    ctx.font = (exportMode ? 78 : 44) + 'px ' + FONT_TITLE;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText('追寻适应与夏普之路', tx, ty);
 
-    // 年份刻度
+    // 英文小字点缀（克制）
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.font = (exportMode ? 26 : 15) + 'px ' + FONT_BODY;
+    ctx.fillText('ADAPTIVE ALLOCATION & SHARPE · 2006—2026', tx, ty + (exportMode ? 108 : 60));
+
+    // 浅色水平网格（价格刻度，不打数字标签——刻度数字已删）
+    ctx.strokeStyle = 'rgba(255,255,255,0.10)';
+    ctx.lineWidth = 1;
+    for (let g = 0; g <= 4; g++) {
+      const y = plotB - (g / 4) * (plotB - plotT);
+      ctx.beginPath(); ctx.moveTo(plotL, y); ctx.lineTo(plotR, y); ctx.stroke();
+    }
+
+    // 年份刻度（稀疏打点）
+    ctx.font = (exportMode ? 24 : 13) + 'px ' + FONT_BODY;
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.fillStyle = 'rgba(255,255,255,0.45)';
     const years = [];
     for (let i = 0; i < n; i++) {
       const y = dates[i].slice(0, 4);
@@ -121,12 +101,9 @@
         if (+y % 4 === 0 || +y === 2006 || +y === 2026) years.push([y, i]);
       }
     }
-    years.forEach(([y, i]) => {
-      ctx.fillStyle = 'rgba(255,255,255,0.45)';
-      ctx.fillText(y, xs(i), plotB + 10);
-    });
+    years.forEach(([y, i]) => ctx.fillText(y, xs(i), plotB + 8));
 
-    // 曲线：红利低波（金黄）— 线宽 2.5
+    // 曲线（价格坐标，线性）
     const drawLine = (vals, color, lw) => {
       ctx.strokeStyle = color;
       ctx.lineWidth = lw;
@@ -145,9 +122,31 @@
     drawLine(red, C_GOLD, exportMode ? 5 : 2.4);
     drawLine(csi, C_WHITE, exportMode ? 5 : 2.4);
 
-    // 末端标签（右侧）
+    // 曲线下轻微面积填充（增加质感）
+    const fillArea = (vals, color) => {
+      const g2 = ctx.createLinearGradient(0, plotT, 0, plotB);
+      g2.addColorStop(0, color.replace(')', ',0.16)').replace('rgb', 'rgba'));
+      g2.addColorStop(1, color.replace(')', ',0)').replace('rgb', 'rgba'));
+      ctx.fillStyle = g2;
+      ctx.beginPath();
+      ctx.moveTo(plotL, plotB);
+      let started = false;
+      for (let i = 0; i < n; i++) {
+        const v = vals[i];
+        if (v === null || v <= 0) { started = false; continue; }
+        const x = xs(i), y = ys(v);
+        if (!started) { ctx.moveTo(x, y); started = true; } else ctx.lineTo(x, y);
+      }
+      ctx.lineTo(plotR, plotB);
+      ctx.closePath();
+      ctx.fill();
+    };
+    fillArea(csi, 'rgb(255,255,255)');
+    fillArea(red, 'rgb(236,215,160)');
+
+    // 末端标签（数值 + 名称，右对齐，错开防重叠）
     const lastRed = red[n - 1], lastCsi = csi[n - 1];
-    const lx = plotR + (exportMode ? 40 : 18);
+    const lx = plotR + (exportMode ? 36 : 18);
     const lyr = ys(lastRed), lyc = ys(lastCsi);
     // 末端圆点
     [[plotR, lyr, C_GOLD], [plotR, lyc, C_WHITE]].forEach(([x, y, c]) => {
@@ -159,27 +158,37 @@
       ctx.lineWidth = exportMode ? 3 : 2;
       ctx.stroke();
     });
-    // 数值 + 名称（右对齐，错开防重叠）
-    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    const gapY = exportMode ? 46 : 24;
     const items = [
       { y: lyr, c: C_GOLD, name: '红利低波', v: lastRed },
       { y: lyc, c: C_WHITE, name: '中证全指', v: lastCsi },
     ];
-    const gapY = exportMode ? 46 : 24;
     if (Math.abs(lyr - lyc) < gapY * 1.4) {
-      // 太近则上下分开
       items[0].y = Math.min(lyr, lyc) - gapY * 0.7;
       items[1].y = Math.max(lyr, lyc) + gapY * 0.7;
     }
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     items.forEach((it) => {
       ctx.fillStyle = it.c;
-      ctx.font = (exportMode ? 46 : 26) + 'px AlibabaPuHuiTi, sans-serif';
+      ctx.font = (exportMode ? 46 : 26) + 'px ' + FONT_BODY;
       ctx.fillText(it.v.toLocaleString('zh-CN', { maximumFractionDigits: 0 }), lx, it.y);
-      ctx.font = '400 ' + (exportMode ? 26 : 15) + 'px NotoSansSC, sans-serif';
+      ctx.font = (exportMode ? 24 : 14) + 'px ' + FONT_BODY;
       ctx.fillStyle = 'rgba(255,255,255,0.85)';
       ctx.fillText(it.name, lx, it.y + (exportMode ? 34 : 19));
     });
   }
+
+  // 字体注册（Xiaomaoxihuanfeng）后渲染
+  const ready = new Promise((resolve) => {
+    try {
+      if (document.fonts && document.fonts.load) {
+        Promise.all([
+          document.fonts.load('44px Xiaomaoxihuanfeng'),
+          document.fonts.load('15px Xiaomaoxihuanfeng')
+        ]).then(() => resolve(true)).catch(() => resolve(false));
+      } else resolve(true);
+    } catch (e) { resolve(true); }
+  });
 
   window.BN_render = function (data) {
     const wrap = document.getElementById('heroBanner');
@@ -188,12 +197,13 @@
     const canvas = document.createElement('canvas');
     canvas.id = 'heroBannerCanvas';
     wrap.appendChild(canvas);
-    draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+    const doDraw = () => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+    ready.then(doDraw);
 
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
+      rafId = requestAnimationFrame(doDraw);
     });
   };
 })();
