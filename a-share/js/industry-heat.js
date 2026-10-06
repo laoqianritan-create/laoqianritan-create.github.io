@@ -1,6 +1,6 @@
 /**
  * 行业交易热度面板
- * 数据：industry_heat.json { generated, metrics: { code: {name, dates[], turnover_pctile[], amount_share_pctile[], rps[], ma20_above[]} } }
+ * 数据：industry_heat.json { generated, date_groups: [[...]xN], metrics: { code: {name, g, rps[], ma20_above[]} } }
  *
  * 交互：
  *  · 指标切换：成交金额占比分位 / RPS / MA20站上率
@@ -8,7 +8,7 @@
  *  · 显示/隐藏数字
  *  · 一级矩阵点击行业行 → 二级矩阵；二级返回一级
  *
- * 配色：热度分位 0-100 → 绿(冷) → 白(50) → 红(热)，与全站红涨绿跌一致。
+ * 配色：热度 0 → 深绿、100 → 深红（无白色过渡），与全站红涨绿跌一致。
  */
 (function () {
   'use strict';
@@ -411,12 +411,8 @@
     wrap.appendChild(canvas);
 
     // 排序一级行业（按名称）
-    sortedL1 = Object.keys(payload.metrics).filter((c) => (payload.levels['1'] && payload.metrics[c].amount_share_pctile) || !(payload.levels['1'] && false));
+    sortedL1 = Object.keys(payload.metrics).filter((c) => payload.levels['1']);
     sortedL1.sort((a, b) => payload.metrics[a].name.localeCompare(payload.metrics[b].name, 'zh'));
-    // 如果 amount_share_pctile 缺失的不排前面（全有则正常）
-    if (payload.levels && payload.levels['1']) {
-      sortedL1 = sortedL1.filter((c) => payload.metrics[c].amount_share_pctile !== null);
-    }
 
     // 二级分组：parentMap 值为上级行业中文名 → 先建立 名称→code 映射
     if (payload.parentMap) {
