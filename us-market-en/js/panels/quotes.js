@@ -1,11 +1,13 @@
-// panels/quotes.js · "Century of Market Wisdom" panel — BofA "The Longest Pictures", The long run in words
+// panels/quotes.js · "The Long Run in Words" panel — BofA "The Longest Pictures"
 //
-// Interaction: large English quote on top (previous/next peek through translucently),
-//              Chinese translation in the middle, author at bottom-right;
+// Interaction: large script-type English quote on top (previous/next peek through
+//              translucently), Chinese translation below, author at bottom-right;
 //              mouse wheel flips one quote at a time (throttled; touch swipe + arrow keys too).
+// Layout: per-quote auto height — offsets measured dynamically, viewport height
+//         follows the active quote, so short quotes don't sit in a tall empty box.
 // Data: data/bofa_longest_pictures_quotes.json (manually maintained, cf. sp500_rules.json).
 
-import { escapeHtml } from '../utils.js?v=20261006150807';
+import { escapeHtml } from '../utils.js?v=20261006154231';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -19,9 +21,7 @@ export function initPanelQuotes(data) {
 
   // Render all quotes (active one highlighted, neighbours translucent, transform-driven)
   listEl.innerHTML = quotes.map((q, i) => {
-    const authorZh = q.author_zh || '';
-    const authorEn = q.author_en || '';
-    const byline = escapeHtml(authorEn || authorZh);
+    const byline = escapeHtml(q.author_en || q.author_zh || '');
     return `
       <figure class="quote-slide" data-idx="${i}">
         <blockquote class="quote-en">${escapeHtml(q.en)}</blockquote>
@@ -30,6 +30,8 @@ export function initPanelQuotes(data) {
   }).join('');
 
   const slides = Array.from(listEl.querySelectorAll('.quote-slide'));
+  const stage = listEl.closest('.quotes-stage') || listEl;
+  const viewport = listEl.closest('.quotes-viewport') || listEl.parentElement;
 
   // State & navigation
   let current = 0;
@@ -38,9 +40,23 @@ export function initPanelQuotes(data) {
 
   function clamp(i) { return Math.max(0, Math.min(quotes.length - 1, i)); }
 
+  function peekPx() {
+    const n = parseFloat(getComputedStyle(stage).getPropertyValue('--quote-peek'));
+    return Number.isFinite(n) ? n : 40;
+  }
+
+  // Natural offsetTop of each quote inside the scroller (adaptive step)
+  let offsets = [];
+  function measure() {
+    offsets = slides.map(el => el.offsetTop);
+    const maxH = Math.max(...slides.map(el => el.offsetHeight));
+    viewport.style.height = `${maxH + 2 * peekPx()}px`;
+  }
+
   function applyTransform(animate = true) {
+    if (!offsets.length) measure();
     listEl.style.transition = animate ? `transform ${ANIM_MS}ms cubic-bezier(0.33, 0, 0.2, 1)` : 'none';
-    listEl.style.transform = `translateY(calc(var(--quote-peek) - ${current} * var(--quote-step)))`;
+    listEl.style.transform = `translateY(${peekPx() - offsets[current]}px)`;
     slides.forEach((el, i) => {
       el.classList.toggle('is-active', i === current);
       el.classList.toggle('is-near', Math.abs(i - current) === 1);
@@ -57,6 +73,8 @@ export function initPanelQuotes(data) {
     if (next === current) return;
     current = next;
     animating = true;
+    // Viewport height follows the active quote (shrink for short, expand for long)
+    viewport.style.height = `${slides[current].offsetHeight + 2 * peekPx()}px`;
     applyTransform(true);
     window.setTimeout(() => { animating = false; }, ANIM_MS);
   }
@@ -89,7 +107,7 @@ export function initPanelQuotes(data) {
   const io = new IntersectionObserver(entries => {
     entries.forEach(entry => { inView = entry.isIntersecting; });
   }, { threshold: 0.35 });
-  io.observe(listEl.closest('.quotes-stage') || listEl);
+  io.observe(stage);
 
   function onKeyDown(e) {
     if (!inView) return;
@@ -97,7 +115,6 @@ export function initPanelQuotes(data) {
     else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
   }
 
-  const stage = listEl.closest('.quotes-stage') || listEl;
   stage.addEventListener('wheel', onWheel, { passive: false });
   stage.addEventListener('touchstart', onTouchStart, { passive: true });
   stage.addEventListener('touchend', onTouchEnd, { passive: true });
@@ -114,7 +131,14 @@ export function initPanelQuotes(data) {
     });
   }
 
+  measure();
   applyTransform(false);
+
+  // Re-measure once the script webfont loads (line heights change); and on resize
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => { measure(); applyTransform(false); });
+  }
+  window.addEventListener('resize', () => { measure(); applyTransform(false); });
 
   // Source: rendered once for the whole panel (not inside the carousel)
   if (data.source && data.source.name_en && stage) {

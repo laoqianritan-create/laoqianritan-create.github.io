@@ -11,8 +11,8 @@
 //   Active-Index 的 TNA 已经是 billion USD → 用 formatCompactNumber
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT } from '../utils.js?v=20261006150807';
-import { registerChart, getDataZoom, buildMetricCard, renderMetricStrip, getLineLegendConfig } from '../chart-helpers.js?v=20261006150807';
+import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT } from '../utils.js?v=20261006154231';
+import { registerChart, getDataZoom, buildMetricCard, renderMetricStrip, getLineLegendConfig } from '../chart-helpers.js?v=20261006154231';
 
 // —— 项目配色（跟看板全局一致）——
 const GREEN = '#389e0d';

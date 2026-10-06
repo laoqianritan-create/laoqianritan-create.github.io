@@ -1037,10 +1037,19 @@ a.tr-dist-cell:hover {
   .cgr-detail { position: static; min-height: 0; }
 }
 
+/* ── 自带花体字体（移动端系统无手写体也能渲染）── */
+@font-face {
+  font-family: "Great Vibes";
+  src: url("../fonts/great-vibes-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── 百年箴言 · The Long Run in Words（滚轮逐句翻阅）────────────── */
 .quotes-stage {
-  --quote-step: 320px;   /* 每句行高 = transform 步长 */
-  --quote-peek: 64px;    /* 上下窥视窗高度 */
+  --quote-step: 190px;   /* fallback 步长；实际步长由 JS 按每句高度动态计算 */
+  --quote-peek: 40px;    /* 上下窥视窗高度 */
 }
 .quotes-viewport {
   position: relative;
@@ -1052,11 +1061,11 @@ a.tr-dist-cell:hover {
 }
 .quotes-scroller { will-change: transform; }
 .quote-slide {
-  height: var(--quote-step);
+  min-height: var(--quote-step);   /* JS 动态测距：按内容自然生长，短句收拢长句展开 */
   margin: 0;
   display: flex;
   flex-direction: column;
-  padding: 2px 0;
+  padding: 0;
   opacity: 0.16;
   transition: opacity 450ms ease;
   pointer-events: none;
@@ -1066,23 +1075,22 @@ a.tr-dist-cell:hover {
 .quote-slide.is-active { opacity: 1; pointer-events: auto; user-select: text; }
 .quote-en {
   margin: 0;
-  font-family: "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;
-  font-size: 30px;
-  line-height: 1.45;
-  font-weight: 700;
-  -webkit-text-stroke: 0.6px currentColor;
+  font-family: "Great Vibes", "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;
+  font-size: 40px;
+  line-height: 1.3;
   color: var(--text);
+  -webkit-text-stroke: 0.4px currentColor;
 }
 .quote-zh {
-  margin-top: 16px;
-  font-size: 30px;
-  line-height: 1.6;
+  margin-top: 10px;
+  font-size: 28px;
+  line-height: 1.5;
   font-weight: 700;
   color: var(--text);
 }
 .quote-author {
   margin-top: auto;           /* 钉在句底 → 上一句的作者行正好落进上窥视窗 */
-  padding-top: 10px;
+  padding-top: 6px;
   align-self: flex-end;
   font-size: 13px;
   color: var(--text);
@@ -1099,7 +1107,7 @@ a.tr-dist-cell:hover {
   flex-wrap: wrap;
   justify-content: center;
   gap: 7px;
-  margin-top: 14px;
+  margin-top: 10px;
 }
 .quote-dot {
   width: 7px;
@@ -1117,7 +1125,7 @@ a.tr-dist-cell:hover {
   transform: scale(1.5);
 }
 @media (max-width: 768px) {
-  .quotes-stage { --quote-step: 500px; --quote-peek: 40px; }
-  .quote-en { font-size: 19px; }
-  .quote-zh { font-size: 19px; }
+  .quotes-stage { --quote-step: 250px; --quote-peek: 26px; }
+  .quote-en { font-size: 32px; }
+  .quote-zh { font-size: 19px; line-height: 1.55; }
 }
