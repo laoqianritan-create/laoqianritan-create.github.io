@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261006144852">
-<link rel="stylesheet" href="css/chronicle.css?v=20261006144852">
-<script defer src="js/mobile-nav.js?v=20261006144852"></script>
+<link rel="stylesheet" href="style.css?v=20261006150807">
+<link rel="stylesheet" href="css/chronicle.css?v=20261006150807">
+<script defer src="js/mobile-nav.js?v=20261006150807"></script>
 </head>
 <body>
 
@@ -28,6 +28,7 @@
       <div class="nav-group active" data-category="sp500">
         <a class="nav-item active" href="#panel-price" data-panel="panel-price">Trend</a>
         <a class="nav-item" href="#panel-capitalism" data-panel="panel-capitalism">Growth Curves</a>
+        <a class="nav-item" href="#panel-quotes" data-panel="panel-quotes">Maxims</a>
         <a class="nav-item" href="#panel-annual" data-panel="panel-annual">Annual</a>
         <a class="nav-item" href="#panel-annual-dist" data-panel="panel-annual-dist">Distribution</a>
         <a class="nav-item" href="#panel-annualized-matrix" data-panel="panel-annualized-matrix">Holding Matrix</a>
@@ -52,7 +53,6 @@
         <a class="nav-item" href="#panel-sectors" data-panel="panel-sectors">Sectors</a>
         <a class="nav-item" href="#panel-changes" data-panel="panel-changes">Changes</a>
         <a class="nav-item" href="#panel-rules" data-panel="panel-rules">Methodology</a>
-        <a class="nav-item" href="#panel-quotes" data-panel="panel-quotes">Maxims</a>
         <a class="nav-item" href="#panel-scatter" data-panel="panel-scatter">Landscape</a>
       </div>
       <div class="nav-group" data-category="cross">
@@ -222,6 +222,24 @@
           </div>
           <div id="cgrDetailContent" style="display:none"></div>
         </aside>
+      </div>
+    </div>
+  </section>
+  <section class="panel" id="panel-quotes" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">The Long Run in Words</h2>
+        </div>
+        <div class="panel-controls">
+          <span class="quotes-counter" id="quotesCounter">1 / 25</span>
+        </div>
+      </div>
+      <div class="quotes-stage" id="quotesStage">
+        <div class="quotes-viewport">
+          <div class="quotes-scroller" id="quotesScroller"></div>
+        </div>
+        <div class="quotes-dots" id="quotesDots"></div>
       </div>
     </div>
   </section>
@@ -725,25 +743,6 @@
     </div>
   </section>
 
-  <section class="panel" id="panel-quotes" data-category="sp500">
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">The Long Run in Words</h2>
-          <p class="panel-desc">25 market maxims from a century of Wall Street — scroll to flip one by one</p>
-        </div>
-        <div class="panel-controls">
-          <span class="quotes-counter" id="quotesCounter">1 / 25</span>
-        </div>
-      </div>
-      <div class="quotes-stage" id="quotesStage">
-        <div class="quotes-viewport">
-          <div class="quotes-scroller" id="quotesScroller"></div>
-        </div>
-        <div class="quotes-dots" id="quotesDots"></div>
-      </div>
-    </div>
-  </section>
 
   <section class="panel" id="panel-scatter" data-category="sp500">
     <div class="panel-inner">
@@ -1310,9 +1309,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261006144852"></script>
-<script type="module" src="js/panels.js?v=20261006144852"></script>
-<script defer src="js/hero-curve.js?v=20261006144852"></script>
+<script src="js/freshness.js?v=20261006150807"></script>
+<script type="module" src="js/panels.js?v=20261006150807"></script>
+<script defer src="js/hero-curve.js?v=20261006150807"></script>
 
 </body>
 </html>

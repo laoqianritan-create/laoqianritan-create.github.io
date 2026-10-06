@@ -1066,16 +1066,19 @@ a.tr-dist-cell:hover {
 .quote-slide.is-active { opacity: 1; pointer-events: auto; user-select: text; }
 .quote-en {
   margin: 0;
-  font-size: 21px;
-  line-height: 1.55;
-  font-weight: 500;
+  font-family: "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;
+  font-size: 30px;
+  line-height: 1.45;
+  font-weight: 700;
+  -webkit-text-stroke: 0.6px currentColor;
   color: var(--text);
 }
 .quote-zh {
-  margin-top: 14px;
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--text-secondary);
+  margin-top: 16px;
+  font-size: 30px;
+  line-height: 1.6;
+  font-weight: 700;
+  color: var(--text);
 }
 .quote-author {
   margin-top: auto;           /* 钉在句底 → 上一句的作者行正好落进上窥视窗 */
@@ -1114,7 +1117,7 @@ a.tr-dist-cell:hover {
   transform: scale(1.5);
 }
 @media (max-width: 768px) {
-  .quotes-stage { --quote-step: 430px; --quote-peek: 48px; }
-  .quote-en { font-size: 17px; }
-  .quote-zh { font-size: 14px; }
+  .quotes-stage { --quote-step: 500px; --quote-peek: 40px; }
+  .quote-en { font-size: 19px; }
+  .quote-zh { font-size: 19px; }
 }

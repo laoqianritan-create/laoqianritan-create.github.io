@@ -5,7 +5,7 @@
 //              mouse wheel flips one quote at a time (throttled; touch swipe + arrow keys too).
 // Data: data/bofa_longest_pictures_quotes.json (manually maintained, cf. sp500_rules.json).
 
-import { escapeHtml } from '../utils.js?v=20261006144852';
+import { escapeHtml } from '../utils.js?v=20261006150807';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -24,7 +24,7 @@ export function initPanelQuotes(data) {
     const byline = escapeHtml(authorEn || authorZh);
     return `
       <figure class="quote-slide" data-idx="${i}">
-        <blockquote class="quote-en">“${escapeHtml(q.en)}”</blockquote>
+        <blockquote class="quote-en">${escapeHtml(q.en)}</blockquote>
         <figcaption class="quote-author">—— ${byline}</figcaption>
       </figure>`;
   }).join('');

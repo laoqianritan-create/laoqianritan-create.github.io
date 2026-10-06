@@ -4,7 +4,7 @@
 //       右下角作者；鼠标滚轮逐句切换（带节流 + 触摸滑动 + 键盘方向键）。
 // 数据：data/bofa_longest_pictures_quotes.json（手工维护，参考 sp500_rules.json 模式）。
 
-import { escapeHtml } from '../utils.js?v=20261006144852';
+import { escapeHtml } from '../utils.js?v=20261006150807';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -23,7 +23,7 @@ export function initPanelQuotes(data) {
     const byline = escapeHtml(authorZh || authorEn);
     return `
       <figure class="quote-slide" data-idx="${i}">
-        <blockquote class="quote-en">“${escapeHtml(q.en)}”</blockquote>
+        <blockquote class="quote-en">${escapeHtml(q.en)}</blockquote>
         <div class="quote-zh">${escapeHtml(q.zh)}</div>
         <figcaption class="quote-author">—— ${byline}</figcaption>
       </figure>`;
