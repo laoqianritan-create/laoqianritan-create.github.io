@@ -1125,7 +1125,38 @@ a.tr-dist-cell:hover {
   transform: scale(1.5);
 }
 @media (max-width: 768px) {
-  .quotes-stage { --quote-step: 250px; --quote-peek: 26px; }
+  /* Mobile: horizontal swipe. Scroller becomes a row, one quote per viewport width */
+  .quotes-stage { --quote-step: auto; --quote-peek: 0px; }
+  .quotes-viewport {
+    height: auto;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, #000 20px, #000 calc(100% - 20px), transparent 100%);
+  }
+  .quotes-scroller {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    will-change: transform;
+  }
+  .quote-slide {
+    flex: 0 0 100%;
+    min-height: 0;
+    min-width: 100%;
+    padding-right: 12px;
+    box-sizing: border-box;
+  }
+  .quote-slide.is-near { opacity: 0.16; }
   .quote-en { font-size: 32px; }
   .quote-zh { font-size: 19px; line-height: 1.55; }
+  .quotes-hint {
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 6px;
+  }
+}
+@media (min-width: 769px) {
+  .quotes-hint { display: none; }
 }

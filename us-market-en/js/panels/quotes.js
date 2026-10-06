@@ -7,7 +7,7 @@
 //         follows the active quote, so short quotes don't sit in a tall empty box.
 // Data: data/bofa_longest_pictures_quotes.json (manually maintained, cf. sp500_rules.json).
 
-import { escapeHtml } from '../utils.js?v=20261006154626';
+import { escapeHtml } from '../utils.js?v=20261006161026';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -55,8 +55,12 @@ export function initPanelQuotes(data) {
 
   function applyTransform(animate = true) {
     if (!offsets.length) measure();
+    const horizontal = window.matchMedia('(max-width: 768px)').matches;
     listEl.style.transition = animate ? `transform ${ANIM_MS}ms cubic-bezier(0.33, 0, 0.2, 1)` : 'none';
-    listEl.style.transform = `translateY(${peekPx() - offsets[current]}px)`;
+    // Vertical: translateY by quote offset; Horizontal (mobile): full-width slides, translateX by index
+    listEl.style.transform = horizontal
+      ? `translateX(${-current * 100}%)`
+      : `translateY(${peekPx() - offsets[current]}px)`;
     slides.forEach((el, i) => {
       el.classList.toggle('is-active', i === current);
       el.classList.toggle('is-near', Math.abs(i - current) === 1);
@@ -73,8 +77,10 @@ export function initPanelQuotes(data) {
     if (next === current) return;
     current = next;
     animating = true;
-    // Viewport height follows the active quote (shrink for short, expand for long)
-    viewport.style.height = `${slides[current].offsetHeight + 2 * peekPx()}px`;
+    // Viewport height follows the active quote (shrink for short, expand for long); horizontal mode leaves height to CSS
+    if (!window.matchMedia('(max-width: 768px)').matches) {
+      viewport.style.height = `${slides[current].offsetHeight + 2 * peekPx()}px`;
+    }
     applyTransform(true);
     window.setTimeout(() => { animating = false; }, ANIM_MS);
   }
@@ -92,14 +98,26 @@ export function initPanelQuotes(data) {
     window.setTimeout(() => { wheelLocked = false; }, 120);
   }
 
-  // Touch swipe
-  let touchStartY = null;
-  function onTouchStart(e) { touchStartY = e.touches[0].clientY; }
+  // ── Touch swipe: horizontal on mobile (CSS switches to row layout), vertical kept on desktop ──
+  let horizontal = false;
+
+  let touchStart = null;      // {x, y}
+  function onTouchStart(e) {
+    horizontal = window.matchMedia('(max-width: 768px)').matches;
+    touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }
   function onTouchEnd(e) {
-    if (touchStartY === null) return;
-    const dy = touchStartY - e.changedTouches[0].clientY;
-    if (Math.abs(dy) > 36) goTo(current + (dy > 0 ? 1 : -1));
-    touchStartY = null;
+    if (!touchStart) return;
+    const dx = touchStart.x - e.changedTouches[0].clientX;
+    const dy = touchStart.y - e.changedTouches[0].clientY;
+    if (horizontal) {
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        goTo(current + (dx > 0 ? 1 : -1));
+      }
+    } else if (Math.abs(dy) > 36 && Math.abs(dy) > Math.abs(dx)) {
+      goTo(current + (dy > 0 ? 1 : -1));
+    }
+    touchStart = null;
   }
 
   // Arrow keys (only while the panel is in view)

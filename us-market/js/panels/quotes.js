@@ -5,7 +5,7 @@
 // 布局：每句高度自适应——offsets 动态测距，视口高度跟随当前句收放，短句不占长框。
 // 数据：data/bofa_longest_pictures_quotes.json（手工维护，参考 sp500_rules.json 模式）。
 
-import { escapeHtml } from '../utils.js?v=20261006154626';
+import { escapeHtml } from '../utils.js?v=20261006161026';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -54,8 +54,12 @@ export function initPanelQuotes(data) {
 
   function applyTransform(animate = true) {
     if (!offsets.length) measure();
+    const horizontal = window.matchMedia('(max-width: 768px)').matches;
     listEl.style.transition = animate ? `transform ${ANIM_MS}ms cubic-bezier(0.33, 0, 0.2, 1)` : 'none';
-    listEl.style.transform = `translateY(${peekPx() - offsets[current]}px)`;
+    // 竖排：translateY 按句顶偏移；横排：每句占满视口宽，translateX 按句序号
+    listEl.style.transform = horizontal
+      ? `translateX(${-current * 100}%)`
+      : `translateY(${peekPx() - offsets[current]}px)`;
     slides.forEach((el, i) => {
       el.classList.toggle('is-active', i === current);
       el.classList.toggle('is-near', Math.abs(i - current) === 1);
@@ -72,8 +76,10 @@ export function initPanelQuotes(data) {
     if (next === current) return;
     current = next;
     animating = true;
-    // 视口高度跟随当前句收放（短句收拢、长句展开），压掉多余留白
-    viewport.style.height = `${slides[current].offsetHeight + 2 * peekPx()}px`;
+    // 视口高度跟随当前句收放（短句收拢、长句展开），压掉多余留白；横排模式高度交给 CSS
+    if (!window.matchMedia('(max-width: 768px)').matches) {
+      viewport.style.height = `${slides[current].offsetHeight + 2 * peekPx()}px`;
+    }
     applyTransform(true);
     window.setTimeout(() => { animating = false; }, ANIM_MS);
   }
@@ -91,14 +97,28 @@ export function initPanelQuotes(data) {
     window.setTimeout(() => { wheelLocked = false; }, 120);
   }
 
-  // ── 触摸滑动 ──
-  let touchStartY = null;
-  function onTouchStart(e) { touchStartY = e.touches[0].clientY; }
+  // ── 触摸滑动：移动端为左右横滑（竖排改横排由 CSS 切换），桌面竖滑逻辑保留 ──
+  // 布局模式在 resize/初始化时判定：<768px = 横排横滑（horizontal），否则竖排（vertical）
+  let horizontal = false;
+
+  let touchStart = null;      // {x, y}
+  function onTouchStart(e) {
+    horizontal = window.matchMedia('(max-width: 768px)').matches;
+    touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }
   function onTouchEnd(e) {
-    if (touchStartY === null) return;
-    const dy = touchStartY - e.changedTouches[0].clientY;
-    if (Math.abs(dy) > 36) goTo(current + (dy > 0 ? 1 : -1));
-    touchStartY = null;
+    if (!touchStart) return;
+    const dx = touchStart.x - e.changedTouches[0].clientX;
+    const dy = touchStart.y - e.changedTouches[0].clientY;
+    // 横滑模式：只认水平位移；竖滑模式：只认竖直位移（原行为）
+    if (horizontal) {
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+        goTo(current + (dx > 0 ? 1 : -1));
+      }
+    } else if (Math.abs(dy) > 36 && Math.abs(dy) > Math.abs(dx)) {
+      goTo(current + (dy > 0 ? 1 : -1));
+    }
+    touchStart = null;
   }
 
   // ── 键盘方向键（仅面板在视口内时）──
