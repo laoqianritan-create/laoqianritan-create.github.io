@@ -5,7 +5,7 @@
 // 布局：每句高度自适应——offsets 动态测距，视口高度跟随当前句收放，短句不占长框。
 // 数据：data/bofa_longest_pictures_quotes.json（手工维护，参考 sp500_rules.json 模式）。
 
-import { escapeHtml } from '../utils.js?v=20261006161026';
+import { escapeHtml } from '../utils.js?v=20261006162145';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -48,6 +48,9 @@ export function initPanelQuotes(data) {
   let offsets = [];
   function measure() {
     offsets = slides.map(el => el.offsetTop);
+    // 横排（移动端）：视口高度由 applyTransform 按「当前句」收放——
+    // 若这里取最高句设高，短句下方会出巨大留白（10/06 事故：留白返工根因）
+    if (window.matchMedia('(max-width: 768px)').matches) return;
     const maxH = Math.max(...slides.map(el => el.offsetHeight));
     viewport.style.height = `${maxH + 2 * peekPx()}px`;
   }
@@ -60,6 +63,10 @@ export function initPanelQuotes(data) {
     listEl.style.transform = horizontal
       ? `translateX(${-current * 100}%)`
       : `translateY(${peekPx() - offsets[current]}px)`;
+    // 视口高度统一在这里收放（两种模式）：短句收拢、长句展开，压掉下方留白
+    viewport.style.height = horizontal
+      ? `${slides[current].offsetHeight}px`
+      : `${slides[current].offsetHeight + 2 * peekPx()}px`;
     slides.forEach((el, i) => {
       el.classList.toggle('is-active', i === current);
       el.classList.toggle('is-near', Math.abs(i - current) === 1);
@@ -76,10 +83,6 @@ export function initPanelQuotes(data) {
     if (next === current) return;
     current = next;
     animating = true;
-    // 视口高度跟随当前句收放（短句收拢、长句展开），压掉多余留白；横排模式高度交给 CSS
-    if (!window.matchMedia('(max-width: 768px)').matches) {
-      viewport.style.height = `${slides[current].offsetHeight + 2 * peekPx()}px`;
-    }
     applyTransform(true);
     window.setTimeout(() => { animating = false; }, ANIM_MS);
   }

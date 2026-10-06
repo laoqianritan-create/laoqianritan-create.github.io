@@ -7,7 +7,7 @@
 //         follows the active quote, so short quotes don't sit in a tall empty box.
 // Data: data/bofa_longest_pictures_quotes.json (manually maintained, cf. sp500_rules.json).
 
-import { escapeHtml } from '../utils.js?v=20261006161026';
+import { escapeHtml } from '../utils.js?v=20261006162145';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -49,6 +49,9 @@ export function initPanelQuotes(data) {
   let offsets = [];
   function measure() {
     offsets = slides.map(el => el.offsetTop);
+    // Horizontal (mobile): viewport height is set per-active-quote in applyTransform —
+    // sizing it to the tallest quote here caused the big blank area (2026-10-06 fix)
+    if (window.matchMedia('(max-width: 768px)').matches) return;
     const maxH = Math.max(...slides.map(el => el.offsetHeight));
     viewport.style.height = `${maxH + 2 * peekPx()}px`;
   }
@@ -61,6 +64,11 @@ export function initPanelQuotes(data) {
     listEl.style.transform = horizontal
       ? `translateX(${-current * 100}%)`
       : `translateY(${peekPx() - offsets[current]}px)`;
+    // Viewport height follows the ACTIVE quote in both modes —
+    // sizing it to the tallest quote left a huge blank area under short quotes (2026-10-06 fix)
+    viewport.style.height = horizontal
+      ? `${slides[current].offsetHeight}px`
+      : `${slides[current].offsetHeight + 2 * peekPx()}px`;
     slides.forEach((el, i) => {
       el.classList.toggle('is-active', i === current);
       el.classList.toggle('is-near', Math.abs(i - current) === 1);
@@ -77,10 +85,6 @@ export function initPanelQuotes(data) {
     if (next === current) return;
     current = next;
     animating = true;
-    // Viewport height follows the active quote (shrink for short, expand for long); horizontal mode leaves height to CSS
-    if (!window.matchMedia('(max-width: 768px)').matches) {
-      viewport.style.height = `${slides[current].offsetHeight + 2 * peekPx()}px`;
-    }
     applyTransform(true);
     window.setTimeout(() => { animating = false; }, ANIM_MS);
   }
