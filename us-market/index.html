@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261006093943">
-<link rel="stylesheet" href="css/chronicle.css?v=20261006093943">
-<script defer src="js/mobile-nav.js?v=20261006093943"></script>
+<link rel="stylesheet" href="style.css?v=20261006144852">
+<link rel="stylesheet" href="css/chronicle.css?v=20261006144852">
+<script defer src="js/mobile-nav.js?v=20261006144852"></script>
 </head>
 <body>
 
@@ -52,6 +52,7 @@
         <a class="nav-item" href="#panel-sectors" data-panel="panel-sectors">行业暴露</a>
         <a class="nav-item" href="#panel-changes" data-panel="panel-changes">成分股变动</a>
         <a class="nav-item" href="#panel-rules" data-panel="panel-rules">编制规则</a>
+        <a class="nav-item" href="#panel-quotes" data-panel="panel-quotes">百年箴言</a>
         <a class="nav-item" href="#panel-scatter" data-panel="panel-scatter">成分股全景</a>
       </div>
       <div class="nav-group" data-category="cross">
@@ -724,6 +725,26 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-quotes" data-category="sp500">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">百年箴言 · The Long Run in Words</h2>
+          <p class="panel-desc">华尔街一百年里的 25 句市场格言，滚轮逐句翻阅</p>
+        </div>
+        <div class="panel-controls">
+          <span class="quotes-counter" id="quotesCounter">1 / 25</span>
+        </div>
+      </div>
+      <div class="quotes-stage" id="quotesStage">
+        <div class="quotes-viewport">
+          <div class="quotes-scroller" id="quotesScroller"></div>
+        </div>
+        <div class="quotes-dots" id="quotesDots"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-scatter" data-category="sp500">
     <div class="panel-inner">
       <div class="panel-header">
@@ -1289,9 +1310,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261006093943"></script>
-<script type="module" src="js/panels.js?v=20261006093943"></script>
-<script defer src="js/hero-curve.js?v=20261006093943"></script>
+<script src="js/freshness.js?v=20261006144852"></script>
+<script type="module" src="js/panels.js?v=20261006144852"></script>
+<script defer src="js/hero-curve.js?v=20261006144852"></script>
 
 </body>
 </html>

@@ -1036,3 +1036,85 @@ a.tr-dist-cell:hover {
   .cgr-layout { grid-template-columns: 1fr; }
   .cgr-detail { position: static; min-height: 0; }
 }
+
+/* ── 百年箴言 · The Long Run in Words（滚轮逐句翻阅）────────────── */
+.quotes-stage {
+  --quote-step: 320px;   /* 每句行高 = transform 步长 */
+  --quote-peek: 64px;    /* 上下窥视窗高度 */
+}
+.quotes-viewport {
+  position: relative;
+  height: calc(var(--quote-step) + 2 * var(--quote-peek));
+  overflow: hidden;
+  /* 只在上下窥视窗淡出 → 相邻句半透明露头 */
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 var(--quote-peek), #000 calc(100% - var(--quote-peek)), transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0, #000 var(--quote-peek), #000 calc(100% - var(--quote-peek)), transparent 100%);
+}
+.quotes-scroller { will-change: transform; }
+.quote-slide {
+  height: var(--quote-step);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 2px 0;
+  opacity: 0.16;
+  transition: opacity 450ms ease;
+  pointer-events: none;
+  user-select: none;
+}
+.quote-slide.is-near  { opacity: 0.42; }
+.quote-slide.is-active { opacity: 1; pointer-events: auto; user-select: text; }
+.quote-en {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.55;
+  font-weight: 500;
+  color: var(--text);
+}
+.quote-zh {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+.quote-author {
+  margin-top: auto;           /* 钉在句底 → 上一句的作者行正好落进上窥视窗 */
+  padding-top: 10px;
+  align-self: flex-end;
+  font-size: 13px;
+  color: var(--text);
+  font-style: normal;
+}
+.quote-source {
+  margin-top: 6px;
+  align-self: flex-start;
+  font-size: 11px;
+  color: var(--gray);
+}
+.quotes-dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 14px;
+}
+.quote-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: var(--chart-grid);
+  cursor: pointer;
+  transition: background 200ms ease, transform 200ms ease;
+}
+.quote-dot:hover { background: var(--gray); }
+.quote-dot.active {
+  background: var(--accent);
+  transform: scale(1.5);
+}
+@media (max-width: 768px) {
+  .quotes-stage { --quote-step: 430px; --quote-peek: 48px; }
+  .quote-en { font-size: 17px; }
+  .quote-zh { font-size: 14px; }
+}
