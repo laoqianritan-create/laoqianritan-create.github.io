@@ -19,7 +19,7 @@
     const exportMode = opts.exportMode;
     const scale = opts.scale || 1;
     const W = exportMode ? 2400 : 1480;
-    const H = exportMode ? 600 : 320;
+    const H = exportMode ? 600 : 470;   // 屏幕版加高：容纳左侧标题 + 下方三导航按钮
 
     canvas.width = W * scale;
     canvas.height = H * scale;

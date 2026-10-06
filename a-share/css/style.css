@@ -258,6 +258,27 @@ body {
 .hero-inner { position: relative; display: block; }
 .hero-banner canvas { display: block; width: 100%; }
 
+/* ─── Banner 跨市场导航（标题下方纵向摆放） ───────────── */
+.banner-nav {
+  position: absolute;
+  left: 44px; top: 196px;
+  display: flex; flex-direction: column; gap: 10px;
+  z-index: 2;
+}
+.banner-nav a {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 18px; border-radius: 999px;
+  font-size: 13.5px; color: #fff; text-decoration: none; white-space: nowrap;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  transition: background .2s, border-color .2s;
+}
+.banner-nav a:hover { background: rgba(255, 255, 255, 0.26); border-color: rgba(255, 255, 255, 0.5); }
+.banner-nav .bn-debt {
+  background: #2FBF71; border-color: #2FBF71; color: #fff;
+}
+.banner-nav .bn-debt:hover { background: #27a862; border-color: #27a862; }
+
 /* ─── 相关资源 ───────────────────────────── */
 .related-resources {
   max-width: 1280px; margin: 26px auto 10px;
@@ -272,5 +293,10 @@ body {
 
 @media (max-width: 768px) {
   .hero-banner { padding: 18px 16px 16px; }
+  .banner-nav {
+    position: static; flex-direction: row; flex-wrap: wrap;
+    margin-top: 10px; gap: 8px;
+  }
+  .banner-nav a { padding: 5px 12px; font-size: 12px; }
   .related-resources { padding: 16px 14px 18px; }
 }

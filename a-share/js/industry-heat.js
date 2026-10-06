@@ -33,16 +33,18 @@
   let l2ByParent = {}; // parentCode -> [codes]
   let metricBtns = []; // 指标切换按钮引用（二级禁用成交金额占比）
 
-  // ── 颜色：分位 0-100 → 绿→白→红 ──
+  // ── 颜色：分位 0-100 → 绿→白→红（高值深红、低值深绿，非线性增强对比度）──
   function heatColor(pct) {
     if (pct === null || pct === undefined || Number.isNaN(pct)) return 'rgb(245,245,245)';
-    const x = Math.max(0, Math.min(100, pct)) / 100; // 0..1
-    if (x < 0.5) {
-      const k = x / 0.5; // 0..1 绿→白
+    const x = Math.max(0, Math.min(100, pct)) / 100;      // 0..1
+    const d = (x - 0.5) / 0.5;                            // -1..1（相对 50 中心）
+    // 非线性增强：|d|^0.65 → 40~60 区间也有明显色差，避免大片近白
+    const e = Math.sign(d) * Math.pow(Math.abs(d), 0.65); // -1..1
+    const k = Math.abs(e);                                // 0..1（距中心强度）
+    if (e < 0) {                                          // 绿侧（低分位）
       return `rgb(${Math.round(47 + (255 - 47) * k)},${Math.round(191 + (255 - 191) * k)},${Math.round(113 + (255 - 113) * k)})`;
     }
-    const k = (x - 0.5) / 0.5; // 0..1 白→红
-    return `rgb(${Math.round(255 - (255 - 230) * (1 - k))},${Math.round(255 - (255 - 90) * (1 - k))},${Math.round(255 - (255 - 86) * (1 - k))})`;
+    return `rgb(${Math.round(255 - (255 - 230) * k)},${Math.round(255 - (255 - 90) * k)},${Math.round(255 - (255 - 86) * k)})`;
   }
 
   // ── 按日期对齐取值（行业 dates 长度不同、换手率仅 2024 起 → 索引对齐会越界空白）──
