@@ -3,8 +3,8 @@
 // Title + description (panel-desc) + date + centered content + footer URL watermark
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261007163006';
-import { chartInstances } from './chart-helpers.js?v=20261007163006';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261007174619';
+import { chartInstances } from './chart-helpers.js?v=20261007174619';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // Horizontal padding
@@ -108,25 +108,35 @@ async function renderElementToImage(element) {
 // stacked beneath the main content image.
 // opts.skipHeader: when the content image already contains the panel title/description,
 // skip drawing the header on top to avoid duplication.
+// opts.compact: tighter frame for text-only exports (quotes) — smaller title/date/padding
+// so a short quote doesn't sit in a mostly empty image. **Default false: other panels unchanged.**
+// opts.fileName: override the download file name.
 function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, meta, extraImages = [], opts = {}) {
   const bg = cssVar('--bg') || '#fff';
   const textColor = cssVar('--text') || '#1a1a1a';
   const grayColor = cssVar('--gray') || '#999';
   const skipHeader = opts.skipHeader || false;
 
-  const contentMaxW = EXPORT_W - PAD * 2;
+  const compact = !!opts.compact;
+  const pad = compact ? 56 : PAD;
+  const titleMax = compact ? 46 : TITLE_SIZE;
+  const dateSize = compact ? 24 : DATE_SIZE;
+  const descSize = compact ? 24 : DESC_SIZE;
+  const footerSize = compact ? 22 : FOOTER_SIZE;
+  const descLineH = descSize + DESC_LINE_GAP;
+
+  const contentMaxW = EXPORT_W - pad * 2;
   // Never upscale; only downscale: when natural < max, keep original size and center it
   const contentW = Math.min(contentMaxW, contentNaturalW);
   const contentH = Math.round(contentW * (contentNaturalH / contentNaturalW));
 
   let headerH;
-  let titleFontSize = TITLE_SIZE;
+  let titleFontSize = titleMax;
   let descLines = [];
-  const descLineH = DESC_SIZE + DESC_LINE_GAP;
 
   if (skipHeader) {
     // Content image already contains title/description; keep only top padding
-    headerH = PAD;
+    headerH = pad;
   } else {
     // Estimate title font size (auto-shrink if it overflows)
     const ctxMeasure = document.createElement('canvas').getContext('2d');
@@ -135,9 +145,13 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
       titleFontSize -= 2;
       ctxMeasure.font = `bold ${titleFontSize}px ${FONT}`;
     }
-    descLines = wrapDescLines(meta.descs, contentMaxW, DESC_SIZE);
+    descLines = wrapDescLines(meta.descs, contentMaxW, descSize);
     const descBlockH = descLines.length * descLineH;
-    headerH = PAD + titleFontSize + 18 + DATE_SIZE + 30 + descBlockH + 36;
+    // Compact frame: date sits on the title line (right-aligned) → one less row, and the
+    // top-right corner is no longer empty.
+    headerH = compact
+      ? pad + titleFontSize + 20 + descBlockH + 24
+      : pad + titleFontSize + 18 + dateSize + 30 + descBlockH + 36;
   }
 
   // Pre-compute scaled heights for extras
@@ -149,7 +163,7 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
   const extrasGap = 40;
   const extrasBlockH = extrasLayout.reduce((sum, ex) => sum + ex.h + extrasGap, 0);
 
-  const footerH = FOOTER_SIZE + 28 + 24;
+  const footerH = footerSize + (compact ? 20 : 28) + (compact ? 18 : 24);
   const exportH = headerH + contentH + extrasBlockH + footerH;
 
   const canvas = document.createElement('canvas');
@@ -159,28 +173,38 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, EXPORT_W, exportH);
 
-  let y = PAD;
+  let y = pad;
 
   if (!skipHeader) {
     // Title
     ctx.fillStyle = textColor;
     ctx.font = `bold ${titleFontSize}px ${FONT}`;
     ctx.textAlign = 'left';
-    ctx.fillText(meta.title, PAD, y + titleFontSize * 0.85);
-    y += titleFontSize + 18;
-    // Date
-    ctx.fillStyle = grayColor;
-    ctx.font = `${DATE_SIZE}px ${FONT}`;
-    ctx.fillText(new Date().toISOString().substring(0, 10), PAD, y + DATE_SIZE * 0.85);
-    y += DATE_SIZE + 30;
+    ctx.fillText(meta.title, pad, y + titleFontSize * 0.85);
+    if (compact) {
+      // Compact frame: date right-aligned on the title baseline (one less row, fills top-right)
+      ctx.fillStyle = grayColor;
+      ctx.font = `${dateSize}px ${FONT}`;
+      ctx.textAlign = 'right';
+      ctx.fillText(new Date().toISOString().substring(0, 10), EXPORT_W - pad, y + titleFontSize * 0.85);
+      ctx.textAlign = 'left';
+      y += titleFontSize + 20;
+    } else {
+      y += titleFontSize + 18;
+      // Date
+      ctx.fillStyle = grayColor;
+      ctx.font = `${dateSize}px ${FONT}`;
+      ctx.fillText(new Date().toISOString().substring(0, 10), pad, y + dateSize * 0.85);
+      y += dateSize + 30;
+    }
     // Description
     ctx.fillStyle = grayColor;
-    ctx.font = `${DESC_SIZE}px ${FONT}`;
+    ctx.font = `${descSize}px ${FONT}`;
     for (const line of descLines) {
-      if (line) ctx.fillText(line, PAD, y + DESC_SIZE * 0.85);
+      if (line) ctx.fillText(line, pad, y + descSize * 0.85);
       y += descLineH;
     }
-    y += 36;
+    y += compact ? 24 : 36;
   }
 
   // Draw content image, centered horizontally
@@ -199,12 +223,12 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
   // Footer
   ctx.textAlign = 'right';
   ctx.fillStyle = grayColor;
-  ctx.font = `${FOOTER_SIZE}px ${FONT}`;
-  ctx.fillText(getCurrentPageUrl(), EXPORT_W - PAD, exportH - 24);
+  ctx.font = `${footerSize}px ${FONT}`;
+  ctx.fillText(getCurrentPageUrl(), EXPORT_W - pad, exportH - (compact ? 20 : 24));
   ctx.textAlign = 'left';
 
   const link = document.createElement('a');
-  link.download = (meta.title || 'Big Picture').replace(/[\/\\:*?"<>|]/g, '_') + '.png';
+  link.download = (opts.fileName || meta.title || 'Big Picture').replace(/[\/\\:*?"<>|]/g, '_') + '.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -260,7 +284,7 @@ function loadHtml2Canvas() {
   return html2canvasPromise;
 }
 
-export async function exportElementAsPng(element, panelEl) {
+export async function exportElementAsPng(element, panelEl, opts = {}) {
   if (!element) return;
   let h2c;
   try {
@@ -272,11 +296,12 @@ export async function exportElementAsPng(element, panelEl) {
   }
 
   // If the rendered element is the whole panel (containing panel-title):
-  //  1. Hide the export button so it doesn't get captured in the screenshot
-  //  2. Skip drawing the top title/description in the final composite
+  //  1. Skip drawing the top title/description in the final composite
   //     (the content image already includes them)
+  //  exportElementAsPng always hides .btn-export inside the captured element,
+  //  so the export icon can never appear in the image.
   const hasHeader = !!element.querySelector('.panel-title');
-  const btnsToHide = hasHeader ? [...element.querySelectorAll('.btn-export')] : [];
+  const btnsToHide = [...element.querySelectorAll('.btn-export')];
   btnsToHide.forEach(b => b.style.display = 'none');
 
   const bg = cssVar('--bg') || '#fff';
@@ -310,8 +335,33 @@ export async function exportElementAsPng(element, panelEl) {
   img.src = sourceCanvas.toDataURL('image/png');
   img.onload = () => buildFrameAndDownload(
     img, sourceCanvas.width, sourceCanvas.height,
-    getPanelMeta(panelEl), extras, { skipHeader: hasHeader },
+    getPanelMeta(panelEl), extras,
+    { skipHeader: hasHeader, fileName: opts.fileName, compact: opts.compact },
   );
+}
+
+// ── "The Long Run in Words" per-page export ───────────────────────────────
+// Each page has its own export button (top-right). On export: clone that page,
+// drop the buttons (the icon must never appear in the image), release the
+// carousel's fixed min-height / translucency / button gutter, and render the
+// clone off-screen at a fixed width hugging its content.
+// Fixed width + min-height:0 is what keeps the export free of large blank areas:
+// the carousel .quote-slide has min-height(--quote-step) and pins the author line
+// to the bottom with margin-top:auto, so a naive capture leaves a big gap.
+export async function exportQuoteAsPng(slideEl, panelEl, opts = {}) {
+  if (!slideEl) return;
+  const clone = slideEl.cloneNode(true);
+  clone.querySelectorAll('.btn-export').forEach(b => b.remove());
+  clone.classList.remove('is-active', 'is-near');
+  clone.classList.add('quote-export-node');
+  clone.removeAttribute('data-idx');
+  clone.removeAttribute('aria-hidden');
+  document.body.appendChild(clone);
+  try {
+    await exportElementAsPng(clone, panelEl, { fileName: opts.fileName, compact: true });
+  } finally {
+    clone.remove();
+  }
 }
 
 export function initExportButtons() {

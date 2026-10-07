@@ -7,7 +7,8 @@
 //         follows the active quote, so short quotes don't sit in a tall empty box.
 // Data: data/bofa_longest_pictures_quotes.json (manually maintained, cf. sp500_rules.json).
 
-import { escapeHtml } from '../utils.js?v=20261007163006';
+import { escapeHtml } from '../utils.js?v=20261007174619';
+import { exportQuoteAsPng } from '../export-png.js?v=20261007174619';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -20,10 +21,14 @@ export function initPanelQuotes(data) {
   }
 
   // Render all quotes (active one highlighted, neighbours translucent, transform-driven)
+  // Each page carries its own export button (top-right) that exports **that page**;
+  // styling matches the other panels' .btn-export.
   listEl.innerHTML = quotes.map((q, i) => {
     const byline = escapeHtml(q.author_en || q.author_zh || '');
     return `
       <figure class="quote-slide" data-idx="${i}">
+        <button class="btn btn-export quote-export" type="button" data-quote-export="${i}"
+                title="Export this page as PNG" aria-label="Export this page as PNG">&#8681;</button>
         <blockquote class="quote-en">${escapeHtml(q.en)}</blockquote>
         <figcaption class="quote-author">—— ${byline}</figcaption>
       </figure>`;
@@ -155,6 +160,19 @@ export function initPanelQuotes(data) {
 
   measure();
   applyTransform(false);
+
+  // ── Per-page export button: exports this page (the button itself never enters the image) ──
+  const panelTitle = document.querySelector('#panel-quotes .panel-title')?.textContent.trim() || 'The Long Run in Words';
+  listEl.querySelectorAll('.quote-export').forEach(btn => {
+    btn.addEventListener('click', ev => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      const slide = btn.closest('.quote-slide');
+      exportQuoteAsPng(slide, slide?.closest('.panel'), {
+        fileName: `${panelTitle} ${(+btn.dataset.quoteExport || 0) + 1}`,
+      });
+    });
+  });
 
   // Re-measure once the script webfont loads (line heights change); and on resize
   if (document.fonts && document.fonts.ready) {

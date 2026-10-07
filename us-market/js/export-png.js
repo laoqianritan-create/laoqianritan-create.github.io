@@ -3,8 +3,8 @@
 // 标题 + 描述（panel-desc）+ 日期 + 内容居中 + footer URL 水印
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261007163006';
-import { chartInstances } from './chart-helpers.js?v=20261007163006';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261007174619';
+import { chartInstances } from './chart-helpers.js?v=20261007174619';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // 两侧留白
@@ -102,25 +102,35 @@ async function renderElementToImage(element) {
 // 用 contentImg + meta 拼最终图，落盘
 // extraImages: [{ img, naturalW, naturalH }, ...] 可选；会等比缩放后堆叠到内容图之下
 // opts.skipHeader: 内容图已包含面板标题/描述时跳过顶部重复绘制
+// opts.compact: 紧凑画框（文本类导出如箴言用）——标题/日期/页边距各收一号，
+//               内容不高时整张图不至于显得空。**默认 false，其它面板行为完全不变。**
+// opts.fileName: 覆盖下载文件名
 function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, meta, extraImages = [], opts = {}) {
   const bg = cssVar('--bg') || '#fff';
   const textColor = cssVar('--text') || '#1a1a1a';
   const grayColor = cssVar('--gray') || '#999';
   const skipHeader = opts.skipHeader || false;
 
-  const contentMaxW = EXPORT_W - PAD * 2;
+  const compact = !!opts.compact;
+  const pad = compact ? 56 : PAD;
+  const titleMax = compact ? 46 : TITLE_SIZE;
+  const dateSize = compact ? 24 : DATE_SIZE;
+  const descSize = compact ? 24 : DESC_SIZE;
+  const footerSize = compact ? 22 : FOOTER_SIZE;
+  const descLineH = descSize + DESC_LINE_GAP;
+
+  const contentMaxW = EXPORT_W - pad * 2;
   // 不放大、只缩小：natural < max 时保持原尺寸居中
   const contentW = Math.min(contentMaxW, contentNaturalW);
   const contentH = Math.round(contentW * (contentNaturalH / contentNaturalW));
 
   let headerH;
-  let titleFontSize = TITLE_SIZE;
+  let titleFontSize = titleMax;
   let descLines = [];
-  const descLineH = DESC_SIZE + DESC_LINE_GAP;
 
   if (skipHeader) {
     // 内容图已含标题/描述，只保留顶部留白
-    headerH = PAD;
+    headerH = pad;
   } else {
     // 估算标题字号（自适应缩小如果超宽）
     const ctxMeasure = document.createElement('canvas').getContext('2d');
@@ -129,9 +139,12 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
       titleFontSize -= 2;
       ctxMeasure.font = `bold ${titleFontSize}px ${FONT}`;
     }
-    descLines = wrapDescLines(meta.descs, contentMaxW, DESC_SIZE);
+    descLines = wrapDescLines(meta.descs, contentMaxW, descSize);
     const descBlockH = descLines.length * descLineH;
-    headerH = PAD + titleFontSize + 18 + DATE_SIZE + 30 + descBlockH + 36;
+    // 紧凑画框：日期与标题同一行（右对齐）→ 少一行高度，右上角也不空
+    headerH = compact
+      ? pad + titleFontSize + 20 + descBlockH + 24
+      : pad + titleFontSize + 18 + dateSize + 30 + descBlockH + 36;
   }
 
   // 预计算 extras 缩放后高度
@@ -143,7 +156,7 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
   const extrasGap = 40;
   const extrasBlockH = extrasLayout.reduce((sum, ex) => sum + ex.h + extrasGap, 0);
 
-  const footerH = FOOTER_SIZE + 28 + 24;
+  const footerH = footerSize + (compact ? 20 : 28) + (compact ? 18 : 24);
   const exportH = headerH + contentH + extrasBlockH + footerH;
 
   const canvas = document.createElement('canvas');
@@ -153,28 +166,38 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, EXPORT_W, exportH);
 
-  let y = PAD;
+  let y = pad;
 
   if (!skipHeader) {
     // 标题
     ctx.fillStyle = textColor;
     ctx.font = `bold ${titleFontSize}px ${FONT}`;
     ctx.textAlign = 'left';
-    ctx.fillText(meta.title, PAD, y + titleFontSize * 0.85);
-    y += titleFontSize + 18;
-    // 日期
-    ctx.fillStyle = grayColor;
-    ctx.font = `${DATE_SIZE}px ${FONT}`;
-    ctx.fillText(new Date().toISOString().substring(0, 10), PAD, y + DATE_SIZE * 0.85);
-    y += DATE_SIZE + 30;
+    ctx.fillText(meta.title, pad, y + titleFontSize * 0.85);
+    if (compact) {
+      // 紧凑画框：日期右对齐、与标题同一基线（省一行高度并把右上角填上）
+      ctx.fillStyle = grayColor;
+      ctx.font = `${dateSize}px ${FONT}`;
+      ctx.textAlign = 'right';
+      ctx.fillText(new Date().toISOString().substring(0, 10), EXPORT_W - pad, y + titleFontSize * 0.85);
+      ctx.textAlign = 'left';
+      y += titleFontSize + 20;
+    } else {
+      y += titleFontSize + 18;
+      // 日期
+      ctx.fillStyle = grayColor;
+      ctx.font = `${dateSize}px ${FONT}`;
+      ctx.fillText(new Date().toISOString().substring(0, 10), pad, y + dateSize * 0.85);
+      y += dateSize + 30;
+    }
     // 描述
     ctx.fillStyle = grayColor;
-    ctx.font = `${DESC_SIZE}px ${FONT}`;
+    ctx.font = `${descSize}px ${FONT}`;
     for (const line of descLines) {
-      if (line) ctx.fillText(line, PAD, y + DESC_SIZE * 0.85);
+      if (line) ctx.fillText(line, pad, y + descSize * 0.85);
       y += descLineH;
     }
-    y += 36;
+    y += compact ? 24 : 36;
   }
 
   // 内容居中绘制
@@ -193,12 +216,12 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
   // Footer
   ctx.textAlign = 'right';
   ctx.fillStyle = grayColor;
-  ctx.font = `${FOOTER_SIZE}px ${FONT}`;
-  ctx.fillText(getCurrentPageUrl(), EXPORT_W - PAD, exportH - 24);
+  ctx.font = `${footerSize}px ${FONT}`;
+  ctx.fillText(getCurrentPageUrl(), EXPORT_W - pad, exportH - (compact ? 20 : 24));
   ctx.textAlign = 'left';
 
   const link = document.createElement('a');
-  link.download = (meta.title || 'Big Picture').replace(/[\/\\:*?"<>|]/g, '_') + '.png';
+  link.download = (opts.fileName || meta.title || 'Big Picture').replace(/[\/\\:*?"<>|]/g, '_') + '.png';
   link.href = canvas.toDataURL('image/png');
   link.click();
 }
@@ -252,7 +275,7 @@ function loadHtml2Canvas() {
   return html2canvasPromise;
 }
 
-export async function exportElementAsPng(element, panelEl) {
+export async function exportElementAsPng(element, panelEl, opts = {}) {
   if (!element) return;
   let h2c;
   try {
@@ -264,10 +287,10 @@ export async function exportElementAsPng(element, panelEl) {
   }
 
   // 如果渲染的元素就是整个面板（含 panel-title），则：
-  //  1. 隐藏导出按钮，避免截进图里
-  //  2. 最终组装时跳过顶部标题/描述（内容图已包含）
+  //  1. 跳过顶部标题/描述（内容图已包含）
+  //  exportElementAsPng 一律先隐藏元素内的导出按钮 → 图里永远不出现 icon
   const hasHeader = !!element.querySelector('.panel-title');
-  const btnsToHide = hasHeader ? [...element.querySelectorAll('.btn-export')] : [];
+  const btnsToHide = [...element.querySelectorAll('.btn-export')];
   btnsToHide.forEach(b => b.style.display = 'none');
 
   const bg = cssVar('--bg') || '#fff';
@@ -299,8 +322,30 @@ export async function exportElementAsPng(element, panelEl) {
   img.src = sourceCanvas.toDataURL('image/png');
   img.onload = () => buildFrameAndDownload(
     img, sourceCanvas.width, sourceCanvas.height,
-    getPanelMeta(panelEl), extras, { skipHeader: hasHeader },
+    getPanelMeta(panelEl), extras,
+    { skipHeader: hasHeader, fileName: opts.fileName, compact: opts.compact },
   );
+}
+
+// ── 「百年箴言」逐页导出 ──────────────────────────────────────
+// 每页右上角有自己的导出按钮。导出时：克隆该页 → 摘掉按钮（图里不允许出现 icon）
+// → 解除轮播的定高 / 半透明 / 右侧让位 → 离屏按固定宽度紧贴内容渲染。
+// 走固定宽度 + min-height:0，是为了「不留大面积留白」：轮播版的 .quote-slide 有
+// min-height(--quote-step) 且作者行用 margin-top:auto 钉底，直接截会在句与作者之间留白。
+export async function exportQuoteAsPng(slideEl, panelEl, opts = {}) {
+  if (!slideEl) return;
+  const clone = slideEl.cloneNode(true);
+  clone.querySelectorAll('.btn-export').forEach(b => b.remove());
+  clone.classList.remove('is-active', 'is-near');
+  clone.classList.add('quote-export-node');
+  clone.removeAttribute('data-idx');
+  clone.removeAttribute('aria-hidden');
+  document.body.appendChild(clone);
+  try {
+    await exportElementAsPng(clone, panelEl, { fileName: opts.fileName, compact: true });
+  } finally {
+    clone.remove();
+  }
 }
 
 export function initExportButtons() {

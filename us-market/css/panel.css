@@ -1062,10 +1062,11 @@ a.tr-dist-cell:hover {
 .quotes-scroller { will-change: transform; }
 .quote-slide {
   min-height: var(--quote-step);   /* JS 动态测距：按内容自然生长，短句收拢长句展开 */
+  position: relative;              /* 每页导出按钮的定位基准 */
   margin: 0;
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 0 46px 0 0;             /* 右侧给导出按钮让位，避免图标压到句子 */
   opacity: 0.16;
   transition: opacity 450ms ease;
   pointer-events: none;
@@ -1073,6 +1074,30 @@ a.tr-dist-cell:hover {
 }
 .quote-slide.is-near  { opacity: 0.42; }
 .quote-slide.is-active { opacity: 1; pointer-events: auto; user-select: text; }
+
+/* 每页右上角的导出按钮：样式沿用全站 .btn-export，只有当前页显示/可点 */
+.quote-export {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+.quote-slide.is-active .quote-export { opacity: 1; pointer-events: auto; }
+
+/* 导出用的离屏克隆件：解除轮播定高/半透明/让位，宽度写死 → 紧贴内容、不留大面积留白 */
+.quote-export-node {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 1400px;
+  min-height: 0;
+  padding-right: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+.quote-export-node .quote-author { margin-top: 12px; }
 .quote-en {
   margin: 0;
   font-family: "Great Vibes", "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;
@@ -1143,9 +1168,11 @@ a.tr-dist-cell:hover {
     flex: 0 0 100%;
     min-height: 0;
     min-width: 100%;
-    padding-right: 12px;   /* 下一句的起始与当前句拉开一点 */
+    padding-right: 46px;   /* 给右上角导出按钮让位（同时与下一句拉开一点） */
     box-sizing: border-box;
   }
+  /* 箴言每页导出按钮：移动端保持小尺寸（responsive.css 的 44px 触控尺寸会压到句子） */
+  .quote-slide .quote-export { min-width: 0; min-height: 0; padding: 4px 10px; font-size: 15px; }
   /* 视口高度由 JS 按当前句收放（applyTransform），这里不再兜底固定高度 */
   .quote-slide.is-near { opacity: 0.16; }   /* 横排下相邻句基本被裁掉，压回背景透明度 */
   .quote-en { font-size: 32px; }

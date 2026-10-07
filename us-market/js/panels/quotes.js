@@ -5,7 +5,8 @@
 // 布局：每句高度自适应——offsets 动态测距，视口高度跟随当前句收放，短句不占长框。
 // 数据：data/bofa_longest_pictures_quotes.json（手工维护，参考 sp500_rules.json 模式）。
 
-import { escapeHtml } from '../utils.js?v=20261007163006';
+import { escapeHtml } from '../utils.js?v=20261007174619';
+import { exportQuoteAsPng } from '../export-png.js?v=20261007174619';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -18,10 +19,13 @@ export function initPanelQuotes(data) {
   }
 
   // ── 渲染所有句子（当前句高亮，相邻句半透明，由 transform 驱动）──
+  // 每页右上角带一个导出按钮：导出**这一页**的图片（样式与其它面板的 .btn-export 同款）
   listEl.innerHTML = quotes.map((q, i) => {
     const byline = escapeHtml(q.author_zh || q.author_en || '');
     return `
       <figure class="quote-slide" data-idx="${i}">
+        <button class="btn btn-export quote-export" type="button" data-quote-export="${i}"
+                title="导出这一页 PNG" aria-label="导出这一页 PNG">&#8681;</button>
         <blockquote class="quote-en">${escapeHtml(q.en)}</blockquote>
         <div class="quote-zh">${escapeHtml(q.zh)}</div>
         <figcaption class="quote-author">—— ${byline}</figcaption>
@@ -155,6 +159,19 @@ export function initPanelQuotes(data) {
 
   measure();
   applyTransform(false);
+
+  // ── 每页导出按钮：导出本页（按钮本身不进图）──
+  const panelTitle = document.querySelector('#panel-quotes .panel-title')?.textContent.trim() || '百年箴言';
+  listEl.querySelectorAll('.quote-export').forEach(btn => {
+    btn.addEventListener('click', ev => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      const slide = btn.closest('.quote-slide');
+      exportQuoteAsPng(slide, slide?.closest('.panel'), {
+        fileName: `${panelTitle} ${(+btn.dataset.quoteExport || 0) + 1}`,
+      });
+    });
+  });
 
   // 花体 webfont 加载完成后英文行高会变 → 重算 offset；窗口尺寸变化同理
   if (document.fonts && document.fonts.ready) {

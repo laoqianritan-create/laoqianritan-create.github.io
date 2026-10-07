@@ -1062,10 +1062,11 @@ a.tr-dist-cell:hover {
 .quotes-scroller { will-change: transform; }
 .quote-slide {
   min-height: var(--quote-step);   /* JS 动态测距：按内容自然生长，短句收拢长句展开 */
+  position: relative;              /* anchor for the per-page export button */
   margin: 0;
   display: flex;
   flex-direction: column;
-  padding: 0;
+  padding: 0 46px 0 0;             /* right gutter for the export button (never overlaps the quote) */
   opacity: 0.16;
   transition: opacity 450ms ease;
   pointer-events: none;
@@ -1073,6 +1074,32 @@ a.tr-dist-cell:hover {
 }
 .quote-slide.is-near  { opacity: 0.42; }
 .quote-slide.is-active { opacity: 1; pointer-events: auto; user-select: text; }
+
+/* Per-page export button (top-right): same .btn-export look as the other panels;
+   only the active page shows / accepts clicks. */
+.quote-export {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+.quote-slide.is-active .quote-export { opacity: 1; pointer-events: auto; }
+
+/* Off-screen clone used for export: releases the carousel min-height / translucency /
+   button gutter and pins a fixed width so the image hugs the content (no big blank areas). */
+.quote-export-node {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 1400px;
+  min-height: 0;
+  padding-right: 0;
+  opacity: 1;
+  pointer-events: none;
+}
+.quote-export-node .quote-author { margin-top: 12px; }
 .quote-en {
   margin: 0;
   font-family: "Great Vibes", "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;
@@ -1143,9 +1170,12 @@ a.tr-dist-cell:hover {
     flex: 0 0 100%;
     min-height: 0;
     min-width: 100%;
-    padding-right: 12px;
+    padding-right: 46px;   /* gutter for the top-right export button (also separates from the next quote) */
     box-sizing: border-box;
   }
+  /* Per-page export button: keep it compact on mobile (responsive.css's 44px touch size
+     would spill over the quote text). */
+  .quote-slide .quote-export { min-width: 0; min-height: 0; padding: 4px 10px; font-size: 15px; }
   .quote-slide.is-near { opacity: 0.16; }
   .quote-en { font-size: 32px; }
   .quote-zh { font-size: 19px; line-height: 1.55; }
