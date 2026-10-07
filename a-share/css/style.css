@@ -270,25 +270,27 @@ body {
 .hero-inner { position: relative; display: block; }
 .hero-banner canvas { display: block; width: 100%; }
 
-/* ─── Banner 跨市场导航（对齐 stock/debt 站 hero-crosslink 样式） ───────────── */
+/* ─── Banner 跨市场导流 icon（圆形，最左侧纵向） ─────────────────────────── */
 .banner-nav {
   position: absolute;
-  left: 44px; top: 196px;
-  display: flex; flex-direction: column; gap: 10px;
+  left: 30px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 12px;
   z-index: 2;
 }
 .banner-nav a {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 13px; border-radius: 999px;
-  font-size: 13px; text-decoration: none; white-space: nowrap;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  font-size: 0;
+  text-decoration: none;
   background: rgba(0, 0, 0, 0.36);
-  border: 1px solid currentColor;
+  border: 1.5px solid currentColor;
   backdrop-filter: blur(4px);
-  transition: background .2s, color .2s, opacity .2s;
+  transition: background .2s, transform .2s, opacity .2s;
   opacity: .92;
 }
-.banner-nav a svg { width: 13px; height: 13px; opacity: .75; flex: none; }
-.banner-nav a:hover { background: rgba(255, 255, 255, 0.09); opacity: 1; }
+.banner-nav a svg { width: 18px; height: 18px; flex: none; }
+.banner-nav a:hover { background: rgba(255, 255, 255, 0.12); transform: scale(1.06); opacity: 1; }
 .banner-nav .bn-gold { color: #d4a853; }
 .banner-nav .bn-stock { color: #8ea0ff; }
 .banner-nav .bn-debt { color: #2FBF71; }
@@ -309,8 +311,8 @@ body {
   .hero-banner { padding: 18px 16px 16px; }
   .banner-nav {
     position: static; flex-direction: row; flex-wrap: wrap;
-    margin-top: 10px; gap: 8px;
+    margin-top: 10px; gap: 10px; transform: none;
   }
-  .banner-nav a { padding: 5px 12px; font-size: 12px; }
+  .banner-nav a { width: 36px; height: 36px; }
   .related-resources { padding: 16px 14px 18px; }
 }

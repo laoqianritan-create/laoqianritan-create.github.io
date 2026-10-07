@@ -68,11 +68,11 @@
     const xs = (i) => plotL + (i / (n - 1)) * plotW;
     const ys = (v) => plotB - (v / maxV) * (plotB - plotT);
 
-    // ── 左侧文案：追寻适应与夏普之路（左上）──
-    const tx = exportMode ? 64 : 44;
+    // ── 左侧文案：追寻适应与夏普之路（图表左上角，与图表左对齐，加粗）──
+    const tx = exportMode ? 64 : plotL;   // 屏幕版与图表 plotL 左对齐
     const ty = exportMode ? 88 : 52;
     ctx.fillStyle = C_GOLD;
-    ctx.font = (exportMode ? 56 : 34) + 'px ' + FONT_TITLE;
+    ctx.font = '700 ' + (exportMode ? 56 : 34) + 'px ' + FONT_TITLE;  // 合成粗体
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
     ctx.fillText('追寻适应与夏普之路', tx, ty);
