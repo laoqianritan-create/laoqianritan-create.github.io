@@ -7,7 +7,7 @@
 // 只在进入视口时才实例化（55 张图，懒渲染避免卡顿）。
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261007152423';
+const DATA_URL = 'data/summary_thumbs.json?v=20261007152848';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 const grid = document.getElementById('summaryGrid');
