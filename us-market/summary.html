@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 2026-09-14: 强制浏览器每次 revalidate index.html,避免上新面板时用户看到旧版 -->
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>汇总 · Big Picture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="style.css?v=20261007151249">
+<link rel="stylesheet" href="css/chronicle.css?v=20261007151249">
+<script defer src="js/mobile-nav.js?v=20261007151249"></script>
+<script src="js/freshness.js?v=20261007151249"></script>
+<script type="module" src="js/summary.js?v=20261007151249"></script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title">Big Picture</div>
+    <a class="nav-summary" href="summary.html" title="全部面板缩略总览">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>汇总</span>
+    </a>
+    <div class="header-freshness" id="headerFreshness" title="数据更新时间(每日 09:30 + 22:00 自动刷)">
+      <span class="hf-dot" aria-hidden="true"></span>
+      <span class="hf-text">加载中…</span>
+    </div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="sp500">
+        <a class="nav-item active" href="index.html#panel-price" data-panel="panel-price">走势</a>
+        <a class="nav-item" href="index.html#panel-capitalism" data-panel="panel-capitalism">增速曲线</a>
+        <a class="nav-item" href="index.html#panel-quotes" data-panel="panel-quotes">百年箴言</a>
+        <a class="nav-item" href="index.html#panel-annual" data-panel="panel-annual">年回报</a>
+        <a class="nav-item" href="index.html#panel-annual-dist" data-panel="panel-annual-dist">回报分布</a>
+        <a class="nav-item" href="index.html#panel-annualized-matrix" data-panel="panel-annualized-matrix">年化矩阵</a>
+        <a class="nav-item" href="index.html#panel-return-details" data-panel="panel-return-details">回报分解</a>
+        <a class="nav-item" href="index.html#panel-drawdown" data-panel="panel-drawdown">回撤</a>
+        <a class="nav-item" href="index.html#panel-intrayear-dd" data-panel="panel-intrayear-dd">年内回撤</a>
+        <a class="nav-item" href="index.html#panel-volatility" data-panel="panel-volatility">波动率</a>
+        <a class="nav-item" href="index.html#panel-monthly" data-panel="panel-monthly">月度涨跌</a>
+        <a class="nav-item" href="index.html#panel-vix" data-panel="panel-vix">恐慌指数</a>
+        <a class="nav-item" href="index.html#panel-vixeq" data-panel="panel-vixeq">个股恐慌</a>
+        <a class="nav-item" href="index.html#panel-buffett" data-panel="panel-buffett">巴菲特指标</a>
+        <a class="nav-item" href="index.html#panel-hindenburg" data-panel="panel-hindenburg">兴登堡预兆</a>
+        <a class="nav-item" href="index.html#panel-pe" data-panel="panel-pe">席勒市盈率</a>
+        <a class="nav-item" href="index.html#panel-breadth" data-panel="panel-breadth">牛市宽度</a>
+        <a class="nav-item" href="index.html#panel-aiae" data-panel="panel-aiae">AIAE 仓位</a>
+        <a class="nav-item" href="index.html#panel-eps" data-panel="panel-eps">每股收益</a>
+        <a class="nav-item" href="index.html#panel-roe" data-panel="panel-roe">净资产收益率</a>
+        <a class="nav-item" href="index.html#panel-rolling" data-panel="panel-rolling">滚动收益率</a>
+        <a class="nav-item" href="index.html#panel-sp500-logyoy" data-panel="panel-sp500-logyoy">牛熊周期</a>
+<a class="nav-item" href="index.html#panel-spx-hikes" data-panel="panel-spx-hikes">加息影响</a>
+        <a class="nav-item" href="index.html#panel-m7" data-panel="panel-m7">七巨头指数</a>
+        <a class="nav-item" href="index.html#panel-sectors" data-panel="panel-sectors">行业暴露</a>
+        <a class="nav-item" href="index.html#panel-changes" data-panel="panel-changes">成分股变动</a>
+        <a class="nav-item" href="index.html#panel-rules" data-panel="panel-rules">编制规则</a>
+        <a class="nav-item" href="index.html#panel-scatter" data-panel="panel-scatter">成分股全景</a>
+      </div>
+      <div class="nav-group" data-category="cross">
+        <a class="nav-item active" href="index.html#panel-nasdaq-composite" data-panel="panel-nasdaq-composite">纳指综指</a>
+        <a class="nav-item" href="index.html#panel-dow-century" data-panel="panel-dow-century">道指</a>
+        <a class="nav-item" href="index.html#panel-nasdaq-logyoy" data-panel="panel-nasdaq-logyoy">牛熊周期</a>
+        <a class="nav-item" href="index.html#panel-nasdaq100-annual" data-panel="panel-nasdaq100-annual">年回报</a>
+        <a class="nav-item" href="index.html#panel-ndx-annual-dist" data-panel="panel-ndx-annual-dist">回报分布</a>
+        <a class="nav-item" href="index.html#panel-ndx-matrix" data-panel="panel-ndx-matrix">年化矩阵</a>
+        <a class="nav-item" href="index.html#panel-ndx-return-details" data-panel="panel-ndx-return-details">回报分解</a>
+        <a class="nav-item" href="index.html#panel-ndx-drawdown" data-panel="panel-ndx-drawdown">回撤</a>
+        <a class="nav-item" href="index.html#panel-ndx-intrayear-dd" data-panel="panel-ndx-intrayear-dd">年内回撤</a>
+        <a class="nav-item" href="index.html#panel-ndx-volatility" data-panel="panel-ndx-volatility">波动率</a>
+        <a class="nav-item" href="index.html#panel-ndx-monthly" data-panel="panel-ndx-monthly">月度涨跌</a>
+        <a class="nav-item" href="index.html#panel-ndx-vxn" data-panel="panel-ndx-vxn">恐慌指数</a>
+        <a class="nav-item" href="index.html#panel-ndx-rolling" data-panel="panel-ndx-rolling">滚动收益率</a>
+<a class="nav-item" href="index.html#panel-ndx-hikes" data-panel="panel-ndx-hikes">加息影响</a>
+        <a class="nav-item" href="index.html#panel-ndx-breadth" data-panel="panel-ndx-breadth">牛市宽度</a>
+        <a class="nav-item" href="index.html#panel-ndx-scatter" data-panel="panel-ndx-scatter">收益散点</a>
+        <a class="nav-item" href="index.html#panel-nasdaq100-weights" data-panel="panel-nasdaq100-weights">权重累计</a>
+        <a class="nav-item" href="index.html#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">成分股</a>
+      </div>
+      <div class="nav-group" data-category="style-etf">
+        <a class="nav-item active" href="index.html#panel-style-etf" data-panel="panel-style-etf">主流风格ETF</a>
+        <a class="nav-item" href="index.html#panel-style-etf-scatter" data-panel="panel-style-etf-scatter">风险收益平面</a>
+      </div>
+      <div class="nav-group" data-category="flows">
+        <a class="nav-item active" href="index.html#panel-ici-risk-appetite" data-panel="panel-ici-risk-appetite">权益·债券·混合</a>
+        <a class="nav-item" href="index.html#panel-ici-domestic-world" data-panel="panel-ici-domestic-world">本土 vs 海外</a>
+        <a class="nav-item" href="index.html#panel-ici-mmf" data-panel="panel-ici-mmf">货币基金蓄水池</a>
+        <a class="nav-item" href="index.html#panel-ici-active-index" data-panel="panel-ici-active-index">主动 vs 指数</a>
+        <a class="nav-item" href="index.html#panel-ici-passivization" data-panel="panel-ici-passivization">被动化率</a>
+        <a class="nav-item" href="index.html#panel-ownership" data-panel="panel-ownership">美股所有权结构</a>
+      </div>
+      <div class="nav-group" data-category="chronicle">
+        <a class="nav-item active" href="index.html#panel-chronicle" data-panel="panel-chronicle">日历</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a class="category-summary" href="summary.html" title="全部面板缩略总览">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>汇总</span>
+    </a>
+    <button class="category-tab active" data-category="sp500">标普500</button>
+    <button class="category-tab" data-category="cross">纳斯达克100与道琼斯</button>
+    <button class="category-tab" data-category="style-etf">风格ETF</button>
+    <button class="category-tab" data-category="flows">资金流</button>
+    <button class="category-tab" data-category="chronicle">编年史</button>
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+      <a class="lang-opt active" data-lang="zh" href="#" aria-current="true">中</a>
+      <span class="lang-sep">|</span>
+      <a class="lang-opt" data-lang="en" href="../us-market-en/">EN</a>
+    </div>
+  </div>
+</div>
+
+
+<main class="main" id="main">
+  <div class="summary-wrap">
+    <div class="summary-head">
+      <h1 class="summary-title">美股看板 · 汇总页</h1>
+      <p class="summary-sub">全部 55 个面板的缩略总览。点任意卡片跳转到对应看板。</p>
+    </div>
+    <div id="summaryGrid" class="summary-grid" aria-live="polite">
+      <div class="summary-loading">加载中…</div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">相关资源</h4>
+      <ul class="footer-link-list">
+        <li><a class="footer-link-gold" href="https://gold-board.betalpha.com/" target="_blank" rel="noopener">黄金看板</a></li>
+        <li><a href="https://laoqianritan-create.github.io/" target="_blank" rel="noopener">老钱日日谈</a></li>
+        <li><a href="https://www.xiaoyuzhoufm.com/podcast/6388760f22567e8ea6ad070f" target="_blank" rel="noopener">播客「面基」</a></li>
+        <li><a href="https://laoqianritan-create.github.io/qushi-animal-gallery/" target="_blank" rel="noopener">趋势动物小程序</a></li>
+        <li><a href="https://youzhiyouxing.cn/" target="_blank" rel="noopener">有知有行 App</a></li>
+        <li><a href="https://youzhiyouxing.cn/sbbi2025/preface/" target="_blank" rel="noopener">SBBI 中国大类资产投资2025年报</a></li>
+        <li><a href="https://www.hongsehuojian.com/red-rocket/home" target="_blank" rel="noopener">红色火箭</a></li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">数据仅供参考，不构成投资建议 · Big Picture</p>
+  </div>
+</footer>
+
+</body>
+</html>

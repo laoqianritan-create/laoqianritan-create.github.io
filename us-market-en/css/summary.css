@@ -1,0 +1,169 @@
+/* ── 汇总页（/summary.html）────────────────────────────────────
+   全部面板的缩略总览：分类小节 + 卡片网格（标题 + 迷你图）。
+   配色沿用 theme.css 既有色号，不引新色。 */
+
+.summary-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px 56px;
+}
+
+.summary-head {
+  padding-bottom: 20px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.summary-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.summary-sub {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.summary-loading {
+  padding: 80px 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.summary-section { margin-top: 32px; }
+
+.summary-cat-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.summary-cat-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-section);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 14px;
+}
+
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card-bg);
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+.summary-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+
+.summary-card-head {
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  min-height: 40px;
+}
+
+.summary-thumb {
+  height: 150px;
+  background: var(--bg-section);
+}
+.summary-thumb.is-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+.summary-thumb-icon { color: var(--border); }
+.summary-thumb-icon svg { width: 22px; height: 22px; display: block; }
+
+/* 汇总入口（侧栏顶部 + 横向菜单最左侧）——两处共用一套字号/图标对齐 */
+.nav-summary,
+.category-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card-bg);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.nav-summary svg,
+.category-summary svg {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  display: block;
+}
+.nav-summary:hover,
+.category-summary:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+.nav-summary.active,
+.category-summary.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+  font-weight: 600;
+}
+
+/* 侧栏顶部：与 .nav-item 同宽同左内边距，保证左缘对齐 */
+.nav-summary {
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 6px 10px;
+  margin-bottom: 2px;
+}
+
+/* 横向菜单最左侧：胶囊，不参与分类切换逻辑 */
+.category-summary {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .summary-wrap { padding: 24px 16px 40px; }
+  .summary-title { font-size: 22px; }
+  .summary-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+  .summary-thumb { height: 110px; }
+  .summary-card-head { font-size: 12px; min-height: 36px; padding: 8px 10px; }
+  .category-summary { padding: 7px 12px; }
+  .category-summary span { display: none; }   /* 手机端只留图标，与债务看板一致 */
+}

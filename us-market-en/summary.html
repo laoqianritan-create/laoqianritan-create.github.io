@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 2026-09-14: force browser to revalidate index.html on every visit -->
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>Summary · Big Picture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="style.css?v=20261007151249">
+<link rel="stylesheet" href="css/chronicle.css?v=20261007151249">
+<script defer src="js/mobile-nav.js?v=20261007151249"></script>
+<script src="js/freshness.js?v=20261007151249"></script>
+<script type="module" src="js/summary.js?v=20261007151249"></script>
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <div class="header-title">Big Picture</div>
+    <a class="nav-summary" href="summary.html" title="Thumbnail overview of all panels">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>Summary</span>
+    </a>
+    <div class="header-freshness" id="headerFreshness" title="Data freshness (auto-updates 09:30 + 22:00)">
+      <span class="hf-dot" aria-hidden="true"></span>
+      <span class="hf-text">Loading…</span>
+    </div>
+    <nav class="nav" id="nav">
+      <div class="nav-group active" data-category="sp500">
+        <a class="nav-item active" href="index.html#panel-price" data-panel="panel-price">Trend</a>
+        <a class="nav-item" href="index.html#panel-capitalism" data-panel="panel-capitalism">Growth Curves</a>
+        <a class="nav-item" href="index.html#panel-quotes" data-panel="panel-quotes">Maxims</a>
+        <a class="nav-item" href="index.html#panel-annual" data-panel="panel-annual">Annual</a>
+        <a class="nav-item" href="index.html#panel-annual-dist" data-panel="panel-annual-dist">Distribution</a>
+        <a class="nav-item" href="index.html#panel-annualized-matrix" data-panel="panel-annualized-matrix">Holding Matrix</a>
+        <a class="nav-item" href="index.html#panel-return-details" data-panel="panel-return-details">Composition</a>
+        <a class="nav-item" href="index.html#panel-drawdown" data-panel="panel-drawdown">Drawdown</a>
+        <a class="nav-item" href="index.html#panel-intrayear-dd" data-panel="panel-intrayear-dd">Intrayear DD</a>
+        <a class="nav-item" href="index.html#panel-volatility" data-panel="panel-volatility">Volatility</a>
+        <a class="nav-item" href="index.html#panel-monthly" data-panel="panel-monthly">Monthly</a>
+        <a class="nav-item" href="index.html#panel-vix" data-panel="panel-vix">VIX</a>
+        <a class="nav-item" href="index.html#panel-vixeq" data-panel="panel-vixeq">Single-Stock Fear</a>
+        <a class="nav-item" href="index.html#panel-buffett" data-panel="panel-buffett">Buffett</a>
+        <a class="nav-item" href="index.html#panel-hindenburg" data-panel="panel-hindenburg">Hindenburg Omen</a>
+        <a class="nav-item" href="index.html#panel-pe" data-panel="panel-pe">Shiller PE</a>
+        <a class="nav-item" href="index.html#panel-breadth" data-panel="panel-breadth">Breadth</a>
+        <a class="nav-item" href="index.html#panel-aiae" data-panel="panel-aiae">AIAE</a>
+        <a class="nav-item" href="index.html#panel-eps" data-panel="panel-eps">EPS</a>
+        <a class="nav-item" href="index.html#panel-roe" data-panel="panel-roe">ROE</a>
+        <a class="nav-item" href="index.html#panel-rolling" data-panel="panel-rolling">Rolling</a>
+        <a class="nav-item" href="index.html#panel-sp500-logyoy" data-panel="panel-sp500-logyoy">Bull/Bear</a>
+        <a class="nav-item" href="index.html#panel-spx-hikes" data-panel="panel-spx-hikes">Fed Hikes</a>
+        <a class="nav-item" href="index.html#panel-m7" data-panel="panel-m7">Mag 7</a>
+        <a class="nav-item" href="index.html#panel-sectors" data-panel="panel-sectors">Sectors</a>
+        <a class="nav-item" href="index.html#panel-changes" data-panel="panel-changes">Changes</a>
+        <a class="nav-item" href="index.html#panel-rules" data-panel="panel-rules">Methodology</a>
+        <a class="nav-item" href="index.html#panel-scatter" data-panel="panel-scatter">Landscape</a>
+      </div>
+      <div class="nav-group" data-category="cross">
+        <a class="nav-item active" href="index.html#panel-nasdaq-composite" data-panel="panel-nasdaq-composite">Composite</a>
+        <a class="nav-item" href="index.html#panel-dow-century" data-panel="panel-dow-century">Dow</a>
+        <a class="nav-item" href="index.html#panel-nasdaq-logyoy" data-panel="panel-nasdaq-logyoy">Bull/Bear</a>
+        <a class="nav-item" href="index.html#panel-nasdaq100-annual" data-panel="panel-nasdaq100-annual">Annual</a>
+        <a class="nav-item" href="index.html#panel-ndx-annual-dist" data-panel="panel-ndx-annual-dist">Distribution</a>
+        <a class="nav-item" href="index.html#panel-ndx-matrix" data-panel="panel-ndx-matrix">Holding Matrix</a>
+        <a class="nav-item" href="index.html#panel-ndx-return-details" data-panel="panel-ndx-return-details">Composition</a>
+        <a class="nav-item" href="index.html#panel-ndx-drawdown" data-panel="panel-ndx-drawdown">Drawdown</a>
+        <a class="nav-item" href="index.html#panel-ndx-intrayear-dd" data-panel="panel-ndx-intrayear-dd">Intrayear DD</a>
+        <a class="nav-item" href="index.html#panel-ndx-volatility" data-panel="panel-ndx-volatility">Volatility</a>
+        <a class="nav-item" href="index.html#panel-ndx-monthly" data-panel="panel-ndx-monthly">Monthly</a>
+        <a class="nav-item" href="index.html#panel-ndx-vxn" data-panel="panel-ndx-vxn">VXN</a>
+        <a class="nav-item" href="index.html#panel-ndx-rolling" data-panel="panel-ndx-rolling">Rolling</a>
+        <a class="nav-item" href="index.html#panel-ndx-hikes" data-panel="panel-ndx-hikes">Fed Hikes</a>
+        <a class="nav-item" href="index.html#panel-ndx-breadth" data-panel="panel-ndx-breadth">Breadth</a>
+        <a class="nav-item" href="index.html#panel-ndx-scatter" data-panel="panel-ndx-scatter">Scatter</a>
+        <a class="nav-item" href="index.html#panel-nasdaq100-weights" data-panel="panel-nasdaq100-weights">Weights</a>
+        <a class="nav-item" href="index.html#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">Constituents</a>
+      </div>
+      <div class="nav-group" data-category="style-etf">
+        <a class="nav-item active" href="index.html#panel-style-etf" data-panel="panel-style-etf">Style ETFs</a>
+        <a class="nav-item" href="index.html#panel-style-etf-scatter" data-panel="panel-style-etf-scatter">Risk-Return</a>
+      </div>
+      <div class="nav-group" data-category="flows">
+        <a class="nav-item active" href="index.html#panel-ici-risk-appetite" data-panel="panel-ici-risk-appetite">Equity · Bond · Hybrid</a>
+        <a class="nav-item" href="index.html#panel-ici-domestic-world" data-panel="panel-ici-domestic-world">Domestic vs World</a>
+        <a class="nav-item" href="index.html#panel-ici-mmf" data-panel="panel-ici-mmf">Money Market</a>
+        <a class="nav-item" href="index.html#panel-ici-active-index" data-panel="panel-ici-active-index">Active vs Index</a>
+        <a class="nav-item" href="index.html#panel-ici-passivization" data-panel="panel-ici-passivization">Index Share</a>
+        <a class="nav-item" href="index.html#panel-ownership" data-panel="panel-ownership">Ownership</a>
+      </div>
+      <div class="nav-group" data-category="chronicle">
+        <a class="nav-item active" href="index.html#panel-chronicle" data-panel="panel-chronicle">Calendar</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a class="category-summary" href="summary.html" title="Thumbnail overview of all panels">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>Summary</span>
+    </a>
+    <button class="category-tab active" data-category="sp500">S&amp;P 500</button>
+    <button class="category-tab" data-category="cross">Nasdaq 100 &amp; Dow Jones</button>
+    <button class="category-tab" data-category="style-etf">Style ETFs</button>
+    <button class="category-tab" data-category="flows">Fund Flows</button>
+    <button class="category-tab" data-category="chronicle">Chronicle</button>
+    <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
+      <a class="lang-opt" data-lang="zh" href="../us-market/">中</a>
+      <span class="lang-sep">|</span>
+      <a class="lang-opt active" data-lang="en" href="#" aria-current="true">EN</a>
+    </div>
+  </div>
+</div>
+
+
+<main class="main" id="main">
+  <div class="summary-wrap">
+    <div class="summary-head">
+      <h1 class="summary-title">US Market Dashboard · Summary</h1>
+      <p class="summary-sub">Thumbnail overview of every panel. Click any card to jump to it.</p>
+    </div>
+    <div id="summaryGrid" class="summary-grid" aria-live="polite">
+      <div class="summary-loading">加载中…</div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <h4 class="footer-heading">Related Resources</h4>
+      <ul class="footer-link-list">
+        <li><a class="footer-link-gold" href="https://gold-board.betalpha.com/" target="_blank" rel="noopener">Gold Dashboard</a></li>
+        <li><a href="https://laoqianritan-create.github.io/" target="_blank" rel="noopener">LaoQian Daily</a></li>
+        <li><a href="https://www.xiaoyuzhoufm.com/podcast/6388760f22567e8ea6ad070f" target="_blank" rel="noopener">"Mianji" Podcast</a></li>
+        <li><a href="https://laoqianritan-create.github.io/qushi-animal-gallery/" target="_blank" rel="noopener">Trend Animals Mini-App</a></li>
+        <li><a href="https://youzhiyouxing.cn/" target="_blank" rel="noopener">UXG App</a></li>
+        <li><a href="https://youzhiyouxing.cn/sbbi2025/preface/" target="_blank" rel="noopener">SBBI China Asset Allocation 2025 Yearbook</a></li>
+        <li><a href="https://www.hongsehuojian.com/red-rocket/home" target="_blank" rel="noopener">Red Rocket</a></li>
+      </ul>
+    </div>
+    <p class="footer-disclaimer">Data for reference only. Not investment advice · Big Picture</p>
+  </div>
+</footer>
+
+</body>
+</html>

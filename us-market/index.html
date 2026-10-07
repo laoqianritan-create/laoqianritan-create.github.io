@@ -11,15 +11,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261007144247">
-<link rel="stylesheet" href="css/chronicle.css?v=20261007144247">
-<script defer src="js/mobile-nav.js?v=20261007144247"></script>
+<link rel="stylesheet" href="style.css?v=20261007151249">
+<link rel="stylesheet" href="css/chronicle.css?v=20261007151249">
+<script defer src="js/mobile-nav.js?v=20261007151249"></script>
 </head>
 <body>
 
 <header class="header" id="header">
   <div class="header-inner">
     <div class="header-title">Big Picture</div>
+    <a class="nav-summary" href="summary.html" title="全部面板缩略总览">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>汇总</span>
+    </a>
     <div class="header-freshness" id="headerFreshness" title="数据更新时间(每日 09:30 + 22:00 自动刷)">
       <span class="hf-dot" aria-hidden="true"></span>
       <span class="hf-text">加载中…</span>
@@ -137,6 +141,10 @@
 
 <div class="category-bar" id="categoryBar">
   <div class="category-inner">
+    <a class="category-summary" href="summary.html" title="全部面板缩略总览">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>汇总</span>
+    </a>
     <button class="category-tab active" data-category="sp500">标普500</button>
     <button class="category-tab" data-category="cross">纳斯达克100与道琼斯</button>
     <button class="category-tab" data-category="style-etf">风格ETF</button>
@@ -1316,9 +1324,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261007144247"></script>
-<script type="module" src="js/panels.js?v=20261007144247"></script>
-<script defer src="js/hero-curve.js?v=20261007144247"></script>
+<script src="js/freshness.js?v=20261007151249"></script>
+<script type="module" src="js/panels.js?v=20261007151249"></script>
+<script defer src="js/hero-curve.js?v=20261007151249"></script>
 
 </body>
 </html>
