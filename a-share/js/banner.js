@@ -52,8 +52,8 @@
     const n = Math.min(dates.length, red.length, csi.length);
     if (n < 2) return;
 
-    // ── 图表灌满画布：左侧留标题区 + y 轴刻度，右侧留末端标签区 ──
-    const padL = exportMode ? 700 : 440;   // 左：标题 + y 轴刻度
+    // ── 图表灌满画布：仅左侧留窄 y 轴刻度区，文案叠在图表内部左上 ──
+    const padL = exportMode ? 220 : 170;   // 左：y 轴刻度区（窄）
     const padR = exportMode ? 320 : 190;   // 右：末端标签区
     const padT = exportMode ? 235 : 150;   // 顶部：让出标题区，y 轴刻度从标题下方开始
     const padB = exportMode ? 60 : 36;
@@ -68,11 +68,11 @@
     const xs = (i) => plotL + (i / (n - 1)) * plotW;
     const ys = (v) => plotB - (v / maxV) * (plotB - plotT);
 
-    // ── 左侧文案：追寻适应与夏普之路（图表左上角，与图表左对齐，加粗）──
-    const tx = exportMode ? 64 : plotL;   // 屏幕版与图表 plotL 左对齐
+    // ── 左侧文案：追寻适应与夏普之路（叠在图表内部左上角）──
+    const tx = exportMode ? 228 : 178;     // = plotL + 8，图表内部
     const ty = exportMode ? 88 : 52;
     ctx.fillStyle = C_GOLD;
-    ctx.font = '700 ' + (exportMode ? 56 : 34) + 'px ' + FONT_TITLE;  // 合成粗体
+    ctx.font = (exportMode ? 56 : 34) + 'px ' + FONT_TITLE;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
     ctx.fillText('追寻适应与夏普之路', tx, ty);
