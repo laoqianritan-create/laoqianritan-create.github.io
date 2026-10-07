@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261007185131';
+} from '../utils.js?v=20261007214234';
 
 import {
   registerChart,
@@ -32,7 +32,7 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261007185131';
+} from '../chart-helpers.js?v=20261007214234';
 
 export function initPanelChanges(data) {
   const tbody = document.getElementById('changesTbody');
@@ -87,7 +87,7 @@ export function initPanelChanges(data) {
           ${escapeHtml(change.reason)}<br/>
           <a class="source-link" href="${escapeHtml(change.sourceUrl)}" target="_blank" rel="noreferrer">原始公告</a>
         </td>
-        <td><span class="type-badge ${change.type === '并购触发' ? 'type-merger' : 'type-rebalance'}">${escapeHtml(change.type)}</span></td>
+        <td><span class="type-badge ${change.type === '并购触发' ? 'type-merger' : (change.type === '公司分拆' ? 'type-spinoff' : 'type-rebalance')}">${escapeHtml(change.type)}</span></td>
       </tr>
     `).join('');
   }

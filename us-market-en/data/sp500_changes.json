@@ -1,10 +1,283 @@
 {
-  "updated": "2026-02-09",
+  "updated": "2026-10-07",
   "source": {
     "name": "S&P Dow Jones Indices Press Releases",
-    "note": "Recent S&P 500 constituent changes, compiled from official press releases"
+    "note": "Recent S&P 500 constituent changes compiled from official press releases; on 2026-10-07 the 17 entries missing after 2026-02-09 were added (3/23×4, 4/9, 5/7, 6/2, 6/22×2, 6/30, 8/5, 8/18, 9/21×3, 10/1, 10/6).",
+    "coverage": "2024-12-23 ~ 2026-10-06"
   },
   "changes": [
+    {
+      "effectiveDate": "2026-10-06",
+      "type": "M&A-Triggered",
+      "addition": {
+        "ticker": "TWLO",
+        "name": "Twilio",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "WBD",
+        "name": "Warner Bros. Discovery",
+        "sector": "Communication Services"
+      },
+      "reason": "Paramount Skydance acquired Warner Bros. Discovery; S&P MidCap 400 constituent Twilio moved into the S&P 500.",
+      "sourceUrl": "https://press.spglobal.com/2026-10-01-Vylor-Added-to-the-S-P-500-Twilio-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-10-01",
+      "type": "Spin-Off",
+      "addition": {
+        "ticker": "VYLR",
+        "name": "Vylor",
+        "sector": "Consumer Staples"
+      },
+      "removal": {
+        "ticker": "CTVA",
+        "name": "Corteva",
+        "sector": "Materials"
+      },
+      "reason": "Corteva spun off Vylor that day; Vylor took its parent's place in the S&P 500, and Corteva moved to the S&P MidCap 400 on Oct 6.",
+      "sourceUrl": "https://press.spglobal.com/2026-10-01-Vylor-Added-to-the-S-P-500-Twilio-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-09-21",
+      "type": "Quarterly Rebalance",
+      "addition": {
+        "ticker": "BE",
+        "name": "Bloom Energy",
+        "sector": "Industrials"
+      },
+      "removal": {
+        "ticker": "TAP",
+        "name": "Molson Coors Beverage",
+        "sector": "Consumer Staples"
+      },
+      "reason": "Quarterly rebalance: Bloom Energy, deemed more representative of the large-cap space, replaced Molson Coors.",
+      "sourceUrl": "https://press.spglobal.com/2026-09-04-Bloom-Energy,-Illumina,-and-Everpure-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-09-21",
+      "type": "Quarterly Rebalance",
+      "addition": {
+        "ticker": "P",
+        "name": "Everpure",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "TTD",
+        "name": "The Trade Desk",
+        "sector": "Communication Services"
+      },
+      "reason": "Quarterly rebalance: Everpure moved up from the S&P MidCap 400, replacing The Trade Desk.",
+      "sourceUrl": "https://press.spglobal.com/2026-09-04-Bloom-Energy,-Illumina,-and-Everpure-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-09-21",
+      "type": "Quarterly Rebalance",
+      "addition": {
+        "ticker": "ILMN",
+        "name": "Illumina",
+        "sector": "Health Care"
+      },
+      "removal": {
+        "ticker": "BLDR",
+        "name": "Builders FirstSource",
+        "sector": "Industrials"
+      },
+      "reason": "Quarterly rebalance: Illumina moved back from the S&P MidCap 400 into the S&P 500, replacing Builders FirstSource.",
+      "sourceUrl": "https://press.spglobal.com/2026-09-04-Bloom-Energy,-Illumina,-and-Everpure-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-08-18",
+      "type": "M&A-Triggered",
+      "addition": {
+        "ticker": "RDDT",
+        "name": "Reddit",
+        "sector": "Communication Services"
+      },
+      "removal": {
+        "ticker": "AVB",
+        "name": "AvalonBay Communities",
+        "sector": "Financials"
+      },
+      "reason": "Equity Residential acquired AvalonBay Communities; after the merger Equity Residential was renamed Vivmark Residential (ticker EQR→VMRK) and stayed in the index, while Reddit moved into the S&P 500.",
+      "sourceUrl": "https://press.spglobal.com/2026-08-13-Reddit-Set-to-Join-S-P-500-and-Sun-Communities-to-Join-S-P-MidCap-400"
+    },
+    {
+      "effectiveDate": "2026-08-05",
+      "type": "M&A-Triggered",
+      "addition": {
+        "ticker": "FERG",
+        "name": "Ferguson Enterprises",
+        "sector": "Industrials"
+      },
+      "removal": {
+        "ticker": "EA",
+        "name": "Electronic Arts",
+        "sector": "Communication Services"
+      },
+      "reason": "A consortium of PIF, Silver Lake and Affinity Partners acquired Electronic Arts; Ferguson Enterprises moved in.",
+      "sourceUrl": "https://press.spglobal.com/2026-07-31-Ferguson-Enterprises-Set-to-Join-S-P-500-and-ADI-Global-Distribution-to-Join-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-06-30",
+      "type": "Spin-Off",
+      "addition": {
+        "ticker": "HONA",
+        "name": "Honeywell Aerospace",
+        "sector": "Industrials"
+      },
+      "removal": {
+        "ticker": "CAG",
+        "name": "Conagra Brands",
+        "sector": "Consumer Staples"
+      },
+      "reason": "Honeywell spin-off: Honeywell Aerospace was added on Jun 29 and Conagra Brands removed on Jun 30 (more small-cap representative).",
+      "sourceUrl": "https://press.spglobal.com/2026-06-23-Honeywell-Aerospace-Set-to-Join-S-P-500-S-P-100-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-06-22",
+      "type": "Quarterly Rebalance",
+      "addition": {
+        "ticker": "MRVL",
+        "name": "Marvell Technology",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "CPB",
+        "name": "The Campbell's Company",
+        "sector": "Consumer Staples"
+      },
+      "reason": "Quarterly rebalance: Marvell Technology replaced The Campbell's Company.",
+      "sourceUrl": "https://press.spglobal.com/2026-06-05-Marvell-Technology-and-Flex-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-06-22",
+      "type": "Quarterly Rebalance",
+      "addition": {
+        "ticker": "FLEX",
+        "name": "Flex",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "POOL",
+        "name": "Pool Corp",
+        "sector": "Consumer Discretionary"
+      },
+      "reason": "Quarterly rebalance: Flex replaced Pool Corp.",
+      "sourceUrl": "https://press.spglobal.com/2026-06-05-Marvell-Technology-and-Flex-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-06-02",
+      "type": "Spin-Off",
+      "addition": {
+        "ticker": "FDXF",
+        "name": "FedEx Freight",
+        "sector": "Industrials"
+      },
+      "removal": {
+        "ticker": "EPAM",
+        "name": "EPAM Systems",
+        "sector": "Information Technology"
+      },
+      "reason": "FedEx spun off FedEx Freight on Jun 1; EPAM Systems was removed on Jun 2 (more small-cap representative). Parent FedEx stays in the S&P 500 and S&P 100.",
+      "sourceUrl": "https://press.spglobal.com/2026-05-27-FedEx-Freight-Holding-Company-Set-to-Join-S-P-500-EPAM-Systems-and-Dave-to-Join-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-05-07",
+      "type": "M&A-Triggered",
+      "addition": {
+        "ticker": "VEEV",
+        "name": "Veeva Systems",
+        "sector": "Health Care"
+      },
+      "removal": {
+        "ticker": "CTRA",
+        "name": "Coterra Energy",
+        "sector": "Energy"
+      },
+      "reason": "Devon Energy acquired Coterra Energy; S&P 500 constituent Veeva Systems moved in as the replacement.",
+      "sourceUrl": "https://press.spglobal.com/2026-04-30-Veeva-Systems-Set-to-Join-S-P-500"
+    },
+    {
+      "effectiveDate": "2026-04-09",
+      "type": "M&A-Triggered",
+      "addition": {
+        "ticker": "CASY",
+        "name": "Casey's General Stores",
+        "sector": "Consumer Staples"
+      },
+      "removal": {
+        "ticker": "HOLX",
+        "name": "Hologic",
+        "sector": "Health Care"
+      },
+      "reason": "Affiliates of Blackstone and TPG acquired Hologic; S&P MidCap 400 constituent Casey's General Stores moved into the S&P 500.",
+      "sourceUrl": "https://press.spglobal.com/2026-04-06-Caseys-General-Stores-Set-to-Join-S-P-500-DigitalOcean-Holdings-to-Join-S-P-MidCap-400-Broadstone-Net-Lease-to-Join-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-03-23",
+      "type": "Quarterly Rebalance",
+      "addition": {
+        "ticker": "VRT",
+        "name": "Vertiv Holdings",
+        "sector": "Industrials"
+      },
+      "removal": {
+        "ticker": "MTCH",
+        "name": "Match Group",
+        "sector": "Communication Services"
+      },
+      "reason": "Quarterly rebalance: Vertiv Holdings replaced Match Group.",
+      "sourceUrl": "https://press.spglobal.com/2026-03-06-Vertiv-Holdings,-Lumentum-Holdings,-Coherent,-and-EchoStar-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-03-23",
+      "type": "Quarterly Rebalance",
+      "addition": {
+        "ticker": "LITE",
+        "name": "Lumentum Holdings",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "MOH",
+        "name": "Molina Healthcare",
+        "sector": "Health Care"
+      },
+      "reason": "Quarterly rebalance: Lumentum Holdings moved up from the S&P MidCap 400, replacing Molina Healthcare.",
+      "sourceUrl": "https://press.spglobal.com/2026-03-06-Vertiv-Holdings,-Lumentum-Holdings,-Coherent,-and-EchoStar-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-03-23",
+      "type": "Quarterly Rebalance",
+      "addition": {
+        "ticker": "COHR",
+        "name": "Coherent",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "LW",
+        "name": "Lamb Weston Holdings",
+        "sector": "Consumer Staples"
+      },
+      "reason": "Quarterly rebalance: Coherent replaced Lamb Weston Holdings.",
+      "sourceUrl": "https://press.spglobal.com/2026-03-06-Vertiv-Holdings,-Lumentum-Holdings,-Coherent,-and-EchoStar-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-03-23",
+      "type": "Quarterly Rebalance",
+      "addition": {
+        "ticker": "ECHO",
+        "name": "EchoStar",
+        "sector": "Communication Services"
+      },
+      "removal": {
+        "ticker": "PAYC",
+        "name": "Paycom Software",
+        "sector": "Industrials"
+      },
+      "reason": "Quarterly rebalance: EchoStar replaced Paycom Software; its ticker changed from SATS to ECHO on 2026-06-24.",
+      "sourceUrl": "https://press.spglobal.com/2026-03-06-Vertiv-Holdings,-Lumentum-Holdings,-Coherent,-and-EchoStar-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
     {
       "effectiveDate": "2026-02-09",
       "type": "M&A-Triggered",

@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261007185131';
+} from '../utils.js?v=20261007214234';
 
 import {
   registerChart,
@@ -33,9 +33,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261007185131';
+} from '../chart-helpers.js?v=20261007214234';
 
-import { isMobile } from '../mobile.js?v=20261007185131';
+import { isMobile } from '../mobile.js?v=20261007214234';
 
 export function initPanelPrice(data, recessionData, centuryData, equalWeightData) {
   const chart = registerChart(echarts.init(document.getElementById('chartPrice')));
@@ -817,6 +817,220 @@ export function initPanelAnnualizedMatrix(centuryData, opts = {}) {
 
 export function initPanelScatter(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartScatter')));
+  const stocks = (data.stocks || []).filter(stock =>
+    stock.return1y != null && stock.ytdReturn != null && (stock.weight ?? 0) > 0,
+  );
+
+  // ── 2026-10-07 redesign (per user instruction: mirror the "Nasdaq-100 return
+  // scatter" form). Same form: X = YTD return / Y = trailing 1-year return
+  // (symlog), sector-group colors + legend, bubble size = weight, labels =
+  // top-7 by weight plus the extremes, 0/0 crosshair, metric strip on top.
+  // Data layer rewritten the same day: membership and market cap from
+  // stockanalysis (was frozen at 2025-04), returns computed daily from
+  // yfinance daily bars (was frozen at 2026-04).
+  const GROUP_MAP = {
+    'Information Technology': 'Tech',
+    'Communication Services': 'Tech',        // Alphabet/Meta platforms; readers expect Tech (GICS class is Communication Services)
+    'Consumer Discretionary': 'Consumer',
+    'Consumer Staples': 'Consumer',         // same collapse as the Nasdaq-100 version
+    'Financials': 'Financials',             // 11% of the S&P 500; no such bucket in NDX
+    'Health Care': 'Health',
+    'Industrials': 'Industrials',
+    'Energy': 'Other',
+    'Utilities': 'Other',
+    'Real Estate': 'Other',
+    'Materials': 'Other',
+  };
+  const GROUP_COLOR = {
+    'Tech': '#2563eb',
+    'Financials': '#0f766e',
+    'Consumer': '#f97316',
+    'Health': '#db2777',
+    'Industrials': '#7c3aed',
+    'Other': '#999999',
+  };
+
+  const groups = {};
+  stocks.forEach(stock => {
+    const group = GROUP_MAP[stock.sectorEn] || GROUP_MAP[stock.sector] || 'Other';
+    if (!groups[group]) groups[group] = [];
+    groups[group].push(stock);
+  });
+
+  // Tickers to label: top 7 by weight plus the extremes on both axes
+  const labelSet = new Set(
+    [...stocks].sort((a, b) => (b.weight || 0) - (a.weight || 0)).slice(0, 7).map(s => s.ticker),
+  );
+  ['ytdReturn', 'return1y'].forEach(key => {
+    const sorted = [...stocks].sort((a, b) => a[key] - b[key]);
+    sorted.slice(0, 2).forEach(s => labelSet.add(s.ticker));
+    sorted.slice(-2).forEach(s => labelSet.add(s.ticker));
+  });
+
+  // symlog: linear within ±30%, log compression beyond (SYMLOG_C = 30, as in NDX)
+  const SYMLOG_C = 30;
+  function symlog(v) {
+    if (Math.abs(v) <= SYMLOG_C) return v;
+    return Math.sign(v) * (SYMLOG_C + SYMLOG_C * Math.log(Math.abs(v) / SYMLOG_C));
+  }
+  function symlogInv(v) {
+    if (Math.abs(v) <= SYMLOG_C) return v;
+    return Math.sign(v) * SYMLOG_C * Math.exp((Math.abs(v) - SYMLOG_C) / SYMLOG_C);
+  }
+  function buildTicks(values) {
+    const absMax = Math.max(...values.map(Math.abs));
+    const candidates = [
+      -3000, -2000, -1000, -500, -200, -100, -50, -20, 0,
+      20, 50, 100, 200, 500, 1000, 2000, 3000, 5000,
+    ];
+    return candidates.filter(v => Math.abs(v) <= absMax * 1.2).map(symlog);
+  }
+
+  function getOption() {
+    const grayColor  = cssVar('--gray') || '#999';
+    const gridColor  = cssVar('--chart-grid') || '#f0f0f0';
+    const greenColor = cssVar('--green') || '#389e0d';
+    const redColor   = cssVar('--red')   || '#cf1322';
+    const mobile     = isMobile();
+
+    const allYtd = stocks.map(s => s.ytdReturn * 100);
+    const allR1y = stocks.map(s => s.return1y * 100);
+    const xTicks = buildTicks(allYtd);
+    const yTicks = buildTicks(allR1y);
+
+    const sectorOrder = ['Tech', 'Financials', 'Consumer', 'Health', 'Industrials', 'Other'];
+    const seriesList = sectorOrder
+      .filter(group => groups[group] && groups[group].length)
+      .map(group => ({
+        name: group,
+        type: 'scatter',
+        data: groups[group].map(stock => {
+          const w = stock.weight || 0;
+          return {
+            value: [symlog(stock.ytdReturn * 100), symlog(stock.return1y * 100)],
+            _raw: [stock.ytdReturn * 100, stock.return1y * 100],
+            ticker: stock.ticker,
+            companyName: stock.name || stock.nameEn || stock.ticker,
+            sector: stock.sectorEn || stock.sector,
+            weight: w,
+            marketCap: stock.marketCap,
+            symbolSize: Math.max(8, Math.min(32, 6 + w * 3)),
+            label: labelSet.has(stock.ticker) ? {
+              show: true,
+              formatter: stock.ticker,
+              fontSize: mobile ? 9 : 10,
+              color: cssVar('--text') || '#1a1a1a',
+              position: 'right',
+              fontFamily: CHART_FONT,
+              distance: 4,
+            } : { show: false },
+          };
+        }),
+        itemStyle: { color: GROUP_COLOR[group], opacity: 0.78 },
+        // The heavyweight names (AAPL/MSFT/NVDA/GOOGL…) all cluster around the
+        // origin — hide labels that would overlap.
+        labelLayout: { hideOverlap: true },
+      }));
+
+    return {
+      animation: false,
+      grid: mobile
+        ? { left: 48, right: 16, top: 50, bottom: 56 }
+        : { left: 64, right: 28, top: 50, bottom: 60 },
+      legend: {
+        top: 6,
+        textStyle: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+        itemWidth: 10, itemHeight: 10, itemGap: 14,
+      },
+      tooltip: {
+        trigger: 'item',
+        backgroundColor: cssVar('--card-bg') || '#fff',
+        borderColor: cssVar('--border') || '#e8e8e8',
+        textStyle: { fontSize: 13, color: cssVar('--text') || '#1a1a1a', fontFamily: CHART_FONT },
+        formatter: params => {
+          const d = params.data;
+          const [ytd, r1y] = d._raw;
+          const ytdColor = ytd >= 0 ? greenColor : redColor;
+          const r1yColor = r1y >= 0 ? greenColor : redColor;
+          let s = `<b>${d.ticker}</b> ${escapeHtml(d.companyName)}`;
+          s += `<br/>YTD: <b style="color:${ytdColor}">${formatPercent(ytd, 1)}</b>`;
+          s += `<br/>1Y: <b style="color:${r1yColor}">${formatPercent(r1y, 1)}</b>`;
+          if (d.sector) s += `<br/>Sector: ${escapeHtml(d.sector)}`;
+          if (d.weight) s += `<br/>Weight: ${formatPercent(d.weight, 2)}`;
+          if (d.marketCap) s += `<br/>Market cap: ${formatNumber(d.marketCap / 1e12, 2)}T`;
+          return s;
+        },
+      },
+      xAxis: {
+        type: 'value',
+        name: 'YTD return',
+        nameLocation: 'center',
+        nameGap: mobile ? 32 : 38,
+        nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
+        min: symlog(Math.min(...allYtd) * 1.15),
+        max: symlog(Math.max(...allYtd) * 1.15),
+        ticks: xTicks,
+        axisLabel: {
+          fontSize: 11, color: grayColor, fontFamily: CHART_FONT,
+          formatter: v => `${Math.round(symlogInv(v))}%`,
+        },
+        axisTick: { alignWithLabel: true, inside: true },
+        splitLine: { show: false },
+        axisLine: { show: true, lineStyle: { color: gridColor } },
+      },
+      yAxis: {
+        type: 'value',
+        name: 'Trailing 1Y return',
+        nameLocation: 'center',
+        nameGap: mobile ? 36 : 48,
+        nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
+        min: symlog(Math.min(...allR1y) * 1.15),
+        max: symlog(Math.max(...allR1y) * 1.15),
+        ticks: yTicks,
+        axisLabel: {
+          fontSize: 11, color: grayColor, fontFamily: CHART_FONT,
+          formatter: v => `${Math.round(symlogInv(v))}%`,
+        },
+        axisTick: { alignWithLabel: true, inside: true },
+        splitLine: { show: false },
+        axisLine: { show: true, lineStyle: { color: gridColor } },
+      },
+      series: [
+        // Crosshair at X=0, Y=0 (same as the NDX panel)
+        {
+          type: 'scatter', data: [], silent: true,
+          markLine: {
+            silent: true, symbol: 'none',
+            lineStyle: { color: gridColor, type: 'solid', width: 1 },
+            data: [
+              { xAxis: 0, label: { show: false } },
+              { yAxis: 0, label: { show: false } },
+            ],
+          },
+        },
+        ...seriesList,
+      ],
+    };
+  }
+
+  chart.setOption(getOption());
+  chart._refreshTheme = () => chart.setOption(getOption(), true);
+
+  // ── metric strip (four cards, as in the NDX panel) ──
+  const ytdArr = stocks.map(s => s.ytdReturn * 100);
+  const r1yArr = stocks.map(s => s.return1y * 100);
+  const avgYtd = ytdArr.reduce((sum, v) => sum + v, 0) / ytdArr.length;
+  const avgR1y = r1yArr.reduce((sum, v) => sum + v, 0) / r1yArr.length;
+  const posYtd = ytdArr.filter(v => v > 0).length;
+  const posR1y = r1yArr.filter(v => v > 0).length;
+  renderMetricStrip('sp500ScatterSummary', [
+    buildMetricCard('YTD average', formatPercent(avgYtd, 1), `${posYtd}/${stocks.length} up`),
+    buildMetricCard('1Y average', formatPercent(avgR1y, 1), `${posR1y}/${stocks.length} up`),
+    buildMetricCard('YTD range', `${formatPercent(Math.min(...ytdArr), 0)} ~ ${formatPercent(Math.max(...ytdArr), 0)}`, 'worst ~ best'),
+    buildMetricCard('1Y range', `${formatPercent(Math.min(...r1yArr), 0)} ~ ${formatPercent(Math.max(...r1yArr), 0)}`, 'worst ~ best'),
+  ]);
+
+  // ── weight & price table (existing feature, unchanged) ──
   const totalMarketCap = (data.stocks || []).reduce((sum, stock) => (
     sum + (typeof stock.marketCap === 'number' && stock.marketCap > 0 ? stock.marketCap : 0)
   ), 0);
@@ -828,102 +1042,9 @@ export function initPanelScatter(data) {
         : null
     ),
   }));
-  const stocks = enrichedStocks.filter(stock => stock.marketCap > 0 && stock.return1y != null);
   const rankedMembers = enrichedStocks
     .slice()
     .sort((a, b) => (b.weight ?? 0) - (a.weight ?? 0) || (b.marketCap ?? 0) - (a.marketCap ?? 0));
-  const labelTickers = new Set(['AAPL', 'MSFT', 'NVDA', 'AMZN', 'GOOGL', 'META', 'TSLA', 'BRK.B', 'JPM', 'V']);
-
-  function getOption() {
-    const gridColor = cssVar('--chart-grid') || '#f0f0f0';
-    const grayColor = cssVar('--gray') || '#999';
-    const greenColor = cssVar('--green') || '#389e0d';
-    const redColor = cssVar('--red') || '#cf1322';
-
-    const scatterData = stocks.map(stock => {
-      const marketCapBillion = stock.marketCap / 1e9;
-      const returnPct = stock.return1y * 100;
-      return {
-        value: [marketCapBillion, returnPct],
-        name: stock.name,
-        ticker: stock.ticker,
-        itemStyle: {
-          color: stock.return1y >= 0 ? greenColor : redColor,
-          opacity: 0.7,
-        },
-        symbolSize: Math.max(6, Math.min(20, Math.log10(marketCapBillion) * 4)),
-        label: labelTickers.has(stock.ticker) ? {
-          show: true,
-          formatter: stock.ticker,
-          fontSize: 10,
-          color: cssVar('--text') || '#1a1a1a',
-          position: 'right',
-          fontFamily: CHART_FONT,
-        } : { show: false },
-      };
-    });
-
-    return {
-      animation: false,
-      grid: { left: 70, right: 30, top: 20, bottom: 50 },
-      xAxis: {
-        type: 'log',
-        name: 'Market Cap ($B)',
-        nameLocation: 'center',
-        nameGap: 30,
-        nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
-        axisLabel: {
-          fontSize: 11,
-          color: grayColor,
-          fontFamily: CHART_FONT,
-          formatter: value => value >= 1000 ? `${(value / 1000).toFixed(1)}T` : value.toFixed(0),
-        },
-        splitLine: { lineStyle: { color: gridColor } },
-      },
-      yAxis: {
-        type: 'value',
-        name: '1-Year Return',
-        nameLocation: 'center',
-        nameGap: 50,
-        nameTextStyle: { fontSize: 12, color: grayColor, fontFamily: CHART_FONT },
-        axisLabel: {
-          formatter: '{value}%',
-          fontSize: 11,
-          color: grayColor,
-          fontFamily: CHART_FONT,
-        },
-        splitLine: { lineStyle: { color: gridColor } },
-      },
-      series: [{
-        type: 'scatter',
-        data: scatterData,
-        markLine: {
-          silent: true,
-          symbol: 'none',
-          lineStyle: { color: grayColor, type: 'dashed', width: 1 },
-          data: [{ yAxis: 0, label: { show: false } }],
-        },
-      }],
-      tooltip: {
-        trigger: 'item',
-        backgroundColor: cssVar('--card-bg') || '#fff',
-        borderColor: cssVar('--border') || '#e8e8e8',
-        textStyle: {
-          fontSize: 13,
-          color: cssVar('--text') || '#1a1a1a',
-          fontFamily: CHART_FONT,
-        },
-        formatter: params => {
-          const stock = params.data;
-          const color = stock.value[1] >= 0 ? greenColor : redColor;
-          return `<b>${stock.ticker}</b> ${stock.name}<br/>Market Cap: $${formatNumber(stock.value[0], 0)}B<br/>Return: <b style="color:${color}">${formatPercent(stock.value[1], 1)}</b>`;
-        },
-      },
-    };
-  }
-
-  chart.setOption(getOption());
-  chart._refreshTheme = () => chart.setOption(getOption(), true);
 
   const tbody = document.getElementById('membersTbody');
   const searchInput = document.getElementById('membersSearch');
@@ -944,7 +1065,7 @@ export function initPanelScatter(data) {
 
     meta.textContent = normalized
       ? `${filtered.length} matches`
-      : `${enrichedStocks.length} constituents total`;
+      : `${enrichedStocks.length} constituents${stocks.length !== enrichedStocks.length ? ` (${stocks.length} in chart)` : ''}`;
 
     if (toggleBtn) {
       if (normalized) {
@@ -959,27 +1080,24 @@ export function initPanelScatter(data) {
       <tr>
         <td>${escapeHtml(stock.name || stock.nameEn || stock.ticker)}</td>
         <td><span class="ticker-chip">${escapeHtml(stock.ticker)}</span></td>
+        <td>${escapeHtml(stock.sectorEn || stock.sector || '--')}</td>
         <td style="font-variant-numeric:tabular-nums">${stock.weight != null ? formatPercent(stock.weight, 2) : '--'}</td>
-        <td style="font-variant-numeric:tabular-nums" title="${escapeHtml([stock.priceSource, stock.priceNote, stock.priceAsOf ? `As of ${stock.priceAsOf}` : ''].filter(Boolean).join(' · '))}">${stock.price != null ? `${stock.priceSource ? '≈' : ''}$${formatNumber(stock.price, 2)}` : '--'}</td>
+        <td style="font-variant-numeric:tabular-nums" title="${escapeHtml([stock.priceSource, stock.priceNote, stock.priceAsOf ? `as of ${stock.priceAsOf}` : ''].filter(Boolean).join(' · '))}">${stock.price != null ? `${stock.priceSource ? '≈' : ''}$${formatNumber(stock.price, 2)}` : '--'}</td>
       </tr>
     `).join('');
   }
 
-  searchInput.addEventListener('input', event => renderMembers(event.target.value));
+  if (searchInput) searchInput.addEventListener('input', event => renderMembers(event.target.value));
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
       expanded = !expanded;
-      renderMembers(searchInput.value);
+      renderMembers(searchInput ? searchInput.value : '');
     });
   }
 
   renderMembers();
 }
-
-// ══════════════════════════════════════════════════════
-// Panel 6: Shiller PE (CAPE) vs S&P 500
-// ══════════════════════════════════════════════════════
 
 export function initPanelPe(data, centuryData) {
   const chart = registerChart(echarts.init(document.getElementById('chartPe')));

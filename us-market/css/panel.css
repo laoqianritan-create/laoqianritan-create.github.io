@@ -735,6 +735,10 @@ a.tr-dist-cell:hover {
   color: #1d39c4;
   background: #f0f5ff;
 }
+.type-spinoff {
+  color: #08971c;
+  background: #f6ffed;
+}
 .company-cell strong {
   display: inline-block;
   margin-bottom: 2px;

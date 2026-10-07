@@ -4,8 +4,8 @@
 // 展示：近 10 年基期 100 归一（对数轴）+ 6 列指标表
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT, AXIS_END_2028_TS } from '../utils.js?v=20261007185131';
-import { registerChart, getDataZoom, buildSingleMarkPoint, resolveMarkPointOverlaps, getLineLegendConfig } from '../chart-helpers.js?v=20261007185131';
+import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT, AXIS_END_2028_TS } from '../utils.js?v=20261007214234';
+import { registerChart, getDataZoom, buildSingleMarkPoint, resolveMarkPointOverlaps, getLineLegendConfig } from '../chart-helpers.js?v=20261007214234';
 
 function isMobile() {
   return typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 768px)').matches;

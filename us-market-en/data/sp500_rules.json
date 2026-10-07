@@ -1,25 +1,25 @@
 {
-  "updated": "2026-02",
+  "updated": "2026-07",
   "source": {
     "name": "S&P U.S. Indices Methodology",
     "url": "https://www.spglobal.com/spdji/en/documents/methodologies/methodology-sp-us-indices.pdf",
-    "version": "February 2026"
+    "version": "July 2026"
   },
   "highlights": [
     {
       "label": "Constituent Count",
       "value": "500 companies",
-      "detail": "Measures the US large-cap equity segment."
+      "detail": "Measures the U.S. large-cap segment."
     },
     {
       "label": "Weighting",
-      "value": "Float-adjusted market cap",
+      "value": "Float-adjusted market capitalization weighted",
       "detail": "Float-adjusted market capitalization weighted。"
     },
     {
       "label": "Minimum Market Cap",
       "value": "Above $22.7 billion",
-      "detail": "Company-level total market cap, per the S&P 500 guidelines."
+      "detail": "Company-level unadjusted market cap, per the S&P 500 guidelines."
     },
     {
       "label": "Earnings Requirement",
@@ -34,7 +34,7 @@
     {
       "label": "Structural Constraints",
       "value": "US-domiciled, common stock, listed on a qualifying exchange",
-      "detail": "ADRs, SPACs, ETFs, and LP/LLC structures are generally excluded."
+      "detail": "ADRs, SPACs, ETFs, LP/LLCs are generally ineligible; eligible exchanges added the Texas Stock Exchange (TXSE) effective 2026-07-06."
     }
   ],
   "sections": [
@@ -82,7 +82,7 @@
     {
       "name": "S&P 500",
       "focus": "US large-cap equities",
-      "weighting": "Float-adjusted market cap",
+      "weighting": "Float-adjusted market capitalization weighted",
       "count": "500 companies",
       "note": "Widely regarded as the core benchmark for US equities."
     },
