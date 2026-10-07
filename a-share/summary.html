@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>A股看板 · 汇总</title>
+  <meta name="description" content="A股看板汇总页：全部看板缩略图一览。每交易日自动更新。">
+  <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=20261006p">
+  <style>
+    /* ─── 汇总页专属 ─── */
+    .summary-hero {
+      padding: 26px 18px 6px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .summary-hero h2 { font-size: 24px; font-weight: 700; margin: 0; }
+    .summary-hero .sm-date { font-size: 13px; color: #888; }
+    .sm-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding: 14px 18px 8px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .sm-card {
+      display: block;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      text-decoration: none;
+      transition: box-shadow .15s, transform .15s;
+    }
+    .sm-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,.10); transform: translateY(-2px); }
+    .sm-card .sm-thumb {
+      width: 100%;
+      background: #fff;
+      aspect-ratio: 16 / 10;
+      object-fit: contain;
+      display: block;
+    }
+    .sm-card .sm-title {
+      font-size: 14px;
+      color: #222;
+      font-weight: 600;
+      padding: 10px 12px 12px;
+      border-top: 1px solid #f2f2f2;
+    }
+    .sm-card .sm-title svg { vertical-align: -2px; margin-right: 4px; color: #999; }
+    .sm-loading { text-align: center; color: #999; padding: 60px 0; font-size: 14px; }
+    @media (max-width: 900px) { .sm-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { .sm-grid { grid-template-columns: 1fr; } }
+
+    /* 隐藏渲染容器（只用于离屏生成缩略图，不占布局） */
+    .sm-render-stage {
+      position: absolute;
+      left: -20000px;
+      top: 0;
+      width: 800px;
+      pointer-events: none;
+    }
+    .sm-render-stage canvas { display: block; }
+
+    /* 顶部导航「汇总」当前高亮 */
+    .site-nav a.nav-summary { color: #E65A56; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <h1 class="site-title">A股看板</h1>
+    </div>
+    <nav class="site-nav" aria-label="面板导航">
+      <a class="nav-summary" href="summary.html" title="全部看板缩略图汇总"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true" style="vertical-align:-2px;margin-right:3px;"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg>汇总</a>
+      <a href="index.html#panel-heatmap">行业热力图</a>
+      <a href="index.html#panel-loss">抄底数学题</a>
+      <a href="index.html#panel-long">增长情况</a>
+      <a href="index.html#panel-huazheng">华证六因子</a>
+      <a href="index.html#panel-industry">行业交易热度</a>
+      <a href="index.html#panel-turnover">全市场成交换手</a>
+      <a href="index.html#panel-coverage">宽基覆盖</a>
+      <a href="index.html#panel-return">收益来源拆解</a>
+      <a href="index.html#panel-widebase">宽基净值</a>
+      <a href="index.html#panel-investor">投资者结构</a>
+      <a href="index.html#panel-fear">恐贪指数</a>
+      <a href="index.html#panel-timing">神奇择时</a>
+      <a href="index.html#panel-fund">基金指数</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="summary-hero">
+    <h2>A股看板 · 汇总页</h2>
+    <span class="sm-date" id="smDate">数据加载中…</span>
+  </div>
+
+  <div class="sm-loading" id="smLoading">正在生成全部看板缩略图…</div>
+
+  <div class="sm-grid" id="smGrid" hidden></div>
+
+  <!-- 离屏渲染舞台：13 个看板缩略图都在这层渲染后截图 -->
+  <div class="sm-render-stage" id="smStage" aria-hidden="true">
+    <canvas id="heatmap"></canvas>
+    <canvas id="lossTable"></canvas>
+    <div id="panelLongBody"></div>
+    <div id="panelHuazhengBody"></div>
+    <div id="panelIndustryBody"></div>
+    <div id="panelTurnoverBody"></div>
+    <div id="panelCoverageBody"></div>
+    <div id="panelReturnBody"></div>
+    <div id="panelWideBaseBody"></div>
+    <div id="panelInvestorBody"></div>
+    <div id="panelFearBody"></div>
+    <div id="panelTimingBody"></div>
+    <div id="panelFundBody"></div>
+  </div>
+
+  <div class="related-resources">
+    <div class="rr-inner">
+      <h3 class="rr-title">相关资源</h3>
+      <ul class="rr-list">
+        <li><a href="https://gold.laoqianriritan.com/" target="_blank" rel="noopener">黄金看板</a></li>
+        <li><a href="https://stock.laoqianriritan.com/" target="_blank" rel="noopener">美股看板</a></li>
+        <li><a href="https://debt.laoqianriritan.com/" target="_blank" rel="noopener">美债看板</a></li>
+        <li><a href="https://mp.weixin.qq.com/s/ITxDnAyu3rbUBH7F96Wh9g" target="_blank" rel="noopener">老钱日日谈（公众号）</a></li>
+        <li><a href="https://www.xiaoyuzhoufm.com/podcast/6388760f22567e8ea6ad070f" target="_blank" rel="noopener">播客「面基」</a></li>
+        <li><a href="https://laoqianritan-create.github.io/qushi-animal-gallery/" target="_blank" rel="noopener">趋势动物小程序</a></li>
+        <li><a href="https://youzhiyouxing.cn/" target="_blank" rel="noopener">有知有行 App</a></li>
+        <li><a href="https://youzhiyouxing.cn/sbbi2025" target="_blank" rel="noopener">SBBI 中国大类资产投资2025年报</a></li>
+        <li><a href="https://www.hongsehuojian.com/red-rocket/home" target="_blank" rel="noopener">红色火箭</a></li>
+      </ul>
+    </div>
+  </div>
+
+</main>
+
+<script defer src="js/data.js?v=20261006p"></script>
+<script defer src="js/common.js?v=20261006p"></script>
+<script defer src="js/heatmap.js?v=20261006p"></script>
+<script defer src="js/loss-table.js?v=20261006p"></script>
+<script defer src="js/longgrowth.js?v=20261006p"></script>
+<script defer src="js/industry-heat.js?v=20261006p"></script>
+<script defer src="js/market-turnover.js?v=20261006p"></script>
+<script defer src="js/return-decomp.js?v=20261006p"></script>
+<script defer src="js/investor-structure.js?v=20261006p"></script>
+<script defer src="js/huazheng-factor.js?v=20261006p"></script>
+<script defer src="js/wide-base.js?v=20261006p"></script>
+<script defer src="js/fear-greed.js?v=20261006p"></script>
+<script defer src="js/timing.js?v=20261006p"></script>
+<script defer src="js/fund-index.js?v=20261006p"></script>
+<script defer src="js/coverage.js?v=20261006p"></script>
+<script defer src="js/summary.js?v=20261006p"></script>
+</body>
+</html>
