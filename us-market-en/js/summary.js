@@ -7,7 +7,7 @@
 // instantiated only when they scroll into view (55 charts → lazy render).
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261007151249';
+const DATA_URL = 'data/summary_thumbs.json?v=20261007151606';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 const grid = document.getElementById('summaryGrid');
