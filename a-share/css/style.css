@@ -87,6 +87,8 @@ body {
   border-bottom: 2px solid transparent; white-space: nowrap;
 }
 .site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
+.site-nav a svg { width: 13px; height: 13px; flex: none; }
+.site-nav a.nav-summary { display: inline-flex; align-items: center; gap: 4px; }
 
 .freshness-strip {
   max-width: 1280px; margin: 0 auto; padding: 6px 24px 10px;
