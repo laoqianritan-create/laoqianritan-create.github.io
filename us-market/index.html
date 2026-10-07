@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261007223110">
-<link rel="stylesheet" href="css/chronicle.css?v=20261007223110">
-<script defer src="js/mobile-nav.js?v=20261007223110"></script>
+<link rel="stylesheet" href="style.css?v=20261007232053">
+<link rel="stylesheet" href="css/chronicle.css?v=20261007232053">
+<script defer src="js/mobile-nav.js?v=20261007232053"></script>
 </head>
 <body>
 
@@ -32,7 +32,6 @@
       <div class="nav-group active" data-category="sp500">
         <a class="nav-item active" href="#panel-price" data-panel="panel-price">走势</a>
         <a class="nav-item" href="#panel-capitalism" data-panel="panel-capitalism">增速曲线</a>
-        <a class="nav-item" href="#panel-quotes" data-panel="panel-quotes">百年箴言</a>
         <a class="nav-item" href="#panel-annual" data-panel="panel-annual">年回报</a>
         <a class="nav-item" href="#panel-annual-dist" data-panel="panel-annual-dist">回报分布</a>
         <a class="nav-item" href="#panel-annualized-matrix" data-panel="panel-annualized-matrix">年化矩阵</a>
@@ -94,6 +93,9 @@
       <div class="nav-group" data-category="chronicle">
         <a class="nav-item active" href="#panel-chronicle" data-panel="panel-chronicle">日历</a>
       </div>
+      <div class="nav-group" data-category="quotes">
+        <a class="nav-item active" href="#panel-quotes" data-panel="panel-quotes">百年箴言</a>
+      </div>
     </nav>
   </div>
 </header>
@@ -150,6 +152,7 @@
     <button class="category-tab" data-category="style-etf">风格ETF</button>
     <button class="category-tab" data-category="flows">资金流</button>
     <button class="category-tab" data-category="chronicle">编年史</button>
+    <button class="category-tab" data-category="quotes">百年箴言</button>
     <div class="lang-toggle" id="langToggle" role="group" aria-label="Language">
       <a class="lang-opt active" data-lang="zh" href="#" aria-current="true">中</a>
       <span class="lang-sep">|</span>
@@ -239,25 +242,7 @@
       </div>
     </div>
   </section>
-  <section class="panel" id="panel-quotes" data-category="sp500">
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">百年箴言 · The Long Run in Words</h2>
-        </div>
-        <div class="panel-controls">
-          <span class="quotes-counter" id="quotesCounter">1 / 25</span>
-        </div>
-      </div>
-      <div class="quotes-stage" id="quotesStage">
-        <div class="quotes-viewport">
-          <div class="quotes-scroller" id="quotesScroller"></div>
-        </div>
-        <div class="quotes-hint">← 左右滑动切换 →</div>
-        <div class="quotes-dots" id="quotesDots"></div>
-      </div>
-    </div>
-  </section>
+
 
   <section class="panel" id="panel-nasdaq-composite" data-category="cross" hidden>
     <div class="panel-inner">
@@ -1306,6 +1291,25 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-quotes" data-category="quotes">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">百年箴言 · The Long Run in Words</h2>
+        </div>
+        <div class="panel-controls">
+          <span class="quotes-counter" id="quotesCounter">1 / 25</span>
+        </div>
+      </div>
+      <div class="quotes-stage" id="quotesStage">
+        <div class="quotes-viewport">
+          <div class="quotes-scroller" id="quotesScroller"></div>
+        </div>
+        <div class="quotes-hint">← 左右滑动切换 →</div>
+        <div class="quotes-dots" id="quotesDots"></div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="footer">
@@ -1326,9 +1330,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261007223110"></script>
-<script type="module" src="js/panels.js?v=20261007223110"></script>
-<script defer src="js/hero-curve.js?v=20261007223110"></script>
+<script src="js/freshness.js?v=20261007232053"></script>
+<script type="module" src="js/panels.js?v=20261007232053"></script>
+<script defer src="js/hero-curve.js?v=20261007232053"></script>
 
 </body>
 </html>
