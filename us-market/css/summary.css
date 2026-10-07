@@ -32,39 +32,14 @@
   color: var(--text-secondary);
 }
 
-/* 分类块：横向排布（各分类并排成一列一列），窄屏横向滚动 */
-#summaryGrid.summary-grid {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-  scrollbar-width: thin;
-}
-.summary-section {
-  flex: 1 1 0;
-  min-width: 210px;
-  margin-top: 0;
-}
-.summary-section > .summary-grid {
+/* 一整片横向网格：55 张卡片从左到右平铺换行（与美债看板汇总页同构） */
+#summaryGrid { display: block; }
+.summary-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  overflow: visible;
+  grid-template-columns: repeat(auto-fill, minmax(228px, 1fr));
+  gap: 14px;
 }
 
-.summary-cat-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--text);
-  padding-bottom: 10px;
-  margin-bottom: 14px;
-  border-bottom: 1px solid var(--border);
-  white-space: nowrap;
-}
 .summary-cat-count {
   font-size: 11px;
   font-weight: 600;
@@ -73,12 +48,6 @@
   border: 1px solid var(--border);
   border-radius: 999px;
   padding: 1px 8px;
-}
-
-.summary-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 14px;
 }
 
 .summary-card {
@@ -98,6 +67,9 @@
 }
 
 .summary-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   padding: 9px 11px;
   font-size: 12.5px;
   font-weight: 600;
@@ -106,9 +78,24 @@
   border-bottom: 1px solid var(--border);
   min-height: 36px;
 }
+.summary-card-title {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.summary-chip {
+  flex: 0 0 auto;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-section);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 1px 7px;
+  white-space: nowrap;
+}
 
 .summary-thumb {
-  height: 112px;
+  height: 128px;
   background: var(--bg-section);
 }
 .summary-thumb.is-text {
@@ -182,12 +169,10 @@
 @media (max-width: 768px) {
   .summary-wrap { padding: 24px 16px 40px; }
   .summary-title { font-size: 22px; }
-  #summaryGrid.summary-grid { gap: 12px; }
-  .summary-section { flex: 0 0 168px; min-width: 168px; }
-  .summary-section > .summary-grid { gap: 10px; }
-  .summary-thumb { height: 96px; }
-  .summary-card-head { font-size: 12px; min-height: 34px; padding: 8px 10px; }
-  .summary-cat-head { font-size: 13px; }
+  .summary-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .summary-thumb { height: 100px; }
+  .summary-card-head { font-size: 12px; min-height: 34px; padding: 8px 10px; gap: 6px; }
+  .summary-chip { display: none; }   /* 窄屏卡片太窄，分类靠顶部标签筛选 */
   .category-summary { padding: 7px 12px; }
   .category-summary span { display: none; }   /* 手机端只留图标，与债务看板一致 */
 }

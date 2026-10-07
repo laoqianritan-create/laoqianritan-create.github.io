@@ -2,18 +2,20 @@
 // summary.js · 汇总页（中文站）—— 全部面板的缩略总览
 //
 // 数据：data/summary_thumbs.json（scripts/build_summary.py 生成，随每日管线刷新）
-// 每张卡片 = 面板标题 + 迷你图；点卡片 → index.html#panel-xxx
-// 迷你图用 ECharts（页面已从 CDN 载入），剥掉坐标轴标签/图例/tooltip，
-// 只在进入视口时才实例化（55 张图，懒渲染避免卡顿）。
+// 排布：**一整片横向网格**——55 张卡片从左到右平铺换行（与美债看板汇总页同构），
+//       不按分类切成竖列；分类信息走「卡片右上角小标签」+ 顶部标签筛选。
+// 交互：点卡片 → index.html#panel-xxx；点分类标签 → 只留该类；点顶部「汇总」→ 还原全部。
+// 迷你图用页面已载入的 ECharts，剥掉坐标轴/图例/tooltip，进入视口才实例化（懒渲染）。
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261007152848';
+const DATA_URL = 'data/summary_thumbs.json?v=20261007155055';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 const grid = document.getElementById('summaryGrid');
 let charts = [];   // {el, rec}
+let catLabel = {}; // cat id → 中文名
 
-/* 汇总入口在汇总页上即为当前页 → 标记 active；分类标签全部取消 active（本页展示全部分类） */
+/* 汇总入口在汇总页上即为当前页 → 标记 active；分类标签初始不选中（本页展示全部） */
 document.querySelectorAll('.nav-summary, .category-summary').forEach(el => el.classList.add('active'));
 document.querySelectorAll('.category-tab').forEach(el => el.classList.remove('active'));
 
@@ -93,10 +95,20 @@ function renderCard(rec) {
   const a = document.createElement('a');
   a.className = 'summary-card';
   a.href = `index.html#${rec.id}`;
+  a.dataset.cat = rec.cat || '';
 
   const head = document.createElement('div');
   head.className = 'summary-card-head';
-  head.textContent = rec.zh || rec.id;
+  const t = document.createElement('span');
+  t.className = 'summary-card-title';
+  t.textContent = rec.zh || rec.id;
+  head.appendChild(t);
+  if (catLabel[rec.cat]) {
+    const chip = document.createElement('span');
+    chip.className = 'summary-chip';
+    chip.textContent = catLabel[rec.cat];
+    head.appendChild(chip);
+  }
   a.appendChild(head);
 
   const thumb = document.createElement('div');
@@ -120,29 +132,28 @@ function renderCard(rec) {
   return a;
 }
 
+/* 分类标签 = 筛选；顶部「汇总」= 还原全部 */
+function applyFilter(cat) {
+  document.querySelectorAll('.summary-card').forEach(c => {
+    c.hidden = !!cat && c.dataset.cat !== cat;
+  });
+  const tabs = Array.from(document.querySelectorAll('.category-tab[data-category]'));
+  tabs.forEach(t => t.classList.toggle('active', !!cat && t.dataset.category === cat));
+  document.querySelectorAll('.category-summary').forEach(el => el.classList.toggle('active', !cat));
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
 function build(data) {
   grid.innerHTML = '';
-  const byCat = {};
-  data.panels.forEach(p => { (byCat[p.cat] = byCat[p.cat] || []).push(p); });
+  charts = [];
+  catLabel = {};
+  data.categories.forEach(c => { catLabel[c.id] = c.zh; });
 
-  data.categories.forEach(cat => {
-    const list = byCat[cat.id] || [];
-    if (!list.length) return;
-    const sec = document.createElement('section');
-    sec.className = 'summary-section';
-    sec.dataset.category = cat.id;
-    const h = document.createElement('h2');
-    h.className = 'summary-cat-head';
-    h.innerHTML = `${cat.zh}<span class="summary-cat-count">${list.length}</span>`;
-    sec.appendChild(h);
-    const g = document.createElement('div');
-    g.className = 'summary-grid';
-    list.forEach(p => g.appendChild(renderCard(p)));
-    sec.appendChild(g);
-    grid.appendChild(sec);
-  });
+  const g = document.createElement('div');
+  g.className = 'summary-grid';
+  data.panels.forEach(p => g.appendChild(renderCard(p)));
+  grid.appendChild(g);
 
-  // 懒渲染迷你图
   const io = new IntersectionObserver((entries, obs) => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
@@ -158,16 +169,12 @@ function build(data) {
   }, { rootMargin: '200px' });
   charts.forEach(c => io.observe(c.el));
 
-  // 分类标签在汇总页 = 过滤
-  const tabs = Array.from(document.querySelectorAll('.category-tab[data-category]'));
-  tabs.forEach(tab => tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.toggle('active', t === tab));
-    const target = tab.dataset.category;
-    document.querySelectorAll('.summary-section').forEach(s => {
-      s.hidden = s.dataset.category !== target;
-    });
-    window.scrollTo({ top: 0, behavior: 'auto' });
-  }));
+  document.querySelectorAll('.category-tab[data-category]').forEach(tab => {
+    tab.addEventListener('click', () => applyFilter(tab.dataset.category));
+  });
+  document.querySelectorAll('.category-summary').forEach(el => {
+    el.addEventListener('click', (ev) => { ev.preventDefault(); applyFilter(null); });
+  });
 }
 
 fetch(DATA_URL, { cache: 'no-store' })
