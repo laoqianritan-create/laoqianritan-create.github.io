@@ -150,6 +150,23 @@
     const payload = normalizeHeatmap(raw);
     const draw = (opts) => window.SW_drawHeatmap(canvas, payload, opts);
     draw({ exportMode: false, scale: window.devicePixelRatio || 1 });
+
+    // 导出按钮（热力图 exportMode 自带标题，只补来源）
+    const be = document.getElementById('btnExportHeatmap');
+    if (be && !be.__bound) {
+      be.__bound = true;
+      const orig = be.innerHTML;
+      be.addEventListener('click', async () => {
+        be.disabled = true; be.textContent = '…';
+        try {
+          await window.AK.exportPNG(canvas, 3000, '申万行业热力图.png',
+            (off) => window.SW_drawHeatmap(off, payload, { exportMode: true, scale: 1 }),
+            { noHeader: true, source: '数据来源：A股看板 · ashare.laoqianriritan.com' });
+          be.textContent = '✓';
+        } catch (e) { console.error(e); be.textContent = '!'; }
+        setTimeout(() => { be.disabled = false; be.innerHTML = orig; }, 1200);
+      });
+    }
   }
 
   function normalizeHeatmap(raw) {
@@ -177,6 +194,23 @@
     if (!canvas) return;
     const draw = (opts) => window.SW_drawLossTable(canvas, opts);
     draw({ exportMode: false, scale: window.devicePixelRatio || 1 });
+
+    // 导出按钮（抄底数学题 exportMode 自带标题，只补来源）
+    const be = document.getElementById('btnExportLossTable');
+    if (be && !be.__bound) {
+      be.__bound = true;
+      const orig = be.innerHTML;
+      be.addEventListener('click', async () => {
+        be.disabled = true; be.textContent = '…';
+        try {
+          await window.AK.exportPNG(canvas, 3000, '抄底数学题.png',
+            (off) => window.SW_drawLossTable(off, { exportMode: true, scale: 1 }),
+            { noHeader: true, source: '数据来源：A股看板 · ashare.laoqianriritan.com' });
+          be.textContent = '✓';
+        } catch (e) { console.error(e); be.textContent = '!'; }
+        setTimeout(() => { be.disabled = false; be.innerHTML = orig; }, 1200);
+      });
+    }
   }
 
   function showPanelError(panelId, msg) {

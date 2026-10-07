@@ -19,39 +19,80 @@
 
   /**
    * 把 canvas 内容导出为高清 PNG。
+   * 统一叠加：面板主标题 + 副标题（顶部）、来源（右下角）。
    * @param {HTMLCanvasElement} srcCanvas 屏幕上的 canvas
    * @param {number} targetPx 导出长边像素（默认 3000）
    * @param {string} filename 下载文件名
    * @param {Function} drawExport (canvas, scale) => void  离屏重绘函数（可选，不传则直接放大截屏）
+   * @param {object} meta { title, desc, source, noHeader }
+   *   noHeader=true 表示面板导出版已自带标题（热力图/抄底数学题），不再叠加标题条
    */
-  AK.exportPNG = function (srcCanvas, targetPx, filename, drawExport) {
+  AK.exportPNG = async function (srcCanvas, targetPx, filename, drawExport, meta) {
+    await AK.fontsReady(); // 确保中文字体就绪，导出不出现系统字体回退
+    const w = srcCanvas.width, h = srcCanvas.height;
+    const scale = targetPx / Math.max(w, h);
+    const off = document.createElement('canvas');
+    off.width = Math.round(w * scale);
+    off.height = Math.round(h * scale);
+
+    if (typeof drawExport === 'function') {
+      drawExport(off, scale);
+    } else {
+      const ctx = off.getContext('2d');
+      ctx.scale(scale, scale);
+      ctx.drawImage(srcCanvas, 0, 0);
+    }
+
+    const m = meta || {};
+    const title = m.title || '';
+    const desc = m.desc || '';
+    const source = m.source || '数据来源：A股看板 · ashare.laoqianriritan.com';
+    const needHeader = !m.noHeader && (title || desc);
+    const W = off.width;
+    const padX = Math.round(W * 0.022);
+    const headerH = needHeader ? Math.round(W * 0.078) : 0;
+
+    const final = document.createElement('canvas');
+    final.width = W;
+    final.height = off.height + headerH;
+    const fctx = final.getContext('2d');
+    fctx.fillStyle = '#ffffff';
+    fctx.fillRect(0, 0, final.width, final.height);
+    fctx.drawImage(off, 0, headerH);
+
+    if (needHeader) {
+      fctx.textBaseline = 'top';
+      if (title) {
+        fctx.fillStyle = '#1a1a1a';
+        fctx.font = `700 ${Math.round(W * 0.020)}px "NotoSansSC","PingFang SC","Microsoft YaHei",sans-serif`;
+        fctx.fillText(title, padX, headerH * 0.14);
+      }
+      if (desc) {
+        fctx.fillStyle = '#8a8a8a';
+        fctx.font = `${Math.round(W * 0.011)}px "NotoSansSC","PingFang SC","Microsoft YaHei",sans-serif`;
+        fctx.fillText(desc, padX, headerH * 0.14 + (title ? Math.round(W * 0.030) : 0));
+      }
+    }
+
+    // 来源（右下角）
+    fctx.textBaseline = 'bottom';
+    fctx.textAlign = 'right';
+    fctx.fillStyle = '#9a9a9a';
+    fctx.font = `${Math.round(W * 0.0095)}px "NotoSansSC","PingFang SC","Microsoft YaHei",sans-serif`;
+    fctx.fillText(source, final.width - padX, final.height - Math.round(W * 0.014));
+    fctx.textAlign = 'left';
+
     return new Promise((resolve, reject) => {
-      try {
-        const w = srcCanvas.width, h = srcCanvas.height;
-        const scale = targetPx / Math.max(w, h);
-        const off = document.createElement('canvas');
-        off.width = Math.round(w * scale);
-        off.height = Math.round(h * scale);
-
-        if (typeof drawExport === 'function') {
-          drawExport(off, scale);
-        } else {
-          const ctx = off.getContext('2d');
-          ctx.scale(scale, scale);
-          ctx.drawImage(srcCanvas, 0, 0);
-        }
-
-        off.toBlob((blob) => {
-          if (!blob) { reject(new Error('toBlob 失败')); return; }
-          const url = URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url; a.download = filename;
-          document.body.appendChild(a); a.click();
-          document.body.removeChild(a);
-          setTimeout(() => URL.revokeObjectURL(url), 1200);
-          resolve();
-        }, 'image/png');
-      } catch (e) { reject(e); }
+      final.toBlob((blob) => {
+        if (!blob) { reject(new Error('toBlob 失败')); return; }
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename;
+        document.body.appendChild(a); a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1200);
+        resolve();
+      }, 'image/png');
     });
   };
 
@@ -66,7 +107,15 @@
         btn.disabled = true; btn.textContent = '…';
         try {
           const fn = drawMap && drawMap[id];
-          await AK.exportPNG(canvas, 3000, btn.getAttribute('data-name') || (id + '.png'), fn);
+          const panel = btn.closest('.panel') || btn.closest('section');
+          const tEl = panel && panel.querySelector('.panel-title');
+          const dEl = panel && panel.querySelector('.panel-desc');
+          const meta = {
+            title: tEl ? tEl.textContent.trim() : '',
+            desc: dEl ? dEl.textContent.trim() : '',
+            source: '数据来源：A股看板 · ashare.laoqianriritan.com'
+          };
+          await AK.exportPNG(canvas, 3000, btn.getAttribute('data-name') || (id + '.png'), fn, meta);
           btn.textContent = '✓';
         } catch (e) {
           console.error(e);
