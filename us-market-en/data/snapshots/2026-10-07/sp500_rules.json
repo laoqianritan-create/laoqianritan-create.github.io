@@ -1,9 +1,9 @@
 {
-  "updated": "2026-02",
+  "updated": "2026-07",
   "source": {
     "name": "S&P U.S. Indices Methodology",
     "url": "https://www.spglobal.com/spdji/en/documents/methodologies/methodology-sp-us-indices.pdf",
-    "version": "February 2026"
+    "version": "July 2026"
   },
   "highlights": [
     {
@@ -34,7 +34,7 @@
     {
       "label": "结构限制",
       "value": "美国本土、普通股、合规交易所",
-      "detail": "ADR、SPAC、ETF、LP/LLC 等通常不纳入。"
+      "detail": "ADR、SPAC、ETF、LP/LLC 等通常不纳入；合格交易所自 2026-07-06 起新增德州证券交易所（TXSE）。"
     }
   ],
   "sections": [

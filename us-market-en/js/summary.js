@@ -9,7 +9,7 @@
 // Mini charts use ECharts (loaded from CDN), stripped of axes/legend/tooltip, lazily created.
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261007214234';
+const DATA_URL = 'data/summary_thumbs.json?v=20261007221004';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 /* Per-category theme colours (set by 老钱 on 2026-10-07):

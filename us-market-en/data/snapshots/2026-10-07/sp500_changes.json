@@ -1,10 +1,283 @@
 {
-  "updated": "2026-02-09",
+  "updated": "2026-10-07",
   "source": {
     "name": "S&P Dow Jones Indices Press Releases",
-    "note": "近期 S&P 500 样本变动，按官方新闻稿整理"
+    "note": "近期 S&P 500 样本变动，按官方新闻稿整理；2026-10-07 补齐 2026-02-09 之后遗漏的 17 条（3/23×4、4/9、5/7、6/2、6/22×2、6/30、8/5、8/18、9/21×3、10/1、10/6）",
+    "coverage": "2024-12-23 ~ 2026-10-06"
   },
   "changes": [
+    {
+      "effectiveDate": "2026-10-06",
+      "type": "并购触发",
+      "addition": {
+        "ticker": "TWLO",
+        "name": "Twilio",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "WBD",
+        "name": "Warner Bros. Discovery",
+        "sector": "Communication Services"
+      },
+      "reason": "Paramount Skydance 收购 Warner Bros. Discovery；S&P MidCap 400 成分股 Twilio 调入 S&P 500。",
+      "sourceUrl": "https://press.spglobal.com/2026-10-01-Vylor-Added-to-the-S-P-500-Twilio-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-10-01",
+      "type": "公司分拆",
+      "addition": {
+        "ticker": "VYLR",
+        "name": "Vylor",
+        "sector": "Consumer Staples"
+      },
+      "removal": {
+        "ticker": "CTVA",
+        "name": "Corteva",
+        "sector": "Materials"
+      },
+      "reason": "Corteva 分拆 Vylor 于当日完成，Vylor 取代母公司在标普500 的位置；10 月 6 日 Corteva 转入 S&P MidCap 400。",
+      "sourceUrl": "https://press.spglobal.com/2026-10-01-Vylor-Added-to-the-S-P-500-Twilio-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-09-21",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "BE",
+        "name": "Bloom Energy",
+        "sector": "Industrials"
+      },
+      "removal": {
+        "ticker": "TAP",
+        "name": "Molson Coors Beverage",
+        "sector": "Consumer Staples"
+      },
+      "reason": "季度再平衡：Bloom Energy 被认为更能代表大盘股空间，取代 Molson Coors。",
+      "sourceUrl": "https://press.spglobal.com/2026-09-04-Bloom-Energy,-Illumina,-and-Everpure-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-09-21",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "P",
+        "name": "Everpure",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "TTD",
+        "name": "The Trade Desk",
+        "sector": "Communication Services"
+      },
+      "reason": "季度再平衡：Everpure 由 S&P MidCap 400 调入，取代 The Trade Desk。",
+      "sourceUrl": "https://press.spglobal.com/2026-09-04-Bloom-Energy,-Illumina,-and-Everpure-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-09-21",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "ILMN",
+        "name": "Illumina",
+        "sector": "Health Care"
+      },
+      "removal": {
+        "ticker": "BLDR",
+        "name": "Builders FirstSource",
+        "sector": "Industrials"
+      },
+      "reason": "季度再平衡：Illumina 由 S&P MidCap 400 调回标普500，取代 Builders FirstSource。",
+      "sourceUrl": "https://press.spglobal.com/2026-09-04-Bloom-Energy,-Illumina,-and-Everpure-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-08-18",
+      "type": "并购触发",
+      "addition": {
+        "ticker": "RDDT",
+        "name": "Reddit",
+        "sector": "Communication Services"
+      },
+      "removal": {
+        "ticker": "AVB",
+        "name": "AvalonBay Communities",
+        "sector": "Financials"
+      },
+      "reason": "Equity Residential 收购 AvalonBay Communities，合并后 Equity Residential 更名 Vivmark Residential（代码 EQR→VMRK）并留在指数；Reddit 调入标普500。",
+      "sourceUrl": "https://press.spglobal.com/2026-08-13-Reddit-Set-to-Join-S-P-500-and-Sun-Communities-to-Join-S-P-MidCap-400"
+    },
+    {
+      "effectiveDate": "2026-08-05",
+      "type": "并购触发",
+      "addition": {
+        "ticker": "FERG",
+        "name": "Ferguson Enterprises",
+        "sector": "Industrials"
+      },
+      "removal": {
+        "ticker": "EA",
+        "name": "Electronic Arts",
+        "sector": "Communication Services"
+      },
+      "reason": "PIF、Silver Lake 与 Affinity Partners 财团收购 Electronic Arts，Ferguson Enterprises 调入。",
+      "sourceUrl": "https://press.spglobal.com/2026-07-31-Ferguson-Enterprises-Set-to-Join-S-P-500-and-ADI-Global-Distribution-to-Join-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-06-30",
+      "type": "公司分拆",
+      "addition": {
+        "ticker": "HONA",
+        "name": "Honeywell Aerospace",
+        "sector": "Industrials"
+      },
+      "removal": {
+        "ticker": "CAG",
+        "name": "Conagra Brands",
+        "sector": "Consumer Staples"
+      },
+      "reason": "霍尼韦尔分拆：6 月 29 日 Honeywell Aerospace 纳入、6 月 30 日 Conagra Brands 剔除（更偏小盘）。",
+      "sourceUrl": "https://press.spglobal.com/2026-06-23-Honeywell-Aerospace-Set-to-Join-S-P-500-S-P-100-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-06-22",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "MRVL",
+        "name": "Marvell Technology",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "CPB",
+        "name": "The Campbell's Company",
+        "sector": "Consumer Staples"
+      },
+      "reason": "季度再平衡：Marvell Technology 取代 The Campbell's Company。",
+      "sourceUrl": "https://press.spglobal.com/2026-06-05-Marvell-Technology-and-Flex-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-06-22",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "FLEX",
+        "name": "Flex",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "POOL",
+        "name": "Pool Corp",
+        "sector": "Consumer Discretionary"
+      },
+      "reason": "季度再平衡：Flex 取代 Pool Corp。",
+      "sourceUrl": "https://press.spglobal.com/2026-06-05-Marvell-Technology-and-Flex-Set-to-Join-S-P-500-Others-to-Join-S-P-MidCap-400-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-06-02",
+      "type": "公司分拆",
+      "addition": {
+        "ticker": "FDXF",
+        "name": "FedEx Freight",
+        "sector": "Industrials"
+      },
+      "removal": {
+        "ticker": "EPAM",
+        "name": "EPAM Systems",
+        "sector": "Information Technology"
+      },
+      "reason": "联邦快递分拆 FedEx Freight 于 6 月 1 日纳入、6 月 2 日 EPAM Systems 剔除（更偏小盘）；母公司 FedEx 留在标普500 与标普100。",
+      "sourceUrl": "https://press.spglobal.com/2026-05-27-FedEx-Freight-Holding-Company-Set-to-Join-S-P-500-EPAM-Systems-and-Dave-to-Join-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-05-07",
+      "type": "并购触发",
+      "addition": {
+        "ticker": "VEEV",
+        "name": "Veeva Systems",
+        "sector": "Health Care"
+      },
+      "removal": {
+        "ticker": "CTRA",
+        "name": "Coterra Energy",
+        "sector": "Energy"
+      },
+      "reason": "Devon Energy 收购 Coterra Energy；S&P 500 成分股 Veeva Systems 调入补位。",
+      "sourceUrl": "https://press.spglobal.com/2026-04-30-Veeva-Systems-Set-to-Join-S-P-500"
+    },
+    {
+      "effectiveDate": "2026-04-09",
+      "type": "并购触发",
+      "addition": {
+        "ticker": "CASY",
+        "name": "Casey's General Stores",
+        "sector": "Consumer Staples"
+      },
+      "removal": {
+        "ticker": "HOLX",
+        "name": "Hologic",
+        "sector": "Health Care"
+      },
+      "reason": "黑石与 TPG 旗下基金收购 Hologic；S&P MidCap 400 成分股 Casey's 调入标普500。",
+      "sourceUrl": "https://press.spglobal.com/2026-04-06-Caseys-General-Stores-Set-to-Join-S-P-500-DigitalOcean-Holdings-to-Join-S-P-MidCap-400-Broadstone-Net-Lease-to-Join-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-03-23",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "VRT",
+        "name": "Vertiv Holdings",
+        "sector": "Industrials"
+      },
+      "removal": {
+        "ticker": "MTCH",
+        "name": "Match Group",
+        "sector": "Communication Services"
+      },
+      "reason": "季度再平衡：Vertiv Holdings 取代 Match Group。",
+      "sourceUrl": "https://press.spglobal.com/2026-03-06-Vertiv-Holdings,-Lumentum-Holdings,-Coherent,-and-EchoStar-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-03-23",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "LITE",
+        "name": "Lumentum Holdings",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "MOH",
+        "name": "Molina Healthcare",
+        "sector": "Health Care"
+      },
+      "reason": "季度再平衡：Lumentum Holdings 由 S&P MidCap 400 调入，取代 Molina Healthcare。",
+      "sourceUrl": "https://press.spglobal.com/2026-03-06-Vertiv-Holdings,-Lumentum-Holdings,-Coherent,-and-EchoStar-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-03-23",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "COHR",
+        "name": "Coherent",
+        "sector": "Information Technology"
+      },
+      "removal": {
+        "ticker": "LW",
+        "name": "Lamb Weston Holdings",
+        "sector": "Consumer Staples"
+      },
+      "reason": "季度再平衡：Coherent 取代 Lamb Weston Holdings。",
+      "sourceUrl": "https://press.spglobal.com/2026-03-06-Vertiv-Holdings,-Lumentum-Holdings,-Coherent,-and-EchoStar-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
+    {
+      "effectiveDate": "2026-03-23",
+      "type": "季度再平衡",
+      "addition": {
+        "ticker": "ECHO",
+        "name": "EchoStar",
+        "sector": "Communication Services"
+      },
+      "removal": {
+        "ticker": "PAYC",
+        "name": "Paycom Software",
+        "sector": "Industrials"
+      },
+      "reason": "季度再平衡：EchoStar 取代 Paycom Software；其代码于 2026-06-24 由 SATS 改为 ECHO。",
+      "sourceUrl": "https://press.spglobal.com/2026-03-06-Vertiv-Holdings,-Lumentum-Holdings,-Coherent,-and-EchoStar-Set-to-Join-S-P-500-Others-to-Join-S-P-100,-S-P-MidCap-400,-and-S-P-SmallCap-600"
+    },
     {
       "effectiveDate": "2026-02-09",
       "type": "并购触发",
