@@ -18,8 +18,11 @@
   function draw(canvas, data, opts) {
     const exportMode = opts.exportMode;
     const scale = opts.scale || 1;
-    const W = exportMode ? 2400 : 1480;
-    const H = exportMode ? 600 : 470;   // 屏幕版加高：容纳左侧标题 + 下方三导航按钮
+    // 移动端（<768px）：竖屏专用画布 780×460（≈1.7:1），内容元素等比缩小，避免 1480×470 被压成 ~120px 高导致显示不全
+    const isMobile = !exportMode && (window.innerWidth < 768);
+    const W = exportMode ? 2400 : (isMobile ? 780 : 1480);
+    const H = exportMode ? 600 : (isMobile ? 460 : 470);   // 屏幕版加高：容纳左侧标题 + 下方三导航按钮
+    const S = isMobile ? W / 1480 : 1;                     // 移动缩放系数（≈0.527）
     const padLInput = opts.padL;        // 屏幕版动态传入（按钮区宽度，随视口自适应）
 
     canvas.width = W * scale;
@@ -53,11 +56,11 @@
     const n = Math.min(dates.length, red.length, csi.length);
     if (n < 2) return;
 
-    // ── 图表纵向灌满画布：左右留白对称、上下留白一致（40px），文案叠在图表内部左上 ──
-    const padL = exportMode ? 260 : (padLInput || 150);   // 左：屏幕版按按钮实际宽度自适应
-    const padR = exportMode ? 210 : 130;   // 右：末端标签区（已收窄，避免右侧留白过大）
-    const padT = exportMode ? 40 : 40;     // 顶部：与底部一致，纵向灌满
-    const padB = exportMode ? 40 : 40;
+    // ── 图表纵向灌满画布：左右留白对称、上下留白一致，文案叠在图表内部左上 ──
+    const padL = exportMode ? 260 : (isMobile ? 50 : (padLInput || 150));  // 左：移动端按钮在下方，仅留小边距；桌面按按钮实际宽度
+    const padR = exportMode ? 210 : (isMobile ? 60 : 130);   // 右：末端标签区
+    const padT = exportMode ? 40 : (isMobile ? 32 : 40);     // 顶部：与底部一致，纵向灌满
+    const padB = exportMode ? 40 : (isMobile ? 32 : 40);
     const plotL = padL, plotR = W - padR;
     const plotT = padT, plotB = H - padB;
     const plotW = plotR - plotL;
@@ -70,12 +73,12 @@
     const ys = (v) => plotB - (v / maxV) * (plotB - plotT);
 
     // ── 文案：追寻适应与夏普之路（叠在图表内部左上角，与曲线重叠）──
-    const tx = exportMode ? 272 : plotL + 10;  // 图表内部（> plotL）
-    const ty = exportMode ? 52 : plotT + 8;    // 绘图区内顶部，叠在曲线上
+    const tx = exportMode ? 272 : plotL + (isMobile ? 6 : 10);  // 图表内部（> plotL）
+    const ty = exportMode ? 52 : plotT + (isMobile ? 5 : 8);    // 绘图区内顶部，叠在曲线上
     const cnText = '追寻适应与夏普之路';
     const enText = 'ADAPTIVE ALLOCATION & SHARPE · 2006—2026';
     ctx.fillStyle = C_GOLD;
-    ctx.font = (exportMode ? 64 : 40) + 'px ' + FONT_TITLE;
+    ctx.font = (exportMode ? 64 : 40 * S) + 'px ' + FONT_TITLE;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
     ctx.fillText(cnText, tx, ty);
@@ -83,20 +86,20 @@
 
     // 英文小字点缀：右端对齐中文右端（两端对齐），字号自适应 ≤ 中文宽度
     ctx.fillStyle = 'rgba(255,255,255,0.55)';
-    let enFs = exportMode ? 30 : 18;
+    let enFs = exportMode ? 30 : 18 * S;
     ctx.font = enFs + 'px ' + FONT_BODY;
     while (ctx.measureText(enText).width > cnW && enFs > 10) {
       enFs -= 0.5;
       ctx.font = enFs + 'px ' + FONT_BODY;
     }
     ctx.textAlign = 'right';
-    ctx.fillText(enText, tx + cnW, ty + (exportMode ? 112 : 68));
+    ctx.fillText(enText, tx + cnW, ty + (exportMode ? 112 : 68 * S));
     ctx.textAlign = 'left';
 
     // 浅色水平网格 + 左侧价格刻度标签（y 轴）
     ctx.strokeStyle = 'rgba(255,255,255,0.10)';
     ctx.lineWidth = 1;
-    ctx.font = (exportMode ? 22 : 11.5) + 'px ' + FONT_BODY;
+    ctx.font = (exportMode ? 22 : 11.5 * S) + 'px ' + FONT_BODY;
     ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
     ctx.fillStyle = 'rgba(255,255,255,0.5)';
     for (let g = 0; g <= 4; g++) {
@@ -108,7 +111,7 @@
     }
 
     // 年份刻度（稀疏打点）
-    ctx.font = (exportMode ? 24 : 13) + 'px ' + FONT_BODY;
+    ctx.font = (exportMode ? 24 : 13 * S) + 'px ' + FONT_BODY;
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
     ctx.fillStyle = 'rgba(255,255,255,0.45)';
     const years = [];
@@ -123,8 +126,7 @@
     // 曲线（价格坐标，线性）
     const drawLine = (vals, color, lw) => {
       ctx.strokeStyle = color;
-      ctx.lineWidth = lw;
-      ctx.lineJoin = 'round';
+      ctx.lineWidth = lw;      ctx.lineJoin = 'round';
       ctx.beginPath();
       let started = false;
       for (let i = 0; i < n; i++) {
@@ -136,8 +138,8 @@
       }
       ctx.stroke();
     };
-    drawLine(red, C_GOLD, exportMode ? 5 : 2.4);
-    drawLine(csi, C_WHITE, exportMode ? 5 : 2.4);
+    drawLine(red, C_GOLD, exportMode ? 5 : (isMobile ? 1.8 : 2.4));
+    drawLine(csi, C_WHITE, exportMode ? 5 : (isMobile ? 1.8 : 2.4));
 
     // 曲线下轻微面积填充（增加质感）
     const fillArea = (vals, color) => {
@@ -163,19 +165,19 @@
 
     // 末端标签（数值 + 名称，右对齐，错开防重叠）
     const lastRed = red[n - 1], lastCsi = csi[n - 1];
-    const lx = plotR + (exportMode ? 36 : 18);
+    const lx = plotR + (exportMode ? 36 : (isMobile ? 10 : 18));
     const lyr = ys(lastRed), lyc = ys(lastCsi);
     // 末端圆点
     [[plotR, lyr, C_GOLD], [plotR, lyc, C_WHITE]].forEach(([x, y, c]) => {
       ctx.beginPath();
-      ctx.arc(x, y, exportMode ? 9 : 5, 0, Math.PI * 2);
+      ctx.arc(x, y, exportMode ? 9 : (isMobile ? 4 : 5), 0, Math.PI * 2);
       ctx.fillStyle = c;
       ctx.fill();
       ctx.strokeStyle = '#7A0A24';
-      ctx.lineWidth = exportMode ? 3 : 2;
+      ctx.lineWidth = exportMode ? 3 : (isMobile ? 1.5 : 2);
       ctx.stroke();
     });
-    const gapY = exportMode ? 46 : 24;
+    const gapY = exportMode ? 46 : (isMobile ? 20 : 24);
     const items = [
       { y: lyr, c: C_GOLD, name: '红利低波', v: lastRed },
       { y: lyc, c: C_WHITE, name: '中证全指', v: lastCsi },
@@ -187,11 +189,11 @@
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     items.forEach((it) => {
       ctx.fillStyle = it.c;
-      ctx.font = (exportMode ? 46 : 26) + 'px ' + FONT_BODY;
+      ctx.font = (exportMode ? 46 : (isMobile ? 21 : 26)) + 'px ' + FONT_BODY;
       ctx.fillText(it.v.toLocaleString('zh-CN', { maximumFractionDigits: 0 }), lx, it.y);
-      ctx.font = (exportMode ? 24 : 14) + 'px ' + FONT_BODY;
+      ctx.font = (exportMode ? 24 : (isMobile ? 12 : 14)) + 'px ' + FONT_BODY;
       ctx.fillStyle = 'rgba(255,255,255,0.85)';
-      ctx.fillText(it.name, lx, it.y + (exportMode ? 34 : 19));
+      ctx.fillText(it.name, lx, it.y + (exportMode ? 34 : (isMobile ? 16 : 19)));
     });
   }
 
