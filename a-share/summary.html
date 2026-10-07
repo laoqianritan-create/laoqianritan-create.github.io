@@ -40,10 +40,38 @@
     .sm-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,.10); transform: translateY(-2px); }
     .sm-card .sm-thumb {
       width: 100%;
-      background: #fff;
+      background:
+        linear-gradient(135deg, #f0f1f4 0%, #fafbfc 55%, #f0f1f4 100%);
       aspect-ratio: 16 / 10;
       object-fit: contain;
       display: block;
+      position: relative;
+    }
+    .sm-card .sm-thumb:not([src])::after,
+    .sm-card .sm-thumb[src=""]::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(100deg, transparent 30%, rgba(255,255,255,.75) 50%, transparent 70%);
+      background-size: 220% 100%;
+      animation: sm-shimmer 1.4s linear infinite;
+    }
+    @keyframes sm-shimmer {
+      from { background-position: 120% 0; }
+      to   { background-position: -120% 0; }
+    }
+    .sm-card .sm-thumb:not([src])::before,
+    .sm-card .sm-thumb[src=""]::before {
+      content: '⌛ 图表生成中…';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #b0b4bc;
+      font-size: 13px;
+      z-index: 1;
     }
     .sm-card .sm-title {
       font-size: 14px;
