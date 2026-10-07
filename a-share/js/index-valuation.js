@@ -23,12 +23,15 @@
   function draw(canvas, data, opts) {
     const exportMode = opts.exportMode;
     const scale = opts.scale || 1;
-    const W = exportMode ? 3000 : 1480;
-    const H = exportMode ? 1500 : 680;
+    const items = data || [];
+    const n = items.length;
     const padL = exportMode ? 420 : 190;
     const padR = exportMode ? 380 : 200;
     const padT = exportMode ? 200 : 52;
     const padB = exportMode ? 100 : 44;
+    const W = exportMode ? 3000 : 1480;
+    // 屏幕模式高度随指数行数自适应（14 行时 740px），导出固定 1500
+    const H = exportMode ? 1500 : Math.max(680, padT + padB + n * 46);
 
     canvas.width = W * scale;
     canvas.height = H * scale;
@@ -42,9 +45,6 @@
     ctx.scale(scale, scale);
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, W, H);
-
-    const items = data || [];
-    const n = items.length;
 
     // 条形区（PE 线性刻度）
     const plotLeft = padL, plotRight = W - padR;
