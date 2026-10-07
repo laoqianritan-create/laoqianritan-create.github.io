@@ -8,15 +8,17 @@
   'use strict';
 
   // Laoqian Chart 取色规范 12 色板按序
-  const ORDER = ['H00300', 'H00905', 'H00852', '932000', 'H00985', 'A500TR.CSI', 'H30269.CSI'];
+  const ORDER = ['H00300', 'H00905', 'H00852', '399606', '000688', '932000', 'H00985', 'A500TR.CSI', 'H30269.CSI'];
   const COLORS = {
     H00300: '#5AAEF3',    // 蓝 沪深300全收益
     H00905: '#333333',    // 深灰 中证500全收益
     H00852: '#E65A56',    // 红 中证1000全收益
-    '932000': '#6D61E4',  // 紫 中证2000
-    H00985: '#5B6E96',    // 深蓝灰 中证全指全收益
-    'A500TR.CSI': '#62D9AD', // 青绿 中证A500全收益
-    H30269: '#30CB13',    // 绿 红利低波全收益
+    '399606': '#6D61E4',  // 紫 创业板指全收益
+    '000688': '#5B6E96',  // 深蓝灰 科创50
+    '932000': '#62D9AD',  // 青绿 中证2000
+    H00985: '#30CB13',    // 绿 中证全指全收益
+    'A500TR.CSI': '#23C2DB', // 青蓝 中证A500全收益
+    H30269: '#FFDC4C',    // 金黄 红利低波全收益
   };
 
   function draw(canvas, data, opts) {
@@ -191,14 +193,10 @@
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
     const lgap = exportMode ? 52 : 24;
-    const lastVals = series.map((s) => {
-      const last = s.nav[s.nav.length - 1];
-      return (last !== null && last !== undefined) ? last : null;
-    });
+    // 图例不显示涨幅数字（用户要求）
     let legendNames = series.map((s) => s.name);
     const legendW = (ns) => ns.reduce((w, nm, i) => {
-      const label = `${nm}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(0)}` : ''}`;
-      return w + ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
+      return w + ctx.measureText(nm).width + (exportMode ? 56 : 24) + lgap;
     }, 0);
     let minLen = 12;
     while (legendW(legendNames) > W - padR - lx0 - 16 && minLen > 2) {
@@ -208,7 +206,7 @@
     let lx = lx0, ly = ly0;
     series.forEach((s, i) => {
       const color = COLORS[s.code] || '#888888';
-      const label = `${legendNames[i]}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(0)}` : ''}`;
+      const label = legendNames[i];
       ctx.fillStyle = color;
       ctx.fillRect(lx, ly - (exportMode ? 8 : 4), exportMode ? 40 : 16, exportMode ? 8 : 3);
       ctx.fillStyle = '#333333';

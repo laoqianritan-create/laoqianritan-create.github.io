@@ -6,7 +6,7 @@
   <title>A股看板 · 老钱日日谈</title>
   <meta name="description" content="A股看板：申万行业热力图、不同事物的增长情况、行业交易热度、全市场成交换手、收益来源拆解、投资者结构、华证六因子。每交易日自动更新。">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261007i">
+  <link rel="stylesheet" href="css/style.css?v=20261007j">
 </head>
 <body>
 
@@ -159,7 +159,7 @@
     <div class="panel-head">
       <div class="panel-head-text">
         <h2 class="panel-title">宽基指数全收益净值</h2>
-        <p class="panel-desc">沪深300 / 中证500 / 中证1000 / 中证2000 / 中证全指 / 中证A500 / 红利低波 · 2005 起点 = 100 · 对数坐标</p>
+        <p class="panel-desc">沪深300 / 中证500 / 中证1000 / 创业板指 / 科创50 / 中证2000 / 中证全指 / 中证A500 / 红利低波 · 2005 起点 = 100 · 对数坐标</p>
       </div>
       <div class="panel-actions">
         <button class="btn-download js-export" data-canvas="wideBase" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
@@ -169,10 +169,10 @@
     <details class="panel-notes">
       <summary>看板说明</summary>
       <ul>
-        <li>各指数全收益净值以 2005-01-04 = 100 归一，纵轴对数，斜率即年化回报。</li>
-        <li>中证2000 全收益指数未发布 → 用价格指数（2013-12 起），股息贡献缺失。</li>
-        <li>红利低波 = 中证红利低波动全收益指数（H30269，Wind，2005-12 起，含股息再投资）。</li>
-        <li>数据来源：中证指数官网（H 前缀全收益）+ Wind AIFin（A500 全收益 / 红利低波全收益）。</li>
+        <li>各指数全收益净值以自身起点 = 100 归一（沪深300/中证500/中证1000/中证全指 2005-01-04 起，其余按指数基日起），纵轴对数，斜率即年化回报。</li>
+        <li>科创50/中证2000 全收益指数未发布 → 用价格指数（科创50 2019-12 起、中证2000 2013-12 起），股息贡献缺失。</li>
+        <li>创业板指全收益 = 399606（国证，2010-06 起）；红利低波 = 中证红利低波动全收益指数（H30269，Wind，2005-12 起，含股息再投资）。</li>
+        <li>数据来源：中证指数官网（H 前缀全收益）+ 新浪（创业板指全收益）+ Wind AIFin（A500 全收益 / 红利低波全收益）。</li>
       </ul>
     </details>
   </section>
@@ -193,8 +193,8 @@
       <summary>看板说明</summary>
       <ul>
         <li>每个指数一行：底色为绿→红渐变（0=深绿 低估 … 100=深红 高估，无白色过渡），黑色刻度线为当前 PE-TTM 位置，右侧数字为 PE 与历史分位。</li>
-        <li>分位口径：当前 PE-TTM 在乐咕乐股该指数全部历史月度值中的百分位；样本起止见行内标注（深证100 自 2009-09、中证500/中证800 自 2007-01，其余 2005 起）。</li>
-        <li>PE 为滚动市盈率（TTM，市值加权）。数据来源：乐咕乐股（legulegu.com）指数市盈率接口，月度更新。</li>
+        <li>分位口径：当前 PE-TTM 在该指数全部历史月度值中的百分位；样本起点：沪深300 自 2005-04、中证100 自 2006-05、中证500/中证800 自 2007-01、创业板50 自 2009-10、中证1000 自 2014-10、创业板指 自 2018-06、科创50 自 2020-01，其余 2005 起。</li>
+        <li>PE 为滚动市盈率（TTM，市值加权）。数据来源：乐咕乐股指数市盈率接口（科创50/创业板指为 Wind AIFin 回退源），月度更新。</li>
         <li>德邦证券《A股市场监测：A股动静框架之静态指标》市场配置指标：估值分位用于衡量当前价格相对历史的贵贱，分位越高代表越贵、未来预期回报越低。</li>
       </ul>
     </details>  </section>
@@ -435,24 +435,24 @@
 
 
 
-<script defer src="js/data.js?v=20261007i"></script>
-<script defer src="js/common.js?v=20261007i"></script>
-<script defer src="js/banner.js?v=20261007i"></script>
-<script defer src="js/heatmap.js?v=20261007i"></script>
-<script defer src="js/loss-table.js?v=20261007i"></script>
-<script defer src="js/longgrowth.js?v=20261007i"></script>
-<script defer src="js/industry-heat.js?v=20261007i"></script>
-<script defer src="js/market-turnover.js?v=20261007i"></script>
-<script defer src="js/return-decomp.js?v=20261007i"></script>
-<script defer src="js/investor-structure.js?v=20261007i"></script>
-<script defer src="js/huazheng-factor.js?v=20261007i"></script>
-<script defer src="js/wide-base.js?v=20261007i"></script>
-<script defer src="js/fear-greed.js?v=20261007i"></script>
-<script defer src="js/timing.js?v=20261007i"></script>
-<script defer src="js/fund-index.js?v=20261007i"></script>
-<script defer src="js/coverage.js?v=20261007i"></script>
+<script defer src="js/data.js?v=20261007j"></script>
+<script defer src="js/common.js?v=20261007j"></script>
+<script defer src="js/banner.js?v=20261007j"></script>
+<script defer src="js/heatmap.js?v=20261007j"></script>
+<script defer src="js/loss-table.js?v=20261007j"></script>
+<script defer src="js/longgrowth.js?v=20261007j"></script>
+<script defer src="js/industry-heat.js?v=20261007j"></script>
+<script defer src="js/market-turnover.js?v=20261007j"></script>
+<script defer src="js/return-decomp.js?v=20261007j"></script>
+<script defer src="js/investor-structure.js?v=20261007j"></script>
+<script defer src="js/huazheng-factor.js?v=20261007j"></script>
+<script defer src="js/wide-base.js?v=20261007j"></script>
+<script defer src="js/fear-greed.js?v=20261007j"></script>
+<script defer src="js/timing.js?v=20261007j"></script>
+<script defer src="js/fund-index.js?v=20261007j"></script>
+<script defer src="js/coverage.js?v=20261007j"></script>
 
-<script defer src="js/main.js?v=20261007i"></script>
+<script defer src="js/main.js?v=20261007j"></script>
 
 <script defer src="js/asset-allocation.js"></script>
 
