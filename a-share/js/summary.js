@@ -20,24 +20,30 @@
     fearGreed: 'data/fear_greed.json',
     fundIndex: 'data/fund_index.json',
     coverage: 'data/coverage.json',
-    wideBase: 'data/wide_base.json'
+    wideBase: 'data/wide_base.json',
+    valuation: 'data/index_valuation.json',
+    assetAlloc: 'data/asset_allocation.json',
+    trendTemp: 'data/trend_temperature.json'
   };
 
-  // 卡片定义：渲染后从 canvas 截缩略图；点击跳主页面锚点
+  // 卡片定义：渲染后从 canvas 截缩略图；点击跳主页面锚点（顺序与 index.html 一致）
   const CARDS = [
     { title: '申万一级行业年度涨跌幅 · 长期 CAGR', anchor: 'panel-heatmap' },
-    { title: '关于抄底的一道基础数学题', anchor: 'panel-loss' },
     { title: '不同事物的增长情况', anchor: 'panel-long' },
     { title: '华证六因子', anchor: 'panel-huazheng' },
-    { title: '行业交易热度', anchor: 'panel-industry' },
-    { title: '全市场成交金额 / 换手', anchor: 'panel-turnover' },
     { title: '宽基指数覆盖范围', anchor: 'panel-coverage' },
+    { title: '宽基指数全收益净值', anchor: 'panel-widebase' },
+    { title: '主要宽基指数估值分位', anchor: 'panel-valuation' },
     { title: '指数收益来源拆解', anchor: 'panel-return' },
-    { title: '宽基净值走势', anchor: 'panel-widebase' },
-    { title: '投资者结构', anchor: 'panel-investor' },
+    { title: '股债性价比 · 股权风险溢价', anchor: 'panel-asset' },
+    { title: '关于抄底的一道基础数学题', anchor: 'panel-loss' },
+    { title: '全市场成交金额 / 换手', anchor: 'panel-turnover' },
+    { title: '行业交易热度', anchor: 'panel-industry' },
+    { title: '市场趋势温度', anchor: 'panel-trend' },
     { title: 'A股恐贪指数', anchor: 'panel-fear' },
+    { title: '神奇择时指标', anchor: 'panel-fund' },
     { title: '偏股混合基金滚动年化', anchor: 'panel-timing' },
-    { title: '神奇择时指标', anchor: 'panel-fund' }
+    { title: '投资者结构', anchor: 'panel-investor' }
   ];
 
   function buildGrid() {
@@ -99,11 +105,22 @@
     return { years, rows, metricsMeta };
   }
 
+  // fetch 带超时兜底（个别请求挂起时不让整页卡死）
+  function fetchJSON(url, ms = 8000) {
+    return Promise.race([
+      AK.fetchJSON(url),
+      new Promise((_, rej) => setTimeout(() => rej(new Error('timeout: ' + url)), ms))
+    ]);
+  }
+
   async function init() {
+    window.__smPhase = 'init-enter';
     try {
+      window.__smPhase = 'fetch-start';
       const payloads = await Promise.allSettled(
-        Object.entries(DATA).map(([k, url]) => AK.fetchJSON(url).then((d) => [k, d]))
+        Object.entries(DATA).map(([k, url]) => fetchJSON(url).then((d) => [k, d]))
       );
+      window.__smPhase = 'fetch-done';
       const data = {};
       let asOf = null;
       payloads.forEach((p) => {
@@ -118,7 +135,7 @@
       const dateEl = document.getElementById('smDate');
       if (dateEl) dateEl.textContent = asOf ? '数据截至 ' + asOf : '';
 
-      // ── 依次离屏渲染 13 个看板 ──
+      // ── 依次离屏渲染 16 个看板 ──
       // 1. 热力图
       if (data.heatmap && window.SW_drawHeatmap) {
         window.SW_drawHeatmap(document.getElementById('heatmap'), normalizeHeatmap(data.heatmap), { exportMode: false, scale: 1 });
@@ -127,14 +144,15 @@
       if (window.SW_drawLossTable) {
         window.SW_drawLossTable(document.getElementById('lossTable'), { exportMode: false, scale: 1 });
       }
-      // 3-13. 面板渲染（各自在对应 body 容器里创建 canvas）
+      // 3-16. 面板渲染（各自在对应 body 容器里创建 canvas）
       const renders = [
         ['longgrowth', window.LG_render], ['huazheng', window.HZ_render],
-        ['industry', window.IH_render], ['turnover', window.MT_render],
-        ['coverage', window.CV_render], ['returnDecomp', window.RD_render],
-        ['wideBase', window.WB_render], ['investor', window.IS_render],
+        ['coverage', window.CV_render], ['wideBase', window.WB_render],
+        ['valuation', window.IV_render], ['returnDecomp', window.RD_render],
+        ['assetAlloc', window.AA_render], ['turnover', window.MT_render],
+        ['industry', window.IH_render], ['trendTemp', window.TT_render],
         ['fearGreed', window.FG_render], ['fundIndex', window.FI_render],
-        ['fundIndex', window.TM_render]
+        ['fundIndex', window.TM_render], ['investor', window.IS_render]
       ];
       renders.forEach(([key, fn]) => {
         if (data[key] && fn) { try { fn(data[key]); } catch (e) { console.error('[summary]', key, e); } }
@@ -143,13 +161,14 @@
       // ── 收集画布 → 填卡片 ──
       const canvasRefs = [
         '#heatmap',
-        '#lossTable',
         '#panelLongBody canvas', '#panelHuazhengBody canvas',
-        '#panelIndustryBody canvas', '#panelTurnoverBody canvas',
-        '#panelCoverageBody canvas', '#panelReturnBody canvas',
-        '#panelWideBaseBody canvas', '#panelInvestorBody canvas',
-        '#panelFearBody canvas', '#panelTimingBody canvas',
-        '#panelFundBody canvas'
+        '#panelCoverageBody canvas', '#panelWideBaseBody canvas',
+        '#panelValuationBody canvas', '#panelReturnBody canvas',
+        '#panelAssetBody canvas', '#lossTable',
+        '#panelTurnoverBody canvas', '#panelIndustryBody canvas',
+        '#panelTrendBody canvas', '#panelFearBody canvas',
+        '#panelFundBody canvas', '#panelTimingBody canvas',
+        '#panelInvestorBody canvas'
       ];
       const grid = document.getElementById('smGrid');
       const cards = grid.querySelectorAll('.sm-card');
@@ -164,6 +183,7 @@
 
       document.getElementById('smLoading').hidden = true;
       grid.hidden = false;
+      window.__smPhase = 'done';
     } catch (err) {
       console.error('[summary] 初始化失败', err);
       const l = document.getElementById('smLoading');
@@ -172,9 +192,15 @@
   }
 
   buildGrid();
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  // 双保险：无论 DOMContentLoaded 是否触发，init 都会执行（防重入）
+  let started = false;
+  function safeInit() {
+    if (started) return;
+    started = true;
     init();
   }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', safeInit);
+  }
+  safeInit();
 })();

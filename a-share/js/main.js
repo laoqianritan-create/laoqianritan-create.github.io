@@ -21,22 +21,28 @@
     fearGreed: 'data/fear_greed.json',
     fundIndex: 'data/fund_index.json',
     coverage: 'data/coverage.json',
-    wideBase: 'data/wide_base.json'
+    wideBase: 'data/wide_base.json',
+    valuation: 'data/index_valuation.json',
+    assetAlloc: 'data/asset_allocation.json',
+    trendTemp: 'data/trend_temperature.json'
   };
 
   // ── 面板注册表：进入视口 → 拉数据 → 渲染（timing 与 fund 共用 fund_index.json）──
   const PANELS = [
     { id: 'panel-long',      key: 'longgrowth',    render: (d) => window.LG_render(d) },
-    { id: 'panel-industry',  key: 'industry',      render: (d) => window.IH_render(d) },
-    { id: 'panel-turnover',  key: 'turnover',      render: (d) => window.MT_render(d) },
-    { id: 'panel-return',    key: 'returnDecomp',  render: (d) => window.RD_render(d) },
-    { id: 'panel-investor',  key: 'investor',      render: (d) => window.IS_render(d) },
     { id: 'panel-huazheng',  key: 'huazheng',      render: (d) => window.HZ_render(d) },
+    { id: 'panel-coverage',  key: 'coverage',      render: (d) => window.CV_render(d) },
+    { id: 'panel-widebase',  key: 'wideBase',      render: (d) => window.WB_render(d) },
+    { id: 'panel-valuation', key: 'valuation',     render: (d) => window.IV_render(d) },
+    { id: 'panel-return',    key: 'returnDecomp',  render: (d) => window.RD_render(d) },
+    { id: 'panel-asset',     key: 'assetAlloc',    render: (d) => window.AA_render(d) },
+    { id: 'panel-turnover',  key: 'turnover',      render: (d) => window.MT_render(d) },
+    { id: 'panel-industry',  key: 'industry',      render: (d) => window.IH_render(d) },
+    { id: 'panel-trend',     key: 'trendTemp',     render: (d) => window.TT_render(d) },
     { id: 'panel-fear',      key: 'fearGreed',     render: (d) => window.FG_render(d) },
     { id: 'panel-fund',      key: 'fundIndex',     render: (d) => window.FI_render(d) },
-    { id: 'panel-coverage',  key: 'coverage',      render: (d) => window.CV_render(d) },
     { id: 'panel-timing',    key: 'fundIndex',     render: (d) => window.TM_render(d) },
-    { id: 'panel-widebase',  key: 'wideBase',      render: (d) => window.WB_render(d) }
+    { id: 'panel-investor',  key: 'investor',      render: (d) => window.IS_render(d) }
   ];
 
   // ── 数据缓存（同一 key 只 fetch 一次）──
