@@ -3,8 +3,8 @@
 // Title + description (panel-desc) + date + centered content + footer URL watermark
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261007221004';
-import { chartInstances } from './chart-helpers.js?v=20261007221004';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261007223110';
+import { chartInstances } from './chart-helpers.js?v=20261007223110';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // Horizontal padding
@@ -369,7 +369,10 @@ export async function exportChartAsPng(chartInstance, panelEl, opts = {}) {
   // Sub-chart mode (in-panel scatter exported standalone): use the sub-title,
   // and never drag along the table or other panel extras.
   const meta = opts.subHeader ? getSubHeaderMeta(opts.subHeader) || getPanelMeta(panelEl) : getPanelMeta(panelEl);
-  const extras = opts.subHeader ? [] : await renderPanelExtras(panelEl);
+  // 2026-10-07: exports carry the chart only — drop panel-desc annotations and
+  // the metric strip / explainer tables (extras).
+  meta.descs = [];
+  const extras = [];
 
   buildFrameAndDownload(chartImg, chartImg.naturalWidth, chartImg.naturalHeight, meta, extras);
 }
@@ -445,24 +448,19 @@ export async function exportElementAsPng(element, panelEl, opts = {}) {
   // Collect extra in-panel elements (metric-strip, explainer tables, etc.) and
   // filter out anything already inside the rendered element (to avoid duplication,
   // e.g. when panel-breadth is exported whole, the metric-strip is already in the shot).
-  let extras = [];
-  const extraEls = getPanelExtras(panelEl).filter(el => !element.contains(el));
-  for (const el of extraEls) {
-    try {
-      extras.push(await renderElementToImage(el));
-    } catch (err) {
-      console.warn('Extra element render failed; skipping', el, err);
-    }
-  }
+  // 2026-10-07: same as above — export the selected element only, no metric strip / explainers.
+  const extras = [];
 
   const img = new Image();
   img.src = sourceCanvas.toDataURL('image/png');
   // Square: scan the rendered canvas for the real ink box, hand it to the
   // frame for cropping + centering
   const crop = opts.square ? measureInkBox(sourceCanvas) : null;
+  const elementMeta = getPanelMeta(panelEl);
+  elementMeta.descs = [];
   img.onload = () => buildFrameAndDownload(
     img, sourceCanvas.width, sourceCanvas.height,
-    getPanelMeta(panelEl), extras,
+    elementMeta, extras,
     { skipHeader: hasHeader, fileName: opts.fileName, compact: opts.compact, square: opts.square, crop },
   );
 }

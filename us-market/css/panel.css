@@ -1200,3 +1200,26 @@ a.tr-dist-cell:hover {
 @media (min-width: 769px) {
   .quotes-hint { display: none; }
 }
+
+
+/* ─── 看板说明（2026-10-07 老钱指令：图表下方的指标卡与注释折进来，A 股站同款）─── */
+.panel-notes {
+  margin-top: 14px;
+  border-top: 1px dashed var(--border);
+  padding-top: 10px;
+  font-size: 12.5px;
+  color: var(--gray);
+  line-height: 1.7;
+}
+.panel-notes summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-secondary);
+  user-select: none;
+  list-style: none;
+}
+.panel-notes summary::-webkit-details-marker { display: none; }
+.panel-notes summary::before { content: '▸ '; color: var(--gray); }
+.panel-notes[open] summary::before { content: '▾ '; }
+.panel-notes summary:hover { color: var(--accent); }
+.panel-notes > *:not(summary) { margin-top: 10px; }

@@ -3,8 +3,8 @@
 // 标题 + 描述（panel-desc）+ 日期 + 内容居中 + footer URL 水印
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261007221004';
-import { chartInstances } from './chart-helpers.js?v=20261007221004';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261007223110';
+import { chartInstances } from './chart-helpers.js?v=20261007223110';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // 两侧留白
@@ -352,7 +352,9 @@ export async function exportChartAsPng(chartInstance, panelEl, opts = {}) {
 
   // 子图模式（面板内散点等单独成图）：标题用子标题，不拖表格等附加元素
   const meta = opts.subHeader ? getSubHeaderMeta(opts.subHeader) || getPanelMeta(panelEl) : getPanelMeta(panelEl);
-  const extras = opts.subHeader ? [] : await renderPanelExtras(panelEl);
+  // 老钱 2026-10-07：导出图只留图表本身——描述段落（panel-desc）与指标条/说明表一律不进图
+  meta.descs = [];
+  const extras = [];
 
   buildFrameAndDownload(chartImg, chartImg.naturalWidth, chartImg.naturalHeight, meta, extras);
 }
@@ -422,23 +424,18 @@ export async function exportElementAsPng(element, panelEl, opts = {}) {
 
   // 收集面板内附加元素（metric-strip、说明表格等），
   // 过滤掉已在被渲染元素内部的（避免重复，如 panel-breadth 整体导出时 metric-strip 已在截图里）
-  let extras = [];
-  const extraEls = getPanelExtras(panelEl).filter(el => !element.contains(el));
-  for (const el of extraEls) {
-    try {
-      extras.push(await renderElementToImage(el));
-    } catch (err) {
-      console.warn('附加元素渲染失败，跳过', el, err);
-    }
-  }
+  // 老钱 2026-10-07：同上——只出被选中的元素本身，不再追加指标条/说明表
+  const extras = [];
 
   const img = new Image();
   img.src = sourceCanvas.toDataURL('image/png');
   // 方形：扫渲染画布量真实墨迹包围盒，交给画框做裁剪＋居中
   const crop = opts.square ? measureInkBox(sourceCanvas) : null;
+  const elementMeta = getPanelMeta(panelEl);
+  elementMeta.descs = [];
   img.onload = () => buildFrameAndDownload(
     img, sourceCanvas.width, sourceCanvas.height,
-    getPanelMeta(panelEl), extras,
+    elementMeta, extras,
     { skipHeader: hasHeader, fileName: opts.fileName, compact: opts.compact, square: opts.square, crop },
   );
 }
