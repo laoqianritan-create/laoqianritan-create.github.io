@@ -5,7 +5,7 @@
 // 布局：每句高度自适应——offsets 动态测距，视口高度跟随当前句收放，短句不占长框。
 // 数据：data/bofa_longest_pictures_quotes.json（手工维护，参考 sp500_rules.json 模式）。
 
-import { escapeHtml } from '../utils.js?v=20261007110831';
+import { escapeHtml } from '../utils.js?v=20261007143602';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -162,11 +162,4 @@ export function initPanelQuotes(data) {
   }
   window.addEventListener('resize', () => { measure(); applyTransform(false); });
 
-  // 来源：整个面板只显示一次（不进轮播）
-  if (data.source && data.source.name && stage) {
-    const srcEl = document.createElement('div');
-    srcEl.className = 'quote-source';
-    srcEl.textContent = `来源：${data.source.name}`;
-    stage.appendChild(srcEl);
-  }
 }

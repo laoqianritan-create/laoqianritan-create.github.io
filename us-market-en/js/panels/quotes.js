@@ -7,7 +7,7 @@
 //         follows the active quote, so short quotes don't sit in a tall empty box.
 // Data: data/bofa_longest_pictures_quotes.json (manually maintained, cf. sp500_rules.json).
 
-import { escapeHtml } from '../utils.js?v=20261007110831';
+import { escapeHtml } from '../utils.js?v=20261007143602';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -162,11 +162,4 @@ export function initPanelQuotes(data) {
   }
   window.addEventListener('resize', () => { measure(); applyTransform(false); });
 
-  // Source: rendered once for the whole panel (not inside the carousel)
-  if (data.source && data.source.name_en && stage) {
-    const srcEl = document.createElement('div');
-    srcEl.className = 'quote-source';
-    srcEl.textContent = `Source: ${data.source.name_en}`;
-    stage.appendChild(srcEl);
-  }
 }
