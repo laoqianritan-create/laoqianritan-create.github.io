@@ -331,9 +331,10 @@ body {
 @media (max-width: 768px) {
   .hero-banner { padding: 18px 16px 16px; }
   .banner-nav {
-    position: static; flex-direction: row; flex-wrap: wrap;
+    position: static; flex-direction: row; flex-wrap: nowrap;
     margin-top: 10px; gap: 8px; transform: none;
+    width: 100%; justify-content: flex-start;
   }
-  .banner-nav a { padding: 12px 16px; font-size: 13px; min-height: 44px; }
+  .banner-nav a { padding: 10px 13px; font-size: 12.5px; min-height: 44px; white-space: nowrap; flex: 1 1 0; text-align: center; justify-content: center; }
   .related-resources { padding: 16px 14px 18px; }
 }
