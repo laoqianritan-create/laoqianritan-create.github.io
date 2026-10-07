@@ -51,10 +51,12 @@
     const W = off.width;
     const padX = Math.round(W * 0.022);
     const headerH = needHeader ? Math.round(W * 0.078) : 0;
+    // 来源独立条：图表下方追加空白条，来源画在条内 → 永不与图表下沿重叠（高度可自由调整）
+    const footerH = Math.round(W * 0.048);
 
     const final = document.createElement('canvas');
     final.width = W;
-    final.height = off.height + headerH;
+    final.height = off.height + headerH + footerH;
     const fctx = final.getContext('2d');
     fctx.fillStyle = '#ffffff';
     fctx.fillRect(0, 0, final.width, final.height);
@@ -74,7 +76,7 @@
       }
     }
 
-    // 来源（右下角）
+    // 来源（独立 footer 条右下角，与图表下沿有固定留白）
     fctx.textBaseline = 'bottom';
     fctx.textAlign = 'right';
     fctx.fillStyle = '#9a9a9a';
@@ -96,9 +98,14 @@
     });
   };
 
-  /** 绑定面板导出按钮：btn[data-canvas=xxx] → 找 canvas#xxx */
+  /** 绑定面板导出按钮：全局 drawMap 合并 + 每个按钮仅绑定一次
+   *  （修复：各面板 JS 均调用本函数遍历绑定所有按钮 → 14 个面板 = 每个按钮 14 个监听 → 点击一次下载多次） */
   AK.bindExportButtons = function (drawMap) {
+    const g = (AK._exportMap = AK._exportMap || {});
+    Object.assign(g, drawMap || {});
     document.querySelectorAll('.js-export').forEach((btn) => {
+      if (btn.__exportBound) return;
+      btn.__exportBound = true;
       btn.addEventListener('click', async () => {
         const id = btn.getAttribute('data-canvas');
         const canvas = document.getElementById(id);
@@ -106,7 +113,7 @@
         const orig = btn.innerHTML;
         btn.disabled = true; btn.textContent = '…';
         try {
-          const fn = drawMap && drawMap[id];
+          const fn = g[id];
           const panel = btn.closest('.panel') || btn.closest('section');
           const tEl = panel && panel.querySelector('.panel-title');
           const dEl = panel && panel.querySelector('.panel-desc');
