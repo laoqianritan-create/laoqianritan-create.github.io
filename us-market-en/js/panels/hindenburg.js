@@ -14,7 +14,7 @@ import {
   CHART_FONT,
   cssVar,
   formatNumber,
-} from '../utils.js?v=20261007143602';
+} from '../utils.js?v=20261007144247';
 
 import {
   registerChart,
@@ -22,7 +22,7 @@ import {
   renderMetricStrip,
   getDataZoom,
   getLineLegendConfig,
-} from '../chart-helpers.js?v=20261007143602';
+} from '../chart-helpers.js?v=20261007144247';
 
 const GREEN = '#389e0d';
 const RED = '#cf1322';

@@ -234,7 +234,8 @@ body {
   flex-shrink: 0;
   opacity: 0.72;
 }
-.hero-crosslink-debt { color: #ff7875; }   /* 红 · 美债 */
+.hero-crosslink-ashare { color: #ff7875; } /* 红 · A股 */
+.hero-crosslink-debt { color: #95de64; }   /* 绿 · 美债 */
 .hero-crosslink-gold { color: #d4a853; }   /* 暗金 · 黄金 */
 
 /* ── Footer ── */

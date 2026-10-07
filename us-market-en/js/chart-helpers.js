@@ -3,7 +3,7 @@
 // Depends on utils (cssVar, escapeHtml, CHART_FONT) and the global echarts
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, CHART_FONT } from './utils.js?v=20261007143602';
+import { cssVar, escapeHtml, CHART_FONT } from './utils.js?v=20261007144247';
 
 // Registry of all chart instances; used for redraw / resize on theme changes
 export const chartInstances = [];
