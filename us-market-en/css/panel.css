@@ -1088,18 +1088,27 @@ a.tr-dist-cell:hover {
 .quote-slide.is-active .quote-export { opacity: 1; pointer-events: auto; }
 
 /* Off-screen clone used for export: releases the carousel min-height / translucency /
-   button gutter and pins a fixed width so the image hugs the content (no big blank areas). */
+   button gutter and pins a fixed width so the image hugs the content (no big blank areas).
+   Width 800px is the square frame's framing width: the narrower column makes the text
+   wrap taller, so it doesn't collapse into a thin strip once scaled into the square. */
 .quote-export-node {
   position: fixed;
   left: -10000px;
   top: 0;
-  width: 1400px;
+  width: 800px;
   min-height: 0;
   padding-right: 0;
   opacity: 1;
   pointer-events: none;
 }
-.quote-export-node .quote-author { margin-top: 12px; }
+/* Square-export copy layout: everything left-aligned (on the page the author line is
+   pinned bottom-right; in the export it moves to the left) plus adaptive font size.
+   --q-fit is binary-searched by fitSquareContent() in export-png.js (0.7~2.6), targeting
+   78% of the square's middle band. The media queries' 32/19px are overridden here so the
+   measured height and the html2canvas render use the same font sizes. */
+.quote-export-node .quote-en     { font-size: calc(40px * var(--q-fit, 1)); margin-top: 0; text-wrap: balance; }
+.quote-export-node .quote-zh     { font-size: calc(28px * var(--q-fit, 1)); margin-top: calc(10px * var(--q-fit, 1)); text-wrap: balance; }
+.quote-export-node .quote-author { margin-top: calc(12px * var(--q-fit, 1)); align-self: flex-start; font-size: calc(13px * var(--q-fit, 1)); }
 .quote-en {
   margin: 0;
   font-family: "Great Vibes", "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;

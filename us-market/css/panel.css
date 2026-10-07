@@ -1086,18 +1086,25 @@ a.tr-dist-cell:hover {
 }
 .quote-slide.is-active .quote-export { opacity: 1; pointer-events: auto; }
 
-/* 导出用的离屏克隆件：解除轮播定高/半透明/让位，宽度写死 → 紧贴内容、不留大面积留白 */
+/* 导出用的离屏克隆件：解除轮播定高/半透明/让位，宽度写死 → 紧贴内容、不留大面积留白。
+   宽 800px 是方形导出的取景宽度：窄栏让文字换行撑高，缩放进方图后才不至于只剩一条细线。 */
 .quote-export-node {
   position: fixed;
   left: -10000px;
   top: 0;
-  width: 1400px;
+  width: 800px;
   min-height: 0;
   padding-right: 0;
   opacity: 1;
   pointer-events: none;
 }
-.quote-export-node .quote-author { margin-top: 12px; }
+/* 方形导出的文案排版：一律左对齐（页面版作者钉右下，导出版挪到左侧）＋ 字号自适应。
+   --q-fit 由 export-png.js 的 fitSquareContent() 二分搜索写入（0.7~2.6），
+   目标＝把正文块撑到方图中段的 78% 高；媒体查询里的 32/19px 会被这条高优先级盖掉，
+   保证「量高」和 html2canvas「渲染」两边用的是同一套字号。 */
+.quote-export-node .quote-en     { font-size: calc(40px * var(--q-fit, 1)); margin-top: 0; text-wrap: balance; }
+.quote-export-node .quote-zh     { font-size: calc(28px * var(--q-fit, 1)); margin-top: calc(10px * var(--q-fit, 1)); text-wrap: balance; }
+.quote-export-node .quote-author { margin-top: calc(12px * var(--q-fit, 1)); align-self: flex-start; font-size: calc(13px * var(--q-fit, 1)); }
 .quote-en {
   margin: 0;
   font-family: "Great Vibes", "Snell Roundhand", "Apple Chancery", "Segoe Script", "Brush Script MT", cursive;
