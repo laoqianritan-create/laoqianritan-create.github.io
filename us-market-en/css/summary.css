@@ -67,7 +67,7 @@
 }
 /* The category filter hides cards via JS [hidden]; the display:flex above overrides the
    browser default [hidden]{display:none}, so without this rule every card stays visible
-   when a category tab is clicked (measured 2026-10-04). Required. */
+   when a category tab is clicked (measured 2026-10-07). Required. */
 .summary-card[hidden] {
   display: none !important;
 }

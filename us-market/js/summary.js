@@ -8,10 +8,10 @@
 // 迷你图用页面已载入的 ECharts，剥掉坐标轴/图例/tooltip，进入视口才实例化（懒渲染）。
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261007162319';
+const DATA_URL = 'data/summary_thumbs.json?v=20261007163006';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
-/* 分类主题色（老钱 2026-10-04 指定）：
+/* 分类主题色（老钱 2026-10-07 指定）：
    纳斯达克100与道琼斯(cross) → 绿 #389e0d；资金流(flows) → 红 #cf1322。
    其余分类沿用 PALETTE 默认（单序列＝蓝）。取色只用 theme.css 既有色号，同分类多序列用同色透明度分档区分。 */
 const CAT_THEME = { cross: '#389e0d', flows: '#cf1322' };

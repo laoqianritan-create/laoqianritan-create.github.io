@@ -9,10 +9,10 @@
 // Mini charts use ECharts (loaded from CDN), stripped of axes/legend/tooltip, lazily created.
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261007162319';
+const DATA_URL = 'data/summary_thumbs.json?v=20261007163006';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
-/* Per-category theme colours (set by 老钱 on 2026-10-04):
+/* Per-category theme colours (set by 老钱 on 2026-10-07):
    Nasdaq 100 & Dow (cross) → green #389e0d; Fund Flows (flows) → red #cf1322.
    Other categories keep the PALETTE default (single series = blue). Only colours already
    defined in theme.css are used; multi-series cards in a themed category vary by opacity. */
