@@ -410,8 +410,10 @@
     canvas.id = 'industryHeat';
     wrap.appendChild(canvas);
 
-    // 排序一级行业（按名称）
-    sortedL1 = Object.keys(payload.metrics).filter((c) => payload.levels['1']);
+    // 排序一级行业（按名称）：一级 = 不在 parentMap 中的代码（parentMap 只含 131 个二级）
+    sortedL1 = Object.keys(payload.metrics).filter((c) =>
+      payload.levels['1'] && !(payload.parentMap && Object.prototype.hasOwnProperty.call(payload.parentMap, c))
+    );
     sortedL1.sort((a, b) => payload.metrics[a].name.localeCompare(payload.metrics[b].name, 'zh'));
 
     // 二级分组：parentMap 值为上级行业中文名 → 先建立 名称→code 映射
