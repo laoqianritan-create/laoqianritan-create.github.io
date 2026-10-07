@@ -209,6 +209,7 @@
   }
 
   window.AA_render = function (data) {
+    data = (data && data.items) || data;  // JSON 为 { generated, items } 包装时解包
     const wrap = document.getElementById('panelAssetBody');
     if (!wrap) return;
     wrap.innerHTML = '';

@@ -11,28 +11,28 @@
      --line   #E5E5E5  分隔线
    ════════════════════════════════════════════════════════════ */
 
-/* ─── 字体声明 ─── */
+/* ─── 字体声明（子集化 woff2，原字体留底 backups/fonts_raw）─── */
 @font-face {
   font-family: 'AlibabaPuHuiTi';
-  src: url('../fonts/Alibaba-PuHuiTi-Heavy.ttf') format('truetype');
+  src: url('../fonts/Alibaba-PuHuiTi-Heavy.woff2') format('woff2');
   font-weight: 900;
   font-display: swap;
 }
 @font-face {
   font-family: 'NotoSansSC';
-  src: url('../fonts/NotoSansSC-Regular.otf') format('opentype');
+  src: url('../fonts/NotoSansSC-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: 'NotoSansSC';
-  src: url('../fonts/NotoSansSC-Light.otf') format('opentype');
+  src: url('../fonts/NotoSansSC-Light.woff2') format('woff2');
   font-weight: 300;
   font-display: swap;
 }
 @font-face {
   font-family: 'Xiaomaoxihuanfeng';
-  src: url('../fonts/Xiaomaoxihuanfeng-Light-2.ttf') format('truetype');
+  src: url('../fonts/Xiaomaoxihuanfeng-Light-2.woff2') format('woff2');
   font-weight: 300;
   font-display: swap;
 }
@@ -87,6 +87,7 @@ body {
   border-bottom: 2px solid transparent; white-space: nowrap;
 }
 .site-nav a:hover { color: var(--red); border-bottom-color: var(--red); }
+.site-nav a.active { color: var(--red); border-bottom-color: var(--red); }
 .site-nav a svg { width: 13px; height: 13px; flex: none; }
 .site-nav a.nav-summary { display: inline-flex; align-items: center; gap: 4px; }
 
@@ -117,6 +118,19 @@ body {
 .panel-head-text { flex: 1; min-width: 0; }
 .panel-title { font-size: 21px; font-weight: 700; letter-spacing: 0.3px; }
 .panel-desc { font-size: 13px; color: var(--gray); margin-top: 4px; }
+.panel-asof { font-size: 12px; color: var(--light); margin-top: 3px; }
+
+/* 热力图手机端年份切换（近 5 年 / 全部） */
+.hm-range-seg {
+  display: inline-flex; gap: 0; margin-bottom: 8px;
+  border: 1px solid #ddd; border-radius: 6px; overflow: hidden;
+}
+.hm-range-seg button {
+  font-family: inherit; font-size: 12.5px; padding: 6px 12px;
+  background: #fff; color: #555; border: none; cursor: pointer;
+}
+.hm-range-seg button.on { background: var(--red); color: #fff; }
+.hm-range-seg button + button { border-left: 1px solid #ddd; }
 
 .panel-body { position: relative; width: 100%; }
 .panel-body canvas { display: block; width: 100%; height: auto; }
@@ -221,7 +235,15 @@ body {
   html { scroll-padding-top: 152px; }
   .container { padding: 0 12px 50px; }
   .header-inner { padding: 12px 14px 6px; }
-  .site-nav { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+  .site-nav { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px;
+              scroll-snap-type: x proximity; position: relative; }
+  .site-nav::after {
+    content: ''; position: absolute; right: 0; top: 0; bottom: 4px; width: 42px;
+    background: linear-gradient(90deg, rgba(255,255,255,0), #fff);
+    pointer-events: none;
+  }
+  .site-nav a { min-height: 44px; display: inline-flex; align-items: center; padding: 0 10px; scroll-snap-align: start; }
+  .site-nav a.nav-summary { display: inline-flex; }
   .site-title { font-size: 20px; }
   .freshness-strip { padding: 5px 14px 8px; }
   .panel { padding: 18px 14px 16px; }
@@ -312,6 +334,6 @@ body {
     position: static; flex-direction: row; flex-wrap: wrap;
     margin-top: 10px; gap: 8px; transform: none;
   }
-  .banner-nav a { padding: 5px 12px; font-size: 12px; }
+  .banner-nav a { padding: 12px 16px; font-size: 13px; min-height: 44px; }
   .related-resources { padding: 16px 14px 18px; }
 }

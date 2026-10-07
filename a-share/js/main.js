@@ -45,6 +45,23 @@
     { id: 'panel-investor',  key: 'investor',      render: (d) => window.IS_render(d) }
   ];
 
+  // ── 导航高亮：当前面板对应导航项加 active（红下划线）──
+  const navLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#panel-"]'));
+  const navIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const id = '#' + e.target.id;
+      navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === id));
+      if (history.replaceState) history.replaceState(null, '', id);
+    });
+  }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
+  function bindNavHighlight() {
+    PANELS.forEach((p) => {
+      const el = document.getElementById(p.id);
+      if (el) navIO.observe(el);
+    });
+  }
+
   // ── 数据缓存（同一 key 只 fetch 一次）──
   const cache = {};
   async function loadData(key) {
@@ -56,6 +73,15 @@
     });
     cache[key] = p;
     return p;
+  }
+
+  /** 面板「数据截至」：从该面板 JSON 的 generated / asOf / updated 取，禁止硬编码 */
+  function applyAsOf(panelId, d) {
+    if (!d || typeof d !== 'object') return;
+    const v = d.generated || d.asOf || d.updated;
+    if (!v) return;
+    const el = document.querySelector('#' + panelId + ' .panel-asof');
+    if (el) el.textContent = '数据截至 ' + String(v).slice(0, 10);
   }
 
   async function init() {
@@ -137,6 +163,7 @@
       const d = await loadData(panel.key);
       if (!d) { showPanelError(panel.id, panel.key + ' 数据加载失败'); return; }
       panel.render(d);
+      applyAsOf(panel.id, d);
     } catch (e) {
       console.error('[' + panel.id + ']', e);
       showPanelError(panel.id, '数据渲染失败：' + e.message);
@@ -146,9 +173,36 @@
   function renderHeatmap(raw) {
     const canvas = document.getElementById('heatmap');
     if (!canvas) return;
+    applyAsOf('panel-heatmap', raw);
     // 原始 JSON → heatmap.js 期望的 { years, rows, metricsMeta } 结构
-    const payload = normalizeHeatmap(raw);
-    const draw = (opts) => window.SW_drawHeatmap(canvas, payload, opts);
+    const full = normalizeHeatmap(raw);
+    let cur = full;
+    const draw = (opts) => window.SW_drawHeatmap(canvas, cur, opts);
+
+    // 手机端年份截断：默认近 5 年，可切「全部年份」（桌面自动隐藏）
+    const segEl = document.createElement('div');
+    segEl.className = 'hm-range-seg';
+    segEl.innerHTML = '<button type="button" data-r="5">近5年</button><button type="button" data-r="all" class="on">全部年份</button>';
+    const wrap = canvas.parentElement;
+    if (wrap) wrap.insertBefore(segEl, canvas);
+    segEl.addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      segEl.querySelectorAll('button').forEach((x) => x.classList.toggle('on', x === b));
+      if (b.dataset.r === '5') {
+        const n = Math.min(5, full.years.length);
+        cur = { ...full, years: full.years.slice(-n), rows: full.rows.map((r) => ({ ...r, rets: (r.rets || []).slice(-n) })) };
+      } else {
+        cur = full;
+      }
+      draw({ exportMode: false, scale: window.devicePixelRatio || 1 });
+    });
+    if (window.innerWidth <= 768) {
+      segEl.style.display = 'inline-flex';
+      segEl.querySelector('button[data-r="5"]').click();
+    } else {
+      segEl.style.display = 'none';
+    }
     draw({ exportMode: false, scale: window.devicePixelRatio || 1 });
 
     // 导出按钮（热力图 exportMode 自带标题，只补来源）
@@ -192,6 +246,8 @@
   function renderLossTable() {
     const canvas = document.getElementById('lossTable');
     if (!canvas) return;
+    // 数据截至：与热力图同源 sw_returns.json
+    loadData('heatmap').then((d) => applyAsOf('panel-loss', d)).catch(() => {});
     const draw = (opts) => window.SW_drawLossTable(canvas, opts);
     draw({ exportMode: false, scale: window.devicePixelRatio || 1 });
 
@@ -222,8 +278,9 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => { bindNavHighlight(); init(); });
   } else {
+    bindNavHighlight();
     init();
   }
 })();

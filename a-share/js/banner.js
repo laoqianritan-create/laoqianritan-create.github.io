@@ -56,6 +56,17 @@
     const n = Math.min(dates.length, red.length, csi.length);
     if (n < 2) return;
 
+    // 数据截至（右上角：banner 数据每交易日由 build_site_data.py 更新，直观可见）
+    const asof = data.generated || data.asOf || data.updated || '';
+    if (asof) {
+      ctx.font = (exportMode ? 20 : 12 * S) + 'px ' + FONT_BODY;
+      ctx.textAlign = 'right';
+      ctx.textBaseline = 'top';
+      ctx.fillStyle = 'rgba(255,255,255,0.55)';
+      ctx.fillText('截至 ' + String(asof).slice(0, 10), W - (exportMode ? 210 : (isMobile ? 60 : 130)), exportMode ? 14 : 10);
+      ctx.textAlign = 'left';
+    }
+
     // ── 图表纵向灌满画布：左右留白对称、上下留白一致，文案叠在图表内部左上 ──
     const padL = exportMode ? 260 : (isMobile ? 50 : (padLInput || 150));  // 左：移动端按钮在下方，仅留小边距；桌面按按钮实际宽度
     const padR = exportMode ? 210 : (isMobile ? 60 : 130);   // 右：末端标签区
@@ -216,6 +227,7 @@
     wrap.innerHTML = '';
     const canvas = document.createElement('canvas');
     canvas.id = 'heroBannerCanvas';
+    canvas.style.cursor = 'crosshair';   // 「可交互看板」信号，非静态图
     wrap.appendChild(canvas);
     // 屏幕版：按按钮实际宽度 + 固定留白反推图表左边距（canvas 逻辑 px），随视口自适应
     const calcPadL = () => {
@@ -229,7 +241,115 @@
     };
     const doDraw = () => {
       draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1, padL: calcPadL() });
+      refreshGeo();   // 重绘后同步交互几何
     };
+
+    // ── 交互层：hover/touch → 十字线 + 数值 tooltip（banner 即看板）──
+    let overlay = null;
+    function buildOverlay() {
+      overlay = document.createElement('canvas');
+      overlay.id = 'heroBannerOverlay';
+      overlay.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:1;';
+      wrap.appendChild(overlay);
+    }
+    let geo = null;
+    function refreshGeo() {
+      const scale = window.devicePixelRatio || 1;
+      const W = canvas.width / scale, H = canvas.height / scale;
+      const n = Math.min(data.dates.length, data.redLow.length, data.csiAll.length);
+      if (n < 2) { geo = null; return; }
+      const isMobile = window.innerWidth < 768;
+      const padL = isMobile ? 50 : (calcPadL() || 150);
+      const padR = isMobile ? 60 : 130;
+      const padT = isMobile ? 32 : 40;
+      const padB = isMobile ? 32 : 40;
+      const plotL = padL, plotR = W - padR, plotT = padT, plotB = H - padB;
+      let maxV = 0;
+      for (let i = 0; i < n; i++) { if (data.redLow[i] > maxV) maxV = data.redLow[i]; }
+      maxV *= 1.06;
+      geo = { W, H, plotL, plotR, plotT, plotB, n, dates: data.dates, red: data.redLow, csi: data.csiAll, maxV,
+              xs: (i) => plotL + (i / (n - 1)) * (plotR - plotL), ys: (v) => plotB - (v / maxV) * (plotB - plotT) };
+    }
+    function drawOverlay(clientX, clientY) {
+      if (!overlay || !geo) return;
+      const r = canvas.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      const dpr = window.devicePixelRatio || 1;
+      overlay.width = Math.round(r.width * dpr);
+      overlay.height = Math.round(r.height * dpr);
+      const octx = overlay.getContext('2d');
+      octx.setTransform(1, 0, 0, 1, 0, 0);
+      octx.scale(dpr, dpr);
+      octx.clearRect(0, 0, r.width, r.height);
+      // CSS 坐标 → 逻辑坐标
+      const lx = (clientX - r.left) / r.width * geo.W;
+      const ly = (clientY - r.top) / r.height * geo.H;
+      if (lx < geo.plotL || lx > geo.plotR || ly < geo.plotT || ly > geo.plotB) return;
+      let i = Math.round((lx - geo.plotL) / (geo.plotR - geo.plotL) * (geo.n - 1));
+      i = Math.max(0, Math.min(geo.n - 1, i));
+      const k = r.width / geo.W;   // 逻辑 → CSS
+      const cx = geo.xs(i) * k;
+      const cyR = geo.ys(geo.red[i]) * k;
+      const cyC = geo.ys(geo.csi[i]) * k;
+      // 十字线
+      octx.strokeStyle = 'rgba(255,255,255,0.65)';
+      octx.setLineDash([5, 4]);
+      octx.lineWidth = 1;
+      octx.beginPath(); octx.moveTo(cx, 0); octx.lineTo(cx, r.height); octx.stroke();
+      octx.setLineDash([]);
+      // 数据点圆点
+      [[cx, cyR, '#ECD7A0'], [cx, cyC, '#FFFFFF']].forEach(([x, y, c]) => {
+        octx.beginPath(); octx.arc(x, y, 4, 0, Math.PI * 2);
+        octx.fillStyle = c; octx.fill();
+        octx.strokeStyle = '#7A0A24'; octx.lineWidth = 1.5; octx.stroke();
+      });
+      // tooltip：日期 + 两指数点位
+      const dateStr = String(geo.dates[i]).slice(0, 10);
+      const lines = [
+        [dateStr, 'rgba(255,255,255,0.95)', 12.5, true],
+        ['中证全指 ' + geo.csi[i].toLocaleString('zh-CN', { maximumFractionDigits: 0 }), '#FFFFFF', 13, false],
+        ['红利低波 ' + geo.red[i].toLocaleString('zh-CN', { maximumFractionDigits: 0 }), '#ECD7A0', 13, false]
+      ];
+      octx.font = '12.5px NotoSansSC, "Microsoft YaHei", sans-serif';
+      const w = Math.max(...lines.map((l) => octx.measureText(l[0]).width));
+      const tw = w + 22, th = 16 + 20 * 2 + 8;
+      let tx = cx + 14, ty = cyC - 8;
+      if (tx + tw > r.width - 6) tx = cx - tw - 14;
+      if (ty < 6) ty = 6;
+      if (ty + th > r.height - 6) ty = r.height - th - 6;
+      octx.fillStyle = 'rgba(20,5,12,0.82)';
+      octx.strokeStyle = 'rgba(255,255,255,0.35)';
+      octx.lineWidth = 1;
+      const rr = 8;
+      octx.beginPath();
+      octx.moveTo(tx + rr, ty); octx.arcTo(tx + tw, ty, tx + tw, ty + th, rr);
+      octx.arcTo(tx + tw, ty + th, tx, ty + th, rr); octx.arcTo(tx, ty + th, tx, ty, rr);
+      octx.arcTo(tx, ty, tx + tw, ty, rr); octx.closePath();
+      octx.fill(); octx.stroke();
+      let yy = ty + 14;
+      lines.forEach(([txt, color, fs, bold]) => {
+        octx.font = (bold ? '700 ' : '400 ') + fs + 'px NotoSansSC, "Microsoft YaHei", sans-serif';
+        octx.fillStyle = color;
+        octx.textAlign = 'left'; octx.textBaseline = 'top';
+        octx.fillText(txt, tx + 11, yy);
+        yy += 20;
+      });
+    }
+    function clearOverlay() {
+      if (!overlay) return;
+      const octx = overlay.getContext('2d');
+      octx.setTransform(1, 0, 0, 1, 0, 0);
+      octx.clearRect(0, 0, overlay.width, overlay.height);
+    }
+    buildOverlay();
+    refreshGeo();
+    canvas.addEventListener('mousemove', (e) => drawOverlay(e.clientX, e.clientY));
+    canvas.addEventListener('mouseleave', clearOverlay);
+    canvas.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) drawOverlay(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+    canvas.addEventListener('touchend', clearOverlay);
+
     // 立即绘制：不等字体（fallback 字体先出图，避免移动端/慢网字体加载挂起导致空白）
     try { doDraw(); } catch (e) { console.error('[banner] 首绘失败', e); }
     // 字体就绪后重绘一次（确保使用 Xiaomaoxihuanfeng）

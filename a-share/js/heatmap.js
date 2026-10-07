@@ -154,6 +154,19 @@
     const scale = opts.scale || (window.devicePixelRatio || 1);
 
     const { years, rows, metricsMeta = [] } = payload;
+    // 年度涨跌幅色阶：按全表 P2 / P98 分位动态截断（超界值用端点色 + 右上角小三角）
+    const annualVals = [];
+    rows.forEach((r) => (r.rets || []).forEach((v) => {
+      if (v !== null && v !== undefined && !Number.isNaN(v)) annualVals.push(v);
+    }));
+    annualVals.sort((a, b) => a - b);
+    let VMIN = -50, VMAX = 105;
+    if (annualVals.length) {
+      VMIN = annualVals[Math.floor(annualVals.length * 0.02)];
+      VMAX = annualVals[Math.max(0, Math.ceil(annualVals.length * 0.98) - 1)];
+      if (VMIN >= 0) VMIN = -1;
+      if (VMAX <= 0) VMAX = 1;
+    }
     const L = layout(years, rows, metricsMeta, exportMode);
 
     canvas.width = L.W * scale;
@@ -181,7 +194,7 @@
       ctx.font = '300 30px NotoSansSC, "Microsoft YaHei", sans-serif';
       ctx.fillText('2005 — 2026 · 31 个一级行业 · 红涨绿跌 · 右侧 4 列为年化复合收益率', L.W / 2, 175);
 
-      drawLegendBar(ctx, L);
+      drawLegendBar(ctx, L, VMIN, VMAX);
     }
 
     // ── 列标题（年度） ──
@@ -267,6 +280,16 @@
         ctx.strokeStyle = '#FFFFFF';
         ctx.lineWidth = 1;
         ctx.strokeRect(x + 0.5, y + 0.5, L.yearCellW - 1, L.cellH - 1);
+        // 超界（低于 P2 / 高于 P98）格：右上角白色小三角提示「两端已截断」
+        if (val !== null && val !== undefined && !Number.isNaN(val) && (val < VMIN || val > VMAX)) {
+          ctx.fillStyle = 'rgba(255,255,255,0.92)';
+          ctx.beginPath();
+          ctx.moveTo(x + L.yearCellW - 1, y + 1);
+          ctx.lineTo(x + L.yearCellW - 8, y + 1);
+          ctx.lineTo(x + L.yearCellW - 1, y + 8);
+          ctx.closePath();
+          ctx.fill();
+        }
         ctx.fillStyle = lum > 0.55 ? '#222222' : '#FFFFFF';
         ctx.font = `400 ${cellTxtSize}px NotoSansSC, "Microsoft YaHei", sans-serif`;
         ctx.textAlign = 'center';
@@ -391,7 +414,7 @@
     }
   };
 
-  function drawLegendBar(ctx, L) {
+  function drawLegendBar(ctx, L, vmin, vmax) {
     const barW = Math.round(L.W * 0.32);
     const barH = 22;
     const barX = (L.W - barW) / 2;
@@ -413,9 +436,9 @@
     ctx.font = '300 22px NotoSansSC, "Microsoft YaHei", sans-serif';
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'right';
-    ctx.fillText('−50%', barX - 12, barY + barH / 2);
+    ctx.fillText(fmtVal(vmin), barX - 12, barY + barH / 2);
     ctx.textAlign = 'left';
-    ctx.fillText('+100%', barX + barW + 12, barY + barH / 2);
+    ctx.fillText('+' + fmtVal(vmax), barX + barW + 12, barY + barH / 2);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
     ctx.fillText('0', barX + barW * 0.5, barY + barH + 6);
@@ -425,6 +448,6 @@
     ctx.font = '300 17px NotoSansSC, "Microsoft YaHei", sans-serif';
     ctx.textBaseline = 'top';
     ctx.textAlign = 'center';
-    ctx.fillText('右侧 CAGR 区使用更紧的色阶（−12% ~ +18%）以拉开年化数值差异', L.W / 2, barY + barH + 36);
+    ctx.fillText('年度色阶按 P2~P98 截断（两端格子带白色小三角）· 右侧 CAGR 区使用更紧的色阶（−12% ~ +18%）', L.W / 2, barY + barH + 36);
   }
 })();

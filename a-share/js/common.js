@@ -47,6 +47,10 @@
     const title = m.title || '';
     const desc = m.desc || '';
     const source = m.source || '数据来源：A股看板 · ashare.laoqianriritan.com';
+    // 导出日期（导出于 YYYY-MM-DD · 来源）
+    const _now = new Date();
+    const _dstr = `${_now.getFullYear()}-${String(_now.getMonth() + 1).padStart(2, '0')}-${String(_now.getDate()).padStart(2, '0')}`;
+    const footerText = `导出于 ${_dstr} · ${source}`;
     const needHeader = !m.noHeader && (title || desc);
     const W = off.width;
     const padX = Math.round(W * 0.022);
@@ -76,12 +80,12 @@
       }
     }
 
-    // 来源（独立 footer 条右下角，与图表下沿有固定留白）
+    // 来源（独立 footer 条右下角，与图表下沿有固定留白；含导出日期）
     fctx.textBaseline = 'bottom';
     fctx.textAlign = 'right';
     fctx.fillStyle = '#9a9a9a';
     fctx.font = `${Math.round(W * 0.0095)}px "NotoSansSC","PingFang SC","Microsoft YaHei",sans-serif`;
-    fctx.fillText(source, final.width - padX, final.height - Math.round(W * 0.014));
+    fctx.fillText(footerText, final.width - padX, final.height - Math.round(W * 0.014));
     fctx.textAlign = 'left';
 
     return new Promise((resolve, reject) => {
