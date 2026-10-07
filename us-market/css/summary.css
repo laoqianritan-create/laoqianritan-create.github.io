@@ -103,8 +103,9 @@
   line-height: 1.7;
   color: var(--text-secondary);
 }
-.summary-thumb-icon { color: var(--border); }
+.summary-thumb-icon { color: var(--text-secondary); }
 .summary-thumb-icon svg { width: 22px; height: 22px; display: block; }
+.summary-deco { width: 150px; height: 30px; display: block; }
 
 /* 汇总入口（侧栏顶部 + 横向菜单最左侧）——两处共用一套字号/图标对齐 */
 .nav-summary,

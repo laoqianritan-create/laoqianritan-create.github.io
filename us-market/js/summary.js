@@ -7,7 +7,7 @@
 // 只在进入视口时才实例化（55 张图，懒渲染避免卡顿）。
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261007151606';
+const DATA_URL = 'data/summary_thumbs.json?v=20261007152423';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 const grid = document.getElementById('summaryGrid');
@@ -57,6 +57,38 @@ function miniOption(rec) {
   };
 }
 
+function decoSvg(d) {
+  const W = 220, H = 44;
+  let inner = '';
+  const t = d && d.type;
+  if (t === 'yearstrip') {
+    const n = Math.max(Math.min(d.n || 40, 90), 2);
+    for (let i = 0; i < n; i++) {
+      const x = 4 + i * ((W - 8) / (n - 1));
+      const h = 10 + ((i * 37) % 22);
+      inner += `<line x1="${x.toFixed(1)}" y1="${(H / 2 - h / 2).toFixed(1)}" x2="${x.toFixed(1)}" y2="${(H / 2 + h / 2).toFixed(1)}" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="${(0.3 + (i % 5) * 0.14).toFixed(2)}"/>`;
+    }
+  } else if (t === 'squares') {
+    const n = Math.max(Math.min(d.n || 7, 9), 1);
+    const s = 12;
+    const gap = (W - 40 - n * s) / Math.max(n - 1, 1);
+    for (let i = 0; i < n; i++) {
+      const x = 20 + i * (s + gap);
+      inner += `<rect x="${x.toFixed(1)}" y="${(H / 2 - s / 2).toFixed(1)}" width="${s}" height="${s}" rx="2" fill="${i % 2 === 0 ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="1.2" opacity="${i % 2 === 0 ? 0.5 : 0.28}"/>`;
+    }
+  } else if (t === 'lines') {
+    const n = Math.max(Math.min(d.n || 4, 6), 1);
+    for (let i = 0; i < n; i++) {
+      const y = 10 + i * ((H - 20) / Math.max(n - 1, 1));
+      const w = W - 40 - i * 22;
+      inner += `<rect x="20" y="${y.toFixed(1)}" width="${w.toFixed(0)}" height="4" rx="2" fill="currentColor" opacity="${(0.45 - i * 0.06).toFixed(2)}"/>`;
+    }
+  } else if (t === 'quote') {
+    inner = `<text x="${W / 2}" y="${H / 2 + 2}" text-anchor="middle" dominant-baseline="middle" font-size="32" fill="currentColor" opacity="0.42">「」</text>`;
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" class="summary-deco" aria-hidden="true">${inner}</svg>`;
+}
+
 function renderCard(rec) {
   const a = document.createElement('a');
   a.className = 'summary-card';
@@ -75,7 +107,9 @@ function renderCard(rec) {
     thumb.classList.add('is-text');
     const icon = document.createElement('div');
     icon.className = 'summary-thumb-icon';
-    icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5h14M5 10h14M5 15h9" stroke-linecap="round"/></svg>';
+    icon.innerHTML = rec.deco
+      ? decoSvg(rec.deco)
+      : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 5h14M5 10h14M5 15h9" stroke-linecap="round"/></svg>';
     const txt = document.createElement('span');
     txt.textContent = rec.preview || '图表';
     thumb.appendChild(icon);
