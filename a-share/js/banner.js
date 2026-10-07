@@ -20,6 +20,7 @@
     const scale = opts.scale || 1;
     const W = exportMode ? 2400 : 1480;
     const H = exportMode ? 600 : 470;   // 屏幕版加高：容纳左侧标题 + 下方三导航按钮
+    const padLInput = opts.padL;        // 屏幕版动态传入（按钮区宽度，随视口自适应）
 
     canvas.width = W * scale;
     canvas.height = H * scale;
@@ -52,11 +53,11 @@
     const n = Math.min(dates.length, red.length, csi.length);
     if (n < 2) return;
 
-    // ── 图表纵向灌满画布：左侧留按钮区 + y 轴刻度，文案叠在图表内部左上 ──
-    const padL = exportMode ? 700 : 440;   // 左：按钮区 + 刻度区（按钮不叠图）
+    // ── 图表纵向灌满画布：左右留白对称、上下留白一致（40px），文案叠在图表内部左上 ──
+    const padL = exportMode ? 260 : (padLInput || 150);   // 左：屏幕版按按钮实际宽度自适应
     const padR = exportMode ? 320 : 190;   // 右：末端标签区
-    const padT = exportMode ? 235 : 110;   // 顶部：纵向灌满（图表上边界抬高）
-    const padB = exportMode ? 60 : 30;
+    const padT = exportMode ? 40 : 40;     // 顶部：与底部一致，纵向灌满
+    const padB = exportMode ? 40 : 40;
     const plotL = padL, plotR = W - padR;
     const plotT = padT, plotB = H - padB;
     const plotW = plotR - plotL;
@@ -69,8 +70,8 @@
     const ys = (v) => plotB - (v / maxV) * (plotB - plotT);
 
     // ── 文案：追寻适应与夏普之路（叠在图表内部左上角，与曲线重叠）──
-    const tx = exportMode ? 708 : plotL + 10;  // 图表内部（> plotL）
-    const ty = exportMode ? 88 : plotT + 8;    // 绘图区内顶部，叠在曲线上
+    const tx = exportMode ? 272 : plotL + 10;  // 图表内部（> plotL）
+    const ty = exportMode ? 52 : plotT + 8;    // 绘图区内顶部，叠在曲线上
     ctx.fillStyle = C_GOLD;
     ctx.font = (exportMode ? 56 : 34) + 'px ' + FONT_TITLE;
     ctx.textAlign = 'left';
@@ -204,8 +205,18 @@
     const canvas = document.createElement('canvas');
     canvas.id = 'heroBannerCanvas';
     wrap.appendChild(canvas);
+    // 屏幕版：按按钮实际宽度 + 固定留白反推图表左边距（canvas 逻辑 px），随视口自适应
+    const calcPadL = () => {
+      try {
+        const nav = document.querySelector('.banner-nav');
+        const cssW = wrap.getBoundingClientRect().width;
+        if (!nav || !cssW) return 150;
+        const navRight = nav.getBoundingClientRect().right - wrap.getBoundingClientRect().left;
+        return Math.ceil((navRight + 32) / (cssW / 1480)); // +32px 视口留白
+      } catch (e) { return 150; }
+    };
     const doDraw = () => {
-      draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+      draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1, padL: calcPadL() });
     };
     // 立即绘制：不等字体（fallback 字体先出图，避免移动端/慢网字体加载挂起导致空白）
     try { doDraw(); } catch (e) { console.error('[banner] 首绘失败', e); }
@@ -217,7 +228,7 @@
         setTimeout(() => {
           try {
             if (document.fonts.check('44px Xiaomaoxihuanfeng')) {
-              draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+              doDraw();
             }
           } catch (e) { /* 忽略 */ }
         }, 800);
