@@ -55,7 +55,7 @@
 
     // ── 图表纵向灌满画布：左右留白对称、上下留白一致（40px），文案叠在图表内部左上 ──
     const padL = exportMode ? 260 : (padLInput || 150);   // 左：屏幕版按按钮实际宽度自适应
-    const padR = exportMode ? 320 : 190;   // 右：末端标签区
+    const padR = exportMode ? 210 : 130;   // 右：末端标签区（已收窄，避免右侧留白过大）
     const padT = exportMode ? 40 : 40;     // 顶部：与底部一致，纵向灌满
     const padB = exportMode ? 40 : 40;
     const plotL = padL, plotR = W - padR;
@@ -72,16 +72,26 @@
     // ── 文案：追寻适应与夏普之路（叠在图表内部左上角，与曲线重叠）──
     const tx = exportMode ? 272 : plotL + 10;  // 图表内部（> plotL）
     const ty = exportMode ? 52 : plotT + 8;    // 绘图区内顶部，叠在曲线上
+    const cnText = '追寻适应与夏普之路';
+    const enText = 'ADAPTIVE ALLOCATION & SHARPE · 2006—2026';
     ctx.fillStyle = C_GOLD;
-    ctx.font = (exportMode ? 56 : 34) + 'px ' + FONT_TITLE;
+    ctx.font = (exportMode ? 64 : 40) + 'px ' + FONT_TITLE;
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
-    ctx.fillText('追寻适应与夏普之路', tx, ty);
+    ctx.fillText(cnText, tx, ty);
+    const cnW = ctx.measureText(cnText).width;
 
-    // 英文小字点缀（克制）
+    // 英文小字点缀：右端对齐中文右端（两端对齐），字号自适应 ≤ 中文宽度
     ctx.fillStyle = 'rgba(255,255,255,0.55)';
-    ctx.font = (exportMode ? 26 : 15) + 'px ' + FONT_BODY;
-    ctx.fillText('ADAPTIVE ALLOCATION & SHARPE · 2006—2026', tx, ty + (exportMode ? 108 : 60));
+    let enFs = exportMode ? 30 : 18;
+    ctx.font = enFs + 'px ' + FONT_BODY;
+    while (ctx.measureText(enText).width > cnW && enFs > 10) {
+      enFs -= 0.5;
+      ctx.font = enFs + 'px ' + FONT_BODY;
+    }
+    ctx.textAlign = 'right';
+    ctx.fillText(enText, tx + cnW, ty + (exportMode ? 112 : 68));
+    ctx.textAlign = 'left';
 
     // 浅色水平网格 + 左侧价格刻度标签（y 轴）
     ctx.strokeStyle = 'rgba(255,255,255,0.10)';
@@ -212,7 +222,7 @@
         const cssW = wrap.getBoundingClientRect().width;
         if (!nav || !cssW) return 150;
         const navRight = nav.getBoundingClientRect().right - wrap.getBoundingClientRect().left;
-        return Math.ceil((navRight + 32) / (cssW / 1480)); // +32px 视口留白
+        return Math.ceil((navRight + 52) / (cssW / 1480)); // +52px 视口留白（右移图表，杜绝与按钮重叠）
       } catch (e) { return 150; }
     };
     const doDraw = () => {
