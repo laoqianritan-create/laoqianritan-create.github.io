@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261008004541';
+} from '../utils.js?v=20261008004942';
 
 import {
   registerChart,
@@ -32,7 +32,7 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261008004541';
+} from '../chart-helpers.js?v=20261008004942';
 
 export function initPanelChanges(data) {
   const tbody = document.getElementById('changesTbody');
