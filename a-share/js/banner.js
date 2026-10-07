@@ -52,11 +52,11 @@
     const n = Math.min(dates.length, red.length, csi.length);
     if (n < 2) return;
 
-    // ── 图表灌满画布：仅左侧留窄 y 轴刻度区，文案叠在图表内部左上 ──
-    const padL = exportMode ? 220 : 170;   // 左：y 轴刻度区（窄）
+    // ── 图表纵向灌满画布：左侧留按钮区 + y 轴刻度，文案叠在图表内部左上 ──
+    const padL = exportMode ? 700 : 440;   // 左：按钮区 + 刻度区（按钮不叠图）
     const padR = exportMode ? 320 : 190;   // 右：末端标签区
-    const padT = exportMode ? 235 : 150;   // 顶部：让出标题区，y 轴刻度从标题下方开始
-    const padB = exportMode ? 60 : 36;
+    const padT = exportMode ? 235 : 110;   // 顶部：纵向灌满（图表上边界抬高）
+    const padB = exportMode ? 60 : 30;
     const plotL = padL, plotR = W - padR;
     const plotT = padT, plotB = H - padB;
     const plotW = plotR - plotL;
@@ -68,9 +68,9 @@
     const xs = (i) => plotL + (i / (n - 1)) * plotW;
     const ys = (v) => plotB - (v / maxV) * (plotB - plotT);
 
-    // ── 左侧文案：追寻适应与夏普之路（叠在图表内部左上角）──
-    const tx = exportMode ? 228 : 178;     // = plotL + 8，图表内部
-    const ty = exportMode ? 88 : 52;
+    // ── 文案：追寻适应与夏普之路（叠在图表内部左上角，与曲线重叠）──
+    const tx = exportMode ? 708 : plotL + 10;  // 图表内部（> plotL）
+    const ty = exportMode ? 88 : plotT + 8;    // 绘图区内顶部，叠在曲线上
     ctx.fillStyle = C_GOLD;
     ctx.font = (exportMode ? 56 : 34) + 'px ' + FONT_TITLE;
     ctx.textAlign = 'left';
