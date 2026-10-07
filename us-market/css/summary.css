@@ -65,6 +65,11 @@
   box-shadow: var(--shadow);
   transform: translateY(-1px);
 }
+/* 分类筛选靠 JS 设 [hidden]；上面的 display:flex 会盖掉浏览器默认的 [hidden]{display:none}，
+   结果点分类标签时 55 张卡片仍然全部显示（2026-10-04 实测）。这条必须有。 */
+.summary-card[hidden] {
+  display: none !important;
+}
 
 .summary-card-head {
   display: flex;
