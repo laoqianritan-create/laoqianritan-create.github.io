@@ -9,8 +9,21 @@
 // Mini charts use ECharts (loaded from CDN), stripped of axes/legend/tooltip, lazily created.
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261007155055';
+const DATA_URL = 'data/summary_thumbs.json?v=20261007161748';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
+
+/* Per-category theme colours (set by 老钱 on 2026-10-04):
+   Nasdaq 100 & Dow (cross) → green #389e0d; Fund Flows (flows) → red #cf1322.
+   Other categories keep the PALETTE default (single series = blue). Only colours already
+   defined in theme.css are used; multi-series cards in a themed category vary by opacity. */
+const CAT_THEME = { cross: '#389e0d', flows: '#cf1322' };
+const hexA = (hex, a) => `rgba(${(parseInt(hex.slice(1), 16) >> 16) & 255},${(parseInt(hex.slice(1), 16) >> 8) & 255},${parseInt(hex.slice(1), 16) & 255},${a})`;
+function seriesColor(rec, s, i) {
+  const theme = CAT_THEME[rec.cat];
+  if (!theme) return s.name ? PALETTE[i % PALETTE.length] : PALETTE[0];
+  if (!s.name || i === 0) return theme;
+  return hexA(theme, i === 1 ? 0.5 : 0.28);
+}
 
 const grid = document.getElementById('summaryGrid');
 let charts = [];
@@ -35,14 +48,14 @@ function miniOption(rec) {
       xAxis: { type: 'value', show: false, scale: true },
       yAxis: { type: 'value', show: false, scale: true },
       series: series.map(s => ({
-        type: 'scatter', data: s.xy, symbolSize: 3, color: PALETTE[0], silent: true,
+        type: 'scatter', data: s.xy, symbolSize: 3, color: CAT_THEME[rec.cat] || PALETTE[0], silent: true,
       })),
     };
   }
   return {
     ...base,
     series: series.map((s, i) => {
-      const color = s.name ? PALETTE[i % PALETTE.length] : PALETTE[0];
+      const color = seriesColor(rec, s, i);
       const data = (s.labels || []).map((l, j) => [l, s.pts[j]]);
       return {
         type: rec.kind === 'bar' ? 'bar' : 'line',

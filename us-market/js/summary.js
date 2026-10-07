@@ -8,8 +8,20 @@
 // 迷你图用页面已载入的 ECharts，剥掉坐标轴/图例/tooltip，进入视口才实例化（懒渲染）。
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261007155055';
+const DATA_URL = 'data/summary_thumbs.json?v=20261007161748';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
+
+/* 分类主题色（老钱 2026-10-04 指定）：
+   纳斯达克100与道琼斯(cross) → 绿 #389e0d；资金流(flows) → 红 #cf1322。
+   其余分类沿用 PALETTE 默认（单序列＝蓝）。取色只用 theme.css 既有色号，同分类多序列用同色透明度分档区分。 */
+const CAT_THEME = { cross: '#389e0d', flows: '#cf1322' };
+const hexA = (hex, a) => `rgba(${(parseInt(hex.slice(1), 16) >> 16) & 255},${(parseInt(hex.slice(1), 16) >> 8) & 255},${parseInt(hex.slice(1), 16) & 255},${a})`;
+function seriesColor(rec, s, i) {
+  const theme = CAT_THEME[rec.cat];
+  if (!theme) return s.name ? PALETTE[i % PALETTE.length] : PALETTE[0];
+  if (!s.name || i === 0) return theme;
+  return hexA(theme, i === 1 ? 0.5 : 0.28);
+}
 
 const grid = document.getElementById('summaryGrid');
 let charts = [];   // {el, rec}
@@ -35,14 +47,14 @@ function miniOption(rec) {
       xAxis: { type: 'value', show: false, scale: true },
       yAxis: { type: 'value', show: false, scale: true },
       series: series.map(s => ({
-        type: 'scatter', data: s.xy, symbolSize: 3, color: PALETTE[0], silent: true,
+        type: 'scatter', data: s.xy, symbolSize: 3, color: CAT_THEME[rec.cat] || PALETTE[0], silent: true,
       })),
     };
   }
   return {
     ...base,
     series: series.map((s, i) => {
-      const color = s.name ? PALETTE[i % PALETTE.length] : PALETTE[0];
+      const color = seriesColor(rec, s, i);
       const data = (s.labels || []).map((l, j) => [l, s.pts[j]]);
       return {
         type: rec.kind === 'bar' ? 'bar' : 'line',
