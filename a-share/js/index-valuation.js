@@ -46,29 +46,28 @@
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, W, H);
 
-    // 条形区（PE 线性刻度）
+    // 条形区（分位刻度：轨道即历史分位 0-100 色阶）
     const plotLeft = padL, plotRight = W - padR;
     const plotTop = padT, plotBottom = H - padB;
     const rowH = (plotBottom - plotTop) / n;
     const barH = Math.min(rowH * 0.52, exportMode ? 44 : 20);
+    const pxPct = (p) => plotLeft + (p / 100) * (plotRight - plotLeft);
 
-    // PE 范围
-    let maxPe = Math.max(...items.map((it) => it.pe_ttm), 30);
-    maxPe = Math.ceil(maxPe / 10) * 10;
-    const px = (v) => plotLeft + (v / maxPe) * (plotRight - plotLeft);
-
-    // 网格
+    // 底部 x 轴：分位刻度（与红绿轨道一致：0=历史最低 … 100=历史最高）
     ctx.lineWidth = 1;
-    [0, 10, 20, 30, 40, 50, 60].forEach((lv) => {
-      if (lv > maxPe) return;
-      const x = px(lv);
+    [0, 20, 40, 60, 80, 100].forEach((p) => {
+      const x = pxPct(p);
       ctx.strokeStyle = '#F0F0F0';
       ctx.beginPath(); ctx.moveTo(x, plotTop); ctx.lineTo(x, plotBottom); ctx.stroke();
       ctx.fillStyle = '#999999';
       ctx.font = (exportMode ? 22 : 11) + 'px NotoSansSC, sans-serif';
       ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-      ctx.fillText(String(lv), x, plotBottom + (exportMode ? 16 : 8));
+      ctx.fillText(String(p), x, plotBottom + (exportMode ? 16 : 8));
     });
+    ctx.fillStyle = '#AAAAAA';
+    ctx.font = (exportMode ? 20 : 10) + 'px NotoSansSC, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('历史分位 %', plotRight + (exportMode ? 16 : 10), plotBottom + (exportMode ? 16 : 8));
 
     // 行
     items.forEach((it, i) => {
@@ -96,8 +95,8 @@
       ctx.fillRect(plotLeft, cy - barH / 2, plotRight - plotLeft, barH);
       ctx.restore();
 
-      // 当前 PE 位置刻度线
-      const xv = px(it.pe_ttm);
+      // 当前 PE 位置刻度线 → 按历史分位定位（与红绿轨道 0-100 对齐）
+      const xv = pxPct(it.pct);
       ctx.strokeStyle = '#1A1A1A';
       ctx.lineWidth = exportMode ? 4 : 2;
       ctx.beginPath();
@@ -149,7 +148,7 @@
 
     // ── 悬浮提示 ──
     if (!exportMode) {
-      canvas.__ivData = { items, plotLeft, plotRight, plotTop, plotBottom, rowH, maxPe, px };
+      canvas.__ivData = { items, plotLeft, plotRight, plotTop, plotBottom, rowH };
       if (!canvas.__ivBound) {
         canvas.__ivBound = true;
         canvas.addEventListener('mousemove', (ev) => {
