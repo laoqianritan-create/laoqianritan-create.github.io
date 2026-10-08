@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-07",
+  "updated": "2026-10-08",
   "source": "Investment Company Institute · Weekly Combined Estimated ETF and Long-Term Fund Flows",
   "source_url": "https://www.ici.org/research/statistics/etfs/weekly-combined-estimated-etf-and-longterm-flows",
   "xls_url": "https://www.ici.org/combined_flows_data_2026.xls",
@@ -477,15 +477,27 @@
     },
     {
       "date": "2026-09-23",
-      "total": 20137.0,
-      "equity": 12875.0,
-      "equity_domestic": 5783.0,
-      "equity_world": 7093.0,
+      "total": 20143.0,
+      "equity": 12887.0,
+      "equity_domestic": 5795.0,
+      "equity_world": 7092.0,
       "hybrid": -1856.0,
-      "bond": 8162.0,
-      "bond_taxable": 7262.0,
-      "bond_municipal": 900.0,
+      "bond": 8156.0,
+      "bond_taxable": 7241.0,
+      "bond_municipal": 915.0,
       "commodity": 956.0
+    },
+    {
+      "date": "2026-09-30",
+      "total": -1969.0,
+      "equity": -4655.0,
+      "equity_domestic": -7326.0,
+      "equity_world": 2671.0,
+      "hybrid": -345.0,
+      "bond": 3455.0,
+      "bond_taxable": 4141.0,
+      "bond_municipal": -686.0,
+      "commodity": -424.0
     }
   ]
 }
