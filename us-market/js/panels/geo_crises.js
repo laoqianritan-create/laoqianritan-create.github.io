@@ -6,8 +6,8 @@
 //   以熊市版 15 条事件为准（位置用熊市版归一化坐标），样式取衰退版——红色竖线＋红框文本框、框内不带日期。
 // 口径：价格自 1927-12 起（原图 1921 起、1964 前月频）；CAGR 图例随月频线自算。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009184000';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009184000';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009221049';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009221049';
 
 // 15 条事件（规格书 01 §3.6 熊市版口径；样式取衰退版：红竖线＋红框、框内不带日期；y＝熊市版归一化高度）
 const EVENTS_BEAR = [

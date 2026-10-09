@@ -6,8 +6,8 @@
 //   the bear view's 15 events win for coverage/positions, the recession view's style wins (red line + red box, no date).
 // Caliber: price starts Dec 1927 (original starts 1921, monthly before 1964); the legend CAGR follows the monthly line.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009184000';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009184000';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009221049';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009221049';
 
 // 15 events (spec 01 §3.6 bear-view coverage; recession-view style: red line + red box, no date; bear-view heights)
 const EVENTS_BEAR = [
