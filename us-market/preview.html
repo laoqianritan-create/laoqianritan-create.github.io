@@ -6,7 +6,7 @@
   <title>新面板预览（待确认） · 美股复盘看板</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-  <link rel="stylesheet" href="style.css?v=20261009133748">
+  <link rel="stylesheet" href="style.css?v=20261009134529">
   <style>
     /* 临时预览页专用（确认上线后本页整体删除） */
     .preview-banner {
@@ -36,14 +36,28 @@
     <a href="/">返回主站</a>
   </div>
   <div class="preview-note">
-    流程：每个新面板先在这里过目 → 确认 → 从预览页迁入主站导航并正式部署。当前预览：0 个（九轮牛市 2026-10-09 已确认迁入主站）。下一个：广度图（市值/等权比率）。
+    流程：每个新面板先在这里过目 → 确认 → 从预览页迁入主站导航并正式部署。当前预览：1 个（广度图·市值/等权比值）。已上线：增速路径(图6)、九轮牛市(图13)。
   </div>
   <div class="preview-error" id="previewError"></div>
 
   <main class="preview-main">
+    <!-- 面板 2 · 广度图（Yardeni Breadth II 图1）：确认后此 section 迁回 site/index.html（届时补导出按钮） -->
+    <section class="panel" id="panel-mwew-ratio" data-category="preview">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">市值加权 vs 等权比值</h2>
+            <p class="panel-desc">比值＝标普500（市值加权）÷ 等权指数，2003-05 ＝ 1，日频 · 红带＝熊市（≥20%）、蓝带＝回调（10–20%）· 等权腿为 RSP（2003 年上市），原图自 1990 起，起点口径不同</p>
+          </div>
+        </div>
+        <div class="chart-container chart-standard" id="chartMwewRatio"></div>
+        <div class="metric-strip" id="mwewSummary"></div>
+      </div>
+    </section>
+
     <!-- 后续新面板按同样结构在此追加，并在 js/preview.js 注册 -->
   </main>
 
-  <script type="module" src="js/preview.js?v=20261009133748"></script>
+  <script type="module" src="js/preview.js?v=20261009134529"></script>
 </body>
 </html>
