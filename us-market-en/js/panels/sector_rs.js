@@ -1,15 +1,19 @@
-// panels/sector_rs.js · Sector relative strength (11 GICS sectors vs the S&P 500)
-// Data: site sp500_sector_rs.json (11 SPDR ETFs vs SPY, cumulative total-return ratio ×100, weekly) + sp500_sectors.json (11-color palette).
+// panels/sector_rs.js · Sub-sectors vs S&P 500 strength (11 GICS sectors ÷ index, relative-strength index)
+// Data: site sp500_sector_rs.json (11 SPDR ETFs vs SPY, cumulative total-return ratio ×100, weekly) + sp500_sectors.json (palette).
 // Caliber: relative strength = sector cumulative ÷ SPY cumulative × 100, June 2018 base ≈100; 100 = in line with the index.
-// The original uses LSEG sector indices ÷ S&P 500 (from 1990, per-chart scaling); the free source uses SPDR ETFs from 2018 — stated in the panel notes.
+// Interaction (user feedback 2026-10-09): default shows one sector (Information Technology); the legend square toggles
+// visibility (check = show, uncheck = hide); the last checked sector is fully opaque, other checked ones are translucent.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009143214';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009145221';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009143214';
+} from '../chart-helpers.js?v=20261009145221';
+
+const FOCUS_OPACITY = 1;
+const REST_OPACITY = 0.3;
 
 export function initSectorRsPanel(rsData, sectorsData) {
   const dom = document.getElementById('chartSectorRS');
@@ -41,6 +45,17 @@ export function initSectorRsPanel(rsData, sectorsData) {
     return ref ? { zh: s.en || s.zh, chg: lastV / ref - 1 } : null;
   }).filter(Boolean).sort((a, b) => b.chg - a.chg);
 
+  const sectorColor = zh => colorMap.get(zh) || '#2563eb';
+
+  const defaultSelected = {};
+  series.forEach((s, i) => { defaultSelected[s.en || s.zh] = i === 0; });
+  let focusName = series[0].en || series[0].zh;
+
+  const opacityPatch = () => series.map(s => ({
+    name: s.en || s.zh,
+    lineStyle: { opacity: (s.en || s.zh) === focusName ? FOCUS_OPACITY : REST_OPACITY },
+  }));
+
   function getOption() {
     return {
       animation: false,
@@ -49,12 +64,13 @@ export function initSectorRsPanel(rsData, sectorsData) {
         type: 'scroll',
         top: 0,
         left: 'center',
-        icon: 'roundRect',
-        itemWidth: 18,
-        itemHeight: 3,
+        icon: 'rect',
+        itemWidth: 12,
+        itemHeight: 12,
         itemGap: 14,
+        selected: defaultSelected,
         textStyle: { fontSize: 12, color: cssVar('--text-secondary') || '#666', fontFamily: CHART_FONT },
-        data: series.map(s => ({ name: s.en || s.zh, itemStyle: { color: colorMap.get(s.zh) || '#2563eb' } })),
+        data: series.map(s => ({ name: s.en || s.zh, itemStyle: { color: sectorColor(s.zh) } })),
       },
       xAxis: {
         type: 'time',
@@ -75,8 +91,8 @@ export function initSectorRsPanel(rsData, sectorsData) {
           type: 'line',
           data: s.points,
           showSymbol: false,
-          lineStyle: { width: 2, color: colorMap.get(s.zh) || '#2563eb' },
-          itemStyle: { color: colorMap.get(s.zh) || '#2563eb' },
+          lineStyle: { width: 2, color: sectorColor(s.zh), opacity: (s.en || s.zh) === focusName ? FOCUS_OPACITY : REST_OPACITY },
+          itemStyle: { color: sectorColor(s.zh) },
           emphasis: { focus: 'series' },
           z: 3,
         })),
@@ -86,6 +102,7 @@ export function initSectorRsPanel(rsData, sectorsData) {
           data: [],
           itemStyle: { color: 'rgba(150,150,150,0.35)' },
           tooltip: { show: false },
+          legendHoverLink: false,
           markArea: {
             silent: true,
             itemStyle: { color: 'rgba(150,150,150,0.18)' },
@@ -100,6 +117,7 @@ export function initSectorRsPanel(rsData, sectorsData) {
           type: 'line',
           data: [],
           tooltip: { show: false },
+          legendHoverLink: false,
           markLine: {
             silent: true,
             symbol: 'none',
@@ -132,6 +150,16 @@ export function initSectorRsPanel(rsData, sectorsData) {
   const chart = registerChart(echarts.init(dom));
   chart.setOption(getOption());
   chart._refreshTheme = () => chart.setOption(getOption(), true);
+
+  chart.on('legendselectchanged', e => {
+    const checked = series.filter(s => e.selected[s.en || s.zh]).map(s => s.en || s.zh);
+    if (e.selected[e.name] && checked.includes(e.name)) {
+      focusName = e.name;
+    } else if (checked.length) {
+      focusName = checked[0];
+    }
+    chart.setOption({ series: opacityPatch() });
+  });
 
   renderMetricStrip('sectorRsSummary', [
     buildMetricCard('Strongest', `${top.zh} ${formatNumber(top.v, 1)}`, `Base June 2018 = 100 · as of ${top.last}`),

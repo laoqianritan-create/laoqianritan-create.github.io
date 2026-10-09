@@ -3,25 +3,24 @@
 // 扩展方式：preview.html 加 section（与主站同 id）→ 本文件 import 面板函数 → loaders 注册。
 // 迁移后：老钱确认的面板迁入主站，此处同步删除其 section 与 loader。
 
-import { initSectorRsPanel } from './panels/sector_rs.js?v=20261009143214';
-import { initGeoCrisesPanel } from './panels/geo_crises.js?v=20261009143214';
-import { initGeoRecessionsPanel } from './panels/geo_recessions.js?v=20261009143214';
-import { initDrawdownSuitePanel } from './panels/drawdown_suite.js?v=20261009143214';
-import { initAthPathsPanel } from './panels/ath_paths.js?v=20261009143214';
+import { initSectorRsPanel } from './panels/sector_rs.js?v=20261009145221';
+import { initGeoCrisesPanel } from './panels/geo_crises.js?v=20261009145221';
+import { installPanelNotes } from './panel-notes.js?v=20261009145221';
+import { initDrawdownSuitePanel } from './panels/drawdown_suite.js?v=20261009145221';
+import { initAthPathsPanel } from './panels/ath_paths.js?v=20261009145221';
 
 const DATA = {
-  price: 'data/sp500_price.json?v=20261009143214',
-  drawdown: 'data/sp500_drawdowns.json?v=20261009143214',
-  sectorRS: 'data/sp500_sector_rs.json?v=20261009143214',
-  sectors: 'data/sp500_sectors.json?v=20261009143214',
-  century: 'data/sp500_century.json?v=20261009143214',
-  recessions: 'data/us_recessions.json?v=20261009143214',
+  price: 'data/sp500_price.json?v=20261009145221',
+  drawdown: 'data/sp500_drawdowns.json?v=20261009145221',
+  sectorRS: 'data/sp500_sector_rs.json?v=20261009145221',
+  sectors: 'data/sp500_sectors.json?v=20261009145221',
+  century: 'data/sp500_century.json?v=20261009145221',
+  recessions: 'data/us_recessions.json?v=20261009145221',
 };
 
 const loaders = {
   'panel-sector-rs': async () => initSectorRsPanel(await load('sectorRS'), await load('sectors')),
-  'panel-geo-crises': async () => initGeoCrisesPanel(await load('price'), await load('drawdown')),
-  'panel-geo-recessions': async () => initGeoRecessionsPanel(await load('century'), await load('recessions')),
+  'panel-geo-crises': async () => initGeoCrisesPanel(await load('price'), await load('drawdown'), await load('century'), await load('recessions')),
   'panel-dd-suite': async () => initDrawdownSuitePanel(await load('price'), await load('drawdown')),
   'panel-ath-paths': async () => initAthPathsPanel(await load('price')),
 };
@@ -45,3 +44,5 @@ async function boot() {
 }
 
 boot();
+// 看板说明折叠（与主站同一机制）：指标卡与 mini-desc 口径行折进「看板说明」
+installPanelNotes();

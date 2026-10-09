@@ -5,8 +5,8 @@
 // pct = end close / start close − 1. All 8 label pairs match the original exactly; band 9 is ongoing since 2024-01-19.
 // Implementation note: the original's red arrow segments are simplified to light-blue bands with red two-line labels.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009143214';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009143214';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009145221';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009145221';
 
 const INTERVALS = [
   { start: '1967-05-04', end: '1968-11-29', days: 575, pct: 0.149 },

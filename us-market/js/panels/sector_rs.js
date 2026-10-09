@@ -1,15 +1,19 @@
-// panels/sector_rs.js · 行业相对强弱（11 个一级行业 ÷ 标普，相对强弱指数）
+// panels/sector_rs.js · 子行业 / 标普500的强弱（11 个一级行业 ÷ 标普，相对强弱指数）
 // 数据：站内 sp500_sector_rs.json（11 只 SPDR vs SPY，全收益累计比 ×100，周频）+ sp500_sectors.json（11 色色板）。
 // 口径：相对强弱 = 行业累计 ÷ SPY 累计 × 100，2018-06 基期 ≈100（11 只 ETF 对齐起点）；100 = 与标普同步。
-// 原图为 LSEG 行业指数 ÷ 标普（1990 起、逐图各缩放），免费源用 SPDR ETF 代替，起点 2018，已写进行内说明。
+// 交互（2026-10-09 老钱反馈）：默认只展示一个行业（信息技术）；图例前小方块＝勾选开关（勾上显示、取消隐藏）；
+// 当前勾选的行业 100% 不透明，其余已勾选的行业半透明（焦点切换＝点它的方块）。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009143214';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009145221';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009143214';
+} from '../chart-helpers.js?v=20261009145221';
+
+const FOCUS_OPACITY = 1;
+const REST_OPACITY = 0.3;
 
 export function initSectorRsPanel(rsData, sectorsData) {
   const dom = document.getElementById('chartSectorRS');
@@ -21,7 +25,6 @@ export function initSectorRsPanel(rsData, sectorsData) {
   const gridColor = cssVar('--chart-grid') || '#f0f0f0';
   const textColor = cssVar('--text') || '#1a1a1a';
 
-  // 最新值 / 区间首尾（12 个月 ≈ 52 周窗口）
   const latestRows = series.map(s => ({
     zh: s.zh,
     v: s.points[s.points.length - 1]?.[1],
@@ -34,14 +37,25 @@ export function initSectorRsPanel(rsData, sectorsData) {
   const yoy = series.map(s => {
     const pts = s.points;
     const lastV = pts[pts.length - 1][1];
-    const anchor = pts[0][0];
     let ref = null;
-    for (const p of pts) { if (p[0] <= latestRows[0].last) { const d = (new Date(latestRows[0].last) - new Date(p[0])) / 86400000; if (d <= 400 && d >= 320) { ref = p[1]; break; } } }
+    for (const p of pts) {
+      const d = (new Date(latestRows[0].last) - new Date(p[0])) / 86400000;
+      if (d <= 400 && d >= 320) { ref = p[1]; break; }
+    }
     return ref ? { zh: s.zh, chg: lastV / ref - 1 } : null;
   }).filter(Boolean).sort((a, b) => b.chg - a.chg);
 
-  let vmin = Infinity, vmax = -Infinity;
-  for (const s of series) for (const p of s.points) { if (p[1] < vmin) vmin = p[1]; if (p[1] > vmax) vmax = p[1]; }
+  const sectorColor = zh => colorMap.get(zh) || '#2563eb';
+
+  // 默认只勾选第一个行业（信息技术）；焦点＝最后勾选的行业，其余已勾选的半透明
+  const defaultSelected = {};
+  series.forEach((s, i) => { defaultSelected[s.zh] = i === 0; });
+  let focusName = series[0].zh;
+
+  const opacityPatch = () => series.map(s => ({
+    name: s.zh,
+    lineStyle: { opacity: s.zh === focusName ? FOCUS_OPACITY : REST_OPACITY },
+  }));
 
   function getOption() {
     return {
@@ -51,12 +65,13 @@ export function initSectorRsPanel(rsData, sectorsData) {
         type: 'scroll',
         top: 0,
         left: 'center',
-        icon: 'roundRect',
-        itemWidth: 18,
-        itemHeight: 3,
+        icon: 'rect',
+        itemWidth: 12,
+        itemHeight: 12,
         itemGap: 14,
+        selected: defaultSelected,
         textStyle: { fontSize: 12, color: cssVar('--text-secondary') || '#666', fontFamily: CHART_FONT },
-        data: series.map(s => ({ name: s.zh, itemStyle: { color: colorMap.get(s.zh) || '#2563eb' } })),
+        data: series.map(s => ({ name: s.zh, itemStyle: { color: sectorColor(s.zh) } })),
       },
       xAxis: {
         type: 'time',
@@ -77,8 +92,8 @@ export function initSectorRsPanel(rsData, sectorsData) {
           type: 'line',
           data: s.points,
           showSymbol: false,
-          lineStyle: { width: 2, color: colorMap.get(s.zh) || '#2563eb' },
-          itemStyle: { color: colorMap.get(s.zh) || '#2563eb' },
+          lineStyle: { width: 2, color: sectorColor(s.zh), opacity: s.zh === focusName ? FOCUS_OPACITY : REST_OPACITY },
+          itemStyle: { color: sectorColor(s.zh) },
           emphasis: { focus: 'series' },
           z: 3,
         })),
@@ -88,6 +103,7 @@ export function initSectorRsPanel(rsData, sectorsData) {
           data: [],
           itemStyle: { color: 'rgba(150,150,150,0.35)' },
           tooltip: { show: false },
+          legendHoverLink: false,
           markArea: {
             silent: true,
             itemStyle: { color: 'rgba(150,150,150,0.18)' },
@@ -102,6 +118,7 @@ export function initSectorRsPanel(rsData, sectorsData) {
           type: 'line',
           data: [],
           tooltip: { show: false },
+          legendHoverLink: false,
           markLine: {
             silent: true,
             symbol: 'none',
@@ -134,6 +151,17 @@ export function initSectorRsPanel(rsData, sectorsData) {
   const chart = registerChart(echarts.init(dom));
   chart.setOption(getOption());
   chart._refreshTheme = () => chart.setOption(getOption(), true);
+
+  // 勾选方块＝显示/隐藏；最后勾选的行业 100% 显示，其余已勾选的半透明
+  chart.on('legendselectchanged', e => {
+    const checked = series.filter(s => e.selected[s.zh]).map(s => s.zh);
+    if (e.selected[e.name] && checked.includes(e.name)) {
+      focusName = e.name;
+    } else if (checked.length) {
+      focusName = checked[0];
+    }
+    chart.setOption({ series: opacityPatch() });
+  });
 
   renderMetricStrip('sectorRsSummary', [
     buildMetricCard('累计最强', `${top.zh} ${formatNumber(top.v, 1)}`, `基期 2018-06 ＝ 100 · 截至 ${top.last}`),

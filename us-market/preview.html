@@ -6,7 +6,7 @@
   <title>新面板预览（待确认） · 美股复盘看板</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-  <link rel="stylesheet" href="style.css?v=20261009143214">
+  <link rel="stylesheet" href="style.css?v=20261009145221">
   <style>
     /* 临时预览页专用（确认上线后本页整体删除） */
     .preview-banner {
@@ -36,7 +36,7 @@
     <a href="/">返回主站</a>
   </div>
   <div class="preview-note">
-    流程：每个新面板先在这里过目 → 确认 → 从预览页迁入主站导航并正式部署。当前预览：5 组新面板一次展示（行业相对强弱 / 地缘危机两视角 / 回撤三件套 / 创新高之路）。已上线：增速路径(图6)、九轮牛市(图13)、市值/等权比值。已上线：增速路径(图6)、九轮牛市(图13)、市值/等权比值。下一个：行业相对强弱（11 个一级行业）。
+    流程：新面板先在这里过目 → 确认 → 迁入主站正式部署。当前预览：4 组（子行业强弱 / 地缘政治危机合并版 / 回撤与牛熊专题 / 创新高之路）。已上线：增速路径、九轮牛市、市值/等权比值。
   </div>
   <div class="preview-error" id="previewError"></div>
 
@@ -46,8 +46,9 @@
       <div class="panel-inner">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">行业相对强弱（11 个一级行业）</h2>
-            <p class="panel-desc">相对强弱＝行业累计 ÷ 标普500(SPY) 累计 ×100，2018-06 基期 ≈100、周频 · 100 虚线＝与标普同步 · 原图为 LSEG 行业指数 ÷ 标普（1990 起），免费源用 11 只 SPDR ETF 代替，起点 2018</p>
+            <h2 class="panel-title">子行业 / 标普500的强弱</h2>
+            <p class="panel-desc">11 个一级行业对标普500 的相对强弱，2018-06 ＝ 100（周频）</p>
+            <p class="mini-desc">图例前方块＝勾选开关（勾上显示、取消隐藏），默认只显示一个行业；最后勾选者 100% 显示、其余已勾选者半透明 · 100 虚线＝与标普同步 · 原图为 LSEG 行业指数 ÷ 标普（1990 起），免费源用 11 只 SPDR ETF，起点 2018</p>
           </div>
         </div>
         <div class="chart-container chart-standard" id="chartSectorRS"></div>
@@ -60,26 +61,13 @@
       <div class="panel-inner">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">地缘政治危机·熊市视角</h2>
-            <p class="panel-desc">标普500 价格指数（对数轴）＋粉色熊市带＋15 条事件标注（1930 关税战→2026 海湾战争三，位置按原图归一化坐标复刻）· 本图自 1927-12 起、全程日频（原图 1921 起、1964 前月频）</p>
+            <h2 class="panel-title">地缘政治危机</h2>
+            <p class="panel-desc">标普500 与 15 次地缘政治危机（对数轴，1927 年以来）</p>
+            <p class="mini-desc">图例勾选维度：粉带＋带日期事件框＝熊市视角（默认开）；灰带＋红竖线无日期事件框＝衰退视角（默认关，勾选后价格线切为月频，原 geo_fig3 口径）· 事件位置按原图归一化坐标复刻 · 本图自 1927-12 起（原图 1921 起、1964 前月频）· 赎罪日战争按史实取 1973-10-06</p>
           </div>
         </div>
         <div class="chart-container chart-standard" id="chartGeoCrises"></div>
         <div class="metric-strip" id="geoCrisesSummary"></div>
-      </div>
-    </section>
-
-    <!-- 面板 5 · 地缘政治危机·衰退视角（geo_fig3） -->
-    <section class="panel" id="panel-geo-recessions" data-category="preview">
-      <div class="panel-inner">
-        <div class="panel-header">
-          <div>
-            <h2 class="panel-title">地缘政治危机·衰退视角</h2>
-            <p class="panel-desc">月频标普500（对数轴）＋灰色 NBER 衰退带＋红竖线与 13 条事件文本框（按原图框内不带日期）· 图例内嵌长期年化（原图 Jan1921–Apr2026 为 6.72%，本图口径不同）· 本图 1927-12 起、月末价</p>
-          </div>
-        </div>
-        <div class="chart-container chart-standard" id="chartGeoRecessions"></div>
-        <div class="metric-strip" id="geoRecessionsSummary"></div>
       </div>
     </section>
 
@@ -88,8 +76,9 @@
       <div class="panel-inner">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">回撤与牛熊专题（三件套）</h2>
-            <p class="panel-desc">① 熊市持续天数史 ② 熊市跌幅史 ③ 全史价格与回撤带（红＝熊市 ≥20%、蓝＝回调 10–20%，悬停显示期间跌幅与天数）· 站内口径＝峰→谷、收盘对收盘、1928 起</p>
+            <h2 class="panel-title">回撤与牛熊专题</h2>
+            <p class="panel-desc">1928 年以来的熊市天数、跌幅与全史回撤带</p>
+            <p class="mini-desc">三张图：① 熊市持续天数史 ② 熊市跌幅史 ③ 全史价格与回撤带（红＝熊市 ≥20%、蓝＝回调 10–20%，悬停显示期间跌幅与天数）· 口径＝峰→谷、收盘对收盘；本站 19 段 ≠ 原图 23 段（1930 年代连续下跌合并计段）· 锚点与原图一致：2000 段 929 天/−49.1%、2007 段 517 天/−56.8%</p>
           </div>
         </div>
         <div class="panel-desc" style="font-weight:600;margin:10px 0 4px">① 熊市持续天数史（天）</div>
@@ -107,8 +96,9 @@
       <div class="panel-inner">
         <div class="panel-header">
           <div>
-            <h2 class="panel-title">创新高之路（恢复期高点 → 下一个新高）</h2>
-            <p class="panel-desc">≥20% 熊市见底后首次收上历史前高的日期 → 下一轮 ≥20% 熊市前高 · 浅蓝带＋红框标签＝天数/涨幅（自然日）· 8 段与原图逐位对拍一致（0 天 / ≤0.05pp），第 9 段 2024-01-19 起进行中 · 原图红横段箭头简化为红框标签</p>
+            <h2 class="panel-title">创新高之路</h2>
+            <p class="panel-desc">1964 年以来标普500 从恢复期高点到下一个新高的历程（对数轴）</p>
+            <p class="mini-desc">浅蓝带＝「≥20% 熊市见底后首次收上历史前高 → 下一轮 ≥20% 熊市前高」，红框标签＝天数/涨幅（自然日）· 8 段与原图逐位对拍一致（0 天 / ≤0.05pp），第 9 段 2024-01-19 起进行中 · 原图红横段箭头简化为红框标签</p>
           </div>
         </div>
         <div class="chart-container chart-standard" id="chartAthPaths"></div>
@@ -119,6 +109,6 @@
     <!-- 后续新面板按同样结构在此追加，并在 js/preview.js 注册 -->
   </main>
 
-  <script type="module" src="js/preview.js?v=20261009143214"></script>
+  <script type="module" src="js/preview.js?v=20261009145221"></script>
 </body>
 </html>
