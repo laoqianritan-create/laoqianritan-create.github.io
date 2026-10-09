@@ -2,13 +2,13 @@
 // 形式复刻 Yardeni growth-paths Figure 13；数据复用站内 sp500_price.json（无新数据源）。
 // 九轮起止日期逐字读自原图图例（本轮规格书 01），涨幅已与本地日线对拍 9/9 = 0.0pp。
 
-import { CHART_FONT, cssVar, formatPercent } from '../utils.js?v=20261009111325';
+import { CHART_FONT, cssVar, formatPercent } from '../utils.js?v=20261009132918';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009111325';
+} from '../chart-helpers.js?v=20261009132918';
 
 // 原图图例逐字（2026-10-08）；end=null 表示进行中
 // 颜色按年代分配（老钱 2026-10-09 反馈「历史轮次全灰无法区分，改用多色」）；
@@ -26,10 +26,10 @@ const RUNS = [
 ];
 
 
-function fmtMDY(iso) {
+function fmtYM(iso) {
+  // 老钱 2026-10-09 反馈：图例只留 yyyy/mm（日与涨幅图上已体现）
   const d = new Date(iso + 'T00:00:00');
-  const p = n => String(n).padStart(2, '0');
-  return `${p(d.getMonth() + 1)}/${p(d.getDate())}/${String(d.getFullYear()).slice(2)}`;
+  return `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}`;
 }
 
 export function initBullRunsPanel(priceData) {
@@ -76,8 +76,8 @@ export function initBullRunsPanel(priceData) {
   const textColor = cssVar('--text') || '#1a1a1a';
 
   function legendName(r) {
-    const end = r.open ? '?' : fmtMDY(r.endUsed);
-    return `${fmtMDY(r.startUsed)} - ${end} (${r.pct.toFixed(1)}%)`;
+    const end = r.open ? '?' : fmtYM(r.endUsed);
+    return `${fmtYM(r.startUsed)} - ${end}`;
   }
 
   function getOption() {
@@ -156,10 +156,10 @@ export function initBullRunsPanel(priceData) {
         borderColor: cssVar('--border') || '#e8e8e8',
         textStyle: { fontSize: 13, color: textColor, fontFamily: CHART_FONT },
         formatter: params => {
+          // 老钱 2026-10-09 反馈：悬停信息必须带图例颜色，否则分辨不清——用 params.marker 拼彩色圆点
           const rows = params
             .filter(p => p.value && Array.isArray(p.value))
-            .slice(0, 4)
-            .map(p => `${p.seriesName}<br/>　第 ${p.value[0]} 个交易日: <b>${formatPercent(p.value[1], 1)}</b>`);
+            .map(p => `${p.marker}${p.seriesName}<br/>　第 ${p.value[0]} 个交易日: <b>${formatPercent(p.value[1], 1)}</b>`);
           if (!rows.length) return '';
           return rows.join('<br/>');
         },
@@ -174,9 +174,9 @@ export function initBullRunsPanel(priceData) {
 
   renderMetricStrip('bullRunsSummary', [
     buildMetricCard('轮数', `${runs.length} 轮`, `1966 年起 · ${runs.filter(r => !r.open).length} 轮已结束、${runs.filter(r => r.open).length} 轮进行中`),
-    buildMetricCard('累计最高', `${top.pct.toFixed(1)}%`, `${fmtMDY(top.startUsed)} → ${top.open ? '?' : fmtMDY(top.endUsed)}`),
-    buildMetricCard('最长一轮', `${longest.days} 个交易日`, `${fmtMDY(longest.startUsed)} → ${fmtMDY(longest.endUsed)} · +${longest.pct.toFixed(1)}%`),
-    buildMetricCard('当前一轮', current ? `+${current.pct.toFixed(1)}%` : '--', current ? `${fmtMDY(current.startUsed)} 起 · 第 ${current.days} 个交易日` : '无进行中'),
+    buildMetricCard('累计最高', `${top.pct.toFixed(1)}%`, `${fmtYM(top.startUsed)} → ${top.open ? '?' : fmtYM(top.endUsed)}`),
+    buildMetricCard('最长一轮', `${longest.days} 个交易日`, `${fmtYM(longest.startUsed)} → ${fmtYM(longest.endUsed)} · +${longest.pct.toFixed(1)}%`),
+    buildMetricCard('当前一轮', current ? `+${current.pct.toFixed(1)}%` : '--', current ? `${fmtYM(current.startUsed)} 起 · 第 ${current.days} 个交易日` : '无进行中'),
     buildMetricCard('对拍', '9/9 · 0.0pp', '九轮涨幅与原图图例逐位一致（2026-10-08 实测）'),
   ]);
 }

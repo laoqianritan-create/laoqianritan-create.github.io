@@ -2,10 +2,10 @@
 // 新面板先在 preview.html 过目 → 老钱确认 → 迁入 index.html 正式上线，本页随之删除。
 // 扩展方式：preview.html 加 section（与主站同 id）→ 本文件 import 面板函数 → loaders 注册。
 
-import { initBullRunsPanel } from './panels/bull_runs.js?v=20261009111325';
+import { initBullRunsPanel } from './panels/bull_runs.js?v=20261009132918';
 
 const DATA = {
-  price: 'data/sp500_price.json?v=20261009111325',
+  price: 'data/sp500_price.json?v=20261009132918',
 };
 
 const loaders = {

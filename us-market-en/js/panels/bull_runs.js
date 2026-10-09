@@ -2,13 +2,13 @@
 // Mirrors Yardeni growth-paths Figure 13; reuses site sp500_price.json (no new data source).
 // Run dates transcribed from the original legend (spec doc 01, 2026-10-08); returns validated 9/9 = 0.0pp.
 
-import { CHART_FONT, cssVar, formatPercent } from '../utils.js?v=20261009111325';
+import { CHART_FONT, cssVar, formatPercent } from '../utils.js?v=20261009132918';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009111325';
+} from '../chart-helpers.js?v=20261009132918';
 
 // Original legend (2026-10-08); end=null means still running
 // 颜色按年代分配（老钱 2026-10-09 反馈「历史轮次全灰无法区分，改用多色」）；
@@ -25,10 +25,10 @@ const RUNS = [
   { start: '2022-10-12', end: null, orig: 118.1, color: '#cf1322' },
 ];
 
-function fmtMDY(iso) {
+function fmtYM(iso) {
+  // 老钱 2026-10-09 反馈：图例只留 yyyy/mm（日与涨幅图上已体现）
   const d = new Date(iso + 'T00:00:00');
-  const p = n => String(n).padStart(2, '0');
-  return `${p(d.getMonth() + 1)}/${p(d.getDate())}/${String(d.getFullYear()).slice(2)}`;
+  return `${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}`;
 }
 
 export function initBullRunsPanel(priceData) {
@@ -74,8 +74,8 @@ export function initBullRunsPanel(priceData) {
   const textColor = cssVar('--text') || '#1a1a1a';
 
   function legendName(r) {
-    const end = r.open ? '?' : fmtMDY(r.endUsed);
-    return `${fmtMDY(r.startUsed)} - ${end} (${r.pct.toFixed(1)}%)`;
+    const end = r.open ? '?' : fmtYM(r.endUsed);
+    return `${fmtYM(r.startUsed)} - ${end}`;
   }
 
   function getOption() {
@@ -154,10 +154,10 @@ export function initBullRunsPanel(priceData) {
         borderColor: cssVar('--border') || '#e8e8e8',
         textStyle: { fontSize: 13, color: textColor, fontFamily: CHART_FONT },
         formatter: params => {
+          // Legend-colored marker per row so series are tellable apart on hover
           const rows = params
             .filter(p => p.value && Array.isArray(p.value))
-            .slice(0, 4)
-            .map(p => `${p.seriesName}<br/>　day ${p.value[0]}: <b>${formatPercent(p.value[1], 1)}</b>`);
+            .map(p => `${p.marker}${p.seriesName}<br/>　day ${p.value[0]}: <b>${formatPercent(p.value[1], 1)}</b>`);
           if (!rows.length) return '';
           return rows.join('<br/>');
         },
@@ -172,9 +172,9 @@ export function initBullRunsPanel(priceData) {
 
   renderMetricStrip('bullRunsSummary', [
     buildMetricCard('Runs', `${runs.length}`, `Since 1966 · ${runs.filter(r => !r.open).length} ended, ${runs.filter(r => r.open).length} running`),
-    buildMetricCard('Best', `${top.pct.toFixed(1)}%`, `${fmtMDY(top.startUsed)} → ${top.open ? '?' : fmtMDY(top.endUsed)}`),
-    buildMetricCard('Longest', `${longest.days} trading days`, `${fmtMDY(longest.startUsed)} → ${fmtMDY(longest.endUsed)} · +${longest.pct.toFixed(1)}%`),
-    buildMetricCard('Current run', current ? `+${current.pct.toFixed(1)}%` : '--', current ? `since ${fmtMDY(current.startUsed)} · day ${current.days}` : 'none running'),
+    buildMetricCard('Best', `${top.pct.toFixed(1)}%`, `${fmtYM(top.startUsed)} → ${top.open ? '?' : fmtYM(top.endUsed)}`),
+    buildMetricCard('Longest', `${longest.days} trading days`, `${fmtYM(longest.startUsed)} → ${fmtYM(longest.endUsed)} · +${longest.pct.toFixed(1)}%`),
+    buildMetricCard('Current run', current ? `+${current.pct.toFixed(1)}%` : '--', current ? `since ${fmtYM(current.startUsed)} · day ${current.days}` : 'none running'),
     buildMetricCard('Cross-check', '9/9 · 0.0pp', 'All nine returns match the original legend (tested 2026-10-08)'),
   ]);
 }

@@ -2,13 +2,13 @@
 // Data: data/sp500_bull_markets.json (local daily series sliced by the nine Yardeni bull-market windows)
 // Layout mirrors Yardeni Research's "S&P 500 Bull Markets Since 1966": X = trading days since start, 8 gray + 1 red (ongoing).
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009111325';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009132918';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009111325';
+} from '../chart-helpers.js?v=20261009132918';
 
 const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
