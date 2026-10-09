@@ -2,14 +2,14 @@
 // 数据：sp500_price.json（日频价格）+ sp500_drawdowns.json（熊市带）+ sp500_century.json（月频价格，衰退视角线）
 //       + us_recessions.json（FRED USREC 衰退带）。
 // 合并说明（2026-10-09 老钱反馈）：原 geo_fig2 / geo_fig3 两图并为一张，图例勾选展示维度——
-//   熊市带(19段)＋事件·熊市版(15条, 带日期) 默认开；衰退带(15段)＋事件·衰退版(13条, 红竖线无日期) 默认关。
-//   两个事件集的标签位置各自按原图归一化坐标摆放；同时勾选两套事件集会同框（同名事件出现两条，均为原图位置）。
+//   熊市带(19段)＋事件标注(15条) 默认开；衰退带(15段) 默认关。事件口径已合并（2026-10-09 老钱二轮反馈）：
+//   以熊市版 15 条事件为准（位置用熊市版归一化坐标），样式取衰退版——红色竖线＋红框文本框、框内不带日期。
 // 口径：价格自 1927-12 起（原图 1921 起、1964 前月频）；CAGR 图例随月频线自算。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009150347';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009150347';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009151816';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009151816';
 
-// geo_fig2：15 条事件（规格书 01 §3.6，框内带日期，y=归一化高度）
+// 15 条事件（规格书 01 §3.6 熊市版口径；样式取衰退版：红竖线＋红框、框内不带日期；y＝熊市版归一化高度）
 const EVENTS_BEAR = [
   { d: '1930-06-17', zh: '斯姆特-霍利关税', y: 0.40 },
   { d: '1939-09-01', zh: '德国入侵波兰', y: 0.53 },
@@ -26,23 +26,6 @@ const EVENTS_BEAR = [
   { d: '2003-03-20', zh: '海湾战争二', y: 0.60 },
   { d: '2022-02-22', zh: '俄罗斯入侵乌克兰', y: 0.66 },
   { d: '2026-02-28', zh: '海湾战争三', y: 0.76 },
-];
-
-// geo_fig3：13 条事件（规格书 01 §4.6，红竖线 + 无日期文本框）
-const EVENTS_REC = [
-  { d: '1930-06-17', zh: '斯姆特-霍利关税', y: 0.40 },
-  { d: '1939-09-01', zh: '德国入侵波兰', y: 0.45 },
-  { d: '1941-12-07', zh: '珍珠港', y: 0.30 },
-  { d: '1950-06-25', zh: '朝鲜战争爆发', y: 0.18 },
-  { d: '1956-10-29', zh: '苏伊士运河危机', y: 0.45 },
-  { d: '1962-10-16', zh: '古巴导弹危机', y: 0.33 },
-  { d: '1967-06-05', zh: '六日战争', y: 0.52 },
-  { d: '1973-10-06', zh: '赎罪日战争', y: 0.37 },
-  { d: '1979-01-16', zh: '伊朗革命', y: 0.57 },
-  { d: '1990-08-02', zh: '伊拉克入侵科威特', y: 0.50 },
-  { d: '2001-09-11', zh: '9·11 恐袭', y: 0.84 },
-  { d: '2022-02-22', zh: '俄罗斯入侵乌克兰', y: 0.79 },
-  { d: '2023-10-07', zh: '哈马斯袭击以色列', y: 0.64 },
 ];
 
 const Y_MIN = 10;
@@ -74,8 +57,7 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
   const LEG_PRICE = '标普500 价格指数';
   const LEG_BEAR = '熊市带（≥20%）';
   const LEG_REC = '衰退带（NBER）';
-  const LEG_EV_BEAR = '事件·熊市版（15）';
-  const LEG_EV_REC = '事件·衰退版（13）';
+  const LEG_EV = '事件标注（15）';
 
   function getOption() {
     return {
@@ -92,16 +74,14 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
           [LEG_PRICE]: true,
           [LEG_BEAR]: true,
           [LEG_REC]: false,
-          [LEG_EV_BEAR]: true,
-          [LEG_EV_REC]: false,
+          [LEG_EV]: true,
         },
         textStyle: { fontSize: 12, color: cssVar('--text-secondary') || '#666', fontFamily: CHART_FONT },
         data: [
           { name: LEG_PRICE, itemStyle: { color: blueColor } },
           { name: LEG_BEAR, itemStyle: { color: 'rgba(244,114,182,0.55)' } },
           { name: LEG_REC, itemStyle: { color: 'rgba(150,150,150,0.5)' } },
-          { name: LEG_EV_BEAR, itemStyle: { color: '#666' } },
-          { name: LEG_EV_REC, itemStyle: { color: '#ef4444' } },
+          { name: LEG_EV, itemStyle: { color: '#ef4444' } },
         ],
       },
       xAxis: {
@@ -140,35 +120,7 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
           z: 0,
         },
         {
-          name: LEG_EV_BEAR,
-          type: 'line',
-          data: [],
-          itemStyle: { color: '#666' },
-          tooltip: { show: false },
-          legendHoverLink: false,
-          markPoint: {
-            symbol: 'circle',
-            symbolSize: 3,
-            itemStyle: { color: '#666' },
-            label: {
-              show: true,
-              position: 'top',
-              distance: 3,
-              fontSize: 10,
-              fontFamily: CHART_FONT,
-              color: textColor,
-              backgroundColor: 'rgba(255,255,255,0.88)',
-              borderColor: cssVar('--border') || '#e8e8e8',
-              borderWidth: 1,
-              padding: [2, 4],
-              formatter: p => `${p.data.zh}\n${p.data.dt}`,
-            },
-            data: EVENTS_BEAR.map(e => ({ name: e.zh, zh: e.zh, dt: e.d, coord: [e.d, yFromNorm(e.y)] })),
-          },
-          z: 2,
-        },
-        {
-          name: LEG_EV_REC,
+          name: LEG_EV,
           type: 'line',
           data: [],
           itemStyle: { color: '#ef4444' },
@@ -179,7 +131,7 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
             symbol: 'none',
             lineStyle: { color: '#ef4444', width: 1, type: 'solid', opacity: 0.75 },
             label: { show: false },
-            data: EVENTS_REC.map(e => ({ xAxis: e.d })),
+            data: EVENTS_BEAR.map(e => ({ xAxis: e.d })),
           },
           markPoint: {
             symbol: 'circle',
@@ -198,7 +150,7 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
               padding: [2, 4],
               formatter: p => p.data.zh,
             },
-            data: EVENTS_REC.map(e => ({ name: e.zh, zh: e.zh, coord: [e.d, yFromNorm(e.y)] })),
+            data: EVENTS_BEAR.map(e => ({ name: e.zh, zh: e.zh, coord: [e.d, yFromNorm(e.y)] })),
           },
           z: 2,
         },
@@ -248,8 +200,8 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
   });
 
   renderMetricStrip('geoCrisesSummary', [
-    buildMetricCard('熊市视角', `${EVENTS_BEAR.length} 事件 / ${bearBands.length} 熊市带`, '粉带＋带日期事件框（原 geo_fig2 形态，默认开）'),
-    buildMetricCard('衰退视角', `${EVENTS_REC.length} 事件 / ${recBands.length} 衰退带`, '灰带＋红竖线无日期事件框、月频线（原 geo_fig3 形态，图例勾选）'),
+    buildMetricCard('事件标注', `${EVENTS_BEAR.length} 条`, '合并口径：以熊市版 15 条为准、样式取衰退版（红竖线＋红框、框内不带日期）'),
+    buildMetricCard('阴影带', `${bearBands.length} 熊市 / ${recBands.length} 衰退`, '粉带＝熊市（默认开）、灰带＝NBER 衰退（图例勾选，勾上时价格线切月频）'),
     buildMetricCard('最新点位', formatNumber(price[price.length - 1].close, 2), `数据至 ${price[price.length - 1].date} · 对数轴 10–10000`),
     buildMetricCard('口径差', '原图 1921 起 / 1964 前月频', '本图自 1927-12 起、全程日频（免费口径）；勾选衰退带时切为月频线'),
     buildMetricCard('事件日期', '按史实校正 1 处', '赎罪日战争取 1973-10-06（原图 OCR 与史实冲突）'),

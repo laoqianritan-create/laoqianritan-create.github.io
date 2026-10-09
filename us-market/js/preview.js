@@ -3,19 +3,19 @@
 // 扩展方式：preview.html 加 section（与主站同 id）→ 本文件 import 面板函数 → loaders 注册。
 // 迁移后：老钱确认的面板迁入主站，此处同步删除其 section 与 loader。
 
-import { initSectorRsPanel } from './panels/sector_rs.js?v=20261009150347';
-import { initGeoCrisesPanel } from './panels/geo_crises.js?v=20261009150347';
-import { installPanelNotes } from './panel-notes.js?v=20261009150347';
-import { initDrawdownSuitePanel } from './panels/drawdown_suite.js?v=20261009150347';
-import { initAthPathsPanel } from './panels/ath_paths.js?v=20261009150347';
+import { initSectorRsPanel } from './panels/sector_rs.js?v=20261009151816';
+import { initGeoCrisesPanel } from './panels/geo_crises.js?v=20261009151816';
+import { installPanelNotes } from './panel-notes.js?v=20261009151816';
+import { initDrawdownSuitePanel } from './panels/drawdown_suite.js?v=20261009151816';
+import { initAthPathsPanel } from './panels/ath_paths.js?v=20261009151816';
 
 const DATA = {
-  price: 'data/sp500_price.json?v=20261009150347',
-  drawdown: 'data/sp500_drawdowns.json?v=20261009150347',
-  sectorRS: 'data/sp500_sector_rs.json?v=20261009150347',
-  sectors: 'data/sp500_sectors.json?v=20261009150347',
-  century: 'data/sp500_century.json?v=20261009150347',
-  recessions: 'data/us_recessions.json?v=20261009150347',
+  price: 'data/sp500_price.json?v=20261009151816',
+  drawdown: 'data/sp500_drawdowns.json?v=20261009151816',
+  sectorRS: 'data/sp500_sector_rs.json?v=20261009151816',
+  sectors: 'data/sp500_sectors.json?v=20261009151816',
+  century: 'data/sp500_century.json?v=20261009151816',
+  recessions: 'data/us_recessions.json?v=20261009151816',
 };
 
 const loaders = {

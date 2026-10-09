@@ -6,7 +6,7 @@
   <title>新面板预览（待确认） · 美股复盘看板</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-  <link rel="stylesheet" href="style.css?v=20261009150347">
+  <link rel="stylesheet" href="style.css?v=20261009151816">
   <style>
     /* 临时预览页专用（确认上线后本页整体删除） */
     .preview-banner {
@@ -63,7 +63,7 @@
           <div>
             <h2 class="panel-title">地缘政治危机</h2>
             <p class="panel-desc">标普500 与 15 次地缘政治危机（对数轴，1927 年以来）</p>
-            <p class="mini-desc">图例勾选维度：粉带＋带日期事件框＝熊市视角（默认开）；灰带＋红竖线无日期事件框＝衰退视角（默认关，勾选后价格线切为月频，原 geo_fig3 口径）· 事件位置按原图归一化坐标复刻 · 本图自 1927-12 起（原图 1921 起、1964 前月频）· 赎罪日战争按史实取 1973-10-06</p>
+            <p class="mini-desc">图例勾选维度：粉带＝熊市（默认开）、灰带＝NBER 衰退（默认关，勾选后价格线切为月频）· 事件已合并为一套 15 条：以熊市版为准、样式取衰退版（红竖线＋红框、框内不带日期），位置按原图归一化坐标 · 本图自 1927-12 起（原图 1921 起、1964 前月频）· 赎罪日战争按史实取 1973-10-06</p>
           </div>
         </div>
         <div class="chart-container chart-standard" id="chartGeoCrises"></div>
@@ -81,11 +81,11 @@
             <p class="mini-desc">三张图：① 熊市持续天数史 ② 熊市跌幅史 ③ 全史价格与回撤带（红＝熊市 ≥20%、蓝＝回调 10–20%，悬停显示期间跌幅与天数）· 口径＝峰→谷、收盘对收盘；本站 19 段 ≠ 原图 23 段（1930 年代连续下跌合并计段）· 锚点与原图一致：2000 段 929 天/−49.1%、2007 段 517 天/−56.8%</p>
           </div>
         </div>
-        <div class="panel-desc" style="font-weight:600;margin:10px 0 4px">① 熊市持续天数史（天）</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text);margin:14px 0 6px">① 熊市持续天数史（天）</div>
         <div class="chart-container" style="height:640px" id="chartDdLength"></div>
-        <div class="panel-desc" style="font-weight:600;margin:18px 0 4px">② 熊市跌幅史（%）</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text);margin:18px 0 6px">② 熊市跌幅史（%）</div>
         <div class="chart-container" style="height:640px" id="chartDdDecline"></div>
-        <div class="panel-desc" style="font-weight:600;margin:18px 0 4px">③ 全史价格与回撤带（对数轴）</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text);margin:18px 0 6px">③ 全史价格与回撤带（对数轴）</div>
         <div class="chart-container chart-standard" id="chartDdHistory"></div>
         <div class="metric-strip" id="ddSuiteSummary"></div>
       </div>
@@ -109,6 +109,6 @@
     <!-- 后续新面板按同样结构在此追加，并在 js/preview.js 注册 -->
   </main>
 
-  <script type="module" src="js/preview.js?v=20261009150347"></script>
+  <script type="module" src="js/preview.js?v=20261009151816"></script>
 </body>
 </html>

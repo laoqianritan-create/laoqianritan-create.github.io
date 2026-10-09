@@ -2,13 +2,13 @@
 // Mirrors Yardeni growth-paths Figure 13; reuses site sp500_price.json (no new data source).
 // Run dates transcribed from the original legend (spec doc 01, 2026-10-08); returns validated 9/9 = 0.0pp.
 
-import { CHART_FONT, cssVar, formatPercent } from '../utils.js?v=20261009150347';
+import { CHART_FONT, cssVar, formatPercent } from '../utils.js?v=20261009151816';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009150347';
+} from '../chart-helpers.js?v=20261009151816';
 
 // Original legend (2026-10-08); end=null means still running
 // 颜色按年代分配（老钱 2026-10-09 反馈「历史轮次全灰无法区分，改用多色」）；

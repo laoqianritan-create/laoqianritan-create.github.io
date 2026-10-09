@@ -2,14 +2,14 @@
 // Data: sp500_price.json (daily) + sp500_drawdowns.json (bear bands) + sp500_century.json (monthly line, recession view)
 //       + us_recessions.json (FRED USREC recession bands).
 // Merge note (user feedback 2026-10-09): original geo_fig2 / geo_fig3 combined into one chart with legend checkboxes —
-//   bear bands (19) + events·bear set (15, with dates) ON by default; recession bands (15) + events·recession set
-//   (13, red lines, dateless) OFF by default. Label positions follow each original's normalized coordinates.
+//   bear bands (19) + events (15) ON by default; recession bands (15) OFF. Event sets merged (user round 2, 2026-10-09):
+//   the bear view's 15 events win for coverage/positions, the recession view's style wins (red line + red box, no date).
 // Caliber: price starts Dec 1927 (original starts 1921, monthly before 1964); the legend CAGR follows the monthly line.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009150347';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009150347';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009151816';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009151816';
 
-// geo_fig2: 15 events (spec 01 §3.6, boxes carry dates)
+// 15 events (spec 01 §3.6 bear-view coverage; recession-view style: red line + red box, no date; bear-view heights)
 const EVENTS_BEAR = [
   { d: '1930-06-17', zh: 'Smoot-Hawley Tariff', y: 0.40 },
   { d: '1939-09-01', zh: 'Germany Invades Poland', y: 0.53 },
@@ -26,23 +26,6 @@ const EVENTS_BEAR = [
   { d: '2003-03-20', zh: 'Gulf War II', y: 0.60 },
   { d: '2022-02-22', zh: 'Russia Invades Ukraine', y: 0.66 },
   { d: '2026-02-28', zh: 'Gulf War III', y: 0.76 },
-];
-
-// geo_fig3: 13 events (spec 01 §4.6, red lines + dateless boxes)
-const EVENTS_REC = [
-  { d: '1930-06-17', zh: 'Smoot-Hawley Tariff', y: 0.40 },
-  { d: '1939-09-01', zh: 'Germany Invades Poland', y: 0.45 },
-  { d: '1941-12-07', zh: 'Pearl Harbor', y: 0.30 },
-  { d: '1950-06-25', zh: 'Korean War Begins', y: 0.18 },
-  { d: '1956-10-29', zh: 'Suez Crisis', y: 0.45 },
-  { d: '1962-10-16', zh: 'Cuban Missile Crisis', y: 0.33 },
-  { d: '1967-06-05', zh: 'Six-Day War', y: 0.52 },
-  { d: '1973-10-06', zh: 'Yom Kippur War', y: 0.37 },
-  { d: '1979-01-16', zh: 'Iran Revolution', y: 0.57 },
-  { d: '1990-08-02', zh: 'Iraq Invades Kuwait', y: 0.50 },
-  { d: '2001-09-11', zh: '9/11 Attacks', y: 0.84 },
-  { d: '2022-02-22', zh: 'Russia Invades Ukraine', y: 0.79 },
-  { d: '2023-10-07', zh: 'Hamas Attacks Israel', y: 0.64 },
 ];
 
 const Y_MIN = 10;
@@ -74,8 +57,7 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
   const LEG_PRICE = 'S&P 500 price index';
   const LEG_BEAR = 'Bear bands (≥20%)';
   const LEG_REC = 'Recession bands (NBER)';
-  const LEG_EV_BEAR = 'Events · bear view (15)';
-  const LEG_EV_REC = 'Events · recession view (13)';
+  const LEG_EV = 'Events (15)';
 
   function getOption() {
     return {
@@ -92,16 +74,14 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
           [LEG_PRICE]: true,
           [LEG_BEAR]: true,
           [LEG_REC]: false,
-          [LEG_EV_BEAR]: true,
-          [LEG_EV_REC]: false,
+          [LEG_EV]: true,
         },
         textStyle: { fontSize: 12, color: cssVar('--text-secondary') || '#666', fontFamily: CHART_FONT },
         data: [
           { name: LEG_PRICE, itemStyle: { color: blueColor } },
           { name: LEG_BEAR, itemStyle: { color: 'rgba(244,114,182,0.55)' } },
           { name: LEG_REC, itemStyle: { color: 'rgba(150,150,150,0.5)' } },
-          { name: LEG_EV_BEAR, itemStyle: { color: '#666' } },
-          { name: LEG_EV_REC, itemStyle: { color: '#ef4444' } },
+          { name: LEG_EV, itemStyle: { color: '#ef4444' } },
         ],
       },
       xAxis: {
@@ -140,35 +120,7 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
           z: 0,
         },
         {
-          name: LEG_EV_BEAR,
-          type: 'line',
-          data: [],
-          itemStyle: { color: '#666' },
-          tooltip: { show: false },
-          legendHoverLink: false,
-          markPoint: {
-            symbol: 'circle',
-            symbolSize: 3,
-            itemStyle: { color: '#666' },
-            label: {
-              show: true,
-              position: 'top',
-              distance: 3,
-              fontSize: 10,
-              fontFamily: CHART_FONT,
-              color: textColor,
-              backgroundColor: 'rgba(255,255,255,0.88)',
-              borderColor: cssVar('--border') || '#e8e8e8',
-              borderWidth: 1,
-              padding: [2, 4],
-              formatter: p => `${p.data.zh}\n${p.data.dt}`,
-            },
-            data: EVENTS_BEAR.map(e => ({ name: e.zh, zh: e.zh, dt: e.d, coord: [e.d, yFromNorm(e.y)] })),
-          },
-          z: 2,
-        },
-        {
-          name: LEG_EV_REC,
+          name: LEG_EV,
           type: 'line',
           data: [],
           itemStyle: { color: '#ef4444' },
@@ -179,7 +131,7 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
             symbol: 'none',
             lineStyle: { color: '#ef4444', width: 1, type: 'solid', opacity: 0.75 },
             label: { show: false },
-            data: EVENTS_REC.map(e => ({ xAxis: e.d })),
+            data: EVENTS_BEAR.map(e => ({ xAxis: e.d })),
           },
           markPoint: {
             symbol: 'circle',
@@ -198,7 +150,7 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
               padding: [2, 4],
               formatter: p => p.data.zh,
             },
-            data: EVENTS_REC.map(e => ({ name: e.zh, zh: e.zh, coord: [e.d, yFromNorm(e.y)] })),
+            data: EVENTS_BEAR.map(e => ({ name: e.zh, zh: e.zh, coord: [e.d, yFromNorm(e.y)] })),
           },
           z: 2,
         },
@@ -245,8 +197,8 @@ export function initGeoCrisesPanel(priceData, drawdownData, centuryData, recessi
   });
 
   renderMetricStrip('geoCrisesSummary', [
-    buildMetricCard('Bear view', `${EVENTS_BEAR.length} events / ${bearBands.length} bear bands`, 'Pink bands + dated event boxes (original geo_fig2 form, on by default)'),
-    buildMetricCard('Recession view', `${EVENTS_REC.length} events / ${recBands.length} recession bands`, 'Grey bands + red lines with dateless boxes, monthly line (original geo_fig3 form, via legend)'),
+    buildMetricCard('Events', `${EVENTS_BEAR.length} labels`, 'Merged: the bear view\u2019s 15 events for coverage, the recession view\u2019s style (red line + red box, no date)'),
+    buildMetricCard('Shading', `${bearBands.length} bears / ${recBands.length} recessions`, 'Pink = bear (default on), grey = NBER recession (via legend; checking it swaps the line to monthly)'),
     buildMetricCard('Latest', formatNumber(price[price.length - 1].close, 2), `Data through ${price[price.length - 1].date} · log axis 10–10000`),
     buildMetricCard('Caliber gap', 'Original starts 1921, monthly to 1964', 'This chart starts Dec 1927, daily (free caliber); the recession view swaps to monthly'),
     buildMetricCard('Event dates', '1 correction by history', 'Yom Kippur War set to 1973-10-06 (original OCR conflicts with history)'),
