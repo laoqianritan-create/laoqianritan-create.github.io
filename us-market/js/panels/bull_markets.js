@@ -2,13 +2,13 @@
 // 数据：data/sp500_bull_markets.json（本地日线按 Yardeni 图例九轮起止切片自算）
 // 形式复刻 Yardeni Research「S&P 500 Bull Markets Since 1966」：X=距起点交易日数，灰 8 轮 + 红 1 轮进行中。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009103230';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009111325';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009103230';
+} from '../chart-helpers.js?v=20261009111325';
 
 const MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

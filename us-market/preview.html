@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>新面板预览（待确认） · 美股复盘看板</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <link rel="stylesheet" href="style.css?v=20261009111325">
+  <style>
+    /* 临时预览页专用（确认上线后本页整体删除） */
+    .preview-banner {
+      position: sticky; top: 0; z-index: 60;
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      padding: 14px 24px;
+      background: #1a1a1a; color: #fff;
+      font-size: 15px; font-weight: 600;
+    }
+    .preview-banner a { color: #9ec5ff; text-decoration: underline; }
+    .preview-banner .pb-tag {
+      background: #cf1322; color: #fff; border-radius: 4px;
+      padding: 2px 10px; font-size: 13px; font-weight: 700;
+    }
+    .preview-note {
+      padding: 10px 24px; color: #666; font-size: 13px;
+      border-bottom: 1px solid #e8e8e8; background: #fafafa;
+    }
+    .preview-error { color: #cf1322; padding: 8px 24px; }
+    .preview-main { max-width: 1400px; margin: 0 auto; padding: 8px 12px 60px; }
+  </style>
+</head>
+<body>
+  <div class="preview-banner">
+    <span class="pb-tag">待确认</span>
+    <span>新面板预览页 —— 已完成的新看板先放这里，老钱确认后才正式上主站。</span>
+    <a href="/">返回主站</a>
+  </div>
+  <div class="preview-note">
+    流程：每个新面板先在这里过目 → 确认 → 从预览页迁入主站导航并正式部署。当前预览：1 个（九轮牛市）；后续新面板（广度 / 行业 / 地缘危机 / 创新高之路 / 回撤专题）做完即追加到本页。
+  </div>
+  <div class="preview-error" id="previewError"></div>
+
+  <main class="preview-main">
+    <!-- 面板 1 · 九轮牛市（Yardeni 图13）：确认后此 section 迁回 site/index.html -->
+    <section class="panel" id="panel-bull-runs" data-category="preview">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">1966 年以来的九轮牛市</h2>
+            <p class="panel-desc">横轴＝距该轮起点的交易日数（含假日常规剔除周末）· 纵轴＝累计涨跌幅 · 每轮一条彩色线（按年代配色）、红色为进行中</p>
+          </div>
+        </div>
+        <div class="chart-container chart-standard" id="chartSp500BullRuns"></div>
+        <div class="metric-strip" id="bullRunsSummary"></div>
+      </div>
+    </section>
+
+    <!-- 后续新面板按同样结构在此追加，并在 js/preview.js 注册 -->
+  </main>
+
+  <script type="module" src="js/preview.js?v=20261009111325"></script>
+</body>
+</html>
