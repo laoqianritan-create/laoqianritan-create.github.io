@@ -6,8 +6,8 @@
 //   (13, red lines, dateless) OFF by default. Label positions follow each original's normalized coordinates.
 // Caliber: price starts Dec 1927 (original starts 1921, monthly before 1964); the legend CAGR follows the monthly line.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009145221';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009145221';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009150347';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009150347';
 
 // geo_fig2: 15 events (spec 01 §3.6, boxes carry dates)
 const EVENTS_BEAR = [

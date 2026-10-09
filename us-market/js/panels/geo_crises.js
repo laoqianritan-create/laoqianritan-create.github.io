@@ -6,8 +6,8 @@
 //   两个事件集的标签位置各自按原图归一化坐标摆放；同时勾选两套事件集会同框（同名事件出现两条，均为原图位置）。
 // 口径：价格自 1927-12 起（原图 1921 起、1964 前月频）；CAGR 图例随月频线自算。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009145221';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009145221';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009150347';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009150347';
 
 // geo_fig2：15 条事件（规格书 01 §3.6，框内带日期，y=归一化高度）
 const EVENTS_BEAR = [

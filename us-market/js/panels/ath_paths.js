@@ -5,8 +5,8 @@
 // 8 段天数/涨幅与原图逐位一致（575/+14.9 … 503/+41.5），第 9 段自 2024-01-19 起进行中。
 // 实现说明：原图的红色横段箭头简化为浅蓝带＋红框两行标签（天数/涨幅），带内为可悬停区域。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009145221';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009145221';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009150347';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009150347';
 
 const INTERVALS = [
   { start: '1967-05-04', end: '1968-11-29', days: 575, pct: 0.149 },

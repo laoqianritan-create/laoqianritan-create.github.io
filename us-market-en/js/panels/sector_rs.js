@@ -4,13 +4,13 @@
 // Interaction (user feedback 2026-10-09): default shows one sector (Information Technology); the legend square toggles
 // visibility (check = show, uncheck = hide); the last checked sector is fully opaque, other checked ones are translucent.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009145221';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009150347';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009145221';
+} from '../chart-helpers.js?v=20261009150347';
 
 const FOCUS_OPACITY = 1;
 const REST_OPACITY = 0.3;

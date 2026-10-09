@@ -4,13 +4,13 @@
 // 交互（2026-10-09 老钱反馈）：默认只展示一个行业（信息技术）；图例前小方块＝勾选开关（勾上显示、取消隐藏）；
 // 当前勾选的行业 100% 不透明，其余已勾选的行业半透明（焦点切换＝点它的方块）。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009145221';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009150347';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009145221';
+} from '../chart-helpers.js?v=20261009150347';
 
 const FOCUS_OPACITY = 1;
 const REST_OPACITY = 0.3;
