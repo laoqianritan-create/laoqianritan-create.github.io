@@ -3,13 +3,13 @@
 // 口径：比值 = (市值加权点位/基期) ÷ (等权点位/基期)，2003-05 ＝ 1（RSP 上市月）；
 // 原图自 1990 起（LSEG 等权指数），免费源等权腿只有 RSP（2003-05 起），起点口径差已写进行内说明。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009140455';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009142337';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009140455';
+} from '../chart-helpers.js?v=20261009142337';
 
 export function initMwewRatioPanel(priceData, ewData, drawdownData) {
   const dom = document.getElementById('chartMwewRatio');

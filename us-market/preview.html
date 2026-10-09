@@ -6,7 +6,7 @@
   <title>新面板预览（待确认） · 美股复盘看板</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-  <link rel="stylesheet" href="style.css?v=20261009140455">
+  <link rel="stylesheet" href="style.css?v=20261009142337">
   <style>
     /* 临时预览页专用（确认上线后本页整体删除） */
     .preview-banner {
@@ -36,14 +36,75 @@
     <a href="/">返回主站</a>
   </div>
   <div class="preview-note">
-    流程：每个新面板先在这里过目 → 确认 → 从预览页迁入主站导航并正式部署。当前预览：0 个（广度图 2026-10-09 已确认迁入主站）。已上线：增速路径(图6)、九轮牛市(图13)、市值/等权比值。下一个：行业相对强弱（11 个一级行业）。
+    流程：每个新面板先在这里过目 → 确认 → 从预览页迁入主站导航并正式部署。当前预览：4 组新面板一次展示（行业相对强弱 / 地缘危机两视角 / 回撤三件套 / 创新高之路）。已上线：增速路径(图6)、九轮牛市(图13)、市值/等权比值。已上线：增速路径(图6)、九轮牛市(图13)、市值/等权比值。下一个：行业相对强弱（11 个一级行业）。
   </div>
   <div class="preview-error" id="previewError"></div>
 
   <main class="preview-main">
+    <!-- 面板 3 · 行业相对强弱（11 个一级行业） -->
+    <section class="panel" id="panel-sector-rs" data-category="preview">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">行业相对强弱（11 个一级行业）</h2>
+            <p class="panel-desc">相对强弱＝行业累计 ÷ 标普500(SPY) 累计 ×100，2018-06 基期 ≈100、周频 · 100 虚线＝与标普同步 · 原图为 LSEG 行业指数 ÷ 标普（1990 起），免费源用 11 只 SPDR ETF 代替，起点 2018</p>
+          </div>
+        </div>
+        <div class="chart-container chart-standard" id="chartSectorRS"></div>
+        <div class="metric-strip" id="sectorRsSummary"></div>
+      </div>
+    </section>
+
+    <!-- 面板 4 · 地缘政治危机·熊市视角（geo_fig2） -->
+    <section class="panel" id="panel-geo-crises" data-category="preview">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">地缘政治危机·熊市视角</h2>
+            <p class="panel-desc">标普500 价格指数（对数轴）＋粉色熊市带＋15 条事件标注（1930 关税战→2026 海湾战争三，位置按原图归一化坐标复刻）· 本图自 1927-12 起、全程日频（原图 1921 起、1964 前月频）</p>
+          </div>
+        </div>
+        <div class="chart-container chart-standard" id="chartGeoCrises"></div>
+        <div class="metric-strip" id="geoCrisesSummary"></div>
+      </div>
+    </section>
+
+    <!-- 面板 5 · 地缘政治危机·衰退视角（geo_fig3） -->
+    <section class="panel" id="panel-geo-recessions" data-category="preview">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">地缘政治危机·衰退视角</h2>
+            <p class="panel-desc">月频标普500（对数轴）＋灰色 NBER 衰退带＋红竖线与 13 条事件文本框（按原图框内不带日期）· 图例内嵌长期年化（原图 Jan1921–Apr2026 为 6.72%，本图口径不同）· 本图 1927-12 起、月末价</p>
+          </div>
+        </div>
+        <div class="chart-container chart-standard" id="chartGeoRecessions"></div>
+        <div class="metric-strip" id="geoRecessionsSummary"></div>
+      </div>
+    </section>
+
+    <!-- 面板 6 · 回撤与牛熊专题三件套（bb01/bb02/bb03–bb15 合并） -->
+    <section class="panel" id="panel-dd-suite" data-category="preview">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">回撤与牛熊专题（三件套）</h2>
+            <p class="panel-desc">① 熊市持续天数史 ② 熊市跌幅史 ③ 全史价格与回撤带（红＝熊市 ≥20%、蓝＝回调 10–20%，悬停显示期间跌幅与天数）· 站内口径＝峰→谷、收盘对收盘、1928 起</p>
+          </div>
+        </div>
+        <div class="panel-desc" style="font-weight:600;margin:10px 0 4px">① 熊市持续天数史（天）</div>
+        <div class="chart-container" style="height:640px" id="chartDdLength"></div>
+        <div class="panel-desc" style="font-weight:600;margin:18px 0 4px">② 熊市跌幅史（%）</div>
+        <div class="chart-container" style="height:640px" id="chartDdDecline"></div>
+        <div class="panel-desc" style="font-weight:600;margin:18px 0 4px">③ 全史价格与回撤带（对数轴）</div>
+        <div class="chart-container chart-standard" id="chartDdHistory"></div>
+        <div class="metric-strip" id="ddSuiteSummary"></div>
+      </div>
+    </section>
+
     <!-- 后续新面板按同样结构在此追加，并在 js/preview.js 注册 -->
   </main>
 
-  <script type="module" src="js/preview.js?v=20261009140455"></script>
+  <script type="module" src="js/preview.js?v=20261009142337"></script>
 </body>
 </html>

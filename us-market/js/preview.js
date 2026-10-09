@@ -1,14 +1,27 @@
 // js/preview.js · 临时预览页初始化（2026-10-09 老钱定流程）
 // 新面板先在 preview.html 过目 → 老钱确认 → 迁入 index.html 正式上线，本页随之删除。
 // 扩展方式：preview.html 加 section（与主站同 id）→ 本文件 import 面板函数 → loaders 注册。
+// 迁移后：老钱确认的面板迁入主站，此处同步删除其 section 与 loader。
 
-// const { initXxxPanel } = await import('./panels/xxx.js');  ← 下一个面板在此注册
+import { initSectorRsPanel } from './panels/sector_rs.js?v=20261009142337';
+import { initGeoCrisesPanel } from './panels/geo_crises.js?v=20261009142337';
+import { initGeoRecessionsPanel } from './panels/geo_recessions.js?v=20261009142337';
+import { initDrawdownSuitePanel } from './panels/drawdown_suite.js?v=20261009142337';
+
 const DATA = {
-  price: 'data/sp500_price.json?v=20261009140455',
+  price: 'data/sp500_price.json?v=20261009142337',
+  drawdown: 'data/sp500_drawdowns.json?v=20261009142337',
+  sectorRS: 'data/sp500_sector_rs.json?v=20261009142337',
+  sectors: 'data/sp500_sectors.json?v=20261009142337',
+  century: 'data/sp500_century.json?v=20261009142337',
+  recessions: 'data/us_recessions.json?v=20261009142337',
 };
 
 const loaders = {
-  // 'panel-xxx': async () => initXxxPanel(await load('price')),  ← 下一个面板在此注册
+  'panel-sector-rs': async () => initSectorRsPanel(await load('sectorRS'), await load('sectors')),
+  'panel-geo-crises': async () => initGeoCrisesPanel(await load('price'), await load('drawdown')),
+  'panel-geo-recessions': async () => initGeoRecessionsPanel(await load('century'), await load('recessions')),
+  'panel-dd-suite': async () => initDrawdownSuitePanel(await load('price'), await load('drawdown')),
 };
 
 async function load(key) {
