@@ -5,8 +5,8 @@
 // Caliber: site drawdowns = close-to-close, peak→trough; 19 bears ≥20% since 1928. Yardeni bb01 shows 23 — the 1930s
 // consecutive declines are merged here (e.g. 1929-09→1932-06 as one). Anchors match: 2000 = 929 days/−49.1%, 2007 = 517 days/−56.8%.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009154213';
-import { registerChart, buildMetricCard, renderMetricStrip } from '../chart-helpers.js?v=20261009154213';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009171810';
+import { registerChart, buildMetricCard, renderMetricStrip } from '../chart-helpers.js?v=20261009171810';
 
 export function initDrawdownSuitePanel(priceData, drawdownData) {
   const domLen = document.getElementById('chartDdLength');
@@ -22,7 +22,8 @@ export function initDrawdownSuitePanel(priceData, drawdownData) {
   const blueColor = '#2563eb';
 
   const addDays = (iso, n) => { const d = new Date(iso + 'T00:00:00'); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
-  const fmtMDY = iso => { const [y, m, d] = iso.split('-'); return `${+m}/${+d}/${y.slice(2)}`; };
+  // 轴标签日期格式（2026-10-10 老钱指令）：横条图类目轴用 yyyy/mm/dd
+const fmtMDY = iso => { const [y, m, d] = iso.split('-'); return `${y}/${m}/${d}`; };
 
   const bears = dds.filter(x => (x.decline ?? 0) <= -0.20 && x.peak_date).sort((a, b) => a.peak_date.localeCompare(b.peak_date));
   const corrections = dds.filter(x => (x.decline ?? 0) <= -0.10 && (x.decline ?? 0) > -0.20 && x.peak_date);

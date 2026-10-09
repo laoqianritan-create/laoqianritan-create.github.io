@@ -2,13 +2,13 @@
 // 形式复刻 Yardeni growth-paths Figure 13；数据复用站内 sp500_price.json（无新数据源）。
 // 九轮起止日期逐字读自原图图例（本轮规格书 01），涨幅已与本地日线对拍 9/9 = 0.0pp。
 
-import { CHART_FONT, cssVar, formatPercent } from '../utils.js?v=20261009154213';
+import { CHART_FONT, cssVar, formatPercent } from '../utils.js?v=20261009171810';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009154213';
+} from '../chart-helpers.js?v=20261009171810';
 
 // 原图图例逐字（2026-10-08）；end=null 表示进行中
 // 颜色按年代分配（老钱 2026-10-09 反馈「历史轮次全灰无法区分，改用多色」）；
