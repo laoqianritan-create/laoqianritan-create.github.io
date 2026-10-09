@@ -3,7 +3,7 @@
 // 依赖 utils（cssVar, escapeHtml, CHART_FONT）和全局 echarts
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, CHART_FONT } from './utils.js?v=20261008221057';
+import { cssVar, escapeHtml, CHART_FONT } from './utils.js?v=20261009094028';
 
 // 所有 chart 实例注册表，用于主题切换时重绘 / resize
 export const chartInstances = [];

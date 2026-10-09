@@ -3,7 +3,7 @@
 // 切换分类后会触发所有 chart 强制重绘（首次进入视口时容器为 0x0 的问题）
 // ══════════════════════════════════════════════════════
 
-import { chartInstances } from './chart-helpers.js?v=20261008221057';
+import { chartInstances } from './chart-helpers.js?v=20261009094028';
 
 export function initNav() {
   const navGroups = Array.from(document.querySelectorAll('.nav-group'));

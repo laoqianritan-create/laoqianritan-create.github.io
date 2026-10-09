@@ -25,8 +25,8 @@
   const PAD_Y = 12;
 
   Promise.all([
-    fetch('data/sp500_century.json?v=20261008221057', { cache: 'force-cache' }).then(r => r.ok ? r.json() : null),
-    fetch('data/sp500_pe.json?v=20261008221057',      { cache: 'force-cache' }).then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch('data/sp500_century.json?v=20261009094028', { cache: 'force-cache' }).then(r => r.ok ? r.json() : null),
+    fetch('data/sp500_pe.json?v=20261009094028',      { cache: 'force-cache' }).then(r => r.ok ? r.json() : null).catch(() => null),
   ])
     .then(([centuryPayload, pePayload]) => {
       const series = (centuryPayload?.series || [])

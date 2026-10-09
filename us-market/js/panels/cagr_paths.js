@@ -2,14 +2,14 @@
 // 数据：data/sp500_cagr_paths.json（价格指数 + 自算总回报，逐月股息再投资）
 // 形式复刻 Yardeni Research 同款图；口径与对拍见 JSON 的 caliber 字段。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261008221057';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009094028';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
   buildRecessionOverlaySeries,
-} from '../chart-helpers.js?v=20261008221057';
+} from '../chart-helpers.js?v=20261009094028';
 
 const CAGR_RATES = [3, 4, 5, 6, 7, 8, 9, 10, 11];
 const DAY_MS = 24 * 3600 * 1000;
