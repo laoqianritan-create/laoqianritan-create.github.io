@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-09 09:40:28",
+  "generated_at": "2026-10-09 18:39:36",
   "today": "2026-10-09",
   "overall": "healthy",
   "stale_count": 0,
@@ -35,8 +35,8 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-10-07",
-      "days_old": 2,
+      "updated": "2026-10-08",
+      "days_old": 1,
       "status": "fresh"
     },
     {
@@ -100,6 +100,34 @@
       "label": "Dow Jones Century",
       "updated": "2026-10-07",
       "days_old": 2,
+      "status": "fresh"
+    },
+    {
+      "file": "ici_flows.json",
+      "label": "ICI 基金资金流（周+月）",
+      "updated": "2026-10-09",
+      "days_old": 0,
+      "status": "fresh"
+    },
+    {
+      "file": "ici_mmf.json",
+      "label": "ICI 货币基金蓄水池",
+      "updated": "2026-10-09",
+      "days_old": 0,
+      "status": "fresh"
+    },
+    {
+      "file": "ici_active_index.json",
+      "label": "ICI 主动 vs 指数",
+      "updated": "2026-10-09",
+      "days_old": 0,
+      "status": "fresh"
+    },
+    {
+      "file": "ownership.json",
+      "label": "美股所有权结构（Fed Z.1）",
+      "updated": "2026-10-09",
+      "days_old": 0,
       "status": "fresh"
     }
   ]

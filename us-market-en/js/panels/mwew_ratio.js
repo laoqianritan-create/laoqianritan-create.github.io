@@ -4,13 +4,13 @@
 // the original starts in 1990 (LSEG equal-weight index); the only free equal-weight leg is RSP (from 2003-05),
 // so the start-date caliber differs — stated in the panel notes.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009171810';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009184000';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009171810';
+} from '../chart-helpers.js?v=20261009184000';
 
 export function initMwewRatioPanel(priceData, ewData, drawdownData) {
   const dom = document.getElementById('chartMwewRatio');
