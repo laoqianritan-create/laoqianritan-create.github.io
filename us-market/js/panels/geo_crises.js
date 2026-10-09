@@ -3,8 +3,8 @@
 // 事件清单与标注高度取自规格书 01（OCR 逐字 + 归一化坐标），标注框用 markPoint 手工定位。
 // 口径差：本图自 1927-12 起（原图 1921 起、1964 前月频），已写进行内说明。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009142337';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009142337';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009143214';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009143214';
 
 // 规格书 01 §3.6：15 条事件（name, date, yNorm=标签在绘图区的归一化高度 0=底 1=顶）
 const EVENTS = [

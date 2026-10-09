@@ -3,13 +3,13 @@
 // Caliber: relative strength = sector cumulative ÷ SPY cumulative × 100, June 2018 base ≈100; 100 = in line with the index.
 // The original uses LSEG sector indices ÷ S&P 500 (from 1990, per-chart scaling); the free source uses SPDR ETFs from 2018 — stated in the panel notes.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009142337';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009143214';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009142337';
+} from '../chart-helpers.js?v=20261009143214';
 
 export function initSectorRsPanel(rsData, sectorsData) {
   const dom = document.getElementById('chartSectorRS');

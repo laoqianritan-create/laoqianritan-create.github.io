@@ -4,8 +4,8 @@
 // dates are expressed by red vertical lines.
 // Caliber note: starts Dec 1927, month-end prices (the original starts Jan 1921, monthly averages), CAGR differs accordingly.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009142337';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009142337';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009143214';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009143214';
 
 // Spec 01 §4.6: 13 events (red line + dateless label box); dates from the geo_fig2 list / history
 const EVENTS = [

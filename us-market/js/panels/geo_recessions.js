@@ -3,8 +3,8 @@
 // 事件 13 条与标注高度取自规格书 01 §4.6（OCR 逐字 + 归一化坐标）；本版原图框内不带日期、以红色竖线定位。
 // 口径差：本图自 1927-12 起、月末价（原图 1921 起、月均值），CAGR 也随之不同，已写进行内说明。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009142337';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009142337';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009143214';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009143214';
 
 // 规格书 01 §4.6：13 条事件（红竖线 + 无日期文本框）；日期取同名事件的 geo_fig2 清单/史实
 const EVENTS = [

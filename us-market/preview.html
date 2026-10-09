@@ -6,7 +6,7 @@
   <title>新面板预览（待确认） · 美股复盘看板</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-  <link rel="stylesheet" href="style.css?v=20261009142337">
+  <link rel="stylesheet" href="style.css?v=20261009143214">
   <style>
     /* 临时预览页专用（确认上线后本页整体删除） */
     .preview-banner {
@@ -36,7 +36,7 @@
     <a href="/">返回主站</a>
   </div>
   <div class="preview-note">
-    流程：每个新面板先在这里过目 → 确认 → 从预览页迁入主站导航并正式部署。当前预览：4 组新面板一次展示（行业相对强弱 / 地缘危机两视角 / 回撤三件套 / 创新高之路）。已上线：增速路径(图6)、九轮牛市(图13)、市值/等权比值。已上线：增速路径(图6)、九轮牛市(图13)、市值/等权比值。下一个：行业相对强弱（11 个一级行业）。
+    流程：每个新面板先在这里过目 → 确认 → 从预览页迁入主站导航并正式部署。当前预览：5 组新面板一次展示（行业相对强弱 / 地缘危机两视角 / 回撤三件套 / 创新高之路）。已上线：增速路径(图6)、九轮牛市(图13)、市值/等权比值。已上线：增速路径(图6)、九轮牛市(图13)、市值/等权比值。下一个：行业相对强弱（11 个一级行业）。
   </div>
   <div class="preview-error" id="previewError"></div>
 
@@ -102,9 +102,23 @@
       </div>
     </section>
 
+    <!-- 面板 7 · 创新高之路（Yardeni fig12） -->
+    <section class="panel" id="panel-ath-paths" data-category="preview">
+      <div class="panel-inner">
+        <div class="panel-header">
+          <div>
+            <h2 class="panel-title">创新高之路（恢复期高点 → 下一个新高）</h2>
+            <p class="panel-desc">≥20% 熊市见底后首次收上历史前高的日期 → 下一轮 ≥20% 熊市前高 · 浅蓝带＋红框标签＝天数/涨幅（自然日）· 8 段与原图逐位对拍一致（0 天 / ≤0.05pp），第 9 段 2024-01-19 起进行中 · 原图红横段箭头简化为红框标签</p>
+          </div>
+        </div>
+        <div class="chart-container chart-standard" id="chartAthPaths"></div>
+        <div class="metric-strip" id="athSummary"></div>
+      </div>
+    </section>
+
     <!-- 后续新面板按同样结构在此追加，并在 js/preview.js 注册 -->
   </main>
 
-  <script type="module" src="js/preview.js?v=20261009142337"></script>
+  <script type="module" src="js/preview.js?v=20261009143214"></script>
 </body>
 </html>

@@ -3,13 +3,13 @@
 // 口径：相对强弱 = 行业累计 ÷ SPY 累计 × 100，2018-06 基期 ≈100（11 只 ETF 对齐起点）；100 = 与标普同步。
 // 原图为 LSEG 行业指数 ÷ 标普（1990 起、逐图各缩放），免费源用 SPDR ETF 代替，起点 2018，已写进行内说明。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009142337';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009143214';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009142337';
+} from '../chart-helpers.js?v=20261009143214';
 
 export function initSectorRsPanel(rsData, sectorsData) {
   const dom = document.getElementById('chartSectorRS');

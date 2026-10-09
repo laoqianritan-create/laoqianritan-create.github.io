@@ -3,8 +3,8 @@
 // Event list and label heights from spec 01 (OCR verbatim + normalized coordinates); labels placed with markPoint.
 // Caliber note: this chart starts Dec 1927 (the original starts 1921 and is monthly before 1964) — stated in the panel notes.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009142337';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009142337';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009143214';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261009143214';
 
 // Spec 01 §3.6: 15 events (date, English/Chinese name, yNorm = normalized label height 0=bottom 1=top)
 const EVENTS = [
