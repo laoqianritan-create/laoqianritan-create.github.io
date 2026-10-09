@@ -4,7 +4,7 @@
 
 // const { initXxxPanel } = await import('./panels/xxx.js');  ← 下一个面板在此注册
 const DATA = {
-  price: 'data/sp500_price.json?v=20261009135631',
+  price: 'data/sp500_price.json?v=20261009140455',
 };
 
 const loaders = {
