@@ -43,7 +43,8 @@
     { title: 'A股恐贪指数', anchor: 'panel-fear' },
     { title: '神奇择时指标', anchor: 'panel-fund' },
     { title: '偏股混合基金滚动年化', anchor: 'panel-timing' },
-    { title: '投资者结构', anchor: 'panel-investor' }
+    { title: '投资者结构', anchor: 'panel-investor' },
+    { title: '个股走势图', anchor: 'panel-chart' }
   ];
 
   function buildGrid() {
@@ -168,11 +169,21 @@
         '#panelTurnoverBody canvas', '#panelIndustryBody canvas',
         '#panelTrendBody canvas', '#panelFearBody canvas',
         '#panelFundBody canvas', '#panelTimingBody canvas',
-        '#panelInvestorBody canvas'
+        '#panelInvestorBody canvas',
+        // 交互面板（个股走势）：summary 页无此元素 → 落到下方占位分支
+        '#panelChartPh__interactive'
       ];
       const grid = document.getElementById('smGrid');
       const cards = grid.querySelectorAll('.sm-card');
       const loadEl = document.getElementById('smLoading');
+      // 交互面板（个股走势）无固定 canvas：用内联 SVG 占位图，绝不显示破图
+      const phSvg = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" width="420" height="260">' +
+        '<rect width="420" height="260" fill="#fafbfc"/>' +
+        '<rect x="3" y="3" width="414" height="254" fill="none" stroke="#e6e9ef" stroke-width="2"/>' +
+        '<text x="210" y="122" font-size="28" font-weight="700" fill="#333" text-anchor="middle">个股走势图</text>' +
+        '<text x="210" y="156" font-size="15" fill="#888" text-anchor="middle">输入公司名 / 6 位代码，自动出图</text>' +
+        '<text x="210" y="182" font-size="15" fill="#888" text-anchor="middle">如：茅台 / 600519 / 510300</text></svg>');
       canvasRefs.forEach((sel, i) => {
         const el = document.querySelector(sel);
         const img = cards[i] && cards[i].querySelector('img');
@@ -182,6 +193,8 @@
         if (el && img) {
           const url = snapshot(el);
           if (url) img.src = url;
+        } else if (!el && img) {
+          img.src = phSvg; // 交互面板占位图
         }
         if (loadEl && i % 2 === 0) {
           loadEl.textContent = '正在生成全部看板缩略图…（' + (i + 1) + '/' + canvasRefs.length + '）';

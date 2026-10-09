@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://ashare.laoqianriritan.com/">
   <link rel="canonical" href="https://ashare.laoqianriritan.com/">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261009161935">
+  <link rel="stylesheet" href="css/style.css?v=20261009174237">
 </head>
 <body>
 
@@ -41,6 +41,7 @@
       <a href="#panel-fund">神奇择时</a>
       <a href="#panel-timing">偏股滚动</a>
       <a href="#panel-investor">投资者结构</a>
+      <a href="#panel-chart">个股走势</a>
     </nav>
   </div>
 </header>
@@ -434,6 +435,44 @@
     </details>
   </section>
 
+<!-- ═══════════ 面板 17：个股走势图（交互查询 · 输入出图）═══════════ -->
+  <section class="panel" id="panel-chart">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title">个股走势图</h2>
+        <p class="panel-desc">输入公司名或 6 位代码 · 生成走势 / 回撤 / 牛熊 / 月度 四面板图</p>
+      </div>
+      <div class="panel-actions"></div>
+    </div>
+    <div class="panel-body chart-query-body">
+      <div class="cq-input-row">
+        <input type="text" id="chartQueryInput" placeholder="公司名 / 6 位代码，如：茅台 / 600519 / 510300" autocomplete="off" spellcheck="false" />
+        <button id="chartQueryBtn" type="button">出图</button>
+      </div>
+      <div id="chartSuggestBox" class="cq-suggest" hidden></div>
+      <div id="chartLoading" class="cq-loading" hidden>
+        <div class="cq-spinner"></div>
+        <p>正在生成「<span id="chartLoadingName"></span>」走势图…<br>个股约 5-10 秒 · ETF / 指数约 20-40 秒</p>
+      </div>
+      <div id="chartError" class="cq-error" hidden></div>
+      <div id="chartResult" class="cq-result" hidden>
+        <div class="cq-img-wrap">
+          <img id="chartResultImg" alt="个股走势图" />
+        </div>
+        <button id="chartDownloadBtn" type="button" class="cq-dl-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>下载图片</button>
+      </div>
+    </div>
+    <details class="panel-notes">
+      <summary>看板说明</summary>
+      <ul>
+        <li>输入公司名（茅台）、6 位代码（600519）或场内 ETF（510300），自动匹配后生成四面板走势图：①对数走势 ②回撤 ③牛熊周期 ④月度涨跌（同公众号「老钱日日谈」私信出图模板）。</li>
+        <li>个股数据优先读取本地 hithink 全市场库（后复权，约 10 年，每日 16:00 自动同步）；ETF / 指数走 akshare 降级链。</li>
+        <li>「下载图片」保存到电脑；手机端可长按图片保存。</li>
+        <li>公开市场行情 · 数据仅供参考，不构成投资建议。</li>
+      </ul>
+    </details>
+  </section>
+
 <div class="related-resources">
   <div class="rr-inner">
     <h3 class="rr-title">相关资源</h3>
@@ -455,30 +494,32 @@
 
 
 
-<script defer src="js/data.js?v=20261009161935"></script>
-<script defer src="js/common.js?v=20261009161935"></script>
-<script defer src="js/banner.js?v=20261009161935"></script>
-<script defer src="js/heatmap.js?v=20261009161935"></script>
-<script defer src="js/loss-table.js?v=20261009161935"></script>
-<script defer src="js/longgrowth.js?v=20261009161935"></script>
-<script defer src="js/industry-heat.js?v=20261009161935"></script>
-<script defer src="js/market-turnover.js?v=20261009161935"></script>
-<script defer src="js/return-decomp.js?v=20261009161935"></script>
-<script defer src="js/investor-structure.js?v=20261009161935"></script>
-<script defer src="js/huazheng-factor.js?v=20261009161935"></script>
-<script defer src="js/wide-base.js?v=20261009161935"></script>
-<script defer src="js/fear-greed.js?v=20261009161935"></script>
-<script defer src="js/timing.js?v=20261009161935"></script>
-<script defer src="js/fund-index.js?v=20261009161935"></script>
-<script defer src="js/coverage.js?v=20261009161935"></script>
+<script defer src="js/data.js?v=20261009174237"></script>
+<script defer src="js/common.js?v=20261009174237"></script>
+<script defer src="js/banner.js?v=20261009174237"></script>
+<script defer src="js/heatmap.js?v=20261009174237"></script>
+<script defer src="js/loss-table.js?v=20261009174237"></script>
+<script defer src="js/longgrowth.js?v=20261009174237"></script>
+<script defer src="js/industry-heat.js?v=20261009174237"></script>
+<script defer src="js/market-turnover.js?v=20261009174237"></script>
+<script defer src="js/return-decomp.js?v=20261009174237"></script>
+<script defer src="js/investor-structure.js?v=20261009174237"></script>
+<script defer src="js/huazheng-factor.js?v=20261009174237"></script>
+<script defer src="js/wide-base.js?v=20261009174237"></script>
+<script defer src="js/fear-greed.js?v=20261009174237"></script>
+<script defer src="js/timing.js?v=20261009174237"></script>
+<script defer src="js/fund-index.js?v=20261009174237"></script>
+<script defer src="js/coverage.js?v=20261009174237"></script>
 
-<script defer src="js/main.js?v=20261009161935"></script>
+<script defer src="js/main.js?v=20261009174237"></script>
 
-<script defer src="js/asset-allocation.js?v=20261009161935"></script>
+<script defer src="js/asset-allocation.js?v=20261009174237"></script>
 
-<script defer src="js/index-valuation.js?v=20261009161935"></script>
+<script defer src="js/index-valuation.js?v=20261009174237"></script>
 
-<script defer src="js/trend-temperature.js?v=20261009161935"></script>
+<script defer src="js/trend-temperature.js?v=20261009174237"></script>
+
+<script defer src="js/chart-query.js?v=20261009174237"></script>
 
 </body>
 </html>
