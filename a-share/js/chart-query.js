@@ -48,7 +48,7 @@
     _dlUrl = blobUrl;
     img.src = blobUrl;
     img.alt = name + ' ' + code + ' 走势图';
-    dlBtn.dataset.filename = code + '_' + name + '_走势图.jpg';
+    dlBtn.dataset.filename = (code ? code + '_' : '') + name + '_走势图.jpg';
     result.hidden = false;
   }
 
