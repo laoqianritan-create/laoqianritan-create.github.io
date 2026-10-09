@@ -5,8 +5,8 @@
 // Caliber: site drawdowns = close-to-close, peak→trough; 19 bears ≥20% since 1928. Yardeni bb01 shows 23 — the 1930s
 // consecutive declines are merged here (e.g. 1929-09→1932-06 as one). Anchors match: 2000 = 929 days/−49.1%, 2007 = 517 days/−56.8%.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009151816';
-import { registerChart, buildMetricCard, renderMetricStrip } from '../chart-helpers.js?v=20261009151816';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009154213';
+import { registerChart, buildMetricCard, renderMetricStrip } from '../chart-helpers.js?v=20261009154213';
 
 export function initDrawdownSuitePanel(priceData, drawdownData) {
   const domLen = document.getElementById('chartDdLength');

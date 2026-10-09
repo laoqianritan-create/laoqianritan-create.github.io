@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261009151816">
-<link rel="stylesheet" href="css/chronicle.css?v=20261009151816">
-<script defer src="js/mobile-nav.js?v=20261009151816"></script>
+<link rel="stylesheet" href="style.css?v=20261009154213">
+<link rel="stylesheet" href="css/chronicle.css?v=20261009154213">
+<script defer src="js/mobile-nav.js?v=20261009154213"></script>
 </head>
 <body>
 
@@ -35,6 +35,10 @@
         <a class="nav-item" href="#panel-cagr-paths" data-panel="panel-cagr-paths">Growth Paths</a>
         <a class="nav-item" href="#panel-bull-runs" data-panel="panel-bull-runs">Bull Runs</a>
         <a class="nav-item" href="#panel-mwew-ratio" data-panel="panel-mwew-ratio">MW/EW Ratio</a>
+        <a class="nav-item" href="#panel-sector-rs" data-panel="panel-sector-rs">Sub-Industries</a>
+        <a class="nav-item" href="#panel-geo-crises" data-panel="panel-geo-crises">Geo Crises</a>
+        <a class="nav-item" href="#panel-dd-suite" data-panel="panel-dd-suite">Drawdown Suite</a>
+        <a class="nav-item" href="#panel-ath-paths" data-panel="panel-ath-paths">New Highs</a>
         <a class="nav-item" href="#panel-annual" data-panel="panel-annual">Annual</a>
         <a class="nav-item" href="#panel-annual-dist" data-panel="panel-annual-dist">Distribution</a>
         <a class="nav-item" href="#panel-annualized-matrix" data-panel="panel-annualized-matrix">Holding Matrix</a>
@@ -295,6 +299,85 @@
       </div>
       <div class="chart-container chart-standard" id="chartMwewRatio"></div>
       <div class="metric-strip" id="mwewSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-sector-rs" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">S&amp;P 500 Sub-industries / S&amp;P 500 Relative Strength</h2>
+          <p class="panel-desc">11 GICS sectors vs the S&amp;P 500, June 2018 = 100 (weekly)</p>
+          <p class="mini-desc">The legend square is the toggle (checked = shown normally, unchecked = translucent), Information Technology checked by default; unchecked sectors stay visible but translucent in both chart and legend · the 100 dashed line = in line with the index · the original uses LSEG sector indices ÷ S&amp;P 500 (from 1990); the free source uses 11 SPDR ETFs from 2018</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartSectorRS" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartSectorRS"></div>
+      <div class="metric-strip" id="sectorRsSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-geo-crises" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Geopolitical Crises</h2>
+          <p class="panel-desc">The S&amp;P 500 and 15 geopolitical crises (log scale, since 1927)</p>
+          <p class="mini-desc">Legend dimensions: pink bands = bear markets (default on), grey bands = NBER recessions (default off; checking swaps the price line to monthly) · events merged into one set of 15: the bear view decides coverage and positions, the recession view decides style (red line + red box, no date inside) · this chart starts Dec 1927 (the original starts 1921, monthly before 1964) · Yom Kippur War set to 1973-10-06 by history</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartGeoCrises" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartGeoCrises"></div>
+      <div class="metric-strip" id="geoCrisesSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-dd-suite" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Bull &amp; Bear Market Drawdowns</h2>
+          <p class="panel-desc">Bear length, decline, and full-history bands since 1928</p>
+          <p class="mini-desc">Three charts: (1) history of bear length (2) history of bear decline (3) full-history price with bands (red = bear ≥20%, blue = correction 10–20%; hover shows decline and days) · caliber = peak→trough, close-to-close; site 19 bears ≠ original 23 (1930s consecutive declines merged) · anchors match: 2000 = 929 days/−49.1%, 2007 = 517 days/−56.8%</p>
+        </div>
+      </div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:14px 0 6px">
+        <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">1) History of bear length (days)</div>
+        <button class="btn btn-export" data-chart-sub="chartDdLength" title="Export PNG">&#8681;</button>
+      </div>
+      <div class="chart-container" style="height:640px" id="chartDdLength"></div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px">
+        <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">2) History of bear decline (%)</div>
+        <button class="btn btn-export" data-chart-sub="chartDdDecline" title="Export PNG">&#8681;</button>
+      </div>
+      <div class="chart-container" style="height:640px" id="chartDdDecline"></div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px">
+        <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">3) Full-history price with bands (log)</div>
+        <button class="btn btn-export" data-chart-sub="chartDdHistory" title="Export PNG">&#8681;</button>
+      </div>
+      <div class="chart-container chart-standard" id="chartDdHistory"></div>
+      <div class="metric-strip" id="ddSuiteSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-ath-paths" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Path to New Highs</h2>
+          <p class="panel-desc">From post-recovery high to next new high since 1964 (log scale)</p>
+          <p class="mini-desc">Light-blue bands = "first close above the prior high after a ≥20% bear trough → the peak before the next ≥20% bear"; red labels = days/gain (calendar) · all 8 bands match the original exactly (0 days / ≤0.05pp); band 9 is ongoing since 2024-01-19 · the original's red arrow segments are simplified to red labels</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartAthPaths" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartAthPaths"></div>
+      <div class="metric-strip" id="athSummary"></div>
     </div>
   </section>
 
@@ -1397,9 +1480,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261009151816"></script>
-<script type="module" src="js/panels.js?v=20261009151816"></script>
-<script defer src="js/hero-curve.js?v=20261009151816"></script>
+<script src="js/freshness.js?v=20261009154213"></script>
+<script type="module" src="js/panels.js?v=20261009154213"></script>
+<script defer src="js/hero-curve.js?v=20261009154213"></script>
 
 </body>
 </html>

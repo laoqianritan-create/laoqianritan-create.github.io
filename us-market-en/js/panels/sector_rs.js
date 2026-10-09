@@ -5,13 +5,13 @@
 // normally); unchecked sectors stay visible but fully translucent (legend item also translucent); multiple can be checked;
 // initially only Information Technology has a ✓ and is fully shown, everything else translucent.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009151816';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009154213';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009151816';
+} from '../chart-helpers.js?v=20261009154213';
 
 const ON_OPACITY = 1;
 const OFF_OPACITY = 0.3;
@@ -162,6 +162,25 @@ export function initSectorRsPanel(rsData, sectorsData) {
   chart.setOption(getOption());
   chart._refreshTheme = () => { chart.setOption(getOption(), true); renderLegend(); };
   renderLegend();
+
+  // 导出时临时补一层原生图例：DOM 勾选图例不在 canvas 里，不补的话导出图没有图例（ch.110）
+  chart._exportPatch = () => {
+    chart.setOption({
+      legend: {
+        show: true,
+        type: 'plain',
+        top: 2,
+        left: 'center',
+        icon: 'rect',
+        itemWidth: 12,
+        itemHeight: 12,
+        itemGap: 12,
+        textStyle: { fontSize: 12, color: cssVar('--text-secondary') || '#666', fontFamily: CHART_FONT },
+        data: series.map(s => ({ name: s.en || s.zh, itemStyle: { color: sectorColor(s.zh) } })),
+      },
+    });
+    return () => chart.setOption({ legend: { show: false } });
+  };
 
   renderMetricStrip('sectorRsSummary', [
     buildMetricCard('Strongest', `${top.zh} ${formatNumber(top.v, 1)}`, `Base June 2018 = 100 · as of ${top.last}`),

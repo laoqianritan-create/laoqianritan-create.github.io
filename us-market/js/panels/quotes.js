@@ -5,8 +5,8 @@
 // 布局：每句高度自适应——offsets 动态测距，视口高度跟随当前句收放，短句不占长框。
 // 数据：data/bofa_longest_pictures_quotes.json（手工维护，参考 sp500_rules.json 模式）。
 
-import { escapeHtml } from '../utils.js?v=20261009151816';
-import { exportQuoteAsPng } from '../export-png.js?v=20261009151816';
+import { escapeHtml } from '../utils.js?v=20261009154213';
+import { exportQuoteAsPng } from '../export-png.js?v=20261009154213';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');

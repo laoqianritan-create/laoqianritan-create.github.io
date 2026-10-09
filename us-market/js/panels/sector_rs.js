@@ -4,13 +4,13 @@
 // 交互（2026-10-09 老钱二轮反馈）：自绘图例——每项前一个方块，勾选＝✓（曲线正常展示）；未勾选的行业曲线
 // 仍显示但全半透明、图例也带色半透明；可同时勾选多个；初始只有信息技术带 ✓ 全显、其余全部半透明。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009151816';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009154213';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009151816';
+} from '../chart-helpers.js?v=20261009154213';
 
 const ON_OPACITY = 1;
 const OFF_OPACITY = 0.3;
@@ -162,6 +162,25 @@ export function initSectorRsPanel(rsData, sectorsData) {
   chart.setOption(getOption());
   chart._refreshTheme = () => { chart.setOption(getOption(), true); renderLegend(); };
   renderLegend();
+
+  // 导出时临时补一层原生图例：DOM 勾选图例不在 canvas 里，不补的话导出图没有图例（ch.110）
+  chart._exportPatch = () => {
+    chart.setOption({
+      legend: {
+        show: true,
+        type: 'plain',
+        top: 2,
+        left: 'center',
+        icon: 'rect',
+        itemWidth: 12,
+        itemHeight: 12,
+        itemGap: 12,
+        textStyle: { fontSize: 12, color: cssVar('--text-secondary') || '#666', fontFamily: CHART_FONT },
+        data: series.map(s => ({ name: s.zh, itemStyle: { color: sectorColor(s.zh) } })),
+      },
+    });
+    return () => chart.setOption({ legend: { show: false } });
+  };
 
   renderMetricStrip('sectorRsSummary', [
     buildMetricCard('累计最强', `${top.zh} ${formatNumber(top.v, 1)}`, `基期 2018-06 ＝ 100 · 截至 ${top.last}`),

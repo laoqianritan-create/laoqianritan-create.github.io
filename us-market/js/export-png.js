@@ -3,8 +3,8 @@
 // 标题 + 描述（panel-desc）+ 日期 + 内容居中 + footer URL 水印
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261009151816';
-import { chartInstances } from './chart-helpers.js?v=20261009151816';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261009154213';
+import { chartInstances } from './chart-helpers.js?v=20261009154213';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // 两侧留白
@@ -338,14 +338,27 @@ function buildFrameAndDownload(contentImg, contentNaturalW, contentNaturalH, met
 }
 
 export async function exportChartAsPng(chartInstance, panelEl, opts = {}) {
+  // _exportPatch 钩子（2026-10-09 ch.110）：导出前临时给画布补元素（如行业面板的原生图例——
+  // 交互用的 DOM 勾选图例不在 canvas 里，导出图会没有图例），取完 dataURL 立刻还原，画面无感。
+  const dataUrl = (() => {
+    let restore = null;
+    if (typeof chartInstance._exportPatch === 'function') {
+      try { restore = chartInstance._exportPatch(); } catch (e) { console.warn('exportPatch failed', e); }
+    }
+    try {
+      return chartInstance.getDataURL({
+        type: 'png',
+        pixelRatio: 5,
+        backgroundColor: cssVar('--bg') || '#fff',
+        excludeComponents: ['toolbox'],
+      });
+    } finally {
+      if (typeof restore === 'function') restore();
+    }
+  })();
   const chartImg = await new Promise((resolve, reject) => {
     const img = new Image();
-    img.src = chartInstance.getDataURL({
-      type: 'png',
-      pixelRatio: 5,
-      backgroundColor: cssVar('--bg') || '#fff',
-      excludeComponents: ['toolbox'],
-    });
+    img.src = dataUrl;
     img.onload = () => resolve(img);
     img.onerror = reject;
   });

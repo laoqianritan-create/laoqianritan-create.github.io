@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261009151816">
-<link rel="stylesheet" href="css/chronicle.css?v=20261009151816">
-<script defer src="js/mobile-nav.js?v=20261009151816"></script>
+<link rel="stylesheet" href="style.css?v=20261009154213">
+<link rel="stylesheet" href="css/chronicle.css?v=20261009154213">
+<script defer src="js/mobile-nav.js?v=20261009154213"></script>
 </head>
 <body>
 
@@ -35,6 +35,10 @@
         <a class="nav-item" href="#panel-cagr-paths" data-panel="panel-cagr-paths">增速路径</a>
         <a class="nav-item" href="#panel-bull-runs" data-panel="panel-bull-runs">九轮牛市</a>
         <a class="nav-item" href="#panel-mwew-ratio" data-panel="panel-mwew-ratio">市值等权比</a>
+        <a class="nav-item" href="#panel-sector-rs" data-panel="panel-sector-rs">子行业强弱</a>
+        <a class="nav-item" href="#panel-geo-crises" data-panel="panel-geo-crises">地缘危机</a>
+        <a class="nav-item" href="#panel-dd-suite" data-panel="panel-dd-suite">回撤专题</a>
+        <a class="nav-item" href="#panel-ath-paths" data-panel="panel-ath-paths">创新高之路</a>
         <a class="nav-item" href="#panel-annual" data-panel="panel-annual">年回报</a>
         <a class="nav-item" href="#panel-annual-dist" data-panel="panel-annual-dist">回报分布</a>
         <a class="nav-item" href="#panel-annualized-matrix" data-panel="panel-annualized-matrix">年化矩阵</a>
@@ -296,6 +300,85 @@
       </div>
       <div class="chart-container chart-standard" id="chartMwewRatio"></div>
       <div class="metric-strip" id="mwewSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-sector-rs" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">标普500子行业 / 标普500 相对强弱</h2>
+          <p class="panel-desc">11 个一级行业对标普500 的相对强弱，2018-06 ＝ 100（周频）</p>
+          <p class="mini-desc">图例前方块＝勾选开关（勾上正常展示、取消退回半透明），默认只勾选信息技术；未勾选的行业曲线与图例全部半透明 · 100 虚线＝与标普同步 · 原图为 LSEG 行业指数 ÷ 标普（1990 起），免费源用 11 只 SPDR ETF，起点 2018</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartSectorRS" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartSectorRS"></div>
+      <div class="metric-strip" id="sectorRsSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-geo-crises" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">地缘政治危机</h2>
+          <p class="panel-desc">标普500 与 15 次地缘政治危机（对数轴，1927 年以来）</p>
+          <p class="mini-desc">图例勾选维度：粉带＝熊市（默认开）、灰带＝NBER 衰退（默认关，勾选后价格线切为月频）· 事件已合并为一套 15 条：以熊市版为准、样式取衰退版（红竖线＋红框、框内不带日期），位置按原图归一化坐标 · 本图自 1927-12 起（原图 1921 起、1964 前月频）· 赎罪日战争按史实取 1973-10-06</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartGeoCrises" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartGeoCrises"></div>
+      <div class="metric-strip" id="geoCrisesSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-dd-suite" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">回撤与牛熊专题</h2>
+          <p class="panel-desc">1928 年以来的熊市天数、跌幅与全史回撤带</p>
+          <p class="mini-desc">三张图：① 熊市持续天数史 ② 熊市跌幅史 ③ 全史价格与回撤带（红＝熊市 ≥20%、蓝＝回调 10–20%，悬停显示期间跌幅与天数）· 口径＝峰→谷、收盘对收盘；本站 19 段 ≠ 原图 23 段（1930 年代连续下跌合并计段）· 锚点与原图一致：2000 段 929 天/−49.1%、2007 段 517 天/−56.8%</p>
+        </div>
+      </div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:14px 0 6px">
+        <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">① 熊市持续天数史（天）</div>
+        <button class="btn btn-export" data-chart-sub="chartDdLength" title="导出PNG">&#8681;</button>
+      </div>
+      <div class="chart-container" style="height:640px" id="chartDdLength"></div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px">
+        <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">② 熊市跌幅史（%）</div>
+        <button class="btn btn-export" data-chart-sub="chartDdDecline" title="导出PNG">&#8681;</button>
+      </div>
+      <div class="chart-container" style="height:640px" id="chartDdDecline"></div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px">
+        <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">③ 全史价格与回撤带（对数轴）</div>
+        <button class="btn btn-export" data-chart-sub="chartDdHistory" title="导出PNG">&#8681;</button>
+      </div>
+      <div class="chart-container chart-standard" id="chartDdHistory"></div>
+      <div class="metric-strip" id="ddSuiteSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-ath-paths" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">创新高之路</h2>
+          <p class="panel-desc">1964 年以来标普500 从恢复期高点到下一个新高的历程（对数轴）</p>
+          <p class="mini-desc">浅蓝带＝「≥20% 熊市见底后首次收上历史前高 → 下一轮 ≥20% 熊市前高」，红框标签＝天数/涨幅（自然日）· 8 段与原图逐位对拍一致（0 天 / ≤0.05pp），第 9 段 2024-01-19 起进行中 · 原图红横段箭头简化为红框标签</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartAthPaths" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartAthPaths"></div>
+      <div class="metric-strip" id="athSummary"></div>
     </div>
   </section>
 
@@ -1417,9 +1500,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261009151816"></script>
-<script type="module" src="js/panels.js?v=20261009151816"></script>
-<script defer src="js/hero-curve.js?v=20261009151816"></script>
+<script src="js/freshness.js?v=20261009154213"></script>
+<script type="module" src="js/panels.js?v=20261009154213"></script>
+<script defer src="js/hero-curve.js?v=20261009154213"></script>
 
 </body>
 </html>
