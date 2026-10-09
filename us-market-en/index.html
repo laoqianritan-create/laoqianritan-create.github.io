@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261009094028">
-<link rel="stylesheet" href="css/chronicle.css?v=20261009094028">
-<script defer src="js/mobile-nav.js?v=20261009094028"></script>
+<link rel="stylesheet" href="style.css?v=20261009103230">
+<link rel="stylesheet" href="css/chronicle.css?v=20261009103230">
+<script defer src="js/mobile-nav.js?v=20261009103230"></script>
 </head>
 <body>
 
@@ -33,6 +33,7 @@
         <a class="nav-item active" href="#panel-price" data-panel="panel-price">Trend</a>
         <a class="nav-item" href="#panel-capitalism" data-panel="panel-capitalism">Growth Curves</a>
         <a class="nav-item" href="#panel-cagr-paths" data-panel="panel-cagr-paths">Growth Paths</a>
+        <a class="nav-item" href="#panel-bull-runs" data-panel="panel-bull-runs">Bull Runs</a>
         <a class="nav-item" href="#panel-bull-markets" data-panel="panel-bull-markets">Bull Markets</a>
         <a class="nav-item" href="#panel-annual" data-panel="panel-annual">Annual</a>
         <a class="nav-item" href="#panel-annual-dist" data-panel="panel-annual-dist">Distribution</a>
@@ -275,6 +276,22 @@
       </div>
       <div class="chart-container chart-standard" id="chartSp500BullMarkets"></div>
       <div class="metric-strip" id="bullMarketsSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-bull-runs" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">The Nine Bull Markets Since 1966</h2>
+          <p class="panel-desc">X axis = trading days since each run started (weekdays incl. holidays) · Y = cumulative percent change · gray = ended, red = in progress</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartSp500BullRuns" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartSp500BullRuns"></div>
+      <div class="metric-strip" id="bullRunsSummary"></div>
     </div>
   </section>
 
@@ -1366,9 +1383,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261009094028"></script>
-<script type="module" src="js/panels.js?v=20261009094028"></script>
-<script defer src="js/hero-curve.js?v=20261009094028"></script>
+<script src="js/freshness.js?v=20261009103230"></script>
+<script type="module" src="js/panels.js?v=20261009103230"></script>
+<script defer src="js/hero-curve.js?v=20261009103230"></script>
 
 </body>
 </html>
