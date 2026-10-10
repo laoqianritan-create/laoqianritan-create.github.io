@@ -4,8 +4,8 @@
 // 口径：本站回撤＝收盘对收盘、峰→谷；19 段 ≥20% 熊市（1928 起）。Yardeni bb01 为 23 段——1930 年代连续下跌
 // 被本站合并计段（如 1929-09→1932-06 一段），差异已写进行内说明。数值锚点：2000 段 929 天/−49.1%、2007 段 517 天/−56.8% 等三方互证一致。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261010100336';
-import { registerChart, buildMetricCard, renderMetricStrip } from '../chart-helpers.js?v=20261010100336';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261010110753';
+import { registerChart, buildMetricCard, renderMetricStrip } from '../chart-helpers.js?v=20261010110753';
 
 export function initDrawdownSuitePanel(priceData, drawdownData) {
   const domLen = document.getElementById('chartDdLength');
