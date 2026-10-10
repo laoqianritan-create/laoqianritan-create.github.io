@@ -2,14 +2,14 @@
 // Data: data/sp500_cagr_paths.json (price index + self-computed total return, monthly dividend reinvestment)
 // Layout mirrors Yardeni Research's chart; caliber and cross-checks live in the JSON `caliber` field.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261010110753';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261010221035';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
   buildRecessionOverlaySeries,
-} from '../chart-helpers.js?v=20261010110753';
+} from '../chart-helpers.js?v=20261010221035';
 
 const CAGR_RATES = [3, 4, 5, 6, 7, 8, 9, 10, 11];
 const DAY_MS = 24 * 3600 * 1000;

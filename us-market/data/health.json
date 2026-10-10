@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10 09:40:27",
+  "generated_at": "2026-10-10 22:10:34",
   "today": "2026-10-10",
   "overall": "healthy",
   "stale_count": 0,
@@ -35,8 +35,8 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-10-08",
-      "days_old": 2,
+      "updated": "2026-10-09",
+      "days_old": 1,
       "status": "fresh"
     },
     {
@@ -49,14 +49,14 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "复合增速路径",
-      "updated": "2026-10-10T09:39:17",
+      "updated": "2026-10-10T22:09:25",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
-      "updated": "2026-10-10T09:39:17",
+      "updated": "2026-10-10T22:09:25",
       "days_old": 0,
       "status": "fresh"
     },
