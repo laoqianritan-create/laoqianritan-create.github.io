@@ -4,13 +4,13 @@
 // 交互（2026-10-09 老钱二轮反馈）：自绘图例——每项前一个方块，勾选＝✓（曲线正常展示）；未勾选的行业曲线
 // 仍显示但全半透明、图例也带色半透明；可同时勾选多个；初始只有信息技术带 ✓ 全显、其余全部半透明。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261009221049';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261010094028';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261009221049';
+} from '../chart-helpers.js?v=20261010094028';
 
 const ON_OPACITY = 1;
 const OFF_OPACITY = 0.3;
