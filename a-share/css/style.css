@@ -341,7 +341,8 @@ body {
 
 /* ═══ 面板 17：个股走势图（交互查询）═══ */
 .chart-query-body { padding: 6px 0 2px; }
-.cq-input-row { display: flex; gap: 10px; max-width: 560px; }
+.cq-input-row { display: flex; gap: 10px; align-items: center; max-width: 760px; flex-wrap: wrap; }
+.cq-hint { color: #999; font-size: 12px; white-space: nowrap; }
 .cq-input-row input {
   flex: 1; min-width: 0; padding: 10px 14px; font-size: 14px;
   border: 1px solid #d8dde6; border-radius: 8px; outline: none;
