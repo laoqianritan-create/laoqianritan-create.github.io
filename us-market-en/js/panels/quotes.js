@@ -7,8 +7,8 @@
 //         follows the active quote, so short quotes don't sit in a tall empty box.
 // Data: data/bofa_longest_pictures_quotes.json (manually maintained, cf. sp500_rules.json).
 
-import { escapeHtml } from '../utils.js?v=20261011094020';
-import { exportQuoteAsPng } from '../export-png.js?v=20261011094020';
+import { escapeHtml } from '../utils.js?v=20261011221020';
+import { exportQuoteAsPng } from '../export-png.js?v=20261011221020';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');

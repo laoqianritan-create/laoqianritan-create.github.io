@@ -12,7 +12,7 @@
       "subsector": "Semiconductors",
       "return1y": 0.2175,
       "ytdReturn": 0.2141,
-      "weight": 7.3336
+      "weight": 7.3335
     },
     {
       "ticker": "AAPL",
@@ -51,7 +51,7 @@
       "subsector": "Interactive Media & Services",
       "return1y": 0.4219,
       "ytdReturn": 0.1032,
-      "weight": 5.6657
+      "weight": 5.6656
     },
     {
       "ticker": "MSFT",
@@ -129,7 +129,7 @@
       "subsector": "Semiconductors",
       "return1y": 4.338,
       "ytdReturn": 2.2623,
-      "weight": 1.5356
+      "weight": 1.5355
     },
     {
       "ticker": "BRK.B",
@@ -350,7 +350,7 @@
       "subsector": "Semiconductor Materials & Equipment",
       "return1y": 1.3101,
       "ytdReturn": 0.8858,
-      "weight": 0.5327
+      "weight": 0.5326
     },
     {
       "ticker": "LRCX",
@@ -1130,7 +1130,7 @@
       "subsector": "Systems Software",
       "return1y": 1.3129,
       "ytdReturn": 1.5006,
-      "weight": 0.1892
+      "weight": 0.1891
     },
     {
       "ticker": "BX",
@@ -2550,6 +2550,19 @@
       "weight": 0.0818
     },
     {
+      "ticker": "COHR",
+      "name": "Coherent Corp.",
+      "nameEn": "Coherent Corp.",
+      "marketCap": 61560000000.0,
+      "price": 312.62,
+      "sector": "Information Technology",
+      "sectorEn": "Information Technology",
+      "subsector": "Electronic Components",
+      "return1y": 1.7154,
+      "ytdReturn": 0.6087,
+      "weight": 0.0815
+    },
+    {
       "ticker": "TRGP",
       "name": "Targa Resources Corp.",
       "nameEn": "Targa Resources Corp.",
@@ -2574,19 +2587,6 @@
       "return1y": -0.1431,
       "ytdReturn": -0.1844,
       "weight": 0.0811
-    },
-    {
-      "ticker": "COHR",
-      "name": "Coherent Corp.",
-      "nameEn": "Coherent Corp.",
-      "marketCap": 61220000000.0,
-      "price": 312.62,
-      "sector": "Information Technology",
-      "sectorEn": "Information Technology",
-      "subsector": "Electronic Components",
-      "return1y": 1.7154,
-      "ytdReturn": 0.6087,
-      "weight": 0.081
     },
     {
       "ticker": "GWW",
