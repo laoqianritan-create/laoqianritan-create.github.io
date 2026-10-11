@@ -52,25 +52,34 @@
     result.hidden = false;
   }
 
-  /** 出图请求：q 命中返回 JPG；多候选返回 JSON candidates */
+  /** 出图请求：q 命中返回 JPG；多候选返回 JSON candidates。90 秒超时保护 */
   async function requestChart(q) {
     const url = API + '/chart?q=' + encodeURIComponent(q.trim());
-    const resp = await fetch(url, { cache: 'no-store' });
-    if (!resp.ok) {
-      let msg = '请求失败（' + resp.status + '）';
-      try { const j = await resp.json(); if (j && j.error) msg = j.error; } catch (e) { /* 非 JSON */ }
-      throw new Error(msg);
+    const ctrl = new AbortController();
+    const timer = setTimeout(function () { ctrl.abort(); }, 90000);
+    try {
+      const resp = await fetch(url, { cache: 'no-store', signal: ctrl.signal });
+      if (!resp.ok) {
+        let msg = '请求失败（' + resp.status + '）';
+        try { const j = await resp.json(); if (j && j.error) msg = j.error; } catch (e) { /* 非 JSON */ }
+        throw new Error(msg);
+      }
+      const ct = resp.headers.get('content-type') || '';
+      if (ct.indexOf('image') >= 0) {
+        const blob = await resp.blob();
+        return { image: true, blob };
+      }
+      const j = await resp.json();
+      if (j && Array.isArray(j.candidates) && j.candidates.length) {
+        return { image: false, candidates: j.candidates };
+      }
+      throw new Error(j && j.error ? j.error : '出图失败');
+    } catch (e) {
+      if (e.name === 'AbortError') throw new Error('出图超过 90 秒未响应，可能网络较慢，请刷新后重试');
+      throw e;
+    } finally {
+      clearTimeout(timer);
     }
-    const ct = resp.headers.get('content-type') || '';
-    if (ct.indexOf('image') >= 0) {
-      const blob = await resp.blob();
-      return { image: true, blob };
-    }
-    const j = await resp.json();
-    if (j && Array.isArray(j.candidates) && j.candidates.length) {
-      return { image: false, candidates: j.candidates };
-    }
-    throw new Error(j && j.error ? j.error : '出图失败');
   }
 
   async function doChart(q) {
