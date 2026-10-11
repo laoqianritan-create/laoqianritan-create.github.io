@@ -363,12 +363,8 @@ body {
 }
 .cq-cand:hover { background: #fdf0ef; border-color: #e65a56; color: #e65a56; }
 
-.cq-loading { margin-top: 18px; display: flex; align-items: center; gap: 14px; color: #666; font-size: 14px; line-height: 1.7; }
-.cq-spinner {
-  width: 22px; height: 22px; border: 3px solid #e6e9ef; border-top-color: #e65a56;
-  border-radius: 50%; animation: cq-spin .8s linear infinite; flex-shrink: 0;
-}
-@keyframes cq-spin { to { transform: rotate(360deg); } }
+.cq-loading { margin-top: 18px; color: #999; font-size: 13px; }
+.cq-loading[hidden] { display: none; }
 
 .cq-error { margin-top: 14px; padding: 10px 14px; font-size: 13px; color: #b03030; background: #fdf2f1; border: 1px solid #f3cfcc; border-radius: 8px; }
 

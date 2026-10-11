@@ -12,7 +12,6 @@
   const btn = document.getElementById('chartQueryBtn');
   const suggestBox = document.getElementById('chartSuggestBox');
   const loading = document.getElementById('chartLoading');
-  const loadingName = document.getElementById('chartLoadingName');
   const errBox = document.getElementById('chartError');
   const result = document.getElementById('chartResult');
   const img = document.getElementById('chartResultImg');
@@ -36,9 +35,8 @@
     errBox.hidden = false;
   }
 
-  function showLoading(name) {
+  function showLoading() {
     hideAll();
-    loadingName.textContent = name;
     loading.hidden = false;
   }
 
@@ -86,8 +84,7 @@
     if (!q.trim()) { showError('请输入公司名或 6 位代码，如：茅台 / 600519 / 510300'); return; }
     const seq = ++_reqSeq;
     const raw = q.trim();
-    // 纯 6 位代码直接显示代码；中文先显示输入
-    showLoading(raw.length === 6 && /^\d{6}$/.test(raw) ? raw : raw);
+    showLoading();
     try {
       const r = await requestChart(raw);
       if (seq !== _reqSeq) return; // 已被新请求取代
