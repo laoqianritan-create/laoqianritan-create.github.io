@@ -27,7 +27,7 @@
     const rowH = exportMode ? 120 : 58;
     const padL = exportMode ? 360 : 190;
     const padR = exportMode ? 260 : 150;
-    const padT = exportMode ? 30 : 52;
+    const padT = exportMode ? 70 : 52;
     const padB = exportMode ? 50 : 50;
     const colW = exportMode ? 18 : 9;
     const gap = exportMode ? 3 : 1.5;

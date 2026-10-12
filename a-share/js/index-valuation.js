@@ -27,7 +27,7 @@
     const n = items.length;
     const padL = exportMode ? 420 : 190;
     const padR = exportMode ? 380 : 200;
-    const padT = exportMode ? 30 : 52;
+    const padT = exportMode ? 70 : 52;
     const padB = exportMode ? 50 : 44;
     const W = exportMode ? 3000 : 1480;
     // 屏幕模式高度随指数行数自适应（14 行时 740px），导出固定 1500

@@ -20,7 +20,7 @@
     const H = exportMode ? 1500 : 680;
     const padL = exportMode ? 170 : 90;
     const padR = exportMode ? 200 : 118;   // 右侧留出 CAGR 标签空间
-    const padT = exportMode ? 30 : 60;
+    const padT = exportMode ? 70 : 60;
     const padB = exportMode ? 50 : 46;
 
     canvas.width = W * scale;

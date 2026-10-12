@@ -23,7 +23,7 @@
     const H = exportMode ? 1500 : 640;
     const padL = exportMode ? 190 : 96;
     const padR = exportMode ? 200 : 118;
-    const padT = exportMode ? 30 : 60;
+    const padT = exportMode ? 70 : 60;
     const padB = exportMode ? 50 : 46;
     const rollKey = opts.rollKey || state.rollKey;
     const winLabel = (WINDOWS.find((w) => w.key === rollKey) || WINDOWS[1]).label;

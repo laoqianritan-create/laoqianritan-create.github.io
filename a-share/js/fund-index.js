@@ -17,7 +17,7 @@
     const H = exportMode ? 1500 : 640;
     const padL = exportMode ? 190 : 96;
     const padR = exportMode ? 200 : 118;
-    const padT = exportMode ? 30 : 60;
+    const padT = exportMode ? 70 : 60;
     const padB = exportMode ? 50 : 46;
 
     canvas.width = W * scale;
