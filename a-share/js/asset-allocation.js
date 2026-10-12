@@ -184,7 +184,7 @@
         ctx.fillText(label, x, y - (exportMode ? 12 : 6));
       });
     }
-    const w = 120; // 约半年窗口
+    const w = 24; // 约2年窗口
     drawPeakLabels(findPeaks(erp, w), erp, eMin, eMax, box1, COL.erp);
     drawPeakLabels(findPeaks(rel, w), rel, rMin, rMax, box2, COL.rel);
 
