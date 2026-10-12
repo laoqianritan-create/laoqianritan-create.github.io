@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261012094110';
+} from '../utils.js?v=20261012122603';
 
 import {
   registerChart,
@@ -33,11 +33,11 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261012094110';
+} from '../chart-helpers.js?v=20261012122603';
 
-import { isMobile } from '../mobile.js?v=20261012094110';
+import { isMobile } from '../mobile.js?v=20261012122603';
 
-export function initPanelPrice(data, recessionData, centuryData, equalWeightData) {
+export function initPanelPrice(data, recessionData, centuryData, equalWeightData, drawdownData) {
   const chart = registerChart(echarts.init(document.getElementById('chartPrice')));
   const dailySeries = data.series;
   const dailyDates = dailySeries.map(item => item.date);
@@ -52,14 +52,134 @@ export function initPanelPrice(data, recessionData, centuryData, equalWeightData
   const ewSeries = (equalWeightData?.series || []).filter(item => item.close != null);
   const ewData = ewSeries.map(item => [item.date, item.close]);
 
+  // 比值视图（原「市值加权 vs 等权比值」面板并入）：比值 = (市值加权点位/基期) ÷ (等权点位/基期)，2003-05 ＝ 1（RSP 上市月）
+  const ewMap = new Map(ewSeries.map(x => [x.date, x.close]));
+  const joined = dailySeries.filter(p => ewMap.has(p.date));
+  const hasRatio = joined.length >= 100;
+  let ratioData = [];
+  if (hasRatio) {
+    const p0 = joined[0].close;
+    const e0 = ewMap.get(joined[0].date);
+    ratioData = joined.map(p => [p.date, +((p.close / p0) / (ewMap.get(p.date) / e0)).toFixed(4)]);
+  }
+  // 熊市/回调带：回撤表 peak_date → peak_date+days（谷底日），≥20% 熊市、10–20% 回调
+  const dds = drawdownData?.drawdowns || [];
+  const addDays = (iso, n) => {
+    const d = new Date(iso + 'T00:00:00');
+    d.setDate(d.getDate() + n);
+    return d.toISOString().slice(0, 10);
+  };
+  const bands = dds
+    .filter(x => (x.decline ?? 0) <= -0.10 && x.peak_date && x.days > 0)
+    .map(x => ({
+      start: x.peak_date,
+      end: addDays(x.peak_date, x.days),
+      bear: x.decline <= -0.20,
+    }));
+  const bearBands = bands.filter(b => b.bear).map(b => [{ xAxis: b.start }, { xAxis: b.end }]);
+  const corrBands = bands.filter(b => !b.bear).map(b => [{ xAxis: b.start }, { xAxis: b.end }]);
+  const fmtYM = iso => iso.slice(0, 7).replace('-', '/');
+
   let currentScale = 'log';
 
   function getOption(scale) {
     const isLog = scale === 'log';
     const isPct = scale === 'pct';
+    const isRatio = scale === 'ratio' && hasRatio;
     const lineColor = cssVar('--sp500-line') || '#1a1a1a';
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
     const grayColor = cssVar('--gray') || '#999';
+    const blueColor = '#2563eb';
+    const textColor = cssVar('--text') || '#1a1a1a';
+
+    if (isRatio) {
+      // 比值视图：单轴单序列 + 熊市/回调带 + 1.0 虚线（原「市值加权 vs 等权比值」面板逻辑）
+      return {
+        animation: false,
+        grid: { left: 64, right: 30, top: 46, bottom: 64 },
+        legend: {
+          top: 0,
+          left: 'center',
+          icon: 'roundRect',
+          itemWidth: 18,
+          itemHeight: 3,
+          itemGap: 16,
+          textStyle: { fontSize: 12, color: cssVar('--text-secondary') || '#666', fontFamily: CHART_FONT },
+          data: [
+            { name: '市值/等权比值', itemStyle: { color: blueColor } },
+            { name: '熊市区间（≥20%）', itemStyle: { color: 'rgba(207,19,34,0.45)' } },
+            { name: '回调区间（10–20%）', itemStyle: { color: 'rgba(37,99,235,0.30)' } },
+          ],
+        },
+        xAxis: {
+          type: 'time',
+          axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+          splitLine: { show: false },
+        },
+        yAxis: {
+          type: 'value',
+          min: 0.6,
+          max: 1.2,
+          interval: 0.1,
+          axisLabel: {
+            fontSize: 11,
+            color: grayColor,
+            fontFamily: CHART_FONT,
+            formatter: v => v.toFixed(1),
+          },
+          splitLine: { lineStyle: { color: gridColor } },
+        },
+        series: [
+          {
+            name: '熊市区间（≥20%）',
+            type: 'line',
+            data: [],
+            itemStyle: { color: 'rgba(207,19,34,0.45)' },
+            tooltip: { show: false },
+            markArea: { silent: true, itemStyle: { color: 'rgba(207,19,34,0.12)' }, data: bearBands },
+            z: 0,
+          },
+          {
+            name: '回调区间（10–20%）',
+            type: 'line',
+            data: [],
+            itemStyle: { color: 'rgba(37,99,235,0.30)' },
+            tooltip: { show: false },
+            markArea: { silent: true, itemStyle: { color: 'rgba(37,99,235,0.08)' }, data: corrBands },
+            z: 0,
+          },
+          {
+            id: 'sp500-ratio-line',
+            name: '市值/等权比值',
+            type: 'line',
+            data: ratioData,
+            showSymbol: false,
+            lineStyle: { width: 2, color: blueColor },
+            itemStyle: { color: blueColor },
+            markLine: {
+              silent: true,
+              symbol: 'none',
+              lineStyle: { color: grayColor, type: 'dashed', width: 1 },
+              label: { show: true, formatter: '1.0', position: 'insideEndTop', fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+              data: [{ yAxis: 1.0 }],
+            },
+            z: 2,
+          },
+        ],
+        tooltip: {
+          trigger: 'axis',
+          backgroundColor: cssVar('--card-bg') || '#fff',
+          borderColor: cssVar('--border') || '#e8e8e8',
+          textStyle: { fontSize: 13, color: textColor, fontFamily: CHART_FONT },
+          formatter: params => {
+            const pt = params.find(p => p.seriesName === '市值/等权比值' && p.value && Array.isArray(p.value));
+            if (!pt) return '';
+            return `${pt.value[0]}<br/>市值/等权比值: <b>${formatNumber(pt.value[1], 3)}</b>`;
+          },
+        },
+        dataZoom: getDataZoom(grayColor),
+      };
+    }
 
     let chartData;
     let ewChartData;
@@ -191,22 +311,44 @@ export function initPanelPrice(data, recessionData, centuryData, equalWeightData
     chart.setOption(getOption(currentScale), true);
   };
 
-  if (centuryData) {
+  // 指标卡随视图切换：默认视图显示价格/对数/百分比口径；比值视图显示比值口径
+  function renderCards(scale) {
+    if (!centuryData) return;
+    if (scale === 'ratio' && hasRatio) {
+      const latest = ratioData[ratioData.length - 1];
+      let minPt = ratioData[0];
+      let maxPt = ratioData[0];
+      for (const pt of ratioData) {
+        if (pt[1] < minPt[1]) minPt = pt;
+        if (pt[1] > maxPt[1]) maxPt = pt;
+      }
+      renderMetricStrip('sp500CenturySummary', [
+        buildMetricCard('最新比值', formatNumber(latest[1], 3), `基期 ${fmtYM(joined[0].date)} ＝ 1 · 数据至 ${latest[0]}`),
+        buildMetricCard('区间最高', `${formatNumber(maxPt[1], 3)}（${fmtYM(maxPt[0])}）`, '＞1 表示市值加权跑赢等权'),
+        buildMetricCard('区间最低', `${formatNumber(minPt[1], 3)}（${fmtYM(minPt[0])}）`, '＜1 表示等权跑赢市值加权'),
+        buildMetricCard('阴影带', `${bearBands.length} 段熊市 / ${corrBands.length} 段回调`, '按回撤表派生：≥20% 熊市、10–20% 回调（峰值→谷底）'),
+        buildMetricCard('口径起点', '2003-05（RSP 上市）', '原图等权腿自 1990 起，免费源仅 RSP 2003 起，起点口径不同'),
+      ]);
+      return;
+    }
     renderMetricStrip('sp500CenturySummary', [
       buildMetricCard('数据起点', `${centuryData.start?.date || '--'} | ${centuryData.start ? formatNumber(centuryData.start.value, 2) : '--'}`, '月度数据起点'),
       buildMetricCard('最新月度点位', centuryData.latest ? formatNumber(centuryData.latest.value, 2) : '--', centuryData.latest?.date || ''),
       buildMetricCard('长期复合增速', centuryData.cagr != null ? formatPercent(centuryData.cagr, 2) : '--', '1928年至今年化'),
-      buildMetricCard('默认视图', '对数模式', '黑线 S&P 500 · 蓝线等权(RSP) · 时间轴预留到 2028 年'),
+      buildMetricCard('默认视图', '对数模式', '黑线 S&P 500 · 蓝线等权(RSP) · 比值视图＝市值加权÷等权 · 时间轴预留到 2028 年'),
     ]);
   }
+  renderCards(currentScale);
 
   document.getElementById('scaleToggle').addEventListener('click', event => {
     const btn = event.target.closest('.btn');
     if (!btn || !btn.dataset.scale) return;
+    if (btn.dataset.scale === 'ratio' && !hasRatio) return;
     document.querySelectorAll('#scaleToggle .btn').forEach(item => item.classList.remove('active'));
     btn.classList.add('active');
     currentScale = btn.dataset.scale;
     chart.setOption(getOption(currentScale), true);
+    renderCards(currentScale);
   });
 }
 

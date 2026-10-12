@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261012094110';
+} from '../utils.js?v=20261012122603';
 
 import {
   registerChart,
@@ -33,11 +33,11 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261012094110';
+} from '../chart-helpers.js?v=20261012122603';
 
-import { isMobile } from '../mobile.js?v=20261012094110';
+import { isMobile } from '../mobile.js?v=20261012122603';
 
-export function initPanelPrice(data, recessionData, centuryData, equalWeightData) {
+export function initPanelPrice(data, recessionData, centuryData, equalWeightData, drawdownData) {
   const chart = registerChart(echarts.init(document.getElementById('chartPrice')));
   const dailySeries = data.series;
   const dailyDates = dailySeries.map(item => item.date);
@@ -52,14 +52,135 @@ export function initPanelPrice(data, recessionData, centuryData, equalWeightData
   const ewSeries = (equalWeightData?.series || []).filter(item => item.close != null);
   const ewData = ewSeries.map(item => [item.date, item.close]);
 
+  // Ratio view (former standalone "Market-Weight vs Equal-Weight Ratio" panel merged in):
+  // ratio = (market-weight index / base) ÷ (equal-weight index / base), May 2003 = 1 (RSP inception)
+  const ewMap = new Map(ewSeries.map(x => [x.date, x.close]));
+  const joined = dailySeries.filter(p => ewMap.has(p.date));
+  const hasRatio = joined.length >= 100;
+  let ratioData = [];
+  if (hasRatio) {
+    const p0 = joined[0].close;
+    const e0 = ewMap.get(joined[0].date);
+    ratioData = joined.map(p => [p.date, +((p.close / p0) / (ewMap.get(p.date) / e0)).toFixed(4)]);
+  }
+  // Bear / correction bands from the drawdown table: peak_date → peak_date+days (trough), ≥20% bear, 10–20% correction
+  const dds = drawdownData?.drawdowns || [];
+  const addDays = (iso, n) => {
+    const d = new Date(iso + 'T00:00:00');
+    d.setDate(d.getDate() + n);
+    return d.toISOString().slice(0, 10);
+  };
+  const bands = dds
+    .filter(x => (x.decline ?? 0) <= -0.10 && x.peak_date && x.days > 0)
+    .map(x => ({
+      start: x.peak_date,
+      end: addDays(x.peak_date, x.days),
+      bear: x.decline <= -0.20,
+    }));
+  const bearBands = bands.filter(b => b.bear).map(b => [{ xAxis: b.start }, { xAxis: b.end }]);
+  const corrBands = bands.filter(b => !b.bear).map(b => [{ xAxis: b.start }, { xAxis: b.end }]);
+  const fmtYM = iso => iso.slice(0, 7).replace('-', '/');
+
   let currentScale = 'log';
 
   function getOption(scale) {
     const isLog = scale === 'log';
     const isPct = scale === 'pct';
+    const isRatio = scale === 'ratio' && hasRatio;
     const lineColor = cssVar('--sp500-line') || '#1a1a1a';
     const gridColor = cssVar('--chart-grid') || '#f0f0f0';
     const grayColor = cssVar('--gray') || '#999';
+    const blueColor = '#2563eb';
+    const textColor = cssVar('--text') || '#1a1a1a';
+
+    if (isRatio) {
+      // Ratio view: single axis, single series + bear/correction bands + 1.0 dashed line (former MW/EW ratio panel logic)
+      return {
+        animation: false,
+        grid: { left: 64, right: 30, top: 46, bottom: 64 },
+        legend: {
+          top: 0,
+          left: 'center',
+          icon: 'roundRect',
+          itemWidth: 18,
+          itemHeight: 3,
+          itemGap: 16,
+          textStyle: { fontSize: 12, color: cssVar('--text-secondary') || '#666', fontFamily: CHART_FONT },
+          data: [
+            { name: 'MW/EW Ratio', itemStyle: { color: blueColor } },
+            { name: 'Bear Markets (≥20%)', itemStyle: { color: 'rgba(207,19,34,0.45)' } },
+            { name: 'Corrections (10–20%)', itemStyle: { color: 'rgba(37,99,235,0.30)' } },
+          ],
+        },
+        xAxis: {
+          type: 'time',
+          axisLabel: { fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+          splitLine: { show: false },
+        },
+        yAxis: {
+          type: 'value',
+          min: 0.6,
+          max: 1.2,
+          interval: 0.1,
+          axisLabel: {
+            fontSize: 11,
+            color: grayColor,
+            fontFamily: CHART_FONT,
+            formatter: v => v.toFixed(1),
+          },
+          splitLine: { lineStyle: { color: gridColor } },
+        },
+        series: [
+          {
+            name: 'Bear Markets (≥20%)',
+            type: 'line',
+            data: [],
+            itemStyle: { color: 'rgba(207,19,34,0.45)' },
+            tooltip: { show: false },
+            markArea: { silent: true, itemStyle: { color: 'rgba(207,19,34,0.12)' }, data: bearBands },
+            z: 0,
+          },
+          {
+            name: 'Corrections (10–20%)',
+            type: 'line',
+            data: [],
+            itemStyle: { color: 'rgba(37,99,235,0.30)' },
+            tooltip: { show: false },
+            markArea: { silent: true, itemStyle: { color: 'rgba(37,99,235,0.08)' }, data: corrBands },
+            z: 0,
+          },
+          {
+            id: 'sp500-ratio-line',
+            name: 'MW/EW Ratio',
+            type: 'line',
+            data: ratioData,
+            showSymbol: false,
+            lineStyle: { width: 2, color: blueColor },
+            itemStyle: { color: blueColor },
+            markLine: {
+              silent: true,
+              symbol: 'none',
+              lineStyle: { color: grayColor, type: 'dashed', width: 1 },
+              label: { show: true, formatter: '1.0', position: 'insideEndTop', fontSize: 11, color: grayColor, fontFamily: CHART_FONT },
+              data: [{ yAxis: 1.0 }],
+            },
+            z: 2,
+          },
+        ],
+        tooltip: {
+          trigger: 'axis',
+          backgroundColor: cssVar('--card-bg') || '#fff',
+          borderColor: cssVar('--border') || '#e8e8e8',
+          textStyle: { fontSize: 13, color: textColor, fontFamily: CHART_FONT },
+          formatter: params => {
+            const pt = params.find(p => p.seriesName === 'MW/EW Ratio' && p.value && Array.isArray(p.value));
+            if (!pt) return '';
+            return `${pt.value[0]}<br/>MW/EW ratio: <b>${formatNumber(pt.value[1], 3)}</b>`;
+          },
+        },
+        dataZoom: getDataZoom(grayColor),
+      };
+    }
 
     let chartData;
     let ewChartData;
@@ -191,22 +312,44 @@ export function initPanelPrice(data, recessionData, centuryData, equalWeightData
     chart.setOption(getOption(currentScale), true);
   };
 
-  if (centuryData) {
+  // Metric cards follow the view: default views show price/log/percent caliber; ratio view shows ratio caliber
+  function renderCards(scale) {
+    if (!centuryData) return;
+    if (scale === 'ratio' && hasRatio) {
+      const latest = ratioData[ratioData.length - 1];
+      let minPt = ratioData[0];
+      let maxPt = ratioData[0];
+      for (const pt of ratioData) {
+        if (pt[1] < minPt[1]) minPt = pt;
+        if (pt[1] > maxPt[1]) maxPt = pt;
+      }
+      renderMetricStrip('sp500CenturySummary', [
+        buildMetricCard('Latest ratio', formatNumber(latest[1], 3), `Base ${fmtYM(joined[0].date)} = 1 · data through ${latest[0]}`),
+        buildMetricCard('Period high', `${formatNumber(maxPt[1], 3)} (${fmtYM(maxPt[0])})`, 'Above 1 = market-weight beating equal-weight'),
+        buildMetricCard('Period low', `${formatNumber(minPt[1], 3)} (${fmtYM(minPt[0])})`, 'Below 1 = equal-weight beating market-weight'),
+        buildMetricCard('Shading', `${bearBands.length} bears / ${corrBands.length} corrections`, 'From the drawdown table: ≥20% bear, 10–20% correction (peak→trough)'),
+        buildMetricCard('Start caliber', 'May 2003 (RSP inception)', 'Original starts 1990; the only free equal-weight leg starts 2003'),
+      ]);
+      return;
+    }
     renderMetricStrip('sp500CenturySummary', [
       buildMetricCard('Data Start', `${centuryData.start?.date || '--'} | ${centuryData.start ? formatNumber(centuryData.start.value, 2) : '--'}`, 'Monthly series base point'),
       buildMetricCard('Latest Monthly Level', centuryData.latest ? formatNumber(centuryData.latest.value, 2) : '--', centuryData.latest?.date || ''),
       buildMetricCard('Long-Term CAGR', centuryData.cagr != null ? formatPercent(centuryData.cagr, 2) : '--', 'Annualized since 1928'),
-      buildMetricCard('Default View', 'Log scale', 'Black: S&P 500 · Blue: Equal-Weight (RSP) · X-axis extended to 2028'),
+      buildMetricCard('Default View', 'Log scale', 'Black: S&P 500 · Blue: Equal-Weight (RSP) · ratio view = market-weight ÷ equal-weight · X-axis extended to 2028'),
     ]);
   }
+  renderCards(currentScale);
 
   document.getElementById('scaleToggle').addEventListener('click', event => {
     const btn = event.target.closest('.btn');
     if (!btn || !btn.dataset.scale) return;
+    if (btn.dataset.scale === 'ratio' && !hasRatio) return;
     document.querySelectorAll('#scaleToggle .btn').forEach(item => item.classList.remove('active'));
     btn.classList.add('active');
     currentScale = btn.dataset.scale;
     chart.setOption(getOption(currentScale), true);
+    renderCards(currentScale);
   });
 }
 
