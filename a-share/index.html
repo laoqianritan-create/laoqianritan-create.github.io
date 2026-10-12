@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://ashare.laoqianriritan.com/">
   <link rel="canonical" href="https://ashare.laoqianriritan.com/">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261012121654">
+  <link rel="stylesheet" href="css/style.css?v=20261012123341">
 </head>
 <body>
 
@@ -211,7 +211,7 @@
     <div class="panel-head">
       <div class="panel-head-text">
         <h2 class="panel-title">指数收益来源拆解</h2>
-      <p class="panel-desc">长期全收益 = 股息 + 盈利增长 + 估值变化 · 沪深300 / 中证500 / 中证1000 / 中证2000 / 中证全指 / 中证A500</p>
+      <p class="panel-desc">全收益 = 股息 + 盈利增长 + 估值变化 · 各指数区间不同（对齐 PE 月度数据起点）</p>
         <p class="panel-asof"></p></div>
 <div class="panel-actions">
       <button class="btn-download js-export" data-canvas="returnDecomp" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
@@ -221,11 +221,11 @@
     <details class="panel-notes">
       <summary>看板说明</summary>
       <ul>
-        <li>全收益 = 股息 + 盈利 + 估值：区间总收益近似拆为 股息贡献（累计股息率）+ 盈利贡献（EPS 增长）+ 估值贡献（PE 变化，残差）。</li>
-        <li>价格指数与全收益指数来自中证指数官网；PE 取 TTM 口径，股息率取中证官网 indicator.xls。</li>
-        <li>中证2000 全收益指数未发布，股息贡献暂缺（显示 0），其余指数为完整拆解。</li>
-        <li>PE 数据自 2011 年起（中证官网历史起点），更长区间估值贡献为残差估计。</li>
-        <li>每日自动更新（中证官网指数日线 + 估值文件）。</li>
+        <li>区间总收益拆为三因子：<b>股息贡献</b>（累计股息再投资）+ <b>盈利贡献</b>（EPS 增长）+ <b>估值贡献</b>（PE_TTM 首尾变化）。</li>
+        <li>各指数起点对齐其 PE_TTM 月度数据首日：沪深300 起 2005-04、中证500 起 2007-01、中证1000 起 2014-10、中证2000 起 2023-08、中证全指 起 2018-07。区间不同不可直接横比。</li>
+        <li>估值贡献 = 终点 PE_TTM / 起点 PE_TTM − 1；盈利贡献 = 全收益 − 股息 − 估值（残差）。</li>
+        <li>中证 A500 暂无公开 PE 历史，估值柱缺失，盈利为全收益减股息（含估值残差）。</li>
+        <li>价格 / 全收益指数来自中证指数官网；PE_TTM 为月末口径，月度频率。每日自动更新。</li>
       </ul>
     </details>
   </section>
@@ -492,32 +492,32 @@
 
 
 
-<script defer src="js/data.js?v=20261012121654"></script>
-<script defer src="js/common.js?v=20261012121654"></script>
-<script defer src="js/banner.js?v=20261012121654"></script>
-<script defer src="js/heatmap.js?v=20261012121654"></script>
-<script defer src="js/loss-table.js?v=20261012121654"></script>
-<script defer src="js/longgrowth.js?v=20261012121654"></script>
-<script defer src="js/industry-heat.js?v=20261012121654"></script>
-<script defer src="js/market-turnover.js?v=20261012121654"></script>
-<script defer src="js/return-decomp.js?v=20261012121654"></script>
-<script defer src="js/investor-structure.js?v=20261012121654"></script>
-<script defer src="js/huazheng-factor.js?v=20261012121654"></script>
-<script defer src="js/wide-base.js?v=20261012121654"></script>
-<script defer src="js/fear-greed.js?v=20261012121654"></script>
-<script defer src="js/timing.js?v=20261012121654"></script>
-<script defer src="js/fund-index.js?v=20261012121654"></script>
-<script defer src="js/coverage.js?v=20261012121654"></script>
+<script defer src="js/data.js?v=20261012123341"></script>
+<script defer src="js/common.js?v=20261012123341"></script>
+<script defer src="js/banner.js?v=20261012123341"></script>
+<script defer src="js/heatmap.js?v=20261012123341"></script>
+<script defer src="js/loss-table.js?v=20261012123341"></script>
+<script defer src="js/longgrowth.js?v=20261012123341"></script>
+<script defer src="js/industry-heat.js?v=20261012123341"></script>
+<script defer src="js/market-turnover.js?v=20261012123341"></script>
+<script defer src="js/return-decomp.js?v=20261012123341"></script>
+<script defer src="js/investor-structure.js?v=20261012123341"></script>
+<script defer src="js/huazheng-factor.js?v=20261012123341"></script>
+<script defer src="js/wide-base.js?v=20261012123341"></script>
+<script defer src="js/fear-greed.js?v=20261012123341"></script>
+<script defer src="js/timing.js?v=20261012123341"></script>
+<script defer src="js/fund-index.js?v=20261012123341"></script>
+<script defer src="js/coverage.js?v=20261012123341"></script>
 
-<script defer src="js/main.js?v=20261012121654"></script>
+<script defer src="js/main.js?v=20261012123341"></script>
 
-<script defer src="js/asset-allocation.js?v=20261012121654"></script>
+<script defer src="js/asset-allocation.js?v=20261012123341"></script>
 
-<script defer src="js/index-valuation.js?v=20261012121654"></script>
+<script defer src="js/index-valuation.js?v=20261012123341"></script>
 
-<script defer src="js/trend-temperature.js?v=20261012121654"></script>
+<script defer src="js/trend-temperature.js?v=20261012123341"></script>
 
-<script defer src="js/chart-query.js?v=20261012121654"></script>
+<script defer src="js/chart-query.js?v=20261012123341"></script>
 
 </body>
 </html>
