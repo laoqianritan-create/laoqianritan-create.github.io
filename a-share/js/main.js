@@ -214,7 +214,7 @@
         be.disabled = true; be.textContent = '…';
         try {
           await window.AK.exportPNG(canvas, 3000, '申万行业热力图.png',
-            (off) => window.SW_drawHeatmap(off, payload, { exportMode: true, scale: 1 }),
+            (off) => window.SW_drawHeatmap(off, full, { exportMode: true, scale: 1 }),
             { noHeader: true, source: '数据来源：A股看板 · ashare.laoqianriritan.com' });
           be.textContent = '✓';
         } catch (e) { console.error(e); be.textContent = '!'; }
