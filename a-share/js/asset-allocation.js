@@ -160,6 +160,7 @@
     // ── 阶段性高点标记 ──
     function findPeaks(arr, window) {
       const peaks = [];
+      // 中段：前后都有足够窗口
       for (let i = window; i < arr.length - window; i++) {
         let isPeak = true;
         for (let j = i - window; j <= i + window; j++) {
@@ -167,7 +168,18 @@
         }
         if (isPeak) peaks.push(i);
       }
-      return peaks;
+      // 末尾：从 (arr.length - window) 到最后，找区间最高点
+      const tailStart = arr.length - window;
+      if (tailStart > 0) {
+        let tailMax = -Infinity, tailIdx = -1;
+        for (let i = tailStart; i < arr.length; i++) {
+          if (arr[i] > tailMax) { tailMax = arr[i]; tailIdx = i; }
+        }
+        if (tailIdx > 0 && tailMax > arr[tailStart - 1] && !peaks.includes(tailIdx)) {
+          peaks.push(tailIdx);
+        }
+      }
+      return peaks.sort((a, b) => a - b);
     }
     function drawPeakLabels(peaks, arr, yMin, yMax, box, color) {
       ctx.fillStyle = color;
