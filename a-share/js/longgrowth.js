@@ -119,15 +119,6 @@
     });
 
     // 标题（导出版）
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('不同事物的增长情况', W / 2, 90);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText('2006-01 = 1 · 纵轴对数 · 斜率即年化增速', W / 2, 160);
-    }
 
     // 画线
     series.forEach((s) => {

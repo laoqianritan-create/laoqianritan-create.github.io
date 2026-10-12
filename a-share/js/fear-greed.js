@@ -125,12 +125,6 @@
     yearTicks.forEach(([y, i]) => ctx.fillText(y, xs(i), H - padB + 8));
 
     // 标题（导出版，无副标题）
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('A股恐贪指数', W / 2, 88);
-    }
 
     // ── 曲线 ──
     function poly(values, xf, yf, color, width) {

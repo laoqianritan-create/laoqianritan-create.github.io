@@ -89,15 +89,6 @@
     yearTicks.forEach(([y, i]) => ctx.fillText(y, xs(i), H - padB + 8));
 
     // 标题（导出版）
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('神奇择时指标', W / 2, 90);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText('中证A500全收益 vs 偏债混合基金指数 · 2005 起点 = 100 · 纵轴对数', W / 2, 160);
-    }
 
     // 曲线（偏债先画、A500 后画）
     function poly(norm, color, width) {

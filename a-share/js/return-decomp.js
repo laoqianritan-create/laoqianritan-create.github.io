@@ -37,15 +37,6 @@
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, W, H);
 
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 64px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('指数长期收益来源拆解', W / 2, 78);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 26px NotoSansSC, sans-serif';
-      ctx.fillText('2004-12-31 起 · 全收益 = 股息 + 盈利增长 + 估值变化（PE 为残差）', W / 2, 142);
-    }
 
     const idx = payload.indexes || [];
     const n = idx.length;

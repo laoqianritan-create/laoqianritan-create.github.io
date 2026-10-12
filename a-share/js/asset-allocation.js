@@ -160,15 +160,6 @@
     yearTicks.forEach(([y, i]) => ctx.fillText(y, xs(i), plotBottom + (exportMode ? 16 : 8)));
 
     // 标题（导出版）
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('股债性价比 · 股权风险溢价 ERP', W / 2, 90);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText('中证800（全A近似）盈利收益率 vs 中债10Y国债 · 月度', W / 2, 160);
-    }
 
     // 页脚（导出版）
     if (exportMode) {

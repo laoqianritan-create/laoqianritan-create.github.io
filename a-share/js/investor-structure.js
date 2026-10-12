@@ -38,15 +38,6 @@
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, W, H);
 
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 64px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('新增投资者 vs 中证全指', W / 2, 80);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 26px NotoSansSC, sans-serif';
-      ctx.fillText('月度 · 左轴：新增开户（万户） · 右轴：中证全指（收盘）', W / 2, 145);
-    }
 
     const n = na.dates.length;
     const xs = (i) => padL + (n === 1 ? 0.5 : i / (n - 1)) * (W - padL - padR);

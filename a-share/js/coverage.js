@@ -62,15 +62,6 @@
     ctx.fillRect(0, 0, W, H);
 
     // 标题（导出版）
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('宽基指数覆盖范围', W / 2, 90);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText(`1 格 = 50 只成分股 · 按市值分层连续摆放 · 截至 ${(data.asOf || '').slice(0, 10)}`, W / 2, 160);
-    }
 
     // 顶部分层刻度（300 / 800 / 1800 / 3800 边界格线）
     const segBorders = [6, 16, 36, 76];  // 格位边界（300,800,1800,3800 只）

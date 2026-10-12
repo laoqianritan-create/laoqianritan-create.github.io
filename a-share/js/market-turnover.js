@@ -47,15 +47,6 @@
     const xs = (i) => padL + (n === 1 ? 0.5 : i / (n - 1)) * (W - padL - padR);
 
     // 标题
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 68px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('全市场成交金额 / 换手', W / 2, 80);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 26px NotoSansSC, sans-serif';
-      ctx.fillText(`近 ${nYears} 年 · 换手率 = 两市成交额 / 全市场总市值（乐咕口径）`, W / 2, 148);
-    }
 
     // ── 上图：成交金额（柱） ──
     const h1 = (H - padT - padB) * 0.44;

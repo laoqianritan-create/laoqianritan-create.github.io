@@ -125,15 +125,6 @@
     });
 
     // 标题（导出版）
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('主要宽基指数估值分位', W / 2, 90);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText('PE-TTM 当前值 · 历史分位（绿=低估 红=高估）· 月度', W / 2, 160);
-    }
 
     // 页脚（导出版）
     if (exportMode) {

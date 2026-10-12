@@ -103,15 +103,6 @@
     yearTicks.forEach(([y, i]) => ctx.fillText(y, xs(i), H - padB + 8));
 
     // 标题（导出版）
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText(`偏股混合基金 ${winLabel}滚动年化`, W / 2, 90);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText('885001 偏股混合基金指数 · 每日滚动年化复合', W / 2, 160);
-    }
 
     // 曲线（红正绿负）
     ctx.lineJoin = 'round';

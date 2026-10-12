@@ -147,15 +147,6 @@
 
     // 标题（导出版）
     if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 68px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      const title = isL2 ? `行业交易热度 · ${payload.metrics[state.parent].name}（二级）` : '行业交易热度 · 申万一级';
-      ctx.fillText(title, W / 2, 78);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 26px NotoSansSC, sans-serif';
-      const m = METRICS.find((x) => x.key === metricKey);
-      ctx.fillText(`${m.label} · ${m.sub} · 近 ${state.days} 个交易日`, W / 2, 140);
       // 色条
       const barW = 420, barH = 16;
       const bx = (W - barW) / 2, by = 175;

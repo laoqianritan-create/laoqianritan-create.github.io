@@ -82,15 +82,6 @@
     yearTicks.forEach(([y, i]) => ctx.fillText(y, xs(i), H - padB + 8));
 
     // 标题（导出版）
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('华证 A股六因子', W / 2, 90);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText(`${data.baseDate || '2005-01-04'} = 1 · 大中小微4档等权合成 · 纵轴对数 · 华证价格指数`, W / 2, 160);
-    }
 
     // 画线
     factors.forEach((f) => {

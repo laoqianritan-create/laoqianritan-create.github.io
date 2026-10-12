@@ -186,15 +186,6 @@
     drawXAxis(d1, 4, plotBottom);
 
     // 标题（导出版）
-    if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 76px AlibabaPuHuiTi, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      ctx.fillText('市场趋势温度', W / 2, 90);
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 28px NotoSansSC, sans-serif';
-      ctx.fillText('个股 50 周线上方占比 · 行业 MACD 扩散', W / 2, 160);
-    }
 
     // 页脚（导出版）
     if (exportMode) {
