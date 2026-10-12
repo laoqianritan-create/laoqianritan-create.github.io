@@ -354,7 +354,6 @@
       ctx.fillText(leftLine, L.padL, footY);
 
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', L.W - L.padR, footY);
     }
 
     // ── 悬浮数值提示（屏幕版） ──

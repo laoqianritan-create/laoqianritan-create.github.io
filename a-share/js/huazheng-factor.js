@@ -20,8 +20,8 @@
     const H = exportMode ? 1500 : 680;
     const padL = exportMode ? 170 : 90;
     const padR = exportMode ? 200 : 118;   // 右侧留出 CAGR 标签空间
-    const padT = exportMode ? 220 : 60;
-    const padB = exportMode ? 110 : 46;
+    const padT = exportMode ? 100 : 60;
+    const padB = exportMode ? 50 : 46;
 
     canvas.width = W * scale;
     canvas.height = H * scale;
@@ -193,16 +193,7 @@
       lx += ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
     });
 
-    // 页脚（导出版）
-    if (exportMode) {
-      ctx.fillStyle = '#888888';
-      ctx.font = '300 24px NotoSansSC, sans-serif';
-      ctx.textAlign = 'left';
-      const asOf = (data.generated || '').slice(0, 10);
-      ctx.fillText(`数据截至 ${asOf} · 微盘红利 2014 前为 3 档等权 · 华证指数 IDMT 公开接口`, padL, H - 60);
-      ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 60);
-    }
+    // 页脚：导出模式下不画（由 exportPNG 统一加 footer）
 
     // ── 悬浮数值提示（屏幕版） ──
     if (!exportMode) {

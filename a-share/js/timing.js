@@ -23,8 +23,8 @@
     const H = exportMode ? 1500 : 640;
     const padL = exportMode ? 190 : 96;
     const padR = exportMode ? 200 : 118;
-    const padT = exportMode ? 220 : 60;
-    const padB = exportMode ? 110 : 46;
+    const padT = exportMode ? 100 : 60;
+    const padB = exportMode ? 50 : 46;
     const rollKey = opts.rollKey || state.rollKey;
     const winLabel = (WINDOWS.find((w) => w.key === rollKey) || WINDOWS[1]).label;
 
@@ -151,9 +151,7 @@
       ctx.fillStyle = '#888888';
       ctx.font = '300 24px NotoSansSC, sans-serif';
       ctx.textAlign = 'left';
-      ctx.fillText(`数据截至 ${(data.generated || '').slice(0, 10)} · 885001 偏股混合基金指数（Wind AIFin）· ${winLabel}交易日窗口年化复合`, padL, H - 60);
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 60);
     }
 
     // hover（屏幕版）

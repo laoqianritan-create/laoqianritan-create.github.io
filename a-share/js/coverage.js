@@ -27,8 +27,8 @@
     const rowH = exportMode ? 120 : 58;
     const padL = exportMode ? 360 : 190;
     const padR = exportMode ? 260 : 150;
-    const padT = exportMode ? 220 : 52;
-    const padB = exportMode ? 130 : 50;
+    const padT = exportMode ? 100 : 52;
+    const padB = exportMode ? 50 : 50;
     const colW = exportMode ? 18 : 9;
     const gap = exportMode ? 3 : 1.5;
     const cellStep = colW + gap;
@@ -127,7 +127,6 @@
       ctx.textAlign = 'left';
       ctx.fillText(`1 格 = 50 只成分股 · 中证指数官网成分股快照（akshare）`, padL, H - 60);
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 60);
     }
 
     // hover（屏幕版）：显示 该指数覆盖 X 只 ≈ Y 格

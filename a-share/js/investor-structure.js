@@ -22,8 +22,8 @@
     const H = exportMode ? 1500 : 640;
     const padL = exportMode ? 180 : 80;
     const padR = exportMode ? 160 : 70;
-    const padT = exportMode ? 220 : 52;
-    const padB = exportMode ? 130 : 48;
+    const padT = exportMode ? 100 : 52;
+    const padB = exportMode ? 50 : 48;
 
     canvasEl.width = W * scale;
     canvasEl.height = H * scale;
@@ -158,7 +158,6 @@
       const asOf = (data.generated || '').slice(0, 10);
       ctx.fillText(`数据截至 ${asOf} · ${na.breakDate ? '口径分界：' + na.breakDate + '（前中证登全市场 / 后上交所沪市）' : ''}`, padL, H - 62);
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 62);
     }
 
     // ── 悬浮数值提示（屏幕版）：最近月份 → 新增开户 / 中证全指 ──

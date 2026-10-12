@@ -27,8 +27,8 @@
     const n = items.length;
     const padL = exportMode ? 420 : 190;
     const padR = exportMode ? 380 : 200;
-    const padT = exportMode ? 200 : 52;
-    const padB = exportMode ? 100 : 44;
+    const padT = exportMode ? 100 : 52;
+    const padB = exportMode ? 50 : 44;
     const W = exportMode ? 3000 : 1480;
     // 屏幕模式高度随指数行数自适应（14 行时 740px），导出固定 1500
     const H = exportMode ? 1500 : Math.max(680, padT + padB + n * 46);
@@ -134,7 +134,6 @@
       const latest = items[0] ? items[0].hist[items[0].hist.length - 1][0] : '';
       ctx.fillText(`数据截至 ${latest} · 乐咕乐股 legulegu PE-TTM 月度`, padL, H - 40);
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 40);
     }
 
     // ── 悬浮提示 ──

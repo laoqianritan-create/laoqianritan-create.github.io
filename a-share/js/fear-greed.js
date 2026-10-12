@@ -20,8 +20,8 @@
     const H = exportMode ? 1400 : 640;
     const padL = exportMode ? 170 : 90;
     const padR = exportMode ? 200 : 108;
-    const padT = exportMode ? 200 : 52;
-    const padB = exportMode ? 110 : 46;
+    const padT = exportMode ? 100 : 52;
+    const padB = exportMode ? 50 : 46;
 
     canvas.width = W * scale;
     canvas.height = H * scale;
@@ -192,9 +192,7 @@
       ctx.fillStyle = '#888888';
       ctx.font = '300 24px NotoSansSC, sans-serif';
       ctx.textAlign = 'left';
-      ctx.fillText(`数据截至 ${(data.generated || '').slice(0, 10)} · A股恐贪指数：百分位网 6 子指标加权（日更）· 中证全指 000985`, padL, H - 60);
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 60);
     }
 
     // ── hover 悬浮（屏幕版）──

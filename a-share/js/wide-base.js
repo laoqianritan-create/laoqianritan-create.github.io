@@ -28,8 +28,8 @@
     const H = exportMode ? 1500 : 680;
     const padL = exportMode ? 170 : 90;
     const padR = exportMode ? 240 : 150;
-    const padT = exportMode ? 220 : 60;
-    const padB = exportMode ? 110 : 46;
+    const padT = exportMode ? 100 : 60;
+    const padB = exportMode ? 50 : 46;
 
     canvas.width = W * scale;
     canvas.height = H * scale;
@@ -213,7 +213,6 @@
       const asOf = (data.generated || '').slice(0, 10);
       ctx.fillText(`数据截至 ${asOf} · 中证2000 为价格指数（全收益未发布）· 中证官网 + Wind AIFin`, padL, H - 60);
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 60);
     }
 
     // ── 悬浮数值提示（屏幕版）──

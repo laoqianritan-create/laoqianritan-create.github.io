@@ -22,8 +22,8 @@
     const H = exportMode ? 1600 : 720;
     const padL = exportMode ? 170 : 90;
     const padR = exportMode ? 200 : 118;   // 右侧留出 CAGR 标签空间
-    const padT = exportMode ? 220 : 60;
-    const padB = exportMode ? 110 : 46;
+    const padT = exportMode ? 100 : 60;
+    const padB = exportMode ? 50 : 46;
 
     canvas.width = W * scale;
     canvas.height = H * scale;
@@ -237,16 +237,7 @@
       lx += ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
     });
 
-    // 页脚（导出版）
-    if (exportMode) {
-      ctx.fillStyle = '#888888';
-      ctx.font = '300 24px NotoSansSC, sans-serif';
-      ctx.textAlign = 'left';
-      const asOf = (data.generated || '').slice(0, 10);
-      ctx.fillText(`数据截至 ${asOf} · M2/存款/GDP/总市值 月度 · 房价 月度（统计局，滞后约1–2个月）· 黄金 人民币口径`, padL, H - 60);
-      ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 60);
-    }
+    // 页脚：导出模式下不画（由 exportPNG 统一加 footer）
 
     // ── 悬浮数值提示（屏幕版）：鼠标 x → 最近 master 交易日 → 每条线按自身日期就近取值 ──
     if (!exportMode && opts.bindHover !== false) {

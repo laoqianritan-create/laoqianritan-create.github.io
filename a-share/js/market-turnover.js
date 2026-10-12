@@ -18,8 +18,8 @@
     const H = exportMode ? 1800 : 860;
     const padL = exportMode ? 170 : 80;
     const padR = exportMode ? 150 : 70;
-    const padT = exportMode ? 200 : 48;
-    const padB = exportMode ? 120 : 44;
+    const padT = exportMode ? 100 : 48;
+    const padB = exportMode ? 50 : 44;
 
     canvasEl.width = W * scale;
     canvasEl.height = H * scale;
@@ -172,7 +172,6 @@
       const asOf = (data.generated || '').slice(0, 10);
       ctx.fillText(`数据截至 ${asOf} · 两市成交额（新浪）· 总市值（乐咕）· 自由流通市值无日度历史，采用总市值口径`, padL, H - 64);
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 64);
     }
 
     // ── 悬浮数值提示（屏幕版）：最近交易日 → 成交额 / 换手 ──

@@ -16,8 +16,8 @@
     const H = exportMode ? 1500 : 680;
     const padL = exportMode ? 170 : 90;
     const padR = exportMode ? 220 : 140;
-    const padT = exportMode ? 200 : 52;
-    const padB = exportMode ? 90 : 40;
+    const padT = exportMode ? 100 : 52;
+    const padB = exportMode ? 50 : 40;
 
     canvas.width = W * scale;
     canvas.height = H * scale;
@@ -34,7 +34,7 @@
 
     const stocks = data.stock_ma250 || [];
     const macds = data.industry_macd || [];
-    const gap = exportMode ? 90 : 40;
+    const gap = exportMode ? 50 : 40;
     const plotTop = padT, plotBottom = H - padB;
     const half = (plotBottom - plotTop - gap) / 2;
     const box1 = { top: plotTop, h: half };
@@ -194,7 +194,6 @@
       ctx.textAlign = 'left';
       ctx.fillText(`数据截至 ${d1[n1 - 1]} · hithink 全市场后复权日线 + 申万一级行业日线`, padL, H - 40);
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, H - 40);
     }
 
     // ── 悬浮提示 ──

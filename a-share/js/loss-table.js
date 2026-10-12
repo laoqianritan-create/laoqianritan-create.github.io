@@ -199,7 +199,6 @@
       ctx.textBaseline = 'middle';
       ctx.fillText('注: / 表示该买入价尚未被触及；表内数值 = (现价 − 买入价) / 买入价', L.padL, footY);
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', L.W - L.padR, footY);
     }
 
     // ── 悬浮数值提示（屏幕版） ──

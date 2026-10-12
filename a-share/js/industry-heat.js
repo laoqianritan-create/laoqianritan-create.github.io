@@ -240,7 +240,6 @@
       const asOf = (payload.generated || '').slice(0, 10);
       ctx.fillText(`数据截至 ${asOf} · 一级行业 1999 起 / 二级 2024 起 · 样本<120 日置空`, padL, fy);
       ctx.textAlign = 'right';
-      ctx.fillText('公众号「老钱日日谈」播客「面基」', W - padR, fy);
     }
   }
 

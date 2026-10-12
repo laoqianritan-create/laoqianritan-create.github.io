@@ -75,7 +75,6 @@
     return p;
   }
 
-  /** 面板「数据截至」：从该面板 JSON 的 generated / asOf / updated 取，禁止硬编码 */
   function applyAsOf(panelId, d) {
     if (!d || typeof d !== 'object') return;
     const v = d.generated || d.asOf || d.updated;
