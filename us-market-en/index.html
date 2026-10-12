@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261012122603">
-<link rel="stylesheet" href="css/chronicle.css?v=20261012122603">
-<script defer src="js/mobile-nav.js?v=20261012122603"></script>
+<link rel="stylesheet" href="style.css?v=20261012124821">
+<link rel="stylesheet" href="css/chronicle.css?v=20261012124821">
+<script defer src="js/mobile-nav.js?v=20261012124821"></script>
 </head>
 <body>
 
@@ -42,8 +42,6 @@
         <a class="nav-item" href="#panel-annual-dist" data-panel="panel-annual-dist">Distribution</a>
         <a class="nav-item" href="#panel-annualized-matrix" data-panel="panel-annualized-matrix">Holding Matrix</a>
         <a class="nav-item" href="#panel-return-details" data-panel="panel-return-details">Composition</a>
-        <a class="nav-item" href="#panel-drawdown" data-panel="panel-drawdown">Drawdown</a>
-        <a class="nav-item" href="#panel-intrayear-dd" data-panel="panel-intrayear-dd">Intrayear DD</a>
         <a class="nav-item" href="#panel-volatility" data-panel="panel-volatility">Volatility</a>
         <a class="nav-item" href="#panel-monthly" data-panel="panel-monthly">Monthly</a>
         <a class="nav-item" href="#panel-vix" data-panel="panel-vix">VIX</a>
@@ -326,8 +324,8 @@
       <div class="panel-header">
         <div>
           <h2 class="panel-title">Bull &amp; Bear Market Drawdowns</h2>
-          <p class="panel-desc">Bear length, decline, and full-history bands since 1928</p>
-          <p class="mini-desc">Three charts: (1) history of bear length (2) history of bear decline (3) full-history price with bands (red = bear ≥20%, blue = correction 10–20%; hover shows decline and days) · caliber = peak→trough, close-to-close; site 19 bears ≠ original 23 (1930s consecutive declines merged) · anchors match: 2000 = 929 days/−49.1%, 2007 = 517 days/−56.8%</p>
+          <p class="panel-desc">Bear length, decline, full-history bands, drawdowns from ATH, and intrayear max drawdown since 1928</p>
+          <p class="mini-desc">Six charts: (1) history of bear length (2) history of bear decline (3) full-history price with bands (red = bear ≥20%, blue = correction 10–20%) (4) drawdown from all-time high (5) drawdown-event scatter · every ≥10% since 1928 (6) intrayear max drawdown vs full-year return · caliber = peak→trough, close-to-close; site 19 bears ≠ original 23 (1930s consecutive declines merged) · anchors match: 2000 = 929 days/−49.1%, 2007 = 517 days/−56.8%</p>
         </div>
       </div>
       <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:14px 0 6px">
@@ -345,6 +343,50 @@
         <button class="btn btn-export" data-chart-sub="chartDdHistory" title="Export PNG">&#8681;</button>
       </div>
       <div class="chart-container chart-standard" id="chartDdHistory"></div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px">
+        <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">4) Drawdown from all-time high</div>
+        <button class="btn btn-export" data-chart-sub="chartDrawdown" title="Export PNG">&#8681;</button>
+      </div>
+      <div class="chart-container chart-medium" id="chartDrawdown"></div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px">
+        <div>
+          <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">5) Drawdown events scatter · every ≥10% since 1928</div>
+          <p class="scatter-subdesc">X: days to trough (log scale) · Y: decline · colors = severity category · deeper drawdowns sit lower</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart-sub="chartDdScatter" title="Export scatter PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-medium" id="chartDdScatter"></div>
+      <div class="table-toolbar">
+        <div style="font-size:13px;color:var(--text-secondary)">Major drawdowns ≥ 10% · showing the latest 12, expand for all</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="ddTableToggle" style="display:none">Show all</button>
+          <button class="btn btn-export" data-export-element="drawdownTableWrap" title="Export Table PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="drawdown-table-wrap" id="drawdownTableWrap">
+        <table class="data-table mobile-cards" id="drawdownTable">
+          <thead>
+            <tr>
+              <th>Period</th>
+              <th>S&amp;P High</th>
+              <th>S&amp;P Low</th>
+              <th data-sort="days">Days to Low</th>
+              <th data-sort="decline">Decline</th>
+              <th data-sort="recovery_days">Days to New High</th>
+              <th>Category</th>
+              <th>Trigger</th>
+            </tr>
+          </thead>
+          <tbody id="drawdownTbody"></tbody>
+        </table>
+      </div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px">
+        <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">6) Intrayear max drawdown vs. full-year return</div>
+        <button class="btn btn-export" data-export-element="ddGrid" title="Export PNG">&#8681;</button>
+      </div>
+      <div class="dd-grid" id="ddGrid"></div>
       <div class="metric-strip" id="ddSuiteSummary"></div>
     </div>
   </section>
@@ -484,70 +526,6 @@
       </div>
       <div class="chart-container chart-medium" id="chartReturnDetails"></div>
       <div class="metric-strip" id="returnDetailsSummary"></div>
-    </div>
-  </section>
-
-  <section class="panel" id="panel-drawdown" data-category="sp500">
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">S&amp;P 500 Drawdowns from All-Time High</h2>
-          <p class="panel-desc">Daily drawdown from the prior all-time high, classified into five severity buckets. The scatter covers every ≥10% drawdown since 1928.</p>
-        </div>
-        <div class="panel-controls">
-          <button class="btn btn-export" data-chart="chartDrawdown" title="Export PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="chart-container chart-medium" id="chartDrawdown"></div>
-      <div class="scatter-subheader">
-        <div>
-          <h3 class="scatter-subtitle">S&amp;P 500 Drawdown Events Scatter · every ≥10% drawdown since 1928</h3>
-          <p class="scatter-subdesc">X: days to trough (log scale) · Y: decline · colors = severity category · deeper drawdowns sit lower</p>
-        </div>
-        <div class="panel-controls">
-          <button class="btn btn-export" data-chart-sub="chartDdScatter" title="Export scatter PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="chart-container chart-medium" id="chartDdScatter"></div>
-      <div class="table-toolbar">
-        <div style="font-size:13px;color:var(--text-secondary)">Major drawdowns ≥ 10% · showing the latest 12, expand for all</div>
-        <div style="display:flex;gap:8px">
-          <button class="btn" id="ddTableToggle" style="display:none">Show all</button>
-          <button class="btn btn-export" data-export-element="drawdownTableWrap" title="Export Table PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="drawdown-table-wrap" id="drawdownTableWrap">
-        <table class="data-table mobile-cards" id="drawdownTable">
-          <thead>
-            <tr>
-              <th>Period</th>
-              <th>S&amp;P High</th>
-              <th>S&amp;P Low</th>
-              <th data-sort="days">Days to Low</th>
-              <th data-sort="decline">Decline</th>
-              <th data-sort="recovery_days">Days to New High</th>
-              <th>Category</th>
-              <th>Trigger</th>
-            </tr>
-          </thead>
-          <tbody id="drawdownTbody"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel" id="panel-intrayear-dd" data-category="sp500">
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">S&amp;P 500 Intrayear Max Drawdown vs. Full-Year Return</h2>
-          <p class="panel-desc">Adds perspective to each year: intrayear max drawdown, full-year return, and number of new highs.</p>
-        </div>
-        <div class="panel-controls">
-          <button class="btn btn-export" data-export-element="ddGrid" title="Export PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="dd-grid" id="ddGrid"></div>
     </div>
   </section>
 
@@ -1465,9 +1443,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261012122603"></script>
-<script type="module" src="js/panels.js?v=20261012122603"></script>
-<script defer src="js/hero-curve.js?v=20261012122603"></script>
+<script src="js/freshness.js?v=20261012124821"></script>
+<script type="module" src="js/panels.js?v=20261012124821"></script>
+<script defer src="js/hero-curve.js?v=20261012124821"></script>
 
 </body>
 </html>

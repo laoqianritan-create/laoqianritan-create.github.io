@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261012122603">
-<link rel="stylesheet" href="css/chronicle.css?v=20261012122603">
-<script defer src="js/mobile-nav.js?v=20261012122603"></script>
+<link rel="stylesheet" href="style.css?v=20261012124821">
+<link rel="stylesheet" href="css/chronicle.css?v=20261012124821">
+<script defer src="js/mobile-nav.js?v=20261012124821"></script>
 </head>
 <body>
 
@@ -42,8 +42,6 @@
         <a class="nav-item" href="#panel-annual-dist" data-panel="panel-annual-dist">回报分布</a>
         <a class="nav-item" href="#panel-annualized-matrix" data-panel="panel-annualized-matrix">年化矩阵</a>
         <a class="nav-item" href="#panel-return-details" data-panel="panel-return-details">回报分解</a>
-        <a class="nav-item" href="#panel-drawdown" data-panel="panel-drawdown">回撤</a>
-        <a class="nav-item" href="#panel-intrayear-dd" data-panel="panel-intrayear-dd">年内回撤</a>
         <a class="nav-item" href="#panel-volatility" data-panel="panel-volatility">波动率</a>
         <a class="nav-item" href="#panel-monthly" data-panel="panel-monthly">月度涨跌</a>
         <a class="nav-item" href="#panel-vix" data-panel="panel-vix">恐慌指数</a>
@@ -327,8 +325,8 @@
       <div class="panel-header">
         <div>
           <h2 class="panel-title">回撤与牛熊专题</h2>
-          <p class="panel-desc">1928 年以来的熊市天数、跌幅与全史回撤带</p>
-          <p class="mini-desc">三张图：① 熊市持续天数史 ② 熊市跌幅史 ③ 全史价格与回撤带（红＝熊市 ≥20%、蓝＝回调 10–20%，悬停显示期间跌幅与天数）· 口径＝峰→谷、收盘对收盘；本站 19 段 ≠ 原图 23 段（1930 年代连续下跌合并计段）· 锚点与原图一致：2000 段 929 天/−49.1%、2007 段 517 天/−56.8%</p>
+          <p class="panel-desc">1928 年以来熊市天数、跌幅、全史回撤带、自高点回撤与年内回撤全景</p>
+          <p class="mini-desc">六张图：① 熊市持续天数史 ② 熊市跌幅史 ③ 全史价格与回撤带（红＝熊市 ≥20%、蓝＝回调 10–20%）④ 自高点回撤面积图 ⑤ 回撤事件散点（1928 年以来 ≥10%）⑥ 年内最大回撤 vs 全年涨幅 · 口径＝峰→谷、收盘对收盘；本站 19 段 ≠ 原图 23 段（1930 年代连续下跌合并计段）· 锚点与原图一致：2000 段 929 天/−49.1%、2007 段 517 天/−56.8%</p>
         </div>
       </div>
       <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:14px 0 6px">
@@ -346,6 +344,50 @@
         <button class="btn btn-export" data-chart-sub="chartDdHistory" title="导出PNG">&#8681;</button>
       </div>
       <div class="chart-container chart-standard" id="chartDdHistory"></div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px">
+        <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">④ 标普500自高点回撤</div>
+        <button class="btn btn-export" data-chart-sub="chartDrawdown" title="导出PNG">&#8681;</button>
+      </div>
+      <div class="chart-container chart-medium" id="chartDrawdown"></div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px">
+        <div>
+          <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">⑤ 回撤事件散点 · 1928 年以来全部 ≥10% 回撤</div>
+          <p class="scatter-subdesc">横轴下跌时长（对数轴） · 纵轴下跌幅度 · 颜色为量级分类 · 跌得越深的点越靠下</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart-sub="chartDdScatter" title="导出散点图PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-medium" id="chartDdScatter"></div>
+      <div class="table-toolbar">
+        <div style="font-size:13px;color:var(--text-secondary)">回撤 ≥ 10% 的重大事件清单 · 默认展示最近 12 个，展开看全部</div>
+        <div style="display:flex;gap:8px">
+          <button class="btn" id="ddTableToggle" style="display:none">展开全部</button>
+          <button class="btn btn-export" data-export-element="drawdownTableWrap" title="导出表格 PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="drawdown-table-wrap" id="drawdownTableWrap">
+        <table class="data-table mobile-cards" id="drawdownTable">
+          <thead>
+            <tr>
+              <th>回调区间</th>
+              <th>标普高点</th>
+              <th>标普低点</th>
+              <th data-sort="days">创新低天数</th>
+              <th data-sort="decline">跌幅</th>
+              <th data-sort="recovery_days">再创新高天数</th>
+              <th>分类</th>
+              <th>下跌原因</th>
+            </tr>
+          </thead>
+          <tbody id="drawdownTbody"></tbody>
+        </table>
+      </div>
+      <div class="scatter-subheader" style="display:flex;justify-content:space-between;align-items:center;margin:18px 0 6px">
+        <div class="scatter-subtitle" style="font-size:16px;font-weight:700;color:var(--text)">⑥ S&amp;P 500 年内最大回撤 vs 全年涨幅</div>
+        <button class="btn btn-export" data-export-element="ddGrid" title="导出PNG">&#8681;</button>
+      </div>
+      <div class="dd-grid" id="ddGrid"></div>
       <div class="metric-strip" id="ddSuiteSummary"></div>
     </div>
   </section>
@@ -489,71 +531,6 @@
       </div>
       <div class="chart-container chart-medium" id="chartReturnDetails"></div>
       <div class="metric-strip" id="returnDetailsSummary"></div>
-    </div>
-  </section>
-
-  <section class="panel" id="panel-drawdown" data-category="sp500">
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">标普500自高点回撤</h2>
-          <p class="panel-desc">每个交易日距历史最高点的跌幅 · 五档回撤分类</p>
-            <p class="mini-desc">散点图统计 1928 年以来全部 ≥10% 回撤</p>
-        </div>
-        <div class="panel-controls">
-          <button class="btn btn-export" data-chart="chartDrawdown" title="导出PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="chart-container chart-medium" id="chartDrawdown"></div>
-      <div class="scatter-subheader">
-        <div>
-          <h3 class="scatter-subtitle">标普500回撤事件散点 · 1928 年以来全部 ≥10% 回撤</h3>
-          <p class="scatter-subdesc">横轴下跌时长（对数轴） · 纵轴下跌幅度 · 颜色为量级分类 · 跌得越深的点越靠下</p>
-        </div>
-        <div class="panel-controls">
-          <button class="btn btn-export" data-chart-sub="chartDdScatter" title="导出散点图PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="chart-container chart-medium" id="chartDdScatter"></div>
-      <div class="table-toolbar">
-        <div style="font-size:13px;color:var(--text-secondary)">回撤 ≥ 10% 的重大事件清单 · 默认展示最近 12 个，展开看全部</div>
-        <div style="display:flex;gap:8px">
-          <button class="btn" id="ddTableToggle" style="display:none">展开全部</button>
-          <button class="btn btn-export" data-export-element="drawdownTableWrap" title="导出表格 PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="drawdown-table-wrap" id="drawdownTableWrap">
-        <table class="data-table mobile-cards" id="drawdownTable">
-          <thead>
-            <tr>
-              <th>回调区间</th>
-              <th>标普高点</th>
-              <th>标普低点</th>
-              <th data-sort="days">创新低天数</th>
-              <th data-sort="decline">跌幅</th>
-              <th data-sort="recovery_days">再创新高天数</th>
-              <th>分类</th>
-              <th>下跌原因</th>
-            </tr>
-          </thead>
-          <tbody id="drawdownTbody"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="panel" id="panel-intrayear-dd" data-category="sp500">
-    <div class="panel-inner">
-      <div class="panel-header">
-        <div>
-          <h2 class="panel-title">S&amp;P 500 年内最大回撤 vs 全年涨幅</h2>
-          <p class="panel-desc">为每一年的行情提供更多视角—年内最大回撤、当年表现、创新高次数</p>
-        </div>
-        <div class="panel-controls">
-          <button class="btn btn-export" data-export-element="ddGrid" title="导出PNG">&#8681;</button>
-        </div>
-      </div>
-      <div class="dd-grid" id="ddGrid"></div>
     </div>
   </section>
 
@@ -1485,9 +1462,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261012122603"></script>
-<script type="module" src="js/panels.js?v=20261012122603"></script>
-<script defer src="js/hero-curve.js?v=20261012122603"></script>
+<script src="js/freshness.js?v=20261012124821"></script>
+<script type="module" src="js/panels.js?v=20261012124821"></script>
+<script defer src="js/hero-curve.js?v=20261012124821"></script>
 
 </body>
 </html>
