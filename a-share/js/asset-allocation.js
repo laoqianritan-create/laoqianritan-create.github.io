@@ -148,7 +148,21 @@
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.fillText('股债相对收益率（中证800盈利收益率 ÷ 中债10Y国债，相除）', padL, box2.top - (exportMode ? 34 : 18));
 
-    // ── 共享 X 轴年份 ──
+    // ── 共享 X 轴：每月一根浅灰竖线 + 年份标签 ──
+    const monthTicks = new Set();
+    dates.forEach((d, i) => {
+      const ym = d.slice(0, 7);
+      if (i === 0 || ym !== dates[i - 1].slice(0, 7)) monthTicks.add(i);
+    });
+    ctx.strokeStyle = '#F0F0F0';
+    ctx.lineWidth = 1;
+    monthTicks.forEach((i) => {
+      ctx.beginPath();
+      ctx.moveTo(xs(i), plotTop);
+      ctx.lineTo(xs(i), plotBottom);
+      ctx.stroke();
+    });
+
     const yearTicks = new Set();
     dates.forEach((d, i) => {
       const y = d.slice(0, 4);
