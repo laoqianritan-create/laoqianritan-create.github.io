@@ -68,7 +68,7 @@
       const metricCellW = yearCellW * 1.45;
       const cellH = 60;
       const headerH = 0;
-      const legendH = 90;
+      const legendH = 40;
       const colHdrH = 78;                   // 两行标题(label + sublabel)
       const footerH = 0;
       const padBot = 50;
@@ -407,7 +407,7 @@
     const barW = Math.round(L.W * 0.32);
     const barH = 22;
     const barX = (L.W - barW) / 2;
-    const barY = 220;
+    const barY = 10;
 
     const grad = ctx.createLinearGradient(barX, 0, barX + barW, 0);
     grad.addColorStop(0.00, '#2FBF71');
@@ -437,6 +437,5 @@
     ctx.font = '300 17px NotoSansSC, "Microsoft YaHei", sans-serif';
     ctx.textBaseline = 'top';
     ctx.textAlign = 'center';
-    ctx.fillText('年度色阶按 P2~P98 截断（两端格子带白色小三角）· 右侧 CAGR 区使用更紧的色阶（−12% ~ +18%）', L.W / 2, barY + barH + 36);
   }
 })();
