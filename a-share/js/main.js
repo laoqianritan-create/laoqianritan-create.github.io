@@ -214,7 +214,9 @@
         try {
           await window.AK.exportPNG(canvas, 3000, '申万行业热力图.png',
             (off) => window.SW_drawHeatmap(off, full, { exportMode: true, scale: 1 }),
-            { source: '数据来源：A股看板 · ashare.laoqianriritan.com' });
+            { title: '申万一级行业年度涨跌幅 · 长期 CAGR',
+              desc: '2005 — 2026 · 31 个一级行业 · 红涨绿跌 · 右侧 4 列为年化复合收益率',
+              source: '数据来源：A股看板 · ashare.laoqianriritan.com' });
           be.textContent = '✓';
         } catch (e) { console.error(e); be.textContent = '!'; }
         setTimeout(() => { be.disabled = false; be.innerHTML = orig; }, 1200);
@@ -260,7 +262,9 @@
         try {
           await window.AK.exportPNG(canvas, 3000, '抄底数学题.png',
             (off) => window.SW_drawLossTable(off, { exportMode: true, scale: 1 }),
-            { source: '数据来源：A股看板 · ashare.laoqianriritan.com' });
+            { title: '关于抄底的一道基础数学题',
+              desc: '不同买入价与现价的亏损对照表 · 跌得越多，反弹回本越难',
+              source: '数据来源：A股看板 · ashare.laoqianriritan.com' });
           be.textContent = '✓';
         } catch (e) { console.error(e); be.textContent = '!'; }
         setTimeout(() => { be.disabled = false; be.innerHTML = orig; }, 1200);
