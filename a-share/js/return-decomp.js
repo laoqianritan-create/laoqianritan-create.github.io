@@ -1,7 +1,6 @@
 /**
- * 收益来源拆解面板
- * 数据：return_decomp.json { generated, indexes: [ {code, name, totalReturnPct, dividendPct, earningsPct, valuationPct} ] }
- * 展示：多宽基横向对比（分组柱：全收益 / 股息 / 盈利 / 估值），鼠标悬停查看数值
+ * 收益来源拆解面板（表格版）
+ * 数据：return_decomp.json { generated, indexes: [ {code, name, start, end, totalReturnPct, dividendPct, earningsPct, valuationPct} ] }
  */
 (function () {
   'use strict';
@@ -9,20 +8,43 @@
   let payload = null;
   let canvasMain = null;
 
-  const SERIES = [
-    { key: 'totalReturnPct', label: '全收益', color: '#1A1A1A' },
-    { key: 'dividendPct', label: '股息', color: '#5AAEF3' },
-    { key: 'earningsPct', label: '盈利', color: '#6D61E4' },
-    { key: 'valuationPct', label: '估值', color: '#E65A56' }
+  const COLS = [
+    { key: 'name', label: '指数', align: 'left', w: 0.16 },
+    { key: 'range', label: '区间', align: 'left', w: 0.16 },
+    { key: 'totalReturnPct', label: '全收益', align: 'right', w: 0.14 },
+    { key: 'dividendPct', label: '股息', align: 'right', w: 0.12 },
+    { key: 'earningsPct', label: '盈利', align: 'right', w: 0.12 },
+    { key: 'valuationPct', label: '估值', align: 'right', w: 0.12 },
+    { key: 'peRange', label: 'PE 起止', align: 'right', w: 0.18 },
   ];
+
+  const COLOR_POS = '#C0392B';   // 正收益 红
+  const COLOR_NEG = '#1E8449';   // 负收益 绿
+  const COLOR_ZERO = '#888';
+
+  function fmtPct(v) {
+    if (v === null || v === undefined) return '—';
+    const sign = v > 0 ? '+' : '';
+    return sign + v.toFixed(1) + '%';
+  }
+
+  function pctColor(v) {
+    if (v === null || v === undefined) return '#aaa';
+    if (v > 0.05) return COLOR_POS;
+    if (v < -0.05) return COLOR_NEG;
+    return COLOR_ZERO;
+  }
 
   function drawMain(canvasEl, exportMode, scale) {
     const W = exportMode ? 3000 : 1480;
-    const H = exportMode ? 1250 : 600;
-    const padL = exportMode ? 220 : 110;
-    const padR = exportMode ? 120 : 60;
-    const padT = exportMode ? 200 : 48;
-    const padB = exportMode ? 150 : 56;
+    const padL = exportMode ? 60 : 30;
+    const padR = exportMode ? 60 : 30;
+    const headH = exportMode ? 90 : 44;
+    const rowH = exportMode ? 96 : 48;
+    const colGap = 0;
+    const idx = payload.indexes || [];
+    const nRows = idx.length;
+    const H = headH + rowH * nRows + (exportMode ? 40 : 20);
 
     canvasEl.width = W * scale;
     canvasEl.height = H * scale;
@@ -37,126 +59,88 @@
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, W, H);
 
-
-    const idx = payload.indexes || [];
-    const n = idx.length;
-    const groupW = (W - padL - padR) / n;
-    const barW = groupW * 0.16;
-    const gap = groupW * 0.05;
-
-    // y 范围：min(全收益, 0) ~ max
-    let vMax = 0, vMin = 0;
-    idx.forEach((r) => {
-      SERIES.forEach((s) => {
-        const v = r[s.key];
-        if (v === null || v === undefined) return;
-        if (v > vMax) vMax = v;
-        if (v < vMin) vMin = v;
-      });
-    });
-    if (vMax <= vMin) { vMax = 1; vMin = 0; }
-    const pad = (vMax - vMin) * 0.1 || 10;
-    vMax += pad; vMin -= pad;
-    const y = (v) => padT + (1 - (v - vMin) / (vMax - vMin)) * (H - padT - padB);
-    const y0 = y(0);
-
-    // 网格
-    ctx.font = (exportMode ? 20 : 10) + 'px NotoSansSC, sans-serif';
-    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
-    for (let g = 0; g <= 4; g++) {
-      const v = vMin + (vMax - vMin) * g / 4;
-      const yy = y(v);
-      ctx.strokeStyle = '#EDEDED'; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.moveTo(padL, yy); ctx.lineTo(W - padR, yy); ctx.stroke();
-      ctx.fillStyle = '#999999';
-      ctx.fillText(v.toFixed(0) + '%', padL - 10, yy);
-    }
-    // 0 线
-    ctx.strokeStyle = '#999999'; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(padL, y0); ctx.lineTo(W - padR, y0); ctx.stroke();
-
-    // 纵向虚线分组（每 2 个指数一组：沪深300+中证500 / 中证1000+中证2000 / 中证全指+中证A500）
-    ctx.strokeStyle = '#CCCCCC'; ctx.lineWidth = 1;
-    ctx.setLineDash([6, 6]);
-    for (let i = 1; i < n; i += 2) {
-      const gx = padL + i * groupW;
-      ctx.beginPath(); ctx.moveTo(gx, padT); ctx.lineTo(gx, H - padB); ctx.stroke();
-    }
-    ctx.setLineDash([]);
-
-    // 分组柱
-    idx.forEach((r, i) => {
-      const gx = padL + i * groupW + groupW / 2;
-      SERIES.forEach((s, si) => {
-        const v = r[s.key];
-        if (v === null || v === undefined) return;
-        const bx = gx - barW * SERIES.length / 2 + si * (barW + gap);
-        const by = y(Math.max(0, v));
-        const bh = Math.abs(y(v) - y0);
-        ctx.fillStyle = s.color;
-        // 圆角柱（左上/右上圆角，半径随柱宽，保持克制）
-        const rr = Math.max(2, Math.min(barW * 0.18, 6));
-        ctx.beginPath();
-        ctx.moveTo(bx, Math.min(by, y0) + Math.max(bh, 1));
-        ctx.lineTo(bx, Math.min(by, y0) + rr);
-        ctx.arcTo(bx, Math.min(by, y0), bx + rr, Math.min(by, y0), rr);
-        ctx.lineTo(bx + barW - rr, Math.min(by, y0));
-        ctx.arcTo(bx + barW, Math.min(by, y0), bx + barW, Math.min(by, y0) + rr, rr);
-        ctx.lineTo(bx + barW, Math.min(by, y0) + Math.max(bh, 1));
-        ctx.closePath();
-        ctx.fill();
-        // 数值
-        ctx.fillStyle = '#333333';
-        ctx.font = (exportMode ? 20 : 9.5) + 'px NotoSansSC, sans-serif';
-        ctx.textAlign = 'center'; ctx.textBaseline = v >= 0 ? 'bottom' : 'top';
-        ctx.fillText(v.toFixed(0) + '%', bx + barW / 2, v >= 0 ? by - 4 : by + 12);
-      });
-      // 指数名
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = (exportMode ? 26 : 12.5) + 'px NotoSansSC, sans-serif';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-      ctx.fillText(r.name, gx, H - padB + 8);
+    const tableW = W - padL - padR;
+    // 列 x 坐标
+    let cx = padL;
+    const colXs = [];
+    COLS.forEach((c) => {
+      colXs.push(cx);
+      cx += tableW * c.w;
     });
 
-    // 图例（横向罗列）
-    const lx0 = exportMode ? padL + 20 : padL + 10;
-    const ly = exportMode ? 230 : 16;
-    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-    ctx.font = (exportMode ? 26 : 13.5) + 'px NotoSansSC, sans-serif';
-    let lx = lx0;
-    const lgap = exportMode ? 56 : 26;
-    SERIES.forEach((s) => {
-      const tw = ctx.measureText(s.label).width + (exportMode ? 48 : 20);
-      ctx.fillStyle = s.color;
-      ctx.fillRect(lx, ly - (exportMode ? 8 : 4), exportMode ? 36 : 14, exportMode ? 7 : 3);
-      ctx.fillStyle = '#444';
-      ctx.fillText(s.label, lx + (exportMode ? 48 : 20), ly);
-      lx += tw + lgap;
+    // 表头
+    ctx.fillStyle = '#F7F8FA';
+    ctx.fillRect(padL, 0, tableW, headH);
+    ctx.strokeStyle = '#E5E7EB';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(padL, headH);
+    ctx.lineTo(W - padR, headH);
+    ctx.stroke();
+
+    const headFont = (exportMode ? 26 : 13) + 'px NotoSansSC, sans-serif';
+    ctx.font = headFont;
+    ctx.fillStyle = '#666';
+    COLS.forEach((c, i) => {
+      const tx = c.align === 'right' ? colXs[i] + tableW * c.w - 16 : colXs[i] + 16;
+      ctx.textAlign = c.align === 'right' ? 'right' : 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(c.label, tx, headH / 2);
     });
 
-    // ── 悬浮数值提示（屏幕版） ──
-    if (!exportMode) {
-      canvasEl.__rdGeom = { padL, groupW, n, idx };
-      if (!canvasEl.__hoverBound) {
-        canvasEl.__hoverBound = true;
-        canvasEl.addEventListener('mousemove', (ev) => {
-          const G = canvasEl.__rdGeom;
-          if (!G) return;
-          const { x } = window.AK.canvasXY(canvasEl, ev);
-          const sx = x / (window.devicePixelRatio || 1);
-          const gi = Math.floor((sx - G.padL) / G.groupW);
-          if (gi < 0 || gi >= G.n) { window.AK.tooltip.hide(); return; }
-          const r = G.idx[gi];
-          let html = `<b>${r.name}</b> · 长期累计<br>`;
-          SERIES.forEach((s) => {
-            const v = r[s.key];
-            html += `<span style="color:${s.color}">●</span> ${s.label}：<b>${v === null || v === undefined ? '—' : v.toFixed(1) + '%'}</b><br>`;
-          });
-          window.AK.tooltip.show(ev, html.slice(0, -4));
-        });
-        canvasEl.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+    // 行
+    idx.forEach((r, ri) => {
+      const ry = headH + ri * rowH;
+      // 斑马纹
+      if (ri % 2 === 1) {
+        ctx.fillStyle = '#FAFBFC';
+        ctx.fillRect(padL, ry, tableW, rowH);
       }
-    }
+      // 行底线
+      ctx.strokeStyle = '#EEEEEE';
+      ctx.beginPath();
+      ctx.moveTo(padL, ry + rowH);
+      ctx.lineTo(W - padR, ry + rowH);
+      ctx.stroke();
+
+      const cy = ry + rowH / 2;
+      const bodyFont = (exportMode ? 30 : 14.5) + 'px NotoSansSC, sans-serif';
+      ctx.font = bodyFont;
+      ctx.textBaseline = 'middle';
+
+      // 指数名（粗体）
+      ctx.fillStyle = '#1a1a1a';
+      ctx.textAlign = 'left';
+      ctx.font = (exportMode ? '700 ' : '600 ') + (exportMode ? 30 : 14.5) + 'px NotoSansSC, sans-serif';
+      ctx.fillText(r.name, colXs[0] + 16, cy);
+      ctx.font = bodyFont;
+
+      // 区间
+      ctx.fillStyle = '#888';
+      ctx.textAlign = 'left';
+      ctx.fillText((r.start || '').slice(0, 7) + ' 起', colXs[1] + 16, cy);
+
+      // 全收益 / 股息 / 盈利 / 估值（右对齐，按正负着色）
+      const pctCols = ['totalReturnPct', 'dividendPct', 'earningsPct', 'valuationPct'];
+      pctCols.forEach((key, ci) => {
+        const colIdx = 2 + ci;
+        const v = r[key];
+        ctx.fillStyle = pctColor(v);
+        ctx.textAlign = 'right';
+        ctx.font = (exportMode ? '700 ' : '600 ') + (exportMode ? 30 : 14.5) + 'px NotoSansSC, sans-serif';
+        ctx.fillText(fmtPct(v), colXs[colIdx] + tableW * COLS[colIdx].w - 16, cy);
+        ctx.font = bodyFont;
+      });
+
+      // PE 起止
+      ctx.fillStyle = '#666';
+      ctx.textAlign = 'right';
+      if (r.peStart && r.peEnd) {
+        ctx.fillText(r.peStart.toFixed(1) + ' → ' + r.peEnd.toFixed(1), colXs[6] + tableW * COLS[6].w - 16, cy);
+      } else {
+        ctx.fillText('—', colXs[6] + tableW * COLS[6].w - 16, cy);
+      }
+    });
   }
 
   window.RD_render = function (data) {
