@@ -28,7 +28,7 @@
     const H = exportMode ? 1500 : 680;
     const padL = exportMode ? 170 : 90;
     const padR = exportMode ? 240 : 150;
-    const padT = exportMode ? 100 : 60;
+    const padT = exportMode ? 30 : 60;
     const padB = exportMode ? 50 : 46;
 
     canvas.width = W * scale;
@@ -180,7 +180,7 @@
 
     // ── 图例（横向单行，自适缩短）──
     const lx0 = exportMode ? padL + 20 : padL + 10;
-    const ly0 = exportMode ? 245 : 20;
+    const ly0 = exportMode ? 30 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
     const lgap = exportMode ? 52 : 24;

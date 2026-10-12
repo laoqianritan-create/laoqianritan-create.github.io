@@ -27,7 +27,7 @@
     const rowH = exportMode ? 120 : 58;
     const padL = exportMode ? 360 : 190;
     const padR = exportMode ? 260 : 150;
-    const padT = exportMode ? 100 : 52;
+    const padT = exportMode ? 30 : 52;
     const padB = exportMode ? 50 : 50;
     const colW = exportMode ? 18 : 9;
     const gap = exportMode ? 3 : 1.5;
@@ -107,7 +107,7 @@
 
     // 图例（横向单行）
     const lx0 = exportMode ? padL + 20 : padL + 10;
-    const ly0 = exportMode ? 245 : 20;
+    const ly0 = exportMode ? 30 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
     let lx = lx0;
