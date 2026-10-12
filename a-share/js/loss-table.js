@@ -62,9 +62,9 @@
       const padL = 460, padR = 60;
       const cellW = (W - padL - padR) / nCols;
       const cellH = 140;
-      const headerH = 260;
+      const headerH = 0;
       const colHdrH = 96;
-      const footerH = 100;
+      const footerH = 0;
       const padBot = 50;
       const matrixTop = headerH + colHdrH;
       const matrixBot = matrixTop + cellH * nRows;
@@ -108,20 +108,9 @@
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, L.W, L.H);
 
-    // 导出版:顶部大标题
+    // 导出版：只画图例（标题由 exportPNG 统一加）
     if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 88px AlibabaPuHuiTi, "Microsoft YaHei", sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('关于抄底的一道基础数学题', L.W / 2, 105);
-
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 28px NotoSansSC, "Microsoft YaHei", sans-serif';
-      ctx.fillText('不同买入价与现价的亏损对照表 · 跌得越多,反弹回本越难', L.W / 2, 180);
-
-      // 图例(顶部右侧)
-      drawLegend(ctx, L.W - 640, 220, exportMode);
+      drawLegend(ctx, L.W - 640, 20, exportMode);
     }
 
     // 表头(带 padL 的行标签列 + 6 个列标题)

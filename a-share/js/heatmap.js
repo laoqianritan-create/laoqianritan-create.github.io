@@ -67,10 +67,10 @@
       const yearCellW = usable / (n_year + n_metric * 1.45);
       const metricCellW = yearCellW * 1.45;
       const cellH = 60;
-      const headerH = 240;
+      const headerH = 0;
       const legendH = 90;
       const colHdrH = 78;                   // 两行标题(label + sublabel)
-      const footerH = 100;
+      const footerH = 0;
       const padBot = 50;
       const matrixTop = headerH + legendH + colHdrH;
       const matrixBot = matrixTop + cellH * n_rows;
@@ -182,18 +182,8 @@
     ctx.fillStyle = '#FFFFFF';
     ctx.fillRect(0, 0, L.W, L.H);
 
-    // ── 导出版顶部标题区 ──
+    // ── 导出版：只画色阶条（标题由 exportPNG 统一加） ──
     if (exportMode) {
-      ctx.fillStyle = '#1a1a1a';
-      ctx.font = '900 92px AlibabaPuHuiTi, "Microsoft YaHei", sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText('申万一级行业年度涨跌幅 · 长期 CAGR', L.W / 2, 100);
-
-      ctx.fillStyle = '#555555';
-      ctx.font = '300 30px NotoSansSC, "Microsoft YaHei", sans-serif';
-      ctx.fillText('2005 — 2026 · 31 个一级行业 · 红涨绿跌 · 右侧 4 列为年化复合收益率', L.W / 2, 175);
-
       drawLegendBar(ctx, L, VMIN, VMAX);
     }
 
