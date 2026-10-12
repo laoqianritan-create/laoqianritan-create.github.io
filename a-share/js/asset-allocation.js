@@ -75,6 +75,20 @@
       ctx.fillText(v.toFixed(1) + '%', padL - 12, y);
     }
 
+    // 每月纵向参考线（先画，曲线在上层）
+    const monthTicks = new Set();
+    dates.forEach((d, i) => {
+      const ym = d.slice(0, 7);
+      if (i === 0 || ym !== dates[i - 1].slice(0, 7)) monthTicks.add(i);
+    });
+    ctx.strokeStyle = '#F0F0F0';
+    ctx.lineWidth = 1;
+    monthTicks.forEach((i) => {
+      const x = xs(i);
+      ctx.beginPath(); ctx.moveTo(x, box1.top); ctx.lineTo(x, box1.top + box1.h); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x, box2.top); ctx.lineTo(x, box2.top + box2.h); ctx.stroke();
+    });
+
     // 分位着色带：ERP 当前分位 → 底部注释
     const lastErp = erp[n - 1];
     const lastPct = rows[n - 1].erp_pct !== undefined ? rows[n - 1].erp_pct : null;
@@ -143,33 +157,43 @@
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.fillText(`${rel[n - 1].toFixed(2)}x`, xs(n - 1) + (exportMode ? 20 : 12), ry);
 
+    // ── 阶段性高点标记 ──
+    function findPeaks(arr, window) {
+      const peaks = [];
+      for (let i = window; i < arr.length - window; i++) {
+        let isPeak = true;
+        for (let j = i - window; j <= i + window; j++) {
+          if (j !== i && arr[j] > arr[i]) { isPeak = false; break; }
+        }
+        if (isPeak) peaks.push(i);
+      }
+      return peaks;
+    }
+    function drawPeakLabels(peaks, arr, yMin, yMax, box, color) {
+      ctx.fillStyle = color;
+      ctx.font = (exportMode ? 20 : 10) + 'px NotoSansSC, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+      peaks.forEach((i) => {
+        const x = xs(i), y = yMap(arr[i], yMin, yMax, box);
+        // 小点
+        ctx.fillStyle = color;
+        ctx.beginPath(); ctx.arc(x, y, exportMode ? 5 : 2.5, 0, Math.PI * 2); ctx.fill();
+        // 日期标签 yyyy.mm
+        const d = dates[i];
+        const label = d.slice(0, 4) + '.' + d.slice(5, 7);
+        ctx.fillText(label, x, y - (exportMode ? 12 : 6));
+      });
+    }
+    const w = 120; // 约半年窗口
+    drawPeakLabels(findPeaks(erp, w), erp, eMin, eMax, box1, COL.erp);
+    drawPeakLabels(findPeaks(rel, w), rel, rMin, rMax, box2, COL.rel);
+
     ctx.fillStyle = '#1A1A1A';
     ctx.font = (exportMode ? 30 : 14) + 'px NotoSansSC, sans-serif';
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.fillText('股债相对收益率（中证800盈利收益率 ÷ 中债10Y国债，相除）', padL, box2.top - (exportMode ? 34 : 18));
 
-    // ── 共享 X 轴：每月一根浅灰竖线 + 年份标签 ──
-    const monthTicks = new Set();
-    dates.forEach((d, i) => {
-      const ym = d.slice(0, 7);
-      if (i === 0 || ym !== dates[i - 1].slice(0, 7)) monthTicks.add(i);
-    });
-    ctx.strokeStyle = '#F0F0F0';
-    ctx.lineWidth = 1;
-    monthTicks.forEach((i) => {
-      const x = xs(i);
-      // box1 区域
-      ctx.beginPath();
-      ctx.moveTo(x, box1.top);
-      ctx.lineTo(x, box1.top + box1.h);
-      ctx.stroke();
-      // box2 区域
-      ctx.beginPath();
-      ctx.moveTo(x, box2.top);
-      ctx.lineTo(x, box2.top + box2.h);
-      ctx.stroke();
-    });
-
+    // ── 共享 X 轴：年份标签 ──
     const yearTicks = new Set();
     dates.forEach((d, i) => {
       const y = d.slice(0, 4);
