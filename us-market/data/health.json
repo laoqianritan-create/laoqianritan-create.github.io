@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12 09:41:09",
+  "generated_at": "2026-10-12 22:10:31",
   "today": "2026-10-12",
   "overall": "healthy",
   "stale_count": 0,
@@ -49,14 +49,14 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "复合增速路径",
-      "updated": "2026-10-12T09:40:01",
+      "updated": "2026-10-12T22:09:22",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
-      "updated": "2026-10-12T09:40:01",
+      "updated": "2026-10-12T22:09:22",
       "days_old": 0,
       "status": "fresh"
     },
@@ -84,9 +84,9 @@
     {
       "file": "nasdaq100_panels.json",
       "label": "纳指 100 成分股",
-      "updated": "2026-10-09",
-      "days_old": 3,
-      "status": "recent"
+      "updated": "2026-10-12",
+      "days_old": 0,
+      "status": "fresh"
     },
     {
       "file": "nasdaq_composite.json",
