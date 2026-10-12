@@ -157,9 +157,16 @@
     ctx.strokeStyle = '#F0F0F0';
     ctx.lineWidth = 1;
     monthTicks.forEach((i) => {
+      const x = xs(i);
+      // box1 区域
       ctx.beginPath();
-      ctx.moveTo(xs(i), plotTop);
-      ctx.lineTo(xs(i), plotBottom);
+      ctx.moveTo(x, box1.top);
+      ctx.lineTo(x, box1.top + box1.h);
+      ctx.stroke();
+      // box2 区域
+      ctx.beginPath();
+      ctx.moveTo(x, box2.top);
+      ctx.lineTo(x, box2.top + box2.h);
       ctx.stroke();
     });
 
