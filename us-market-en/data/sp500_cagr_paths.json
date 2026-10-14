@@ -1,13 +1,13 @@
 {
-  "updated": "2026-10-13T22:09:38",
-  "latest_date": "2026-10-12",
+  "updated": "2026-10-14T09:39:20",
+  "latest_date": "2026-10-13",
   "base_date": "1935-12-31",
   "latest": {
-    "date": "2026-10-12",
-    "price": 581.3284,
-    "tr": 12747.3,
+    "date": "2026-10-13",
+    "price": 581.1951,
+    "tr": 12744.38,
     "dividend_yield": 1.04,
-    "yield_asof": "2026-10-12"
+    "yield_asof": "2026-10-13"
   },
   "cagr": {
     "price": 7.26,
@@ -23,7 +23,7 @@
     "dividend_yield": {
       "name": "multpl (upstream: Shiller / S&P DJI)",
       "url": "https://www.multpl.com/s-p-500-dividend-yield/table/by-month",
-      "asof": "2026-10-12"
+      "asof": "2026-10-13"
     },
     "recessions": {
       "name": "FRED USREC",
@@ -5482,9 +5482,9 @@
       "t": 12482.22
     },
     {
-      "date": "2026-10-12",
-      "p": 581.3284,
-      "t": 12747.3
+      "date": "2026-10-13",
+      "p": 581.1951,
+      "t": 12744.38
     }
   ]
 }
