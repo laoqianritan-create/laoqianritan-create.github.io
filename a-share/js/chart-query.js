@@ -82,6 +82,9 @@
 
   async function doChart(q) {
     if (!q.trim()) { showError('请输入公司名或 6 位代码，如：茅台 / 600519 / 510300'); return; }
+    // 按钮置灰，防止重复点击
+    btn.disabled = true;
+    btn.textContent = '生成中…';
     const seq = ++_reqSeq;
     const raw = q.trim();
     showLoading();
@@ -98,6 +101,9 @@
     } catch (e) {
       if (seq !== _reqSeq) return;
       showError(e.message);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '出图';
     }
   }
 
