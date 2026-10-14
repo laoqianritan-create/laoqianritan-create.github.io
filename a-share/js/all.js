@@ -301,6 +301,23 @@
       y: (ev.clientY - rect.top) / rect.height * canvas.height
     };
   };
+
+  /**
+   * 画纵向跟随虚线（hover 辅助线）
+   * 所有看板统一使用：浅灰色、虚线、贯穿整个绘图区
+   */
+  AK.drawHoverVLine = function (ctx, x, yTop, yBottom, scale) {
+    const s = scale || 1;
+    ctx.save();
+    ctx.strokeStyle = '#CCCCCC';
+    ctx.lineWidth = 1 * s;
+    ctx.setLineDash([4 * s, 4 * s]);
+    ctx.beginPath();
+    ctx.moveTo(x, yTop);
+    ctx.lineTo(x, yBottom);
+    ctx.stroke();
+    ctx.restore();
+  };
 })();
 /**
  * 顶部 Banner（第六轮重构）：深酒红渐变 + 价格坐标双线灌满画布
@@ -1506,6 +1523,12 @@
       ctx.stroke();
     });
 
+    // ── hover 纵向跟随虚线 ──
+    if (!exportMode && opts.hoverIdx !== undefined && opts.hoverIdx !== null) {
+      const hx = xs(opts.hoverIdx);
+      window.AK.drawHoverVLine(ctx, hx, padT, H - padB, scale);
+    }
+
     // ── 末端 CAGR 标签（每个数字，防重叠：按末端 y 排序 + 左右交替 + 间距挤开）──
     const ends = [];
     series.forEach((s) => {
@@ -1609,7 +1632,7 @@
 
     // ── 悬浮数值提示（屏幕版）：鼠标 x → 最近 master 交易日 → 每条线按自身日期就近取值 ──
     if (!exportMode && opts.bindHover !== false) {
-      canvas.__lgData = { series, dates };
+      canvas.__lgData = { series, dates, data, drawFn: draw };
       if (!canvas.__hoverBound) {
         canvas.__hoverBound = true;
         canvas.addEventListener('mousemove', (ev) => {
@@ -1617,11 +1640,20 @@
           if (!D || !D.dates.length) return;
           const { x } = window.AK.canvasXY(canvas, ev);
           const sx = x / (window.devicePixelRatio || 1);
-          if (sx < padL || sx > W - padR) { window.AK.tooltip.hide(); return; }
+          if (sx < padL || sx > W - padR) {
+            window.AK.tooltip.hide();
+            // 离开绘图区：重绘去掉竖线
+            D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+            return;
+          }
           const nn = D.dates.length;
           const idx = Math.round((sx - padL) / (W - padL - padR) * (nn - 1));
           const i = Math.max(0, Math.min(nn - 1, idx));
           const date = D.dates[i];
+
+          // 重绘带竖线
+          D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, hoverIdx: i });
+
           let html = `<b>${date}</b><br>`;
           D.series.forEach((s) => {
             let v = null;
@@ -1634,7 +1666,11 @@
           });
           window.AK.tooltip.show(ev, html.slice(0, -4));
         });
-        canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+        canvas.addEventListener('mouseleave', () => {
+          window.AK.tooltip.hide();
+          const D = canvas.__lgData;
+          if (D) D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+        });
       }
     }
   }

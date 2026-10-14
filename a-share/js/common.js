@@ -238,4 +238,21 @@
       y: (ev.clientY - rect.top) / rect.height * canvas.height
     };
   };
+
+  /**
+   * 画纵向跟随虚线（hover 辅助线）
+   * 所有看板统一使用：浅灰色、虚线、贯穿整个绘图区
+   */
+  AK.drawHoverVLine = function (ctx, x, yTop, yBottom, scale) {
+    const s = scale || 1;
+    ctx.save();
+    ctx.strokeStyle = '#CCCCCC';
+    ctx.lineWidth = 1 * s;
+    ctx.setLineDash([4 * s, 4 * s]);
+    ctx.beginPath();
+    ctx.moveTo(x, yTop);
+    ctx.lineTo(x, yBottom);
+    ctx.stroke();
+    ctx.restore();
+  };
 })();
