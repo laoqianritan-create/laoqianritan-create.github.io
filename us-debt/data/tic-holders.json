@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-14T01:31:00Z",
-  "source": "Treasury TIC · Major Foreign Holders of Treasury Securities",
-  "source_url": "https://ticdata.treasury.gov/Publish/mfhhis01.txt",
+  "updated": "2026-10-14T09:07:19Z",
+  "source": "Treasury TIC · Major Foreign Holders (mfhhis01.txt 历史归档 + slt_table5.txt 最近13月)",
+  "source_url": "https://ticdata.treasury.gov/Publish/mfhhis01.txt ; https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt",
   "year_range": [
     2000,
-    2025
+    2026
   ],
   "tables_parsed": 26,
   "monthly": {
@@ -1253,6 +1253,34 @@
         {
           "date": "2025-12",
           "value": 1185.5
+        },
+        {
+          "date": "2026-01",
+          "value": 1225.3
+        },
+        {
+          "date": "2026-02",
+          "value": 1239.3
+        },
+        {
+          "date": "2026-03",
+          "value": 1191.6
+        },
+        {
+          "date": "2026-04",
+          "value": 1209.9
+        },
+        {
+          "date": "2026-05",
+          "value": 1143.1
+        },
+        {
+          "date": "2026-06",
+          "value": 1116.7
+        },
+        {
+          "date": "2026-07",
+          "value": 1103.9
         }
       ],
       "china": [
@@ -2499,6 +2527,34 @@
         {
           "date": "2025-12",
           "value": 952.8
+        },
+        {
+          "date": "2026-01",
+          "value": 955.2
+        },
+        {
+          "date": "2026-02",
+          "value": 963.4
+        },
+        {
+          "date": "2026-03",
+          "value": 931.6
+        },
+        {
+          "date": "2026-04",
+          "value": 920.2
+        },
+        {
+          "date": "2026-05",
+          "value": 931.2
+        },
+        {
+          "date": "2026-06",
+          "value": 889.2
+        },
+        {
+          "date": "2026-07",
+          "value": 876.3
         }
       ],
       "uk_offshore": [
@@ -3745,6 +3801,34 @@
         {
           "date": "2025-12",
           "value": 2932.5
+        },
+        {
+          "date": "2026-01",
+          "value": 2942.1
+        },
+        {
+          "date": "2026-02",
+          "value": 2983.1
+        },
+        {
+          "date": "2026-03",
+          "value": 3022.1
+        },
+        {
+          "date": "2026-04",
+          "value": 3038.1
+        },
+        {
+          "date": "2026-05",
+          "value": 3072.9
+        },
+        {
+          "date": "2026-06",
+          "value": 3056.1
+        },
+        {
+          "date": "2026-07",
+          "value": 3115.3
         }
       ],
       "oil": [
@@ -4970,27 +5054,55 @@
         },
         {
           "date": "2025-07",
-          "value": 505.4
+          "value": 447.3
         },
         {
           "date": "2025-08",
-          "value": 515.8
+          "value": 456.6
         },
         {
           "date": "2025-09",
-          "value": 512.8
+          "value": 453.4
         },
         {
           "date": "2025-10",
-          "value": 499.4
+          "value": 438.7
         },
         {
           "date": "2025-11",
-          "value": 536.0
+          "value": 471.2
         },
         {
           "date": "2025-12",
-          "value": 519.4
+          "value": 453.3
+        },
+        {
+          "date": "2026-01",
+          "value": 466.0
+        },
+        {
+          "date": "2026-02",
+          "value": 503.4
+        },
+        {
+          "date": "2026-03",
+          "value": 483.5
+        },
+        {
+          "date": "2026-04",
+          "value": 467.3
+        },
+        {
+          "date": "2026-05",
+          "value": 466.2
+        },
+        {
+          "date": "2026-06",
+          "value": 460.5
+        },
+        {
+          "date": "2026-07",
+          "value": 459.4
         }
       ],
       "other": [
@@ -6216,27 +6328,55 @@
         },
         {
           "date": "2025-07",
-          "value": 3622.9
+          "value": 3681.0
         },
         {
           "date": "2025-08",
-          "value": 3682.5
+          "value": 3741.6
         },
         {
           "date": "2025-09",
-          "value": 3679.2
+          "value": 3738.8
         },
         {
           "date": "2025-10",
-          "value": 3666.8
+          "value": 3727.3
         },
         {
           "date": "2025-11",
-          "value": 3712.0
+          "value": 3776.9
         },
         {
           "date": "2025-12",
-          "value": 3679.5
+          "value": 3745.5
+        },
+        {
+          "date": "2026-01",
+          "value": 3700.6
+        },
+        {
+          "date": "2026-02",
+          "value": 3798.3
+        },
+        {
+          "date": "2026-03",
+          "value": 3723.5
+        },
+        {
+          "date": "2026-04",
+          "value": 3714.6
+        },
+        {
+          "date": "2026-05",
+          "value": 3755.0
+        },
+        {
+          "date": "2026-06",
+          "value": 3776.2
+        },
+        {
+          "date": "2026-07",
+          "value": 3693.0
         }
       ]
     },
@@ -7463,27 +7603,55 @@
       },
       {
         "date": "2025-07",
-        "value": 9109.4
+        "value": 9109.5
       },
       {
         "date": "2025-08",
-        "value": 9248.5
+        "value": 9248.2
       },
       {
         "date": "2025-09",
-        "value": 9237.4
+        "value": 9237.5
       },
       {
         "date": "2025-10",
-        "value": 9230.7
+        "value": 9230.5
       },
       {
         "date": "2025-11",
-        "value": 9349.5
+        "value": 9349.6
       },
       {
         "date": "2025-12",
-        "value": 9269.7
+        "value": 9269.5
+      },
+      {
+        "date": "2026-01",
+        "value": 9289.1
+      },
+      {
+        "date": "2026-02",
+        "value": 9487.3
+      },
+      {
+        "date": "2026-03",
+        "value": 9352.4
+      },
+      {
+        "date": "2026-04",
+        "value": 9350.1
+      },
+      {
+        "date": "2026-05",
+        "value": 9368.5
+      },
+      {
+        "date": "2026-06",
+        "value": 9298.5
+      },
+      {
+        "date": "2026-07",
+        "value": 9248.1
       }
     ]
   },
@@ -7619,6 +7787,11 @@
           "year": 2025,
           "month": 12,
           "value": 1185.5
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "value": 1103.9
         }
       ],
       "china": [
@@ -7751,6 +7924,11 @@
           "year": 2025,
           "month": 12,
           "value": 952.8
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "value": 876.3
         }
       ],
       "uk_offshore": [
@@ -7883,6 +8061,11 @@
           "year": 2025,
           "month": 12,
           "value": 2932.5
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "value": 3115.3
         }
       ],
       "oil": [
@@ -8014,7 +8197,12 @@
         {
           "year": 2025,
           "month": 12,
-          "value": 519.4
+          "value": 453.3
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "value": 459.4
         }
       ],
       "other": [
@@ -8146,7 +8334,12 @@
         {
           "year": 2025,
           "month": 12,
-          "value": 3679.5
+          "value": 3745.5
+        },
+        {
+          "year": 2026,
+          "month": 7,
+          "value": 3693.0
         }
       ]
     },
@@ -8279,7 +8472,12 @@
       {
         "year": 2025,
         "month": 12,
-        "value": 9269.7
+        "value": 9269.5
+      },
+      {
+        "year": 2026,
+        "month": 7,
+        "value": 9248.1
       }
     ]
   }
