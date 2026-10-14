@@ -3905,6 +3905,12 @@
     poly(eNorm, C_EQUITY, exportMode ? 4 : 1.8);
     poly(aNorm, C_A500, exportMode ? 5 : 2.2);
 
+    // ── hover 纵向跟随虚线 ──
+    if (!exportMode && opts.hoverIdx !== undefined && opts.hoverIdx !== null) {
+      const hx = xs(opts.hoverIdx);
+      window.AK.drawHoverVLine(ctx, hx, padT, H - padB, scale);
+    }
+
     // 末端 CAGR 标签（防重叠）
     const cagr = (norm) => {
       let li = -1;
@@ -3982,22 +3988,34 @@
 
     // hover（屏幕版）
     if (!exportMode && opts.bindHover !== false) {
-      canvas.__fdData = { master, aNorm, eNorm, dNorm, xs };
+      canvas.__fdData = { master, aNorm, eNorm, dNorm, xs, data, drawFn: draw };
       if (!canvas.__hoverBound) {
         canvas.__hoverBound = true;
         canvas.addEventListener('mousemove', (ev) => {
           const D = canvas.__fdData;
           const { x } = window.AK.canvasXY(canvas, ev);
           const sx = x / (window.devicePixelRatio || 1);
-          if (sx < padL || sx > W - padR) { window.AK.tooltip.hide(); return; }
+          if (sx < padL || sx > W - padR) {
+            window.AK.tooltip.hide();
+            D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+            return;
+          }
           const idx = Math.max(0, Math.min(D.master.length - 1, Math.round((sx - padL) / (W - padL - padR) * (D.master.length - 1))));
+
+          // 重绘带竖线
+          D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, hoverIdx: idx });
+
           let html = `<b>${D.master[idx]}</b><br>`;
           if (D.aNorm[idx] !== null) html += `<span style="color:${C_A500}">●</span> A500全收益：<b>${D.aNorm[idx].toFixed(1)}</b><br>`;
           if (D.eNorm[idx] !== null) html += `<span style="color:${C_EQUITY}">●</span> 偏股混合：<b>${D.eNorm[idx].toFixed(1)}</b><br>`;
           if (D.dNorm[idx] !== null) html += `<span style="color:${C_DEBT}">●</span> 偏债混合：<b>${D.dNorm[idx].toFixed(1)}</b>`;
           window.AK.tooltip.show(ev, html.replace(/<br>$/, ''));
         });
-        canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+        canvas.addEventListener('mouseleave', () => {
+          window.AK.tooltip.hide();
+          const D = canvas.__fdData;
+          if (D) D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+        });
       }
     }
   }
