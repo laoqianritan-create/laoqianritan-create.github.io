@@ -14,25 +14,25 @@
 /* ─── 字体声明（子集化 woff2，原字体留底 backups/fonts_raw）─── */
 @font-face {
   font-family: 'AlibabaPuHuiTi';
-  src: url('../fonts/Alibaba-PuHuiTi-Heavy.woff2') format('woff2');
+  src: url('https://laoqianritan-create.github.io/a-share/fonts/Alibaba-PuHuiTi-Heavy.woff2') format('woff2');
   font-weight: 900;
   font-display: swap;
 }
 @font-face {
   font-family: 'NotoSansSC';
-  src: url('../fonts/NotoSansSC-Regular.woff2') format('woff2');
+  src: url('https://laoqianritan-create.github.io/a-share/fonts/NotoSansSC-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: 'NotoSansSC';
-  src: url('../fonts/NotoSansSC-Light.woff2') format('woff2');
+  src: url('https://laoqianritan-create.github.io/a-share/fonts/NotoSansSC-Light.woff2') format('woff2');
   font-weight: 300;
   font-display: swap;
 }
 @font-face {
   font-family: 'Xiaomaoxihuanfeng';
-  src: url('../fonts/Xiaomaoxihuanfeng-Light-2.woff2') format('woff2');
+  src: url('https://laoqianritan-create.github.io/a-share/fonts/Xiaomaoxihuanfeng-Light-2.woff2') format('woff2');
   font-weight: 300;
   font-display: swap;
 }
