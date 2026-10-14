@@ -3757,16 +3757,17 @@
   };
 })();
 /**
- * 面板 12：神奇择时指标（中证A500全收益 vs 偏债混合基金指数）
- * 数据：fund_index.json { series: { 'A500TR.CSI': {dates, values}, '885003.WI': {dates, values} } }
- * 展示：两类资产净值（2005 起点 = 100），对数坐标，末端 CAGR
- * 思路：A股宽基全收益 vs 偏债混合的相对强弱 = 股债配置的择时温度计
+ * 面板 12：神奇择时指标（中证A500全收益 vs 偏股混合 vs 偏债混合基金指数）
+ * 数据：fund_index.json { series: { 'A500TR.CSI': {...}, '885001.WI': {...}, '885003.WI': {...} } }
+ * 展示：三类资产净值（2005 起点 = 100），对数坐标，末端 CAGR
+ * 思路：A股宽基全收益 vs 偏股/偏债混合的相对强弱 = 股债配置的择时温度计
  */
 (function () {
   'use strict';
 
   const C_A500 = '#5AAEF3';   // 蓝
-  const C_DEBT = '#333333';   // 深灰
+  const C_EQUITY = '#E65A56'; // 红（偏股）
+  const C_DEBT = '#333333';   // 深灰（偏债）
 
   function draw(canvas, data, opts) {
     const exportMode = opts.exportMode;
@@ -3792,31 +3793,37 @@
     ctx.fillRect(0, 0, W, H);
 
     const a = data.series && data.series['A500TR.CSI'];
+    const e = data.series && data.series['885001.WI'];
     const d = data.series && data.series['885003.WI'];
-    if (!a || !d) return;
+    if (!a || !e || !d) return;
 
     // 统一日期轴（公共起点 2005-01-04 起）
     const t0 = '2005-01-04';
     const aIdx0 = a.dates.findIndex((x) => x >= t0);
+    const eIdx0 = e.dates.findIndex((x) => x >= t0);
     const dIdx0 = d.dates.findIndex((x) => x >= t0);
-    if (aIdx0 < 0 || dIdx0 < 0) return;
+    if (aIdx0 < 0 || eIdx0 < 0 || dIdx0 < 0) return;
     const aD = a.dates.slice(aIdx0);
+    const eD = e.dates.slice(eIdx0);
     const dD = d.dates.slice(dIdx0);
     const master = [];
     for (const x of aD) master.push(x);
+    for (const x of eD) if (!master.includes(x)) master.push(x);
     for (const x of dD) if (!master.includes(x)) master.push(x);
     master.sort();
     const n = master.length;
 
     const aMap = new Map(); for (let i = aIdx0; i < a.dates.length; i++) aMap.set(a.dates[i], a.values[i]);
+    const eMap = new Map(); for (let i = eIdx0; i < e.dates.length; i++) eMap.set(e.dates[i], e.values[i]);
     const dMap = new Map(); for (let i = dIdx0; i < d.dates.length; i++) dMap.set(d.dates[i], d.values[i]);
-    const aBase = a.values[aIdx0] || 1, dBase = d.values[dIdx0] || 1;
+    const aBase = a.values[aIdx0] || 1, eBase = e.values[eIdx0] || 1, dBase = d.values[dIdx0] || 1;
     const aNorm = master.map((dt) => (aMap.has(dt) ? aMap.get(dt) / aBase * 100 : null));
+    const eNorm = master.map((dt) => (eMap.has(dt) ? eMap.get(dt) / eBase * 100 : null));
     const dNorm = master.map((dt) => (dMap.has(dt) ? dMap.get(dt) / dBase * 100 : null));
 
     const xs = (i) => padL + (n === 1 ? 0.5 : i / (n - 1)) * (W - padL - padR);
     let yMin = Infinity, yMax = -Infinity;
-    aNorm.concat(dNorm).forEach((v) => { if (v !== null && v > 0) { const lv = Math.log(v); if (lv < yMin) yMin = lv; if (lv > yMax) yMax = lv; } });
+    aNorm.concat(eNorm, dNorm).forEach((v) => { if (v !== null && v > 0) { const lv = Math.log(v); if (lv < yMin) yMin = lv; if (lv > yMax) yMax = lv; } });
     if (!isFinite(yMin)) { yMin = 0; yMax = 1; }
     const yPad = (yMax - yMin) * 0.05 || 0.1; yMin -= yPad; yMax += yPad;
     const ys = (v) => padT + (1 - (Math.log(v) - yMin) / (yMax - yMin)) * (H - padT - padB);
@@ -3846,9 +3853,7 @@
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
     yearTicks.forEach(([y, i]) => ctx.fillText(y, xs(i), H - padB + 8));
 
-    // 标题（导出版）
-
-    // 曲线（偏债先画、A500 后画）
+    // 曲线（偏债先画、偏股中间、A500后画）
     function poly(norm, color, width) {
       ctx.strokeStyle = color; ctx.lineWidth = width; ctx.lineJoin = 'round';
       ctx.beginPath(); let started = false;
@@ -3861,6 +3866,7 @@
       ctx.stroke();
     }
     poly(dNorm, C_DEBT, exportMode ? 4 : 1.8);
+    poly(eNorm, C_EQUITY, exportMode ? 4 : 1.8);
     poly(aNorm, C_A500, exportMode ? 5 : 2.2);
 
     // 末端 CAGR 标签（防重叠）
@@ -3876,9 +3882,10 @@
       const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
       return { x: xs(li), y: ys(v1), cagr: (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0, v1 };
     };
-    const eA = cagr(aNorm), eD = cagr(dNorm);
+    const eA = cagr(aNorm), eE = cagr(eNorm), eD = cagr(dNorm);
     const ends = [];
     if (eA) ends.push({ ...eA, color: C_A500 });
+    if (eE) ends.push({ ...eE, color: C_EQUITY });
     if (eD) ends.push({ ...eD, color: C_DEBT });
     ends.sort((p, q) => q.y - p.y);
     ctx.font = (exportMode ? 28 : 13) + 'px NotoSansSC, sans-serif';
@@ -3897,8 +3904,7 @@
       }
       const labelY = e.y + dy;
       used.push(labelY);
-      const dotColor = (e.color === '#E65A56') ? '#5AAEF3' : '#E65A56';
-      ctx.fillStyle = dotColor;
+      ctx.fillStyle = e.color;
       ctx.beginPath(); ctx.arc(e.x, e.y, exportMode ? 9 : 4.5, 0, Math.PI * 2); ctx.fill();
       ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 1.5; ctx.stroke();
       ctx.strokeStyle = '#AAAAAA'; ctx.lineWidth = 1;
@@ -3911,15 +3917,15 @@
       ctx.fillText(txt, bx, labelY);
     });
 
-    // 图例（横向单行）
+    // 图例（横向单行，不带数字）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 30 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
-    const aLast = aNorm[n - 1], dLast = dNorm[n - 1];
     const items = [
-      { c: C_A500, label: `中证A500全收益  ${aLast !== null ? aLast.toFixed(0) : '—'}` },
-      { c: C_DEBT, label: `偏债混合基金  ${dLast !== null ? dLast.toFixed(0) : '—'}` },
+      { c: C_A500, label: '中证A500全收益' },
+      { c: C_EQUITY, label: '偏股混合基金' },
+      { c: C_DEBT, label: '偏债混合基金' },
     ];
     let lx = lx0;
     items.forEach((it) => {
@@ -3940,7 +3946,7 @@
 
     // hover（屏幕版）
     if (!exportMode && opts.bindHover !== false) {
-      canvas.__fdData = { master, aNorm, dNorm, xs };
+      canvas.__fdData = { master, aNorm, eNorm, dNorm, xs };
       if (!canvas.__hoverBound) {
         canvas.__hoverBound = true;
         canvas.addEventListener('mousemove', (ev) => {
@@ -3951,6 +3957,7 @@
           const idx = Math.max(0, Math.min(D.master.length - 1, Math.round((sx - padL) / (W - padL - padR) * (D.master.length - 1))));
           let html = `<b>${D.master[idx]}</b><br>`;
           if (D.aNorm[idx] !== null) html += `<span style="color:${C_A500}">●</span> A500全收益：<b>${D.aNorm[idx].toFixed(1)}</b><br>`;
+          if (D.eNorm[idx] !== null) html += `<span style="color:${C_EQUITY}">●</span> 偏股混合：<b>${D.eNorm[idx].toFixed(1)}</b><br>`;
           if (D.dNorm[idx] !== null) html += `<span style="color:${C_DEBT}">●</span> 偏债混合：<b>${D.dNorm[idx].toFixed(1)}</b>`;
           window.AK.tooltip.show(ev, html.replace(/<br>$/, ''));
         });
@@ -5240,6 +5247,9 @@
 
   async function doChart(q) {
     if (!q.trim()) { showError('请输入公司名或 6 位代码，如：茅台 / 600519 / 510300'); return; }
+    // 按钮置灰，防止重复点击
+    btn.disabled = true;
+    btn.textContent = '生成中…';
     const seq = ++_reqSeq;
     const raw = q.trim();
     showLoading();
@@ -5256,6 +5266,9 @@
     } catch (e) {
       if (seq !== _reqSeq) return;
       showError(e.message);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '出图';
     }
   }
 
