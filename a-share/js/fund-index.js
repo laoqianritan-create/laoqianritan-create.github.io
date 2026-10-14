@@ -46,11 +46,11 @@
     const dIdx0 = d.dates.findIndex((x) => x >= t0);
     if (aIdx0 < 0 || eIdx0 < 0 || dIdx0 < 0) return;
     const aD = a.dates.slice(aIdx0);
-    const eD = e.dates.slice(eIdx0);
+    const eDates = e.dates.slice(eIdx0);
     const dD = d.dates.slice(dIdx0);
     const master = [];
     for (const x of aD) master.push(x);
-    for (const x of eD) if (!master.includes(x)) master.push(x);
+    for (const x of eDates) if (!master.includes(x)) master.push(x);
     for (const x of dD) if (!master.includes(x)) master.push(x);
     master.sort();
     const n = master.length;
