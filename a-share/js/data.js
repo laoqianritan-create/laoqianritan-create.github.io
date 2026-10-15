@@ -33,6 +33,9 @@
     const yearsBase = raw.years.map(String);
     const years = [...yearsBase, '2026*'];
 
+    // 年份倒序：2026* 在最左，向右依次更早
+    years.reverse();
+
     // metrics_meta: CAGR 列定义(后端写入)
     const metricsMeta = raw.metrics_meta && raw.metrics_meta.columns
       ? raw.metrics_meta.columns
@@ -45,6 +48,8 @@
       const rets = [...item.rets];
       // 追加 2026 YTD 作为最后一列
       rets.push(item.ytd2026 !== undefined && item.ytd2026 !== null ? item.ytd2026 : null);
+      // 年度列倒序（与 years 对应）
+      rets.reverse();
       // 4 列 CAGR (按 metricsMeta 顺序取值)
       const metrics = metricsMeta.map(col =>
         item.metrics && item.metrics[col.key] !== undefined ? item.metrics[col.key] : null
