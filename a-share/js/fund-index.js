@@ -165,16 +165,29 @@
       ctx.fillText(txt, bx, labelY);
     });
 
-    // 图例（横向单行，不带数字）
+    // 图例（横向单行，按CAGR从高到低排序，不带数字）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 30 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
+
+    // 计算三条线的CAGR，按从高到低排序
+    const calcCagr = (norm) => {
+      let li = -1;
+      for (let i = n - 1; i >= 0; i--) { if (norm[i] !== null && norm[i] > 0) { li = i; break; } }
+      let fi = -1;
+      for (let i = 0; i <= li; i++) { if (norm[i] !== null && norm[i] > 0) { fi = i; break; } }
+      if (fi < 0 || li < 0) return -Infinity;
+      const v0 = norm[fi], v1 = norm[li];
+      const y0 = Date.parse(master[fi]), y1 = Date.parse(master[li]);
+      const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
+      return (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
+    };
     const items = [
-      { c: C_A500, label: '中证A500全收益' },
-      { c: C_EQUITY, label: '偏股混合基金' },
-      { c: C_DEBT, label: '偏债混合基金' },
-    ];
+      { c: C_A500, label: '中证A500全收益', cagr: calcCagr(aNorm) },
+      { c: C_EQUITY, label: '偏股混合基金', cagr: calcCagr(eNorm) },
+      { c: C_DEBT, label: '偏债混合基金', cagr: calcCagr(dNorm) },
+    ].sort((a, b) => b.cagr - a.cagr);
     let lx = lx0;
     items.forEach((it) => {
       ctx.fillStyle = it.c;

@@ -1595,19 +1595,31 @@
       ctx.fillText(txt, bx, labelY);
     });
 
-    // 图例（横向单行罗列：预计算总宽，超宽逐级缩短系列名，绝不折行）
+    // 图例（横向单行罗列：按CAGR从高到低排序，超宽逐级缩短系列名，绝不折行）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 30 : 20;
     const lh = exportMode ? 50 : 22;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const lgap = exportMode ? 52 : 24;
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
-    const lastVals = series.map((s) => {
-      const last = s.norm[s.norm.length - 1];
-      return (last !== null && last !== undefined) ? last : null;
-    });
+
+    // 计算每条线的CAGR，按从高到低排序图例
+    const seriesWithCagr = series.map((s, i) => {
+      let li = -1;
+      for (let k = s.norm.length - 1; k >= 0; k--) { if (s.norm[k] !== null && s.norm[k] > 0) { li = k; break; } }
+      let fi = -1;
+      for (let k = 0; k <= li; k++) { if (s.norm[k] !== null && s.norm[k] > 0) { fi = k; break; } }
+      if (fi < 0 || li < 0) return { s, i, cagr: -Infinity };
+      const v0 = s.norm[fi], v1 = s.norm[li];
+      const y0 = Date.parse(s.dates[fi]), y1 = Date.parse(s.dates[li]);
+      const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
+      const cagr = (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
+      return { s, i, cagr, lastVal: s.norm[li] };
+    }).sort((a, b) => b.cagr - a.cagr);
+
+    const lastVals = seriesWithCagr.map((x) => x.lastVal);
     // 逐级缩短系列名直到单行放下（最短 4 字）
-    let legendNames = series.map((s) => LEGEND_NAMES[s.code] || s.name);
+    let legendNames = seriesWithCagr.map((x) => LEGEND_NAMES[x.s.code] || x.s.name);
     const legendW = (ns) => ns.reduce((w, nm, i) => {
       const label = `${nm}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
       return w + ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
@@ -1618,7 +1630,8 @@
       legendNames = legendNames.map((nm) => (nm.length > minLen ? nm.slice(0, minLen) : nm));
     }
     let lx = lx0, ly = ly0;
-    series.forEach((s, i) => {
+    seriesWithCagr.forEach((x, i) => {
+      const s = x.s;
       const color = COLORS[s.code] || '#888888';
       const label = `${legendNames[i]}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
       ctx.fillStyle = color;
@@ -2947,18 +2960,30 @@
       ctx.textBaseline = 'middle';
       ctx.fillText(txt, bx, labelY);
     });
-    // 图例（横向单行罗列：预计算总宽，超宽逐级缩短，不折行）
+    // 图例（横向单行：按CAGR从高到低排序，超宽逐级缩短，不折行）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 30 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
     const lgap = exportMode ? 52 : 24;
-    const lastVals = factors.map((f) => {
+
+    // 计算每条线的CAGR，按从高到低排序图例
+    const factorsWithCagr = factors.map((f) => {
       const nav = data.factors[f].nav || [];
-      const last = nav[nav.length - 1];
-      return (last !== null && last !== undefined) ? last : null;
-    });
-    let legendNames = factors.slice();
+      const dates = data.dates || [];
+      let li = nav.length - 1;
+      let fi = 0;
+      while (fi < nav.length && (nav[fi] === null || nav[fi] === undefined)) fi++;
+      if (fi >= nav.length || li < 0) return { f, cagr: -Infinity, lastVal: nav[li] };
+      const v0 = nav[fi], v1 = nav[li];
+      const y0 = Date.parse(dates[fi]), y1 = Date.parse(dates[li]);
+      const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
+      const cagr = (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
+      return { f, cagr, lastVal: v1 };
+    }).sort((a, b) => b.cagr - a.cagr);
+
+    const lastVals = factorsWithCagr.map((x) => x.lastVal);
+    let legendNames = factorsWithCagr.map((x) => x.f);
     const legendW = (ns) => ns.reduce((w, nm, i) => {
       const label = `${nm}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
       return w + ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
@@ -2969,7 +2994,8 @@
       legendNames = legendNames.map((nm) => (nm.length > minLen ? nm.slice(0, minLen) : nm));
     }
     let lx = lx0, ly = ly0;
-    factors.forEach((f, i) => {
+    factorsWithCagr.forEach((x, i) => {
+      const f = x.f;
       const color = COLORS[f] || '#888888';
       const label = `${legendNames[i]}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
       ctx.fillStyle = color;
@@ -3208,14 +3234,29 @@
       ctx.fillText(txt, tagX, labelY);
     });
 
-    // ── 图例（横向单行，自适缩短）──
+    // ── 图例（横向单行，按CAGR从高到低排序，自适缩短）──
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 30 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
     const lgap = exportMode ? 52 : 24;
+
+    // 计算每条线的CAGR，按从高到低排序图例
+    const seriesWithCagr = series.map((s) => {
+      let li = -1;
+      for (let k = s.norm.length - 1; k >= 0; k--) { if (s.norm[k] !== null && s.norm[k] > 0) { li = k; break; } }
+      let fi = -1;
+      for (let k = 0; k <= li; k++) { if (s.norm[k] !== null && s.norm[k] > 0) { fi = k; break; } }
+      if (fi < 0 || li < 0) return { s, cagr: -Infinity };
+      const v0 = s.norm[fi], v1 = s.norm[li];
+      const y0 = Date.parse(s.dates[fi]), y1 = Date.parse(s.dates[li]);
+      const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
+      const cagr = (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
+      return { s, cagr };
+    }).sort((a, b) => b.cagr - a.cagr);
+
     // 图例不显示涨幅数字（用户要求）
-    let legendNames = series.map((s) => s.name);
+    let legendNames = seriesWithCagr.map((x) => x.s.name);
     const legendW = (ns) => ns.reduce((w, nm, i) => {
       return w + ctx.measureText(nm).width + (exportMode ? 56 : 24) + lgap;
     }, 0);
@@ -3225,7 +3266,8 @@
       legendNames = legendNames.map((nm) => (nm.length > minLen ? nm.slice(0, minLen) : nm));
     }
     let lx = lx0, ly = ly0;
-    series.forEach((s, i) => {
+    seriesWithCagr.forEach((x, i) => {
+      const s = x.s;
       const color = COLORS[s.code] || '#888888';
       const label = legendNames[i];
       ctx.fillStyle = color;
@@ -3959,16 +4001,29 @@
       ctx.fillText(txt, bx, labelY);
     });
 
-    // 图例（横向单行，不带数字）
+    // 图例（横向单行，按CAGR从高到低排序，不带数字）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 30 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
+
+    // 计算三条线的CAGR，按从高到低排序
+    const calcCagr = (norm) => {
+      let li = -1;
+      for (let i = n - 1; i >= 0; i--) { if (norm[i] !== null && norm[i] > 0) { li = i; break; } }
+      let fi = -1;
+      for (let i = 0; i <= li; i++) { if (norm[i] !== null && norm[i] > 0) { fi = i; break; } }
+      if (fi < 0 || li < 0) return -Infinity;
+      const v0 = norm[fi], v1 = norm[li];
+      const y0 = Date.parse(master[fi]), y1 = Date.parse(master[li]);
+      const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
+      return (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
+    };
     const items = [
-      { c: C_A500, label: '中证A500全收益' },
-      { c: C_EQUITY, label: '偏股混合基金' },
-      { c: C_DEBT, label: '偏债混合基金' },
-    ];
+      { c: C_A500, label: '中证A500全收益', cagr: calcCagr(aNorm) },
+      { c: C_EQUITY, label: '偏股混合基金', cagr: calcCagr(eNorm) },
+      { c: C_DEBT, label: '偏债混合基金', cagr: calcCagr(dNorm) },
+    ].sort((a, b) => b.cagr - a.cagr);
     let lx = lx0;
     items.forEach((it) => {
       ctx.fillStyle = it.c;

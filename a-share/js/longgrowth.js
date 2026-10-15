@@ -210,19 +210,31 @@
       ctx.fillText(txt, bx, labelY);
     });
 
-    // 图例（横向单行罗列：预计算总宽，超宽逐级缩短系列名，绝不折行）
+    // 图例（横向单行罗列：按CAGR从高到低排序，超宽逐级缩短系列名，绝不折行）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 30 : 20;
     const lh = exportMode ? 50 : 22;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     const lgap = exportMode ? 52 : 24;
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
-    const lastVals = series.map((s) => {
-      const last = s.norm[s.norm.length - 1];
-      return (last !== null && last !== undefined) ? last : null;
-    });
+
+    // 计算每条线的CAGR，按从高到低排序图例
+    const seriesWithCagr = series.map((s, i) => {
+      let li = -1;
+      for (let k = s.norm.length - 1; k >= 0; k--) { if (s.norm[k] !== null && s.norm[k] > 0) { li = k; break; } }
+      let fi = -1;
+      for (let k = 0; k <= li; k++) { if (s.norm[k] !== null && s.norm[k] > 0) { fi = k; break; } }
+      if (fi < 0 || li < 0) return { s, i, cagr: -Infinity };
+      const v0 = s.norm[fi], v1 = s.norm[li];
+      const y0 = Date.parse(s.dates[fi]), y1 = Date.parse(s.dates[li]);
+      const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
+      const cagr = (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
+      return { s, i, cagr, lastVal: s.norm[li] };
+    }).sort((a, b) => b.cagr - a.cagr);
+
+    const lastVals = seriesWithCagr.map((x) => x.lastVal);
     // 逐级缩短系列名直到单行放下（最短 4 字）
-    let legendNames = series.map((s) => LEGEND_NAMES[s.code] || s.name);
+    let legendNames = seriesWithCagr.map((x) => LEGEND_NAMES[x.s.code] || x.s.name);
     const legendW = (ns) => ns.reduce((w, nm, i) => {
       const label = `${nm}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
       return w + ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
@@ -233,7 +245,8 @@
       legendNames = legendNames.map((nm) => (nm.length > minLen ? nm.slice(0, minLen) : nm));
     }
     let lx = lx0, ly = ly0;
-    series.forEach((s, i) => {
+    seriesWithCagr.forEach((x, i) => {
+      const s = x.s;
       const color = COLORS[s.code] || '#888888';
       const label = `${legendNames[i]}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
       ctx.fillStyle = color;

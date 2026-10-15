@@ -161,18 +161,30 @@
       ctx.textBaseline = 'middle';
       ctx.fillText(txt, bx, labelY);
     });
-    // 图例（横向单行罗列：预计算总宽，超宽逐级缩短，不折行）
+    // 图例（横向单行：按CAGR从高到低排序，超宽逐级缩短，不折行）
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 30 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
     const lgap = exportMode ? 52 : 24;
-    const lastVals = factors.map((f) => {
+
+    // 计算每条线的CAGR，按从高到低排序图例
+    const factorsWithCagr = factors.map((f) => {
       const nav = data.factors[f].nav || [];
-      const last = nav[nav.length - 1];
-      return (last !== null && last !== undefined) ? last : null;
-    });
-    let legendNames = factors.slice();
+      const dates = data.dates || [];
+      let li = nav.length - 1;
+      let fi = 0;
+      while (fi < nav.length && (nav[fi] === null || nav[fi] === undefined)) fi++;
+      if (fi >= nav.length || li < 0) return { f, cagr: -Infinity, lastVal: nav[li] };
+      const v0 = nav[fi], v1 = nav[li];
+      const y0 = Date.parse(dates[fi]), y1 = Date.parse(dates[li]);
+      const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
+      const cagr = (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
+      return { f, cagr, lastVal: v1 };
+    }).sort((a, b) => b.cagr - a.cagr);
+
+    const lastVals = factorsWithCagr.map((x) => x.lastVal);
+    let legendNames = factorsWithCagr.map((x) => x.f);
     const legendW = (ns) => ns.reduce((w, nm, i) => {
       const label = `${nm}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
       return w + ctx.measureText(label).width + (exportMode ? 56 : 24) + lgap;
@@ -183,7 +195,8 @@
       legendNames = legendNames.map((nm) => (nm.length > minLen ? nm.slice(0, minLen) : nm));
     }
     let lx = lx0, ly = ly0;
-    factors.forEach((f, i) => {
+    factorsWithCagr.forEach((x, i) => {
+      const f = x.f;
       const color = COLORS[f] || '#888888';
       const label = `${legendNames[i]}${lastVals[i] !== null ? `  ${lastVals[i].toFixed(1)}x` : ''}`;
       ctx.fillStyle = color;

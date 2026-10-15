@@ -178,14 +178,29 @@
       ctx.fillText(txt, tagX, labelY);
     });
 
-    // ── 图例（横向单行，自适缩短）──
+    // ── 图例（横向单行，按CAGR从高到低排序，自适缩短）──
     const lx0 = exportMode ? padL + 20 : padL + 10;
     const ly0 = exportMode ? 30 : 20;
     ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = (exportMode ? 28 : 14) + 'px NotoSansSC, sans-serif';
     const lgap = exportMode ? 52 : 24;
+
+    // 计算每条线的CAGR，按从高到低排序图例
+    const seriesWithCagr = series.map((s) => {
+      let li = -1;
+      for (let k = s.norm.length - 1; k >= 0; k--) { if (s.norm[k] !== null && s.norm[k] > 0) { li = k; break; } }
+      let fi = -1;
+      for (let k = 0; k <= li; k++) { if (s.norm[k] !== null && s.norm[k] > 0) { fi = k; break; } }
+      if (fi < 0 || li < 0) return { s, cagr: -Infinity };
+      const v0 = s.norm[fi], v1 = s.norm[li];
+      const y0 = Date.parse(s.dates[fi]), y1 = Date.parse(s.dates[li]);
+      const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
+      const cagr = (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
+      return { s, cagr };
+    }).sort((a, b) => b.cagr - a.cagr);
+
     // 图例不显示涨幅数字（用户要求）
-    let legendNames = series.map((s) => s.name);
+    let legendNames = seriesWithCagr.map((x) => x.s.name);
     const legendW = (ns) => ns.reduce((w, nm, i) => {
       return w + ctx.measureText(nm).width + (exportMode ? 56 : 24) + lgap;
     }, 0);
@@ -195,7 +210,8 @@
       legendNames = legendNames.map((nm) => (nm.length > minLen ? nm.slice(0, minLen) : nm));
     }
     let lx = lx0, ly = ly0;
-    series.forEach((s, i) => {
+    seriesWithCagr.forEach((x, i) => {
+      const s = x.s;
       const color = COLORS[s.code] || '#888888';
       const label = legendNames[i];
       ctx.fillStyle = color;
