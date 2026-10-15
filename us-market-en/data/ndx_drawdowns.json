@@ -815,6 +815,20 @@
       "recovery_date": "1991-03-26"
     },
     {
+      "period": "2026: Oct 6 – Oct 15",
+      "peak_date": "2026-10-06",
+      "trough_date": "2026-10-15",
+      "days": 9,
+      "high": 31224.47,
+      "low": 29577.78,
+      "decline": -0.053,
+      "category": "mechanical_scare",
+      "cause": "",
+      "active": true,
+      "recovery_days": null,
+      "recovery_date": null
+    },
+    {
       "period": "2016: Oct 24 – Nov 4",
       "peak_date": "2016-10-24",
       "trough_date": "2016-11-04",
@@ -844,9 +858,9 @@
     }
   ],
   "summary": {
-    "totalCount": 60,
+    "totalCount": 61,
     "medianDays": 26,
-    "medianDecline": -0.107,
+    "medianDecline": -0.105,
     "maxDecline": -0.829,
     "maxDuration": 924,
     "bearMarkets": 8
