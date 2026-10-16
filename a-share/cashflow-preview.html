@@ -66,11 +66,28 @@
     .error {
       color: #E65A56;
     }
+    .chart-wrap {
+      position: relative;
+    }
     #cfCanvas {
       width: 100%;
       max-width: 1400px;
       margin: 0 auto;
       display: block;
+      cursor: crosshair;
+    }
+    .tooltip {
+      position: absolute;
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.6;
+      pointer-events: none;
+      display: none;
+      z-index: 10;
+      white-space: nowrap;
     }
     .preview-tag {
       display: inline-block;
@@ -90,13 +107,16 @@
     <p class="panel-desc">输入公司名或 6 位代码 · 自由现金流瀑布图（8 项指标）</p>
 
     <div class="input-row">
-      <input type="text" id="cfQueryInput" placeholder="公司名 / 6 位代码，如：茅台 / 600519" autocomplete="off" />
+      <input type="text" id="cfQueryInput" placeholder="公司名 / 6 位代码，如：万华化学 / 600309" autocomplete="off" />
       <button id="cfQueryBtn">计算</button>
     </div>
 
     <div id="cfLoading" class="loading" hidden>计算中 · 约 10-30 秒...</div>
     <div id="cfError" class="error" hidden></div>
-    <canvas id="cfCanvas" hidden></canvas>
+    <div class="chart-wrap" id="chartWrap" hidden>
+      <canvas id="cfCanvas"></canvas>
+      <div class="tooltip" id="cfTooltip"></div>
+    </div>
   </div>
 
   <script>
@@ -105,11 +125,16 @@
     const btn = document.getElementById('cfQueryBtn');
     const loading = document.getElementById('cfLoading');
     const errBox = document.getElementById('cfError');
+    const chartWrap = document.getElementById('chartWrap');
     const canvas = document.getElementById('cfCanvas');
+    const tooltip = document.getElementById('cfTooltip');
+    const ctx = canvas.getContext('2d');
 
     let _data = null;
     let _hidden = {};
+    let _hoverIndex = -1;
 
+    // 8个指标配置
     const INDICATORS = [
       { key: 'tax_operating_profit', name: '税后营业利润', color: '#23C2DB' },
       { key: 'depreciation', name: '折旧摊销', color: '#B09CDB' },
@@ -124,7 +149,7 @@
     function hideAll() {
       loading.hidden = true;
       errBox.hidden = true;
-      canvas.hidden = true;
+      chartWrap.hidden = true;
     }
 
     async function requestCashflow(q) {
@@ -138,27 +163,20 @@
       return resp.json();
     }
 
-    function draw(data) {
+    function getChartMetrics() {
       const W = 1400, H = 650;
       const padL = 70, padR = 40, padT = 80, padB = 50;
-      canvas.width = W * window.devicePixelRatio;
-      canvas.height = H * window.devicePixelRatio;
-      canvas.style.width = '100%';
-      canvas.style.height = 'auto';
-      const ctx = canvas.getContext('2d');
-      ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-      ctx.fillStyle = '#FFFFFF';
-      ctx.fillRect(0, 0, W, H);
+      return { W, H, padL, padR, padT, padB };
+    }
 
+    function calcYRange(data) {
+      const { W, H, padL, padR, padT, padB } = getChartMetrics();
       const years = data.years;
       const n = years.length;
-      if (n === 0) return;
 
-      // 计算y范围（瀑布图累计值）
       let yMin = 0, yMax = 0;
       years.forEach((year, i) => {
         let running = 0;
-        // 模拟瀑布图累计
         const v1 = data.tax_operating_profit[i];
         if (v1 !== null && v1 !== undefined && !_hidden['tax_operating_profit']) running += v1;
         if (running > yMax) yMax = running;
@@ -194,8 +212,27 @@
         if (running > yMax) yMax = running;
         if (running < yMin) yMin = running;
       });
+
       const yPad = (yMax - yMin) * 0.15 || 10;
       yMin -= yPad; yMax += yPad;
+      return { yMin, yMax };
+    }
+
+    function draw(data) {
+      const { W, H, padL, padR, padT, padB } = getChartMetrics();
+      const { yMin, yMax } = calcYRange(data);
+
+      canvas.width = W * window.devicePixelRatio;
+      canvas.height = H * window.devicePixelRatio;
+      canvas.style.width = '100%';
+      canvas.style.height = 'auto';
+      ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillRect(0, 0, W, H);
+
+      const years = data.years;
+      const n = years.length;
+      if (n === 0) return;
 
       const xs = (i) => padL + (n === 1 ? 0.5 : i / (n - 1)) * (W - padL - padR);
       const ys = (v) => padT + (1 - (v - yMin) / (yMax - yMin)) * (H - padT - padB);
@@ -218,6 +255,15 @@
         ctx.fillText(v.toFixed(0), padL - 10, y);
       }
 
+      // 0轴（加粗）
+      ctx.strokeStyle = '#999';
+      ctx.lineWidth = 1.5;
+      const y0 = ys(0);
+      ctx.beginPath();
+      ctx.moveTo(padL, y0);
+      ctx.lineTo(W - padR, y0);
+      ctx.stroke();
+
       // x轴年份
       ctx.fillStyle = '#999';
       ctx.font = '12px sans-serif';
@@ -229,12 +275,12 @@
         }
       });
 
-      // 画瀑布图（真正的瀑布逻辑：从0开始，一步步累加）
+      // 画瀑布图
       const barWidth = (W - padL - padR) / n * 0.5;
 
       years.forEach((year, i) => {
         const x = xs(i) - barWidth / 2;
-        let running = 0; // 当前累计值
+        let running = 0;
 
         // 步骤1：税后营业利润
         const v1 = data.tax_operating_profit[i];
@@ -319,20 +365,35 @@
         }
       });
 
-      // 图例
+      // hover参考线
+      if (_hoverIndex >= 0 && _hoverIndex < n) {
+        const x = xs(_hoverIndex);
+        ctx.strokeStyle = '#999';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(x, padT);
+        ctx.lineTo(x, H - padB);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+
+      // 图例（可点击）
       const legendY = 30;
       let legendX = W / 2 - INDICATORS.length * 60 / 2;
       ctx.font = '13px sans-serif';
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
 
-      INDICATORS.forEach(ind => {
+      INDICATORS.forEach((ind, idx) => {
         const isHidden = _hidden[ind.key];
         ctx.fillStyle = isHidden ? '#CCC' : ind.color;
         ctx.fillRect(legendX, legendY - 6, 12, 12);
         ctx.fillStyle = isHidden ? '#CCC' : '#333';
         ctx.fillText(ind.name, legendX + 18, legendY);
-        legendX += 18 + ctx.measureText(ind.name).width + 20;
+        ind._legendX = legendX; // 记录位置用于点击检测
+        ind._legendW = 18 + ctx.measureText(ind.name).width + 20;
+        legendX += ind._legendW;
       });
 
       // 标题
@@ -341,6 +402,13 @@
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       ctx.fillText(data.name + ' · 历年自由现金流（亿元）', padL, 20);
+
+      // 单位标注
+      ctx.fillStyle = '#999';
+      ctx.font = '12px sans-serif';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      ctx.fillText('单位：亿元', padL + 5, padT - 20);
 
       _data = data;
     }
@@ -351,43 +419,96 @@
       const rect = canvas.getBoundingClientRect();
       const scale = canvas.width / window.devicePixelRatio / rect.width;
       const mx = (e.clientX - rect.left) * scale;
+      const my = (e.clientY - rect.top) * scale;
 
-      const W = 1400, H = 650;
-      const padL = 70, padR = 40, padT = 80, padB = 50;
+      const { W, H, padL, padR, padT, padB } = getChartMetrics();
       const years = _data.years;
       const n = years.length;
 
-      const i = Math.round((mx - padL) / ((W - padL - padR) / (n - 1)));
-      if (i < 0 || i >= n) return;
-
-      const xs = (i) => padL + (n === 1 ? 0.5 : i / (n - 1)) * (W - padL - padR);
-      const x = xs(i);
-
-      draw(_data);
-
-      const ctx = canvas.getContext('2d');
-      ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-
-      // 纵向参考线
-      ctx.strokeStyle = '#999';
-      ctx.lineWidth = 1;
-      ctx.setLineDash([4, 4]);
-      ctx.beginPath();
-      ctx.moveTo(x, padT);
-      ctx.lineTo(x, H - padB);
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      // tooltip
-      let tooltip = years[i] + '年\n';
-      INDICATORS.forEach(ind => {
-        if (_hidden[ind.key]) return;
-        const v = _data[ind.key][i];
-        if (v !== null && v !== undefined) {
-          tooltip += ind.name + ': ' + v.toFixed(2) + '亿\n';
+      // 先检测是否点在图例上
+      let legendClicked = -1;
+      INDICATORS.forEach((ind, idx) => {
+        if (my > 15 && my < 45 && mx > ind._legendX && mx < ind._legendX + ind._legendW) {
+          legendClicked = idx;
         }
       });
-      canvas.title = tooltip;
+
+      if (legendClicked >= 0) {
+        canvas.style.cursor = 'pointer';
+        tooltip.style.display = 'none';
+        return;
+      }
+
+      canvas.style.cursor = 'crosshair';
+
+      // 找到最近的年份
+      const i = Math.round((mx - padL) / ((W - padL - padR) / (n - 1)));
+      if (i < 0 || i >= n) {
+        _hoverIndex = -1;
+        tooltip.style.display = 'none';
+        draw(_data);
+        return;
+      }
+
+      if (_hoverIndex !== i) {
+        _hoverIndex = i;
+        draw(_data);
+      }
+
+      // 显示tooltip
+      let html = '<strong>' + years[i] + ' 年</strong><br>';
+      INDICATORS.forEach(ind => {
+        const v = _data[ind.key][i];
+        const color = _hidden[ind.key] ? '#999' : ind.color;
+        if (v !== null && v !== undefined) {
+          html += '<span style="color:' + color + '">■</span> ' + ind.name + ': ' + v.toFixed(2) + ' 亿<br>';
+        } else {
+          html += '<span style="color:#999">■</span> ' + ind.name + ': -<br>';
+        }
+      });
+
+      tooltip.innerHTML = html;
+      tooltip.style.display = 'block';
+
+      // 定位tooltip
+      const wrapRect = chartWrap.getBoundingClientRect();
+      const canvasRect = canvas.getBoundingClientRect();
+      let tooltipX = (e.clientX - wrapRect.left) + 15;
+      let tooltipY = (e.clientY - wrapRect.top) - 10;
+
+      // 防止超出右边界
+      if (tooltipX + 200 > wrapRect.width) {
+        tooltipX = (e.clientX - wrapRect.left) - 210;
+      }
+
+      tooltip.style.left = tooltipX + 'px';
+      tooltip.style.top = tooltipY + 'px';
+    };
+
+    canvas.onmouseleave = function() {
+      _hoverIndex = -1;
+      tooltip.style.display = 'none';
+      if (_data) draw(_data);
+    };
+
+    // 图例点击切换
+    canvas.onclick = function(e) {
+      if (!_data) return;
+      const rect = canvas.getBoundingClientRect();
+      const scale = canvas.width / window.devicePixelRatio / rect.width;
+      const mx = (e.clientX - rect.left) * scale;
+      const my = (e.clientY - rect.top) * scale;
+
+      INDICATORS.forEach((ind, idx) => {
+        if (my > 15 && my < 45 && mx > ind._legendX && mx < ind._legendX + ind._legendW) {
+          if (_hidden[ind.key]) {
+            delete _hidden[ind.key];
+          } else {
+            _hidden[ind.key] = true;
+          }
+          draw(_data);
+        }
+      });
     };
 
     // 绑定事件
@@ -400,8 +521,9 @@
         const data = await requestCashflow(q);
         if (data.error) throw new Error(data.error);
         _hidden = {};
+        _hoverIndex = -1;
         draw(data);
-        canvas.hidden = false;
+        chartWrap.hidden = false;
         loading.hidden = true;
       } catch (e) {
         errBox.textContent = e.message;
