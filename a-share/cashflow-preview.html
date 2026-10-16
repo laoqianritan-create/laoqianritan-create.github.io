@@ -175,45 +175,17 @@
       const n = years.length;
 
       let yMin = 0, yMax = 0;
-      years.forEach((year, i) => {
-        let running = 0;
-        const v1 = data.tax_operating_profit[i];
-        if (v1 !== null && v1 !== undefined && !_hidden['tax_operating_profit']) running += v1;
-        if (running > yMax) yMax = running;
-        if (running < yMin) yMin = running;
-
-        const v2 = data.depreciation[i];
-        if (v2 !== null && v2 !== undefined && !_hidden['depreciation']) running += v2;
-        if (running > yMax) yMax = running;
-        if (running < yMin) yMin = running;
-
-        const v3 = data.working_capital_change[i];
-        if (v3 !== null && v3 !== undefined && !_hidden['working_capital_change']) running += v3;
-        if (running > yMax) yMax = running;
-        if (running < yMin) yMin = running;
-
-        const v4 = data.capex[i];
-        if (v4 !== null && v4 !== undefined && !_hidden['capex']) running -= v4;
-        if (running > yMax) yMax = running;
-        if (running < yMin) yMin = running;
-
-        const v6 = data.dividend_paid[i];
-        if (v6 !== null && v6 !== undefined && !_hidden['dividend_paid']) running -= v6;
-        if (running > yMax) yMax = running;
-        if (running < yMin) yMin = running;
-
-        const v7 = data.new_equity[i];
-        if (v7 !== null && v7 !== undefined && !_hidden['new_equity']) running += v7;
-        if (running > yMax) yMax = running;
-        if (running < yMin) yMin = running;
-
-        const v8 = data.net_debt[i];
-        if (v8 !== null && v8 !== undefined && !_hidden['net_debt']) running += v8;
-        if (running > yMax) yMax = running;
-        if (running < yMin) yMin = running;
+      INDICATORS.forEach(ind => {
+        if (_hidden[ind.key]) return;
+        const vals = data[ind.key] || [];
+        vals.forEach(v => {
+          if (v === null || v === undefined) return;
+          if (v > yMax) yMax = v;
+          if (v < yMin) yMin = v;
+        });
       });
 
-      const yPad = (yMax - yMin) * 0.15 || 10;
+      const yPad = (yMax - yMin) * 0.1 || 10;
       yMin -= yPad; yMax += yPad;
       return { yMin, yMax };
     }
@@ -275,94 +247,25 @@
         }
       });
 
-      // 画瀑布图
-      const barWidth = (W - padL - padR) / n * 0.5;
+      // 画分组柱状图（每个年份8根小柱子并排）
+      const groupWidth = (W - padL - padR) / n * 0.8; // 每个年份组的总宽度
+      const barWidth = groupWidth / INDICATORS.length; // 每根柱子的宽度
 
       years.forEach((year, i) => {
-        const x = xs(i) - barWidth / 2;
-        let running = 0;
+        const groupX = xs(i) - groupWidth / 2;
 
-        // 步骤1：税后营业利润
-        const v1 = data.tax_operating_profit[i];
-        if (v1 !== null && v1 !== undefined && !_hidden['tax_operating_profit']) {
-          const y1 = ys(running);
-          const y2 = ys(running + v1);
-          ctx.fillStyle = INDICATORS[0].color;
-          ctx.fillRect(x, Math.min(y1, y2), barWidth, Math.abs(y1 - y2));
-          running += v1;
-        }
+        INDICATORS.forEach((ind, idx) => {
+          const v = data[ind.key][i];
+          if (v === null || v === undefined) return;
+          if (_hidden[ind.key]) return;
 
-        // 步骤2：折旧摊销
-        const v2 = data.depreciation[i];
-        if (v2 !== null && v2 !== undefined && !_hidden['depreciation']) {
-          const y1 = ys(running);
-          const y2 = ys(running + v2);
-          ctx.fillStyle = INDICATORS[1].color;
-          ctx.fillRect(x, Math.min(y1, y2), barWidth, Math.abs(y1 - y2));
-          running += v2;
-        }
+          const x = groupX + idx * barWidth;
+          const yZero = ys(0);
+          const yVal = ys(v);
 
-        // 步骤3：营运资本变动
-        const v3 = data.working_capital_change[i];
-        if (v3 !== null && v3 !== undefined && !_hidden['working_capital_change']) {
-          const y1 = ys(running);
-          const y2 = ys(running + v3);
-          ctx.fillStyle = INDICATORS[2].color;
-          ctx.fillRect(x, Math.min(y1, y2), barWidth, Math.abs(y1 - y2));
-          running += v3;
-        }
-
-        // 步骤4：资本支出（向下减）
-        const v4 = data.capex[i];
-        if (v4 !== null && v4 !== undefined && !_hidden['capex']) {
-          const y1 = ys(running);
-          const y2 = ys(running - v4);
-          ctx.fillStyle = INDICATORS[3].color;
-          ctx.fillRect(x, Math.min(y1, y2), barWidth, Math.abs(y1 - y2));
-          running -= v4;
-        }
-
-        // 自由现金流位置标记（红色横线）
-        const fcf = data.free_cashflow[i];
-        if (fcf !== null && fcf !== undefined) {
-          const yFcf = ys(fcf);
-          ctx.strokeStyle = INDICATORS[4].color;
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.moveTo(x - 4, yFcf);
-          ctx.lineTo(x + barWidth + 4, yFcf);
-          ctx.stroke();
-        }
-
-        // 步骤6：计划股息支付（向下减）
-        const v6 = data.dividend_paid[i];
-        if (v6 !== null && v6 !== undefined && !_hidden['dividend_paid']) {
-          const y1 = ys(running);
-          const y2 = ys(running - v6);
-          ctx.fillStyle = INDICATORS[5].color;
-          ctx.fillRect(x, Math.min(y1, y2), barWidth, Math.abs(y1 - y2));
-          running -= v6;
-        }
-
-        // 步骤7：新股权融资
-        const v7 = data.new_equity[i];
-        if (v7 !== null && v7 !== undefined && !_hidden['new_equity']) {
-          const y1 = ys(running);
-          const y2 = ys(running + v7);
-          ctx.fillStyle = INDICATORS[6].color;
-          ctx.fillRect(x, Math.min(y1, y2), barWidth, Math.abs(y1 - y2));
-          running += v7;
-        }
-
-        // 步骤8：净债权融资
-        const v8 = data.net_debt[i];
-        if (v8 !== null && v8 !== undefined && !_hidden['net_debt']) {
-          const y1 = ys(running);
-          const y2 = ys(running + v8);
-          ctx.fillStyle = INDICATORS[7].color;
-          ctx.fillRect(x, Math.min(y1, y2), barWidth, Math.abs(y1 - y2));
-          running += v8;
-        }
+          ctx.fillStyle = ind.color;
+          ctx.fillRect(x, Math.min(yZero, yVal), barWidth - 1, Math.abs(yVal - yZero));
+        });
       });
 
       // hover参考线
