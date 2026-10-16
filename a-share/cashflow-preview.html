@@ -247,24 +247,44 @@
         }
       });
 
-      // 画分组柱状图（每个年份8根小柱子并排）
-      const groupWidth = (W - padL - padR) / n * 0.8; // 每个年份组的总宽度
-      const barWidth = groupWidth / INDICATORS.length; // 每根柱子的宽度
+      // 画分组柱状图（分4组，组之间有间隔）
+      // 组1：经营活动（税后营业利润、折旧摊销、营运资本变动、资本支出）
+      // 组2：自由现金流
+      // 组3：融资活动（新股权融资、净债权融资）
+      // 组4：分红支付
+      const groups = [
+        { keys: ['tax_operating_profit', 'depreciation', 'working_capital_change', 'capex'] },
+        { keys: ['free_cashflow'] },
+        { keys: ['new_equity', 'net_debt'] },
+        { keys: ['dividend_paid'] },
+      ];
+
+      const groupWidth = (W - padL - padR) / n * 0.7; // 每个年份的总宽度
+      const groupGap = groupWidth * 0.1; // 组之间的间隔
+      const innerBarWidth = (groupWidth - groupGap * (groups.length - 1)) / INDICATORS.length; // 每根柱子的宽度
 
       years.forEach((year, i) => {
-        const groupX = xs(i) - groupWidth / 2;
+        const yearX = xs(i);
+        let barIndex = 0;
 
-        INDICATORS.forEach((ind, idx) => {
-          const v = data[ind.key][i];
-          if (v === null || v === undefined) return;
-          if (_hidden[ind.key]) return;
+        groups.forEach((group, gIdx) => {
+          group.keys.forEach(key => {
+            const ind = INDICATORS.find(x => x.key === key);
+            if (!ind) return;
+            const v = data[key][i];
+            if (v === null || v === undefined) return;
+            if (_hidden[key]) return;
 
-          const x = groupX + idx * barWidth;
-          const yZero = ys(0);
-          const yVal = ys(v);
+            const x = yearX - groupWidth / 2 + barIndex * innerBarWidth;
+            const yZero = ys(0);
+            const yVal = ys(v);
 
-          ctx.fillStyle = ind.color;
-          ctx.fillRect(x, Math.min(yZero, yVal), barWidth - 1, Math.abs(yVal - yZero));
+            ctx.fillStyle = ind.color;
+            ctx.fillRect(x, Math.min(yZero, yVal), innerBarWidth - 1, Math.abs(yVal - yZero));
+            barIndex++;
+          });
+          // 组之间留间隔
+          barIndex += (groupGap / innerBarWidth);
         });
       });
 
