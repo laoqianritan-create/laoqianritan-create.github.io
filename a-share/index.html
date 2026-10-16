@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://ashare.laoqianriritan.com/">
   <link rel="canonical" href="https://ashare.laoqianriritan.com/">
   <link rel="preload" href="https://laoqianritan-create.github.io/a-share/fonts/Alibaba-PuHuiTi-Heavy.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261016112221">
+  <link rel="stylesheet" href="css/style.css?v=20261016151213">
 </head>
 <body>
 
@@ -42,6 +42,7 @@
       <a href="#panel-timing">偏股滚动</a>
       <a href="#panel-investor">投资者结构</a>
       <a href="#panel-chart">个股走势</a>
+      <a href="#panel-cashflow">自由现金流</a>
     </nav>
   </div>
 </header>
@@ -471,6 +472,38 @@
     </details>
   </section>
 
+<!-- ═══════════ 面板 18：历年自由现金流（交互查询）═══════════ -->
+  <section class="panel" id="panel-cashflow">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title">历年自由现金流</h2>
+        <p class="panel-desc">输入公司名或 6 位代码 · 自由现金流瀑布图（8 项指标）</p>
+      </div>
+      <div class="panel-actions"></div>
+    </div>
+    <div class="panel-body chart-query-body">
+      <div class="cq-input-row">
+        <input type="text" id="cfQueryInput" placeholder="公司名 / 6 位代码，如：茅台 / 600519" autocomplete="off" spellcheck="false" />
+        <button id="cfQueryBtn" type="button">计算</button>
+      </div>
+      <div id="cfSuggestBox" class="cq-suggest" hidden></div>
+      <div id="cfLoading" class="cq-loading" hidden>计算中 · 约 10-30 秒...</div>
+      <div id="cfError" class="cq-error" hidden></div>
+      <div id="cfResult" class="cq-result" hidden>
+        <canvas id="cfCanvas"></canvas>
+      </div>
+    </div>
+    <details class="panel-notes">
+      <summary>看板说明</summary>
+      <ul>
+        <li>输入 A 股公司名或 6 位代码，自动计算历年自由现金流构成（单位：亿元）。</li>
+        <li>8 项指标：税后营业利润、折旧摊销、营运资本变动、资本支出、自由现金流、分红支付、新股权融资、净债权融资。</li>
+        <li>鼠标悬停查看当年各指标数值；点击图例可切换显示/隐藏对应指标。</li>
+        <li>数据来源：东方财富财报数据 · 仅供参考，不构成投资建议。</li>
+      </ul>
+    </details>
+  </section>
+
 <div class="related-resources">
   <div class="rr-inner">
     <h3 class="rr-title">相关资源</h3>
@@ -492,7 +525,8 @@
 
 
 
-<script defer src="js/all.js?v=20261016112221"></script>
+<script defer src="js/all.js?v=20261016151213"></script>
+<script defer src="js/cashflow.js?v=20261016151213"></script>
 
 </body>
 </html>
