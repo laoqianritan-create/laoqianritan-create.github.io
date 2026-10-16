@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-15T22:10:50",
-  "latest_date": "2026-10-14",
+  "updated": "2026-10-16T09:38:52",
+  "latest_date": "2026-10-15",
   "footnote": "Trading days are weekdays including holidays, weekends excluded (same basis as the original)",
   "caliber": "The nine bull-market windows follow the Yardeni chart legend (each starts at a bear-market trough); gains and curves are self-computed from local sp500_price.json daily closes (rebased to 0% at the start) and match the legend gains on all 9 of 9 runs with 0.0pp error; the X axis is trading days since each start. The run begun 2022-10-12 is ongoing and extends automatically as new daily data arrives.",
   "source": {
@@ -34837,8 +34837,8 @@
       "start": "2022-10-12",
       "end": null,
       "ongoing": true,
-      "gain": 115.8,
-      "days": 1004,
+      "gain": 116.5,
+      "days": 1005,
       "points": [
         {
           "d": 0,
@@ -38859,6 +38859,10 @@
         {
           "d": 1004,
           "v": 115.79
+        },
+        {
+          "d": 1005,
+          "v": 116.49
         }
       ]
     },
