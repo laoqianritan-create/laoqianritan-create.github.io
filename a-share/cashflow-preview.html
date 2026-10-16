@@ -247,45 +247,72 @@
         }
       });
 
-      // 画分组柱状图（分4组，组之间有间隔）
-      // 组1：经营活动（税后营业利润、折旧摊销、营运资本变动、资本支出）
-      // 组2：自由现金流
-      // 组3：融资活动（新股权融资、净债权融资）
-      // 组4：分红支付
-      const groups = [
-        { keys: ['tax_operating_profit', 'depreciation', 'working_capital_change', 'capex'] },
-        { keys: ['free_cashflow'] },
-        { keys: ['new_equity', 'net_debt'] },
-        { keys: ['dividend_paid'] },
-      ];
-
-      const groupWidth = (W - padL - padR) / n * 0.7; // 每个年份的总宽度
-      const groupGap = groupWidth * 0.1; // 组之间的间隔
-      const innerBarWidth = (groupWidth - groupGap * (groups.length - 1)) / INDICATORS.length; // 每根柱子的宽度
+      // 画堆叠分组柱状图（每年4根柱子，组内堆叠）
+      // 柱1：经营活动现金流（税后营业利润+折旧摊销+营运资本变动+资本支出）
+      // 柱2：自由现金流
+      // 柱3：融资活动现金流（新股权融资+净债权融资）
+      // 柱4：分红支付
+      const barCount = 4;
+      const groupWidth = (W - padL - padR) / n * 0.6;
+      const barWidth = groupWidth / barCount;
 
       years.forEach((year, i) => {
-        const yearX = xs(i);
-        let barIndex = 0;
+        const yearX = xs(i) - groupWidth / 2;
+        const yZero = ys(0);
 
-        groups.forEach((group, gIdx) => {
-          group.keys.forEach(key => {
-            const ind = INDICATORS.find(x => x.key === key);
-            if (!ind) return;
-            const v = data[key][i];
-            if (v === null || v === undefined) return;
-            if (_hidden[key]) return;
-
-            const x = yearX - groupWidth / 2 + barIndex * innerBarWidth;
-            const yZero = ys(0);
-            const yVal = ys(v);
-
-            ctx.fillStyle = ind.color;
-            ctx.fillRect(x, Math.min(yZero, yVal), innerBarWidth - 1, Math.abs(yVal - yZero));
-            barIndex++;
-          });
-          // 组之间留间隔
-          barIndex += (groupGap / innerBarWidth);
+        // ── 柱1：经营活动现金流（堆叠4个指标）──
+        let running = 0;
+        const opItems = [
+          { key: 'tax_operating_profit', color: '#23C2DB' },
+          { key: 'depreciation', color: '#B09CDB' },
+          { key: 'working_capital_change', color: '#5AAEF3' },
+          { key: 'capex', color: '#FFB366' },
+        ];
+        opItems.forEach(item => {
+          const v = data[item.key][i];
+          if (v === null || v === undefined) return;
+          if (_hidden[item.key]) return;
+          const y1 = ys(running);
+          const y2 = ys(running + v);
+          ctx.fillStyle = item.color;
+          ctx.fillRect(yearX, Math.min(y1, y2), barWidth - 1, Math.abs(y1 - y2));
+          running += v;
         });
+
+        // ── 柱2：自由现金流 ──
+        const fcf = data.free_cashflow[i];
+        if (fcf !== null && fcf !== undefined && !_hidden['free_cashflow']) {
+          const x = yearX + barWidth;
+          const yVal = ys(fcf);
+          ctx.fillStyle = '#E65A56';
+          ctx.fillRect(x, Math.min(yZero, yVal), barWidth - 1, Math.abs(yVal - yZero));
+        }
+
+        // ── 柱3：融资活动现金流（堆叠2个指标）──
+        let finRunning = 0;
+        const finItems = [
+          { key: 'new_equity', color: '#FFDC4C' },
+          { key: 'net_debt', color: '#7CB342' },
+        ];
+        finItems.forEach(item => {
+          const v = data[item.key][i];
+          if (v === null || v === undefined) return;
+          if (_hidden[item.key]) return;
+          const y1 = ys(finRunning);
+          const y2 = ys(finRunning + v);
+          ctx.fillStyle = item.color;
+          ctx.fillRect(yearX + barWidth * 2, Math.min(y1, y2), barWidth - 1, Math.abs(y1 - y2));
+          finRunning += v;
+        });
+
+        // ── 柱4：分红支付 ──
+        const div = data.dividend_paid[i];
+        if (div !== null && div !== undefined && !_hidden['dividend_paid']) {
+          const x = yearX + barWidth * 3;
+          const yVal = ys(-div); // 分红是支出，向下
+          ctx.fillStyle = '#8C9BAE';
+          ctx.fillRect(x, Math.min(yZero, yVal), barWidth - 1, Math.abs(yVal - yZero));
+        }
       });
 
       // hover参考线
