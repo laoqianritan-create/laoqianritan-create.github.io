@@ -3244,12 +3244,12 @@
     // 计算每条线的CAGR，按从高到低排序图例
     const seriesWithCagr = series.map((s) => {
       let li = -1;
-      for (let k = s.norm.length - 1; k >= 0; k--) { if (s.norm[k] !== null && s.norm[k] > 0) { li = k; break; } }
+      for (let k = s.nav.length - 1; k >= 0; k--) { if (s.nav[k] !== null && s.nav[k] > 0) { li = k; break; } }
       let fi = -1;
-      for (let k = 0; k <= li; k++) { if (s.norm[k] !== null && s.norm[k] > 0) { fi = k; break; } }
+      for (let k = 0; k <= li; k++) { if (s.nav[k] !== null && s.nav[k] > 0) { fi = k; break; } }
       if (fi < 0 || li < 0) return { s, cagr: -Infinity };
-      const v0 = s.norm[fi], v1 = s.norm[li];
-      const y0 = Date.parse(s.dates[fi]), y1 = Date.parse(s.dates[li]);
+      const v0 = s.nav[fi], v1 = s.nav[li];
+      const y0 = Date.parse(dates[fi]), y1 = Date.parse(dates[li]);
       const years = (y1 - y0) / (365.25 * 24 * 3600 * 1000);
       const cagr = (years > 0 && v0 > 0) ? Math.pow(v1 / v0, 1 / years) - 1 : 0;
       return { s, cagr };
