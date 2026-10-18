@@ -227,7 +227,7 @@
     if (cls) strip.classList.add(cls);
     const fmt = `${asOfDate.getFullYear()}-${String(asOfDate.getMonth() + 1).padStart(2, '0')}-${String(asOfDate.getDate()).padStart(2, '0')}`;
     strip.querySelector('.freshness-text').innerHTML =
-      `数据更新至 <b>${fmt}</b><span class="freshness-hint">· ${status} · 每交易日 16:00 自动刷新</span>`;
+      `数据更新至 <b>${fmt}</b><span class="freshness-hint">· ${status} · 每交易日 19:00 自动刷新</span>`;
   };
 
   /** 面板注册表：{ panelId: async (container) => {...} } */
