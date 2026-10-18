@@ -5280,7 +5280,13 @@
 (function () {
   'use strict';
 
-  const API = 'https://ashare.laoqianriritan.com';
+  // 出图服务只部署在国内站服务器（ashare.laoqianriritan.com），这是有意的服务依赖。
+  // 同源优先：国内站/GH Pages 镜像都先打自己的 origin，只有跨域场景才回落固定域名，
+  // 避免 GH Pages 镜像下请求必然跨域、本地 file:// 调试必挂（2026-10-18 修）。
+  const FALLBACK_API = 'https://ashare.laoqianriritan.com';
+  const API = (location.origin && location.origin !== 'null' && location.protocol.startsWith('http'))
+    ? location.origin
+    : FALLBACK_API;
 
   const input = document.getElementById('chartQueryInput');
   const btn = document.getElementById('chartQueryBtn');
