@@ -104,28 +104,28 @@
     },
     {
       "file": "ici_flows.json",
-      "label": "ICI 基金资金流（周+月）",
+      "label": "ICI fund flows (weekly + monthly)",
       "updated": "2026-10-17",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ici_mmf.json",
-      "label": "ICI 货币基金蓄水池",
+      "label": "ICI money market fund cash pool",
       "updated": "2026-10-17",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ici_active_index.json",
-      "label": "ICI 主动 vs 指数",
+      "label": "ICI active vs. index",
       "updated": "2026-10-17",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ownership.json",
-      "label": "美股所有权结构（Fed Z.1）",
+      "label": "US ownership structure (Fed Z.1)",
       "updated": "2026-10-17",
       "days_old": 0,
       "status": "fresh"

@@ -2,7 +2,7 @@
   "updated": "2026-10-17",
   "ticker": "QQQ",
   "note": "QQQ price / total return from yfinance; buyback yield aggregated from the top-25 constituents' annual yfinance cash-flow data, value-weighted.",
-  "buybackCoverage": "0 年有回购数据（yfinance 年报 cashflow 仅回溯 4 年）",
+  "buybackCoverage": "0 years with buyback data (yfinance annual cash flow covers only 4 years)",
   "series": [
     {
       "year": 2000,
