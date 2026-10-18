@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261018203809';
+} from '../utils.js?v=20261018205908';
 
 import {
   registerChart,
@@ -32,9 +32,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261018203809';
+} from '../chart-helpers.js?v=20261018205908';
 
-import { isMobile } from '../mobile.js?v=20261018203809';
+import { isMobile } from '../mobile.js?v=20261018205908';
 
 export function initNasdaq100CompaniesPanel(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartNasdaq100Companies')));
@@ -54,6 +54,37 @@ export function initNasdaq100CompaniesPanel(data) {
     query: '',
     expanded: false,
   };
+
+  /**
+   * 1Y price trend sparkline (inline SVG, log-scale Y).
+   * log10(close) mapped linearly to keep equal-percentage moves at equal pixel height.
+   * Color follows the 1Y return semantics: green=up, red=down.
+   */
+  function buildTrendSpark(history, isUp) {
+    if (!history || !Array.isArray(history.values) || history.values.length < 2) {
+      return '<span class="trend-na">--</span>';
+    }
+    const W = 110;
+    const H = 30;
+    const PAD = 2;
+    const values = history.values;
+    const logs = values.map(v => Math.log10(v > 0 ? v : 1e-6));
+    const min = Math.min(...logs);
+    const max = Math.max(...logs);
+    const span = (max - min) || 1;
+    const stepX = (W - PAD * 2) / (values.length - 1);
+    const points = values.map((v, i) => {
+      const x = PAD + i * stepX;
+      const y = PAD + (1 - (Math.log10(v > 0 ? v : 1e-6) - min) / span) * (H - PAD * 2);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(' ');
+    const stroke = isUp ? (cssVar('--green') || '#389e0d') : (cssVar('--red') || '#cf1322');
+    const tip = `${history.start} ~ ${history.end}`;
+    return `<svg class="trend-spark" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" preserveAspectRatio="none" role="img" aria-label="1Y trend ${tip}">
+      <title>${tip}</title>
+      <polyline points="${points}" fill="none" stroke="${stroke}" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/>
+    </svg>`;
+  }
 
   function getOption() {
     const grayColor = cssVar('--gray') || '#999';
@@ -174,7 +205,7 @@ export function initNasdaq100CompaniesPanel(data) {
     });
 
     if (!rows.length) {
-      tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No matching Nasdaq 100 constituents.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No matching Nasdaq 100 constituents.</td></tr>';
     } else {
       tbody.innerHTML = rows.map(item => {
         const returnColor = item.return1y > 0
@@ -191,6 +222,7 @@ export function initNasdaq100CompaniesPanel(data) {
             <td style="text-align:right">${item.price != null ? formatNumber(item.price, 2) : '--'}</td>
             <td style="text-align:right;color:${returnColor}">${item.return1y != null ? formatPercent(item.return1y, 2) : '--'}</td>
             <td style="text-align:right">${item.dividendYield != null ? formatPercent(item.dividendYield, 2) : '--'}</td>
+            <td class="trend-cell">${buildTrendSpark(item.history, (item.return1y || 0) >= 0)}</td>
           </tr>
         `;
       }).join('');

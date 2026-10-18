@@ -195,6 +195,27 @@ html.panel-snap-enabled .panel {
   font-variant-numeric: tabular-nums;
 }
 
+/* 近1年走势缩略图（对数坐标 SVG） */
+.trend-cell {
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.trend-spark {
+  display: block;
+  margin: 0 auto;
+  width: 110px;
+  height: 30px;
+  border-radius: 3px;
+}
+.trend-spark:hover {
+  background: var(--table-hover);
+}
+.trend-na {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
 /* Category badges */
 .cat-badge {
   display: inline-block;
