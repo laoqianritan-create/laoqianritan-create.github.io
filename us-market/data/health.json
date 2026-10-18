@@ -1,133 +1,170 @@
 {
-  "generated_at": "2026-10-17 09:38:47",
-  "today": "2026-10-17",
-  "overall": "healthy",
-  "stale_count": 0,
+  "generated_at": "2026-10-18 21:52:04",
+  "today": "2026-10-18",
+  "overall": "warn",
+  "stale_count": 1,
   "sources": [
     {
       "file": "sp500_price.json",
       "label": "标普 500 日线",
       "updated": "2026-10-16",
-      "days_old": 1,
-      "status": "fresh"
+      "days_old": 2,
+      "status": "fresh",
+      "series_end": {
+        "series": "2026-10-16"
+      }
     },
     {
       "file": "sp500_century.json",
       "label": "标普 500 月线百年",
       "updated": "2026-10-15",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent",
+      "series_end": {
+        "series": "2026-10-15"
+      }
     },
     {
       "file": "sp500_pe.json",
       "label": "席勒市盈率",
       "updated": "2026-10-16",
-      "days_old": 1,
-      "status": "fresh"
+      "days_old": 2,
+      "status": "stale",
+      "series_end": {
+        "pe": "2026-06-01",
+        "cape": "2026-10-16"
+      },
+      "lagging_series": {
+        "pe": {
+          "end": "2026-06-01",
+          "lag_days": 137
+        }
+      }
     },
     {
       "file": "sp500_eps.json",
       "label": "标普 500 EPS",
       "updated": "2026-06-30",
-      "days_old": 109,
+      "days_old": 110,
       "status": "recent"
     },
     {
       "file": "sp500_vix.json",
       "label": "VIX",
       "updated": "2026-10-16",
-      "days_old": 1,
-      "status": "fresh"
+      "days_old": 2,
+      "status": "fresh",
+      "series_end": {
+        "series": "2026-10-16"
+      }
     },
     {
       "file": "sp500_annual_returns_long.json",
       "label": "标普 500 年回报",
       "updated": "2026-10-16",
-      "days_old": 1,
-      "status": "fresh"
+      "days_old": 2,
+      "status": "fresh",
+      "series_end": {
+        "series": "2026-12-31"
+      }
     },
     {
       "file": "sp500_cagr_paths.json",
       "label": "复合增速路径",
       "updated": "2026-10-17T09:38:06",
-      "days_old": 0,
-      "status": "fresh"
+      "days_old": 1,
+      "status": "fresh",
+      "series_end": {
+        "series": "2026-10-16"
+      }
     },
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
       "updated": "2026-10-17T09:38:06",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "buffett.json",
       "label": "巴菲特指标",
-      "updated": "2026-10-15",
+      "updated": "2026-10-16",
       "days_old": 2,
-      "status": "fresh"
+      "status": "fresh",
+      "series_end": {
+        "series": "2026-10-16"
+      }
     },
     {
       "file": "aiae.json",
       "label": "AIAE 仓位",
       "updated": "2026-10-17",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ndx_daily.json",
       "label": "纳指 100 日线",
-      "updated": "2026-10-17",
+      "updated": "2026-10-18",
       "days_old": 0,
-      "status": "fresh"
+      "status": "fresh",
+      "series_end": {
+        "series": "2026-10-16"
+      }
     },
     {
       "file": "nasdaq100_panels.json",
       "label": "纳指 100 成分股",
       "updated": "2026-10-16",
-      "days_old": 1,
+      "days_old": 2,
       "status": "fresh"
     },
     {
       "file": "nasdaq_composite.json",
       "label": "纳指综指月线",
       "updated": "2026-10-17",
-      "days_old": 0,
-      "status": "fresh"
+      "days_old": 1,
+      "status": "fresh",
+      "series_end": {
+        "series": "2026-10-16"
+      }
     },
     {
       "file": "dow_jones_century.json",
       "label": "道指百年",
       "updated": "2026-10-15",
-      "days_old": 2,
-      "status": "fresh"
+      "days_old": 3,
+      "status": "recent",
+      "series_end": {
+        "series": "2026-10-15"
+      }
     },
     {
       "file": "ici_flows.json",
       "label": "ICI 基金资金流（周+月）",
       "updated": "2026-10-17",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ici_mmf.json",
       "label": "ICI 货币基金蓄水池",
       "updated": "2026-10-17",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ici_active_index.json",
       "label": "ICI 主动 vs 指数",
       "updated": "2026-10-17",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ownership.json",
       "label": "美股所有权结构（Fed Z.1）",
       "updated": "2026-10-17",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     }
   ]
