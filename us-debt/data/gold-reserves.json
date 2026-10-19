@@ -1,36 +1,22 @@
 {
-  "updated": "2026-10-19T10:06:51Z",
-  "source": "Wikipedia / WGC (fallback)",
-  "source_url": "https://en.wikipedia.org/wiki/Gold_reserve",
-  "method": "wikipedia-fallback",
-  "data_as_of": null,
-  "note": "季度时序 = WGC 历史底座 + IMF IRFCL API 逐季续新（9 个命名国，免登录）；快照 = WGC 月度 Excel（需登录，wgcAuth 约 2 周有效）或 Wikipedia 兜底。WGC 全量刷新可前移「其他」桶截止季：重跑 login_wgc.py",
+  "updated": "2026-10-19T12:04:51Z",
+  "source": "IMF IRFCL (open API, no login)",
+  "source_url": "https://data.imf.org/ (IRFCL, Reserve Assets, open API)",
+  "method": "imf-irfcl",
+  "data_as_of": "per-country latest (2021-Q3 ~ 2026-Q3)",
+  "note": "季度时序 = WGC 历史底座 + IMF IRFCL API 逐季续新（9 个命名国，免登录）；快照 = IMF IRFCL 开放 API 每国最新可得期（免登录，每日自动）；WGC 登录仅用于前移全域「其他」桶截止季与全量167国，非必需：重跑 login_wgc.py",
   "snapshot_buckets": {
-    "美国": 8133.54,
-    "德国": 3350.3,
-    "国际货币基金组织": 2814.0,
-    "意大利": 2451.8,
-    "法国": 2437.0,
-    "俄罗斯": 2283.8,
-    "中国": 2409.6,
-    "瑞士": 1039.9,
-    "印度": 880.5,
-    "日本": 845.9,
-    "其他": 8342.2
+    "其他": 31362.1
   },
-  "snapshot_total_tons": 34988.5,
+  "snapshot_total_tons": 31362.1,
   "all_countries": [
     {
       "country": "United States",
-      "tons": 8133.54
+      "tons": 8133.5
     },
     {
       "country": "Germany",
-      "tons": 3350.3
-    },
-    {
-      "country": "International Monetary Fund",
-      "tons": 2814.0
+      "tons": 3349.1
     },
     {
       "country": "Italy",
@@ -42,11 +28,11 @@
     },
     {
       "country": "China",
-      "tons": 2409.6
+      "tons": 2346.4
     },
     {
       "country": "Russia",
-      "tons": 2283.8
+      "tons": 2283.0
     },
     {
       "country": "Switzerland",
@@ -58,171 +44,279 @@
     },
     {
       "country": "Japan",
-      "tons": 845.9
+      "tons": 846.0
+    },
+    {
+      "country": "Turkey",
+      "tons": 729.8
     },
     {
       "country": "Poland",
-      "tons": 640.6
+      "tons": 632.4
     },
     {
       "country": "Netherlands",
       "tons": 612.5
     },
     {
-      "country": "Turkey",
-      "tons": 530.6
-    },
-    {
-      "country": "Uzbekistan",
-      "tons": 431.7
-    },
-    {
-      "country": "Taiwan",
-      "tons": 423.9
+      "country": "European Central Bank",
+      "tons": 508.4
     },
     {
       "country": "Portugal",
-      "tons": 382.4
+      "tons": 382.7
     },
     {
       "country": "Kazakhstan",
-      "tons": 368.6
+      "tons": 368.4
     },
     {
       "country": "Saudi Arabia",
-      "tons": 323.3
+      "tons": 323.1
     },
     {
       "country": "United Kingdom",
       "tons": 310.3
     },
     {
-      "country": "Lebanon",
-      "tons": 286.3
-    },
-    {
       "country": "Spain",
-      "tons": 281.0
+      "tons": 281.6
     },
     {
       "country": "Austria",
-      "tons": 280.2
+      "tons": 280.0
     },
     {
       "country": "Thailand",
-      "tons": 234.2
+      "tons": 234.6
     },
     {
       "country": "Belgium",
-      "tons": 227.2
+      "tons": 227.4
     },
     {
       "country": "Singapore",
-      "tons": 203.2
+      "tons": 203.7
     },
     {
-      "country": "Azerbaijan",
-      "tons": 178.1
-    },
-    {
-      "country": "Iraq",
-      "tons": 175.0
-    },
-    {
-      "country": "Algeria",
-      "tons": 173.6
-    },
-    {
-      "country": "Brazil",
+      "country": "BRA",
       "tons": 172.4
     },
     {
-      "country": "Libya",
-      "tons": 146.6
+      "country": "KOS",
+      "tons": 160.0
     },
     {
-      "country": "Philippines",
+      "country": "PHL",
       "tons": 133.5
     },
     {
-      "country": "Egypt",
+      "country": "EGY",
       "tons": 129.5
     },
     {
-      "country": "Sweden",
+      "country": "SWE",
       "tons": 125.7
     },
     {
-      "country": "South Africa",
+      "country": "ZAF",
       "tons": 125.5
     },
     {
-      "country": "Mexico",
-      "tons": 120.1
+      "country": "MEX",
+      "tons": 120.0
     },
     {
-      "country": "Qatar",
-      "tons": 115.2
-    },
-    {
-      "country": "Greece",
+      "country": "GRC",
       "tons": 114.7
     },
     {
-      "country": "Hungary",
+      "country": "HUN",
       "tons": 110.0
     },
     {
-      "country": "South Korea",
-      "tons": 104.4
+      "country": "KOR",
+      "tons": 104.5
     },
     {
       "country": "Romania",
       "tons": 103.6
     },
     {
-      "country": "Indonesia",
-      "tons": 87.1
+      "country": "Czechia",
+      "tons": 87.4
     },
     {
-      "country": "Czech Republic",
-      "tons": 82.4
+      "country": "IDN",
+      "tons": 87.0
     },
     {
-      "country": "Australia",
-      "tons": 79.8
+      "country": "AUS",
+      "tons": 79.9
     },
     {
-      "country": "Kuwait",
-      "tons": 79.0
+      "country": "JOR",
+      "tons": 78.7
     },
     {
-      "country": "United Arab Emirates",
-      "tons": 74.5
-    },
-    {
-      "country": "Jordan",
-      "tons": 73.1
-    },
-    {
-      "country": "Denmark",
+      "country": "DNK",
       "tons": 66.5
     },
     {
-      "country": "Pakistan",
-      "tons": 64.8
-    },
-    {
-      "country": "Argentina",
+      "country": "ARG",
       "tons": 61.7
     },
     {
-      "country": "Serbia",
-      "tons": 55.0
+      "country": "KHM",
+      "tons": 57.3
     },
     {
-      "country": "Cambodia",
+      "country": "SRB",
       "tons": 54.4
+    },
+    {
+      "country": "Belarus",
+      "tons": 53.9
+    },
+    {
+      "country": "Finland",
+      "tons": 43.9
+    },
+    {
+      "country": "MYS",
+      "tons": 43.9
+    },
+    {
+      "country": "BOL",
+      "tons": 42.5
+    },
+    {
+      "country": "Bulgaria",
+      "tons": 41.0
+    },
+    {
+      "country": "KGZ",
+      "tons": 36.2
+    },
+    {
+      "country": "Peru",
+      "tons": 34.7
+    },
+    {
+      "country": "SVK",
+      "tons": 31.7
+    },
+    {
+      "country": "UKR",
+      "tons": 27.4
+    },
+    {
+      "country": "ECU",
+      "tons": 26.3
+    },
+    {
+      "country": "MAR",
+      "tons": 22.1
+    },
+    {
+      "country": "GTM",
+      "tons": 15.5
+    },
+    {
+      "country": "CYP",
+      "tons": 13.9
+    },
+    {
+      "country": "MUS",
+      "tons": 12.4
+    },
+    {
+      "country": "IRL",
+      "tons": 12.0
+    },
+    {
+      "country": "MNG",
+      "tons": 9.1
+    },
+    {
+      "country": "PRY",
+      "tons": 8.2
+    },
+    {
+      "country": "Georgia",
+      "tons": 7.8
+    },
+    {
+      "country": "MKD",
+      "tons": 6.9
+    },
+    {
+      "country": "Latvia",
+      "tons": 6.7
+    },
+    {
+      "country": "Lithuania",
+      "tons": 5.8
+    },
+    {
+      "country": "COL",
+      "tons": 4.7
+    },
+    {
+      "country": "Slovenia",
+      "tons": 4.2
+    },
+    {
+      "country": "ALB",
+      "tons": 3.7
+    },
+    {
+      "country": "LUX",
+      "tons": 2.3
+    },
+    {
+      "country": "HKG",
+      "tons": 2.1
+    },
+    {
+      "country": "SLV",
+      "tons": 2.1
+    },
+    {
+      "country": "ISL",
+      "tons": 2.0
+    },
+    {
+      "country": "LKA",
+      "tons": 1.5
+    },
+    {
+      "country": "URY",
+      "tons": 1.0
+    },
+    {
+      "country": "HND",
+      "tons": 0.7
+    },
+    {
+      "country": "DOM",
+      "tons": 0.6
+    },
+    {
+      "country": "MLT",
+      "tons": 0.4
+    },
+    {
+      "country": "CHL",
+      "tons": 0.2
+    },
+    {
+      "country": "EST",
+      "tons": 0.2
+    },
+    {
+      "country": "MDA",
+      "tons": 0.1
     }
   ],
   "quarterly": {
