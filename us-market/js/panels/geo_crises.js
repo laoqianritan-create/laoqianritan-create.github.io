@@ -6,8 +6,8 @@
 //   以熊市版 15 条事件为准（位置用熊市版归一化坐标），样式取衰退版——红色竖线＋红框文本框、框内不带日期。
 // 口径：价格自 1927-12 起（原图 1921 起、1964 前月频）；CAGR 图例随月频线自算。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261019094528';
-import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261019094528';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261019143537';
+import { registerChart, buildMetricCard, renderMetricStrip, getDataZoom } from '../chart-helpers.js?v=20261019143537';
 
 // 15 条事件（规格书 01 §3.6 熊市版口径；样式取衰退版：红竖线＋红框、框内不带日期；y＝熊市版归一化高度）
 const EVENTS_BEAR = [
@@ -24,7 +24,7 @@ const EVENTS_BEAR = [
   { d: '1991-01-17', zh: '海湾战争一', y: 0.48 },
   { d: '2001-09-11', zh: '9·11 恐袭', y: 0.84 },
   { d: '2003-03-20', zh: '海湾战争二', y: 0.60 },
-  { d: '2022-02-22', zh: '俄罗斯入侵乌克兰', y: 0.66 },
+  { d: '2022-02-22', zh: '俄乌战争', y: 0.66 },
   { d: '2026-02-28', zh: '海湾战争三', y: 0.76 },
 ];
 

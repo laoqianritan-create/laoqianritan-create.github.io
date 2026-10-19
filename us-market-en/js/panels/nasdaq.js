@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261019094528';
+} from '../utils.js?v=20261019143537';
 
 import {
   registerChart,
@@ -32,9 +32,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261019094528';
+} from '../chart-helpers.js?v=20261019143537';
 
-import { isMobile } from '../mobile.js?v=20261019094528';
+import { isMobile } from '../mobile.js?v=20261019143537';
 
 export function initNasdaq100CompaniesPanel(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartNasdaq100Companies')));
@@ -430,88 +430,6 @@ export function initNasdaqRankingPanel(domId, summaryId, companies, metricConfig
   ]);
 }
 
-export function initNasdaq100WeightsPanel(data) {
-  const chart = registerChart(echarts.init(document.getElementById('chartNasdaq100Weights')));
-  const rows = data.cumulativeWeights || [];
-
-  function getOption() {
-    const grayColor = cssVar('--gray') || '#999';
-    const gridColor = cssVar('--chart-grid') || '#f0f0f0';
-    const lineColor = cssVar('--sp500-line') || '#1a1a1a';
-
-    return {
-      animation: false,
-      grid: { left: 55, right: 55, top: 40, bottom: 65 },
-      legend: getLineLegendConfig({
-        data: ['Individual Weight', 'Cumulative Weight'],
-      }),
-      xAxis: {
-        type: 'category',
-        data: rows.map(item => item.ticker === 'OTHERS' ? 'OTHERS' : item.ticker),
-        axisLabel: { color: grayColor, fontSize: 11, fontFamily: CHART_FONT, interval: 0, rotate: 35 },
-        axisTick: { show: false },
-      },
-      yAxis: [
-        {
-          type: 'value',
-          axisLabel: { formatter: value => `${value}%`, color: grayColor, fontSize: 11, fontFamily: CHART_FONT },
-          splitLine: { lineStyle: { color: gridColor } },
-        },
-        {
-          type: 'value',
-          min: 0,
-          max: 100,
-          axisLabel: { formatter: value => `${value}%`, color: grayColor, fontSize: 11, fontFamily: CHART_FONT },
-          splitLine: { show: false },
-        },
-      ],
-      series: [
-        {
-          name: 'Individual Weight',
-          type: 'bar',
-          barMaxWidth: 18,
-          data: rows.map(item => ({
-            value: item.weight,
-            itemStyle: { color: 'rgba(26,26,26,0.22)' },
-          })),
-        },
-        {
-          name: 'Cumulative Weight',
-          type: 'line',
-          yAxisIndex: 1,
-          showSymbol: false,
-          data: rows.map(item => item.cumulativeWeight),
-          lineStyle: { width: 2.5, color: lineColor },
-        },
-      ],
-      tooltip: {
-        trigger: 'axis',
-        backgroundColor: cssVar('--card-bg') || '#fff',
-        borderColor: cssVar('--border') || '#e8e8e8',
-        textStyle: { fontSize: 13, color: cssVar('--text') || '#1a1a1a', fontFamily: CHART_FONT },
-        formatter: params => {
-          const point = rows[params[0].dataIndex];
-          return [
-            `<b>${escapeHtml(point.name)}</b>`,
-            `Individual Weight: <b>${formatPercent(point.weight, 2)}</b>`,
-            `Cumulative Weight: <b>${formatPercent(point.cumulativeWeight, 2)}</b>`,
-          ].join('<br/>');
-        },
-      },
-    };
-  }
-
-  chart.setOption(getOption());
-  chart._refreshTheme = () => chart.setOption(getOption(), true);
-
-  renderMetricStrip('nasdaq100WeightSummary', [
-    buildMetricCard('Top 10 Weight', data.overview.top10Weight != null ? formatPercent(data.overview.top10Weight, 2) : '--', 'Index weight is highly concentrated in mega-cap tech.'),
-    buildMetricCard('Top 25 Coverage', data.overview.top25Weight != null ? formatPercent(data.overview.top25Weight, 2) : '--', 'Disclosed weight coverage from current free sources.'),
-    buildMetricCard('Other Constituents', data.overview.otherWeight != null ? formatPercent(data.overview.otherWeight, 2) : '--', 'Remaining constituents aggregated into a tail bucket.'),
-    buildMetricCard('Largest Holding', data.topHoldings?.[0] ? `${data.topHoldings[0].ticker} | ${formatPercent(data.topHoldings[0].weight, 2)}` : '--', data.topHoldings?.[0]?.name || ''),
-  ]);
-}
-
 // ══════════════════════════════════════════════════════
 // Panel: NDX Constituent Return Scatter (YTD × 1Y)
 // ══════════════════════════════════════════════════════
@@ -731,6 +649,135 @@ export function initNdxScatterPanel(data) {
     buildMetricCard('1Y Average', formatPercent(avgR1y, 1), `${posR1y}/${companies.length} up`),
     buildMetricCard('YTD Range', `${formatPercent(Math.min(...ytdArr), 0)} ~ ${formatPercent(Math.max(...ytdArr), 0)}`, 'Worst ~ Best'),
     buildMetricCard('1Y Range', `${formatPercent(Math.min(...r1yArr), 0)} ~ ${formatPercent(Math.max(...r1yArr), 0)}`, 'Worst ~ Best'),
+  ]);
+}
+
+// ══════════════════════════════════════════════════════
+// Nasdaq 100 Sector Mix (donut, mirrors the S&P Sector Exposure panel)
+// Data: nasdaq100_panels.json.sectors (StockAnalysis QQQ disclosed sector weights, refreshed daily)
+// ══════════════════════════════════════════════════════
+
+// English sector name -> palette color (same industry color as the S&P panel)
+const NDX_SECTOR_COLOR = {
+  'Technology':             '#2563eb',
+  'Communication Services': '#7c3aed',
+  'Telecommunications':     '#7c3aed',
+  'Consumer Discretionary': '#f97316',
+  'Consumer Staples':       '#65a30d',
+  'Industrials':            '#475569',
+  'Healthcare':             '#dc2626',
+  'Health Care':            '#dc2626',
+  'Utilities':              '#0891b2',
+  'Materials':             '#9333ea',
+  'Basic Materials':       '#9333ea',
+  'Energy':                 '#b45309',
+  'Financials':             '#0f766e',
+  'Real Estate':            '#ec4899',
+};
+
+export function initNdxSectorsPanel(data) {
+  const dom = document.getElementById('chartNdxSectors');
+  if (!dom || !data?.sectors?.length) return;
+  const chart = registerChart(echarts.init(dom));
+
+  const sectors = data.sectors
+    .map(s => ({
+      name: s.name,
+      color: NDX_SECTOR_COLOR[s.name] || '#999999',
+      weight: Number(s.weight) || 0,
+    }))
+    .sort((a, b) => b.weight - a.weight);
+  const topThree = sectors.slice(0, 3);
+  const top3Weight = topThree.reduce((sum, s) => sum + s.weight, 0);
+  const max = sectors[0];
+
+  function getOption() {
+    const grayColor = cssVar('--gray') || '#999';
+    return {
+      animation: false,
+      tooltip: {
+        trigger: 'item',
+        backgroundColor: cssVar('--card-bg') || '#fff',
+        borderColor: cssVar('--border') || '#e8e8e8',
+        textStyle: { fontSize: 13, color: cssVar('--text') || '#1a1a1a', fontFamily: CHART_FONT },
+        formatter: params => {
+          const item = sectors[params.dataIndex];
+          return [
+            `<b>${item.name}</b>`,
+            `Weight: <b>${formatPercent(item.weight, 2)}</b>`,
+          ].join('<br/>');
+        },
+      },
+      legend: {
+        orient: 'vertical',
+        right: 10,
+        top: 'center',
+        textStyle: { fontSize: 12, color: cssVar('--text-secondary') || '#666', fontFamily: CHART_FONT },
+        formatter: name => {
+          const item = sectors.find(s => s.name === name);
+          return item ? `${name}  ${formatPercent(item.weight, 1)}` : name;
+        },
+      },
+      series: [{
+        name: 'Sector Weight',
+        type: 'pie',
+        radius: ['44%', '74%'],
+        center: ['38%', '50%'],
+        minAngle: 2,
+        itemStyle: { borderColor: cssVar('--bg') || '#fff', borderWidth: 2 },
+        label: {
+          color: grayColor,
+          fontSize: 12,
+          formatter: params => `${params.name}\n${formatPercent(params.value, 1)}`,
+        },
+        labelLine: { length: 12, length2: 10 },
+        data: sectors.map(s => ({
+          value: s.weight,
+          name: s.name,
+          itemStyle: { color: s.color },
+        })),
+      }],
+      graphic: [{
+        type: 'text',
+        left: '30%',
+        top: '44%',
+        style: {
+          text: 'Nasdaq 100\nSector Mix',
+          textAlign: 'center',
+          fill: cssVar('--text') || '#1a1a1a',
+          font: '700 20px Inter',
+        },
+      }],
+    };
+  }
+
+  chart.setOption(getOption());
+  chart._refreshTheme = () => chart.setOption(getOption(), true);
+
+  const holdingsDate = data?.overview?.holdingsDate || data?.updated || '';
+  document.getElementById('ndxSectorSide').innerHTML = `
+    <div class="mini-kicker">Structure</div>
+    <div class="mini-title">Most concentrated top three sectors</div>
+    <div class="mini-desc">QQQ disclosed sector weights, as of ${escapeHtml(holdingsDate)}.</div>
+    <div class="sector-rank">
+      ${topThree.map(s => `
+        <div class="sector-rank-item">
+          <span class="sector-rank-color" style="background:${s.color}"></span>
+          <div class="sector-rank-name">${escapeHtml(s.name)}</div>
+          <div class="sector-rank-weight">${formatPercent(s.weight, 2)}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="mini-desc" style="margin-top:16px">
+      Source: StockAnalysis · QQQ Holdings (refreshed daily)
+    </div>
+  `;
+
+  renderMetricStrip('ndxSectorSummary', [
+    buildMetricCard('Sectors', `${sectors.length}`, 'Disclosed sector categories'),
+    buildMetricCard('Largest', `${max.name} ${formatPercent(max.weight, 1)}`, 'Top sector weight'),
+    buildMetricCard('Top 3 Combined', formatPercent(top3Weight, 1), 'Concentration'),
+    buildMetricCard('Holdings Date', holdingsDate || '—', 'StockAnalysis basis'),
   ]);
 }
 

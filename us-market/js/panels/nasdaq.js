@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261019094528';
+} from '../utils.js?v=20261019143537';
 
 import {
   registerChart,
@@ -32,9 +32,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261019094528';
+} from '../chart-helpers.js?v=20261019143537';
 
-import { isMobile } from '../mobile.js?v=20261019094528';
+import { isMobile } from '../mobile.js?v=20261019143537';
 
 export function initNasdaq100CompaniesPanel(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartNasdaq100Companies')));
@@ -431,88 +431,6 @@ export function initNasdaqRankingPanel(domId, summaryId, companies, metricConfig
   ]);
 }
 
-export function initNasdaq100WeightsPanel(data) {
-  const chart = registerChart(echarts.init(document.getElementById('chartNasdaq100Weights')));
-  const rows = data.cumulativeWeights || [];
-
-  function getOption() {
-    const grayColor = cssVar('--gray') || '#999';
-    const gridColor = cssVar('--chart-grid') || '#f0f0f0';
-    const lineColor = cssVar('--sp500-line') || '#1a1a1a';
-
-    return {
-      animation: false,
-      grid: { left: 55, right: 55, top: 40, bottom: 65 },
-      legend: getLineLegendConfig({
-        data: ['单只权重', '累计权重'],
-      }),
-      xAxis: {
-        type: 'category',
-        data: rows.map(item => item.ticker === 'OTHERS' ? 'OTHERS' : item.ticker),
-        axisLabel: { color: grayColor, fontSize: 11, fontFamily: CHART_FONT, interval: 0, rotate: 35 },
-        axisTick: { show: false },
-      },
-      yAxis: [
-        {
-          type: 'value',
-          axisLabel: { formatter: value => `${value}%`, color: grayColor, fontSize: 11, fontFamily: CHART_FONT },
-          splitLine: { lineStyle: { color: gridColor } },
-        },
-        {
-          type: 'value',
-          min: 0,
-          max: 100,
-          axisLabel: { formatter: value => `${value}%`, color: grayColor, fontSize: 11, fontFamily: CHART_FONT },
-          splitLine: { show: false },
-        },
-      ],
-      series: [
-        {
-          name: '单只权重',
-          type: 'bar',
-          barMaxWidth: 18,
-          data: rows.map(item => ({
-            value: item.weight,
-            itemStyle: { color: 'rgba(26,26,26,0.22)' },
-          })),
-        },
-        {
-          name: '累计权重',
-          type: 'line',
-          yAxisIndex: 1,
-          showSymbol: false,
-          data: rows.map(item => item.cumulativeWeight),
-          lineStyle: { width: 2.5, color: lineColor },
-        },
-      ],
-      tooltip: {
-        trigger: 'axis',
-        backgroundColor: cssVar('--card-bg') || '#fff',
-        borderColor: cssVar('--border') || '#e8e8e8',
-        textStyle: { fontSize: 13, color: cssVar('--text') || '#1a1a1a', fontFamily: CHART_FONT },
-        formatter: params => {
-          const point = rows[params[0].dataIndex];
-          return [
-            `<b>${escapeHtml(point.name)}</b>`,
-            `单只权重: <b>${formatPercent(point.weight, 2)}</b>`,
-            `累计权重: <b>${formatPercent(point.cumulativeWeight, 2)}</b>`,
-          ].join('<br/>');
-        },
-      },
-    };
-  }
-
-  chart.setOption(getOption());
-  chart._refreshTheme = () => chart.setOption(getOption(), true);
-
-  renderMetricStrip('nasdaq100WeightSummary', [
-    buildMetricCard('前十大权重', data.overview.top10Weight != null ? formatPercent(data.overview.top10Weight, 2) : '--', '指数权重高度集中在头部科技龙头。'),
-    buildMetricCard('前25大覆盖', data.overview.top25Weight != null ? formatPercent(data.overview.top25Weight, 2) : '--', '当前免费源能拿到的实际披露权重覆盖。'),
-    buildMetricCard('其余成分', data.overview.otherWeight != null ? formatPercent(data.overview.otherWeight, 2) : '--', '剩余成分被聚合为一个尾部桶。'),
-    buildMetricCard('最大持仓', data.topHoldings?.[0] ? `${data.topHoldings[0].ticker} | ${formatPercent(data.topHoldings[0].weight, 2)}` : '--', data.topHoldings?.[0]?.name || ''),
-  ]);
-}
-
 // ══════════════════════════════════════════════════════
 // 面板：NDX 成分股收益散点图（年内 × 近1年）
 // ══════════════════════════════════════════════════════
@@ -732,6 +650,135 @@ export function initNdxScatterPanel(data) {
     buildMetricCard('近1年均值', formatPercent(avgR1y, 1), `${posR1y}/${companies.length} 只上涨`),
     buildMetricCard('年内极值', `${formatPercent(Math.min(...ytdArr), 0)} ~ ${formatPercent(Math.max(...ytdArr), 0)}`, '最差 ~ 最好'),
     buildMetricCard('近1年极值', `${formatPercent(Math.min(...r1yArr), 0)} ~ ${formatPercent(Math.max(...r1yArr), 0)}`, '最差 ~ 最好'),
+  ]);
+}
+
+// ══════════════════════════════════════════════════════
+// 纳斯达克100 行业分布（环形图，样式对齐标普「行业暴露」）
+// 数据：nasdaq100_panels.json.sectors（StockAnalysis QQQ 披露持仓行业权重，每日随管线更新）
+// ══════════════════════════════════════════════════════
+
+// 英文名 → [中文名, 站内行业色]，配色与标普行业暴露同行业同色
+const NDX_SECTOR_CN = {
+  'Technology':             ['信息技术', '#2563eb'],
+  'Communication Services': ['通信服务', '#7c3aed'],
+  'Telecommunications':     ['通信服务', '#7c3aed'],
+  'Consumer Discretionary': ['可选消费', '#f97316'],
+  'Consumer Staples':       ['必需消费', '#65a30d'],
+  'Industrials':            ['工业', '#475569'],
+  'Healthcare':             ['医疗保健', '#dc2626'],
+  'Health Care':            ['医疗保健', '#dc2626'],
+  'Utilities':              ['公用事业', '#0891b2'],
+  'Materials':              ['原材料', '#9333ea'],
+  'Basic Materials':        ['原材料', '#9333ea'],
+  'Energy':                 ['能源', '#b45309'],
+  'Financials':            ['金融', '#0f766e'],
+  'Real Estate':            ['房地产', '#ec4899'],
+};
+
+export function initNdxSectorsPanel(data) {
+  const dom = document.getElementById('chartNdxSectors');
+  if (!dom || !data?.sectors?.length) return;
+  const chart = registerChart(echarts.init(dom));
+
+  const sectors = data.sectors
+    .map(s => {
+      const [cn, color] = NDX_SECTOR_CN[s.name] || [s.name, '#999999'];
+      return { name: s.name, cn, color, weight: Number(s.weight) || 0 };
+    })
+    .sort((a, b) => b.weight - a.weight);
+  const topThree = sectors.slice(0, 3);
+  const top3Weight = topThree.reduce((sum, s) => sum + s.weight, 0);
+  const max = sectors[0];
+
+  function getOption() {
+    const grayColor = cssVar('--gray') || '#999';
+    return {
+      animation: false,
+      tooltip: {
+        trigger: 'item',
+        backgroundColor: cssVar('--card-bg') || '#fff',
+        borderColor: cssVar('--border') || '#e8e8e8',
+        textStyle: { fontSize: 13, color: cssVar('--text') || '#1a1a1a', fontFamily: CHART_FONT },
+        formatter: params => {
+          const item = sectors[params.dataIndex];
+          return [
+            `<b>${item.cn}</b> ${item.name}`,
+            `权重: <b>${formatPercent(item.weight, 2)}</b>`,
+          ].join('<br/>');
+        },
+      },
+      legend: {
+        orient: 'vertical',
+        right: 10,
+        top: 'center',
+        textStyle: { fontSize: 12, color: cssVar('--text-secondary') || '#666', fontFamily: CHART_FONT },
+        formatter: name => {
+          const item = sectors.find(s => s.cn === name);
+          return item ? `${name}  ${formatPercent(item.weight, 1)}` : name;
+        },
+      },
+      series: [{
+        name: '行业权重',
+        type: 'pie',
+        radius: ['44%', '74%'],
+        center: ['38%', '50%'],
+        minAngle: 2,
+        itemStyle: { borderColor: cssVar('--bg') || '#fff', borderWidth: 2 },
+        label: {
+          color: grayColor,
+          fontSize: 12,
+          formatter: params => `${params.name}\n${formatPercent(params.value, 1)}`,
+        },
+        labelLine: { length: 12, length2: 10 },
+        data: sectors.map(s => ({
+          value: s.weight,
+          name: s.cn,
+          itemStyle: { color: s.color },
+        })),
+      }],
+      graphic: [{
+        type: 'text',
+        left: '30%',
+        top: '44%',
+        style: {
+          text: '纳斯达克100\n行业分布',
+          textAlign: 'center',
+          fill: cssVar('--text') || '#1a1a1a',
+          font: '700 20px Inter',
+        },
+      }],
+    };
+  }
+
+  chart.setOption(getOption());
+  chart._refreshTheme = () => chart.setOption(getOption(), true);
+
+  const holdingsDate = data?.overview?.holdingsDate || data?.updated || '';
+  document.getElementById('ndxSectorSide').innerHTML = `
+    <div class="mini-kicker">结构观察</div>
+    <div class="mini-title">权重最集中的三大行业</div>
+    <div class="mini-desc">基于 QQQ 披露持仓行业口径，数据日期 ${escapeHtml(holdingsDate)}。</div>
+    <div class="sector-rank">
+      ${topThree.map(s => `
+        <div class="sector-rank-item">
+          <span class="sector-rank-color" style="background:${s.color}"></span>
+          <div class="sector-rank-name">${escapeHtml(s.cn)}</div>
+          <div class="sector-rank-weight">${formatPercent(s.weight, 2)}</div>
+          <div class="sector-rank-note">${escapeHtml(s.name)}</div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="mini-desc" style="margin-top:16px">
+      来源：StockAnalysis · QQQ Holdings（随每日管线更新）
+    </div>
+  `;
+
+  renderMetricStrip('ndxSectorSummary', [
+    buildMetricCard('行业数', `${sectors.length} 个`, 'QQQ 披露持仓的行业分类'),
+    buildMetricCard('最大行业', `${max.cn} ${formatPercent(max.weight, 1)}`, '第一大行业占比'),
+    buildMetricCard('前三合计', formatPercent(top3Weight, 1), '集中度：前三大行业'),
+    buildMetricCard('持仓日期', holdingsDate || '—', 'StockAnalysis 披露口径'),
   ]);
 }
 
