@@ -11,8 +11,8 @@
 //   Active-Index 的 TNA 已经是 billion USD → 用 formatCompactNumber
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT } from '../utils.js?v=20261020013653';
-import { registerChart, getDataZoom, buildMetricCard, renderMetricStrip, getLineLegendConfig } from '../chart-helpers.js?v=20261020013653';
+import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT } from '../utils.js?v=20261020014617';
+import { registerChart, getDataZoom, buildMetricCard, renderMetricStrip, getLineLegendConfig } from '../chart-helpers.js?v=20261020014617';
 
 // —— 项目配色（跟看板全局一致）——
 const GREEN = '#389e0d';
@@ -53,12 +53,15 @@ function fmt万亿(millions, digits = 2) {
 }
 
 // 垂直渐变面积：顶部（曲线描边处）alpha=top，向底部逐渐透明
-function areaGradient(color, topAlpha) {
+// yTop/yBottom：渐变起止高度（相对图表区域 0=顶 1=底）。
+// ECharts 的 areaStyle 渐变坐标是相对整个图表区域的——若面积只占底部一小条
+// （如长历史图），必须把起点 yTop 放到面积顶部附近，否则渐变在面积范围内已衰减到近透明。
+function areaGradient(color, topAlpha, yTop = 0, yBottom = 1) {
   const h = color.replace('#', '');
   const r = parseInt(h.slice(0, 2), 16);
   const g = parseInt(h.slice(2, 4), 16);
   const b = parseInt(h.slice(4, 6), 16);
-  return new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+  return new echarts.graphic.LinearGradient(0, yTop, 0, yBottom, [
     { offset: 0, color: `rgba(${r},${g},${b},${topAlpha})` },
     { offset: 1, color: 'transparent' },
   ]);
@@ -373,7 +376,8 @@ export function initPanelIciMmf(data) {
       series: [
         { name: '总规模', type: 'line', showSymbol: false, smooth: true,
           data: rows.map((r, i) => [r.date, values[i]]),
-          areaStyle: { color: areaGradient(BLUE, 0.25) },
+          // 渐变区间贴近面积：起点在曲线主体高度（0.6），终点在 x 轴基线（0.92）→ 描边处浓、基线处透明
+          areaStyle: { color: areaGradient(BLUE, 0.45, 0.6, 0.92) },
           lineStyle: { color: BLUE, width: 1.6 },
           itemStyle: { color: BLUE },
           markPoint: markPoints.length ? { data: markPoints } : undefined,
