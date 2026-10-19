@@ -9,7 +9,7 @@
 // Mini charts use ECharts (loaded from CDN), stripped of axes/legend/tooltip, lazily created.
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261019220828';
+const DATA_URL = 'data/summary_thumbs.json?v=20261020000219';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 /* Per-category theme colours (set by 老钱 on 2026-10-07):
@@ -55,16 +55,24 @@ function miniOption(rec) {
   return {
     ...base,
     series: series.map((s, i) => {
-      const color = seriesColor(rec, s, i);
+      const color = s.color || seriesColor(rec, s, i);
       const data = (s.labels || []).map((l, j) => [l, s.pts[j]]);
+      const symbol = s.symbol || 'none';
+      const width = s.width || 1.6;
       return {
         type: rec.kind === 'bar' ? 'bar' : 'line',
         data: s.labels ? data : s.pts,
         color,
         silent: true,
-        symbol: 'none',
+        symbol,
+        symbolSize: s.symbolSize || (symbol === 'none' ? 0 : 3),
         smooth: false,
-        lineStyle: { width: 1.6 },
+        lineStyle: {
+          width,
+          type: s.dash ? 'dashed' : 'solid',
+          opacity: s.lineOpacity !== undefined ? s.lineOpacity : 1,
+        },
+        itemStyle: s.pointColors ? { color: params => s.pointColors[params.dataIndex] } : undefined,
         areaStyle: rec.kind === 'area' ? { opacity: 0.14 } : undefined,
         barMaxWidth: 14,
       };

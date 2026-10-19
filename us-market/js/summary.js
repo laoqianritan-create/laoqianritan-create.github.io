@@ -8,7 +8,7 @@
 // 迷你图用页面已载入的 ECharts，剥掉坐标轴/图例/tooltip，进入视口才实例化（懒渲染）。
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261019220828';
+const DATA_URL = 'data/summary_thumbs.json?v=20261020000219';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 /* 分类主题色（老钱 2026-10-07 指定）：
@@ -54,16 +54,24 @@ function miniOption(rec) {
   return {
     ...base,
     series: series.map((s, i) => {
-      const color = seriesColor(rec, s, i);
+      const color = s.color || seriesColor(rec, s, i);
       const data = (s.labels || []).map((l, j) => [l, s.pts[j]]);
+      const symbol = s.symbol || 'none';
+      const width = s.width || 1.6;
       return {
         type: rec.kind === 'bar' ? 'bar' : 'line',
         data: s.labels ? data : s.pts,
         color,
         silent: true,
-        symbol: 'none',
+        symbol,
+        symbolSize: s.symbolSize || (symbol === 'none' ? 0 : 3),
         smooth: false,
-        lineStyle: { width: 1.6 },
+        lineStyle: {
+          width,
+          type: s.dash ? 'dashed' : 'solid',
+          opacity: s.lineOpacity !== undefined ? s.lineOpacity : 1,
+        },
+        itemStyle: s.pointColors ? { color: params => s.pointColors[params.dataIndex] } : undefined,
         areaStyle: rec.kind === 'area' ? { opacity: 0.14 } : undefined,
         barMaxWidth: 14,
       };

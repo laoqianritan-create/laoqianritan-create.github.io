@@ -11,8 +11,8 @@
 //   Active-Index TNA already in billions USD.
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT } from '../utils.js?v=20261019220828';
-import { registerChart, getDataZoom, buildMetricCard, renderMetricStrip, getLineLegendConfig } from '../chart-helpers.js?v=20261019220828';
+import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT } from '../utils.js?v=20261020000219';
+import { registerChart, getDataZoom, buildMetricCard, renderMetricStrip, getLineLegendConfig } from '../chart-helpers.js?v=20261020000219';
 
 const GREEN = '#389e0d';
 const RED   = '#cf1322';
