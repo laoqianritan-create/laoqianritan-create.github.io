@@ -11,8 +11,8 @@
 //   Active-Index 的 TNA 已经是 billion USD → 用 formatCompactNumber
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT } from '../utils.js?v=20261020003612';
-import { registerChart, getDataZoom, buildMetricCard, renderMetricStrip, getLineLegendConfig } from '../chart-helpers.js?v=20261020003612';
+import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT } from '../utils.js?v=20261020013653';
+import { registerChart, getDataZoom, buildMetricCard, renderMetricStrip, getLineLegendConfig } from '../chart-helpers.js?v=20261020013653';
 
 // —— 项目配色（跟看板全局一致）——
 const GREEN = '#389e0d';
@@ -50,6 +50,18 @@ function fmt亿(millions, digits = 0) {
 function fmt万亿(millions, digits = 2) {
   if (millions == null || !Number.isFinite(millions)) return '—';
   return `${(millions / 1e6).toFixed(digits)} 万亿`;
+}
+
+// 垂直渐变面积：顶部（曲线描边处）alpha=top，向底部逐渐透明
+function areaGradient(color, topAlpha) {
+  const h = color.replace('#', '');
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+    { offset: 0, color: `rgba(${r},${g},${b},${topAlpha})` },
+    { offset: 1, color: 'transparent' },
+  ]);
 }
 
 // 通用日期短标签 YYYY-MM 或 YYYY-MM-DD → M/D 或 YYYY-M
@@ -267,7 +279,7 @@ export function initPanelIciMmf(data) {
     ].map(cfg => ({
       name: cfg.name,
       type: 'line', stack: 'total', smooth: true, showSymbol: false,
-      areaStyle: { color: cfg.color, opacity: 0.7 },
+      areaStyle: { color: areaGradient(cfg.color, 0.7) },
       lineStyle: { width: 0.5, color: cfg.color },
       itemStyle: { color: cfg.color },
       data: rows.map(r => r[cfg.key] == null ? null : r[cfg.key] / 1e6),
@@ -361,7 +373,7 @@ export function initPanelIciMmf(data) {
       series: [
         { name: '总规模', type: 'line', showSymbol: false, smooth: true,
           data: rows.map((r, i) => [r.date, values[i]]),
-          areaStyle: { color: BLUE, opacity: 0.25 },
+          areaStyle: { color: areaGradient(BLUE, 0.25) },
           lineStyle: { color: BLUE, width: 1.6 },
           itemStyle: { color: BLUE },
           markPoint: markPoints.length ? { data: markPoints } : undefined,

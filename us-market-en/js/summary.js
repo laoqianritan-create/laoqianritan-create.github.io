@@ -9,7 +9,7 @@
 // Mini charts use ECharts (loaded from CDN), stripped of axes/legend/tooltip, lazily created.
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261020003612';
+const DATA_URL = 'data/summary_thumbs.json?v=20261020013653';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 /* Per-category theme colours (set by 老钱 on 2026-10-07):
@@ -73,7 +73,14 @@ function miniOption(rec) {
           opacity: s.lineOpacity !== undefined ? s.lineOpacity : 1,
         },
         itemStyle: s.pointColors ? { color: params => s.pointColors[params.dataIndex] } : undefined,
-        areaStyle: rec.kind === 'area' ? { opacity: 0.14 } : undefined,
+        areaStyle: rec.kind === 'area'
+          ? (s.areaGradient
+              ? { color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                  { offset: 0, color: hexA(color, 0.35) },
+                  { offset: 1, color: 'transparent' },
+                ]) }
+              : { opacity: 0.14 })
+          : undefined,
         barMaxWidth: 14,
       };
     }),

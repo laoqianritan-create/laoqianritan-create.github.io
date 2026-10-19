@@ -11,8 +11,8 @@
 //   Active-Index TNA already in billions USD.
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT } from '../utils.js?v=20261020003612';
-import { registerChart, getDataZoom, buildMetricCard, renderMetricStrip, getLineLegendConfig } from '../chart-helpers.js?v=20261020003612';
+import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT } from '../utils.js?v=20261020013653';
+import { registerChart, getDataZoom, buildMetricCard, renderMetricStrip, getLineLegendConfig } from '../chart-helpers.js?v=20261020013653';
 
 const GREEN = '#389e0d';
 const RED   = '#cf1322';
@@ -47,6 +47,18 @@ function fmtB(millions, digits = 1) {
 function fmtT(millions, digits = 2) {
   if (millions == null || !Number.isFinite(millions)) return '—';
   return `$${(millions / 1e6).toFixed(digits)}T`;
+}
+
+// Vertical gradient area: opaque (alpha=topAlpha) at the line edge, transparent toward the bottom
+function areaGradient(color, topAlpha) {
+  const h = color.replace('#', '');
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+    { offset: 0, color: `rgba(${r},${g},${b},${topAlpha})` },
+    { offset: 1, color: 'transparent' },
+  ]);
 }
 
 function shortLabel(iso, mode = 'short') {
@@ -251,7 +263,7 @@ export function initPanelIciMmf(data) {
   ].map(cfg => ({
     name: cfg.name,
     type: 'line', stack: 'total', smooth: true, showSymbol: false,
-    areaStyle: { color: cfg.color, opacity: 0.7 },
+    areaStyle: { color: areaGradient(cfg.color, 0.7) },
     lineStyle: { width: 0.5, color: cfg.color },
     itemStyle: { color: cfg.color },
     data: rows.map(r => r[cfg.key] == null ? null : r[cfg.key] / 1e6),
