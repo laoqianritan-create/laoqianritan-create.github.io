@@ -3,7 +3,7 @@
 // 切换分类后会触发所有 chart 强制重绘（首次进入视口时容器为 0x0 的问题）
 // ══════════════════════════════════════════════════════
 
-import { chartInstances } from './chart-helpers.js?v=20261020000954';
+import { chartInstances } from './chart-helpers.js?v=20261020003612';
 
 export function initNav() {
   const navGroups = Array.from(document.querySelectorAll('.nav-group'));
@@ -58,12 +58,21 @@ export function initNav() {
     if (!panel) return;
     scrollToPanel(panel, 'auto');
     if (!withCorrections) return;
-    // 懒加载/图表 resize 会改变文档高度 → 补两次纠偏，确保最终停在面板顶部
-    [260, 700, 1400].forEach(delay => {
+    // 懒加载/图表 resize 会改变文档高度 → 补多次纠偏，确保最终停在面板顶部
+    // 重面板（如成分股表格 100 行 + 缩略图）渲染可达数秒，纠偏窗口拉长到 8s，
+    // 并在面板位置已稳定（连续两次 drift≤4px）时提前终止。
+    const delays = [260, 700, 1400, 2600, 4200, 6200, 8200];
+    let lastStable = 0;
+    delays.forEach(delay => {
       setTimeout(() => {
         if (panel.hidden) return;
         const drift = panel.getBoundingClientRect().top - topOffset();
-        if (Math.abs(drift) > 4) scrollToPanel(panel);
+        if (Math.abs(drift) <= 4) {
+          lastStable += 1;
+          return; // 已到位；连续两次稳定后不再调度后续纠偏（靠 lastStable 计数控制）
+        }
+        lastStable = 0;
+        scrollToPanel(panel);
       }, delay);
     });
     if (window.history?.replaceState) {
@@ -167,7 +176,13 @@ export function initNav() {
     let hashPanel = null;
     try { hashPanel = document.querySelector(window.location.hash); } catch (_) { hashPanel = null; }
     if (hashPanel?.classList?.contains('panel')) {
-      setTimeout(() => jumpToPanel(hashPanel, false), 350);
+      // 先切到目标面板所在分类（否则面板 hidden，纠偏会被跳过且位置计算错误）
+      if (hashPanel.dataset.category && hashPanel.dataset.category !== currentCategory) {
+        setCategory(hashPanel.dataset.category, false);
+      }
+      setActivePanel(hashPanel.id);
+      // 用带纠偏的跳转：重面板（成分股表格等）渲染慢，单次定位会漂移几千 px
+      setTimeout(() => jumpToPanel(hashPanel, true), 350);
     }
   }
 }
