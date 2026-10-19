@@ -5,13 +5,13 @@
 // normally); unchecked sectors stay visible but fully translucent (legend item also translucent); multiple can be checked;
 // initially only Information Technology has a ✓ and is fully shown, everything else translucent.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261019093828';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261019094528';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
-} from '../chart-helpers.js?v=20261019093828';
+} from '../chart-helpers.js?v=20261019094528';
 
 const ON_OPACITY = 1;
 const OFF_OPACITY = 0.3;
