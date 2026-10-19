@@ -195,25 +195,43 @@
       ctx.textAlign = 'right';
     }
 
+    // ── hover 纵向跟随虚线 ──
+    if (!exportMode && opts.hoverIdx !== undefined && opts.hoverIdx !== null) {
+      const hx = xs(opts.hoverIdx);
+      window.AK.drawHoverVLine(ctx, hx, padT, H - padB, scale);
+    }
+
     // ── hover 悬浮（屏幕版）──
     if (!exportMode && opts.bindHover !== false) {
-      canvas.__fgData = { fg, csi, dates, s0, n, span, yFg, yCsi, xs };
+      canvas.__fgData = { fg, csi, dates, s0, n, span, yFg, yCsi, xs, data, drawFn: draw, startIdx: s0 };
       if (!canvas.__hoverBound) {
         canvas.__hoverBound = true;
         canvas.addEventListener('mousemove', (ev) => {
           const D = canvas.__fgData;
           const { x } = window.AK.canvasXY(canvas, ev);
           const sx = x / (window.devicePixelRatio || 1);
-          if (sx < padL || sx > W - padR) { window.AK.tooltip.hide(); return; }
+          if (sx < padL || sx > W - padR) {
+            window.AK.tooltip.hide();
+            D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, startIdx: D.startIdx });
+            return;
+          }
           const idx = Math.round((sx - padL) / (W - padL - padR) * D.span) + D.s0;
           const i = Math.max(D.s0, Math.min(D.n - 1, idx));
           const fv = D.fg.values[i], cv = D.csi.values[i];
+
+          // 重绘带竖线
+          D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, startIdx: D.startIdx, hoverIdx: i });
+
           let html = `<b>${D.dates[i]}</b><br>`;
           if (fv !== null && fv !== undefined) html += `<span style="color:#333">●</span> 恐贪指数：<b>${fv.toFixed(1)}</b><br>`;
           if (cv !== null && cv !== undefined) html += `<span style="color:#E65A56">●</span> 中证全指：<b>${cv.toFixed(0)}</b>`;
           window.AK.tooltip.show(ev, html.replace(/<br>$/, ''));
         });
-        canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+        canvas.addEventListener('mouseleave', () => {
+          window.AK.tooltip.hide();
+          const D = canvas.__fgData;
+          if (D) D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, startIdx: D.startIdx });
+        });
       }
     }
   }

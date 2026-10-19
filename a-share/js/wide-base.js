@@ -231,9 +231,15 @@
       ctx.textAlign = 'right';
     }
 
+    // ── hover 纵向跟随虚线 ──
+    if (!exportMode && opts.hoverIdx !== undefined && opts.hoverIdx !== null) {
+      const hx = xs(opts.hoverIdx);
+      window.AK.drawHoverVLine(ctx, hx, padT, H - padB, scale);
+    }
+
     // ── 悬浮数值提示（屏幕版）──
     if (!exportMode) {
-      canvas.__wbData = { series, dates, xs };
+      canvas.__wbData = { series, dates, xs, data, drawFn: draw };
       if (!canvas.__hoverBound) {
         canvas.__hoverBound = true;
         canvas.addEventListener('mousemove', (ev) => {
@@ -241,10 +247,18 @@
           if (!D || !D.dates.length) return;
           const { x } = window.AK.canvasXY(canvas, ev);
           const sx = x / (window.devicePixelRatio || 1);
-          if (sx < padL || sx > W - padR) { window.AK.tooltip.hide(); return; }
+          if (sx < padL || sx > W - padR) {
+            window.AK.tooltip.hide();
+            D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+            return;
+          }
           const nn = D.dates.length;
-          const idx = Math.round((sx - padL) / (W - padL - padR) * (nn - 1));
-          const i = Math.max(0, Math.min(nn - 1, idx));
+          const idx = Math.max(0, Math.min(nn - 1, Math.round((sx - padL) / (W - padL - padR) * (nn - 1))));
+          const i = idx;
+
+          // 重绘带竖线
+          D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, hoverIdx: i });
+
           let html = `<b>${D.dates[i]}</b><br>`;
           D.series.forEach((s) => {
             const v = s.nav[i];
@@ -253,7 +267,11 @@
           });
           window.AK.tooltip.show(ev, html.slice(0, -4));
         });
-        canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+        canvas.addEventListener('mouseleave', () => {
+          window.AK.tooltip.hide();
+          const D = canvas.__wbData;
+          if (D) D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+        });
       }
     }
   }

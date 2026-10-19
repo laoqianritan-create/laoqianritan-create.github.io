@@ -154,24 +154,46 @@
       ctx.textAlign = 'right';
     }
 
+    // ── hover 纵向跟随虚线 ──
+    if (!exportMode && opts.hoverIdx !== undefined && opts.hoverIdx !== null) {
+      const hx = xs(opts.hoverIdx);
+      window.AK.drawHoverVLine(ctx, hx, padT, H - padB, scale);
+    }
+
     // hover（屏幕版）
     if (!exportMode) {
-      canvas.__tmData = { dates, roll, first, last, xs, yP, rollKey, winLabel };
+      canvas.__tmData = { dates, roll, first, last, xs, yP, rollKey, winLabel, data, drawFn: draw };
       if (!canvas.__hoverBound) {
         canvas.__hoverBound = true;
         canvas.addEventListener('mousemove', (ev) => {
           const D = canvas.__tmData;
           const { x } = window.AK.canvasXY(canvas, ev);
           const sx = x / (window.devicePixelRatio || 1);
-          if (sx < padL || sx > W - padR) { window.AK.tooltip.hide(); return; }
+          if (sx < padL || sx > W - padR) {
+            window.AK.tooltip.hide();
+            D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, rollKey: D.rollKey });
+            return;
+          }
           const idx = Math.round((sx - padL) / (W - padL - padR) * (D.last - D.first)) + D.first;
           const i = Math.max(D.first, Math.min(D.last, idx));
           const v = D.roll[i];
-          if (v === null || v === undefined || Number.isNaN(v)) { window.AK.tooltip.hide(); return; }
+          if (v === null || v === undefined || Number.isNaN(v)) {
+            D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, rollKey: D.rollKey });
+            window.AK.tooltip.hide();
+            return;
+          }
           const color = (v >= 0) ? C_PG : C_NEG;
+
+          // 重绘带竖线
+          D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, rollKey: D.rollKey, hoverIdx: i });
+
           window.AK.tooltip.show(ev, `<b>${D.dates[i]}</b><br><span style="color:${color}">●</span> ${D.winLabel}滚动年化：<b>${v.toFixed(2)}%</b>`);
         });
-        canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+        canvas.addEventListener('mouseleave', () => {
+          window.AK.tooltip.hide();
+          const D = canvas.__tmData;
+          if (D) D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, rollKey: D.rollKey });
+        });
       }
     }
   }

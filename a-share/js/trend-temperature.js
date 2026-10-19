@@ -196,37 +196,64 @@
       ctx.textAlign = 'right';
     }
 
+    // ── hover 纵向跟随虚线（上下两个子图各画一段）──
+    if (!exportMode && (opts.hoverIdx1 !== undefined || opts.hoverIdx2 !== undefined)) {
+      if (opts.hoverIdx1 !== undefined && opts.hoverIdx1 !== null) {
+        const hx1 = xs(opts.hoverIdx1);
+        window.AK.drawHoverVLine(ctx, hx1, box1.top, box1.top + box1.h, scale);
+      }
+      if (opts.hoverIdx2 !== undefined && opts.hoverIdx2 !== null) {
+        const hx2 = xs(opts.hoverIdx2, n2);
+        window.AK.drawHoverVLine(ctx, hx2, box2.top, box2.top + box2.h, scale);
+      }
+    }
+
     // ── 悬浮提示 ──
     if (!exportMode) {
-      canvas.__ttData = { stocks, macds, xs1: (i) => xs(i), xs2: (i) => xs(i, n2), box1, box2, y1: (v) => yMap(v, sMin, sMax, box1), y2: (v) => yMap(v, mMin, mMax, box2) };
+      canvas.__ttData = { stocks, macds, xs1: (i) => xs(i), xs2: (i) => xs(i, n2), box1, box2, y1: (v) => yMap(v, sMin, sMax, box1), y2: (v) => yMap(v, mMin, mMax, box2), data, drawFn: draw };
       if (!canvas.__ttBound) {
         canvas.__ttBound = true;
         canvas.addEventListener('mousemove', (ev) => {
           const D = canvas.__ttData;
           if (!D) return;
-          const { x } = window.AK.canvasXY(canvas, ev);
+          const { x, y } = window.AK.canvasXY(canvas, ev);
           const sx = x / (window.devicePixelRatio || 1);
-          if (sx < padL || sx > W - padR) { window.AK.tooltip.hide(); return; }
-          // 判断在哪个子图
-          const { y } = window.AK.canvasXY(canvas, ev);
           const sy = y / (window.devicePixelRatio || 1);
+          if (sx < padL || sx > W - padR) {
+            window.AK.tooltip.hide();
+            D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+            return;
+          }
+          // 判断在哪个子图，计算对应索引
+          let hoverIdx1 = null, hoverIdx2 = null;
+          let html = '';
           if (sy >= D.box1.top && sy <= D.box1.top + D.box1.h) {
             const i = Math.max(0, Math.min(D.stocks.length - 1, Math.round((sx - padL) / (W - padL - padR) * (D.stocks.length - 1))));
+            hoverIdx1 = i;
             const r = D.stocks[i];
-            window.AK.tooltip.show(ev,
-              `<b>${r.date}</b><br>` +
+            html = `<b>${r.date}</b><br>` +
               `<span style="color:#E65A56">●</span> 50周线上方：<b>${r.pct_above.toFixed(1)}%</b><br>` +
-              `（${r.above_ma250} / ${r.total} 只）`);
+              `（${r.above_ma250} / ${r.total} 只）`;
           } else if (sy >= D.box2.top && sy <= D.box2.top + D.box2.h) {
             const i = Math.max(0, Math.min(D.macds.length - 1, Math.round((sx - padL) / (W - padL - padR) * (D.macds.length - 1))));
+            hoverIdx2 = i;
             const r = D.macds[i];
-            window.AK.tooltip.show(ev,
-              `<b>${r.date}</b><br>` +
+            html = `<b>${r.date}</b><br>` +
               `<span style="color:#5AAEF3">●</span> 行业MACD>0：<b>${r.pct_positive.toFixed(0)}%</b><br>` +
-              `（${r.positive_count} / ${r.total} 个行业）`);
-          } else { window.AK.tooltip.hide(); }
+              `（${r.positive_count} / ${r.total} 个行业）`;
+          }
+
+          // 重绘带竖线
+          D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, hoverIdx1, hoverIdx2 });
+
+          if (html) window.AK.tooltip.show(ev, html);
+          else window.AK.tooltip.hide();
         });
-        canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+        canvas.addEventListener('mouseleave', () => {
+          window.AK.tooltip.hide();
+          const D = canvas.__ttData;
+          if (D) D.drawFn(canvas, D.data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+        });
       }
     }
   }

@@ -174,9 +174,15 @@
       ctx.textAlign = 'right';
     }
 
+    // ── hover 纵向跟随虚线（贯穿上下两图）──
+    if (!exportMode && opts.hoverIdx !== undefined && opts.hoverIdx !== null) {
+      const hx = xs(opts.hoverIdx);
+      window.AK.drawHoverVLine(ctx, hx, top1, top2 + h2, scale);
+    }
+
     // ── 悬浮数值提示（屏幕版）：最近交易日 → 成交额 / 换手 ──
     if (!exportMode && opts.bindHover !== false) {
-      canvasEl.__mtData = { dates, amount, turnover, xs };
+      canvasEl.__mtData = { dates, amount, turnover, xs, data, state, drawFn: draw };
       if (!canvasEl.__hoverBound) {
         canvasEl.__hoverBound = true;
         canvasEl.addEventListener('mousemove', (ev) => {
@@ -184,17 +190,29 @@
           if (!D || !D.dates.length) return;
           const { x } = window.AK.canvasXY(canvasEl, ev);
           const sx = x / (window.devicePixelRatio || 1);
-          if (sx < padL || sx > W - padR) { window.AK.tooltip.hide(); return; }
+          if (sx < padL || sx > W - padR) {
+            window.AK.tooltip.hide();
+            D.drawFn(canvasEl, D.data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+            return;
+          }
           const n = D.dates.length;
-          const idx = Math.round((sx - padL) / (W - padL - padR) * (n - 1));
-          const i = Math.max(0, Math.min(n - 1, idx));
+          const idx = Math.max(0, Math.min(n - 1, Math.round((sx - padL) / (W - padL - padR) * (n - 1))));
+          const i = idx;
+
+          // 重绘带竖线
+          D.drawFn(canvasEl, D.data, { exportMode: false, scale: window.devicePixelRatio || 1, hoverIdx: i });
+
           const amt = D.amount[i];
           const tr = D.turnover[i];
           let html = `<b>${D.dates[i]}</b><br>成交金额：<b>${(amt / 1e4).toFixed(2)} 万亿</b>`;
           if (tr !== null && tr !== undefined) html += `<br>换手率：<b>${tr.toFixed(2)}%</b>`;
           window.AK.tooltip.show(ev, html);
         });
-        canvasEl.addEventListener('mouseleave', () => window.AK.tooltip.hide());
+        canvasEl.addEventListener('mouseleave', () => {
+          window.AK.tooltip.hide();
+          const D = canvasEl.__mtData;
+          if (D) D.drawFn(canvasEl, D.data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+        });
       }
     }
   }
