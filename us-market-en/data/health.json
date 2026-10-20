@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20 09:46:19",
+  "generated_at": "2026-10-20 21:51:45",
   "today": "2026-10-20",
   "overall": "warn",
   "stale_count": 1,
@@ -61,8 +61,8 @@
     {
       "file": "sp500_annual_returns_long.json",
       "label": "S&P 500 Annual Returns",
-      "updated": "2026-10-19",
-      "days_old": 1,
+      "updated": "2026-10-20",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
         "series": "2026-12-31"
@@ -71,7 +71,7 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "Growth paths (TR vs price)",
-      "updated": "2026-10-20T09:44:54",
+      "updated": "2026-10-20T21:50:38",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -81,7 +81,7 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "Bull markets since 1966",
-      "updated": "2026-10-20T09:44:54",
+      "updated": "2026-10-20T21:50:38",
       "days_old": 0,
       "status": "fresh"
     },
@@ -109,7 +109,7 @@
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-10-19"
+        "series": "2026-10-20"
       }
     },
     {
@@ -126,7 +126,7 @@
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-10-19"
+        "series": "2026-10-20"
       }
     },
     {

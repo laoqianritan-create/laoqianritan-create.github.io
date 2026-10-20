@@ -24,7 +24,7 @@ import {
   CHART_FONT,
   cssVar,
   formatNumber,
-} from '../utils.js?v=20261020094620';
+} from '../utils.js?v=20261020215145';
 
 import {
   registerChart,
@@ -32,7 +32,7 @@ import {
   renderMetricStrip,
   getDataZoom,
   getLineLegendConfig,
-} from '../chart-helpers.js?v=20261020094620';
+} from '../chart-helpers.js?v=20261020215145';
 
 // Locate the bucket label for a given modified-version ratio
 function bandLabelFor(ratio, bands) {
