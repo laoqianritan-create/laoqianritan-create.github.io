@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-10-19 09:45:28",
-  "today": "2026-10-19",
+  "generated_at": "2026-10-20 09:46:19",
+  "today": "2026-10-20",
   "overall": "warn",
   "stale_count": 1,
   "sources": [
     {
       "file": "sp500_price.json",
       "label": "S&P 500 Daily",
-      "updated": "2026-10-16",
-      "days_old": 3,
-      "status": "recent",
+      "updated": "2026-10-19",
+      "days_old": 1,
+      "status": "fresh",
       "series_end": {
-        "series": "2026-10-16"
+        "series": "2026-10-19"
       }
     },
     {
       "file": "sp500_century.json",
       "label": "S&P 500 Monthly (Century)",
       "updated": "2026-10-16",
-      "days_old": 3,
+      "days_old": 4,
       "status": "recent",
       "series_end": {
         "series": "2026-10-16"
@@ -27,17 +27,17 @@
     {
       "file": "sp500_pe.json",
       "label": "Shiller PE",
-      "updated": "2026-10-16",
-      "days_old": 3,
+      "updated": "2026-10-19",
+      "days_old": 1,
       "status": "stale",
       "series_end": {
         "pe": "2026-06-01",
-        "cape": "2026-10-16"
+        "cape": "2026-10-19"
       },
       "lagging_series": {
         "pe": {
           "end": "2026-06-01",
-          "lag_days": 137
+          "lag_days": 140
         }
       }
     },
@@ -45,24 +45,24 @@
       "file": "sp500_eps.json",
       "label": "S&P 500 EPS",
       "updated": "2026-06-30",
-      "days_old": 111,
+      "days_old": 112,
       "status": "recent"
     },
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-10-16",
-      "days_old": 3,
-      "status": "recent",
+      "updated": "2026-10-19",
+      "days_old": 1,
+      "status": "fresh",
       "series_end": {
-        "series": "2026-10-16"
+        "series": "2026-10-19"
       }
     },
     {
       "file": "sp500_annual_returns_long.json",
       "label": "S&P 500 Annual Returns",
       "updated": "2026-10-19",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
         "series": "2026-12-31"
@@ -71,69 +71,69 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "Growth paths (TR vs price)",
-      "updated": "2026-10-19T09:44:21",
+      "updated": "2026-10-20T09:44:54",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-10-16"
+        "series": "2026-10-19"
       }
     },
     {
       "file": "sp500_bull_markets.json",
       "label": "Bull markets since 1966",
-      "updated": "2026-10-19T09:44:21",
+      "updated": "2026-10-20T09:44:54",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "buffett.json",
       "label": "Buffett Indicator",
-      "updated": "2026-10-16",
-      "days_old": 3,
-      "status": "recent",
+      "updated": "2026-10-19",
+      "days_old": 1,
+      "status": "fresh",
       "series_end": {
-        "series": "2026-10-16"
+        "series": "2026-10-19"
       }
     },
     {
       "file": "aiae.json",
       "label": "AIAE Allocation",
-      "updated": "2026-10-19",
+      "updated": "2026-10-20",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ndx_daily.json",
       "label": "Nasdaq 100 Daily",
-      "updated": "2026-10-19",
+      "updated": "2026-10-20",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-10-16"
+        "series": "2026-10-19"
       }
     },
     {
       "file": "nasdaq100_panels.json",
       "label": "Nasdaq 100 Constituents",
-      "updated": "2026-10-16",
-      "days_old": 3,
-      "status": "recent"
+      "updated": "2026-10-19",
+      "days_old": 1,
+      "status": "fresh"
     },
     {
       "file": "nasdaq_composite.json",
       "label": "Nasdaq Composite Monthly",
-      "updated": "2026-10-19",
+      "updated": "2026-10-20",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-10-16"
+        "series": "2026-10-19"
       }
     },
     {
       "file": "dow_jones_century.json",
       "label": "Dow Jones Century",
       "updated": "2026-10-16",
-      "days_old": 3,
+      "days_old": 4,
       "status": "recent",
       "series_end": {
         "series": "2026-10-16"
@@ -142,28 +142,28 @@
     {
       "file": "ici_flows.json",
       "label": "ICI fund flows (weekly + monthly)",
-      "updated": "2026-10-19",
+      "updated": "2026-10-20",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ici_mmf.json",
       "label": "ICI money market fund cash pool",
-      "updated": "2026-10-19",
+      "updated": "2026-10-20",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ici_active_index.json",
       "label": "ICI active vs. index",
-      "updated": "2026-10-19",
+      "updated": "2026-10-20",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ownership.json",
       "label": "US ownership structure (Fed Z.1)",
-      "updated": "2026-10-19",
+      "updated": "2026-10-20",
       "days_old": 0,
       "status": "fresh"
     }
