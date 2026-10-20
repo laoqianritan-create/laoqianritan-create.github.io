@@ -9,7 +9,7 @@
   /* ── 预览页外框（非面板本身） ── */
   .preview-bar{background:#1A1A1A;color:#F7F6F2;font-size:12px;padding:9px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
   .preview-bar b{color:#FFD9A0}
-  .preview-bar .badge{font-family:"SF Mono",Menlo,monospace;font-size:11px;color:#A8E6C3}
+  .preview-bar .badge{font-family:NotoSansSC,-apple-system,"Helvetica Neue",Arial,sans-serif;font-size:11px;color:#A8E6C3}
   .preview-foot{margin:30px auto 40px;font-size:11px;color:#999;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 
   /* ── 两个新面板：去掉原生下拉箭头（右对齐箭头太丑），控件与主站 panel-controls 一致 ── */
@@ -79,7 +79,7 @@
         <li>枚举所选样本内所有完整年度起点，行业年初买入、期末卖出（如 5 年窗口：买入年 2015—2021，期末年 2019—2025）。窗口相互重叠，行业也共享行情；这些比例是历史窗口占比，不能当成未来亏损概率。</li>
         <li>样本起点会显著影响分布：2015 年起（侧重近年）与 2005 起（全部历史）口径不同，切换即可对比。</li>
         <li>热力图格子 = 某行业 × 某买入起点的持有窗口年化收益；红涨绿跌。点击格子，上方「行业买入体验模拟器」自动加载该行业与窗口路径。</li>
-        <li>滚动窗口只使用完整年度（2005—2025）；2026 年初至今（YTD）未成完整年度，不进入本面板统计——YTD 路径请在「行业买入体验模拟器」查看，数据每日自动更新。</li>
+        <li>滚动窗口覆盖 2005—2026*：期末落在 2026 的窗口使用年初至今（YTD）收益，热力图列头带 *；窗口年化按整段年数计（未按年内天数折算），仅作参考。数据每日自动更新。</li>
         <li>年度波动率采用样本标准差；原始收益仅保留一位小数，价格口径不含股息、税费与 ETF 费用。</li>
       </ul>
     </details>
@@ -141,7 +141,9 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
     return sectors.map((s) => {
       const rs = [], ys = [];
       for (let i = 0; i < YEARS.length; i++) { const y = YEARS[i]; if (y >= start && y <= end) { rs.push(s.rets[i]); ys.push(y); } }
-      return { name: s.name, ...pathStats(rs), years: ys };
+      const hasYtd = end === YTD_YEAR && s.ytd != null;
+      if (hasYtd) { rs.push(s.ytd); ys.push(YTD_YEAR); }
+      return { name: s.name, ...pathStats(rs), years: ys, hasYtd };
     });
   }
   function holdingWindows(h, since, end) {
@@ -197,7 +199,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
     const chartH = Math.round(330 * f);
     const tilesH = Math.round(32 * f);
     const readH = Math.round(76 * f);
-    const H = metricH + legendH + chartH + tilesH + readH + Math.round(12 * f);
+    const H = metricH + legendH + chartH + tilesH + readH + Math.round(16 * f);
     canvas.width = W * dpr; canvas.height = H * dpr;
     const ctx = canvas.getContext('2d');
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.scale(dpr, dpr);
@@ -217,7 +219,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
       ctx.textAlign = 'left'; ctx.textBaseline = 'top';
       ctx.fillStyle = A.gray; ctx.font = `400 ${Math.round(13 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
       ctx.fillText(m[0], cx + Math.round(18 * f), cy);
-      ctx.fillStyle = A.ink; ctx.font = `500 ${Math.round(34 * f)}px "SF Mono",Menlo,Consolas,monospace`;
+      ctx.fillStyle = A.ink; ctx.font = `600 ${Math.round(34 * f)}px NotoSansSC,-apple-system,"Helvetica Neue",Arial,sans-serif`;
       ctx.fillText(m[1], cx + Math.round(18 * f), cy + Math.round(24 * f));
       ctx.fillStyle = A.light; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
       ctx.fillText(m[2], cx + Math.round(18 * f), cy + Math.round(66 * f));
@@ -248,7 +250,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
     const Y = (v) => chartTop + Math.round(20 * f) + (maxV - v) / (maxV - minV || 1) * ph;
     // 网格
     ctx.strokeStyle = A.line; ctx.lineWidth = 1; ctx.setLineDash([Math.round(3 * f), Math.round(5 * f)]);
-    ctx.font = `400 ${Math.round(11 * f)}px "SF Mono",Menlo,monospace`;
+    ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,-apple-system,"Helvetica Neue",Arial,sans-serif`;
     ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
     for (let i = 0; i <= 4; i++) {
       const v = minV + (maxV - minV) * i / 4, y = Y(v);
@@ -300,7 +302,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
       ctx.fillStyle = up ? 'rgba(230,90,86,0.13)' : 'rgba(47,191,113,0.15)';
       ctx.fillRect(tx, tileTop, tileW, tileH);
       ctx.fillStyle = up ? '#C3484C' : '#1E8E52';
-      ctx.font = `500 ${Math.round(12 * f)}px "SF Mono",Menlo,Consolas,monospace`;
+      ctx.font = `500 ${Math.round(12 * f)}px NotoSansSC,-apple-system,"Helvetica Neue",Arial,sans-serif`;
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText(pct(r, 1, true) + (isYtd ? '*' : ''), tx + tileW / 2, tileTop + Math.round(9 * f));
       ctx.fillStyle = A.light; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
@@ -310,7 +312,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
     });
 
     // ── 读解（最多 3 行：主句可换行，附注固定） ──
-    const rdTop = tileTop + tileH + Math.round(10 * f);
+    const rdTop = tileTop + tileH + Math.round(14 * f);
     ctx.textAlign = 'left'; ctx.textBaseline = 'top';
     ctx.font = `400 ${Math.round(13 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
     let line1 = `${s.name}：1 元变成 ${num(st.terminal, 3)} 元。`;
@@ -380,7 +382,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
     const exportMode = !!opts.exportMode;
     const W = opts.W || 1280, dpr = opts.scale || 1;
     const f = W / 1280;
-    const h = stateB.h, since = stateB.since, endY = 2025;
+    const h = stateB.h, since = stateB.since, endY = YTD_YEAR;
     const a = holdingWindows(h, since, endY);
     const loss = a.filter((s) => s.cagr < 0).length;
     const dd = a.filter((s) => s.mdd <= -0.3).length;
@@ -413,7 +415,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
       ctx.textAlign = 'left'; ctx.textBaseline = 'top';
       ctx.fillStyle = A.gray; ctx.font = `400 ${Math.round(13 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
       ctx.fillText(m[0], cx + Math.round(18 * f), cy);
-      ctx.fillStyle = A.ink; ctx.font = `500 ${Math.round(34 * f)}px "SF Mono",Menlo,Consolas,monospace`;
+      ctx.fillStyle = A.ink; ctx.font = `600 ${Math.round(34 * f)}px NotoSansSC,-apple-system,"Helvetica Neue",Arial,sans-serif`;
       ctx.fillText(m[1], cx + Math.round(18 * f), cy + Math.round(24 * f));
       ctx.fillStyle = A.light; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
       ctx.fillText(m[2], cx + Math.round(18 * f), cy + Math.round(66 * f));
@@ -425,13 +427,13 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
     const lossFrac = loss / a.length;
     ctx.fillStyle = A.green; ctx.fillRect(bx, bandTop, bandW * lossFrac, Math.round(22 * f));
     ctx.fillStyle = A.red; ctx.fillRect(bx + bandW * lossFrac, bandTop, bandW * (1 - lossFrac), Math.round(22 * f));
-    ctx.fillStyle = '#FFFFFF'; ctx.font = `500 ${Math.round(11 * f)}px "SF Mono",Menlo,monospace`;
+    ctx.fillStyle = '#FFFFFF'; ctx.font = `500 ${Math.round(11 * f)}px NotoSansSC,-apple-system,"Helvetica Neue",Arial,sans-serif`;
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     if (lossFrac > 0.12) ctx.fillText('亏损 ' + pct(lossFrac), bx + bandW * lossFrac / 2, bandTop + Math.round(11 * f));
     if (lossFrac < 0.88) ctx.fillText('不亏 ' + pct(1 - lossFrac), bx + bandW * (0.5 + lossFrac / 2), bandTop + Math.round(11 * f));
     ctx.fillStyle = A.gray; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
     ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-    ctx.fillText(`${h} 年窗口：买入年 ${since}—${endY - h + 1}，期末年 ${since + h - 1}—${endY} · 共 ${starts.length} 个起点 × 31 行业 · 不含 2026 YTD`, bx, bandTop + Math.round(27 * f));
+    ctx.fillText(`${h} 年窗口：买入年 ${since}—${endY - h + 1}，期末年 ${since + h - 1}—${endY}* · 共 ${starts.length} 个起点 × 31 行业 · 含 2026 年初至今（YTD）`, bx, bandTop + Math.round(27 * f));
 
     // ── 汇总表（3 / 5 / 7 年） ──
     const sumTop = bandTop + Math.round(50 * f);
@@ -446,10 +448,10 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
       const r0 = { loss: b.filter((x) => x.cagr < 0).length / b.length, median: quantile(cs, 0.5), p10: quantile(cs, 0.1), p90: quantile(cs, 0.9), mdd: quantile(b.map((x) => x.mdd), 0.5) };
       const ry = sumTop + Math.round(29 * f) + ri * Math.round(28 * f);
       if (n === h) { ctx.fillStyle = '#F5F6F4'; ctx.fillRect(Math.round(8 * f), ry - Math.round(13 * f), W - Math.round(16 * f), Math.round(28 * f)); ctx.fillStyle = A.red; ctx.fillRect(Math.round(8 * f), ry - Math.round(13 * f), Math.max(2, Math.round(3 * f)), Math.round(28 * f)); }
-      ctx.font = `500 ${Math.round(12 * f)}px "SF Mono",Menlo,Consolas,monospace`;
+      ctx.font = `500 ${Math.round(12 * f)}px NotoSansSC,-apple-system,"Helvetica Neue",Arial,sans-serif`;
       ctx.fillStyle = n === h ? A.ink : A.gray;
       ctx.textAlign = 'left'; ctx.fillText(n + ' 年', Math.round(18 * f), ry);
-      ctx.font = `400 ${Math.round(12 * f)}px "SF Mono",Menlo,Consolas,monospace`;
+      ctx.font = `400 ${Math.round(12 * f)}px NotoSansSC,-apple-system,"Helvetica Neue",Arial,sans-serif`;
       const vals = [pct(r0.loss), pct(r0.median), `${pct(r0.p10)} 至 ${pct(r0.p90)}`, pct(r0.mdd)];
       const colXs = []; { let acc = Math.round(18 * f); cw.forEach((c) => { colXs.push(acc); acc += c; }); }
       vals.forEach((v, i) => { ctx.textAlign = 'left'; ctx.fillStyle = A.ink; ctx.fillText(v, colXs[i + 1], ry); });
@@ -464,7 +466,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
     ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
     ctx.fillText('买入起点 →', padL - Math.round(10 * f), hdrY);
     ctx.textAlign = 'center';
-    starts.forEach((y, j) => { ctx.fillStyle = A.gray; ctx.fillText(String(y), padL + colW * (j + 0.5), hdrY); });
+    starts.forEach((y, j) => { const isYtd = y + h - 1 === endY; ctx.fillStyle = isYtd ? A.red : A.gray; ctx.fillText(String(y) + (isYtd ? '*' : ''), padL + colW * (j + 0.5), hdrY); });
     sectors.forEach((s, i) => {
       const ry = heatTop + Math.round(24 * f) + i * rowH;
       ctx.fillStyle = A.gray; ctx.textAlign = 'right'; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
@@ -480,7 +482,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
           ctx.strokeStyle = A.ink; ctx.lineWidth = Math.max(1.5, Math.round(1.5 * f));
           ctx.strokeRect(padL + j * colW + 0.5, ry + 0.5, colW - 1, rowH - 1);
         }
-        ctx.fillStyle = '#222222'; ctx.font = `400 ${Math.round(11 * f)}px "SF Mono",Menlo,monospace`;
+        ctx.fillStyle = '#222222'; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,-apple-system,"Helvetica Neue",Arial,sans-serif`;
         ctx.textAlign = 'center';
         ctx.fillText(pct(b.cagr, 1), padL + colW * (j + 0.5), ry + rowH / 2 + Math.round(0.5 * f));
       });
@@ -489,7 +491,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
     // 底部提示（与末行热力图保持 ≥20px 留白）
     ctx.fillStyle = A.light; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
     ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
-    ctx.fillText('点击格子 → 上方「行业买入体验模拟器」自动加载该行业与窗口路径；热力图单元格只作历史窗口快照，不是未来亏损概率。', Math.round(18 * f), H - Math.round(28 * f));
+    ctx.fillText('点击格子 → 上方「行业买入体验模拟器」自动加载该行业与窗口路径；列头带 *：该买入起点的窗口期末含 2026 年初至今（YTD），年化按整段年数计，未按年内天数折算。', Math.round(18 * f), H - Math.round(28 * f));
   }
 
   // ── 面板 2 控件 ──
@@ -517,7 +519,7 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
     // hover + 点击穿透到面板 1
     const cv = $('holdWin');
     const geo = () => {
-      const h = stateB.h, since = stateB.since, endY = 2025;
+      const h = stateB.h, since = stateB.since, endY = YTD_YEAR;
       const starts = Array.from({ length: endY - h + 1 - since + 1 }, (_, i) => since + i);
       const k = cv.width / 1280;
       return { starts, k, padL: 120 * k, colW: (1280 - 140) / starts.length * k, heatTop: (84 + 50 + 122 + 30) * k, rowH: 22 * k, rowTop: 24 * k };
@@ -530,8 +532,9 @@ const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,201
       const sec = sectors[ri], y = g.starts[cj];
       stateB.hover = [sec.name, y];
       redrawB();
-      const b = holdingWindows(stateB.h, stateB.since, 2025).find((x) => x.name === sec.name && x.start === y);
-      if (b) window.AK.tooltip.show(ev, `<b>${esc(sec.name)}</b> ${y}—${y + stateB.h - 1}<br>年化 <b>${pct(b.cagr)}</b> · 年末最大回撤 <b>${pct(b.mdd)}</b><br><span style="color:#aaa">点击格子 → 上方模拟器加载该路径</span>`);
+      const b = holdingWindows(stateB.h, stateB.since, YTD_YEAR).find((x) => x.name === sec.name && x.start === y);
+      const wEnd = y + stateB.h - 1, wLab = wEnd === YTD_YEAR ? `${y}—${wEnd}*（含 YTD）` : `${y}—${wEnd}`;
+      if (b) window.AK.tooltip.show(ev, `<b>${esc(sec.name)}</b> ${wLab}<br>年化 <b>${pct(b.cagr)}</b> · 年末最大回撤 <b>${pct(b.mdd)}</b><br><span style="color:#aaa">点击格子 → 上方模拟器加载该路径</span>`);
       else window.AK.tooltip.hide();
     });
     cv.addEventListener('mouseleave', () => { stateB.hover = null; redrawB(); window.AK.tooltip.hide(); });
