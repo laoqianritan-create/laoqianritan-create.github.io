@@ -3,10 +3,10 @@
   "friendly": "on_rrp",
   "source": "FRED",
   "fetched": "2026-10-20",
-  "count": 3188,
+  "count": 3189,
   "latest": {
-    "date": "2026-10-16",
-    "value": 0.1
+    "date": "2026-10-19",
+    "value": 0.33
   },
   "data": [
     {
@@ -12760,6 +12760,10 @@
     {
       "date": "2026-10-16",
       "value": 0.1
+    },
+    {
+      "date": "2026-10-19",
+      "value": 0.33
     }
   ]
 }

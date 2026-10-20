@@ -3,9 +3,9 @@
   "friendly": "iorb",
   "source": "FRED",
   "fetched": "2026-10-20",
-  "count": 1909,
+  "count": 1910,
   "latest": {
-    "date": "2026-10-19",
+    "date": "2026-10-20",
     "value": 3.9
   },
   "data": [
@@ -7643,6 +7643,10 @@
     },
     {
       "date": "2026-10-19",
+      "value": 3.9
+    },
+    {
+      "date": "2026-10-20",
       "value": 3.9
     }
   ]
