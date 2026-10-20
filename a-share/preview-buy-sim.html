@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="预览稿：A股看板两个新面板——「行业买入体验模拟器」与「长期持有某个行业，体验就会变好吗？」，按看板上线规范制作，数据与行业热力图同源（sw_returns.json）。">
+<title>预览 · 行业买入体验模拟器（两个新看板）</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* ── 预览页外框（非面板本身） ── */
+  .preview-bar{background:#1A1A1A;color:#F7F6F2;font-size:12px;padding:9px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+  .preview-bar b{color:#FFD9A0}
+  .preview-bar .badge{font-family:"SF Mono",Menlo,monospace;font-size:11px;color:#A8E6C3}
+  .preview-foot{margin:30px auto 40px;font-size:11px;color:#999;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  /* ── 两个新面板：去掉原生下拉箭头（右对齐箭头太丑），控件与主站 panel-controls 一致 ── */
+  .buy-sim-panel .panel-controls select,
+  .hold-win-panel .panel-controls select{
+    appearance:none;-webkit-appearance:none;
+    padding:4px 10px;
+  }
+  .buy-sim-panel .panel-body canvas,
+  .hold-win-panel .panel-body canvas{display:block;width:100%;height:auto}
+</style>
+</head>
+<body>
+<div class="preview-bar">
+  <span>预览稿 · 两个新看板（<b>行业买入体验模拟器</b> / <b>长期持有某个行业，体验就会变好吗？</b>）→ 拟并入 A股看板主站</span>
+  <span class="badge" id="data-badge">数据加载中…</span>
+</div>
+
+<main class="container">
+
+  <!-- ═══════════ 新面板 1：行业买入体验模拟器 ═══════════ -->
+  <section class="panel buy-sim-panel" id="panel-buy-sim">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title">行业买入体验模拟器</h2>
+        <p class="panel-desc">申万一级行业 · 年度持有路径 · 2005—2026（2026 为年初至今）</p>
+        <p class="panel-asof" id="asof-a"></p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn-download js-export" data-canvas="buySim" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="panel-controls" id="buy-sim-controls"></div>
+      <canvas id="buySim" aria-label="行业买入体验模拟器：年末净值实际路径与 CAGR 匀速路径"></canvas>
+    </div>
+    <details class="panel-notes">
+      <summary>看板说明</summary>
+      <ul>
+        <li>数据与「申万一级行业年度涨跌幅 · 长期 CAGR」热力图同源：同一份 <code>sw_returns.json</code>（Wind 申万一级行业指数，2021 版回溯口径），每日 19:00 自动更新；热力图改数据这里同步变。</li>
+        <li>净值从 1 起算，每年乘以（1 + 当年收益）；区间年化 = 期末净值 ^(1/年数) − 1。「年末最大回撤」从包含初始点的年末净值历史最高点计算；「最长未创新高期」为连续低于此前峰值的年末观测数，期末仍未恢复的区间照计；「最长连续亏损」为年度收益严格小于 0 的连续年数。</li>
+        <li>结束年份可选 2026（年初至今，YTD）：该点使用行业当年 YTD 收益，随每日更新自动刷新；含 2026 时年化按整段年数计算，未按年内天数折算，仅作参考。</li>
+        <li>「最佳一年改为 0%（压力测试）」是保留持有年数的<u>事后</u>敏感性分析，不是「错过最好交易日」的模拟，不能据此导出择时买卖点。</li>
+        <li>只连结年末观测点，年内波动不可见；价格为行业指数年末收盘变动，不含股息、税费与 ETF 费用。原始收益仅保留一位小数。</li>
+      </ul>
+    </details>
+  </section>
+
+  <!-- ═══════════ 新面板 2：长期持有窗口 ═══════════ -->
+  <section class="panel hold-win-panel" id="panel-hold-win">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title">长期持有某个行业，体验就会变好吗？</h2>
+        <p class="panel-asof" id="asof-b"></p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn-download js-export" data-canvas="holdWin" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="panel-controls" id="hold-win-controls"></div>
+      <canvas id="holdWin" aria-label="长期持有窗口：期末亏损占比、年化分布与全部持有窗口热力图"></canvas>
+    </div>
+    <details class="panel-notes">
+      <summary>看板说明</summary>
+      <ul>
+        <li>枚举所选样本内所有完整年度起点，行业年初买入、期末卖出（如 5 年窗口：买入年 2015—2021，期末年 2019—2025）。窗口相互重叠，行业也共享行情；这些比例是历史窗口占比，不能当成未来亏损概率。</li>
+        <li>样本起点会显著影响分布：2015 年起（侧重近年）与 2005 起（全部历史）口径不同，切换即可对比。</li>
+        <li>热力图格子 = 某行业 × 某买入起点的持有窗口年化收益；红涨绿跌。点击格子，上方「行业买入体验模拟器」自动加载该行业与窗口路径。</li>
+        <li>滚动窗口只使用完整年度（2005—2025）；2026 年初至今（YTD）未成完整年度，不进入本面板统计——YTD 路径请在「行业买入体验模拟器」查看，数据每日自动更新。</li>
+        <li>年度波动率采用样本标准差；原始收益仅保留一位小数，价格口径不含股息、税费与 ETF 费用。</li>
+      </ul>
+    </details>
+  </section>
+
+</main>
+
+<footer class="preview-foot container">
+  <span>预览稿 · 按《看板上线规范》制作（panel-head / panel-controls / canvas / 右上角导出 / 看板说明）</span>
+  <span>确认后并入主站：紧跟行业热力图下方 · 导航「买入体验」「持有窗口」 · 数据源 data/sw_returns.json</span>
+</footer>
+
+<script src="js/common.js"></script>
+<script>
+/* ═══════════════ 数据：优先线上 sw_returns.json，失败用内嵌快照 ═══════════════ */
+const EMBEDDED = {"years":[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],"data":{"食品饮料":{"code":"801120.SI","rets":[6.3,171,124.8,-58.7,109.9,20.8,-10.4,-0.7,-7.4,16,26.6,7.4,53.9,-22,72.9,85,-6,-15.1,-14.9,-8,-9.7],"ytd2026":-14.2,"metrics":{"cagr_full":15.1,"cagr_7y":8.8,"cagr_5y":-10.8,"cagr_3y":-10.9}},"煤炭":{"code":"801950.SI","rets":[-23.6,60.7,283.6,-68.3,203.5,-9.2,-27.3,-4.8,-42.7,25.7,-9.5,0.1,12.9,-32.7,10.9,7,39.6,10.9,4.1,4.4,-5.3],"ytd2026":25.1,"metrics":{"cagr_full":4.8,"cagr_7y":9.5,"cagr_5y":9.8,"cagr_3y":1.0}},"美容护理":{"code":"801980.SI","rets":[-16.5,100,261.6,-61.2,123.9,27.1,-23.9,25.2,21.3,-4,42.3,-10.4,-4.4,-22.8,26.3,57.9,0.1,-6.7,-32,-10.3,0.4],"ytd2026":-21.5,"metrics":{"cagr_full":10.4,"cagr_7y":1.9,"cagr_5y":-10.6,"cagr_3y":-15.1}},"公用事业":{"code":"801160.SI","rets":[-15.5,56.3,175.1,-55.4,52.1,-12.1,-22.7,5.7,10.8,55.7,22.9,-17.7,-7,-29.7,5.1,1,31.4,-16.4,-1.2,10.2,1],"ytd2026":1.5,"metrics":{"cagr_full":4.6,"cagr_7y":3.6,"cagr_5y":3.9,"cagr_3y":3.2}},"交通运输":{"code":"801170.SI","rets":[-11.7,69.3,168.6,-68.6,78.7,-11.5,-32.7,-4.2,5.3,64.8,32.6,-22.6,6.5,-30.2,17.3,0.2,2.6,-3.4,-15.6,13,1.1],"ytd2026":-9.3,"metrics":{"cagr_full":3.1,"cagr_7y":1.7,"cagr_5y":-0.9,"cagr_3y":-1.2}},"房地产":{"code":"801180.SI","rets":[-3.8,153.4,165.3,-64.1,116.4,-24.2,-22,31.7,-11.9,65.3,44.9,-17.7,0.8,-28.8,22.8,-10.9,-11.9,-11.2,-26.4,-2.1,1.8],"ytd2026":-16.7,"metrics":{"cagr_full":5.5,"cagr_7y":-6.4,"cagr_5y":-10.5,"cagr_3y":-9.8}},"建筑装饰":{"code":"801720.SI","rets":[-8.7,110.8,168.3,-46.5,37.3,5.8,-32,18.5,-12.3,83.3,14.1,-0.4,-6.3,-29.3,-2.1,-7.9,16.4,-11,-5.4,5.6,6.7],"ytd2026":-13.3,"metrics":{"cagr_full":6.7,"cagr_7y":-0.1,"cagr_5y":2.0,"cagr_3y":2.2}},"银行":{"code":"801780.SI","rets":[20.9,173.7,96,-64,103.8,-22.5,-4.8,14.5,-9.2,63.2,-1.4,-4.9,13.3,-14.7,22.9,-3.2,-4.6,-10.5,-7.9,34.4,7],"ytd2026":3.6,"metrics":{"cagr_full":9.9,"cagr_7y":4.3,"cagr_5y":2.5,"cagr_3y":9.8}},"商贸零售":{"code":"801200.SI","rets":[-2.5,131.2,192.8,-58.5,109.7,4.4,-33.3,-11.8,13.2,32.8,45.5,-13.5,-13.6,-32.7,8.8,-0.2,-4.6,-7.1,-31.3,13.7,8.2],"ytd2026":-30.4,"metrics":{"cagr_full":5.6,"cagr_7y":-2.9,"cagr_5y":-5.6,"cagr_3y":-5.5}},"家用电器":{"code":"801110.SI","rets":[-12.1,71.9,202.6,-55.4,153.8,0,-24.8,15.8,39.3,21.3,42.7,-1.9,43,-31.4,57,31.1,-19.5,-20.9,3.8,25.4,9.1],"ytd2026":-8.1,"metrics":{"cagr_full":15.2,"cagr_7y":9.3,"cagr_5y":-2.0,"cagr_3y":12.4}},"社会服务":{"code":"801210.SI","rets":[9.5,109.3,120,-68.8,133.5,8.5,-24.2,5.2,19.5,37.2,78.4,-21.2,-4.2,-10.6,27.9,99.4,-10.3,-2.2,-22,-5.1,9.7],"ytd2026":-21.5,"metrics":{"cagr_full":12.3,"cagr_7y":8.9,"cagr_5y":-6.6,"cagr_3y":-6.7}},"非银金融":{"code":"801790.SI","rets":[-17.3,299,179.5,-68.4,103.8,-24.9,-31.9,28.1,-4.8,121.2,-16.9,-14.7,17.3,-25.4,45.5,6.1,-17.5,-21.3,-2.7,30.2,10.1],"ytd2026":-19.1,"metrics":{"cagr_full":9.8,"cagr_7y":4.9,"cagr_5y":-2.0,"cagr_3y":11.7}},"石油石化":{"code":"801960.SI","rets":[-9.3,120.1,128.2,-66.7,84.1,-31.1,-25.9,1.6,3.5,22.1,5.3,-3.7,-4.7,-25.3,11.1,6.7,20.3,-13.9,4.3,6.2,11.7],"ytd2026":5.2,"metrics":{"cagr_full":3.4,"cagr_7y":6.2,"cagr_5y":5.1,"cagr_3y":7.4}},"医药生物":{"code":"801150.SI","rets":[-12.3,67.2,186.1,-43.4,102.8,29.7,-30.9,8.5,36.6,16,56.7,-13.5,3.6,-27.7,36.8,51.1,-5.7,-20.3,-7,-14.3,11.9],"ytd2026":-7.8,"metrics":{"cagr_full":11.8,"cagr_7y":4.8,"cagr_5y":-7.7,"cagr_3y":-3.7}},"纺织服饰":{"code":"801130.SI","rets":[-24.3,63.5,185.3,-62.7,119.1,7.5,-25.5,-10.1,8.2,33.3,89.2,-13.6,-23.8,-34.3,7.1,-7.1,3.4,-14.7,0.3,-5.3,13.2],"ytd2026":-13.1,"metrics":{"cagr_full":4.1,"cagr_7y":-0.8,"cagr_5y":-1.1,"cagr_3y":2.4}},"环保":{"code":"801970.SI","rets":[-18.1,46.7,198.3,-62.8,107.8,9.2,-26.2,2.4,55.4,27.2,42.9,-14.4,-2.6,-45.6,0.5,-1.5,20.6,-22.8,-7,1.9,16.9],"ytd2026":-11.4,"metrics":{"cagr_full":5.4,"cagr_7y":0.3,"cagr_5y":0.6,"cagr_3y":3.5}},"农林牧渔":{"code":"801010.SI","rets":[-15.1,82.5,162.1,-46.5,91.2,21.1,-31.2,-5.1,17.3,16.3,66.8,-8.6,-12.6,-22.4,45.4,18.3,-4.9,-11.4,-13.1,-11.6,17.8],"ytd2026":-16.7,"metrics":{"cagr_full":9.0,"cagr_7y":4.0,"cagr_5y":-5.3,"cagr_3y":-3.3}},"计算机":{"code":"801750.SI","rets":[-17.8,65.7,144.5,-53.5,104.4,26.4,-34.5,-4.5,66.9,40.3,100.3,-30.3,-11.3,-24.5,48,9.8,1.4,-25.5,9,4.4,18.2],"ytd2026":-22.7,"metrics":{"cagr_full":11.1,"cagr_7y":7.4,"cagr_5y":0.3,"cagr_3y":10.4}},"轻工制造":{"code":"801140.SI","rets":[-20.1,75.1,171.3,-65.8,119.2,1.8,-30.9,-2.6,21.5,28.8,89.9,-14.4,-12.6,-36.6,19.3,15.8,11.6,-20,-7.3,-6,20.1],"ytd2026":-19.1,"metrics":{"cagr_full":6.2,"cagr_7y":3.7,"cagr_5y":-1.3,"cagr_3y":1.5}},"建筑材料":{"code":"801710.SI","rets":[-20.2,111.3,193.2,-60.9,129.7,14.4,-32.7,4.3,-8.4,42.9,26.8,0,6,-30.3,51,23.7,4.5,-26.1,-22.6,-5.9,22.1],"ytd2026":-1.3,"metrics":{"cagr_full":8.6,"cagr_7y":3.6,"cagr_5y":-7.2,"cagr_3y":-3.8}},"汽车":{"code":"801880.SI","rets":[-13.9,111.3,184.4,-70,241,-10.5,-34.3,5,12.6,38.4,46.9,-9.5,-0.5,-34.3,14.6,45.8,17.2,-20.1,3.3,16.3,24.2],"ytd2026":-25.6,"metrics":{"cagr_full":11.8,"cagr_7y":12.9,"cagr_5y":6.9,"cagr_3y":14.3}},"钢铁":{"code":"801040.SI","rets":[-17.9,111.9,174.6,-70.9,96.2,-28.3,-28.2,-4.8,-17.3,78.3,1.8,-8.1,19.7,-29.6,-2.1,4.9,34.1,-23.8,-8.2,0.2,26.5],"ytd2026":-21.2,"metrics":{"cagr_full":3.1,"cagr_7y":2.9,"cagr_5y":3.5,"cagr_3y":5.2}},"传媒":{"code":"801760.SI","rets":[-13.5,69.5,111.7,-57.1,77.1,-2.7,-22.4,-5.4,107,17.5,76.7,-32.4,-23.1,-39.6,21.2,7.9,-0.5,-26.1,16.8,2.2,27.2],"ytd2026":-17.8,"metrics":{"cagr_full":5.9,"cagr_7y":5.6,"cagr_5y":2.2,"cagr_3y":14.9}},"基础化工":{"code":"801030.SI","rets":[-10.1,89.4,184.9,-64.7,110.9,-22.4,-31.1,0.3,6.5,27.4,55,-7.1,-3.8,-31.7,24.2,35,37.2,-19.1,-14.7,-5.1,33.3],"ytd2026":-11.4,"metrics":{"cagr_full":8.0,"cagr_7y":10.5,"cagr_5y":3.7,"cagr_3y":2.6}},"国防军工":{"code":"801740.SI","rets":[10.9,139.4,235.7,-72,130.9,18.4,-33.1,-5.7,33.3,53.9,28.5,-18.6,-16.6,-31,27.2,58,11.2,-25.3,-6.8,7.1,34.3],"ytd2026":-20.4,"metrics":{"cagr_full":12.5,"cagr_7y":12.2,"cagr_5y":2.2,"cagr_3y":10.3}},"机械设备":{"code":"801890.SI","rets":[-14.1,152.7,168.4,-61.4,121.4,28.1,-36.3,-5.6,9.6,41.9,46.8,-16.8,-10.2,-35.1,23.9,31.1,14.8,-20.7,3.3,5,41.7],"ytd2026":-12.8,"metrics":{"cagr_full":11.4,"cagr_7y":12.4,"cagr_5y":6.9,"cagr_3y":15.4}},"电力设备":{"code":"801730.SI","rets":[-0.8,94.1,210.9,-42,78.7,20.2,-42.5,-18.7,32.2,31.5,60.5,-17.2,-8.5,-34.9,24.4,94.7,47.9,-25.4,-26.2,3.1,41.8],"ytd2026":-24.7,"metrics":{"cagr_full":13.3,"cagr_7y":16.3,"cagr_5y":3.5,"cagr_3y":2.6}},"综合":{"code":"801230.SI","rets":[-21.8,73.1,202,-65.9,126.9,16,-27.1,-3.1,12.4,45.6,71.2,-12.9,-21.5,-39.3,26.1,13.1,13.8,10.6,-12.2,3.2,43.6],"ytd2026":-3.3,"metrics":{"cagr_full":9.7,"cagr_7y":12.9,"cagr_5y":10.4,"cagr_3y":9.2}},"电子":{"code":"801080.SI","rets":[-26.7,41.9,131.3,-65.6,145.2,39.4,-41.4,-0.7,42.8,18.6,72,-12.7,13.5,-36.5,73.8,36.1,16,-36.5,7.3,18.5,47.9],"ytd2026":6.7,"metrics":{"cagr_full":11.5,"cagr_7y":18.5,"cagr_5y":6.7,"cagr_3y":23.4}},"通信":{"code":"801770.SI","rets":[-10,72.8,122.7,-53.1,78.3,-9.8,-28.5,-24.8,34.7,41,72.7,-16,-3.1,-31.3,20,-8.3,3,-15.6,25.8,28.8,84.8],"ytd2026":5.3,"metrics":{"cagr_full":10.0,"cagr_7y":16.2,"cagr_5y":21.1,"cagr_3y":44.1}},"有色金属":{"code":"801050.SI","rets":[-8.3,144.1,262.6,-77.3,180,22.1,-41.8,13.6,-29.6,38.4,15.4,-6.2,15.4,-41,24.3,34.8,40.5,-20.3,-8.7,3.2,94.7],"ytd2026":-16.4,"metrics":{"cagr_full":11.7,"cagr_7y":19.3,"cagr_5y":15.5,"cagr_3y":22.4}}},"updated":"2026-10-19","ytd_as_of":"2026-10-19","ytd_year":2026,"metrics_meta":{"columns":[{"key":"cagr_full","label":"21 年","sublabel":"2005–2025"},{"key":"cagr_7y","label":"近 7 年","sublabel":"2019–2025"},{"key":"cagr_5y","label":"近 5 年","sublabel":"2021–2025"},{"key":"cagr_3y","label":"近 3 年","sublabel":"2023–2025"}],"unit":"%","note":"年化复合收益率,基于完整年度数据(不含 2026 YTD)"}};
+(async function () {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  let raw = EMBEDDED, live = false;
+  for (const u of ['data/sw_returns.json', 'site/data/sw_returns.json', '../site/data/sw_returns.json']) {
+    try {
+      const r = await fetch(u, { cache: 'no-store' });
+      if (r.ok) { raw = await r.json(); live = true; break; }
+    } catch (e) { /* 继续尝试 */ }
+  }
+  const badge = $('data-badge');
+  badge.textContent = live
+    ? '✓ 已连线上数据 site/data/sw_returns.json · 截至 ' + String(raw.updated || '').slice(0, 10)
+    : '内嵌快照 · 截至 ' + String(raw.updated || '').slice(0, 10) + '（本地 file:// 无法联网时使用；部署后自动接线上）';
+  const asOf = '数据截至 ' + String(raw.updated || '').slice(0, 10);
+  $('asof-a').textContent = asOf;
+  $('asof-b').textContent = asOf;
+
+  /* ═══════════════ 数据装配（与热力图同源 sw_returns.json） ═══════════════ */
+  const YEARS = raw.years;                       // 2005..2025 完整年度
+  const YTD_YEAR = raw.ytd_year || (YEARS.at(-1) + 1);
+  const sectors = Object.keys(raw.data).map((name) => {
+    const it = raw.data[name];
+    return { name, rets: (it.rets || []).map((v) => v / 100), ytd: it.ytd2026 != null ? it.ytd2026 / 100 : null };
+  });
+
+  /* ═══════════════ 口径函数（与离线研究页同口径，已复算核对） ═══════════════ */
+  const mean = (a) => a.reduce((s, x) => s + x, 0) / a.length;
+  const quantile = (a, q) => { const s = [...a].sort((x, y) => x - y), p = (s.length - 1) * q, i = Math.floor(p); return s[i] + (s[Math.ceil(p)] - s[i]) * (p - i); };
+  function pathStats(returns) {
+    const nav = [1];
+    returns.forEach((r) => nav.push(nav.at(-1) * (1 + r)));
+    let peak = 1, mdd = 0, lastHigh = 0, drought = 0, run = 0, maxLossRun = 0;
+    nav.slice(1).forEach((v, j) => {
+      const t = j + 1;
+      if (v >= peak - 1e-12) { peak = v; lastHigh = t; } else drought = Math.max(drought, t - lastHigh);
+      mdd = Math.min(mdd, v / peak - 1);
+      if (returns[j] < 0) { run++; maxLossRun = Math.max(run, maxLossRun); } else run = 0;
+    });
+    return { nav, cagr: nav.at(-1) ** (1 / (returns.length || 1)) - 1, mdd, drought, maxLossRun, terminal: nav.at(-1) };
+  }
+  function windowRows(start, end) {
+    return sectors.map((s) => {
+      const rs = [], ys = [];
+      for (let i = 0; i < YEARS.length; i++) { const y = YEARS[i]; if (y >= start && y <= end) { rs.push(s.rets[i]); ys.push(y); } }
+      return { name: s.name, ...pathStats(rs), years: ys };
+    });
+  }
+  function holdingWindows(h, since, end) {
+    const out = [];
+    for (let y = since; y <= end - h + 1; y++) windowRows(y, y + h - 1).forEach((s) => out.push({ ...s, start: y, end: y + h - 1 }));
+    return out;
+  }
+  const pct = (v, d = 1, sign = false) => (sign && v > 0 ? '+' : '') + (v * 100).toFixed(d) + '%';
+  const num = (v, d = 1) => v.toFixed(d);
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  /** 画布换行：按字符测量，最多拆 2 行，超长以省略号截断（避免底部文字重叠） */
+  function wrapText2(ctx, text, maxW, font) {
+    ctx.font = font;
+    const lines = [''];
+    for (const ch of text) {
+      const last = lines[lines.length - 1];
+      if (ctx.measureText(last + ch).width > maxW && last) {
+        if (lines.length >= 2) { lines[1] = lines[1].slice(0, Math.max(0, lines[1].length - 1)) + '…'; break; }
+        lines.push(ch);
+      } else lines[lines.length - 1] += ch;
+    }
+    return lines;
+  }
+
+  /* ═══════════════ 面板 1：行业买入体验模拟器 ═══════════════ */
+  const stateA = { sector: '食品饮料', start: 2019, end: 2025, omit: false, hover: -1 };
+  const A = { ink: '#1A1A1A', red: '#E65A56', green: '#2FBF71', gray: '#777777', light: '#999999', line: '#E5E5E5', axis: '#A6AD9E' };
+
+  function aReturns() {
+    const s = sectors.find((x) => x.name === stateA.sector);
+    let rs = [], ys = [];
+    for (let i = 0; i < YEARS.length; i++) { const y = YEARS[i]; if (y >= stateA.start && y <= stateA.end) { rs.push(s.rets[i]); ys.push(y); } }
+    const hasYtd = stateA.end === YTD_YEAR;
+    if (hasYtd && s.ytd != null) { rs.push(s.ytd); ys.push(YTD_YEAR); }
+    return { s, rs, ys, hasYtd };
+  }
+  function drawA(canvas, opts) {
+    opts = opts || {};
+    const exportMode = !!opts.exportMode;
+    const W = opts.W || 1280, dpr = opts.scale || 1;
+    const f = W / 1280;
+    const { s, rs, ys, hasYtd } = aReturns();
+    const omit = stateA.omit;
+    const best = Math.max(...rs), bestIdx = rs.indexOf(best);
+    const adj = rs.map((r, i) => (omit && i === bestIdx ? 0 : r));
+    const st = pathStats(adj);
+    const nav = st.nav, cagr = st.cagr;
+    const yearLabels = ys.map((y, i) => (hasYtd && i === ys.length - 1 ? String(y) + '*' : String(y)));
+
+    // ── 布局 ──
+    const metricH = Math.round(84 * f);
+    const legendH = Math.round(26 * f);
+    const chartH = Math.round(330 * f);
+    const tilesH = Math.round(32 * f);
+    const readH = Math.round(76 * f);
+    const H = metricH + legendH + chartH + tilesH + readH + Math.round(12 * f);
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.scale(dpr, dpr);
+    ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, W, H);
+
+    // ── 指标行（4 卡） ──
+    const met = [
+      ['复合年化收益', pct(st.cagr), `${stateA.start}—${stateA.end}，${rs.length} 个年度${hasYtd ? '（含 2026 YTD）' : ''}`],
+      ['年末最大回撤', pct(st.mdd), '只看年末点，年内可能更深'],
+      ['最长未创新高期', st.drought + ' 年', '从前一次净值高点计起'],
+      ['最长连续亏损', st.maxLossRun + ' 年', '年度收益严格小于 0']
+    ];
+    const metW = W / 4;
+    met.forEach((m, i) => {
+      const cx = metW * i, cy = Math.round(12 * f);
+      if (i < 3) { ctx.strokeStyle = A.line; ctx.beginPath(); ctx.moveTo(cx + metW, cy + Math.round(6 * f)); ctx.lineTo(cx + metW, cy + metricH - Math.round(6 * f)); ctx.stroke(); }
+      ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+      ctx.fillStyle = A.gray; ctx.font = `400 ${Math.round(13 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+      ctx.fillText(m[0], cx + Math.round(18 * f), cy);
+      ctx.fillStyle = A.ink; ctx.font = `500 ${Math.round(34 * f)}px "SF Mono",Menlo,Consolas,monospace`;
+      ctx.fillText(m[1], cx + Math.round(18 * f), cy + Math.round(24 * f));
+      ctx.fillStyle = A.light; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+      ctx.fillText(m[2], cx + Math.round(18 * f), cy + Math.round(66 * f));
+    });
+
+    // ── 图例 ──
+    const legY = metricH + Math.round(6 * f);
+    ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = A.ink; ctx.fillRect(Math.round(18 * f), legY + Math.round(4 * f), Math.round(26 * f), 2);
+    ctx.fillStyle = A.gray; ctx.fillText('实际年末路径', Math.round(52 * f), legY + Math.round(5 * f));
+    ctx.strokeStyle = A.red; ctx.lineWidth = 2; ctx.setLineDash([Math.round(5 * f), Math.round(5 * f)]);
+    ctx.beginPath(); ctx.moveTo(Math.round(170 * f), legY + Math.round(5 * f)); ctx.lineTo(Math.round(196 * f), legY + Math.round(5 * f)); ctx.stroke(); ctx.setLineDash([]);
+    ctx.fillStyle = A.gray; ctx.fillText('CAGR 匀速路径（虚线）', Math.round(204 * f), legY + Math.round(5 * f));
+    if (hasYtd) { ctx.fillStyle = A.red; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`; ctx.fillText('2026* = 年初至今 YTD', W - Math.round(30 * f), legY + Math.round(5 * f)); }
+
+    // ── 净值图：x 轴共用一条时间栅格（yearStep），折线与下方逐年色块严格对齐 ──
+    const chartTop = metricH + legendH;
+    const padL = Math.round(64 * f), padR = Math.round(30 * f);
+    const pw = W - padL - padR;
+    const n = rs.length;
+    const yearStep = pw / n;                                  // 相邻两个年末点的间距
+    const ph = chartH - Math.round(48 * f);
+    const smooth = nav.map((_, i) => (1 + cagr) ** i);
+    const allV = nav.concat(smooth);
+    const maxV = Math.max(...allV) * 1.09, minV = Math.min(...allV) * 0.8;
+    const X = (i) => padL + i * yearStep;                     // 年末点在栅格边界
+    const Y = (v) => chartTop + Math.round(20 * f) + (maxV - v) / (maxV - minV || 1) * ph;
+    // 网格
+    ctx.strokeStyle = A.line; ctx.lineWidth = 1; ctx.setLineDash([Math.round(3 * f), Math.round(5 * f)]);
+    ctx.font = `400 ${Math.round(11 * f)}px "SF Mono",Menlo,monospace`;
+    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    for (let i = 0; i <= 4; i++) {
+      const v = minV + (maxV - minV) * i / 4, y = Y(v);
+      ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(W - padR, y); ctx.stroke();
+      ctx.fillStyle = A.gray; ctx.fillText(v.toFixed(v < 10 ? 1 : 0), padL - Math.round(8 * f), y);
+    }
+    ctx.setLineDash([]);
+    ctx.fillStyle = A.light; ctx.textAlign = 'left'; ctx.fillText('净值 / 起点 = 1', padL, chartTop + Math.round(7 * f));
+    // x 轴年份标签：锚点年贴左缘，其余年份对齐各自色块中心（与下方逐年色块同一列）
+    const xSkip = Math.max(1, Math.ceil(n / (W < 700 ? 6 : 12)));
+    const yLab = chartTop + chartH - Math.round(32 * f);
+    ctx.textBaseline = 'top';
+    ctx.textAlign = 'left'; ctx.fillStyle = A.light;
+    ctx.fillText(String(stateA.start - 1), padL, yLab);
+    yearLabels.forEach((l, i) => {
+      if (i % xSkip === 0 || i === yearLabels.length - 1) {
+        ctx.textAlign = 'center'; ctx.fillStyle = l.indexOf('*') >= 0 ? A.red : A.gray;
+        ctx.fillText(l, padL + (i + 0.5) * yearStep, yLab);
+      }
+    });
+    // 曲线
+    ctx.lineWidth = Math.round(2.5 * f); ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.strokeStyle = A.red; ctx.setLineDash([Math.round(5 * f), Math.round(5 * f)]);
+    ctx.beginPath(); smooth.forEach((v, i) => { i ? ctx.lineTo(X(i), Y(v)) : ctx.moveTo(X(i), Y(v)); }); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.strokeStyle = A.ink;
+    ctx.beginPath(); nav.forEach((v, i) => { i ? ctx.lineTo(X(i), Y(v)) : ctx.moveTo(X(i), Y(v)); }); ctx.stroke();
+    // 数据点
+    nav.forEach((v, i) => {
+      ctx.beginPath(); ctx.arc(X(i), Y(v), (nav.length > 13 ? 2 : 3.3) * f, 0, Math.PI * 2);
+      ctx.fillStyle = i === 0 ? A.light : A.ink; ctx.fill();
+      ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 1; ctx.stroke();
+    });
+    // hover 竖线（屏幕模式）
+    if (!exportMode && stateA.hover >= 0 && stateA.hover < nav.length) {
+      window.AK.drawHoverVLine(ctx, X(stateA.hover), chartTop + Math.round(16 * f), chartTop + chartH - Math.round(30 * f), 1);
+      ctx.beginPath(); ctx.arc(X(stateA.hover), Y(nav[stateA.hover]), (5.5) * f, 0, Math.PI * 2);
+      ctx.fillStyle = A.ink; ctx.fill();
+    }
+
+    // ── 逐年色块（与折线共用 yearStep 栅格，中间留 2px 缝隙） ──
+    const tileTop = chartTop + chartH;
+    const tileGap = Math.max(1, Math.round(2 * f));
+    const tileW = yearStep - tileGap, tileH = Math.round(28 * f);
+    rs.forEach((r, i) => {
+      const tx = padL + i * yearStep + tileGap / 2;
+      const isYtd = hasYtd && i === rs.length - 1;
+      const up = r >= 0;
+      ctx.fillStyle = up ? 'rgba(230,90,86,0.13)' : 'rgba(47,191,113,0.15)';
+      ctx.fillRect(tx, tileTop, tileW, tileH);
+      ctx.fillStyle = up ? '#C3484C' : '#1E8E52';
+      ctx.font = `500 ${Math.round(12 * f)}px "SF Mono",Menlo,Consolas,monospace`;
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillText(pct(r, 1, true) + (isYtd ? '*' : ''), tx + tileW / 2, tileTop + Math.round(9 * f));
+      ctx.fillStyle = A.light; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+      ctx.fillText(isYtd ? '2026*' : String(ys[i]), tx + tileW / 2, tileTop + Math.round(21 * f));
+      ctx.fillStyle = up ? A.red : A.green;
+      ctx.fillRect(tx, tileTop + tileH, tileW, Math.max(1.5, Math.round(3 * f)));
+    });
+
+    // ── 读解（最多 3 行：主句可换行，附注固定） ──
+    const rdTop = tileTop + tileH + Math.round(10 * f);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.font = `400 ${Math.round(13 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+    let line1 = `${s.name}：1 元变成 ${num(st.terminal, 3)} 元。`;
+    if (st.mdd < 0) line1 += `经历最深年末回撤后，需要再涨 ${pct(1 / (1 + st.mdd) - 1)} 才能回到前高。`;
+    if (st.terminal < Math.max(...nav) - 1e-10) line1 += '期末仍低于本段年末最高净值。';
+    if (omit) line1 += `已将 ${ys[bestIdx]} 年的 ${pct(best, 1, true)} 改为 0%。`;
+    const line2 = hasYtd
+      ? '2026 为年初至今（非完整年度），随每日更新自动刷新；年化按整段年数计，未按天数折算。'
+      : omit
+        ? '事后压力测试：只检查收益有多集中，不代表能预知或避开那一年。'
+        : '只连结年末观测点；「年末最大回撤」是实际最大回撤幅度的下界，不能替代日度风控。';
+    const maxLineW = W - Math.round(36 * f);
+    const l1 = wrapText2(ctx, line1, maxLineW, `400 ${Math.round(13 * f)}px NotoSansSC,"PingFang SC",sans-serif`);
+    l1.forEach((t, i) => { ctx.fillStyle = A.ink; ctx.fillText(t, Math.round(18 * f), rdTop + i * Math.round(22 * f)); });
+    ctx.fillStyle = A.gray; ctx.fillText(line2, Math.round(18 * f), rdTop + l1.length * Math.round(22 * f));
+  }
+
+  // ── 面板 1 控件 ──
+  (function buildControlsA() {
+    const wrap = $('buy-sim-controls');
+    wrap.innerHTML =
+      '<div class="ctrl-group"><label>行业</label><select id="a-sector"></select></div>' +
+      '<div class="ctrl-group"><label>开始年份</label><select id="a-start"></select></div>' +
+      '<div class="ctrl-group"><label>结束年份</label><select id="a-end"></select></div>' +
+      '<div class="ctrl-group"><label><input type="checkbox" id="a-omit"> 最佳一年改为 0%（压力测试）</label></div>';
+    const opt = (sel, arr, selVal) => { sel.innerHTML = arr.map((x) => `<option value="${x.v}" ${String(x.v) === String(selVal) ? 'selected' : ''}>${esc(x.label)}</option>`).join(''); };
+    opt($('a-sector'), sectors.map((s) => ({ v: s.name, label: s.name })), stateA.sector);
+    const fullYears = YEARS.map((y) => ({ v: y, label: String(y) }));
+    opt($('a-start'), fullYears, stateA.start);
+    const endYears = [...fullYears, { v: YTD_YEAR, label: YTD_YEAR + '*（YTD）' }];
+    opt($('a-end'), endYears, stateA.end);
+    const redraw = () => drawA($('buySim'), { scale: window.devicePixelRatio || 1 });
+    $('a-sector').addEventListener('change', (e) => { stateA.sector = e.target.value; stateA.hover = -1; redraw(); });
+    $('a-start').addEventListener('change', (e) => { stateA.start = +e.target.value; if (stateA.end < stateA.start) { stateA.end = stateA.start; $('a-end').value = stateA.end; } stateA.hover = -1; redraw(); });
+    $('a-end').addEventListener('change', (e) => { stateA.end = +e.target.value; if (stateA.start > stateA.end) { stateA.start = stateA.end; $('a-start').value = stateA.start; } stateA.hover = -1; redraw(); });
+    $('a-omit').addEventListener('change', (e) => { stateA.omit = e.target.checked; stateA.hover = -1; redraw(); });
+
+    // hover：跟随虚线 + tooltip
+    const cv = $('buySim');
+    cv.addEventListener('mousemove', (ev) => {
+      const r = cv.getBoundingClientRect();
+      const x = (ev.clientX - r.left) / r.width * cv.width;
+      const { rs, hasYtd } = aReturns();
+      const navN = rs.length + 1;
+      const padL = 64, padR = 30, W0 = 1280;
+      const pw = W0 - padL - padR;
+      const Xi = (i) => (padL + i / (navN - 1 || 1) * pw) * (cv.width / W0);
+      let idx = -1, bestD = 1e9;
+      for (let i = 0; i < navN; i++) { const d = Math.abs(x - Xi(i)); if (d < bestD) { bestD = d; idx = i; } }
+      stateA.hover = idx;
+      drawA(cv, { scale: window.devicePixelRatio || 1 });
+      if (idx >= 0 && bestD < 40) {
+        const b2 = Math.max(...rs), bi = rs.indexOf(b2);
+        const st2 = pathStats(rs.map((r, i) => (stateA.omit && i === bi ? 0 : r)));
+        const navV = st2.nav[idx];
+        const lab = idx === 0 ? String(stateA.start - 1) + '（起点）' : (hasYtd && idx === navN - 1 ? '2026（YTD）' : String(stateA.start + idx - 1));
+        window.AK.tooltip.show(ev, `<b>${esc(stateA.sector)}</b> · ${lab}<br>年末净值：<b>${navV.toFixed(3)}</b>`);
+      } else window.AK.tooltip.hide();
+    });
+    cv.addEventListener('mouseleave', () => { stateA.hover = -1; drawA(cv, { scale: window.devicePixelRatio || 1 }); window.AK.tooltip.hide(); });
+  })();
+
+  /* ═══════════════ 面板 2：长期持有窗口 ═══════════════ */
+  const stateB = { since: 2015, h: 5, hover: null };
+  function drawB(canvas, opts) {
+    opts = opts || {};
+    const exportMode = !!opts.exportMode;
+    const W = opts.W || 1280, dpr = opts.scale || 1;
+    const f = W / 1280;
+    const h = stateB.h, since = stateB.since, endY = 2025;
+    const a = holdingWindows(h, since, endY);
+    const loss = a.filter((s) => s.cagr < 0).length;
+    const dd = a.filter((s) => s.mdd <= -0.3).length;
+
+    // ── 布局 ──
+    const metricH = Math.round(84 * f);
+    const bandH = Math.round(50 * f);
+    const sumH = Math.round(122 * f);
+    const starts = Array.from({ length: endY - h + 1 - since + 1 }, (_, i) => since + i);
+    const rowH = Math.round(22 * f);
+    const colHdrH = Math.round(30 * f);
+    const heatTop = metricH + bandH + sumH + colHdrH;
+    const H = heatTop + rowH * sectors.length + Math.round(54 * f);
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.scale(dpr, dpr);
+    ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, W, H);
+
+    // ── 指标行 ──
+    const met = [
+      ['期末亏损窗口占比', pct(loss / a.length), `${loss} / ${a.length} 个行业窗口`],
+      ['窗口年化中位数', pct(quantile(a.map((s) => s.cagr), 0.5)), '不同起点共同构成分布'],
+      ['年末回撤 ≥30% 的占比', pct(dd / a.length), `${dd} / ${a.length} 个行业窗口`],
+      ['年末最大回撤中位数', pct(quantile(a.map((s) => s.mdd), 0.5)), `完整 ${h} 年持有区间`]
+    ];
+    const metW = W / 4;
+    met.forEach((m, i) => {
+      const cx = metW * i, cy = Math.round(12 * f);
+      if (i < 3) { ctx.strokeStyle = A.line; ctx.beginPath(); ctx.moveTo(cx + metW, cy + Math.round(6 * f)); ctx.lineTo(cx + metW, cy + metricH - Math.round(6 * f)); ctx.stroke(); }
+      ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+      ctx.fillStyle = A.gray; ctx.font = `400 ${Math.round(13 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+      ctx.fillText(m[0], cx + Math.round(18 * f), cy);
+      ctx.fillStyle = A.ink; ctx.font = `500 ${Math.round(34 * f)}px "SF Mono",Menlo,Consolas,monospace`;
+      ctx.fillText(m[1], cx + Math.round(18 * f), cy + Math.round(24 * f));
+      ctx.fillStyle = A.light; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+      ctx.fillText(m[2], cx + Math.round(18 * f), cy + Math.round(66 * f));
+    });
+
+    // ── 亏损 / 不亏 色带 ──
+    const bandTop = metricH + Math.round(8 * f);
+    const bandW = W - Math.round(36 * f), bx = Math.round(18 * f);
+    const lossFrac = loss / a.length;
+    ctx.fillStyle = A.green; ctx.fillRect(bx, bandTop, bandW * lossFrac, Math.round(22 * f));
+    ctx.fillStyle = A.red; ctx.fillRect(bx + bandW * lossFrac, bandTop, bandW * (1 - lossFrac), Math.round(22 * f));
+    ctx.fillStyle = '#FFFFFF'; ctx.font = `500 ${Math.round(11 * f)}px "SF Mono",Menlo,monospace`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    if (lossFrac > 0.12) ctx.fillText('亏损 ' + pct(lossFrac), bx + bandW * lossFrac / 2, bandTop + Math.round(11 * f));
+    if (lossFrac < 0.88) ctx.fillText('不亏 ' + pct(1 - lossFrac), bx + bandW * (0.5 + lossFrac / 2), bandTop + Math.round(11 * f));
+    ctx.fillStyle = A.gray; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText(`${h} 年窗口：买入年 ${since}—${endY - h + 1}，期末年 ${since + h - 1}—${endY} · 共 ${starts.length} 个起点 × 31 行业 · 不含 2026 YTD`, bx, bandTop + Math.round(27 * f));
+
+    // ── 汇总表（3 / 5 / 7 年） ──
+    const sumTop = bandTop + Math.round(50 * f);
+    const cols = ['持有期', '亏损窗口占比', '年化中位数', '年化 10%—90% 分位', '年末回撤中位数'];
+    const cw = [Math.round(70 * f), Math.round(200 * f), Math.round(180 * f), Math.round(340 * f), Math.round(220 * f)];
+    let colX = Math.round(18 * f);
+    ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = A.light; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+    cols.forEach((c, i) => { ctx.fillText(c, colX, sumTop + Math.round(9 * f)); colX += cw[i]; });
+    [3, 5, 7].forEach((n, ri) => {
+      const b = holdingWindows(n, since, endY), cs = b.map((x) => x.cagr);
+      const r0 = { loss: b.filter((x) => x.cagr < 0).length / b.length, median: quantile(cs, 0.5), p10: quantile(cs, 0.1), p90: quantile(cs, 0.9), mdd: quantile(b.map((x) => x.mdd), 0.5) };
+      const ry = sumTop + Math.round(29 * f) + ri * Math.round(28 * f);
+      if (n === h) { ctx.fillStyle = '#F5F6F4'; ctx.fillRect(Math.round(8 * f), ry - Math.round(13 * f), W - Math.round(16 * f), Math.round(28 * f)); ctx.fillStyle = A.red; ctx.fillRect(Math.round(8 * f), ry - Math.round(13 * f), Math.max(2, Math.round(3 * f)), Math.round(28 * f)); }
+      ctx.font = `500 ${Math.round(12 * f)}px "SF Mono",Menlo,Consolas,monospace`;
+      ctx.fillStyle = n === h ? A.ink : A.gray;
+      ctx.textAlign = 'left'; ctx.fillText(n + ' 年', Math.round(18 * f), ry);
+      ctx.font = `400 ${Math.round(12 * f)}px "SF Mono",Menlo,Consolas,monospace`;
+      const vals = [pct(r0.loss), pct(r0.median), `${pct(r0.p10)} 至 ${pct(r0.p90)}`, pct(r0.mdd)];
+      const colXs = []; { let acc = Math.round(18 * f); cw.forEach((c) => { colXs.push(acc); acc += c; }); }
+      vals.forEach((v, i) => { ctx.textAlign = 'left'; ctx.fillStyle = A.ink; ctx.fillText(v, colXs[i + 1], ry); });
+    });
+
+    // ── 热力图 ──
+    const padL = Math.round(120 * f), padR = Math.round(20 * f);
+    const hmW = W - padL - padR, colW = hmW / starts.length;
+    const hdrY = heatTop + Math.round(7 * f);
+    // 「买入起点」文案右对齐在行名栏内，绝不与第一列年份重叠
+    ctx.fillStyle = A.gray; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    ctx.fillText('买入起点 →', padL - Math.round(10 * f), hdrY);
+    ctx.textAlign = 'center';
+    starts.forEach((y, j) => { ctx.fillStyle = A.gray; ctx.fillText(String(y), padL + colW * (j + 0.5), hdrY); });
+    sectors.forEach((s, i) => {
+      const ry = heatTop + Math.round(24 * f) + i * rowH;
+      ctx.fillStyle = A.gray; ctx.textAlign = 'right'; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+      ctx.fillText(s.name, padL - Math.round(10 * f), ry + rowH / 2);
+      starts.forEach((y, j) => {
+        const b = a.find((x) => x.name === s.name && x.start === y);
+        if (!b) return;
+        const up = b.cagr >= 0;
+        const alpha = Math.min(0.72, Math.abs(b.cagr) * 1.8 + 0.06);
+        ctx.fillStyle = up ? `rgba(230,90,86,${alpha})` : `rgba(47,191,113,${alpha})`;
+        ctx.fillRect(padL + j * colW, ry, colW - Math.max(1, Math.round(1.5 * f)), rowH - Math.max(1, Math.round(1.5 * f)));
+        if (stateB.hover && stateB.hover[0] === s.name && stateB.hover[1] === y) {
+          ctx.strokeStyle = A.ink; ctx.lineWidth = Math.max(1.5, Math.round(1.5 * f));
+          ctx.strokeRect(padL + j * colW + 0.5, ry + 0.5, colW - 1, rowH - 1);
+        }
+        ctx.fillStyle = '#222222'; ctx.font = `400 ${Math.round(11 * f)}px "SF Mono",Menlo,monospace`;
+        ctx.textAlign = 'center';
+        ctx.fillText(pct(b.cagr, 1), padL + colW * (j + 0.5), ry + rowH / 2 + Math.round(0.5 * f));
+      });
+    });
+
+    // 底部提示（与末行热力图保持 ≥20px 留白）
+    ctx.fillStyle = A.light; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+    ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+    ctx.fillText('点击格子 → 上方「行业买入体验模拟器」自动加载该行业与窗口路径；热力图单元格只作历史窗口快照，不是未来亏损概率。', Math.round(18 * f), H - Math.round(28 * f));
+  }
+
+  // ── 面板 2 控件 ──
+  (function buildControlsB() {
+    const wrap = $('hold-win-controls');
+    wrap.innerHTML =
+      '<div class="ctrl-group"><label>样本起点</label><span class="seg" id="b-since"></span></div>' +
+      '<div class="ctrl-group"><label>持有年数</label><span class="seg" id="b-h"></span></div>';
+    const sinceSeg = $('b-since');
+    [[2015, '2015（近年）'], [2005, '2005（全部）']].forEach(([v, lab]) => {
+      const b = document.createElement('button'); b.textContent = lab;
+      if (v === stateB.since) b.classList.add('active');
+      b.addEventListener('click', () => { stateB.since = v; sinceSeg.querySelectorAll('button').forEach((x) => x.classList.remove('active')); b.classList.add('active'); redrawB(); });
+      sinceSeg.appendChild(b);
+    });
+    const hSeg = $('b-h');
+    [3, 5, 7].forEach((v) => {
+      const b = document.createElement('button'); b.textContent = v + ' 年';
+      if (v === stateB.h) b.classList.add('active');
+      b.addEventListener('click', () => { stateB.h = v; hSeg.querySelectorAll('button').forEach((x) => x.classList.remove('active')); b.classList.add('active'); redrawB(); });
+      hSeg.appendChild(b);
+    });
+    const redrawB = () => drawB($('holdWin'), { scale: window.devicePixelRatio || 1 });
+
+    // hover + 点击穿透到面板 1
+    const cv = $('holdWin');
+    const geo = () => {
+      const h = stateB.h, since = stateB.since, endY = 2025;
+      const starts = Array.from({ length: endY - h + 1 - since + 1 }, (_, i) => since + i);
+      const k = cv.width / 1280;
+      return { starts, k, padL: 120 * k, colW: (1280 - 140) / starts.length * k, heatTop: (84 + 50 + 122 + 30) * k, rowH: 22 * k, rowTop: 24 * k };
+    };
+    cv.addEventListener('mousemove', (ev) => {
+      const s = window.AK.canvasXY(cv, ev), g = geo();
+      const ri = Math.floor((s.y - g.heatTop - g.rowTop) / g.rowH);
+      const cj = Math.floor((s.x - g.padL) / g.colW);
+      if (ri < 0 || ri >= sectors.length || cj < 0 || cj >= g.starts.length) { stateB.hover = null; redrawB(); window.AK.tooltip.hide(); return; }
+      const sec = sectors[ri], y = g.starts[cj];
+      stateB.hover = [sec.name, y];
+      redrawB();
+      const b = holdingWindows(stateB.h, stateB.since, 2025).find((x) => x.name === sec.name && x.start === y);
+      if (b) window.AK.tooltip.show(ev, `<b>${esc(sec.name)}</b> ${y}—${y + stateB.h - 1}<br>年化 <b>${pct(b.cagr)}</b> · 年末最大回撤 <b>${pct(b.mdd)}</b><br><span style="color:#aaa">点击格子 → 上方模拟器加载该路径</span>`);
+      else window.AK.tooltip.hide();
+    });
+    cv.addEventListener('mouseleave', () => { stateB.hover = null; redrawB(); window.AK.tooltip.hide(); });
+    cv.addEventListener('click', (ev) => {
+      const s = window.AK.canvasXY(cv, ev), g = geo();
+      const ri = Math.floor((s.y - g.heatTop - g.rowTop) / g.rowH);
+      const cj = Math.floor((s.x - g.padL) / g.colW);
+      if (ri < 0 || ri >= sectors.length || cj < 0 || cj >= g.starts.length) return;
+      stateA.sector = sectors[ri].name; stateA.start = g.starts[cj]; stateA.end = g.starts[cj] + stateB.h - 1; stateA.omit = false;
+      $('a-sector').value = stateA.sector; $('a-start').value = stateA.start; $('a-end').value = stateA.end; $('a-omit').checked = false;
+      drawA($('buySim'), { scale: window.devicePixelRatio || 1 });
+      $('panel-buy-sim').scrollIntoView({ behavior: 'smooth' });
+    });
+  })();
+
+  /* ═══════════════ 首次渲染 + 导出 + resize ═══════════════ */
+  const redrawAll = () => { drawA($('buySim'), { scale: window.devicePixelRatio || 1 }); drawB($('holdWin'), { scale: window.devicePixelRatio || 1 }); };
+  redrawAll();
+  let timer;
+  window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(redrawAll, 180); });
+
+  window.AK.bindExportButtons({
+    buySim: (off) => drawA(off, { exportMode: true, scale: 1, W: 3000 }),
+    holdWin: (off) => drawB(off, { exportMode: true, scale: 1, W: 3000 })
+  });
+})().catch((e) => { document.body.insertAdjacentHTML('afterbegin', '<div style="padding:16px;background:#FFF0F0;color:#A50000">预览加载失败：' + esc(e.message) + '</div>'); });
+</script>
+</body>
+</html>
