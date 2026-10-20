@@ -3,10 +3,10 @@
   "friendly": "sofr",
   "source": "FRED",
   "fetched": "2026-10-20",
-  "count": 2133,
+  "count": 2134,
   "latest": {
-    "date": "2026-10-16",
-    "value": 3.88
+    "date": "2026-10-19",
+    "value": 3.87
   },
   "data": [
     {
@@ -8540,6 +8540,10 @@
     {
       "date": "2026-10-16",
       "value": 3.88
+    },
+    {
+      "date": "2026-10-19",
+      "value": 3.87
     }
   ]
 }
