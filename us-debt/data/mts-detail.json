@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-20T13:56:00Z",
+  "updated": "2026-10-21T01:42:12Z",
   "source": "Treasury Fiscal Data API · MTS Table 4 (Receipts) + Table 5 (Outlays)",
   "year_range": [
     2015,
@@ -515,6 +515,7 @@
     {
       "year": 2026,
       "outlays_by_dept": {
+        "Undistributed Offsetting Receipts": -372699041560.47,
         "Legislative Branch": 7048846626.9,
         "Judicial Branch": 9985272808.0,
         "Department of Agriculture": 216669564389.41,
@@ -543,18 +544,17 @@
         "Office of Personnel Management": 135808863209.02,
         "Small Business Administration": 11826793776.22,
         "Social Security Administration": 1733853189988.17,
-        "Independent Agencies": 3028156362.67,
-        "Undistributed Offsetting Receipts": -372699041560.47
+        "Independent Agencies": 3028156362.67
       },
       "outlays_total": 7395799983313.2295,
       "receipts_by_source": {
         "Individual Income Taxes": 2845526866159.55,
+        "Customs Duties": 173218614643.4,
+        "Miscellaneous Receipts": 46656595004.81,
         "Corporation Income Taxes": 381414689057.62,
         "Social Insurance and Retirement Receipts": 1811794721160.92,
         "Excise Taxes": 105995126578.38,
-        "Estate and Gift Taxes": 38720146356.13,
-        "Customs Duties": 173218614643.4,
-        "Miscellaneous Receipts": 46656595004.81
+        "Estate and Gift Taxes": 38720146356.13
       },
       "receipts_total": 5403326758960.81
     }
@@ -562,6 +562,7 @@
   "latest": {
     "year": 2026,
     "outlays_by_dept": {
+      "Undistributed Offsetting Receipts": -372699041560.47,
       "Legislative Branch": 7048846626.9,
       "Judicial Branch": 9985272808.0,
       "Department of Agriculture": 216669564389.41,
@@ -590,18 +591,17 @@
       "Office of Personnel Management": 135808863209.02,
       "Small Business Administration": 11826793776.22,
       "Social Security Administration": 1733853189988.17,
-      "Independent Agencies": 3028156362.67,
-      "Undistributed Offsetting Receipts": -372699041560.47
+      "Independent Agencies": 3028156362.67
     },
     "outlays_total": 7395799983313.2295,
     "receipts_by_source": {
       "Individual Income Taxes": 2845526866159.55,
+      "Customs Duties": 173218614643.4,
+      "Miscellaneous Receipts": 46656595004.81,
       "Corporation Income Taxes": 381414689057.62,
       "Social Insurance and Retirement Receipts": 1811794721160.92,
       "Excise Taxes": 105995126578.38,
-      "Estate and Gift Taxes": 38720146356.13,
-      "Customs Duties": 173218614643.4,
-      "Miscellaneous Receipts": 46656595004.81
+      "Estate and Gift Taxes": 38720146356.13
     },
     "receipts_total": 5403326758960.81
   }
