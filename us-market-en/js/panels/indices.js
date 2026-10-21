@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261021104227';
+} from '../utils.js?v=20261021220834';
 
 import {
   registerChart,
@@ -32,9 +32,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261021104227';
+} from '../chart-helpers.js?v=20261021220834';
 
-import { isMobile } from '../mobile.js?v=20261021104227';
+import { isMobile } from '../mobile.js?v=20261021220834';
 
 export function initPanelVix(priceData, vixData, recessionData, opts = {}) {
   const chartId = opts.chartId || 'chartVix';
