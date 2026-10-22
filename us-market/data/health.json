@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-22 10:41:46",
+  "generated_at": "2026-10-22 20:25:39",
   "today": "2026-10-22",
   "overall": "warn",
-  "stale_count": 1,
+  "stale_count": 2,
   "sources": [
     {
       "file": "sp500_price.json",
@@ -84,6 +84,22 @@
       "updated": "2026-10-22T10:40:44",
       "days_old": 0,
       "status": "fresh"
+    },
+    {
+      "file": "us_asset_ladder.json",
+      "label": "衰退期资产累计涨幅",
+      "updated": "2026-10-22T12:21:56",
+      "days_old": 0,
+      "status": "stale",
+      "series_end": {
+        "series": "2026-07-28"
+      },
+      "lagging_series": {
+        "series": {
+          "end": "2026-07-28",
+          "lag_days": 86
+        }
+      }
     },
     {
       "file": "buffett.json",
