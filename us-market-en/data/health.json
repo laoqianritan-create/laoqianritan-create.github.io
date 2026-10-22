@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22 20:25:39",
+  "generated_at": "2026-10-22 21:52:46",
   "today": "2026-10-22",
   "overall": "warn",
   "stale_count": 2,
@@ -51,11 +51,11 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-10-20",
-      "days_old": 2,
+      "updated": "2026-10-21",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-10-20"
+        "series": "2026-10-21"
       }
     },
     {
@@ -71,7 +71,7 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "Growth paths (TR vs price)",
-      "updated": "2026-10-22T10:40:44",
+      "updated": "2026-10-22T21:51:24",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -81,14 +81,14 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "Bull markets since 1966",
-      "updated": "2026-10-22T10:40:44",
+      "updated": "2026-10-22T21:51:24",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "us_asset_ladder.json",
       "label": "衰退期资产累计涨幅",
-      "updated": "2026-10-22T12:21:56",
+      "updated": "2026-10-22T13:51:36",
       "days_old": 0,
       "status": "stale",
       "series_end": {
@@ -104,18 +104,18 @@
     {
       "file": "buffett.json",
       "label": "Buffett Indicator",
-      "updated": "2026-10-20",
-      "days_old": 2,
+      "updated": "2026-10-21",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-10-20"
+        "series": "2026-10-21"
       }
     },
     {
       "file": "aiae.json",
       "label": "AIAE Allocation",
-      "updated": "2026-10-21",
-      "days_old": 1,
+      "updated": "2026-10-22",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -125,7 +125,7 @@
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-10-21"
+        "series": "2026-10-22"
       }
     },
     {
@@ -142,7 +142,7 @@
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-10-21"
+        "series": "2026-10-22"
       }
     },
     {
