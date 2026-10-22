@@ -2563,19 +2563,6 @@
       "weight": 0.0837
     },
     {
-      "ticker": "TDG",
-      "name": "TransDigm Group Incorporated",
-      "nameEn": "TransDigm Group Incorporated",
-      "marketCap": 62430000000.0,
-      "price": 1129.38,
-      "sector": "Industrials",
-      "sectorEn": "Industrials",
-      "subsector": "Aerospace & Defense",
-      "return1y": -0.1406,
-      "ytdReturn": -0.1687,
-      "weight": 0.0834
-    },
-    {
       "ticker": "AON",
       "name": "Aon plc",
       "nameEn": "Aon plc",
@@ -2586,6 +2573,19 @@
       "subsector": "Insurance Brokers",
       "return1y": -0.1421,
       "ytdReturn": -0.145,
+      "weight": 0.0834
+    },
+    {
+      "ticker": "TDG",
+      "name": "TransDigm Group Incorporated",
+      "nameEn": "TransDigm Group Incorporated",
+      "marketCap": 62430000000.0,
+      "price": 1129.38,
+      "sector": "Industrials",
+      "sectorEn": "Industrials",
+      "subsector": "Aerospace & Defense",
+      "return1y": -0.1406,
+      "ytdReturn": -0.1687,
       "weight": 0.0834
     },
     {
@@ -3395,19 +3395,6 @@
       "weight": 0.0579
     },
     {
-      "ticker": "ILMN",
-      "name": "Illumina, Inc.",
-      "nameEn": "Illumina, Inc.",
-      "marketCap": 42710000000.0,
-      "price": 282.86,
-      "sector": "Health Care",
-      "sectorEn": "Health Care",
-      "subsector": "Life Sciences Tools & Services",
-      "return1y": 1.9092,
-      "ytdReturn": 1.1054,
-      "weight": 0.0571
-    },
-    {
       "ticker": "AIG",
       "name": "American International Group, Inc.",
       "nameEn": "American International Group, Inc.",
@@ -3418,6 +3405,19 @@
       "subsector": "Multi-line Insurance",
       "return1y": 0.0356,
       "ytdReturn": -0.0299,
+      "weight": 0.0571
+    },
+    {
+      "ticker": "ILMN",
+      "name": "Illumina, Inc.",
+      "nameEn": "Illumina, Inc.",
+      "marketCap": 42710000000.0,
+      "price": 282.86,
+      "sector": "Health Care",
+      "sectorEn": "Health Care",
+      "subsector": "Life Sciences Tools & Services",
+      "return1y": 1.9092,
+      "ytdReturn": 1.1054,
       "weight": 0.0571
     },
     {
@@ -4529,14 +4529,14 @@
       "ticker": "FOX",
       "name": "Fox Corporation",
       "nameEn": "Fox Corporation",
-      "marketCap": 26160000000.0,
+      "marketCap": 26170000000.0,
       "price": 58.63,
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Broadcasting",
       "return1y": 0.117,
       "ytdReturn": -0.1111,
-      "weight": 0.0349
+      "weight": 0.035
     },
     {
       "ticker": "PPL",
@@ -4578,19 +4578,6 @@
       "weight": 0.0347
     },
     {
-      "ticker": "FISV",
-      "name": "Fiserv, Inc.",
-      "nameEn": "Fiserv, Inc.",
-      "marketCap": 25640000000.0,
-      "price": 48.21,
-      "sector": "Financials",
-      "sectorEn": "Financials",
-      "subsector": "Transaction & Payment Processing Services",
-      "return1y": -0.6151,
-      "ytdReturn": -0.265,
-      "weight": 0.0343
-    },
-    {
       "ticker": "CASY",
       "name": "Casey's General Stores, Inc.",
       "nameEn": "Casey's General Stores, Inc.",
@@ -4601,6 +4588,19 @@
       "subsector": "Food Retail",
       "return1y": 0.2752,
       "ytdReturn": 0.2498,
+      "weight": 0.0343
+    },
+    {
+      "ticker": "FISV",
+      "name": "Fiserv, Inc.",
+      "nameEn": "Fiserv, Inc.",
+      "marketCap": 25640000000.0,
+      "price": 48.21,
+      "sector": "Financials",
+      "sectorEn": "Financials",
+      "subsector": "Transaction & Payment Processing Services",
+      "return1y": -0.6151,
+      "ytdReturn": -0.265,
       "weight": 0.0343
     },
     {
@@ -4981,19 +4981,6 @@
       "weight": 0.0295
     },
     {
-      "ticker": "EIX",
-      "name": "Edison International",
-      "nameEn": "Edison International",
-      "marketCap": 22010000000.0,
-      "price": 57.19,
-      "sector": "Utilities",
-      "sectorEn": "Utilities",
-      "subsector": "Electric Utilities",
-      "return1y": -0.0153,
-      "ytdReturn": -0.0614,
-      "weight": 0.0294
-    },
-    {
       "ticker": "TROW",
       "name": "T. Rowe Price Group, Inc.",
       "nameEn": "T. Rowe Price Group, Inc.",
@@ -5004,6 +4991,19 @@
       "subsector": "Asset Management & Custody Banks",
       "return1y": 0.0052,
       "ytdReturn": -0.0128,
+      "weight": 0.0294
+    },
+    {
+      "ticker": "EIX",
+      "name": "Edison International",
+      "nameEn": "Edison International",
+      "marketCap": 22010000000.0,
+      "price": 57.19,
+      "sector": "Utilities",
+      "sectorEn": "Utilities",
+      "subsector": "Electric Utilities",
+      "return1y": -0.0153,
+      "ytdReturn": -0.0614,
       "weight": 0.0294
     },
     {
@@ -5098,19 +5098,6 @@
       "weight": 0.0283
     },
     {
-      "ticker": "VTRS",
-      "name": "Viatris Inc.",
-      "nameEn": "Viatris Inc.",
-      "marketCap": 21190000000.0,
-      "price": 18.45,
-      "sector": "Health Care",
-      "sectorEn": "Health Care",
-      "subsector": "Pharmaceuticals",
-      "return1y": 0.7723,
-      "ytdReturn": 0.4807,
-      "weight": 0.0283
-    },
-    {
       "ticker": "PKG",
       "name": "Packaging Corporation of America",
       "nameEn": "Packaging Corporation of America",
@@ -5121,6 +5108,19 @@
       "subsector": "Paper & Plastic Packaging Products & Materials",
       "return1y": 0.145,
       "ytdReturn": 0.1321,
+      "weight": 0.0283
+    },
+    {
+      "ticker": "VTRS",
+      "name": "Viatris Inc.",
+      "nameEn": "Viatris Inc.",
+      "marketCap": 21190000000.0,
+      "price": 18.45,
+      "sector": "Health Care",
+      "sectorEn": "Health Care",
+      "subsector": "Pharmaceuticals",
+      "return1y": 0.7723,
+      "ytdReturn": 0.4807,
       "weight": 0.0283
     },
     {
@@ -5904,19 +5904,6 @@
       "weight": 0.0185
     },
     {
-      "ticker": "WY",
-      "name": "Weyerhaeuser Company",
-      "nameEn": "Weyerhaeuser Company",
-      "marketCap": 13680000000.0,
-      "price": 18.98,
-      "sector": "Real Estate",
-      "sectorEn": "Real Estate",
-      "subsector": "Timber REITs",
-      "return1y": -0.1961,
-      "ytdReturn": -0.2025,
-      "weight": 0.0183
-    },
-    {
       "ticker": "GDDY",
       "name": "GoDaddy Inc.",
       "nameEn": "GoDaddy Inc.",
@@ -5927,6 +5914,19 @@
       "subsector": "Internet Services & Infrastructure",
       "return1y": -0.1822,
       "ytdReturn": -0.0869,
+      "weight": 0.0183
+    },
+    {
+      "ticker": "WY",
+      "name": "Weyerhaeuser Company",
+      "nameEn": "Weyerhaeuser Company",
+      "marketCap": 13680000000.0,
+      "price": 18.98,
+      "sector": "Real Estate",
+      "sectorEn": "Real Estate",
+      "subsector": "Timber REITs",
+      "return1y": -0.1961,
+      "ytdReturn": -0.2025,
       "weight": 0.0183
     },
     {
