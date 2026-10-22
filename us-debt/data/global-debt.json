@@ -1,9 +1,11 @@
 {
-  "updated": "2026-10-21T11:41:10Z",
-  "fx_date": "2026-10-16",
-  "fx_fallback": false,
+  "updated": "2026-10-22T03:01:27Z",
+  "fx_date": "2026-10-21（降级快照）",
+  "fx_fallback": true,
   "fx_note": "EUR/USD · JPY/USD · CNY/USD（FRED 日频 DEXUSEU / DEXJPUS / DEXCHUS）",
-  "warnings": [],
+  "warnings": [
+    "汇率未全部从 FRED 取到，USD 折算使用降级快照汇率（2026-10-21）"
+  ],
   "entities": [
     {
       "key": "us",
@@ -13,8 +15,8 @@
       "unit": "—",
       "fx_rate": null,
       "fx_src": "—",
-      "usd_trn": 40.4,
-      "as_of": "2026-10-19",
+      "usd_trn": 40.44,
+      "as_of": "2026-10-20",
       "scope": "联邦债务总额（含部门间持有）",
       "src": "US Treasury Debt to the Penny"
     },
@@ -24,9 +26,9 @@
       "local": "15.39 万亿欧元",
       "local_trn": 15.386675,
       "unit": "万亿欧元",
-      "fx_rate": 1.1231,
+      "fx_rate": 1.1226,
       "fx_src": "FRED DEXUSEU",
-      "usd_trn": 17.28,
+      "usd_trn": 17.27,
       "as_of": "2025 年末",
       "scope": "广义政府合并债务（Maastricht/EDP）",
       "src": "Eurostat EDP（2026-10-21 发布）"
@@ -37,9 +39,9 @@
       "local": "96.05 万亿元",
       "local_trn": 96.05485,
       "unit": "万亿元",
-      "fx_rate": 6.6861,
+      "fx_rate": 6.6761,
       "fx_src": "FRED DEXCHUS",
-      "usd_trn": 14.37,
+      "usd_trn": 14.39,
       "as_of": "2025 年末",
       "scope": "显性债务：国债 + 地方债（不含隐性债务）",
       "src": "财政部 / 中国人大网"
@@ -50,9 +52,9 @@
       "local": "1,343.84 万亿日元",
       "local_trn": 1343.84,
       "unit": "万亿日元",
-      "fx_rate": 158.0,
+      "fx_rate": 158.06,
       "fx_src": "FRED DEXJPUS",
-      "usd_trn": 8.51,
+      "usd_trn": 8.5,
       "as_of": "2026-03-31",
       "scope": "中央政府债务（国债 + 借款 + 政府短期证券）",
       "src": "日本财务省"
@@ -63,7 +65,7 @@
       "local": "2.84 万亿欧元",
       "local_trn": 2.84,
       "unit": "万亿欧元",
-      "fx_rate": 1.1231,
+      "fx_rate": 1.1226,
       "fx_src": "FRED DEXUSEU",
       "usd_trn": 3.19,
       "as_of": "2025 年末",

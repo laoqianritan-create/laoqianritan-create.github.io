@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21T11:43:23Z",
+  "updated": "2026-10-22T03:10:11Z",
   "source": "Treasury Fiscal Data API · MTS Table 4 (Receipts) + Table 5 (Outlays)",
   "year_range": [
     2015,
@@ -516,6 +516,8 @@
       "year": 2026,
       "outlays_by_dept": {
         "Undistributed Offsetting Receipts": -372699041560.47,
+        "Department of Transportation": 124270631233.59,
+        "Corps of Engineers": 10783829803.75,
         "Legislative Branch": 7048846626.9,
         "Judicial Branch": 9985272808.0,
         "Department of Agriculture": 216669564389.41,
@@ -530,10 +532,8 @@
         "Department of Justice": 45336477058.26,
         "Department of Labor": 55183832215.66,
         "Department of State": 28828477980.42,
-        "Department of Transportation": 124270631233.59,
         "Department of the Treasury": 1580963564396.77,
         "Department of Veterans Affairs": 415574777773.02,
-        "Corps of Engineers": 10783829803.75,
         "Other Defense Civil Programs": 65484461559.49,
         "Environmental Protection Agency": 17365168363.24,
         "Executive Office of the President": -1233611351.34,
@@ -548,11 +548,11 @@
       },
       "outlays_total": 7395799983313.2295,
       "receipts_by_source": {
+        "Corporation Income Taxes": 381414689057.62,
+        "Social Insurance and Retirement Receipts": 1811794721160.92,
         "Individual Income Taxes": 2845526866159.55,
         "Customs Duties": 173218614643.4,
         "Miscellaneous Receipts": 46656595004.81,
-        "Corporation Income Taxes": 381414689057.62,
-        "Social Insurance and Retirement Receipts": 1811794721160.92,
         "Excise Taxes": 105995126578.38,
         "Estate and Gift Taxes": 38720146356.13
       },
@@ -563,6 +563,8 @@
     "year": 2026,
     "outlays_by_dept": {
       "Undistributed Offsetting Receipts": -372699041560.47,
+      "Department of Transportation": 124270631233.59,
+      "Corps of Engineers": 10783829803.75,
       "Legislative Branch": 7048846626.9,
       "Judicial Branch": 9985272808.0,
       "Department of Agriculture": 216669564389.41,
@@ -577,10 +579,8 @@
       "Department of Justice": 45336477058.26,
       "Department of Labor": 55183832215.66,
       "Department of State": 28828477980.42,
-      "Department of Transportation": 124270631233.59,
       "Department of the Treasury": 1580963564396.77,
       "Department of Veterans Affairs": 415574777773.02,
-      "Corps of Engineers": 10783829803.75,
       "Other Defense Civil Programs": 65484461559.49,
       "Environmental Protection Agency": 17365168363.24,
       "Executive Office of the President": -1233611351.34,
@@ -595,11 +595,11 @@
     },
     "outlays_total": 7395799983313.2295,
     "receipts_by_source": {
+      "Corporation Income Taxes": 381414689057.62,
+      "Social Insurance and Retirement Receipts": 1811794721160.92,
       "Individual Income Taxes": 2845526866159.55,
       "Customs Duties": 173218614643.4,
       "Miscellaneous Receipts": 46656595004.81,
-      "Corporation Income Taxes": 381414689057.62,
-      "Social Insurance and Retirement Receipts": 1811794721160.92,
       "Excise Taxes": 105995126578.38,
       "Estate and Gift Taxes": 38720146356.13
     },
