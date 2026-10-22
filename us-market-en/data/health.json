@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-22 09:45:12",
+  "generated_at": "2026-10-22 10:12:47",
   "today": "2026-10-22",
   "overall": "warn",
   "stale_count": 1,
@@ -17,11 +17,11 @@
     {
       "file": "sp500_century.json",
       "label": "S&P 500 Monthly (Century)",
-      "updated": "2026-10-19",
-      "days_old": 3,
-      "status": "recent",
+      "updated": "2026-10-20",
+      "days_old": 2,
+      "status": "fresh",
       "series_end": {
-        "series": "2026-10-19"
+        "series": "2026-10-20"
       }
     },
     {
@@ -71,7 +71,7 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "Growth paths (TR vs price)",
-      "updated": "2026-10-22T09:44:10",
+      "updated": "2026-10-22T10:11:45",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -81,7 +81,7 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "Bull markets since 1966",
-      "updated": "2026-10-22T09:44:10",
+      "updated": "2026-10-22T10:11:45",
       "days_old": 0,
       "status": "fresh"
     },
