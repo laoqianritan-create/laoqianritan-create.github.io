@@ -10,57 +10,57 @@
 //
 // 每个面板只初始化一次（initialized Set 守卫）
 
-import { fetchJSON, cssVar } from './utils.js?v=20261022215247';
-import { initTheme } from './theme.js?v=20261022215247';
-import { initLangSwitch } from './lang-switch.js?v=20261022215247';
-import { initNav } from './nav.js?v=20261022215247';
-import { initExportButtons } from './export-png.js?v=20261022215247';
-import { installPanelNotes } from './panel-notes.js?v=20261022215247';
+import { fetchJSON, cssVar } from './utils.js?v=20261022220827';
+import { initTheme } from './theme.js?v=20261022220827';
+import { initLangSwitch } from './lang-switch.js?v=20261022220827';
+import { initNav } from './nav.js?v=20261022220827';
+import { initExportButtons } from './export-png.js?v=20261022220827';
+import { installPanelNotes } from './panel-notes.js?v=20261022220827';
 
 import {
   initPanelPrice, initPanelDrawdown, initPanelVolatility, initPanelMonthly,
   initPanelAnnualizedMatrix, initPanelScatter, initPanelPe, initPanelEps,
   initPanelRoe, initPanelRolling, initAnnualReturnsPanel, initReturnDetailsPanel,
   initIntrayearDdPanel, initSp500AnnualDistPanel, initCapitalismPanel,
-} from './panels/sp500.js?v=20261022215247';
+} from './panels/sp500.js?v=20261022220827';
 
 import {
   initPanelVix, initPanelVixeq, initLogYoyPanel, initLongRunIndexPanel, initPanelAiae,
-} from './panels/indices.js?v=20261022215247';
+} from './panels/indices.js?v=20261022220827';
 
-import { initPanelBuffett } from './panels/buffett.js?v=20261022215247';
+import { initPanelBuffett } from './panels/buffett.js?v=20261022220827';
 
-import { initPanelHindenburg } from './panels/hindenburg.js?v=20261022215247';
+import { initPanelHindenburg } from './panels/hindenburg.js?v=20261022220827';
 
-import { initPanelM7, initPanelSectors, initPanelBreadth } from './panels/market.js?v=20261022215247';
+import { initPanelM7, initPanelSectors, initPanelBreadth } from './panels/market.js?v=20261022220827';
 
 import {
   initNasdaq100CompaniesPanel, initNasdaq100AnnualPanel,
   initNasdaqRankingPanel,
   initNdxScatterPanel, initNdxSectorsPanel,
-} from './panels/nasdaq.js?v=20261022215247';
+} from './panels/nasdaq.js?v=20261022220827';
 
-import { initPanelChanges, initPanelRules } from './panels/rules.js?v=20261022215247';
-import { initPanelQuotes } from './panels/quotes.js?v=20261022215247';
+import { initPanelChanges, initPanelRules } from './panels/rules.js?v=20261022220827';
+import { initPanelQuotes } from './panels/quotes.js?v=20261022220827';
 
-import { initPanelChronicle } from './panels/chronicle.js?v=20261022215247';
+import { initPanelChronicle } from './panels/chronicle.js?v=20261022220827';
 
-import { initPanelStyleEtf, initPanelStyleEtfScatter } from './panels/style_etf.js?v=20261022215247';
+import { initPanelStyleEtf, initPanelStyleEtfScatter } from './panels/style_etf.js?v=20261022220827';
 
-import { initFedHikesPanel } from './panels/fed_hikes.js?v=20261022215247';
+import { initFedHikesPanel } from './panels/fed_hikes.js?v=20261022220827';
 
-import { initSp500CagrPanel } from './panels/cagr_paths.js?v=20261022215247';
-import { initBullRunsPanel } from './panels/bull_runs.js?v=20261022215247';
-import { initSectorRsPanel } from './panels/sector_rs.js?v=20261022215247';
-import { initGeoCrisesPanel } from './panels/geo_crises.js?v=20261022215247';
-import { initDrawdownSuitePanel } from './panels/drawdown_suite.js?v=20261022215247';
-import { initAthPathsPanel } from './panels/ath_paths.js?v=20261022215247';
+import { initSp500CagrPanel } from './panels/cagr_paths.js?v=20261022220827';
+import { initBullRunsPanel } from './panels/bull_runs.js?v=20261022220827';
+import { initSectorRsPanel } from './panels/sector_rs.js?v=20261022220827';
+import { initGeoCrisesPanel } from './panels/geo_crises.js?v=20261022220827';
+import { initDrawdownSuitePanel } from './panels/drawdown_suite.js?v=20261022220827';
+import { initAthPathsPanel } from './panels/ath_paths.js?v=20261022220827';
 
 
 import {
   initPanelIciRiskAppetite, initPanelIciDomesticWorld, initPanelIciMmf,
   initPanelIciActiveIndex, initPanelIciPassivization, initPanelOwnership,
-} from './panels/flows.js?v=20261022215247';
+} from './panels/flows.js?v=20261022220827';
 
 // ─────────────────────────────────────────────────────────────
 // § 1  Data store — key/value + callback notifications
@@ -106,61 +106,61 @@ async function load(key, url) {
 
 const FILES = {
   // SP500
-  price:          'data/sp500_price.json?v=20261022215247',
-  volatility:     'data/sp500_volatility.json?v=20261022215247',
-  monthly:        'data/sp500_monthly.json?v=20261022215247',
-  constituents:   'data/sp500_constituents.json?v=20261022215247',
-  drawdown:       'data/sp500_drawdowns.json?v=20261022215247',
-  sectorRS:       'data/sp500_sector_rs.json?v=20261022215247',
-  vix:            'data/sp500_vix.json?v=20261022215247',
-  vixeq:          'data/sp500_vixeq.json?v=20261022215247',
-  pe:             'data/sp500_pe.json?v=20261022215247',
-  eps:            'data/sp500_eps.json?v=20261022215247',
-  roe:            'data/sp500_roe.json?v=20261022215247',
-  recession:      'data/us_recessions.json?v=20261022215247',
-  century:        'data/sp500_century.json?v=20261022215247',
-  annualReturns:  'data/sp500_annual_returns_long.json?v=20261022215247',
-  returnDetails:  'data/sp500_return_details.json?v=20261022215247',
-  m7:             'data/m7_index.json?v=20261022215247',
-  sectors:        'data/sp500_sectors.json?v=20261022215247',
-  changes:        'data/sp500_changes.json?v=20261022215247',
-  rules:          'data/sp500_rules.json?v=20261022215247',
-  quotes:         'data/bofa_longest_pictures_quotes.json?v=20261022215247',
-  aiae:           'data/aiae.json?v=20261022215247',
-  breadth:        'data/sp500_breadth.json?v=20261022215247',
-  buffett:        'data/buffett.json?v=20261022215247',
-  hindenburg:     'data/sp500_hindenburg.json?v=20261022215247',
-  intrayearDd:    'data/sp500_intrayear_dd.json?v=20261022215247',
-  annualTr:       'data/sp500_annual_tr.json?v=20261022215247',
-  cagrPaths:      'data/sp500_cagr_paths.json?v=20261022215247',
+  price:          'data/sp500_price.json?v=20261022220827',
+  volatility:     'data/sp500_volatility.json?v=20261022220827',
+  monthly:        'data/sp500_monthly.json?v=20261022220827',
+  constituents:   'data/sp500_constituents.json?v=20261022220827',
+  drawdown:       'data/sp500_drawdowns.json?v=20261022220827',
+  sectorRS:       'data/sp500_sector_rs.json?v=20261022220827',
+  vix:            'data/sp500_vix.json?v=20261022220827',
+  vixeq:          'data/sp500_vixeq.json?v=20261022220827',
+  pe:             'data/sp500_pe.json?v=20261022220827',
+  eps:            'data/sp500_eps.json?v=20261022220827',
+  roe:            'data/sp500_roe.json?v=20261022220827',
+  recession:      'data/us_recessions.json?v=20261022220827',
+  century:        'data/sp500_century.json?v=20261022220827',
+  annualReturns:  'data/sp500_annual_returns_long.json?v=20261022220827',
+  returnDetails:  'data/sp500_return_details.json?v=20261022220827',
+  m7:             'data/m7_index.json?v=20261022220827',
+  sectors:        'data/sp500_sectors.json?v=20261022220827',
+  changes:        'data/sp500_changes.json?v=20261022220827',
+  rules:          'data/sp500_rules.json?v=20261022220827',
+  quotes:         'data/bofa_longest_pictures_quotes.json?v=20261022220827',
+  aiae:           'data/aiae.json?v=20261022220827',
+  breadth:        'data/sp500_breadth.json?v=20261022220827',
+  buffett:        'data/buffett.json?v=20261022220827',
+  hindenburg:     'data/sp500_hindenburg.json?v=20261022220827',
+  intrayearDd:    'data/sp500_intrayear_dd.json?v=20261022220827',
+  annualTr:       'data/sp500_annual_tr.json?v=20261022220827',
+  cagrPaths:      'data/sp500_cagr_paths.json?v=20261022220827',
   // Cross / NDX
-  nasdaqComp:     'data/nasdaq_composite.json?v=20261022215247',
-  nasdaq100:      'data/nasdaq100_panels.json?v=20261022215247',
-  dowCentury:     'data/dow_jones_century.json?v=20261022215247',
-  ndxAnnualLong:  'data/ndx_annual_returns_long.json?v=20261022215247',
-  ndxAnnualTr:    'data/ndx_annual_tr.json?v=20261022215247',
-  ndxDaily:       'data/ndx_daily.json?v=20261022215247',
-  ndxPrice:       'data/ndx_price.json?v=20261022215247',
-  ndxVolatility:  'data/ndx_volatility.json?v=20261022215247',
-  ndxMonthly:     'data/ndx_monthly.json?v=20261022215247',
-  ndxDrawdowns:   'data/ndx_drawdowns.json?v=20261022215247',
-  ndxRolling5y:   'data/ndx_rolling5y.json?v=20261022215247',
-  ndxIntrayearDd: 'data/ndx_intrayear_dd.json?v=20261022215247',
-  ndxVxn:         'data/ndx_vxn.json?v=20261022215247',
-  qqqDetails:     'data/qqq_return_details.json?v=20261022215247',
-  equalWeight:    'data/sp500_equal_weight.json?v=20261022215247',
-  ndxBreadth:     'data/ndx_breadth.json?v=20261022215247',
+  nasdaqComp:     'data/nasdaq_composite.json?v=20261022220827',
+  nasdaq100:      'data/nasdaq100_panels.json?v=20261022220827',
+  dowCentury:     'data/dow_jones_century.json?v=20261022220827',
+  ndxAnnualLong:  'data/ndx_annual_returns_long.json?v=20261022220827',
+  ndxAnnualTr:    'data/ndx_annual_tr.json?v=20261022220827',
+  ndxDaily:       'data/ndx_daily.json?v=20261022220827',
+  ndxPrice:       'data/ndx_price.json?v=20261022220827',
+  ndxVolatility:  'data/ndx_volatility.json?v=20261022220827',
+  ndxMonthly:     'data/ndx_monthly.json?v=20261022220827',
+  ndxDrawdowns:   'data/ndx_drawdowns.json?v=20261022220827',
+  ndxRolling5y:   'data/ndx_rolling5y.json?v=20261022220827',
+  ndxIntrayearDd: 'data/ndx_intrayear_dd.json?v=20261022220827',
+  ndxVxn:         'data/ndx_vxn.json?v=20261022220827',
+  qqqDetails:     'data/qqq_return_details.json?v=20261022220827',
+  equalWeight:    'data/sp500_equal_weight.json?v=20261022220827',
+  ndxBreadth:     'data/ndx_breadth.json?v=20261022220827',
   // Style ETF
-  styleEtf:       'data/style_etf.json?v=20261022215247',
+  styleEtf:       'data/style_etf.json?v=20261022220827',
   // ICI Flows（资金流）
-  iciFlows:       'data/ici_flows.json?v=20261022215247',
-  iciMmf:         'data/ici_mmf.json?v=20261022215247',
-  iciActiveIndex: 'data/ici_active_index.json?v=20261022215247',
-  ownership:      'data/ownership.json?v=20261022215247',
+  iciFlows:       'data/ici_flows.json?v=20261022220827',
+  iciMmf:         'data/ici_mmf.json?v=20261022220827',
+  iciActiveIndex: 'data/ici_active_index.json?v=20261022220827',
+  ownership:      'data/ownership.json?v=20261022220827',
   // Fed hikes（加息×股指）
-  fedHikes:       'data/fed_hikes.json?v=20261022215247',
+  fedHikes:       'data/fed_hikes.json?v=20261022220827',
   // Chronicle
-  chronicleYears: 'data/chronicle/years.json?v=20261022215247',
+  chronicleYears: 'data/chronicle/years.json?v=20261022220827',
 };
 
 // ─────────────────────────────────────────────────────────────
