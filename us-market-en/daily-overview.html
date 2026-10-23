@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>Daily Overview · Big Picture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-section: #fafafa;
+  --text: #1a1a1a;
+  --text-secondary: #666666;
+  --border: #e8e8e8;
+  --green: #389e0d;
+  --red: #cf1322;
+  --accent: #4758e0;
+  --accent-light: rgba(71,88,224,0.08);
+  --gray: #999999;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Inter", -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Main site horizontal category nav (nav.css style; no left rail here, margin-left: 0) */
+.category-bar {
+  position: sticky; top: 0; z-index: 90;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  margin-left: 0;
+}
+.category-inner {
+  max-width: 1440px; margin: 0 auto; padding: 10px 24px;
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+}
+.category-tab {
+  font: inherit; font-size: 13px; font-weight: 600;
+  padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--card-bg, #fff);
+  color: var(--text-secondary); text-decoration: none;
+  transition: all 0.15s;
+}
+.category-tab:hover { color: var(--text); border-color: var(--text-secondary); }
+.category-tab.active { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+.category-summary {
+  display: inline-flex; align-items: center; gap: 6px; margin-right: 6px;
+  font-size: 13px; font-weight: 600; color: var(--text-secondary); text-decoration: none;
+}
+.category-summary:hover { color: var(--accent); }
+.category-summary svg { width: 15px; height: 15px; }
+
+.page {
+  max-width: 1440px; margin: 0 auto; padding: 28px 28px 80px;
+}
+.page-title { font-size: 30px; font-weight: 800; letter-spacing: -0.01em; }
+
+/* Controls */
+.controls {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  margin: 22px 0 10px;
+}
+.dim-tab {
+  font: inherit; font-size: 14px; font-weight: 600;
+  padding: 8px 18px; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--card-bg, #fff);
+  color: var(--text-secondary); cursor: pointer; transition: all 0.15s;
+}
+.dim-tab:hover { color: var(--text); border-color: var(--text-secondary); }
+.dim-tab.active { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+.btn-export {
+  font: inherit; font-size: 13px; font-weight: 600;
+  padding: 8px 14px; border-radius: 8px;
+  border: 1px solid var(--border); background: #fff; color: var(--text-secondary);
+  cursor: pointer; margin-left: auto; transition: all 0.15s;
+}
+.btn-export:hover { color: var(--text); border-color: var(--text-secondary); }
+
+/* Stat strip */
+.stats {
+  display: flex; gap: 22px; flex-wrap: wrap;
+  padding: 12px 16px; margin: 6px 0 16px;
+  background: var(--bg-section); border: 1px solid var(--border); border-radius: 10px;
+  font-size: 13px; color: var(--text-secondary);
+}
+.stats b { color: var(--text); font-weight: 600; }
+.stat-item .stat-k { color: var(--gray); margin-right: 6px; }
+
+/* Legend */
+.legend {
+  display: flex; align-items: center; gap: 12px;
+  margin: 10px 0 14px; font-size: 12.5px; color: var(--text-secondary);
+}
+.legend-bar {
+  position: relative;
+  width: 320px; height: 14px; border-radius: 4px;
+  background: linear-gradient(to right,
+    rgb(207,19,34) 0%, rgb(255,255,255) 50%, rgb(56,158,13) 100%);
+  border: 1px solid var(--border);
+}
+.legend-zero {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);
+  font-size: 11px; font-weight: 700; color: #333;
+  background: rgba(255,255,255,0.8); padding: 0 4px; border-radius: 3px;
+}
+#legendLeft, #legendRight { font-weight: 700; color: var(--text); }
+
+/* Heatmap area (full width, no horizontal drag) */
+#heatWrap { transition: opacity 0.15s; }
+#heatCanvas { display: block; border: 1px solid var(--border); border-radius: 6px; }
+
+/* Notes (collapsible) */
+.panel-notes {
+  margin-top: 18px; border-top: 1px dashed var(--border); padding-top: 10px;
+  font-size: 12.5px; color: var(--gray); line-height: 1.7; max-width: 980px;
+}
+.panel-notes summary {
+  cursor: pointer; font-weight: 600; color: var(--text-secondary);
+  user-select: none; list-style: none; display: inline-block;
+}
+.panel-notes summary::-webkit-details-marker { display: none; }
+.panel-notes summary::before { content: '▸ '; color: var(--gray); }
+.panel-notes[open] summary::before { content: '▾ '; }
+.panel-notes summary:hover { color: var(--accent); }
+.panel-notes > *:not(summary) { margin-top: 10px; }
+
+/* Tooltip */
+#heatTooltip {
+  position: fixed; z-index: 100; pointer-events: none;
+  background: rgba(26,26,26,0.94); color: #fff;
+  padding: 9px 12px; border-radius: 8px; font-size: 12.5px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  opacity: 0; transform: translateY(2px); transition: opacity 0.08s;
+  min-width: 150px;
+}
+#heatTooltip.is-visible { opacity: 1; transform: none; }
+#heatTooltip .tt-title { font-weight: 700; font-size: 13px; }
+#heatTooltip .tt-row { display: flex; align-items: center; gap: 7px; margin-top: 4px; font-size: 14px; }
+#heatTooltip .tt-dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+#heatTooltip .tt-sub { color: rgba(255,255,255,0.72); margin-top: 3px; }
+
+#loadError { display: none; }
+#loadError.is-visible {
+  display: block; margin-top: 20px; padding: 14px 16px;
+  background: #fff1f0; border: 1px solid #ffa39e; border-radius: 8px;
+  color: #cf1322; font-size: 13.5px;
+}
+</style>
+</head>
+<body>
+
+<div class="category-bar" id="categoryBar">
+  <div class="category-inner">
+    <a class="category-summary" href="summary.html" title="Thumbnail overview of all panels">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>Summary</span>
+    </a>
+    <a class="category-tab" href="index.html#panel-price" title="S&amp;P 500 group">S&amp;P 500</a>
+    <a class="category-tab" href="index.html#panel-nasdaq-composite" title="Nasdaq 100 &amp; Dow Jones group">Nasdaq 100 &amp; Dow Jones</a>
+    <a class="category-tab active" href="daily-overview.html" title="Daily gain/loss heatmap of the three indices">Daily Overview</a>
+    <a class="category-tab" href="index.html#panel-style-etf" title="Style ETFs group">Style ETFs</a>
+    <a class="category-tab" href="index.html#panel-ici-risk-appetite" title="Fund Flows group">Fund Flows</a>
+    <a class="category-tab" href="index.html#panel-chronicle" title="Chronicle group">Chronicle</a>
+    <a class="category-tab" href="index.html#panel-quotes" title="Maxims group">Maxims</a>
+  </div>
+</div>
+
+<main class="page">
+  <h1 class="page-title">Daily Overview</h1>
+
+  <div class="controls">
+    <button class="dim-tab active" data-dim="spx">S&amp;P 500</button>
+    <button class="dim-tab" data-dim="ndx">Nasdaq 100</button>
+    <button class="dim-tab" data-dim="dji">Dow Jones</button>
+    <button class="btn-export" id="btnExport" title="Export PNG">&#8681; Export PNG</button>
+  </div>
+
+  <div class="stats">
+    <span class="stat-item"><span class="stat-k">Coverage</span><b id="statRange">—</b></span>
+    <span class="stat-item"><span class="stat-k">Trading days</span><b id="statDays">—</b></span>
+    <span class="stat-item"><span class="stat-k">Largest daily gain</span><b id="statMaxGain" style="color:var(--green)">—</b></span>
+    <span class="stat-item"><span class="stat-k">Largest daily loss</span><b id="statMaxLoss" style="color:var(--red)">—</b></span>
+    <span class="stat-item"><span class="stat-k">Latest close</span><b id="statLatest">—</b></span>
+  </div>
+
+  <div class="legend">
+    <span id="legendLeft">—</span>
+    <span class="legend-bar"><span class="legend-zero">0</span></span>
+    <span id="legendRight">—</span>
+  </div>
+
+  <div id="heatWrap">
+    <canvas id="heatCanvas" width="200" height="40"></canvas>
+  </div>
+
+  <details class="panel-notes">
+    <summary>Notes</summary>
+    <div>
+      · Daily return = close &divide; prior close &minus; 1; the color ramps linearly and saturates at &plusmn;5% (larger moves share the deepest color); each index's largest daily gain/loss is shown in the stat strip.
+      · Data sources: S&amp;P 500 (from 1927-12) · Nasdaq 100 (from 1985-10) · Dow Jones (from 1914-12), local data.
+    </div>
+  </details>
+</main>
+
+<div id="heatTooltip"></div>
+<script src="js/daily-overview-data.js?v=20261023175302"></script>
+<script src="js/daily-overview.js?v=20261023175302"></script>
+</body>
+</html>
