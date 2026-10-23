@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261023220834';
+} from '../utils.js?v=20261024011935';
 
 import {
   registerChart,
@@ -32,9 +32,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261023220834';
+} from '../chart-helpers.js?v=20261024011935';
 
-import { isMobile } from '../mobile.js?v=20261023220834';
+import { isMobile } from '../mobile.js?v=20261024011935';
 
 export function initPanelM7(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartM7')));
@@ -97,7 +97,9 @@ export function initPanelM7(data) {
 
     return {
       animation: false,
-      grid: mobile ? { left: 48, right: 12, top: 30, bottom: 60 } : { left: 60, right: 20, top: 30, bottom: 60 },
+      // right 留白：desktop 下 8 条线 + M7 指数的右侧 markPoint 标签（最长如「M7 指数 +250%」约 110px）
+      // 叠加 x 轴 max=2028 的最右刻度标签，统一给到 130。mobile 下 markPoint 已禁用，仅给 2028 刻度留位。
+      grid: mobile ? { left: 48, right: 24, top: 30, bottom: 60 } : { left: 60, right: 130, top: 30, bottom: 60 },
       legend: getLineLegendConfig({
         type: 'scroll',
       }),

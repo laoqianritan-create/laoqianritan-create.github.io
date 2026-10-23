@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261023220834';
+} from '../utils.js?v=20261024011935';
 
 import {
   registerChart,
@@ -33,9 +33,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261023220834';
+} from '../chart-helpers.js?v=20261024011935';
 
-import { isMobile } from '../mobile.js?v=20261023220834';
+import { isMobile } from '../mobile.js?v=20261024011935';
 
 export function initPanelPrice(data, recessionData, centuryData, equalWeightData, drawdownData) {
   const chart = registerChart(echarts.init(document.getElementById('chartPrice')));
@@ -1765,9 +1765,11 @@ export function initPanelRolling(data, opts = {}) {
     }
     return {
       animation: false,
+      // right 留白要同时容纳两件事：① 最右侧 markPoint「最新 X年 +xx.xx%」标签（约 100px）
+      // ② x 轴 max=2028 时最右「2028」刻度标签不被裁。mobile 同样留出余量。
       grid: mobile
-        ? { left: 52, right: 62, top: 20, bottom: 60 }
-        : { left: 65, right: 20, top: 20, bottom: 60 },
+        ? { left: 52, right: 84, top: 20, bottom: 60 }
+        : { left: 65, right: 110, top: 20, bottom: 60 },
       xAxis: {
         type: 'time',
         max: AXIS_END_2028_TS,
