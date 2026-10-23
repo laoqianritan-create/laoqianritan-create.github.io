@@ -18,7 +18,7 @@ const DIMS = [
 
 const GREEN = [56, 158, 13];     // #389e0d (site-wide positive color)
 const RED   = [207, 19, 34];     // #cf1322 (site-wide negative color)
-const SAT_RET = 0.05;            // Color saturates at ±5% daily move
+const SAT_RET = 0.08;            // Color saturates at ±8% daily move (2026-10-23)
 const GRAY  = '#999999';
 const BORDER = '#e8e8e8';
 const YEAR_W = 46;               // Left year-column width
@@ -57,10 +57,10 @@ function cellColor(ret) {
   if (ret == null) return null;               // first trading day of the series (no prior close)
   if (ret === 0) return 'rgb(255,255,255)';
   if (ret > 0) {
-    const t = Math.min(1, ret / SAT_RET);      // gain ≥5% → deepest green
+    const t = Math.min(1, ret / SAT_RET);      // gain ≥8% → deepest green
     return colorStr([lerp(255, GREEN[0], t), lerp(255, GREEN[1], t), lerp(255, GREEN[2], t)]);
   }
-  const t = Math.min(1, -ret / SAT_RET);       // loss ≥5% → deepest red
+  const t = Math.min(1, -ret / SAT_RET);       // loss ≥8% → deepest red
   return colorStr([lerp(255, RED[0], t), lerp(255, RED[1], t), lerp(255, RED[2], t)]);
 }
 

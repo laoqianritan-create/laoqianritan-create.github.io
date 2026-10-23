@@ -5,7 +5,8 @@
 // 三个维度（标普500 / 纳指100 / 道琼斯）点选切换；Canvas 渲染。
 // 数据：js/daily-overview-data.js 内嵌（window.__DO_DATA__），file:// 直开可用。
 // 2026-10-23 老钱修订：年份间分割线；右侧不留大留白（行数自适应折行）；
-// 删「数据更新」；最新收盘用 ｜ 且点位无千分逗号；热力图上/下沿留白。
+// 删「数据更新」；最新收盘用 ｜ 且点位无千分逗号；热力图上/下沿留白；
+// 颜色饱和点 ±8%（2026-10-23 二次修订：8% 以上足够深）。
 // ══════════════════════════════════════════════════════════════════
 
 const DIMS = [
@@ -16,7 +17,7 @@ const DIMS = [
 
 const GREEN = [56, 158, 13];     // #389e0d（站点统一正收益色）
 const RED   = [207, 19, 34];     // #cf1322（站点统一负收益色）
-const SAT_RET = 0.05;            // 颜色饱和点：涨跌幅 ±5% 即为最深色（2026-10-23 老钱：5% 以上要足够深，不再按历史极值归一）
+const SAT_RET = 0.08;            // 颜色饱和点：涨跌幅 ±8% 即为最深色（2026-10-23 老钱修订：8% 以上要足够深，不再按历史极值归一）
 const GRAY  = '#999999';
 const BORDER = '#e8e8e8';
 const YEAR_W = 46;               // 左列年份栏宽度
@@ -55,10 +56,10 @@ function cellColor(ret) {
   if (ret == null) return null;               // 无前收（该指数首个交易日）
   if (ret === 0) return 'rgb(255,255,255)';
   if (ret > 0) {
-    const t = Math.min(1, ret / SAT_RET);      // 涨幅 ≥5% → 最深绿
+    const t = Math.min(1, ret / SAT_RET);      // 涨幅 ≥8% → 最深绿
     return colorStr([lerp(255, GREEN[0], t), lerp(255, GREEN[1], t), lerp(255, GREEN[2], t)]);
   }
-  const t = Math.min(1, -ret / SAT_RET);       // 跌幅 ≥5% → 最深红
+  const t = Math.min(1, -ret / SAT_RET);       // 跌幅 ≥8% → 最深红
   return colorStr([lerp(255, RED[0], t), lerp(255, RED[1], t), lerp(255, RED[2], t)]);
 }
 
