@@ -1,12 +1,11 @@
 // ══════════════════════════════════════════════════════════════════
-// js/daily-overview.js · 「日度全貌」独立预览页渲染器
+// js/daily-overview.js · 「日度全貌」渲染器（v2 · 2026-10-24 加载优化重构）
 // 纵向热力图：左列年份，每个年份的交易日折成 2-3 行小格子（非交易日不显示），
 // 绿=涨 红=跌 白=0；最深绿=该指数历史最大单日涨幅，最深红=最大单日跌幅。
 // 三个维度（标普500 / 纳指100 / 道琼斯）点选切换；Canvas 渲染。
-// 数据：js/daily-overview-data.js 内嵌（window.__DO_DATA__），file:// 直开可用。
-// 2026-10-23 老钱修订：年份间分割线；右侧不留大留白（行数自适应折行）；
-// 删「数据更新」；最新收盘用 ｜ 且点位无千分逗号；热力图上/下沿留白；
-// 颜色饱和点 ±8%（2026-10-23 二次修订：8% 以上足够深）。
+// 数据 v2：按维度拆 3 个文件（daily-overview-data-{spx,ndx,dji}.js，window.__DO_*__），
+// 默认维度随 HTML 加载，其余切换时动态注入；file:// 直开可用（相对 script src 无 CORS）。
+// 编码：series 每行 [Δ天, close×100, ret×1e5]，首行 Δ=0、ret 无效；日期由 start+Δ 还原。
 // ══════════════════════════════════════════════════════════════════
 
 const DIMS = [
@@ -15,9 +14,15 @@ const DIMS = [
   { key: 'dji', label: '道琼斯' },
 ];
 
+const DATA_FILES = {
+  spx: 'daily-overview-data-spx.js',
+  ndx: 'daily-overview-data-ndx.js',
+  dji: 'daily-overview-data-dji.js',
+};
+
 const GREEN = [56, 158, 13];     // #389e0d（站点统一正收益色）
 const RED   = [207, 19, 34];     // #cf1322（站点统一负收益色）
-const SAT_RET = 0.08;            // 颜色饱和点：涨跌幅 ±8% 即为最深色（2026-10-23 老钱修订：8% 以上要足够深，不再按历史极值归一）
+const SAT_RET = 0.08;            // 颜色饱和点：涨跌幅 ±8% 即为最深色（2026-10-23 老钱：8% 以上要足够深）
 const GRAY  = '#999999';
 const BORDER = '#e8e8e8';
 const YEAR_W = 46;               // 左列年份栏宽度
@@ -51,6 +56,11 @@ function dateStrFromInt(n) {
   const y = Math.floor(n / 10000), m = Math.floor(n / 100) % 100, d = n % 100;
   return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
 }
+// v2 编码：距 1900-01-01 天数 → YYYYMMDD（UTC 计算避免时区偏移）
+function dayNumToDateInt(dayNum) {
+  const d = new Date(Date.UTC(1900, 0, 1) + dayNum * 86400000);
+  return d.getUTCFullYear() * 10000 + (d.getUTCMonth() + 1) * 100 + d.getUTCDate();
+}
 
 function cellColor(ret) {
   if (ret == null) return null;               // 无前收（该指数首个交易日）
@@ -63,20 +73,52 @@ function cellColor(ret) {
   return colorStr([lerp(255, RED[0], t), lerp(255, RED[1], t), lerp(255, RED[2], t)]);
 }
 
-// ── 数据（内嵌）──
-function buildYears(series) {
+// ── 数据（v2 懒加载）──
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = () => reject(new Error('数据加载失败: ' + src));
+    document.head.appendChild(s);
+  });
+}
+
+async function loadDim(key) {
+  const gName = '__DO_' + key.toUpperCase() + '__';
+  if (!window[gName]) {
+    const ver = window.__DO_VER__ || '';
+    await loadScript('js/' + DATA_FILES[key] + (ver ? '?v=' + ver : ''));
+  }
+  const raw = window[gName];
+  if (!raw || !Array.isArray(raw.series)) throw new Error('内嵌数据缺失: ' + key);
+  if (state.data[key]) return state.data[key];
+  const built = buildYears(raw.series, raw.start);
+  state.data[key] = {
+    updated: raw.updated, first: raw.first, last: raw.last, lastClose: raw.lastClose,
+    ...built,
+  };
+  return state.data[key];
+}
+
+function buildYears(series, start) {
   const byYear = new Map();
   let maxPos = 0, minNeg = 0, maxDay = null, minDay = null;
-  for (const [dateInt, close, ret] of series) {
+  let dayNum = start;
+  series.forEach((row, i) => {
+    dayNum += row[0];                          // Δ天（首行 0 → 保持起始日）
+    const dateInt = dayNumToDateInt(dayNum);
     const y = Math.floor(dateInt / 10000);
     if (!byYear.has(y)) byYear.set(y, { year: y, days: [] });
+    const close = row[1] / 100;
+    const ret = i === 0 ? null : row[2] / 1e5; // 首行无前收
     const day = { date: dateStrFromInt(dateInt), close, ret };
     byYear.get(y).days.push(day);
     if (ret != null) {
       if (ret > maxPos) { maxPos = ret; maxDay = day; }
       if (ret < minNeg) { minNeg = ret; minDay = day; }
     }
-  }
+  });
   const years = Array.from(byYear.values()).sort((a, b) => b.year - a.year); // 最新年在顶
   for (const y of years) {
     // 按 TARGET_COLS 折行：正常年份 2 行、六日制早期年份 3 行，行尽量满宽
@@ -90,18 +132,6 @@ function buildYears(series) {
   let maxCols = 0;
   for (const y of years) for (const r of y.rows) maxCols = Math.max(maxCols, r.len);
   return { years, maxPos, minNeg, maxDay, minDay, maxCols };
-}
-
-function loadDim(key) {
-  if (state.data[key]) return state.data[key];
-  const raw = (window.__DO_DATA__ || {})[key];
-  if (!raw || !Array.isArray(raw.series)) throw new Error(`内嵌数据缺失: ${key}`);
-  const built = buildYears(raw.series);
-  state.data[key] = {
-    updated: raw.updated, first: raw.first, last: raw.last, lastClose: raw.lastClose,
-    ...built,
-  };
-  return state.data[key];
 }
 
 // ── 布局尺寸（自适应容器宽，不横向拖拽）──
@@ -194,7 +224,7 @@ function updateStats(dimKey) {
   el('statMaxGain').title = data.maxDay ? data.maxDay.date : '';
   el('statMaxLoss').textContent = data.minDay ? fmtPct(data.minDay.ret) : '—';
   el('statMaxLoss').title = data.minDay ? data.minDay.date : '';
-  // 最新收盘：日期 ｜ 点位（点位不带千分逗号）——数据更新已并入，删独立项
+  // 最新收盘：日期 ｜ 点位（点位不带千分逗号）
   el('statLatest').textContent = data.last ? `${data.last}｜${fmtPts(data.lastClose)}` : '—';
   el('legendLeft').textContent = data.minDay ? fmtPct(data.minDay.ret) : '—';
   el('legendLeft').title = data.minDay ? `最大单日跌幅 ${data.minDay.date}` : '';
@@ -252,12 +282,13 @@ canvas.addEventListener('mousemove', e => {
 });
 canvas.addEventListener('mouseleave', () => tooltip.classList.remove('is-visible'));
 
-// ── 维度切换 / 重绘 ──
-function render(key) {
+// ── 维度切换 / 重绘（async：ndx/dji 首次切换需动态注入数据）──
+async function render(key) {
   const heat = document.getElementById('heatWrap');
   heat.style.opacity = '0.35';
   try {
-    loadDim(key);
+    await loadDim(key);
+    if (state.dimKey !== key) return;          // 等待期间用户已切走
     draw(key);
     document.getElementById('loadError')?.classList.remove('is-visible');
   } catch (err) {
@@ -293,6 +324,4 @@ window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => render(state.dimKey), 150);
 });
-// 预构建三份数据（内嵌，秒读）
-DIMS.forEach(d => { try { loadDim(d.key); } catch (_) {} });
-render(state.dimKey);
+render(state.dimKey);   // 默认维度 spx（数据随 HTML 已加载）

@@ -1,13 +1,15 @@
 // ══════════════════════════════════════════════════════════════════
-// js/daily-overview.js (EN mirror) · Daily Overview renderer
+// js/daily-overview.js (EN mirror) · Daily Overview renderer (v2 · 2026-10-24)
 // Vertical heatmap: year column on the left, each year's trading days
 // wrapped into 2-3 short rows (non-trading days skipped). Green=up,
 // red=down, white=0; deepest green = that index's record daily gain,
 // deepest red = record daily loss. Three selectable dimensions
 // (S&P 500 / Nasdaq 100 / Dow Jones); Canvas rendering.
-// Data: js/daily-overview-data.js embedded (window.__DO_DATA__),
-// works when opened directly via file://.
-// EN mirror of site/js/daily-overview.js (labels only differ).
+// Data v2: one file per dimension (daily-overview-data-{spx,ndx,dji}.js,
+// window.__DO_*__); the default dimension loads with the HTML, the rest are
+// injected on demand; works when opened directly via file://.
+// Encoding: series rows are [Δdays, close×100, ret×1e5]; first row Δ=0,
+// ret invalid; dates restored from start+Δ.
 // ══════════════════════════════════════════════════════════════════
 
 const DIMS = [
@@ -15,6 +17,12 @@ const DIMS = [
   { key: 'ndx', label: 'Nasdaq 100' },
   { key: 'dji', label: 'Dow Jones' },
 ];
+
+const DATA_FILES = {
+  spx: 'daily-overview-data-spx.js',
+  ndx: 'daily-overview-data-ndx.js',
+  dji: 'daily-overview-data-dji.js',
+};
 
 const GREEN = [56, 158, 13];     // #389e0d (site-wide positive color)
 const RED   = [207, 19, 34];     // #cf1322 (site-wide negative color)
@@ -52,6 +60,11 @@ function dateStrFromInt(n) {
   const y = Math.floor(n / 10000), m = Math.floor(n / 100) % 100, d = n % 100;
   return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
 }
+// v2 encoding: days since 1900-01-01 → YYYYMMDD (UTC to avoid timezone shifts)
+function dayNumToDateInt(dayNum) {
+  const d = new Date(Date.UTC(1900, 0, 1) + dayNum * 86400000);
+  return d.getUTCFullYear() * 10000 + (d.getUTCMonth() + 1) * 100 + d.getUTCDate();
+}
 
 function cellColor(ret) {
   if (ret == null) return null;               // first trading day of the series (no prior close)
@@ -64,20 +77,52 @@ function cellColor(ret) {
   return colorStr([lerp(255, RED[0], t), lerp(255, RED[1], t), lerp(255, RED[2], t)]);
 }
 
-// ── Data (embedded) ──
-function buildYears(series) {
+// ── Data (v2 lazy load) ──
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = () => reject(new Error('data load failed: ' + src));
+    document.head.appendChild(s);
+  });
+}
+
+async function loadDim(key) {
+  const gName = '__DO_' + key.toUpperCase() + '__';
+  if (!window[gName]) {
+    const ver = window.__DO_VER__ || '';
+    await loadScript('js/' + DATA_FILES[key] + (ver ? '?v=' + ver : ''));
+  }
+  const raw = window[gName];
+  if (!raw || !Array.isArray(raw.series)) throw new Error('embedded data missing: ' + key);
+  if (state.data[key]) return state.data[key];
+  const built = buildYears(raw.series, raw.start);
+  state.data[key] = {
+    updated: raw.updated, first: raw.first, last: raw.last, lastClose: raw.lastClose,
+    ...built,
+  };
+  return state.data[key];
+}
+
+function buildYears(series, start) {
   const byYear = new Map();
   let maxPos = 0, minNeg = 0, maxDay = null, minDay = null;
-  for (const [dateInt, close, ret] of series) {
+  let dayNum = start;
+  series.forEach((row, i) => {
+    dayNum += row[0];                          // Δdays (first row 0 → keeps start day)
+    const dateInt = dayNumToDateInt(dayNum);
     const y = Math.floor(dateInt / 10000);
     if (!byYear.has(y)) byYear.set(y, { year: y, days: [] });
+    const close = row[1] / 100;
+    const ret = i === 0 ? null : row[2] / 1e5; // first row has no prior close
     const day = { date: dateStrFromInt(dateInt), close, ret };
     byYear.get(y).days.push(day);
     if (ret != null) {
       if (ret > maxPos) { maxPos = ret; maxDay = day; }
       if (ret < minNeg) { minNeg = ret; minDay = day; }
     }
-  }
+  });
   const years = Array.from(byYear.values()).sort((a, b) => b.year - a.year); // newest year on top
   for (const y of years) {
     // Wrap by TARGET_COLS: normal years 2 rows, six-day-era early years 3 rows, rows near full width
@@ -91,18 +136,6 @@ function buildYears(series) {
   let maxCols = 0;
   for (const y of years) for (const r of y.rows) maxCols = Math.max(maxCols, r.len);
   return { years, maxPos, minNeg, maxDay, minDay, maxCols };
-}
-
-function loadDim(key) {
-  if (state.data[key]) return state.data[key];
-  const raw = (window.__DO_DATA__ || {})[key];
-  if (!raw || !Array.isArray(raw.series)) throw new Error(`embedded data missing: ${key}`);
-  const built = buildYears(raw.series);
-  state.data[key] = {
-    updated: raw.updated, first: raw.first, last: raw.last, lastClose: raw.lastClose,
-    ...built,
-  };
-  return state.data[key];
 }
 
 // ── Layout (adaptive to container width, no horizontal drag) ──
@@ -253,12 +286,13 @@ canvas.addEventListener('mousemove', e => {
 });
 canvas.addEventListener('mouseleave', () => tooltip.classList.remove('is-visible'));
 
-// ── Dimension switch / redraw ──
-function render(key) {
+// ── Dimension switch / redraw (async: ndx/dji inject data on first switch) ──
+async function render(key) {
   const heat = document.getElementById('heatWrap');
   heat.style.opacity = '0.35';
   try {
-    loadDim(key);
+    await loadDim(key);
+    if (state.dimKey !== key) return;          // user switched away while loading
     draw(key);
     document.getElementById('loadError')?.classList.remove('is-visible');
   } catch (err) {
@@ -295,6 +329,4 @@ window.addEventListener('resize', () => {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => render(state.dimKey), 150);
 });
-// Pre-build all three dims (embedded, instant)
-DIMS.forEach(d => { try { loadDim(d.key); } catch (_) {} });
-render(state.dimKey);
+render(state.dimKey);   // default dim spx (data already loaded with the HTML)
