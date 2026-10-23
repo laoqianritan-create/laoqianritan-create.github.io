@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/us-debt/_next/static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/us-debt/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/us-debt/_next/static/chunks/0h43uu7b4ogto.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/us-debt/_next/static/chunks/0ed8spdfcvifo.js"/><script src="/us-debt/_next/static/chunks/0p~68mwpmjxza.js" async=""></script><script src="/us-debt/_next/static/chunks/0jbd~vv.xegor.js" async=""></script><script src="/us-debt/_next/static/chunks/0rliqmdz-itj..js" async=""></script><script src="/us-debt/_next/static/chunks/turbopack-12wt96~wbf4cw.js" async=""></script><script src="/us-debt/_next/static/chunks/177tq~0teojj6.js" async=""></script><script src="/us-debt/_next/static/chunks/0n~v8~rri7~t2.js" async=""></script><script src="/us-debt/_next/static/chunks/0fnu0453b_4o2.js" async=""></script><script src="/us-debt/_next/static/chunks/0us105c.nkp8u.js" async=""></script><script src="/us-debt/_next/static/chunks/0qlw1dh716jbi.js" async=""></script><script src="/us-debt/_next/static/chunks/01sd05r1pxxc2.js" async=""></script><script src="/us-debt/_next/static/chunks/0j4fybyez_qcn.js" async=""></script><meta name="next-size-adjust" content=""/><title>美债看板 · US Debt Dashboard</title><meta name="description" content="美国国债 25 面板宏观分析看板"/><link rel="icon" href="/us-debt/favicon.ico?favicon.0x3dzn~oxb6tn.ico" sizes="256x256" type="image/x-icon"/><script src="/us-debt/_next/static/chunks/03~yq9q893hmn.js" noModule=""></script></head><body class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased"><div hidden=""><!--$--><!--/$--></div><script>((a,b,c,d,e,f,g,h)=>{let i=document.documentElement,j=["light","dark"];function k(b){var c;(Array.isArray(a)?a:[a]).forEach(a=>{let c="class"===a,d=c&&f?e.map(a=>f[a]||a):e;c?(i.classList.remove(...d),i.classList.add(f&&f[b]?f[b]:b)):i.setAttribute(a,b)}),c=b,h&&j.includes(c)&&(i.style.colorScheme=c)}if(d)k(d);else try{let a=localStorage.getItem(b)||c,d=g&&"system"===a?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":a;k(d)}catch(a){}})("class","theme","light",null,["light","dark"],null,true,true)</script><aside class="fixed top-0 left-0 z-50 hidden md:flex h-screen w-[140px] flex-col bg-background/85 backdrop-blur border-r border-border px-3 py-3"><div class="font-bold text-[15px] pb-2 border-b border-border"><a class="hover:text-accent transition-colors" href="/us-debt/">美债看板</a><a class="ml-2 text-[11px] font-normal text-muted-foreground hover:text-accent" href="/us-debt/summary/">汇总</a></div><div class="text-[10px] text-muted-foreground/60 py-1.5 border-b border-border"><span class="inline-block w-1.5 h-1.5 rounded-full bg-muted-foreground/40 mr-1.5"></span>加载中…</div><nav class="flex-1 mt-2 space-y-px overflow-y-auto [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden"><a href="#panel-topology" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债所处的拓扑结构">美债所处的拓扑结构</a><a href="#panel-macro-sectors" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="宏观经济五部门">宏观经济五部门</a><a href="#panel-revenue" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="联邦财政收入">联邦财政收入</a><a href="#panel-revenue-breakdown" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美国财政收入">美国财政收入</a><a href="#panel-spending" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="联邦财政支出">联邦财政支出</a><a href="#panel-spending-breakdown" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美国财政支出">美国财政支出</a><a href="#panel-mandatory" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="强制性 vs 自由裁量支出">强制性 vs 自由裁量支出</a><a href="#panel-sankey" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="2025年美国财政支出流向了哪里？">2025年美国财政支出流向了哪里？</a><a href="#panel-deficit" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="联邦赤字趋势">联邦赤字趋势</a><a href="#panel-deficit-gdp" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="赤字率">赤字率</a><a href="#panel-debt-total" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美国国债总额">美国国债总额</a><a href="#panel-global-debt" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="全球政府债务总规模">全球政府债务总规模</a><a href="#lab-milestones" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债里程碑">美债里程碑</a><a href="#panel-debt-gdp" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="债务 / GDP 长期趋势">债务 / GDP 长期趋势</a><a href="#panel-maturity" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债期限结构">美债期限结构</a><a href="#panel-rate-by-type" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="各类国债平均利率">各类国债平均利率</a><a href="#lab-bills-coupons" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="Bills vs Coupons 存量结构">Bills vs Coupons 存量结构</a><a href="#panel-treasury-issuance" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债发行量激增">美债发行量激增</a><a href="#panel-maturity-schedule" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="未来到期规模">未来到期规模</a><a href="#panel-auction" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="国债拍卖热度">国债拍卖热度</a><a href="#panel-interest-rate" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="加权平均利率">加权平均利率</a><a href="#panel-interest-expense" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="利息支出及占比">利息支出及占比</a><a href="#lab-interest-revenue" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="利息支出 / 财政收入">利息支出 / 财政收入</a><a href="#panel-expense-by-type" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="各类国债利息支出构成">各类国债利息支出构成</a><a href="#panel-supply-demand" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债供给与需求">美债供给与需求</a><a href="#lab-sofr-iorb" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="SOFR − IORB 利差">SOFR − IORB 利差</a><a href="#lab-liquidity-3wallets" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美联储流动性三账户">美联储流动性三账户</a><a href="#panel-holders-domestic" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债持有结构">美债持有结构</a><a href="#panel-holders-foreign" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="各国央行持有美债规模">各国央行持有美债规模</a><a href="#panel-gold-reserves" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="各国央行黄金储备">各国央行黄金储备</a><a href="#panel-reserve-currency" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美元储备货币地位">美元储备货币地位</a><a href="#lab-safe-asset-paradox" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="安全资产悖论">安全资产悖论</a><a href="#lab-r-vs-g" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="r vs g 死亡螺旋">r vs g 死亡螺旋</a><a href="#lab-red-queen" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="红皇后跑步机">红皇后跑步机</a><a href="#panel-sustainability" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债可持续性简化模型">美债可持续性简化模型</a><a href="#panel-yield-curve" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="收益率曲线">收益率曲线</a><a href="#lab-yield-3factor" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="10Y 利率三因子分解">10Y 利率三因子分解</a><a href="#lab-g7-yields" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="低利率时代的终结">低利率时代的终结</a><a href="#panel-whatif" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="What-if 模拟器">What-if 模拟器</a><a href="#lab-generational" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="代际负担时间机器：每个美国人身上的债务">代际负担时间机器：每个美国人身上的债务</a><a href="#panel-dalio" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="达里奥大债务周期">达里奥大债务周期</a></nav><div class="mt-2 pt-2 border-t border-border space-y-1"><a href="/us-market/" class="block text-[11px] text-muted-foreground hover:text-accent">美股看板</a><a href="https://gold-board.betalpha.com/" target="_blank" rel="noopener noreferrer" class="block text-[11px] text-muted-foreground hover:text-accent">黄金看板</a><div class="size-9"></div></div></aside><main class="md:ml-[140px]"><div class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-6"><section class="relative"><div class="relative space-y-2"><h1 class="text-xl md:text-3xl font-bold leading-tight text-foreground pr-10 md:pr-12">美国家庭财富分布</h1><button type="button" tabindex="0" data-slot="button" title="导出 PNG" aria-label="导出 PNG" class="group/button shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8 hidden md:inline-flex absolute top-0 right-0 opacity-50 hover:opacity-100 __export-skip"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download size-4" aria-hidden="true"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg></button></div><div class="inline-flex rounded-lg border border-border bg-card p-1 __export-omit"><button class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-accent text-accent-foreground">分布（时间序列）</button><button class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-muted-foreground hover:text-foreground">对比（资产构成）</button></div><div class="rounded-xl border border-border bg-card p-4 md:p-5 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4 __export-omit"><div><label class="block text-xs font-medium text-muted-foreground mb-1.5">分组维度</label><div class="relative"><select class="w-full h-9 appearance-none rounded-md border border-border bg-background px-2 pr-9 text-sm"><option value="networth" selected="">财富百分位</option><option value="income">收入百分位</option><option value="education">教育</option><option value="age">年龄</option><option value="generation">世代</option><option value="race">种族</option></select><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down pointer-events-none absolute top-1/2 -translate-y-1/2 right-2.5 size-4 text-muted-foreground" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></div></div><div><label class="block text-xs font-medium text-muted-foreground mb-1.5">指标</label><div class="relative"><select class="w-full h-9 appearance-none rounded-md border border-border bg-background px-2 pr-9 text-sm"><option value="Net worth">净资产（财富）</option><option value="Assets" selected="">总资产</option><option value="Real estate">　　<!-- -->房地产</option><option value="Consumer durables">　　<!-- -->耐用消费品</option><option value="Corporate equities and mutual fund shares">　　<!-- -->公司股票与基金</option><option value="DB pension entitlements">　　<!-- -->固定收益养老金</option><option value="DC pension entitlements">　　<!-- -->固定缴款养老金</option><option value="Unincorporated businesses">　　<!-- -->非公司企业</option><option value="Other assets">　　<!-- -->其他资产</option><option value="Liabilities">总负债</option><option value="Home mortgages">　　<!-- -->住房抵押贷款</option><option value="Consumer credit">　　<!-- -->消费信贷</option><option value="Other liabilities">　　<!-- -->其他负债</option></select><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down pointer-events-none absolute top-1/2 -translate-y-1/2 right-2.5 size-4 text-muted-foreground" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></div></div><div><label class="block text-xs font-medium text-muted-foreground mb-1.5">单位</label><div class="flex h-9 rounded-md border border-border overflow-hidden"><button class="flex-1 text-xs font-medium transition-colors bg-accent text-accent-foreground">万亿美元</button><button class="flex-1 text-xs font-medium transition-colors bg-background text-muted-foreground hover:text-foreground">占比 %</button></div></div><div><label class="block text-xs font-medium text-muted-foreground mb-1.5">时间范围</label><div class="flex h-9 rounded-md border border-border overflow-hidden"><button class="flex-1 text-xs font-medium transition-colors bg-accent text-accent-foreground">全部</button><button class="flex-1 text-xs font-medium transition-colors bg-background text-muted-foreground hover:text-foreground">10年</button><button class="flex-1 text-xs font-medium transition-colors bg-background text-muted-foreground hover:text-foreground">5年</button><button class="flex-1 text-xs font-medium transition-colors bg-background text-muted-foreground hover:text-foreground">1年</button></div></div></div><div class="rounded-xl border border-border bg-card p-4 md:p-5 __export-omit"><div class="flex flex-wrap items-center gap-x-5 gap-y-2"><span class="text-xs font-medium text-muted-foreground mr-1">展示：</span><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="font-medium">全部</span></label><span class="hidden md:inline text-muted-foreground/40">|</span><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="inline-block w-2.5 h-2.5 rounded-full mr-0.5" style="background-color:#E65A56"></span><span>Top 0.1% 顶豪</span></label><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="inline-block w-2.5 h-2.5 rounded-full mr-0.5" style="background-color:#e68889"></span><span>99%-99.9% 富人</span></label><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="inline-block w-2.5 h-2.5 rounded-full mr-0.5" style="background-color:#ff7c1f"></span><span>90%-99% 中产</span></label><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="inline-block w-2.5 h-2.5 rounded-full mr-0.5" style="background-color:#4a6fe2"></span><span>50%-90% 中等收入群体</span></label><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="inline-block w-2.5 h-2.5 rounded-full mr-0.5" style="background-color:#666666"></span><span>bottom 50% 底层</span></label></div></div><div class="rounded-xl border border-border bg-card p-2 md:p-4"><h2 class="px-2 pt-1 pb-1 text-base md:text-lg font-bold text-foreground">总资产<span class="text-accent font-semibold">：</span><span class="text-accent font-semibold">绝对水平（万亿美元）</span></h2><div style="width:100%;height:540px" class="__echarts-host "></div></div></section><div class="space-y-4 pt-2"><h2 class="text-base md:text-lg font-bold text-foreground">SCF 2025 居民财富摸底<span class="text-muted-foreground font-normal text-xs md:text-sm ml-2">美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026-10-09 发布</span></h2><div class="space-y-6"><style>.scf-fig-1 *  {margin:0; padding:0; box-sizing:border-box;}
+<!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="preload" href="/us-debt/_next/static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="preload" href="/us-debt/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2" as="font" crossorigin="" type="font/woff2"/><link rel="stylesheet" href="/us-debt/_next/static/chunks/0h43uu7b4ogto.css" data-precedence="next"/><link rel="preload" as="script" fetchPriority="low" href="/us-debt/_next/static/chunks/0ed8spdfcvifo.js"/><script src="/us-debt/_next/static/chunks/0p~68mwpmjxza.js" async=""></script><script src="/us-debt/_next/static/chunks/0jbd~vv.xegor.js" async=""></script><script src="/us-debt/_next/static/chunks/0rliqmdz-itj..js" async=""></script><script src="/us-debt/_next/static/chunks/turbopack-12wt96~wbf4cw.js" async=""></script><script src="/us-debt/_next/static/chunks/177tq~0teojj6.js" async=""></script><script src="/us-debt/_next/static/chunks/0n~v8~rri7~t2.js" async=""></script><script src="/us-debt/_next/static/chunks/0fnu0453b_4o2.js" async=""></script><script src="/us-debt/_next/static/chunks/0us105c.nkp8u.js" async=""></script><script src="/us-debt/_next/static/chunks/0qlw1dh716jbi.js" async=""></script><script src="/us-debt/_next/static/chunks/01sd05r1pxxc2.js" async=""></script><script src="/us-debt/_next/static/chunks/0m.1jf9erk0yb.js" async=""></script><meta name="next-size-adjust" content=""/><title>美债看板 · US Debt Dashboard</title><meta name="description" content="美国国债 25 面板宏观分析看板"/><link rel="icon" href="/us-debt/favicon.ico?favicon.0x3dzn~oxb6tn.ico" sizes="256x256" type="image/x-icon"/><script src="/us-debt/_next/static/chunks/03~yq9q893hmn.js" noModule=""></script></head><body class="geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased"><div hidden=""><!--$--><!--/$--></div><script>((a,b,c,d,e,f,g,h)=>{let i=document.documentElement,j=["light","dark"];function k(b){var c;(Array.isArray(a)?a:[a]).forEach(a=>{let c="class"===a,d=c&&f?e.map(a=>f[a]||a):e;c?(i.classList.remove(...d),i.classList.add(f&&f[b]?f[b]:b)):i.setAttribute(a,b)}),c=b,h&&j.includes(c)&&(i.style.colorScheme=c)}if(d)k(d);else try{let a=localStorage.getItem(b)||c,d=g&&"system"===a?window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light":a;k(d)}catch(a){}})("class","theme","light",null,["light","dark"],null,true,true)</script><aside class="fixed top-0 left-0 z-50 hidden md:flex h-screen w-[140px] flex-col bg-background/85 backdrop-blur border-r border-border px-3 py-3"><div class="font-bold text-[15px] pb-2 border-b border-border"><a class="hover:text-accent transition-colors" href="/us-debt/">美债看板</a><a class="ml-2 text-[11px] font-normal text-muted-foreground hover:text-accent" href="/us-debt/summary/">汇总</a></div><div class="text-[10px] text-muted-foreground/60 py-1.5 border-b border-border"><span class="inline-block w-1.5 h-1.5 rounded-full bg-muted-foreground/40 mr-1.5"></span>加载中…</div><nav class="flex-1 mt-2 space-y-px overflow-y-auto [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden"><a href="#panel-topology" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债所处的拓扑结构">美债所处的拓扑结构</a><a href="#panel-macro-sectors" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="宏观经济五部门">宏观经济五部门</a><a href="#panel-revenue" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="联邦财政收入">联邦财政收入</a><a href="#panel-revenue-breakdown" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美国财政收入">美国财政收入</a><a href="#panel-spending" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="联邦财政支出">联邦财政支出</a><a href="#panel-spending-breakdown" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美国财政支出">美国财政支出</a><a href="#panel-mandatory" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="强制性 vs 自由裁量支出">强制性 vs 自由裁量支出</a><a href="#panel-sankey" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="2025年美国财政支出流向了哪里？">2025年美国财政支出流向了哪里？</a><a href="#panel-deficit" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="联邦赤字趋势">联邦赤字趋势</a><a href="#panel-deficit-gdp" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="赤字率">赤字率</a><a href="#panel-debt-total" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美国国债总额">美国国债总额</a><a href="#panel-global-debt" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="全球政府债务总规模">全球政府债务总规模</a><a href="#lab-milestones" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债里程碑">美债里程碑</a><a href="#panel-debt-gdp" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="债务 / GDP 长期趋势">债务 / GDP 长期趋势</a><a href="#panel-maturity" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债期限结构">美债期限结构</a><a href="#panel-rate-by-type" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="各类国债平均利率">各类国债平均利率</a><a href="#lab-bills-coupons" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="Bills vs Coupons 存量结构">Bills vs Coupons 存量结构</a><a href="#panel-treasury-issuance" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债发行量激增">美债发行量激增</a><a href="#panel-maturity-schedule" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="未来到期规模">未来到期规模</a><a href="#panel-auction" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="国债拍卖热度">国债拍卖热度</a><a href="#panel-interest-rate" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="加权平均利率">加权平均利率</a><a href="#panel-interest-expense" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="利息支出及占比">利息支出及占比</a><a href="#lab-interest-revenue" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="利息支出 / 财政收入">利息支出 / 财政收入</a><a href="#panel-expense-by-type" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="各类国债利息支出构成">各类国债利息支出构成</a><a href="#panel-supply-demand" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债供给与需求">美债供给与需求</a><a href="#lab-sofr-iorb" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="SOFR − IORB 利差">SOFR − IORB 利差</a><a href="#lab-liquidity-3wallets" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美联储流动性三账户">美联储流动性三账户</a><a href="#panel-holders-domestic" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债持有结构">美债持有结构</a><a href="#panel-holders-foreign" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="各国央行持有美债规模">各国央行持有美债规模</a><a href="#panel-gold-reserves" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="各国央行黄金储备">各国央行黄金储备</a><a href="#panel-reserve-currency" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美元储备货币地位">美元储备货币地位</a><a href="#lab-safe-asset-paradox" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="安全资产悖论">安全资产悖论</a><a href="#lab-r-vs-g" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="r vs g 死亡螺旋">r vs g 死亡螺旋</a><a href="#lab-red-queen" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="红皇后跑步机">红皇后跑步机</a><a href="#panel-sustainability" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="美债可持续性简化模型">美债可持续性简化模型</a><a href="#panel-yield-curve" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="收益率曲线">收益率曲线</a><a href="#lab-yield-3factor" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="10Y 利率三因子分解">10Y 利率三因子分解</a><a href="#lab-g7-yields" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="低利率时代的终结">低利率时代的终结</a><a href="#panel-whatif" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="What-if 模拟器">What-if 模拟器</a><a href="#lab-generational" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="代际负担时间机器：每个美国人身上的债务">代际负担时间机器：每个美国人身上的债务</a><a href="#panel-dalio" class="block text-[12px] leading-tight px-2 py-1 rounded transition-colors whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer text-muted-foreground hover:text-foreground hover:bg-accent/5" title="达里奥大债务周期">达里奥大债务周期</a></nav><div class="mt-2 pt-2 border-t border-border space-y-1"><a href="/us-market/" class="block text-[11px] text-muted-foreground hover:text-accent">美股看板</a><a href="https://gold-board.betalpha.com/" target="_blank" rel="noopener noreferrer" class="block text-[11px] text-muted-foreground hover:text-accent">黄金看板</a><div class="size-9"></div></div></aside><main class="md:ml-[140px]"><div class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-10 space-y-6"><section class="relative"><div class="relative space-y-2"><h1 class="text-xl md:text-3xl font-bold leading-tight text-foreground pr-10 md:pr-12">美国家庭财富分布</h1><button type="button" tabindex="0" data-slot="button" title="导出 PNG" aria-label="导出 PNG" class="group/button shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50 size-8 hidden md:inline-flex absolute top-0 right-0 opacity-50 hover:opacity-100 __export-skip"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download size-4" aria-hidden="true"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg></button></div><div class="inline-flex rounded-lg border border-border bg-card p-1 __export-omit"><button class="px-4 py-2 rounded-md text-sm font-medium transition-colors bg-accent text-accent-foreground">分布（时间序列）</button><button class="px-4 py-2 rounded-md text-sm font-medium transition-colors text-muted-foreground hover:text-foreground">对比（资产构成）</button></div><div class="rounded-xl border border-border bg-card p-4 md:p-5 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4 __export-omit"><div><label class="block text-xs font-medium text-muted-foreground mb-1.5">分组维度</label><div class="relative"><select class="w-full h-9 appearance-none rounded-md border border-border bg-background px-2 pr-9 text-sm"><option value="networth" selected="">财富百分位</option><option value="income">收入百分位</option><option value="education">教育</option><option value="age">年龄</option><option value="generation">世代</option><option value="race">种族</option></select><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down pointer-events-none absolute top-1/2 -translate-y-1/2 right-2.5 size-4 text-muted-foreground" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></div></div><div><label class="block text-xs font-medium text-muted-foreground mb-1.5">指标</label><div class="relative"><select class="w-full h-9 appearance-none rounded-md border border-border bg-background px-2 pr-9 text-sm"><option value="Net worth">净资产（财富）</option><option value="Assets" selected="">总资产</option><option value="Real estate">　　<!-- -->房地产</option><option value="Consumer durables">　　<!-- -->耐用消费品</option><option value="Corporate equities and mutual fund shares">　　<!-- -->公司股票与基金</option><option value="DB pension entitlements">　　<!-- -->固定收益养老金</option><option value="DC pension entitlements">　　<!-- -->固定缴款养老金</option><option value="Unincorporated businesses">　　<!-- -->非公司企业</option><option value="Other assets">　　<!-- -->其他资产</option><option value="Liabilities">总负债</option><option value="Home mortgages">　　<!-- -->住房抵押贷款</option><option value="Consumer credit">　　<!-- -->消费信贷</option><option value="Other liabilities">　　<!-- -->其他负债</option></select><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down pointer-events-none absolute top-1/2 -translate-y-1/2 right-2.5 size-4 text-muted-foreground" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg></div></div><div><label class="block text-xs font-medium text-muted-foreground mb-1.5">单位</label><div class="flex h-9 rounded-md border border-border overflow-hidden"><button class="flex-1 text-xs font-medium transition-colors bg-accent text-accent-foreground">万亿美元</button><button class="flex-1 text-xs font-medium transition-colors bg-background text-muted-foreground hover:text-foreground">占比 %</button></div></div><div><label class="block text-xs font-medium text-muted-foreground mb-1.5">时间范围</label><div class="flex h-9 rounded-md border border-border overflow-hidden"><button class="flex-1 text-xs font-medium transition-colors bg-accent text-accent-foreground">全部</button><button class="flex-1 text-xs font-medium transition-colors bg-background text-muted-foreground hover:text-foreground">10年</button><button class="flex-1 text-xs font-medium transition-colors bg-background text-muted-foreground hover:text-foreground">5年</button><button class="flex-1 text-xs font-medium transition-colors bg-background text-muted-foreground hover:text-foreground">1年</button></div></div></div><div class="rounded-xl border border-border bg-card p-4 md:p-5 __export-omit"><div class="flex flex-wrap items-center gap-x-5 gap-y-2"><span class="text-xs font-medium text-muted-foreground mr-1">展示：</span><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="font-medium">全部</span></label><span class="hidden md:inline text-muted-foreground/40">|</span><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="inline-block w-2.5 h-2.5 rounded-full mr-0.5" style="background-color:#E65A56"></span><span>Top 0.1% 顶豪</span></label><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="inline-block w-2.5 h-2.5 rounded-full mr-0.5" style="background-color:#e68889"></span><span>99%-99.9% 富人</span></label><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="inline-block w-2.5 h-2.5 rounded-full mr-0.5" style="background-color:#ff7c1f"></span><span>90%-99% 中产</span></label><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="inline-block w-2.5 h-2.5 rounded-full mr-0.5" style="background-color:#4a6fe2"></span><span>50%-90% 中等收入群体</span></label><label class="flex items-center gap-1.5 text-sm cursor-pointer"><input type="checkbox" class="accent-[#3b65e2] size-4" checked=""/><span class="inline-block w-2.5 h-2.5 rounded-full mr-0.5" style="background-color:#666666"></span><span>bottom 50% 底层</span></label></div></div><div class="rounded-xl border border-border bg-card p-2 md:p-4"><h2 class="px-2 pt-1 pb-1 text-base md:text-lg font-bold text-foreground">总资产<span class="text-accent font-semibold">：</span><span class="text-accent font-semibold">绝对水平（万亿美元）</span></h2><div style="width:100%;height:540px" class="__echarts-host "></div></div></section><div class="space-y-4 pt-2"><h2 class="text-base md:text-lg font-bold text-foreground">SCF 2025 居民财富摸底<span class="text-muted-foreground font-normal text-xs md:text-sm ml-2">美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026-10-09 发布</span></h2><div class="space-y-6"><style>.scf-fig-1 *  {margin:0; padding:0; box-sizing:border-box;}
 .scf-fig-1 body  {width:628px; background:#FFFFFF; padding:3px 3px 0 3px;
     font-family:'PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;
     -webkit-font-smoothing:antialiased; color:#4B4F52;}
@@ -6,10 +6,10 @@
 .scf-fig-1 .sub  {font-size:10px; color:#888888; margin-top:7px;}
 .scf-fig-1 .rule  {height:1px; background:#37383C; margin:13px 0 0 0;}
 .scf-fig-1 table  {width:100%; border-collapse:collapse; table-layout:fixed;}
-.scf-fig-1 col.c1  {width:292.7px;}
-.scf-fig-1 col.c2  {width:136.6px;}
-.scf-fig-1 col.c3  {width:136.6px;}
-.scf-fig-1 col.c4  {width:192.7px;}
+.scf-fig-1 col.c1  {width:295.6px;}
+.scf-fig-1 col.c2  {width:137.9px;}
+.scf-fig-1 col.c3  {width:137.9px;}
+.scf-fig-1 col.c4  {width:194.6px;}
 .scf-fig-1 thead th  {height:31px; font-size:10.5px; font-weight:600; letter-spacing:.02em;
     vertical-align:middle; padding:0;}
 .scf-fig-1 thead th.k  {background:#37383C; color:#FFFFFF; text-align:left; padding-left:12px; font-size:11px;}
@@ -34,6 +34,13 @@
     white-space:nowrap;}
 .scf-fig-1 .foot  {margin-top:13px; padding-top:10px; border-top:1px solid #F0F0F0;}
 .scf-fig-1 .src  {font-size:9px; line-height:1.8; color:#888888;}
+
+.scf-fig-1 tbody td { font-size:13.5px !important; font-weight:600 !important; }
+.scf-fig-1 thead th { font-size:12.5px !important; font-weight:700 !important; }
+.scf-fig-1 thead tr.grp th { font-size:11.5px !important; font-weight:700 !important; }
+.scf-fig-1 .cn { font-size:13.5px !important; font-weight:700 !important; }
+.scf-fig-1 table { width:100%; table-layout:fixed; }
+
 .scf-fig-2 *  {margin:0; padding:0; box-sizing:border-box;}
 .scf-fig-2 body  {width:728px; background:#FFFFFF; padding:3px 3px 0 3px;
     font-family:'PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;
@@ -76,6 +83,13 @@
          white-space:nowrap;}
 .scf-fig-2 .foot  {margin-top:13px; padding-top:10px; border-top:1px solid #F0F0F0;}
 .scf-fig-2 .src  {font-size:9px; line-height:1.8; color:#888888;}
+
+.scf-fig-2 tbody td { font-size:13.5px !important; font-weight:600 !important; }
+.scf-fig-2 thead th { font-size:12.5px !important; font-weight:700 !important; }
+.scf-fig-2 thead tr.grp th { font-size:11.5px !important; font-weight:700 !important; }
+.scf-fig-2 .cn { font-size:13.5px !important; font-weight:700 !important; }
+.scf-fig-2 table { width:100%; table-layout:fixed; }
+
 .scf-fig-3 *  {margin:0; padding:0; box-sizing:border-box;}
 .scf-fig-3 body  {width:766px; background:#FFFFFF; padding:3px 3px 0 3px;
     font-family:'PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;
@@ -118,6 +132,13 @@
          white-space:nowrap;}
 .scf-fig-3 .foot  {margin-top:13px; padding-top:10px; border-top:1px solid #F0F0F0;}
 .scf-fig-3 .src  {font-size:9px; line-height:1.8; color:#888888;}
+
+.scf-fig-3 tbody td { font-size:13.5px !important; font-weight:600 !important; }
+.scf-fig-3 thead th { font-size:12.5px !important; font-weight:700 !important; }
+.scf-fig-3 thead tr.grp th { font-size:11.5px !important; font-weight:700 !important; }
+.scf-fig-3 .cn { font-size:13.5px !important; font-weight:700 !important; }
+.scf-fig-3 table { width:100%; table-layout:fixed; }
+
 .scf-fig-4 *  {margin:0; padding:0; box-sizing:border-box;}
 .scf-fig-4 body  {width:628px; background:#FFFFFF; padding:3px 3px 0 3px;
     font-family:'PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;
@@ -160,6 +181,13 @@
          white-space:nowrap;}
 .scf-fig-4 .foot  {margin-top:13px; padding-top:10px; border-top:1px solid #F0F0F0;}
 .scf-fig-4 .src  {font-size:9px; line-height:1.8; color:#888888;}
+
+.scf-fig-4 tbody td { font-size:13.5px !important; font-weight:600 !important; }
+.scf-fig-4 thead th { font-size:12.5px !important; font-weight:700 !important; }
+.scf-fig-4 thead tr.grp th { font-size:11.5px !important; font-weight:700 !important; }
+.scf-fig-4 .cn { font-size:13.5px !important; font-weight:700 !important; }
+.scf-fig-4 table { width:100%; table-layout:fixed; }
+
 .scf-fig-5 *  {margin:0; padding:0; box-sizing:border-box;}
 .scf-fig-5 body  {width:728px; background:#FFFFFF; padding:3px 3px 0 3px;
     font-family:'PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;
@@ -202,6 +230,13 @@
          white-space:nowrap;}
 .scf-fig-5 .foot  {margin-top:13px; padding-top:10px; border-top:1px solid #F0F0F0;}
 .scf-fig-5 .src  {font-size:9px; line-height:1.8; color:#888888;}
+
+.scf-fig-5 tbody td { font-size:13.5px !important; font-weight:600 !important; }
+.scf-fig-5 thead th { font-size:12.5px !important; font-weight:700 !important; }
+.scf-fig-5 thead tr.grp th { font-size:11.5px !important; font-weight:700 !important; }
+.scf-fig-5 .cn { font-size:13.5px !important; font-weight:700 !important; }
+.scf-fig-5 table { width:100%; table-layout:fixed; }
+
 .scf-fig-6 *  {margin:0; padding:0; box-sizing:border-box;}
 .scf-fig-6 body  {width:728px; background:#FFFFFF; padding:3px 3px 0 3px;
     font-family:'PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;
@@ -244,6 +279,13 @@
          white-space:nowrap;}
 .scf-fig-6 .foot  {margin-top:13px; padding-top:10px; border-top:1px solid #F0F0F0;}
 .scf-fig-6 .src  {font-size:9px; line-height:1.8; color:#888888;}
+
+.scf-fig-6 tbody td { font-size:13.5px !important; font-weight:600 !important; }
+.scf-fig-6 thead th { font-size:12.5px !important; font-weight:700 !important; }
+.scf-fig-6 thead tr.grp th { font-size:11.5px !important; font-weight:700 !important; }
+.scf-fig-6 .cn { font-size:13.5px !important; font-weight:700 !important; }
+.scf-fig-6 table { width:100%; table-layout:fixed; }
+
 .scf-fig-7 *  {margin:0; padding:0; box-sizing:border-box;}
 .scf-fig-7 body  {width:628px; background:#FFFFFF; padding:3px 3px 0 3px;
     font-family:'PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;
@@ -286,6 +328,13 @@
          white-space:nowrap;}
 .scf-fig-7 .foot  {margin-top:13px; padding-top:10px; border-top:1px solid #F0F0F0;}
 .scf-fig-7 .src  {font-size:9px; line-height:1.8; color:#888888;}
+
+.scf-fig-7 tbody td { font-size:13.5px !important; font-weight:600 !important; }
+.scf-fig-7 thead th { font-size:12.5px !important; font-weight:700 !important; }
+.scf-fig-7 thead tr.grp th { font-size:11.5px !important; font-weight:700 !important; }
+.scf-fig-7 .cn { font-size:13.5px !important; font-weight:700 !important; }
+.scf-fig-7 table { width:100%; table-layout:fixed; }
+
 .scf-fig-8 *  {margin:0; padding:0; box-sizing:border-box;}
 .scf-fig-8 body  {width:766px; background:#FFFFFF; padding:3px 3px 0 3px;
     font-family:'PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;
@@ -328,6 +377,13 @@
          white-space:nowrap;}
 .scf-fig-8 .foot  {margin-top:13px; padding-top:10px; border-top:1px solid #F0F0F0;}
 .scf-fig-8 .src  {font-size:9px; line-height:1.8; color:#888888;}
+
+.scf-fig-8 tbody td { font-size:13.5px !important; font-weight:600 !important; }
+.scf-fig-8 thead th { font-size:12.5px !important; font-weight:700 !important; }
+.scf-fig-8 thead tr.grp th { font-size:11.5px !important; font-weight:700 !important; }
+.scf-fig-8 .cn { font-size:13.5px !important; font-weight:700 !important; }
+.scf-fig-8 table { width:100%; table-layout:fixed; }
+
 .scf-fig-9 *  {margin:0; padding:0; box-sizing:border-box;}
 .scf-fig-9 body  {width:652px; background:#FFFFFF; padding:3px 3px 0 3px;
     font-family:'PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;
@@ -370,6 +426,13 @@
          white-space:nowrap;}
 .scf-fig-9 .foot  {margin-top:13px; padding-top:10px; border-top:1px solid #F0F0F0;}
 .scf-fig-9 .src  {font-size:9px; line-height:1.8; color:#888888;}
+
+.scf-fig-9 tbody td { font-size:13.5px !important; font-weight:600 !important; }
+.scf-fig-9 thead th { font-size:12.5px !important; font-weight:700 !important; }
+.scf-fig-9 thead tr.grp th { font-size:11.5px !important; font-weight:700 !important; }
+.scf-fig-9 .cn { font-size:13.5px !important; font-weight:700 !important; }
+.scf-fig-9 table { width:100%; table-layout:fixed; }
+
 .scf-fig-10 *  {margin:0; padding:0; box-sizing:border-box;}
 .scf-fig-10 body  {width:728px; background:#FFFFFF; padding:3px 3px 0 3px;
     font-family:'PingFang SC','Hiragino Sans GB','Noto Sans SC',sans-serif;
@@ -411,7 +474,14 @@
          font-size:11.5px; font-weight:700; font-variant-numeric:tabular-nums;
          white-space:nowrap;}
 .scf-fig-10 .foot  {margin-top:13px; padding-top:10px; border-top:1px solid #F0F0F0;}
-.scf-fig-10 .src  {font-size:9px; line-height:1.8; color:#888888;}</style><section id="scf-fig-01" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-1" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>美国家庭收入与净值总量</h1>
+.scf-fig-10 .src  {font-size:9px; line-height:1.8; color:#888888;}
+
+.scf-fig-10 tbody td { font-size:13.5px !important; font-weight:600 !important; }
+.scf-fig-10 thead th { font-size:12.5px !important; font-weight:700 !important; }
+.scf-fig-10 thead tr.grp th { font-size:11.5px !important; font-weight:700 !important; }
+.scf-fig-10 .cn { font-size:13.5px !important; font-weight:700 !important; }
+.scf-fig-10 table { width:100%; table-layout:fixed; }
+</style><section id="scf-fig-01" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-1" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>美国家庭收入与净值总量</h1>
   <div class="sub">2022 与 2025 两次调查对比 &#183; 单位：万美元</div>
   <div class="rule"></div>
 
@@ -433,8 +503,8 @@
         <td class="num strong">8.22</td>
         <td class="chg">
           <div class="cw">
-            <div class="cbar" style="left:58.5px;width:68.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div>
-            <div class="cz" style="left:58.5px;"></div>
+            <div class="cbar" style="left:59.1px;width:69.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div>
+            <div class="cz" style="left:59.1px;"></div>
             <div class="cn" style="color:#E65A56;">+7%</div>
           </div>
         </td>
@@ -445,8 +515,8 @@
         <td class="num strong">14.52</td>
         <td class="chg">
           <div class="cw">
-            <div class="cbar" style="left:0.0px;width:58.5px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.87));"></div>
-            <div class="cz" style="left:58.5px;"></div>
+            <div class="cbar" style="left:0.0px;width:59.1px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.87));"></div>
+            <div class="cz" style="left:59.1px;"></div>
             <div class="cn" style="color:#218C0D;">-6%</div>
           </div>
         </td>
@@ -457,8 +527,8 @@
         <td class="num strong">21.59</td>
         <td class="chg">
           <div class="cw">
-            <div class="cbar" style="left:58.5px;width:19.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.52));"></div>
-            <div class="cz" style="left:58.5px;"></div>
+            <div class="cbar" style="left:59.1px;width:19.7px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.52));"></div>
+            <div class="cz" style="left:59.1px;"></div>
             <div class="cn" style="color:#E65A56;">+2%</div>
           </div>
         </td>
@@ -469,26 +539,19 @@
         <td class="num strong">124.15</td>
         <td class="chg">
           <div class="cw">
-            <div class="cbar" style="left:58.5px;width:68.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div>
-            <div class="cz" style="left:58.5px;"></div>
+            <div class="cbar" style="left:59.1px;width:69.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div>
+            <div class="cz" style="left:59.1px;"></div>
             <div class="cn" style="color:#E65A56;">+7%</div>
           </div>
         </td>
       </tr>
     </tbody>
-  </table>
-
-  <div class="foot">
-    <div class="src">
-      数据来源：美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026 年 10 月 9 日，表 1、表 2。<br>
-      口径：金额为 2025 年美元；收入取调查前一日历年（对应 2021、2024），净值取调查当年；单位 family，不是 household。
-    </div>
-  </div></div></div></section><section id="scf-fig-02" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-2" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>按净值分位的中位数与平均数</h1>
+  </table></div></div></section><section id="scf-fig-02" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-2" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>按净值分位的中位数与平均数</h1>
   <div class="sub">2022 与 2025 两次调查对比</div>
   <div class="rule"></div>
 
   <table>
-    <colgroup><col style="width:194.9px"><col style="width:70.8px"><col style="width:70.8px"><col style="width:166.0px"><col style="width:77.5px"><col style="width:77.5px"><col style="width:141.7px"></colgroup>
+    <colgroup><col style="width:186.7px"><col style="width:67.9px"><col style="width:67.9px"><col style="width:159.1px"><col style="width:74.3px"><col style="width:74.3px"><col style="width:135.8px"></colgroup>
     <thead>
       <tr class="grp">
         <th class="k" rowspan="2">净值分位</th>
@@ -504,7 +567,7 @@
         <td class="nm"><span class="g">后 25%</span></td>
         <td class="num">0.38</td>
         <td class="num strong">0.17</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:75.4px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.96));"></div><div class="cz" style="left:75.4px;"></div><div class="cn" style="color:#218C0D;">-56%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:76.1px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.96));"></div><div class="cz" style="left:76.1px;"></div><div class="cn" style="color:#218C0D;">-56%</div></div></td>
         <td class="num sep">-0.58</td>
         <td class="num strong">-0.43</td>
         <td class="num" style="color:#888888;">收窄 26%</td>
@@ -513,48 +576,44 @@
         <td class="nm"><span class="g">25&#8211;49.9%</span></td>
         <td class="num">10.21</td>
         <td class="num strong">10.09</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:73.3px;width:2.1px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.35));"></div><div class="cz" style="left:75.4px;"></div><div class="cn" style="color:#218C0D;">-1%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:73.9px;width:2.1px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.35));"></div><div class="cz" style="left:76.1px;"></div><div class="cn" style="color:#218C0D;">-1%</div></div></td>
         <td class="num sep">10.82</td>
         <td class="num strong">10.91</td>
-        <td class="num up">+1%</td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:61.5px;width:1.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.3));"></div><div class="cz" style="left:61.5px;"></div><div class="cn" style="color:#E65A56;">+1%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">50&#8211;74.9%</span></td>
         <td class="num">38.99</td>
         <td class="num strong">40.57</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:75.4px;width:5.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.38));"></div><div class="cz" style="left:75.4px;"></div><div class="cn" style="color:#E65A56;">+4%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:76.1px;width:5.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.38));"></div><div class="cz" style="left:76.1px;"></div><div class="cn" style="color:#E65A56;">+4%</div></div></td>
         <td class="num sep">40.89</td>
         <td class="num strong">43.25</td>
-        <td class="num up">+6%</td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:61.5px;width:8.2px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.4));"></div><div class="cz" style="left:61.5px;"></div><div class="cn" style="color:#E65A56;">+6%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">75&#8211;89.9%</span></td>
         <td class="num">113.40</td>
         <td class="num strong">126.75</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:75.4px;width:16.2px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.47));"></div><div class="cz" style="left:75.4px;"></div><div class="cn" style="color:#E65A56;">+12%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:76.1px;width:16.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.47));"></div><div class="cz" style="left:76.1px;"></div><div class="cn" style="color:#E65A56;">+12%</div></div></td>
         <td class="num sep">120.64</td>
         <td class="num strong">139.75</td>
-        <td class="num up">+16%</td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:61.5px;width:21.7px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.55));"></div><div class="cz" style="left:61.5px;"></div><div class="cn" style="color:#E65A56;">+16%</div></div></td>
       </tr>
       <tr class="r last">
         <td class="nm"><span class="g">90&#8211;100%</span></td>
         <td class="num">415.27</td>
         <td class="num strong">493.52</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:75.4px;width:25.6px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.55));"></div><div class="cz" style="left:75.4px;"></div><div class="cn" style="color:#E65A56;">+19%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:76.1px;width:25.8px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.55));"></div><div class="cz" style="left:76.1px;"></div><div class="cn" style="color:#E65A56;">+19%</div></div></td>
         <td class="num sep">854.75</td>
         <td class="num strong">897.52</td>
-        <td class="num up">+5%</td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:61.5px;width:6.8px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.38));"></div><div class="cz" style="left:61.5px;"></div><div class="cn" style="color:#E65A56;">+5%</div></div></td>
       </tr></tbody>
-  </table>
-
-  <div class="foot"><div class="src">
-      数据来源：美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026 年 10 月 9 日，表 2。<br>口径：金额为 2025 年美元，按家庭净值排序分五组；后 25% 两期均值均为负（整体资不抵债），该格按绝对值计为「收窄 26%」，不以百分比符号表达。
-  </div></div></div></div></section><section id="scf-fig-03" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-3" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>进入各财富分位所需的净值门槛</h1>
+  </table></div></div></section><section id="scf-fig-03" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-3" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>进入各财富分位所需的净值门槛</h1>
   <div class="sub">2010&#8211;2025 六次调查 &#183; 单位：万美元 &#183; 已统一折算为 2025 年美元</div>
   <div class="rule"></div>
 
   <table>
-    <colgroup><col style="width:104.0px"><col style="width:70.0px"><col style="width:70.0px"><col style="width:70.0px"><col style="width:70.0px"><col style="width:70.0px"><col style="width:70.0px"><col style="width:96.0px"><col style="width:140.0px"></colgroup>
+    <colgroup><col style="width:104.8px"><col style="width:70.6px"><col style="width:70.6px"><col style="width:70.6px"><col style="width:70.6px"><col style="width:70.6px"><col style="width:70.6px"><col style="width:96.8px"><col style="width:141.1px"></colgroup>
     <thead>
       <tr>
         <th class="k">净值分位</th>
@@ -568,36 +627,32 @@
         <td class="nm"><span class="g">25 分位</span></td>
         <td class="num">1.24</td><td class="num">1.22</td><td class="num">1.37</td><td class="num">1.57</td><td class="num">2.96</td><td class="num strong">2.79</td>
         <td class="num up">+125.0%</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:18.5px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.52));"></div><div class="cz" style="left:18.5px;"></div><div class="cn" style="color:#218C0D;">-6%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:18.6px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.52));"></div><div class="cz" style="left:18.6px;"></div><div class="cn" style="color:#218C0D;">-6%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">50 分位（中位）</span></td>
         <td class="num">11.55</td><td class="num">11.31</td><td class="num">13.13</td><td class="num">15.44</td><td class="num">21.11</td><td class="num strong">21.59</td>
         <td class="num up">+86.9%</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:18.5px;width:7.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.41));"></div><div class="cz" style="left:18.5px;"></div><div class="cn" style="color:#E65A56;">+2%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:18.6px;width:7.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.41));"></div><div class="cz" style="left:18.6px;"></div><div class="cn" style="color:#E65A56;">+2%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">75 分位</span></td>
         <td class="num">45.09</td><td class="num">44.19</td><td class="num">49.82</td><td class="num">51.23</td><td class="num">72.11</td><td class="num strong">81.28</td>
         <td class="num up">+80.3%</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:18.5px;width:40.9px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.74));"></div><div class="cz" style="left:18.5px;"></div><div class="cn" style="color:#E65A56;">+13%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:18.6px;width:41.2px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.74));"></div><div class="cz" style="left:18.6px;"></div><div class="cn" style="color:#E65A56;">+13%</div></div></td>
       </tr>
       <tr class="r last">
         <td class="nm"><span class="g">90 分位</span></td>
         <td class="num">142.37</td><td class="num">131.17</td><td class="num">160.13</td><td class="num">154.80</td><td class="num">212.09</td><td class="num strong">253.92</td>
         <td class="num up">+78.4%</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:18.5px;width:63.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:18.5px;"></div><div class="cn" style="color:#E65A56;">+20%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:18.6px;width:64.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:18.6px;"></div><div class="cn" style="color:#E65A56;">+20%</div></div></td>
       </tr></tbody>
-  </table>
-
-  <div class="foot"><div class="src">
-      数据来源：美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026 年 10 月 9 日，附录表 A.2。<br>口径：各期金额已按附录表 A.1 的通胀因子折算为 2025 年美元，可直接跨期比较；分位按家庭净值排序，50 分位即中位数。
-  </div></div></div></div></section><section id="scf-fig-04" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-4" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>各年龄段家庭净值中位数</h1>
+  </table></div></div></section><section id="scf-fig-04" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-4" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>各年龄段家庭净值中位数</h1>
   <div class="sub">2022 与 2025 两次调查对比 &#183; 单位：万美元</div>
   <div class="rule"></div>
 
   <table>
-    <colgroup><col style="width:357.0px"><col style="width:166.6px"><col style="width:166.6px"><col style="width:235.0px"></colgroup>
+    <colgroup><col style="width:295.6px"><col style="width:137.9px"><col style="width:137.9px"><col style="width:194.6px"></colgroup>
     <thead>
       <tr>
         <th class="k">年龄组</th>
@@ -610,48 +665,44 @@
         <td class="nm"><span class="g">35 岁以下</span></td>
         <td class="num">4.27</td>
         <td class="num strong">3.30</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:48.7px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.73));"></div><div class="cz" style="left:48.7px;"></div><div class="cn" style="color:#218C0D;">-23%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:49.1px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.73));"></div><div class="cz" style="left:49.1px;"></div><div class="cn" style="color:#218C0D;">-23%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">35&#8211;44 岁</span></td>
         <td class="num">14.84</td>
         <td class="num strong">15.56</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:48.7px;width:10.6px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.42));"></div><div class="cz" style="left:48.7px;"></div><div class="cn" style="color:#E65A56;">+5%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:49.1px;width:10.7px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.42));"></div><div class="cz" style="left:49.1px;"></div><div class="cn" style="color:#E65A56;">+5%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">45&#8211;54 岁</span></td>
         <td class="num">27.06</td>
         <td class="num strong">25.37</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:36.0px;width:12.7px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.44));"></div><div class="cz" style="left:48.7px;"></div><div class="cn" style="color:#218C0D;">-6%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:36.3px;width:12.8px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.44));"></div><div class="cz" style="left:49.1px;"></div><div class="cn" style="color:#218C0D;">-6%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">55&#8211;64 岁</span></td>
         <td class="num">39.89</td>
         <td class="num strong">41.19</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:48.7px;width:6.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.39));"></div><div class="cz" style="left:48.7px;"></div><div class="cn" style="color:#E65A56;">+3%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:49.1px;width:6.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.39));"></div><div class="cz" style="left:49.1px;"></div><div class="cn" style="color:#E65A56;">+3%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">65&#8211;74 岁</span></td>
         <td class="num">44.86</td>
         <td class="num strong">43.13</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:40.1px;width:8.4px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.41));"></div><div class="cz" style="left:48.7px;"></div><div class="cn" style="color:#218C0D;">-4%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:40.5px;width:8.5px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.41));"></div><div class="cz" style="left:49.1px;"></div><div class="cn" style="color:#218C0D;">-4%</div></div></td>
       </tr>
       <tr class="r last">
         <td class="nm"><span class="g">75 岁以上</span></td>
         <td class="num">36.73</td>
         <td class="num strong">50.49</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:48.7px;width:78.2px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:48.7px;"></div><div class="cn" style="color:#E65A56;">+37%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:49.1px;width:78.9px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:49.1px;"></div><div class="cn" style="color:#E65A56;">+37%</div></div></td>
       </tr></tbody>
-  </table>
-
-  <div class="foot"><div class="src">
-      数据来源：美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026 年 10 月 9 日，表 2。<br>口径：金额为 2025 年美元；按家庭参考人年龄分组，各组中位数为该组全部家庭的中位数，非持有者条件值；单位 family，不是 household。
-  </div></div></div></div></section><section id="scf-fig-05" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-5" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>各年龄段家庭净值的中位数与平均数</h1>
+  </table></div></div></section><section id="scf-fig-05" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-5" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>各年龄段家庭净值的中位数与平均数</h1>
   <div class="sub">2022 与 2025 两次调查对比</div>
   <div class="rule"></div>
 
   <table>
-    <colgroup><col style="width:179.4px"><col style="width:77.5px"><col style="width:77.5px"><col style="width:155.0px"><col style="width:77.5px"><col style="width:77.5px"><col style="width:155.0px"></colgroup>
+    <colgroup><col style="width:171.9px"><col style="width:74.3px"><col style="width:74.3px"><col style="width:148.5px"><col style="width:74.3px"><col style="width:74.3px"><col style="width:148.5px"></colgroup>
     <thead>
       <tr class="grp">
         <th class="k" rowspan="2">户主年龄</th>
@@ -667,66 +718,62 @@
         <td class="nm"><span class="g">35 岁以下</span></td>
         <td class="num">4.27</td>
         <td class="num strong">3.30</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:12.0px;width:27.7px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.73));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#218C0D;">-23%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:12.1px;width:27.9px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.73));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#218C0D;">-23%</div></div></td>
         <td class="num sep">20.08</td>
         <td class="num strong">13.54</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:39.7px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.89));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#218C0D;">-33%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:40.0px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.89));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#218C0D;">-33%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">35&#8211;44 岁</span></td>
         <td class="num">14.84</td>
         <td class="num strong">15.56</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.7px;width:6.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.42));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#E65A56;">+5%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:40.0px;width:6.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.42));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#E65A56;">+5%</div></div></td>
         <td class="num sep">60.15</td>
         <td class="num strong">68.19</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.7px;width:15.7px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.56));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#E65A56;">+13%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:40.0px;width:15.8px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.56));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#E65A56;">+13%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">45&#8211;54 岁</span></td>
         <td class="num">27.06</td>
         <td class="num strong">25.37</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:32.5px;width:7.3px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.44));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#218C0D;">-6%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:32.8px;width:7.3px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.44));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#218C0D;">-6%</div></div></td>
         <td class="num sep">106.79</td>
         <td class="num strong">124.45</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.7px;width:20.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.62));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#E65A56;">+17%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:40.0px;width:20.6px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.62));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#E65A56;">+17%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">55&#8211;64 岁</span></td>
         <td class="num">39.89</td>
         <td class="num strong">41.19</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.7px;width:3.6px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.39));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#E65A56;">+3%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:40.0px;width:3.6px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.39));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#E65A56;">+3%</div></div></td>
         <td class="num sep">171.47</td>
         <td class="num strong">187.80</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.7px;width:12.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.51));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#E65A56;">+10%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:40.0px;width:12.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.51));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#E65A56;">+10%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">65&#8211;74 岁</span></td>
         <td class="num">44.86</td>
         <td class="num strong">43.13</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:34.8px;width:4.8px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.41));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#218C0D;">-4%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:35.1px;width:4.9px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.41));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#218C0D;">-4%</div></div></td>
         <td class="num sep">196.39</td>
         <td class="num strong">189.76</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:36.1px;width:3.6px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.39));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#218C0D;">-3%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:36.4px;width:3.6px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.39));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#218C0D;">-3%</div></div></td>
       </tr>
       <tr class="r last">
         <td class="nm"><span class="g">75 岁以上</span></td>
         <td class="num">36.73</td>
         <td class="num strong">50.49</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.7px;width:44.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#E65A56;">+37%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:40.0px;width:44.9px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#E65A56;">+37%</div></div></td>
         <td class="num sep">177.74</td>
         <td class="num strong">196.22</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.7px;width:12.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.51));"></div><div class="cz" style="left:39.7px;"></div><div class="cn" style="color:#E65A56;">+10%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:40.0px;width:12.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.51));"></div><div class="cz" style="left:40.0px;"></div><div class="cn" style="color:#E65A56;">+10%</div></div></td>
       </tr></tbody>
-  </table>
-
-  <div class="foot"><div class="src">
-      数据来源：美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026 年 10 月 9 日，表 2。<br>口径：金额为 2025 年美元，按家庭参考人年龄分组；中位与均值均为该组全部家庭的整体值，非持有者条件值；两个变化列的条共用同一比例尺，长度可直接比较。
-  </div></div></div></div></section><section id="scf-fig-06" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-6" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>按户主年龄的家庭财富份额</h1>
+  </table></div></div></section><section id="scf-fig-06" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-6" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>按户主年龄的家庭财富份额</h1>
   <div class="sub">2022 与 2025 两次调查对比 &#183; 六组年龄层</div>
   <div class="rule"></div>
 
   <table>
-    <colgroup><col style="width:221.4px"><col style="width:93.0px"><col style="width:93.0px"><col style="width:106.3px"><col style="width:106.3px"><col style="width:179.4px"></colgroup>
+    <colgroup><col style="width:212.2px"><col style="width:89.1px"><col style="width:89.1px"><col style="width:101.9px"><col style="width:101.9px"><col style="width:171.9px"></colgroup>
     <thead>
       <tr class="grp">
         <th class="k" rowspan="2">户主年龄</th>
@@ -745,7 +792,7 @@
         <td class="num">19.6</td>
         <td class="num sep">3.45</td>
         <td class="num strong">2.14</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:20.2px;width:27.7px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.63));"></div><div class="cz" style="left:47.9px;"></div><div class="cn" style="color:#218C0D;">-1.3pp</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:20.4px;width:27.9px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.63));"></div><div class="cz" style="left:48.3px;"></div><div class="cn" style="color:#218C0D;">-1.3pp</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">35&#8211;44 岁</span></td>
@@ -753,7 +800,7 @@
         <td class="num">17.3</td>
         <td class="num sep">8.80</td>
         <td class="num strong">9.50</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:47.9px;width:14.8px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.49));"></div><div class="cz" style="left:47.9px;"></div><div class="cn" style="color:#E65A56;">+0.7pp</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:48.3px;width:15.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.49));"></div><div class="cz" style="left:48.3px;"></div><div class="cn" style="color:#E65A56;">+0.7pp</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">45&#8211;54 岁</span></td>
@@ -761,7 +808,7 @@
         <td class="num">16.2</td>
         <td class="num sep">15.07</td>
         <td class="num strong">16.24</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:47.9px;width:24.6px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.60));"></div><div class="cz" style="left:47.9px;"></div><div class="cn" style="color:#E65A56;">+1.2pp</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:48.3px;width:24.8px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.60));"></div><div class="cz" style="left:48.3px;"></div><div class="cn" style="color:#E65A56;">+1.2pp</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">55&#8211;64 岁</span></td>
@@ -769,7 +816,7 @@
         <td class="num">17.2</td>
         <td class="num sep">27.14</td>
         <td class="num strong">26.02</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:24.4px;width:23.5px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.58));"></div><div class="cz" style="left:47.9px;"></div><div class="cn" style="color:#218C0D;">-1.1pp</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:24.6px;width:23.7px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.58));"></div><div class="cz" style="left:48.3px;"></div><div class="cn" style="color:#218C0D;">-1.1pp</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">65&#8211;74 岁</span></td>
@@ -777,7 +824,7 @@
         <td class="num">16.3</td>
         <td class="num sep">27.20</td>
         <td class="num strong">24.92</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:47.9px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.84));"></div><div class="cz" style="left:47.9px;"></div><div class="cn" style="color:#218C0D;">-2.3pp</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:48.3px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.84));"></div><div class="cz" style="left:48.3px;"></div><div class="cn" style="color:#218C0D;">-2.3pp</div></div></td>
       </tr>
       <tr class="r last">
         <td class="nm"><span class="g">75 岁以上</span></td>
@@ -785,18 +832,14 @@
         <td class="num">13.4</td>
         <td class="num sep">18.35</td>
         <td class="num strong">21.18</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:47.9px;width:59.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:47.9px;"></div><div class="cn" style="color:#E65A56;">+2.8pp</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:48.3px;width:59.9px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:48.3px;"></div><div class="cn" style="color:#E65A56;">+2.8pp</div></div></td>
       </tr></tbody>
-  </table>
-
-  <div class="foot"><div class="src">
-      数据来源：美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026 年 10 月 9 日，表 2（组内净值均值）、附录表 A.5（家庭占比）。<br>口径：财富份额为本表估算＝该组家庭占比 × 该组净值均值 ÷ 全美家庭净值总额，非美联储发布值；分组依据是户主年龄，不是出生世代。
-  </div></div></div></div></section><section id="scf-fig-07" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-7" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>家庭债务负担与信用状况</h1>
+  </table></div></div></section><section id="scf-fig-07" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-7" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>家庭债务负担与信用状况</h1>
   <div class="sub">2013&#8211;2025 五次调查 &#183; 单位：% &#183; 变化列为百分点差</div>
   <div class="rule"></div>
 
   <table>
-    <colgroup><col style="width:291.6px"><col style="width:86.2px"><col style="width:86.2px"><col style="width:86.2px"><col style="width:86.2px"><col style="width:86.2px"><col style="width:202.4px"></colgroup>
+    <colgroup><col style="width:241.4px"><col style="width:71.4px"><col style="width:71.4px"><col style="width:71.4px"><col style="width:71.4px"><col style="width:71.4px"><col style="width:167.5px"></colgroup>
     <thead>
       <tr>
         <th class="k">指标</th>
@@ -808,68 +851,64 @@
       <tr class="r">
         <td class="nm"><span class="g">杠杆率</span><span class="sep">&#183;</span><span class="l">全部家庭</span></td>
         <td class="num">14.6</td><td class="num">12.1</td><td class="num">12.6</td><td class="num">10.7</td><td class="num strong">10.0</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:16.1px;width:7.1px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.40));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#218C0D;">-0.7</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:16.3px;width:7.1px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.40));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#218C0D;">-0.7</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">杠杆率</span><span class="sep">&#183;</span><span class="l">负债家庭中位</span></td>
         <td class="num">38.6</td><td class="num">36.4</td><td class="num">33.9</td><td class="num">29.2</td><td class="num strong">26.9</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:23.2px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.53));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#218C0D;">-2.3</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:23.4px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.53));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#218C0D;">-2.3</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">债务收入比</span><span class="sep">&#183;</span><span class="l">全部家庭</span></td>
         <td class="num">104.5</td><td class="num">92.6</td><td class="num">101.2</td><td class="num">89.4</td><td class="num strong">94.9</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:23.2px;width:55.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.80));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#E65A56;">+5.5</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:23.4px;width:55.9px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.80));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#E65A56;">+5.5</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">偿债收入比</span><span class="sep">&#183;</span><span class="l">全部家庭</span></td>
         <td class="num">12.0</td><td class="num">10.8</td><td class="num">11.8</td><td class="num">9.9</td><td class="num strong">11.9</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:23.2px;width:20.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.51));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#E65A56;">+2.0</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:23.4px;width:20.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.51));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#E65A56;">+2.0</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">偿债收入比</span><span class="sep">&#183;</span><span class="l">负债家庭中位</span></td>
         <td class="num">15.9</td><td class="num">14.7</td><td class="num">15.3</td><td class="num">13.4</td><td class="num strong">15.4</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:23.2px;width:20.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.51));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#E65A56;">+2.0</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:23.4px;width:20.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.51));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#E65A56;">+2.0</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">偿债比超 40%</span><span class="sep">&#183;</span><span class="l">家庭占比</span></td>
         <td class="num">8.2</td><td class="num">7.0</td><td class="num">7.4</td><td class="num">6.5</td><td class="num strong">8.6</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:23.2px;width:21.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.52));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#E65A56;">+2.1</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:23.4px;width:21.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.52));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#E65A56;">+2.1</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">逾期</span><span class="sep">&#183;</span><span class="l">任何</span></td>
         <td class="num">14.9</td><td class="num">13.5</td><td class="num">12.3</td><td class="num">12.2</td><td class="num strong">19.6</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:23.2px;width:74.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#E65A56;">+7.4</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:23.4px;width:75.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#E65A56;">+7.4</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">逾期</span><span class="sep">&#183;</span><span class="l">2 个月以上</span></td>
         <td class="num">6.9</td><td class="num">5.8</td><td class="num">4.6</td><td class="num">4.9</td><td class="num strong">8.2</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:23.2px;width:33.2px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.62));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#E65A56;">+3.3</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:23.4px;width:33.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.62));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#E65A56;">+3.3</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">发薪日贷款</span><span class="sep">&#183;</span><span class="l">过去一年</span></td>
         <td class="num">4.2</td><td class="num">3.4</td><td class="num">2.8</td><td class="num">2.1</td><td class="num strong">2.6</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:23.2px;width:5.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.38));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#E65A56;">+0.5</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:23.4px;width:5.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.38));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#E65A56;">+0.5</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">破产</span><span class="sep">&#183;</span><span class="l">过去五年</span></td>
         <td class="num">4.1</td><td class="num">3.0</td><td class="num">2.0</td><td class="num">1.3</td><td class="num strong">1.4</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:23.2px;width:2.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.35));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#E65A56;">+0.1</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:23.4px;width:2.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.35));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#E65A56;">+0.1</div></div></td>
       </tr>
       <tr class="r last">
         <td class="nm"><span class="g">止赎启动</span><span class="sep">&#183;</span><span class="l">过去五年</span></td>
         <td class="num">&#8212;</td><td class="num">2.1</td><td class="num">1.3</td><td class="num">0.5</td><td class="num strong">0.7</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:23.2px;width:2.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.36));"></div><div class="cz" style="left:23.2px;"></div><div class="cn" style="color:#E65A56;">+0.2</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:23.4px;width:2.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.36));"></div><div class="cz" style="left:23.4px;"></div><div class="cn" style="color:#E65A56;">+0.2</div></div></td>
       </tr></tbody>
-  </table>
-
-  <div class="foot"><div class="src">
-      数据来源：美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026 年 10 月 9 日，表 5。<br>口径：杠杆率＝总债务／总资产，偿债收入比＝偿债支出／收入；「全部家庭」与「负债家庭中位」不可混读；止赎启动 2013 年未发布。
-  </div></div></div></div></section><section id="scf-fig-08" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-8" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>家庭债务：持有率与持有者中的余额</h1>
+  </table></div></div></section><section id="scf-fig-08" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-8" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>家庭债务：持有率与持有者中的余额</h1>
   <div class="sub">2025 年调查，与 2022 年对比</div>
   <div class="rule"></div>
 
   <table>
-    <colgroup><col style="width:196.0px"><col style="width:60.0px"><col style="width:60.0px"><col style="width:84.0px"><col style="width:138.0px"><col style="width:84.0px"><col style="width:138.0px"></colgroup>
+    <colgroup><col style="width:197.5px"><col style="width:60.5px"><col style="width:60.5px"><col style="width:84.7px"><col style="width:139.1px"><col style="width:84.7px"><col style="width:139.1px"></colgroup>
     <thead>
       <tr class="grp">
         <th class="k" rowspan="2">债务类型</th>
@@ -888,65 +927,61 @@
         <td class="num dim">77.4</td>
         <td class="num">77.0</td>
         <td class="num sep strong">8.81</td>
-        <td class="chg"><div class="cw"><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#888888;">0%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#888888;">0%</div></div></td>
         <td class="num strong">17.91</td>
-        <td class="chg"><div class="cw"><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#888888;">0%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#888888;">0%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">自住房按揭</span></td>
         <td class="num dim">42.2</td>
         <td class="num">42.0</td>
         <td class="num sep strong">18.36</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.0px;width:16.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.60));"></div><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#E65A56;">+8%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:39.3px;width:16.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.60));"></div><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#E65A56;">+8%</div></div></td>
         <td class="num strong">23.97</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.0px;width:6.2px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.44));"></div><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#E65A56;">+3%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:39.3px;width:6.2px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.44));"></div><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#E65A56;">+3%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">信用卡循环余额</span></td>
         <td class="num dim">45.2</td>
         <td class="num">44.7</td>
         <td class="num sep strong">0.31</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.0px;width:10.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.50));"></div><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#E65A56;">+5%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:39.3px;width:10.4px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.50));"></div><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#E65A56;">+5%</div></div></td>
         <td class="num strong">0.80</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.0px;width:39.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#E65A56;">+19%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:39.3px;width:39.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#E65A56;">+19%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">学生贷款</span></td>
         <td class="num dim">21.8</td>
         <td class="num">20.0</td>
         <td class="num sep strong">2.56</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:28.7px;width:10.3px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.50));"></div><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#218C0D;">-5%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:28.9px;width:10.4px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.50));"></div><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#218C0D;">-5%</div></div></td>
         <td class="num strong">4.30</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:6.2px;width:32.8px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.86));"></div><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#218C0D;">-16%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:6.2px;width:33.1px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.86));"></div><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#218C0D;">-16%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">车贷</span></td>
         <td class="num dim">34.7</td>
         <td class="num">32.1</td>
         <td class="num sep strong">1.70</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:39.0px;width:2.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.37));"></div><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#E65A56;">+1%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:39.3px;width:2.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.37));"></div><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#E65A56;">+1%</div></div></td>
         <td class="num strong">2.31</td>
-        <td class="chg"><div class="cw"><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#888888;">0%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#888888;">0%</div></div></td>
       </tr>
       <tr class="r last">
         <td class="nm"><span class="g">其他分期贷（含 BNPL）</span></td>
         <td class="num dim">18.5</td>
         <td class="num">24.2</td>
         <td class="num sep strong">0.20</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:39.0px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.96));"></div><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#218C0D;">-19%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:39.3px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.96));"></div><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#218C0D;">-19%</div></div></td>
         <td class="num strong">1.07</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:26.7px;width:12.3px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.54));"></div><div class="cz" style="left:39.0px;"></div><div class="cn" style="color:#218C0D;">-6%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:26.9px;width:12.4px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.54));"></div><div class="cz" style="left:39.3px;"></div><div class="cn" style="color:#218C0D;">-6%</div></div></td>
       </tr></tbody>
-  </table>
-
-  <div class="foot"><div class="src">
-      数据来源：美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026 年 10 月 9 日，表 4。<br>口径：金额为 2025 年美元；余额为中位／均值为「持有该类债务的家庭中」的条件值，不可与全部家庭指标相加；两个变化列的条共用同一比例尺，长度可直接比较。
-  </div></div></div></div></section><section id="scf-fig-09" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-9" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>家庭资产持有率与持有者中位数</h1>
+  </table></div></div></section><section id="scf-fig-09" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-9" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>家庭资产持有率与持有者中位数</h1>
   <div class="sub">2022 与 2025 两次调查对比 &#183; 持有率变化为百分点差</div>
   <div class="rule"></div>
 
   <table>
-    <colgroup><col style="width:254.0px"><col style="width:82.8px"><col style="width:82.8px"><col style="width:91.1px"><col style="width:99.4px"><col style="width:99.4px"><col style="width:182.2px"></colgroup>
+    <colgroup><col style="width:218.2px"><col style="width:71.1px"><col style="width:71.1px"><col style="width:78.3px"><col style="width:85.4px"><col style="width:85.4px"><col style="width:156.5px"></colgroup>
     <thead>
       <tr class="grp">
         <th class="k" rowspan="2">资产类别</th>
@@ -965,7 +1000,7 @@
         <td class="num up">+0.1</td>
         <td class="num dim">0.9</td>
         <td class="num strong">0.8</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:14.0px;width:4.9px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.38));"></div><div class="cz" style="left:18.9px;"></div><div class="cn" style="color:#218C0D;">-6%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:14.1px;width:5.0px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.38));"></div><div class="cz" style="left:19.1px;"></div><div class="cn" style="color:#218C0D;">-6%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">金融资产</span><span class="sep">&#183;</span><span class="l">定期存单</span></td>
@@ -974,7 +1009,7 @@
         <td class="num up">+4.2</td>
         <td class="num dim">2.9</td>
         <td class="num strong">3.5</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:18.9px;width:18.9px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.51));"></div><div class="cz" style="left:18.9px;"></div><div class="cn" style="color:#E65A56;">+23%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:19.1px;width:19.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.51));"></div><div class="cz" style="left:19.1px;"></div><div class="cn" style="color:#E65A56;">+23%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">金融资产</span><span class="sep">&#183;</span><span class="l">股票</span></td>
@@ -983,7 +1018,7 @@
         <td class="num down">-2.0</td>
         <td class="num dim">1.6</td>
         <td class="num strong">3.0</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:18.9px;width:68.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:18.9px;"></div><div class="cn" style="color:#E65A56;">+83%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:19.1px;width:68.7px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:19.1px;"></div><div class="cn" style="color:#E65A56;">+83%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">金融资产</span><span class="sep">&#183;</span><span class="l">共同基金</span></td>
@@ -992,7 +1027,7 @@
         <td class="num down">-0.4</td>
         <td class="num dim">16.4</td>
         <td class="num strong">20.0</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:18.9px;width:18.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.50));"></div><div class="cz" style="left:18.9px;"></div><div class="cn" style="color:#E65A56;">+22%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:19.1px;width:18.3px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.50));"></div><div class="cz" style="left:19.1px;"></div><div class="cn" style="color:#E65A56;">+22%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">金融资产</span><span class="sep">&#183;</span><span class="l">退休账户</span></td>
@@ -1001,7 +1036,7 @@
         <td class="num up">+0.6</td>
         <td class="num dim">9.5</td>
         <td class="num strong">10.6</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:18.9px;width:9.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.42));"></div><div class="cz" style="left:18.9px;"></div><div class="cn" style="color:#E65A56;">+11%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:19.1px;width:9.1px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.42));"></div><div class="cz" style="left:19.1px;"></div><div class="cn" style="color:#E65A56;">+11%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">非金融资产</span><span class="sep">&#183;</span><span class="l">自住房</span></td>
@@ -1010,7 +1045,7 @@
         <td class="num down">-0.5</td>
         <td class="num dim">35.4</td>
         <td class="num strong">37.5</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:18.9px;width:4.9px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.38));"></div><div class="cz" style="left:18.9px;"></div><div class="cn" style="color:#E65A56;">+6%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:19.1px;width:5.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.38));"></div><div class="cz" style="left:19.1px;"></div><div class="cn" style="color:#E65A56;">+6%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">非金融资产</span><span class="sep">&#183;</span><span class="l">其他住宅</span></td>
@@ -1019,7 +1054,7 @@
         <td class="num up">+0.9</td>
         <td class="num dim">24.6</td>
         <td class="num strong">28.0</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:18.9px;width:11.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.44));"></div><div class="cz" style="left:18.9px;"></div><div class="cn" style="color:#E65A56;">+14%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:19.1px;width:11.6px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.44));"></div><div class="cz" style="left:19.1px;"></div><div class="cn" style="color:#E65A56;">+14%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">非金融资产</span><span class="sep">&#183;</span><span class="l">企业股权</span></td>
@@ -1028,7 +1063,7 @@
         <td class="num up">+0.8</td>
         <td class="num dim">9.8</td>
         <td class="num strong">7.5</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:18.9px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.51));"></div><div class="cz" style="left:18.9px;"></div><div class="cn" style="color:#218C0D;">-23%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:19.1px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.51));"></div><div class="cz" style="left:19.1px;"></div><div class="cn" style="color:#218C0D;">-23%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">非金融资产</span><span class="sep">&#183;</span><span class="l">非住宅地产权益</span></td>
@@ -1037,7 +1072,7 @@
         <td class="num up">+1.2</td>
         <td class="num dim">13.7</td>
         <td class="num strong">13.5</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:16.6px;width:2.3px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.35));"></div><div class="cz" style="left:18.9px;"></div><div class="cn" style="color:#218C0D;">-1%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:16.7px;width:2.4px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.35));"></div><div class="cz" style="left:19.1px;"></div><div class="cn" style="color:#218C0D;">-1%</div></div></td>
       </tr>
       <tr class="r last">
         <td class="nm"><span class="g">非金融资产</span><span class="sep">&#183;</span><span class="l">车辆</span></td>
@@ -1046,18 +1081,14 @@
         <td class="num down">-2.4</td>
         <td class="num dim">3.0</td>
         <td class="num strong">2.6</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:7.4px;width:11.5px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.44));"></div><div class="cz" style="left:18.9px;"></div><div class="cn" style="color:#218C0D;">-14%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:7.5px;width:11.6px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.44));"></div><div class="cz" style="left:19.1px;"></div><div class="cn" style="color:#218C0D;">-14%</div></div></td>
       </tr></tbody>
-  </table>
-
-  <div class="foot"><div class="src">
-      数据来源：美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026 年 10 月 9 日，表 3。<br>口径：持有率为持有该资产的 family 占比；中位数为「持有者中」的条件值，不含未持有家庭，故不可与全家庭净值中位数对读。
-  </div></div></div></div></section><section id="scf-fig-10" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-10" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>各族裔家庭净值的中位数与平均数</h1>
+  </table></div></div></section><section id="scf-fig-10" class="rounded-none md:rounded-xl border border-border bg-card overflow-hidden"><div class="w-full overflow-hidden"><div class="scf-fig-10" style="width:766px;max-width:none;margin:0;background:#FFFFFF;padding:3px 3px 0 3px;font-family:&#x27;PingFang SC&#x27;,&#x27;Hiragino Sans GB&#x27;,&#x27;Noto Sans SC&#x27;,sans-serif;color:#4B4F52;-webkit-font-smoothing:antialiased;transform:translateX(0px) scale(1);transform-origin:top left"><h1>各族裔家庭净值的中位数与平均数</h1>
   <div class="sub">2022 与 2025 两次调查对比</div>
   <div class="rule"></div>
 
   <table>
-    <colgroup><col style="width:179.4px"><col style="width:77.5px"><col style="width:77.5px"><col style="width:155.0px"><col style="width:77.5px"><col style="width:77.5px"><col style="width:155.0px"></colgroup>
+    <colgroup><col style="width:171.9px"><col style="width:74.3px"><col style="width:74.3px"><col style="width:148.5px"><col style="width:74.3px"><col style="width:74.3px"><col style="width:148.5px"></colgroup>
     <thead>
       <tr class="grp">
         <th class="k" rowspan="2">族裔</th>
@@ -1073,43 +1104,39 @@
         <td class="nm"><span class="g">白人（非西语裔）</span></td>
         <td class="num">31.19</td>
         <td class="num strong">33.21</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:35.7px;width:8.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.45));"></div><div class="cz" style="left:35.7px;"></div><div class="cn" style="color:#E65A56;">+6%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:36.0px;width:8.6px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.45));"></div><div class="cz" style="left:36.0px;"></div><div class="cn" style="color:#E65A56;">+6%</div></div></td>
         <td class="num sep">149.62</td>
         <td class="num strong">169.47</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:35.7px;width:18.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.58));"></div><div class="cz" style="left:35.7px;"></div><div class="cn" style="color:#E65A56;">+13%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:36.0px;width:18.7px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.58));"></div><div class="cz" style="left:36.0px;"></div><div class="cn" style="color:#E65A56;">+13%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">黑人（非西语裔）</span></td>
         <td class="num">4.91</td>
         <td class="num strong">3.68</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:35.7px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.80));"></div><div class="cz" style="left:35.7px;"></div><div class="cn" style="color:#218C0D;">-25%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:0.0px;width:36.0px;background:linear-gradient(270deg,rgba(33,140,13,0.18),rgba(33,140,13,0.80));"></div><div class="cz" style="left:36.0px;"></div><div class="cn" style="color:#218C0D;">-25%</div></div></td>
         <td class="num sep">23.14</td>
         <td class="num strong">24.24</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:35.7px;width:7.2px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.43));"></div><div class="cz" style="left:35.7px;"></div><div class="cn" style="color:#E65A56;">+5%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:36.0px;width:7.2px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.43));"></div><div class="cz" style="left:36.0px;"></div><div class="cn" style="color:#E65A56;">+5%</div></div></td>
       </tr>
       <tr class="r">
         <td class="nm"><span class="g">西语裔</span></td>
         <td class="num">6.74</td>
         <td class="num strong">7.96</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:35.7px;width:25.7px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.67));"></div><div class="cz" style="left:35.7px;"></div><div class="cn" style="color:#E65A56;">+18%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:36.0px;width:25.9px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.67));"></div><div class="cz" style="left:36.0px;"></div><div class="cn" style="color:#E65A56;">+18%</div></div></td>
         <td class="num sep">24.89</td>
         <td class="num strong">33.41</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:35.7px;width:48.5px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:35.7px;"></div><div class="cn" style="color:#E65A56;">+34%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:36.0px;width:48.9px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.96));"></div><div class="cz" style="left:36.0px;"></div><div class="cn" style="color:#E65A56;">+34%</div></div></td>
       </tr>
       <tr class="r last">
         <td class="nm"><span class="g">亚裔</span></td>
         <td class="num">58.66</td>
         <td class="num strong">67.76</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:35.7px;width:22.8px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.63));"></div><div class="cz" style="left:35.7px;"></div><div class="cn" style="color:#E65A56;">+16%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:36.0px;width:23.0px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.63));"></div><div class="cz" style="left:36.0px;"></div><div class="cn" style="color:#E65A56;">+16%</div></div></td>
         <td class="num sep">199.93</td>
         <td class="num strong">221.81</td>
-        <td class="chg"><div class="cw"><div class="cbar" style="left:35.7px;width:15.7px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.54));"></div><div class="cz" style="left:35.7px;"></div><div class="cn" style="color:#E65A56;">+11%</div></div></td>
+        <td class="chg"><div class="cw"><div class="cbar" style="left:36.0px;width:15.8px;background:linear-gradient(90deg,rgba(230,90,86,0.18),rgba(230,90,86,0.54));"></div><div class="cz" style="left:36.0px;"></div><div class="cn" style="color:#E65A56;">+11%</div></div></td>
       </tr></tbody>
-  </table>
-
-  <div class="foot"><div class="src">
-      数据来源：美联储《Changes in U.S. Family Finances from 2022 to 2025》，2026 年 10 月 9 日，表 2。<br>口径：金额为 2025 年美元；族裔按表 2 口径分组，亚裔单列，另有「其他或多种族」组本图未列；中位与均值均为该组全部家庭的整体值，非持有者条件值。
-  </div></div></div></div></section></div></div></div></main><style>
+  </table></div></div></section></div></div></div></main><style>
         .footer-link-gold {
           background-image: linear-gradient(
             90deg,
@@ -1140,4 +1167,4 @@
             -webkit-text-fill-color: #d4af37;
           }
         }
-      </style><footer class="md:ml-[140px] border-t border-border mt-16 py-10 px-6 bg-muted/30"><div class="max-w-7xl mx-auto"><div class="text-center mb-6"><h4 class="text-[13px] font-semibold text-muted-foreground tracking-widest uppercase mb-4">相关资源</h4><ul class="flex flex-wrap justify-center gap-x-5 gap-y-2 list-none p-0"><li><a href="https://stock.laoqianriritan.com/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">美股看板</a></li><li><a href="https://ashare.laoqianriritan.com/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">A 股看板</a></li><li><a href="https://gold-board.betalpha.com/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200 footer-link-gold">黄金看板</a></li><li><a href="https://laoqianritan-create.github.io/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">老钱日日谈</a></li><li><a href="https://www.xiaoyuzhoufm.com/podcast/6388760f22567e8ea6ad070f" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">播客「面基」</a></li><li><a href="https://laoqianritan-create.github.io/qushi-animal-gallery/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">趋势动物小程序</a></li><li><a href="https://youzhiyouxing.cn/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">有知有行 App</a></li><li><a href="https://www.hongsehuojian.com/red-rocket/home" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">红色火箭</a></li><li><a href="https://youzhiyouxing.cn/sbbi2025/preface/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">SBBI 中国大类资产投资 2025 年报</a></li><li><a href="https://t.zsxq.com/zoHAZ" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">知识星球</a></li></ul></div><div class="pt-4 border-t border-border"></div><p class="text-xs text-muted-foreground/60 text-center pt-3 leading-relaxed">数据仅供参考，不构成投资建议 · Big Picture · 美债看板</p></div></footer><!--$--><!--/$--><script src="/us-debt/_next/static/chunks/0ed8spdfcvifo.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[21957,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"ThemeProvider\"]\n3:I[5233,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"default\"]\n4:I[73632,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"default\"]\n5:I[36134,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\",\"/us-debt/_next/static/chunks/0fnu0453b_4o2.js\",\"/us-debt/_next/static/chunks/0us105c.nkp8u.js\",\"/us-debt/_next/static/chunks/0qlw1dh716jbi.js\",\"/us-debt/_next/static/chunks/01sd05r1pxxc2.js\",\"/us-debt/_next/static/chunks/0j4fybyez_qcn.js\"],\"default\"]\n6:I[83775,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"OutletBoundary\"]\n7:\"$Sreact.suspense\"\na:I[83775,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"ViewportBoundary\"]\nc:I[83775,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"MetadataBoundary\"]\ne:I[51709,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"default\",1]\n:HL[\"/us-debt/_next/static/chunks/0h43uu7b4ogto.css\",\"style\"]\n:HL[\"/us-debt/_next/static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/us-debt/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"lab\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"lab\",{\"children\":[\"__PAGE__\",{}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/us-debt/_next/static/chunks/0h43uu7b4ogto.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"zh-CN\",\"suppressHydrationWarning\":true,\"children\":[\"$\",\"body\",null,{\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased\",\"children\":[\"$\",\"$L2\",null,{\"attribute\":\"class\",\"defaultTheme\":\"light\",\"enableSystem\":true,\"disableTransitionOnChange\":true,\"children\":[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"$L5\",null,{}],[[\"$\",\"script\",\"script-0\",{\"src\":\"/us-debt/_next/static/chunks/0fnu0453b_4o2.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/us-debt/_next/static/chunks/0us105c.nkp8u.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/us-debt/_next/static/chunks/0qlw1dh716jbi.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-3\",{\"src\":\"/us-debt/_next/static/chunks/01sd05r1pxxc2.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-4\",{\"src\":\"/us-debt/_next/static/chunks/0j4fybyez_qcn.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L6\",null,{\"children\":[\"$\",\"$7\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@8\"}]}]]}],{},null,false,null]},null,false,\"$@9\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$7\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/us-debt/_next/static/chunks/0h43uu7b4ogto.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"5-l9ParBQMPq8PEeLpjgj\"}\n"])</script><script>self.__next_f.push([1,"f:[]\n9:\"$Wf\"\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"10:I[31415,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"IconMark\"]\n8:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"美债看板 · US Debt Dashboard\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"美国国债 25 面板宏观分析看板\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/us-debt/favicon.ico?favicon.0x3dzn~oxb6tn.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L10\",\"3\",{}]]\n"])</script></body></html>
+      </style><footer class="md:ml-[140px] border-t border-border mt-16 py-10 px-6 bg-muted/30"><div class="max-w-7xl mx-auto"><div class="text-center mb-6"><h4 class="text-[13px] font-semibold text-muted-foreground tracking-widest uppercase mb-4">相关资源</h4><ul class="flex flex-wrap justify-center gap-x-5 gap-y-2 list-none p-0"><li><a href="https://stock.laoqianriritan.com/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">美股看板</a></li><li><a href="https://ashare.laoqianriritan.com/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">A 股看板</a></li><li><a href="https://gold-board.betalpha.com/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200 footer-link-gold">黄金看板</a></li><li><a href="https://laoqianritan-create.github.io/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">老钱日日谈</a></li><li><a href="https://www.xiaoyuzhoufm.com/podcast/6388760f22567e8ea6ad070f" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">播客「面基」</a></li><li><a href="https://laoqianritan-create.github.io/qushi-animal-gallery/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">趋势动物小程序</a></li><li><a href="https://youzhiyouxing.cn/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">有知有行 App</a></li><li><a href="https://www.hongsehuojian.com/red-rocket/home" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">红色火箭</a></li><li><a href="https://youzhiyouxing.cn/sbbi2025/preface/" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">SBBI 中国大类资产投资 2025 年报</a></li><li><a href="https://t.zsxq.com/zoHAZ" target="_blank" rel="noopener noreferrer" class="text-[13px] text-muted-foreground hover:text-accent border-b border-transparent hover:border-accent pb-[1px] transition-colors duration-200">知识星球</a></li></ul></div><div class="pt-4 border-t border-border"></div><p class="text-xs text-muted-foreground/60 text-center pt-3 leading-relaxed">数据仅供参考，不构成投资建议 · Big Picture · 美债看板</p></div></footer><!--$--><!--/$--><script src="/us-debt/_next/static/chunks/0ed8spdfcvifo.js" id="_R_" async=""></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,"1:\"$Sreact.fragment\"\n2:I[21957,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"ThemeProvider\"]\n3:I[5233,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"default\"]\n4:I[73632,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"default\"]\n5:I[36134,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\",\"/us-debt/_next/static/chunks/0fnu0453b_4o2.js\",\"/us-debt/_next/static/chunks/0us105c.nkp8u.js\",\"/us-debt/_next/static/chunks/0qlw1dh716jbi.js\",\"/us-debt/_next/static/chunks/01sd05r1pxxc2.js\",\"/us-debt/_next/static/chunks/0m.1jf9erk0yb.js\"],\"default\"]\n6:I[83775,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"OutletBoundary\"]\n7:\"$Sreact.suspense\"\na:I[83775,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"ViewportBoundary\"]\nc:I[83775,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"MetadataBoundary\"]\ne:I[51709,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"default\",1]\n:HL[\"/us-debt/_next/static/chunks/0h43uu7b4ogto.css\",\"style\"]\n:HL[\"/us-debt/_next/static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/us-debt/_next/static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n"])</script><script>self.__next_f.push([1,"0:{\"P\":null,\"c\":[\"\",\"lab\",\"\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"lab\",{\"children\":[\"__PAGE__\",{}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/us-debt/_next/static/chunks/0h43uu7b4ogto.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"zh-CN\",\"suppressHydrationWarning\":true,\"children\":[\"$\",\"body\",null,{\"className\":\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased\",\"children\":[\"$\",\"$L2\",null,{\"attribute\":\"class\",\"defaultTheme\":\"light\",\"enableSystem\":true,\"disableTransitionOnChange\":true,\"children\":[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L3\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L4\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"$L5\",null,{}],[[\"$\",\"script\",\"script-0\",{\"src\":\"/us-debt/_next/static/chunks/0fnu0453b_4o2.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/us-debt/_next/static/chunks/0us105c.nkp8u.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-2\",{\"src\":\"/us-debt/_next/static/chunks/0qlw1dh716jbi.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-3\",{\"src\":\"/us-debt/_next/static/chunks/01sd05r1pxxc2.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-4\",{\"src\":\"/us-debt/_next/static/chunks/0m.1jf9erk0yb.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"$L6\",null,{\"children\":[\"$\",\"$7\",null,{\"name\":\"Next.MetadataOutlet\",\"children\":\"$@8\"}]}]]}],{},null,false,null]},null,false,\"$@9\"]},null,false,null],[\"$\",\"$1\",\"h\",{\"children\":[null,[\"$\",\"$La\",null,{\"children\":\"$Lb\"}],[\"$\",\"div\",null,{\"hidden\":true,\"children\":[\"$\",\"$Lc\",null,{\"children\":[\"$\",\"$7\",null,{\"name\":\"Next.Metadata\",\"children\":\"$Ld\"}]}]}],[\"$\",\"meta\",null,{\"name\":\"next-size-adjust\",\"content\":\"\"}]]}],false]],\"m\":\"$undefined\",\"G\":[\"$e\",[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/us-debt/_next/static/chunks/0h43uu7b4ogto.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}]]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"CayjL5L046jIFmLbpIcT6\"}\n"])</script><script>self.__next_f.push([1,"f:[]\n9:\"$Wf\"\n"])</script><script>self.__next_f.push([1,"b:[[\"$\",\"meta\",\"0\",{\"charSet\":\"utf-8\"}],[\"$\",\"meta\",\"1\",{\"name\":\"viewport\",\"content\":\"width=device-width, initial-scale=1\"}]]\n"])</script><script>self.__next_f.push([1,"10:I[31415,[\"/us-debt/_next/static/chunks/177tq~0teojj6.js\",\"/us-debt/_next/static/chunks/0n~v8~rri7~t2.js\"],\"IconMark\"]\n8:null\nd:[[\"$\",\"title\",\"0\",{\"children\":\"美债看板 · US Debt Dashboard\"}],[\"$\",\"meta\",\"1\",{\"name\":\"description\",\"content\":\"美国国债 25 面板宏观分析看板\"}],[\"$\",\"link\",\"2\",{\"rel\":\"icon\",\"href\":\"/us-debt/favicon.ico?favicon.0x3dzn~oxb6tn.ico\",\"sizes\":\"256x256\",\"type\":\"image/x-icon\"}],[\"$\",\"$L10\",\"3\",{}]]\n"])</script></body></html>
