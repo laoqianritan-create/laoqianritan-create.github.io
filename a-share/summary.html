@@ -14,11 +14,11 @@
   <meta property="og:url" content="https://ashare.laoqianriritan.com/summary.html">
   <link rel="canonical" href="https://ashare.laoqianriritan.com/summary.html">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261023192650">
+  <link rel="stylesheet" href="css/style.css?v=20261024015407">
   <style>
-    /* ─── 汇总页专属 ─── */
+    /* ─── 汇总页 · 美债式卡片网格（模仿 /us-debt/summary/） ─── */
     .summary-hero {
-      padding: 26px 18px 6px;
+      padding: 30px 18px 6px;
       max-width: 1280px;
       margin: 0 auto;
       display: flex;
@@ -26,82 +26,69 @@
       gap: 14px;
       flex-wrap: wrap;
     }
-    .summary-hero h2 { font-size: 24px; font-weight: 700; margin: 0; }
-    .summary-hero .sm-date { font-size: 13px; color: #888; }
+    .summary-hero h2 { font-size: 26px; font-weight: 700; margin: 0; letter-spacing: 0.3px; }
+    .summary-hero .sm-date { font-size: 12.5px; color: #8a8f98; }
+
     .sm-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 14px;
       padding: 14px 18px 8px;
       max-width: 1280px;
       margin: 0 auto;
     }
+    @media (min-width: 900px)  { .sm-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 1200px) { .sm-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    /* 卡片：标题 + 固定高迷你图；hover 边框变主色（仿美债） */
     .sm-card {
       display: block;
       background: #fff;
-      border: 1px solid #eee;
+      border: 1px solid #E5E5E5;
       border-radius: 10px;
       overflow: hidden;
       text-decoration: none;
-      transition: box-shadow .15s, transform .15s;
+      transition: border-color .18s, box-shadow .18s;
     }
-    .sm-card:hover { box-shadow: 0 6px 18px rgba(0,0,0,.10); transform: translateY(-2px); }
-    .sm-card .sm-thumb {
-      width: 100%;
-      background:
-        linear-gradient(135deg, #f0f1f4 0%, #fafbfc 55%, #f0f1f4 100%);
-      aspect-ratio: 16 / 10;
-      object-fit: contain;
-      display: block;
-      position: relative;
-    }
-    .sm-card .sm-thumb:not([src])::after,
-    .sm-card .sm-thumb[src=""]::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(100deg, transparent 30%, rgba(255,255,255,.75) 50%, transparent 70%);
-      background-size: 220% 100%;
-      animation: sm-shimmer 1.4s linear infinite;
-    }
-    @keyframes sm-shimmer {
-      from { background-position: 120% 0; }
-      to   { background-position: -120% 0; }
-    }
-    .sm-card .sm-thumb:not([src])::before,
-    .sm-card .sm-thumb[src=""]::before {
-      content: '⌛ 图表生成中…';
-      position: absolute;
-      inset: 0;
+    .sm-card:hover { border-color: #E65A56; box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+
+    .sm-card-head {
+      padding: 10px 12px 9px;
+      border-bottom: 1px solid #F0F1F3;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: #b0b4bc;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .sm-card-head h3 {
       font-size: 13px;
-      z-index: 1;
-    }
-    .sm-card .sm-title {
-      font-size: 14px;
-      color: #222;
       font-weight: 600;
-      padding: 10px 12px 12px;
-      border-top: 1px solid #f2f2f2;
+      color: #1A1A1A;
+      line-height: 1.45;
+      margin: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-    .sm-card .sm-title svg { vertical-align: -2px; margin-right: 4px; color: #999; }
-    .sm-loading { text-align: center; color: #999; padding: 60px 0; font-size: 14px; }
-    @media (max-width: 900px) { .sm-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px)  { .sm-grid { grid-template-columns: 1fr; } }
+    .sm-card-head .sm-arrow {
+      flex: none;
+      color: #C9CDD4;
+      transition: color .18s;
+    }
+    .sm-card:hover .sm-card-head .sm-arrow { color: #E65A56; }
 
-    /* 隐藏渲染容器（只用于离屏生成缩略图，不占布局） */
-    .sm-render-stage {
-      position: absolute;
-      left: -20000px;
-      top: 0;
-      width: 800px;
-      pointer-events: none;
+    .sm-card-body {
+      height: 160px;
+      padding: 4px;
+      background: #fff;
+      position: relative;
     }
-    .sm-render-stage canvas { display: block; }
+    .sm-card-body .sm-fail {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: #B0B4BC; font-size: 11px;
+    }
 
     /* 顶部导航「汇总」当前高亮 */
     .site-nav a.nav-summary { color: #E65A56; font-weight: 600; }
@@ -144,28 +131,8 @@
     <span class="sm-date" id="smDate">数据加载中…</span>
   </div>
 
-  <div class="sm-loading" id="smLoading">正在生成全部看板缩略图…</div>
-
-  <div class="sm-grid" id="smGrid" hidden></div>
-
-  <!-- 离屏渲染舞台：16 个看板缩略图都在这层渲染后截图 -->
-  <div class="sm-render-stage" id="smStage" aria-hidden="true">
-    <canvas id="heatmap"></canvas>
-    <canvas id="lossTable"></canvas>
-    <div id="panelLongBody"></div>
-    <div id="panelHuazhengBody"></div>
-    <div id="panelCoverageBody"></div>
-    <div id="panelWideBaseBody"></div>
-    <div id="panelValuationBody"></div>
-    <div id="panelReturnBody"></div>
-    <div id="panelAssetBody"></div>
-    <div id="panelTurnoverBody"></div>
-    <div id="panelIndustryBody"></div>
-    <div id="panelTrendBody"></div>
-    <div id="panelFearBody"></div>
-    <div id="panelTimingBody"></div>
-    <div id="panelFundBody"></div>
-    <div id="panelInvestorBody"></div>
+  <div class="sm-grid" id="smGrid" aria-busy="true">
+    <div class="sm-loading" id="smLoading" style="text-align:center;color:#999;padding:60px 0;font-size:14px;grid-column:1/-1;">正在渲染全部看板迷你图…</div>
   </div>
 
   <div class="related-resources">
@@ -187,24 +154,8 @@
 
 </main>
 
-<script defer src="js/data.js?v=20261023192650"></script>
-<script defer src="js/common.js?v=20261023192650"></script>
-<script defer src="js/heatmap.js?v=20261023192650"></script>
-<script defer src="js/loss-table.js?v=20261023192650"></script>
-<script defer src="js/longgrowth.js?v=20261023192650"></script>
-<script defer src="js/industry-heat.js?v=20261023192650"></script>
-<script defer src="js/market-turnover.js?v=20261023192650"></script>
-<script defer src="js/return-decomp.js?v=20261023192650"></script>
-<script defer src="js/investor-structure.js?v=20261023192650"></script>
-<script defer src="js/huazheng-factor.js?v=20261023192650"></script>
-<script defer src="js/wide-base.js?v=20261023192650"></script>
-<script defer src="js/fear-greed.js?v=20261023192650"></script>
-<script defer src="js/timing.js?v=20261023192650"></script>
-<script defer src="js/fund-index.js?v=20261023192650"></script>
-<script defer src="js/coverage.js?v=20261023192650"></script>
-<script defer src="js/asset-allocation.js?v=20261023192650"></script>
-<script defer src="js/index-valuation.js?v=20261023192650"></script>
-<script defer src="js/trend-temperature.js?v=20261023192650"></script>
-<script defer src="js/summary.js?v=20261023192650"></script>
+<script defer src="js/common.js?v=20261024015407"></script>
+<script defer src="js/summary-mini.js?v=20261024015407"></script>
+<script defer src="js/summary.js?v=20261024015407"></script>
 </body>
 </html>
