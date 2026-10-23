@@ -1,6 +1,9 @@
 /* ── Reset ── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+/* Do NOT enable scroll-behavior:smooth globally: it also smooths JS instant/auto
+   corrections, so repeated corrections stack into a back-and-forth glide.
+   Smooth is applied explicitly at the main jump in nav.js (behavior:'smooth'). */
+html { scroll-padding-top: 16px; }
 html.panel-snap-enabled {
   scroll-snap-type: none;
 }

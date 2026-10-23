@@ -1,6 +1,8 @@
 /* ── Reset ── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+/* 不在 html 全局开 scroll-behavior:smooth：它会让 JS 的 instant/auto 纠偏也走平滑动画，
+   多次纠偏叠加成「来回滑」。平滑只在 nav.js 主跳转处显式 behavior:'smooth' 使用。 */
+html { scroll-padding-top: 16px; }
 html.panel-snap-enabled {
   scroll-snap-type: none;
 }

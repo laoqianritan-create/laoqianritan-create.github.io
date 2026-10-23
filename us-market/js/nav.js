@@ -3,7 +3,7 @@
 // 切换分类后会触发所有 chart 强制重绘（首次进入视口时容器为 0x0 的问题）
 // ══════════════════════════════════════════════════════
 
-import { chartInstances } from './chart-helpers.js?v=20261023175524';
+import { chartInstances } from './chart-helpers.js?v=20261023184047';
 
 export function initNav() {
   const navGroups = Array.from(document.querySelectorAll('.nav-group'));
@@ -54,26 +54,54 @@ export function initNav() {
   syncScrollPadding();
   window.addEventListener('resize', syncScrollPadding, { passive: true });
 
+  // ── 用户接管：一旦用户主动滚轮/触摸/按键翻页，立即取消所有待执行纠偏 ──
+  // 背景（2026-10-23「乱滑」事故）：旧版纠偏在 8.2s 内排了 7 次 setTimeout，
+  // 用户在窗口内自己往下滚，后续纠偏仍把页面往目标面板拽回来，表现为
+  // 「鼠标一动页面就自己往回滑」。社区通行做法（interruptible scroll /
+  // cancelScroll / auto-scroll 让位）：用户输入优先于程序化动画，直接作废在途任务。
+  let correctionTimers = [];
+  let userTookOver = false;
+
+  function clearCorrections() {
+    correctionTimers.forEach(t => clearTimeout(t));
+    correctionTimers = [];
+  }
+
+  function armUserTakeover() {
+    const PAGE_KEYS = new Set(['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'PageUp', 'PageDown', 'Home', 'End', ' ']);
+    const takeOver = () => {
+      if (userTookOver) return;
+      userTookOver = true;
+      clearCorrections();
+    };
+    // click（点导航/分类）是本次程序化跳转的发起动作，不算接管，故不监听 click
+    window.addEventListener('wheel', takeOver, { passive: true });
+    window.addEventListener('touchstart', takeOver, { passive: true });
+    window.addEventListener('pointerdown', takeOver, { passive: true });
+    window.addEventListener('keydown', e => {
+      if (PAGE_KEYS.has(e.key)) takeOver();
+    });
+  }
+
   function jumpToPanel(panel, withCorrections = true) {
     if (!panel) return;
-    scrollToPanel(panel, 'auto');
+    // 新的一次程序化跳转：清空上一轮纠偏，解除接管，直接到位（instant，
+    // 不用 smooth：平滑动画会与随后的即时纠偏互相拉扯，形成上窜下跳的「乱滑」）
+    clearCorrections();
+    userTookOver = false;
+    scrollToPanel(panel, 'instant');
     if (!withCorrections) return;
-    // 懒加载/图表 resize 会改变文档高度 → 补多次纠偏，确保最终停在面板顶部
-    // 重面板（如成分股表格 100 行 + 缩略图）渲染可达数秒，纠偏窗口拉长到 8s，
-    // 并在面板位置已稳定（连续两次 drift≤4px）时提前终止。
-    const delays = [260, 700, 1400, 2600, 4200, 6200, 8200];
-    let lastStable = 0;
+    // 懒加载/图表 resize 会改变文档高度 → 补几次即时纠偏，确保最终停在面板顶部。
+    // 纠偏一律 instant（不产生二次滑动），且窗口缩短到 3s；用户一旦主动滚动即作废。
+    const delays = [200, 500, 1000, 1800, 3000];
     delays.forEach(delay => {
-      setTimeout(() => {
-        if (panel.hidden) return;
+      const t = setTimeout(() => {
+        if (userTookOver || panel.hidden) return;
         const drift = panel.getBoundingClientRect().top - topOffset();
-        if (Math.abs(drift) <= 4) {
-          lastStable += 1;
-          return; // 已到位；连续两次稳定后不再调度后续纠偏（靠 lastStable 计数控制）
-        }
-        lastStable = 0;
-        scrollToPanel(panel);
+        if (Math.abs(drift) <= 4) return; // 已到位，不重复拽
+        scrollToPanel(panel, 'instant');
       }, delay);
+      correctionTimers.push(t);
     });
     if (window.history?.replaceState) {
       window.history.replaceState(null, '', `#${panel.id}`);
@@ -168,6 +196,8 @@ export function initNav() {
       jumpToPanel(target);
     });
   });
+
+  armUserTakeover();
 
   setCategory(currentCategory, false);
 
