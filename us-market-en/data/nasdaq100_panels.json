@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "overview": {
     "symbol": "QQQ",
     "name": "Invesco QQQ Trust Series I",
@@ -11,10 +11,10 @@
     "peRatio": 28.55,
     "holdingsDate": "Oct 21, 2026",
     "quote": {
-      "price": 704.47,
-      "previousClose": 725.2,
-      "changePercent": -2.86,
-      "date": "2026-10-22",
+      "price": 705.22,
+      "previousClose": 704.47,
+      "changePercent": 0.11,
+      "date": "2026-10-23",
       "updatedLabel": "https://www.tipranks.com/news/stock-market-today-spy-qqq-pressured-by-oil-surge-as-tech-stocks-tumbled"
     }
   },
@@ -122,11 +122,11 @@
       "name": "NVIDIA Corporation",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 212.93,
+      "price": 211.75,
       "marketCap": null,
       "dividendYield": 0.47,
-      "return1y": 17.05,
-      "ytdReturn": 12.9,
+      "return1y": 16.6,
+      "ytdReturn": 12.46,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -382,7 +382,7 @@
           216.47,
           221.97,
           212.21,
-          212.71
+          211.88
         ]
       },
       "qqqWeight": 8.26,
@@ -394,11 +394,11 @@
       "name": "Apple Inc.",
       "industry": "Technology",
       "subsector": "Computer Hardware",
-      "price": 348.0,
+      "price": 346.11,
       "marketCap": null,
       "dividendYield": 0.31,
-      "return1y": 34.62,
-      "ytdReturn": 28.82,
+      "return1y": 33.82,
+      "ytdReturn": 28.05,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -654,7 +654,7 @@
           339.5,
           343.99,
           348.22,
-          348.16
+          346.08
         ]
       },
       "qqqWeight": 7.75,
@@ -666,11 +666,11 @@
       "name": "Microsoft Corporation",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 521.34,
+      "price": 524.02,
       "marketCap": null,
       "dividendYield": 0.75,
-      "return1y": 1.02,
-      "ytdReturn": 10.98,
+      "return1y": 1.55,
+      "ytdReturn": 11.56,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -926,7 +926,7 @@
           531.87,
           532.95,
           521.08,
-          521.55
+          524.29
         ]
       },
       "qqqWeight": 6.11,
@@ -938,11 +938,11 @@
       "name": "Micron Technology, Inc.",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 885.19,
+      "price": 884.02,
       "marketCap": null,
       "dividendYield": 0.07,
-      "return1y": 327.43,
-      "ytdReturn": 180.0,
+      "return1y": 328.57,
+      "ytdReturn": 180.75,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -1198,7 +1198,7 @@
           896.07,
           913.67,
           856.49,
-          882.53
+          884.89
         ]
       },
       "qqqWeight": 4.4,
@@ -1210,11 +1210,11 @@
       "name": "Amazon.com, Inc.",
       "industry": "Consumer Discretionary",
       "subsector": "Catalog/Specialty Distribution",
-      "price": 248.75,
+      "price": 248.97,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 12.54,
-      "ytdReturn": 9.85,
+      "return1y": 12.63,
+      "ytdReturn": 9.94,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -1470,7 +1470,7 @@
           262.63,
           262.37,
           250.38,
-          248.82
+          249.02
         ]
       },
       "qqqWeight": 4.37,
@@ -1482,11 +1482,11 @@
       "name": "Advanced Micro Devices, Inc.",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 515.93,
+      "price": 516.17,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 119.45,
-      "ytdReturn": 130.76,
+      "return1y": 119.64,
+      "ytdReturn": 130.96,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -1742,7 +1742,7 @@
           534.74,
           552.72,
           507.93,
-          515.67
+          516.13
         ]
       },
       "qqqWeight": 3.85,
@@ -1754,11 +1754,11 @@
       "name": "Meta Platforms, Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 644.94,
+      "price": 644.86,
       "marketCap": null,
       "dividendYield": 0.32,
-      "return1y": -11.72,
-      "ytdReturn": -0.46,
+      "return1y": -11.79,
+      "ytdReturn": -0.54,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -2014,7 +2014,7 @@
           694.25,
           697.52,
           648.85,
-          645.77
+          645.25
         ]
       },
       "qqqWeight": 3.2,
@@ -2026,11 +2026,11 @@
       "name": "Tesla, Inc.",
       "industry": "Consumer Discretionary",
       "subsector": "Automobiles & Parts",
-      "price": 368.56,
+      "price": 371.14,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -17.71,
-      "ytdReturn": -15.66,
+      "return1y": -17.36,
+      "ytdReturn": -15.3,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -2286,7 +2286,7 @@
           373.71,
           386.47,
           374.58,
-          369.45
+          371.03
         ]
       },
       "qqqWeight": 3.13,
@@ -2298,11 +2298,11 @@
       "name": "Alphabet Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 323.61,
+      "price": 322.4,
       "marketCap": null,
       "dividendYield": 0.27,
-      "return1y": 28.31,
-      "ytdReturn": 2.97,
+      "return1y": 27.77,
+      "ytdReturn": 2.54,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -2558,7 +2558,7 @@
           340.28,
           334.76,
           324.22,
-          323.88
+          322.52
         ]
       },
       "qqqWeight": 3.03,
@@ -2570,11 +2570,11 @@
       "name": "Space Exploration Technologies ",
       "industry": "Telecommunications",
       "subsector": "Telecommunications Services",
-      "price": 148.09,
+      "price": 146.96,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -7.98,
-      "ytdReturn": -7.98,
+      "return1y": -8.72,
+      "ytdReturn": -8.72,
       "history": {
         "start": "2026-06-12",
         "end": "2026-10-23",
@@ -2671,7 +2671,7 @@
           147.79,
           159.31,
           144.75,
-          148.11
+          146.91
         ]
       },
       "qqqWeight": 2.91,
@@ -2683,11 +2683,11 @@
       "name": "Alphabet Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 320.38,
+      "price": 319.28,
       "marketCap": null,
       "dividendYield": 0.27,
-      "return1y": 26.71,
-      "ytdReturn": 1.89,
+      "return1y": 26.22,
+      "ytdReturn": 1.5,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -2943,7 +2943,7 @@
           336.4,
           330.95,
           320.76,
-          320.66
+          319.43
         ]
       },
       "qqqWeight": 2.82,
@@ -2955,11 +2955,11 @@
       "name": "Broadcom Inc.",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 325.09,
+      "price": 324.27,
       "marketCap": null,
       "dividendYield": 0.8,
-      "return1y": -4.94,
-      "ytdReturn": -6.03,
+      "return1y": -5.12,
+      "ytdReturn": -6.21,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -3215,7 +3215,7 @@
           334.37,
           337.8,
           323.24,
-          324.86
+          324.25
         ]
       },
       "qqqWeight": 2.48,
@@ -3227,11 +3227,11 @@
       "name": "Walmart Inc.",
       "industry": "Consumer Discretionary",
       "subsector": "Department/Specialty Retail Stores",
-      "price": 120.35,
+      "price": 119.22,
       "marketCap": null,
       "dividendYield": 0.82,
-      "return1y": 13.43,
-      "ytdReturn": 7.28,
+      "return1y": 12.44,
+      "ytdReturn": 6.34,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -3487,7 +3487,7 @@
           117.85,
           117.8,
           121.12,
-          120.2
+          119.15
         ]
       },
       "qqqWeight": 2.44,
@@ -3499,11 +3499,11 @@
       "name": "Intel Corporation",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 86.43,
+      "price": 86.7,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 125.94,
-      "ytdReturn": 118.94,
+      "return1y": 127.38,
+      "ytdReturn": 120.34,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -3759,7 +3759,7 @@
           91.69,
           92.96,
           85.49,
-          86.22
+          86.77
         ]
       },
       "qqqWeight": 2.08,
@@ -3771,11 +3771,11 @@
       "name": "Palantir Technologies Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 195.3,
+      "price": 195.79,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 8.0,
-      "ytdReturn": 16.11,
+      "return1y": 8.55,
+      "ytdReturn": 16.72,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -4031,7 +4031,7 @@
           192.6,
           201.72,
           196.19,
-          194.91
+          195.92
         ]
       },
       "qqqWeight": 1.98,
@@ -4043,11 +4043,11 @@
       "name": "Costco Wholesale Corporation",
       "industry": "Consumer Discretionary",
       "subsector": "Department/Specialty Retail Stores",
-      "price": 1010.5,
+      "price": 1004.89,
       "marketCap": null,
       "dividendYield": 0.58,
-      "return1y": 7.77,
-      "ytdReturn": 18.64,
+      "return1y": 7.28,
+      "ytdReturn": 18.1,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -4058,7 +4058,7 @@
           918.8,
           907.13,
           914.84,
-          907.45,
+          907.44,
           923.96,
           936.61,
           930.92,
@@ -4067,7 +4067,7 @@
           911.54,
           909.84,
           909.98,
-          921.02,
+          921.01,
           918.92,
           908.58,
           891.15,
@@ -4303,7 +4303,7 @@
           994.61,
           998.31,
           1018.21,
-          1009.36
+          1004.75
         ]
       },
       "qqqWeight": 1.89,
@@ -4315,11 +4315,11 @@
       "name": "Cisco Systems, Inc.",
       "industry": "Telecommunications",
       "subsector": "Computer Communications Equipment",
-      "price": 105.86,
+      "price": 106.18,
       "marketCap": null,
       "dividendYield": 1.6,
-      "return1y": 53.35,
-      "ytdReturn": 40.96,
+      "return1y": 53.86,
+      "ytdReturn": 41.43,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -4575,7 +4575,7 @@
           106.71,
           107.26,
           104.89,
-          105.8
+          106.15
         ]
       },
       "qqqWeight": 1.8,
@@ -4587,11 +4587,11 @@
       "name": "Lam Research Corporation",
       "industry": "Technology",
       "subsector": "Industrial Machinery",
-      "price": 226.96,
+      "price": 231.07,
       "marketCap": null,
       "dividendYield": 0.57,
-      "return1y": 54.52,
-      "ytdReturn": 22.99,
+      "return1y": 57.45,
+      "ytdReturn": 25.32,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -4847,7 +4847,7 @@
           263.45,
           260.81,
           230.15,
-          226.93
+          231.24
         ]
       },
       "qqqWeight": 1.39,
@@ -4859,11 +4859,11 @@
       "name": "Applied Materials, Inc.",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 376.3,
+      "price": 379.69,
       "marketCap": null,
       "dividendYield": 0.56,
-      "return1y": 65.15,
-      "ytdReturn": 40.06,
+      "return1y": 67.14,
+      "ytdReturn": 41.75,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -5119,7 +5119,7 @@
           404.98,
           408.94,
           375.58,
-          375.25
+          379.77
         ]
       },
       "qqqWeight": 1.38,
@@ -5131,11 +5131,11 @@
       "name": "Palo Alto Networks, Inc.",
       "industry": "Technology",
       "subsector": "Computer Peripheral Equipment",
-      "price": 365.86,
+      "price": 376.61,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 69.37,
-      "ytdReturn": 103.04,
+      "return1y": 75.21,
+      "ytdReturn": 110.03,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -5391,7 +5391,7 @@
           340.28,
           347.25,
           354.92,
-          364.19
+          376.73
         ]
       },
       "qqqWeight": 1.21,
@@ -5403,11 +5403,11 @@
       "name": "Netflix, Inc.",
       "industry": "Consumer Discretionary",
       "subsector": "Consumer Electronics",
-      "price": 67.07,
+      "price": 66.3,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -39.8,
-      "ytdReturn": -26.32,
+      "return1y": -40.43,
+      "ytdReturn": -27.1,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -5663,7 +5663,7 @@
           68.69,
           65.04,
           67.05,
-          67.04
+          66.33
         ]
       },
       "qqqWeight": 1.15,
@@ -5675,11 +5675,11 @@
       "name": "Texas Instruments Incorporated",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 283.13,
+      "price": 283.76,
       "marketCap": null,
       "dividendYield": 2.18,
-      "return1y": 68.75,
-      "ytdReturn": 62.23,
+      "return1y": 69.1,
+      "ytdReturn": 62.57,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -5935,7 +5935,7 @@
           277.78,
           284.65,
           279.5,
-          283.24
+          283.82
         ]
       },
       "qqqWeight": 1.11,
@@ -5947,11 +5947,11 @@
       "name": "CrowdStrike Holdings, Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 246.14,
+      "price": 252.22,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 88.1,
-      "ytdReturn": 116.47,
+      "return1y": 93.3,
+      "ytdReturn": 122.45,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -6207,7 +6207,7 @@
           227.37,
           239.34,
           237.94,
-          245.47
+          252.25
         ]
       },
       "qqqWeight": 1.04,
@@ -6219,11 +6219,11 @@
       "name": "Amgen Inc.",
       "industry": "Health Care",
       "subsector": "Biotechnology",
-      "price": 443.07,
+      "price": 441.27,
       "marketCap": null,
       "dividendYield": 2.25,
-      "return1y": 55.47,
-      "ytdReturn": 38.0,
+      "return1y": 54.85,
+      "ytdReturn": 37.44,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -6479,7 +6479,7 @@
           438.94,
           438.34,
           447.28,
-          443.07
+          441.29
         ]
       },
       "qqqWeight": 1.01,
@@ -6491,11 +6491,11 @@
       "name": "Linde plc",
       "industry": "Basic Materials",
       "subsector": "Major Chemicals",
-      "price": 506.41,
+      "price": 507.81,
       "marketCap": null,
       "dividendYield": 1.25,
-      "return1y": 14.11,
-      "ytdReturn": 19.25,
+      "return1y": 14.36,
+      "ytdReturn": 19.51,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -6751,7 +6751,7 @@
           501.89,
           500.57,
           510.36,
-          506.73
+          507.83
         ]
       },
       "qqqWeight": 0.98,
@@ -6763,11 +6763,11 @@
       "name": "Airbnb, Inc.",
       "industry": "Consumer Discretionary",
       "subsector": "Diversified Commercial Services",
-      "price": 172.89,
+      "price": 173.65,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 35.76,
-      "ytdReturn": 29.98,
+      "return1y": 36.43,
+      "ytdReturn": 30.62,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -7023,7 +7023,7 @@
           176.94,
           173.69,
           175.76,
-          172.89
+          173.74
         ]
       },
       "qqqWeight": null,
@@ -7035,11 +7035,11 @@
       "name": "Adobe Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 267.44,
+      "price": 264.87,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -24.48,
-      "ytdReturn": -19.76,
+      "return1y": -25.2,
+      "ytdReturn": -20.53,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -7295,7 +7295,7 @@
           256.73,
           255.06,
           270.55,
-          267.44
+          264.87
         ]
       },
       "qqqWeight": null,
@@ -7307,11 +7307,11 @@
       "name": "Analog Devices, Inc.",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 389.03,
+      "price": 389.52,
       "marketCap": null,
       "dividendYield": 1.14,
-      "return1y": 61.88,
-      "ytdReturn": 43.37,
+      "return1y": 62.08,
+      "ytdReturn": 43.55,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -7567,7 +7567,7 @@
           397.05,
           405.96,
           385.76,
-          388.98
+          389.46
         ]
       },
       "qqqWeight": null,
@@ -7579,11 +7579,11 @@
       "name": "Automatic Data Processing, Inc.",
       "industry": "Industrials",
       "subsector": "Diversified Commercial Services",
-      "price": 306.9,
+      "price": 304.67,
       "marketCap": null,
       "dividendYield": 2.21,
-      "return1y": 12.1,
-      "ytdReturn": 24.01,
+      "return1y": 11.35,
+      "ytdReturn": 23.18,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -7839,7 +7839,7 @@
           292.75,
           294.5,
           307.94,
-          306.71
+          304.67
         ]
       },
       "qqqWeight": null,
@@ -7851,11 +7851,11 @@
       "name": "Autodesk, Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 251.37,
+      "price": 252.59,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -18.87,
-      "ytdReturn": -12.33,
+      "return1y": -18.48,
+      "ytdReturn": -11.91,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -8111,7 +8111,7 @@
           245.58,
           244.84,
           254.95,
-          251.37
+          252.58
         ]
       },
       "qqqWeight": null,
@@ -8123,11 +8123,11 @@
       "name": "American Electric Power Company",
       "industry": "Utilities",
       "subsector": "Electric Utilities",
-      "price": 129.73,
+      "price": 128.72,
       "marketCap": null,
       "dividendYield": 2.97,
-      "return1y": 15.08,
-      "ytdReturn": 14.54,
+      "return1y": 14.28,
+      "ytdReturn": 13.75,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -8383,7 +8383,7 @@
           127.22,
           127.39,
           130.64,
-          129.68
+          128.78
         ]
       },
       "qqqWeight": null,
@@ -8395,11 +8395,11 @@
       "name": "Astera Labs, Inc.",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 265.83,
+      "price": 260.05,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 61.82,
-      "ytdReturn": 47.48,
+      "return1y": 58.92,
+      "ytdReturn": 44.83,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -8655,7 +8655,7 @@
           284.8,
           290.06,
           257.82,
-          264.81
+          260.05
         ]
       },
       "qqqWeight": null,
@@ -8667,11 +8667,11 @@
       "name": "Alnylam Pharmaceuticals, Inc.",
       "industry": "Health Care",
       "subsector": "Biotechnology",
-      "price": 225.85,
+      "price": 226.92,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -51.32,
-      "ytdReturn": -43.55,
+      "return1y": -51.09,
+      "ytdReturn": -43.29,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -8927,7 +8927,7 @@
           230.71,
           225.1,
           227.28,
-          225.88
+          226.92
         ]
       },
       "qqqWeight": null,
@@ -8939,11 +8939,11 @@
       "name": "Applovin Corporation",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 261.61,
+      "price": 262.92,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -55.72,
-      "ytdReturn": -57.77,
+      "return1y": -55.43,
+      "ytdReturn": -57.49,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -9199,7 +9199,7 @@
           272.46,
           267.9,
           264.28,
-          261.11
+          262.83
         ]
       },
       "qqqWeight": null,
@@ -9211,11 +9211,11 @@
       "name": "Arm Holdings plc",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 211.11,
+      "price": 211.06,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 26.72,
-      "ytdReturn": 84.01,
+      "return1y": 26.69,
+      "ytdReturn": 83.96,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -9471,7 +9471,7 @@
           221.06,
           226.59,
           210.1,
-          211.12
+          211.06
         ]
       },
       "qqqWeight": null,
@@ -9483,11 +9483,11 @@
       "name": "ASML Holding N.V. - New York Re",
       "industry": "Technology",
       "subsector": "Industrial Machinery",
-      "price": 1568.17,
+      "price": 1573.76,
       "marketCap": null,
       "dividendYield": 0.58,
-      "return1y": 52.31,
-      "ytdReturn": 35.4,
+      "return1y": 52.87,
+      "ytdReturn": 35.9,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -9539,7 +9539,7 @@
           1067.62,
           1060.9,
           1067.01,
-          1064.74,
+          1064.75,
           1158.22,
           1222.32,
           1236.25,
@@ -9743,7 +9743,7 @@
           1630.84,
           1676.69,
           1560.54,
-          1568.18
+          1573.98
         ]
       },
       "qqqWeight": null,
@@ -9755,11 +9755,11 @@
       "name": "Axon Enterprise, Inc.",
       "industry": "Industrials",
       "subsector": "Ordnance & Accessories",
-      "price": 416.13,
+      "price": 417.25,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -42.35,
-      "ytdReturn": -26.7,
+      "return1y": -41.86,
+      "ytdReturn": -26.08,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -10015,7 +10015,7 @@
           392.64,
           402.6,
           414.6,
-          413.02
+          416.52
         ]
       },
       "qqqWeight": null,
@@ -10027,11 +10027,11 @@
       "name": "Booking Holdings Inc. Common St",
       "industry": "Consumer Discretionary",
       "subsector": "Transportation Services",
-      "price": 157.07,
+      "price": 156.9,
       "marketCap": null,
       "dividendYield": 1.04,
-      "return1y": -22.26,
-      "ytdReturn": -25.76,
+      "return1y": -22.29,
+      "ytdReturn": -25.79,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -10287,7 +10287,7 @@
           163.92,
           158.38,
           161.1,
-          156.95
+          156.89
         ]
       },
       "qqqWeight": null,
@@ -10299,11 +10299,11 @@
       "name": "Baker Hughes Company",
       "industry": "Energy",
       "subsector": "Oil Equipment & Services",
-      "price": 54.55,
+      "price": 55.53,
       "marketCap": null,
       "dividendYield": 1.72,
-      "return1y": 13.4,
-      "ytdReturn": 17.06,
+      "return1y": 15.32,
+      "ytdReturn": 19.03,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -10559,7 +10559,7 @@
           55.65,
           56.0,
           53.62,
-          54.59
+          55.51
         ]
       },
       "qqqWeight": null,
@@ -10571,11 +10571,11 @@
       "name": "Coca-Cola Europacific Partners ",
       "industry": "Consumer Staples",
       "subsector": "Soft Drinks",
-      "price": 112.0,
+      "price": 110.96,
       "marketCap": null,
       "dividendYield": 2.11,
-      "return1y": 25.91,
-      "ytdReturn": 28.27,
+      "return1y": 24.75,
+      "ytdReturn": 27.09,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -10831,7 +10831,7 @@
           113.41,
           110.29,
           114.23,
-          111.95
+          110.92
         ]
       },
       "qqqWeight": null,
@@ -10843,11 +10843,11 @@
       "name": "Cadence Design Systems, Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 311.41,
+      "price": 315.38,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -7.67,
-      "ytdReturn": 0.33,
+      "return1y": -6.47,
+      "ytdReturn": 1.63,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -11103,7 +11103,7 @@
           319.87,
           326.07,
           309.65,
-          311.41
+          315.45
         ]
       },
       "qqqWeight": null,
@@ -11115,11 +11115,11 @@
       "name": "Constellation Energy Corporatio",
       "industry": "Utilities",
       "subsector": "Electric Utilities",
-      "price": 251.5,
+      "price": 253.44,
       "marketCap": null,
       "dividendYield": 0.67,
-      "return1y": -30.91,
-      "ytdReturn": -31.08,
+      "return1y": -30.36,
+      "ytdReturn": -30.52,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -11137,7 +11137,7 @@
           349.35,
           356.4,
           358.92,
-          349.71,
+          349.72,
           352.05,
           333.87,
           336.64,
@@ -11196,7 +11196,7 @@
           267.26,
           249.35,
           245.97,
-          260.26,
+          260.27,
           270.95,
           269.94,
           275.63,
@@ -11375,7 +11375,7 @@
           258.84,
           270.74,
           255.21,
-          251.32
+          253.33
         ]
       },
       "qqqWeight": null,
@@ -11387,11 +11387,11 @@
       "name": "Comcast Corporation",
       "industry": "Telecommunications",
       "subsector": "Cable & Other Pay Television Services",
-      "price": 22.81,
+      "price": 22.75,
       "marketCap": null,
       "dividendYield": 5.78,
-      "return1y": -12.54,
-      "ytdReturn": -13.25,
+      "return1y": -12.7,
+      "ytdReturn": -13.41,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -11647,7 +11647,7 @@
           22.36,
           22.08,
           22.84,
-          22.8
+          22.76
         ]
       },
       "qqqWeight": null,
@@ -11659,11 +11659,11 @@
       "name": "Copart, Inc.",
       "industry": "Consumer Discretionary",
       "subsector": "Retail",
-      "price": 28.68,
+      "price": 28.84,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -35.87,
-      "ytdReturn": -24.16,
+      "return1y": -35.4,
+      "ytdReturn": -23.6,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -11919,7 +11919,7 @@
           27.83,
           27.59,
           29.09,
-          28.65
+          28.86
         ]
       },
       "qqqWeight": null,
@@ -11931,11 +11931,11 @@
       "name": "CoreWeave, Inc.",
       "industry": "Technology",
       "subsector": "Computer Services",
-      "price": 55.03,
+      "price": 54.59,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -55.42,
-      "ytdReturn": -30.67,
+      "return1y": -55.73,
+      "ytdReturn": -31.16,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -12191,7 +12191,7 @@
           62.13,
           61.82,
           55.6,
-          54.99
+          54.6
         ]
       },
       "qqqWeight": null,
@@ -12203,11 +12203,11 @@
       "name": "CSX Corporation",
       "industry": "Industrials",
       "subsector": "Railroads",
-      "price": 50.56,
+      "price": 50.8,
       "marketCap": null,
       "dividendYield": 1.08,
-      "return1y": 44.13,
-      "ytdReturn": 40.67,
+      "return1y": 44.83,
+      "ytdReturn": 41.35,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -12463,7 +12463,7 @@
           48.08,
           48.4,
           51.67,
-          50.56
+          50.8
         ]
       },
       "qqqWeight": null,
@@ -12475,11 +12475,11 @@
       "name": "Cintas Corporation",
       "industry": "Industrials",
       "subsector": "Garments & Clothing",
-      "price": 223.02,
+      "price": 224.04,
       "marketCap": null,
       "dividendYield": 0.93,
-      "return1y": 17.13,
-      "ytdReturn": 21.56,
+      "return1y": 17.68,
+      "ytdReturn": 22.14,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -12735,7 +12735,7 @@
           217.03,
           220.15,
           224.04,
-          223.04
+          224.09
         ]
       },
       "qqqWeight": null,
@@ -12747,11 +12747,11 @@
       "name": "DoorDash, Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 184.07,
+      "price": 183.74,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -27.67,
-      "ytdReturn": -16.22,
+      "return1y": -27.8,
+      "ytdReturn": -16.37,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -13007,7 +13007,7 @@
           191.67,
           184.45,
           185.94,
-          184.14
+          183.81
         ]
       },
       "qqqWeight": null,
@@ -13019,11 +13019,11 @@
       "name": "Datadog, Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 264.45,
+      "price": 272.12,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 68.26,
-      "ytdReturn": 96.96,
+      "return1y": 73.72,
+      "ytdReturn": 103.36,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -13279,7 +13279,7 @@
           256.43,
           273.09,
           257.75,
-          263.48
+          272.03
         ]
       },
       "qqqWeight": null,
@@ -13291,11 +13291,11 @@
       "name": "DexCom, Inc.",
       "industry": "Health Care",
       "subsector": "Medical/Dental Instruments",
-      "price": 79.11,
+      "price": 78.46,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 11.07,
-      "ytdReturn": 18.61,
+      "return1y": 10.48,
+      "ytdReturn": 17.99,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -13551,7 +13551,7 @@
           85.74,
           80.26,
           78.32,
-          78.92
+          78.51
         ]
       },
       "qqqWeight": null,
@@ -13563,11 +13563,11 @@
       "name": "Exelon Corporation",
       "industry": "Utilities",
       "subsector": "Power Generation",
-      "price": 44.4,
+      "price": 44.38,
       "marketCap": null,
       "dividendYield": 3.75,
-      "return1y": -3.18,
-      "ytdReturn": 4.03,
+      "return1y": -3.32,
+      "ytdReturn": 3.87,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -13823,7 +13823,7 @@
           43.03,
           43.05,
           44.85,
-          44.45
+          44.39
         ]
       },
       "qqqWeight": null,
@@ -13835,11 +13835,11 @@
       "name": "Diamondback Energy, Inc.",
       "industry": "Energy",
       "subsector": "Oil & Gas Production",
-      "price": 202.41,
+      "price": 205.94,
       "marketCap": null,
       "dividendYield": 2.23,
-      "return1y": 40.81,
-      "ytdReturn": 35.1,
+      "return1y": 43.37,
+      "ytdReturn": 37.55,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -14095,7 +14095,7 @@
           202.42,
           200.93,
           197.14,
-          202.35
+          206.03
         ]
       },
       "qqqWeight": null,
@@ -14107,11 +14107,11 @@
       "name": "Fastenal Company",
       "industry": "Industrials",
       "subsector": "Construction & Materials",
-      "price": 52.22,
+      "price": 52.16,
       "marketCap": null,
       "dividendYield": 1.97,
-      "return1y": 24.08,
-      "ytdReturn": 31.23,
+      "return1y": 23.99,
+      "ytdReturn": 31.13,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -14367,7 +14367,7 @@
           51.65,
           52.49,
           52.73,
-          52.21
+          52.17
         ]
       },
       "qqqWeight": null,
@@ -14379,11 +14379,11 @@
       "name": "Ferrovial N.V.",
       "industry": "Industrials",
       "subsector": "Military, Government, Technical",
-      "price": 49.46,
+      "price": 49.58,
       "marketCap": null,
       "dividendYield": 2.59,
-      "return1y": -20.64,
-      "ytdReturn": -22.63,
+      "return1y": -20.44,
+      "ytdReturn": -22.44,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -14639,7 +14639,7 @@
           49.23,
           50.02,
           49.71,
-          49.46
+          49.58
         ]
       },
       "qqqWeight": null,
@@ -14651,11 +14651,11 @@
       "name": "Fortinet, Inc.",
       "industry": "Technology",
       "subsector": "Computer Peripheral Equipment",
-      "price": 176.59,
+      "price": 177.59,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 107.39,
-      "ytdReturn": 126.17,
+      "return1y": 109.08,
+      "ytdReturn": 128.0,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -14911,7 +14911,7 @@
           170.93,
           174.05,
           172.98,
-          176.14
+          177.57
         ]
       },
       "qqqWeight": null,
@@ -14923,11 +14923,11 @@
       "name": "GE HealthCare Technologies Inc.",
       "industry": "Health Care",
       "subsector": "Medical Electronics",
-      "price": 70.71,
+      "price": 71.41,
       "marketCap": null,
       "dividendYield": 0.22,
-      "return1y": -8.22,
-      "ytdReturn": -14.42,
+      "return1y": -7.38,
+      "ytdReturn": -13.64,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -15183,7 +15183,7 @@
           70.23,
           69.01,
           71.42,
-          70.78
+          71.42
         ]
       },
       "qqqWeight": null,
@@ -15195,11 +15195,11 @@
       "name": "Gilead Sciences, Inc.",
       "industry": "Health Care",
       "subsector": "Biotechnology",
-      "price": 156.81,
+      "price": 157.13,
       "marketCap": null,
       "dividendYield": 2.09,
-      "return1y": 33.2,
-      "ytdReturn": 31.39,
+      "return1y": 33.36,
+      "ytdReturn": 31.55,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -15455,7 +15455,7 @@
           156.51,
           153.57,
           157.19,
-          156.95
+          157.14
         ]
       },
       "qqqWeight": null,
@@ -15467,11 +15467,11 @@
       "name": "Honeywell International Inc.",
       "industry": "Industrials",
       "subsector": "Diversified Industrials",
-      "price": 213.92,
+      "price": 219.07,
       "marketCap": null,
       "dividendYield": 1.28,
-      "return1y": -0.03,
-      "ytdReturn": 5.51,
+      "return1y": 2.39,
+      "ytdReturn": 8.07,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -15727,7 +15727,7 @@
           213.32,
           214.73,
           218.31,
-          213.86
+          219.04
         ]
       },
       "qqqWeight": null,
@@ -15739,11 +15739,11 @@
       "name": "Honeywell Aerospace Inc.",
       "industry": "Industrials",
       "subsector": "Aerospace",
-      "price": 158.72,
+      "price": 166.61,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -20.78,
-      "ytdReturn": -20.78,
+      "return1y": -16.61,
+      "ytdReturn": -16.61,
       "history": {
         "start": "2026-06-15",
         "end": "2026-10-23",
@@ -15839,7 +15839,7 @@
           159.9,
           162.46,
           163.02,
-          158.44
+          166.77
         ]
       },
       "qqqWeight": null,
@@ -15851,11 +15851,11 @@
       "name": "IDEXX Laboratories, Inc.",
       "industry": "Health Care",
       "subsector": "Biotechnology",
-      "price": 564.23,
+      "price": 562.96,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -11.67,
-      "ytdReturn": -15.81,
+      "return1y": -11.86,
+      "ytdReturn": -15.99,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -16111,7 +16111,7 @@
           557.93,
           553.48,
           566.76,
-          564.04
+          562.89
         ]
       },
       "qqqWeight": null,
@@ -16123,11 +16123,11 @@
       "name": "Intuit Inc.",
       "industry": "Technology",
       "subsector": "Computer Software",
-      "price": 348.46,
+      "price": 345.3,
       "marketCap": null,
       "dividendYield": 1.56,
-      "return1y": -47.77,
-      "ytdReturn": -43.77,
+      "return1y": -48.3,
+      "ytdReturn": -44.34,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -16383,7 +16383,7 @@
           335.29,
           335.61,
           354.9,
-          349.05
+          345.51
         ]
       },
       "qqqWeight": null,
@@ -16395,11 +16395,11 @@
       "name": "Intuitive Surgical, Inc.",
       "industry": "Health Care",
       "subsector": "Industrial Specialties",
-      "price": 452.19,
+      "price": 456.46,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -18.0,
-      "ytdReturn": -19.56,
+      "return1y": -17.22,
+      "ytdReturn": -18.8,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -16655,7 +16655,7 @@
           438.0,
           428.12,
           443.85,
-          452.06
+          456.36
         ]
       },
       "qqqWeight": null,
@@ -16667,11 +16667,11 @@
       "name": "Keurig Dr Pepper Inc.",
       "industry": "Consumer Staples",
       "subsector": "Soft Drinks",
-      "price": 34.77,
+      "price": 34.81,
       "marketCap": null,
       "dividendYield": 2.61,
-      "return1y": 30.23,
-      "ytdReturn": 28.32,
+      "return1y": 30.34,
+      "ytdReturn": 28.43,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -16927,7 +16927,7 @@
           34.63,
           34.47,
           35.19,
-          34.77
+          34.8
         ]
       },
       "qqqWeight": null,
@@ -16939,11 +16939,11 @@
       "name": "KLA Corporation",
       "industry": "Technology",
       "subsector": "Electronic Components",
-      "price": 146.97,
+      "price": 147.07,
       "marketCap": null,
       "dividendYield": 0.62,
-      "return1y": 27.62,
-      "ytdReturn": 15.86,
+      "return1y": 27.71,
+      "ytdReturn": 15.94,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -17199,7 +17199,7 @@
           161.74,
           163.43,
           147.83,
-          147.12
+          147.22
         ]
       },
       "qqqWeight": null,
@@ -17211,11 +17211,11 @@
       "name": "Lumentum Holdings Inc.",
       "industry": "Technology",
       "subsector": "Communication Equipment",
-      "price": 774.75,
+      "price": 764.86,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 359.29,
-      "ytdReturn": 100.44,
+      "return1y": 354.0,
+      "ytdReturn": 98.13,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -17471,7 +17471,7 @@
           822.51,
           850.7,
           752.54,
-          773.91
+          765.0
         ]
       },
       "qqqWeight": null,
@@ -17483,11 +17483,11 @@
       "name": "Marriott International",
       "industry": "Consumer Discretionary",
       "subsector": "Hotels/Resorts",
-      "price": 393.01,
+      "price": 392.17,
       "marketCap": null,
       "dividendYield": 0.74,
-      "return1y": 46.77,
-      "ytdReturn": 26.0,
+      "return1y": 46.56,
+      "ytdReturn": 25.82,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -17743,7 +17743,7 @@
           397.31,
           404.0,
           396.8,
-          392.57
+          392.0
         ]
       },
       "qqqWeight": null,
@@ -17755,11 +17755,11 @@
       "name": "Microchip Technology Incorporat",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 74.89,
+      "price": 74.08,
       "marketCap": null,
       "dividendYield": 2.44,
-      "return1y": 17.99,
-      "ytdReturn": 17.04,
+      "return1y": 16.95,
+      "ytdReturn": 16.01,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -18015,7 +18015,7 @@
           75.85,
           77.15,
           74.52,
-          74.84
+          74.18
         ]
       },
       "qqqWeight": null,
@@ -18027,11 +18027,11 @@
       "name": "Mondelez International, Inc.",
       "industry": "Consumer Staples",
       "subsector": "Packaged Foods",
-      "price": 63.79,
+      "price": 63.52,
       "marketCap": null,
       "dividendYield": 3.19,
-      "return1y": 8.26,
-      "ytdReturn": 21.99,
+      "return1y": 7.79,
+      "ytdReturn": 21.46,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -18287,7 +18287,7 @@
           63.99,
           62.74,
           65.19,
-          63.78
+          63.51
         ]
       },
       "qqqWeight": null,
@@ -18299,11 +18299,11 @@
       "name": "MercadoLibre, Inc.",
       "industry": "Consumer Discretionary",
       "subsector": "Catalog/Specialty Distribution",
-      "price": 1809.22,
+      "price": 1810.52,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -15.74,
-      "ytdReturn": -8.29,
+      "return1y": -15.67,
+      "ytdReturn": -8.2,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -18559,7 +18559,7 @@
           1879.5,
           1854.88,
           1824.96,
-          1810.14
+          1811.79
         ]
       },
       "qqqWeight": null,
@@ -18571,11 +18571,11 @@
       "name": "Monster Beverage Corporation",
       "industry": "Consumer Staples",
       "subsector": "Soft Drinks",
-      "price": 46.56,
+      "price": 46.22,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 33.15,
-      "ytdReturn": 22.19,
+      "return1y": 32.22,
+      "ytdReturn": 21.34,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -18831,7 +18831,7 @@
           47.04,
           46.63,
           47.3,
-          46.53
+          46.2
         ]
       },
       "qqqWeight": null,
@@ -18843,11 +18843,11 @@
       "name": "Monolithic Power Systems, Inc.",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 1150.47,
+      "price": 1152.07,
       "marketCap": null,
       "dividendYield": 0.69,
-      "return1y": 8.14,
-      "ytdReturn": 23.46,
+      "return1y": 8.43,
+      "ytdReturn": 23.79,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -19103,7 +19103,7 @@
           1248.74,
           1283.32,
           1167.93,
-          1150.2
+          1153.29
         ]
       },
       "qqqWeight": null,
@@ -19115,11 +19115,11 @@
       "name": "Moderna, Inc.",
       "industry": "Health Care",
       "subsector": "Biotechnology",
-      "price": 202.98,
+      "price": 203.87,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 666.82,
-      "ytdReturn": 552.27,
+      "return1y": 677.94,
+      "ytdReturn": 561.73,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -19375,7 +19375,7 @@
           242.08,
           245.81,
           202.63,
-          201.29
+          204.21
         ]
       },
       "qqqWeight": null,
@@ -19387,11 +19387,11 @@
       "name": "Marvell Technology, Inc.",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 227.49,
+      "price": 228.0,
       "marketCap": null,
       "dividendYield": 0.11,
-      "return1y": 174.59,
-      "ytdReturn": 154.25,
+      "return1y": 176.27,
+      "ytdReturn": 155.81,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -19647,7 +19647,7 @@
           240.42,
           244.76,
           223.47,
-          226.9
+          228.28
         ]
       },
       "qqqWeight": null,
@@ -19659,11 +19659,11 @@
       "name": "Strategy Inc",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 148.79,
+      "price": 149.86,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -47.85,
-      "ytdReturn": -5.45,
+      "return1y": -47.37,
+      "ytdReturn": -4.59,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -19919,7 +19919,7 @@
           142.72,
           153.48,
           145.8,
-          148.6
+          149.94
         ]
       },
       "qqqWeight": null,
@@ -19931,11 +19931,11 @@
       "name": "Nebius Group N.V.",
       "industry": "Technology",
       "subsector": "Computer Services",
-      "price": 160.85,
+      "price": 160.17,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 50.72,
-      "ytdReturn": 77.88,
+      "return1y": 51.06,
+      "ytdReturn": 78.28,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -20191,7 +20191,7 @@
           171.45,
           171.57,
           159.17,
-          160.0
+          160.37
         ]
       },
       "qqqWeight": null,
@@ -20203,11 +20203,11 @@
       "name": "NXP Semiconductors N.V.",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 238.05,
+      "price": 236.71,
       "marketCap": null,
       "dividendYield": 1.71,
-      "return1y": 9.81,
-      "ytdReturn": 9.05,
+      "return1y": 9.17,
+      "ytdReturn": 8.42,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -20463,7 +20463,7 @@
           237.6,
           242.36,
           237.79,
-          238.19
+          236.79
         ]
       },
       "qqqWeight": null,
@@ -20475,11 +20475,11 @@
       "name": "Old Dominion Freight Line, Inc.",
       "industry": "Industrials",
       "subsector": "Trucking",
-      "price": 183.88,
+      "price": 182.2,
       "marketCap": null,
       "dividendYield": 0.61,
-      "return1y": 36.77,
-      "ytdReturn": 16.5,
+      "return1y": 35.01,
+      "ytdReturn": 14.99,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -20735,7 +20735,7 @@
           188.33,
           188.9,
           189.89,
-          184.67
+          182.29
         ]
       },
       "qqqWeight": null,
@@ -20747,11 +20747,11 @@
       "name": "O'Reilly Automotive, Inc.",
       "industry": "Consumer Discretionary",
       "subsector": "Specialty Retailers",
-      "price": 90.89,
+      "price": 90.41,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -7.44,
-      "ytdReturn": 0.69,
+      "return1y": -8.01,
+      "ytdReturn": 0.06,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -21007,7 +21007,7 @@
           90.02,
           89.2,
           92.0,
-          90.96
+          90.39
         ]
       },
       "qqqWeight": null,
@@ -21019,11 +21019,11 @@
       "name": "Paychex, Inc.",
       "industry": "Industrials",
       "subsector": "Diversified Commercial Services",
-      "price": 118.21,
+      "price": 117.68,
       "marketCap": null,
       "dividendYield": 4.01,
-      "return1y": -1.17,
-      "ytdReturn": 12.44,
+      "return1y": -1.5,
+      "ytdReturn": 12.07,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -21279,7 +21279,7 @@
           112.62,
           112.5,
           118.81,
-          118.09
+          117.7
         ]
       },
       "qqqWeight": null,
@@ -21291,11 +21291,11 @@
       "name": "PACCAR Inc.",
       "industry": "Consumer Discretionary",
       "subsector": "Motor Vehicles",
-      "price": 107.23,
+      "price": 107.4,
       "marketCap": null,
       "dividendYield": 1.28,
-      "return1y": 10.61,
-      "ytdReturn": -3.03,
+      "return1y": 10.73,
+      "ytdReturn": -2.92,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -21551,7 +21551,7 @@
           110.07,
           110.22,
           109.59,
-          107.28
+          107.4
         ]
       },
       "qqqWeight": null,
@@ -21563,11 +21563,11 @@
       "name": "PDD Holdings Inc.",
       "industry": "Technology",
       "subsector": "EDP Services",
-      "price": 79.52,
+      "price": 79.04,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -40.36,
-      "ytdReturn": -31.33,
+      "return1y": -40.65,
+      "ytdReturn": -31.66,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -21823,7 +21823,7 @@
           81.63,
           78.72,
           79.17,
-          79.49
+          79.11
         ]
       },
       "qqqWeight": null,
@@ -21835,11 +21835,11 @@
       "name": "Pepsico, Inc.",
       "industry": "Consumer Staples",
       "subsector": "Soft Drinks",
-      "price": 135.88,
+      "price": 135.22,
       "marketCap": null,
       "dividendYield": 4.26,
-      "return1y": -6.74,
-      "ytdReturn": -1.62,
+      "return1y": -7.14,
+      "ytdReturn": -2.03,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -22095,7 +22095,7 @@
           134.02,
           134.7,
           138.83,
-          135.79
+          135.22
         ]
       },
       "qqqWeight": null,
@@ -22107,11 +22107,11 @@
       "name": "PayPal Holdings, Inc.",
       "industry": "Industrials",
       "subsector": "Diversified Commercial Services",
-      "price": 57.36,
+      "price": 57.21,
       "marketCap": null,
       "dividendYield": 0.97,
-      "return1y": -16.89,
-      "ytdReturn": -0.65,
+      "return1y": -16.93,
+      "ytdReturn": -0.71,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -22367,7 +22367,7 @@
           57.14,
           57.2,
           57.53,
-          57.26
+          57.23
         ]
       },
       "qqqWeight": null,
@@ -22379,11 +22379,11 @@
       "name": "QUALCOMM Incorporated",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 174.9,
+      "price": 174.34,
       "marketCap": null,
       "dividendYield": 2.13,
-      "return1y": 4.92,
-      "ytdReturn": 2.61,
+      "return1y": 4.7,
+      "ytdReturn": 2.39,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -22639,7 +22639,7 @@
           175.71,
           177.96,
           172.83,
-          174.75
+          174.38
         ]
       },
       "qqqWeight": null,
@@ -22651,11 +22651,11 @@
       "name": "Regeneron Pharmaceuticals, Inc.",
       "industry": "Health Care",
       "subsector": "Biotechnology",
-      "price": 806.17,
+      "price": 807.11,
       "marketCap": null,
       "dividendYield": 0.46,
-      "return1y": 40.93,
-      "ytdReturn": 4.38,
+      "return1y": 41.01,
+      "ytdReturn": 4.44,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -22707,7 +22707,7 @@
           781.94,
           777.49,
           770.96,
-          768.89,
+          768.9,
           773.32,
           760.29,
           773.55,
@@ -22725,7 +22725,7 @@
           750.65,
           759.71,
           768.28,
-          748.24,
+          748.23,
           746.55,
           738.59,
           752.11,
@@ -22911,7 +22911,7 @@
           807.48,
           805.67,
           819.09,
-          807.17
+          807.63
         ]
       },
       "qqqWeight": null,
@@ -22923,11 +22923,11 @@
       "name": "Rocket Lab Corporation",
       "industry": "Industrials",
       "subsector": "Aerospace",
-      "price": 50.61,
+      "price": 52.24,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -20.5,
-      "ytdReturn": -33.49,
+      "return1y": -17.81,
+      "ytdReturn": -31.24,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -23183,7 +23183,7 @@
           50.9,
           53.67,
           51.22,
-          50.54
+          52.25
         ]
       },
       "qqqWeight": null,
@@ -23195,11 +23195,11 @@
       "name": "Roper Technologies, Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 439.26,
+      "price": 435.64,
       "marketCap": null,
       "dividendYield": 0.83,
-      "return1y": -7.58,
-      "ytdReturn": 1.87,
+      "return1y": -8.33,
+      "ytdReturn": 1.04,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -23455,7 +23455,7 @@
           398.21,
           397.56,
           436.23,
-          439.32
+          435.77
         ]
       },
       "qqqWeight": null,
@@ -23467,11 +23467,11 @@
       "name": "Ross Stores, Inc.",
       "industry": "Consumer Discretionary",
       "subsector": "Clothing/Shoe/Accessory Stores",
-      "price": 230.34,
+      "price": 229.66,
       "marketCap": null,
       "dividendYield": 0.75,
-      "return1y": 48.27,
-      "ytdReturn": 26.82,
+      "return1y": 47.73,
+      "ytdReturn": 26.36,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -23727,7 +23727,7 @@
           237.24,
           234.18,
           236.67,
-          230.37
+          229.53
         ]
       },
       "qqqWeight": null,
@@ -23739,11 +23739,11 @@
       "name": "Starbucks Corporation",
       "industry": "Consumer Discretionary",
       "subsector": "Restaurants",
-      "price": 101.3,
+      "price": 100.66,
       "marketCap": null,
       "dividendYield": 2.47,
-      "return1y": 21.51,
-      "ytdReturn": 22.75,
+      "return1y": 20.86,
+      "ytdReturn": 22.1,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -23999,7 +23999,7 @@
           99.37,
           99.08,
           101.91,
-          101.24
+          100.69
         ]
       },
       "qqqWeight": null,
@@ -24011,11 +24011,11 @@
       "name": "Shopify Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 168.66,
+      "price": 169.4,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 0.77,
-      "ytdReturn": 7.07,
+      "return1y": 1.55,
+      "ytdReturn": 7.9,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -24271,7 +24271,7 @@
           173.48,
           174.29,
           168.81,
-          168.32
+          169.62
         ]
       },
       "qqqWeight": null,
@@ -24283,11 +24283,11 @@
       "name": "Sandisk Corporation",
       "industry": "Technology",
       "subsector": "Electronic Components",
-      "price": 1283.75,
+      "price": 1267.51,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 667.55,
-      "ytdReturn": 365.84,
+      "return1y": 659.26,
+      "ytdReturn": 360.81,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -24543,7 +24543,7 @@
           1365.38,
           1378.22,
           1260.93,
-          1282.19
+          1268.34
         ]
       },
       "qqqWeight": null,
@@ -24555,11 +24555,11 @@
       "name": "Synopsys, Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 427.66,
+      "price": 431.54,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -6.1,
-      "ytdReturn": -10.86,
+      "return1y": -5.44,
+      "ytdReturn": -10.23,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -24815,7 +24815,7 @@
           447.62,
           451.19,
           422.48,
-          428.26
+          431.26
         ]
       },
       "qqqWeight": null,
@@ -24827,11 +24827,11 @@
       "name": "Seagate Technology Holdings PLC",
       "industry": "Technology",
       "subsector": "Electronic Components",
-      "price": 637.18,
+      "price": 644.6,
       "marketCap": null,
       "dividendYield": 0.46,
-      "return1y": 183.63,
-      "ytdReturn": 122.75,
+      "return1y": 185.95,
+      "ytdReturn": 124.57,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -25087,7 +25087,7 @@
           675.13,
           696.89,
           642.14,
-          638.4
+          643.63
         ]
       },
       "qqqWeight": null,
@@ -25099,11 +25099,11 @@
       "name": "Teradyne, Inc.",
       "industry": "Technology",
       "subsector": "Semiconductors",
-      "price": 310.93,
+      "price": 312.02,
       "marketCap": null,
       "dividendYield": 0.17,
-      "return1y": 114.57,
-      "ytdReturn": 49.82,
+      "return1y": 115.65,
+      "ytdReturn": 50.58,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -25359,7 +25359,7 @@
           336.59,
           345.49,
           308.75,
-          310.61
+          312.18
         ]
       },
       "qqqWeight": null,
@@ -25371,11 +25371,11 @@
       "name": "T-Mobile US, Inc.",
       "industry": "Telecommunications",
       "subsector": "Telecommunications Services",
-      "price": 152.21,
+      "price": 149.17,
       "marketCap": null,
       "dividendYield": 2.95,
-      "return1y": -29.27,
-      "ytdReturn": -22.42,
+      "return1y": -30.74,
+      "ytdReturn": -24.03,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -25631,7 +25631,7 @@
           157.75,
           153.75,
           158.79,
-          152.39
+          149.21
         ]
       },
       "qqqWeight": null,
@@ -25643,11 +25643,11 @@
       "name": "Thomson Reuters Corp",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 122.34,
+      "price": 122.32,
       "marketCap": null,
       "dividendYield": 2.13,
-      "return1y": -22.09,
-      "ytdReturn": 0.35,
+      "return1y": -22.03,
+      "ytdReturn": 0.42,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -25903,7 +25903,7 @@
           112.82,
           115.26,
           123.26,
-          122.2
+          122.3
         ]
       },
       "qqqWeight": null,
@@ -25915,11 +25915,11 @@
       "name": "Take-Two Interactive Software, ",
       "industry": "Consumer Discretionary",
       "subsector": "Miscellaneous Amusement & Recreation Services",
-      "price": 206.94,
+      "price": 206.17,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -18.74,
-      "ytdReturn": -17.8,
+      "return1y": -18.93,
+      "ytdReturn": -17.98,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -26175,7 +26175,7 @@
           206.7,
           206.16,
           207.81,
-          206.82
+          206.36
         ]
       },
       "qqqWeight": null,
@@ -26187,11 +26187,11 @@
       "name": "Vertex Pharmaceuticals Incorpor",
       "industry": "Health Care",
       "subsector": "Biotechnology",
-      "price": 526.04,
+      "price": 525.56,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": 24.76,
-      "ytdReturn": 16.62,
+      "return1y": 24.4,
+      "ytdReturn": 16.28,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -26447,7 +26447,7 @@
           514.65,
           524.52,
           535.17,
-          527.26
+          525.75
         ]
       },
       "qqqWeight": null,
@@ -26459,11 +26459,11 @@
       "name": "Workday, Inc.",
       "industry": "Technology",
       "subsector": "Software",
-      "price": 209.08,
+      "price": 209.45,
       "marketCap": null,
       "dividendYield": null,
-      "return1y": -14.0,
-      "ytdReturn": 1.66,
+      "return1y": -13.88,
+      "ytdReturn": 1.81,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -26719,7 +26719,7 @@
           203.98,
           202.96,
           209.99,
-          209.21
+          209.51
         ]
       },
       "qqqWeight": null,
@@ -26731,11 +26731,11 @@
       "name": "Western Digital Corporation",
       "industry": "Technology",
       "subsector": "Electronic Components",
-      "price": 349.33,
+      "price": 345.4,
       "marketCap": null,
       "dividendYield": 0.17,
-      "return1y": 181.72,
-      "ytdReturn": 88.54,
+      "return1y": 175.29,
+      "ytdReturn": 84.24,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -26991,7 +26991,7 @@
           364.32,
           378.51,
           354.19,
-          353.52
+          345.44
         ]
       },
       "qqqWeight": null,
@@ -27003,11 +27003,11 @@
       "name": "Xcel Energy Inc.",
       "industry": "Utilities",
       "subsector": "Conventional Electricity",
-      "price": 78.14,
+      "price": 77.61,
       "marketCap": null,
       "dividendYield": 3.0,
-      "return1y": 0.17,
-      "ytdReturn": 7.03,
+      "return1y": -0.48,
+      "ytdReturn": 6.33,
       "history": {
         "start": "2025-10-23",
         "end": "2026-10-23",
@@ -27263,7 +27263,7 @@
           76.68,
           76.78,
           78.9,
-          78.12
+          77.61
         ]
       },
       "qqqWeight": null,
@@ -27786,7 +27786,7 @@
       {
         "year": 2026,
         "date": "2026-10-23",
-        "value": 15.26
+        "value": 15.21
       }
     ],
     "proxy": {
