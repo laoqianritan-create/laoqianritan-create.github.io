@@ -2,14 +2,14 @@
 // 六条腿：美国二手房房价 / 标普500 / 纳指100 / 黄金 / 10Y 美债零息价格近似 / 名义 GDP
 // 灰带 = NBER 衰退区间；口径与对拍见 data/us_asset_ladder.json 的 caliber 字段。
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261023093844';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261023094656';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
   buildRecessionOverlaySeries,
-} from '../chart-helpers.js?v=20261023093844';
+} from '../chart-helpers.js?v=20261023094656';
 
 const LEGS = [
   { key: 'housing', name: '美国二手房房价', color: '#0f766e' },

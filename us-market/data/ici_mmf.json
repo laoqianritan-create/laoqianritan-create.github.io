@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22",
+  "updated": "2026-10-23",
   "source": "ICI Weekly Money Market Fund Assets + FRED MMMFFAQ027S",
   "source_url": "https://www.ici.org/weekly-money-market-mutual-fund-assets",
   "xls_url": "https://www.ici.org/mm_summary_data_2026.xls",
@@ -71,10 +71,10 @@
     },
     {
       "date": "2026-06-17",
-      "total": 7912967.0,
+      "total": 7912968.0,
       "tax_exempt": 148327.0,
       "government": 6533742.0,
-      "gov_treasury_repo": 2385811.0,
+      "gov_treasury_repo": 2385812.0,
       "gov_treasury_agency": 4147930.0,
       "prime": 1230899.0
     },
@@ -145,14 +145,14 @@
       "date": "2026-08-12",
       "total": 7927580.0,
       "tax_exempt": 147899.0,
-      "government": 6539703.0,
+      "government": 6539704.0,
       "gov_treasury_repo": 2424739.0,
       "gov_treasury_agency": 4114965.0,
       "prime": 1239978.0
     },
     {
       "date": "2026-08-19",
-      "total": 7928480.0,
+      "total": 7928481.0,
       "tax_exempt": 149249.0,
       "government": 6541151.0,
       "gov_treasury_repo": 2442241.0,
@@ -182,7 +182,7 @@
       "total": 7973479.0,
       "tax_exempt": 149346.0,
       "government": 6578494.0,
-      "gov_treasury_repo": 2445068.0,
+      "gov_treasury_repo": 2445069.0,
       "gov_treasury_agency": 4133426.0,
       "prime": 1245639.0
     },
@@ -215,7 +215,7 @@
     },
     {
       "date": "2026-10-07",
-      "total": 7963546.0,
+      "total": 7963547.0,
       "tax_exempt": 162981.0,
       "government": 6560797.0,
       "gov_treasury_repo": 2439448.0,
@@ -224,12 +224,21 @@
     },
     {
       "date": "2026-10-14",
-      "total": 7923083.0,
+      "total": 7923084.0,
       "tax_exempt": 167613.0,
       "government": 6519995.0,
       "gov_treasury_repo": 2427169.0,
       "gov_treasury_agency": 4092826.0,
       "prime": 1235475.0
+    },
+    {
+      "date": "2026-10-21",
+      "total": 7944573.0,
+      "tax_exempt": 164053.0,
+      "government": 6541818.0,
+      "gov_treasury_repo": 2441064.0,
+      "gov_treasury_agency": 4100754.0,
+      "prime": 1238702.0
     }
   ],
   "quarterly": [
