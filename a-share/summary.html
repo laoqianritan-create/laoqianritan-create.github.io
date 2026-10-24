@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://ashare.laoqianriritan.com/summary.html">
   <link rel="canonical" href="https://ashare.laoqianriritan.com/summary.html">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261024170040">
+  <link rel="stylesheet" href="css/style.css?v=20261024215005">
   <style>
     /* ─── 汇总页 · 美债式卡片网格（模仿 /us-debt/summary/） ─── */
     .summary-hero {
@@ -27,7 +27,7 @@
       flex-wrap: wrap;
     }
     .summary-hero h2 { font-size: 26px; font-weight: 700; margin: 0; letter-spacing: 0.3px; }
-    .summary-hero .sm-date { font-size: 12.5px; color: #8a8f98; }
+    .summary-hero .sm-date { font-size: 12.5px; color: #6b7280; }
 
     .sm-grid {
       display: grid;
@@ -50,7 +50,7 @@
       text-decoration: none;
       transition: border-color .18s, box-shadow .18s;
     }
-    .sm-card:hover { border-color: #E65A56; box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+    .sm-card:hover { border-color: var(--red); box-shadow: 0 4px 16px rgba(0,0,0,.07); }
 
     .sm-card-head {
       padding: 10px 12px 9px;
@@ -76,7 +76,7 @@
       color: #C9CDD4;
       transition: color .18s;
     }
-    .sm-card:hover .sm-card-head .sm-arrow { color: #E65A56; }
+    .sm-card:hover .sm-card-head .sm-arrow { color: var(--red); }
 
     .sm-card-body {
       height: 160px;
@@ -91,7 +91,7 @@
     }
 
     /* 顶部导航「汇总」当前高亮 */
-    .site-nav a.nav-summary { color: #E65A56; font-weight: 600; }
+    .site-nav a.nav-summary { color: var(--red); font-weight: 600; }
   </style>
 </head>
 <body>
@@ -132,7 +132,7 @@
   </div>
 
   <div class="sm-grid" id="smGrid" aria-busy="true">
-    <div class="sm-loading" id="smLoading" style="text-align:center;color:#999;padding:60px 0;font-size:14px;grid-column:1/-1;">正在渲染全部看板迷你图…</div>
+    <div class="sm-loading" id="smLoading" style="text-align:center;color:#767676;padding:60px 0;font-size:14px;grid-column:1/-1;">正在渲染全部看板迷你图…</div>
   </div>
 
   <div class="related-resources">
@@ -154,8 +154,8 @@
 
 </main>
 
-<script defer src="js/common.js?v=20261024170040"></script>
-<script defer src="js/summary-mini.js?v=20261024170040"></script>
-<script defer src="js/summary.js?v=20261024170040"></script>
+<script defer src="js/common.js?v=20261024215005"></script>
+<script defer src="js/summary-mini.js?v=20261024215005"></script>
+<script defer src="js/summary.js?v=20261024215005"></script>
 </body>
 </html>

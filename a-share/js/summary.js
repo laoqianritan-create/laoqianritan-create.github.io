@@ -159,7 +159,7 @@
       console.error('[summary] 初始化失败', err);
       const grid = document.getElementById('smGrid');
       if (grid) {
-        grid.innerHTML = '<div style="text-align:center;color:#999;padding:60px 0;font-size:14px;grid-column:1/-1;">汇总生成失败：' + err.message + '</div>';
+        grid.innerHTML = '<div style="text-align:center;color:#767676;padding:60px 0;font-size:14px;grid-column:1/-1;">汇总生成失败：' + err.message + '</div>';
       }
     }
   }

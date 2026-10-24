@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://ashare.laoqianriritan.com/">
   <link rel="canonical" href="https://ashare.laoqianriritan.com/">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261024170040">
+  <link rel="stylesheet" href="css/style.css?v=20261024215005">
 </head>
 <body>
 
@@ -248,7 +248,7 @@
       <ul>
         <li>上子图 ERP（股权风险溢价）：中证800 指数 PE-TTM 倒数（盈利收益率）减去中债10年期国债到期收益率。ERP 越高，股票相对债券越便宜、配置价值越高。</li>
         <li>下子图 股债相对收益率（相除）：盈利收益率 ÷ 10Y 国债收益率，衡量股债性价比的倍数关系。</li>
-        <li>中证800（沪深300+中证500）作为全 A 近似——免费源无万得全A长历史 PE-TTM；盈利收益率 = 100/PE-TTM。</li>
+        <li>中证800（沪深300+中证500）作为全 A 近似（免费源无万得全A长历史 PE-TTM）；盈利收益率 = 100/PE-TTM。</li>
         <li>历史分位为 ERP 在全部样本月度值中的百分位（2007-01 起，中证800 PE 起点）。</li>
         <li>德邦证券《A股市场监测》资产联动指标：2004 年以来股债相对收益率与 ERP 在极值处对 A 股中期回报有较强指示意义。</li>
       </ul>
@@ -297,7 +297,7 @@
       <ul>
         <li>两市成交额 = 上证 + 深证 成交金额（新浪口径，2002 起）。</li>
         <li>换手率 = 两市成交额 / 全市场总市值（乐咕日度全 A 总市值，2005 起）。</li>
-        <li>自由流通市值无日度官方历史，采用总市值口径近似——该口径下换手率数值系统性偏低，与券商"自由流通换手率"不可直接对比。</li>
+        <li>自由流通市值无日度官方历史，采用总市值口径近似；该口径下换手率数值系统性偏低，与券商"自由流通换手率"不可直接对比。</li>
         <li>虚线为窗口内均值，浅色带为 ±1 标准差 / 历史分位参考。</li>
       </ul>
     </details>
@@ -430,7 +430,7 @@
       <summary>看板说明</summary>
       <ul>
         <li>谁在持有：流通市值按持有人类型拆（散户/机构/外资等）；谁在定价：成交额按投资者类型拆；谁在交易：活跃账户/新增投资者。</li>
-        <li>新增投资者序列：2005—2023-08 为中证登"新增投资者数量"（全市场口径）；2023-09 起为上交所"股票账户新开户（A股个人）"（沪市口径）——两者口径不同，图中以分界线标注，不可跨段直接比量级。</li>
+        <li>新增投资者序列：2005—2023-08 为中证登"新增投资者数量"（全市场口径）；2023-09 起为上交所"股票账户新开户（A股个人）"（沪市口径）；两者口径不同，图中以分界线标注，不可跨段直接比量级。</li>
         <li>开户数月度更新（上交所统计月报，发布滞后约 1 个月）。</li>
       </ul>
     </details>
@@ -447,7 +447,7 @@
     </div>
     <div class="panel-body chart-query-body">
       <div class="cq-input-row">
-        <input type="text" id="chartQueryInput" placeholder="公司名 / 6 位代码，如：茅台 / 600519 / 510300" autocomplete="off" spellcheck="false" />
+        <input type="text" id="chartQueryInput" aria-label="输入公司名或代码查询走势图" placeholder="公司名 / 6 位代码，如：茅台 / 600519 / 510300" autocomplete="off" spellcheck="false" />
         <button id="chartQueryBtn" type="button">出图</button>
         <span class="cq-hint">不要多次点击「出图」按钮，会影响图片生成</span>
       </div>
@@ -527,8 +527,8 @@
 
 
 
-<script defer src="js/all.js?v=20261024170040"></script>
-<!-- <script defer src="js/cashflow.js?v=20261024170040"></script> -->
+<script defer src="js/all.js?v=20261024215005"></script>
+<!-- <script defer src="js/cashflow.js?v=20261024215005"></script> -->
 
 </body>
 </html>
