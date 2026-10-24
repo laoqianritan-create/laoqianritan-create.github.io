@@ -1,14 +1,14 @@
 {
-  "updated": "2026-10-23T01:42:26Z",
+  "updated": "2026-10-24T01:42:47Z",
   "source": "IMF IRFCL (open API, no login)",
   "source_url": "https://data.imf.org/ (IRFCL, Reserve Assets, open API)",
   "method": "imf-irfcl",
   "data_as_of": "per-country latest (2021-Q3 ~ 2026-Q3)",
   "note": "季度时序 = WGC 历史底座 + IMF IRFCL API 逐季续新（9 个命名国，免登录）；快照 = IMF IRFCL 开放 API 每国最新可得期（免登录，每日自动）；WGC 登录仅用于前移全域「其他」桶截止季与全量167国，非必需：重跑 login_wgc.py",
   "snapshot_buckets": {
-    "其他": 31402.7
+    "其他": 31384.0
   },
-  "snapshot_total_tons": 31402.7,
+  "snapshot_total_tons": 31384.0,
   "all_countries": [
     {
       "country": "United States",
@@ -32,7 +32,7 @@
     },
     {
       "country": "Russia",
-      "tons": 2283.0
+      "tons": 2264.3
     },
     {
       "country": "Switzerland",

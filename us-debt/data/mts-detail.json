@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-23T01:42:17Z",
+  "updated": "2026-10-24T01:42:30Z",
   "source": "Treasury Fiscal Data API · MTS Table 4 (Receipts) + Table 5 (Outlays)",
   "year_range": [
     2015,
@@ -553,8 +553,8 @@
         "Individual Income Taxes": 2845526866159.55,
         "Customs Duties": 173218614643.4,
         "Miscellaneous Receipts": 46656595004.81,
-        "Excise Taxes": 105995126578.38,
-        "Estate and Gift Taxes": 38720146356.13
+        "Estate and Gift Taxes": 38720146356.13,
+        "Excise Taxes": 105995126578.38
       },
       "receipts_total": 5403326758960.81
     }
@@ -600,8 +600,8 @@
       "Individual Income Taxes": 2845526866159.55,
       "Customs Duties": 173218614643.4,
       "Miscellaneous Receipts": 46656595004.81,
-      "Excise Taxes": 105995126578.38,
-      "Estate and Gift Taxes": 38720146356.13
+      "Estate and Gift Taxes": 38720146356.13,
+      "Excise Taxes": 105995126578.38
     },
     "receipts_total": 5403326758960.81
   }
