@@ -22,7 +22,7 @@ import {
   CHART_FONT,
   cssVar,
   formatNumber,
-} from '../utils.js?v=20261024100726';
+} from '../utils.js?v=20261024215145';
 
 import {
   registerChart,
@@ -30,7 +30,7 @@ import {
   renderMetricStrip,
   getDataZoom,
   getLineLegendConfig,
-} from '../chart-helpers.js?v=20261024100726';
+} from '../chart-helpers.js?v=20261024215145';
 
 // 根据改良版比率定位档位标签
 function bandLabelFor(ratio, bands) {

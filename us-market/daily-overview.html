@@ -20,7 +20,7 @@
   --red: #cf1322;
   --accent: #4758e0;
   --accent-light: rgba(71,88,224,0.08);
-  --gray: #999999;
+  --gray: #6b7280;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -49,7 +49,7 @@ body {
   padding: 8px 14px; border-radius: 999px;
   border: 1px solid var(--border); background: var(--card-bg, #fff);
   color: var(--text-secondary); text-decoration: none;
-  transition: all 0.15s;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
 }
 .category-tab:hover { color: var(--text); border-color: var(--text-secondary); }
 .category-tab.active { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
@@ -74,7 +74,7 @@ body {
   font: inherit; font-size: 14px; font-weight: 600;
   padding: 8px 18px; border-radius: 999px;
   border: 1px solid var(--border); background: var(--card-bg, #fff);
-  color: var(--text-secondary); cursor: pointer; transition: all 0.15s;
+  color: var(--text-secondary); cursor: pointer; transition: color 0.15s, border-color 0.15s, background-color 0.15s;
 }
 .dim-tab:hover { color: var(--text); border-color: var(--text-secondary); }
 .dim-tab.active { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
@@ -82,7 +82,7 @@ body {
   font: inherit; font-size: 13px; font-weight: 600;
   padding: 8px 14px; border-radius: 8px;
   border: 1px solid var(--border); background: #fff; color: var(--text-secondary);
-  cursor: pointer; margin-left: auto; transition: all 0.15s;
+  cursor: pointer; margin-left: auto; transition: color 0.15s, border-color 0.15s, background-color 0.15s;
 }
 .btn-export:hover { color: var(--text); border-color: var(--text-secondary); }
 
@@ -215,8 +215,8 @@ body {
 </main>
 
 <div id="heatTooltip"></div>
-<script>window.__DO_VER__ = '20261024100726';</script>
-<script src="js/daily-overview-data-spx.js?v=20261024100726"></script>
-<script src="js/daily-overview.js?v=20261024100726"></script>
+<script>window.__DO_VER__ = '20261024215145';</script>
+<script src="js/daily-overview-data-spx.js?v=20261024215145"></script>
+<script src="js/daily-overview.js?v=20261024215145"></script>
 </body>
 </html>

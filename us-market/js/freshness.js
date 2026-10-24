@@ -49,7 +49,7 @@
     })
     .catch((err) => {
       console.warn('[freshness] load failed', err);
-      textEl.textContent = '状态未知';
+      textEl.textContent = '数据暂不可用，请稍后刷新';
       strip.classList.add('is-old');
     });
 })();

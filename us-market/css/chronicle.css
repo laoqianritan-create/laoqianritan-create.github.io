@@ -476,7 +476,7 @@
   border: 1px solid var(--border);
   border-radius: 6px;
   background: var(--card-bg);
-  transition: all 0.15s;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
 }
 .year-back-link:hover {
   color: var(--accent);

@@ -79,7 +79,7 @@ html.panel-snap-enabled .panel {
   background: var(--card-bg);
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: color 0.15s, border-color 0.15s, background-color 0.15s;
   white-space: nowrap;
 }
 .btn:hover { color: var(--text); border-color: var(--text-secondary); }
