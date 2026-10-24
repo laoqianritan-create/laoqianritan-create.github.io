@@ -808,10 +808,11 @@
     var d10 = dates.slice(cutoff), a10 = amount.slice(cutoff);
     var topH = 150, botTop = H - 118;
 
-    // 上子图：金额折线（蓝）
+    // 上子图：金额折线（蓝，y 下限 0）
     drawDual(ctx, [{
       top: 4, h: topH - 4, dates: d10, seriesArr: [a10], colors: [BLUE],
-      fmt: function (v) { return (v / 10000).toFixed(1) + '万'; }, xLabel: false, lineWidth: 1.2
+      fmt: function (v) { return (v / 10000).toFixed(1) + '万亿'; }, xLabel: false, lineWidth: 1.2,
+      yMinFloor: 0
     }]);
 
     // 下子图：换手率（近 10 年）+ 窗口均值虚线
@@ -822,7 +823,8 @@
     drawDual(ctx, [{
       top: botTop, h: H - botTop - 4, dates: d10, seriesArr: [t10], colors: [RED],
       fmt: function (v) { return v.toFixed(1); }, xLabel: true, lineWidth: 1.2,
-      refLines: [{ val: mean, color: '#9AA0A6' }]
+      refLines: [{ val: mean, color: '#9AA0A6' }],
+      yMinFloor: 0
     }]);
   }
 
@@ -912,12 +914,14 @@
     drawDual(ctx, [
       {
         top: 4, h: topH - 4, dates: d1, seriesArr: [v1], colors: [RED],
-        fmt: function (v) { return v.toFixed(0) + '%'; }, xLabel: false, lineWidth: 1.3,
-        refLines: [{ val: 50, color: '#CCCCCC' }]
+        fmt: function (v) { return Math.round(v) + '%'; }, xLabel: false, lineWidth: 1.3,
+        refLines: [{ val: 50, color: '#CCCCCC' }],
+        yDomain: [0, 100]
       },
       {
         top: botTop, h: H - botTop - 4, dates: d2, seriesArr: [v2], colors: [BLUE],
-        fmt: function (v) { return v.toFixed(0) + '%'; }, xLabel: true, lineWidth: 1.3
+        fmt: function (v) { return Math.round(v) + '%'; }, xLabel: true, lineWidth: 1.3,
+        yDomain: [0, 100]
       }
     ]);
   }
