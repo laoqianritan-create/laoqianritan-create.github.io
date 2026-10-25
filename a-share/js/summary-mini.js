@@ -293,7 +293,8 @@
       var item = raw.data[name];
       if (!item) return null;
       var rets = (item.rets || []).slice();
-      rets.push(item.ytd2026 !== undefined && item.ytd2026 !== null ? item.ytd2026 : null);
+      var ytdF = 'ytd' + (raw.ytd_year || (years[years.length - 1] + 1));
+      rets.push(item[ytdF] !== undefined && item[ytdF] !== null ? item[ytdF] : null);
       return { name: name, rets: rets };
     }).filter(Boolean);
     if (!rows.length || !years.length) return;
@@ -1276,18 +1277,19 @@
     if (!raw || !raw.data) return;
 
     var years = raw.years || [], ytdYear = raw.ytd_year || years[years.length - 1] + 1;
+    var ytdF = 'ytd' + ytdYear;
     var names = Object.keys(raw.data);
     var list = names.map(function (name) {
       var item = raw.data[name];
       var rets = (item.rets || []).map(function (v) { return v / 100; });
-      var ytd = item.ytd2026 != null ? item.ytd2026 / 100 : null;
+      var ytd = item[ytdF] != null ? item[ytdF] / 100 : null;
       return { name: name, rets: rets, ytd: ytd };
     });
     function wRows(start, end) {
       return list.map(function (s) {
         var rs = [];
         for (var i = 0; i < years.length; i++) { var y = years[i]; if (y >= start && y <= end) rs.push(s.rets[i]); }
-        if (end === ytdYear && s.ytd != null) rs.push(s.ytd);
+        if (end === ytdYear && s.ytd != null && years.indexOf(end) < 0) rs.push(s.ytd);
         return { name: s.name, v: rs.length ? pathStatsMini(rs) : null };
       });
     }
@@ -1320,14 +1322,15 @@
       ctx.fillText(c[1], cx + 10, 18);
     });
 
-    // 迷你窗口热力条（31 行业 × 8 起点）
+    // 迷你窗口热力条（31 行业 × 起点数，随 ytd_year 自动扩展）
     var padL = 14, padR = 6, top = 52, bot = H - 8;
-    var starts = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022];
+    var starts = [];
+    for (var sy = 2015; sy <= ytdYear - 5 + 1; sy++) starts.push(sy);
     var rows = starts.map(function (y) {
       return list.map(function (s) {
         var rs = [];
         for (var i = 0; i < years.length; i++) { var yr = years[i]; if (yr >= y && yr <= y + 4) rs.push(s.rets[i]); }
-        if (y + 4 === ytdYear && s.ytd != null) rs.push(s.ytd);
+        if (y + 4 === ytdYear && s.ytd != null && years.indexOf(y + 4) < 0) rs.push(s.ytd);
         return rs.length ? pathStatsMini(rs).cagr : null;
       });
     });

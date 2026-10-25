@@ -29,9 +29,11 @@
     if (!resp.ok) throw new Error(`数据加载失败 HTTP ${resp.status}`);
     const raw = await resp.json();
 
-    // years: 2005..2025 (21 列)，再追加 2026* (1 列) = 22 列
+    // years: 2005..2025 (21 列)，再追加 ytd_year* (1 列)
+    const ytdY = raw.ytd_year || (raw.years[raw.years.length - 1] + 1);
+    const ytdField = 'ytd' + ytdY;
     const yearsBase = raw.years.map(String);
-    const years = [...yearsBase, '2026*'];
+    const years = [...yearsBase, String(ytdY) + '*'];
 
     // metrics_meta: CAGR 列定义(后端写入)
     const metricsMeta = raw.metrics_meta && raw.metrics_meta.columns
@@ -43,8 +45,8 @@
       const item = raw.data[name];
       if (!item) throw new Error(`数据缺少行业: ${name}`);
       const rets = [...item.rets];
-      // 追加 2026 YTD 作为最后一列
-      rets.push(item.ytd2026 !== undefined && item.ytd2026 !== null ? item.ytd2026 : null);
+      // 追加 ytd_year YTD 作为最后一列（字段名随 ytd_year 动态，跨年自动切换）
+      rets.push(item[ytdField] !== undefined && item[ytdField] !== null ? item[ytdField] : null);
       // 4 列 CAGR (按 metricsMeta 顺序取值)
       const metrics = metricsMeta.map(col =>
         item.metrics && item.metrics[col.key] !== undefined ? item.metrics[col.key] : null
@@ -1035,8 +1037,9 @@
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
       let leftLine = '数据来源：Wind 申万一级行业指数';
-      if (opts.ytdAsOf) leftLine += `  ·  2026 年为年初至今涨跌幅（截至 ${opts.ytdAsOf}）`;
-      else leftLine += '  ·  2026 年为年初至今涨跌幅';
+      const ytdY = (payload.years && payload.years.length) ? String(payload.years[payload.years.length - 1]).replace('*', '') : '2026';
+      if (opts.ytdAsOf) leftLine += `  ·  ${ytdY} 年为年初至今涨跌幅（截至 ${opts.ytdAsOf}）`;
+      else leftLine += `  ·  ${ytdY} 年为年初至今涨跌幅`;
       leftLine += '  ·  CAGR 基于完整年度数据';
       ctx.fillText(leftLine, L.padL, footY);
 
@@ -4317,6 +4320,12 @@
     { id: 'panel-investor',  key: 'investor',      render: (d) => window.IS_render(d) }
   ];
 
+  // ── 每面板独立分享链接（hash 直达）──
+  // 初始带 #panel-xxx 打开时，先抑制 navIO 对 URL 的改写（否则初始视口内的面板
+  // 会抢先 replaceState 把目标 hash 覆盖掉），待 gotoHash 滚动到位后再恢复；
+  // 滚动本身会触发懒加载 IO → 渲染目标面板。
+  let suppressHashRewrite = !!(location.hash && location.hash.indexOf('#panel-') === 0);
+
   // ── 导航高亮：当前面板对应导航项加 active（红下划线）──
   const navLinks = Array.from(document.querySelectorAll('.site-nav a[href^="#panel-"]'));
   const navIO = new IntersectionObserver((entries) => {
@@ -4324,7 +4333,7 @@
       if (!e.isIntersecting) return;
       const id = '#' + e.target.id;
       navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === id));
-      if (history.replaceState) history.replaceState(null, '', id);
+      if (!suppressHashRewrite && history.replaceState) history.replaceState(null, '', id);
     });
   }, { rootMargin: '-20% 0px -55% 0px', threshold: 0 });
   function bindNavHighlight() {
@@ -4332,6 +4341,19 @@
       const el = document.getElementById(p.id);
       if (el) navIO.observe(el);
     });
+  }
+
+  // 初始 hash 直达：多次尝试滚动（数据异步渲染会改变面板高度），到位后放开 URL 改写
+  function gotoHash() {
+    const h0 = location.hash;
+    if (!h0 || h0.indexOf('#panel-') !== 0) return;
+    const el = document.getElementById(h0.slice(1));
+    if (!el) return;
+    const release = () => { suppressHashRewrite = false; };
+    const doScroll = () => { try { el.scrollIntoView({ block: 'start' }); } catch (e) { /* 忽略 */ } };
+    setTimeout(doScroll, 500);
+    setTimeout(() => { doScroll(); release(); }, 1500);
+    setTimeout(doScroll, 3000);
   }
 
   // ── 数据缓存（同一 key 只 fetch 一次）──
@@ -4423,6 +4445,15 @@
           }
         }
       });
+
+      // hash 直达（每面板独立分享链接）：加载后滚动到指定面板
+      gotoHash();
+      window.addEventListener('hashchange', () => {
+        const h0 = location.hash;
+        if (!h0 || h0.indexOf('#panel-') !== 0) return;
+        const el = document.getElementById(h0.slice(1));
+        if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 100);
+      });
     } catch (err) {
       console.error('[A股看板] 初始化失败', err);
       showPanelError('panel-heatmap', '初始化失败：' + err.message);
@@ -4497,17 +4528,19 @@
   }
 
   function normalizeHeatmap(raw) {
-    const years = [...raw.years.map(String), '2026*'];
+    const ytdY = raw.ytd_year || (raw.years[raw.years.length - 1] + 1);
+    const ytdField = 'ytd' + ytdY;
+    const years = [...raw.years.map(String), String(ytdY) + '*'];
     const metricsMeta = raw.metrics_meta && raw.metrics_meta.columns
       ? raw.metrics_meta.columns
       : [];
-    // sw_returns.json 的 data 为 { 行业名: {rets, ytd2026, metrics} }，转成数组并追加 2026 YTD + CAGR 列
+    // sw_returns.json 的 data 为 { 行业名: {rets, ytd<year>, metrics} }，转成数组并追加 YTD + CAGR 列
     const order = window.SW_ROW_ORDER || Object.keys(raw.data || {});
     const rows = order.map((name) => {
       const item = (raw.data || {})[name];
       if (!item) return null;
       const rets = [...(item.rets || [])];
-      rets.push(item.ytd2026 !== undefined && item.ytd2026 !== null ? item.ytd2026 : null);
+      rets.push(item[ytdField] !== undefined && item[ytdField] !== null ? item[ytdField] : null);
       const metrics = metricsMeta.map((col) =>
         item.metrics && item.metrics[col.key] !== undefined ? item.metrics[col.key] : null
       );

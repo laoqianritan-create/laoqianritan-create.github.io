@@ -17,7 +17,7 @@
     YTD_YEAR = raw.ytd_year || (YEARS.at(-1) + 1);
     sectors = Object.keys(raw.data || {}).map((name) => {
       const it = raw.data[name];
-      return { name, rets: (it.rets || []).map((v) => v / 100), ytd: it.ytd2026 != null ? it.ytd2026 / 100 : null };
+      return { name, rets: (it.rets || []).map((v) => v / 100), ytd: it['ytd' + YTD_YEAR] != null ? it['ytd' + YTD_YEAR] / 100 : null };
     });
   }
 
@@ -40,7 +40,7 @@
     return sectors.map((s) => {
       const rs = [], ys = [];
       for (let i = 0; i < YEARS.length; i++) { const y = YEARS[i]; if (y >= start && y <= end) { rs.push(s.rets[i]); ys.push(y); } }
-      const hasYtd = end === YTD_YEAR && s.ytd != null;
+      const hasYtd = end === YTD_YEAR && s.ytd != null && !YEARS.includes(end);
       if (hasYtd) { rs.push(s.ytd); ys.push(YTD_YEAR); }
       return { name: s.name, ...pathStats(rs), years: ys, hasYtd };
     });
@@ -75,7 +75,7 @@
     const s = sectors.find((x) => x.name === stateA.sector);
     let rs = [], ys = [];
     for (let i = 0; i < YEARS.length; i++) { const y = YEARS[i]; if (y >= stateA.start && y <= stateA.end) { rs.push(s.rets[i]); ys.push(y); } }
-    const hasYtd = stateA.end === YTD_YEAR;
+    const hasYtd = stateA.end === YTD_YEAR && s.ytd != null && !YEARS.includes(stateA.end);
     if (hasYtd && s.ytd != null) { rs.push(s.ytd); ys.push(YTD_YEAR); }
     return { s, rs, ys, hasYtd };
   }
@@ -108,7 +108,7 @@
 
     // ── 指标行（4 卡） ──
     const met = [
-      ['复合年化收益', pct(st.cagr), `${stateA.start}—${stateA.end}，${rs.length} 个年度${hasYtd ? '（含 2026 YTD）' : ''}`],
+      ['复合年化收益', pct(st.cagr), `${stateA.start}—${stateA.end}，${rs.length} 个年度${hasYtd ? '（含 ' + YTD_YEAR + ' YTD）' : ''}`],
       ['年末最大回撤', pct(st.mdd), '只看年末点，年内可能更深'],
       ['最长未创新高期', st.drought + ' 年', '从前一次净值高点计起'],
       ['最长连续亏损', st.maxLossRun + ' 年', '年度收益严格小于 0']
@@ -143,7 +143,7 @@
     ctx.strokeStyle = A.red; ctx.lineWidth = 2; ctx.setLineDash([Math.round(5 * f), Math.round(5 * f)]);
     ctx.beginPath(); ctx.moveTo(dashX, legMid); ctx.lineTo(dashX + ln, legMid); ctx.stroke(); ctx.setLineDash([]);
     ctx.fillStyle = A.gray; ctx.fillText('CAGR 匀速路径（虚线）', dashX + ln + g1, legMid);
-    if (hasYtd) { ctx.fillStyle = A.red; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`; ctx.fillText('2026* = 年初至今 YTD', W - Math.round(30 * f), legMid); }
+    if (hasYtd) { ctx.fillStyle = A.red; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`; ctx.fillText(YTD_YEAR + '* = 年初至今 YTD', W - Math.round(30 * f), legMid); }
 
     // ── 净值图：x 轴共用一条时间栅格（yearStep），折线与下方逐年色块严格对齐 ──
     const chartTop = metricH + legendH;
@@ -215,7 +215,7 @@
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillText(pct(r, 1, true) + (isYtd ? '*' : ''), tx + tileW / 2, tileTop + Math.round(9 * f));
       ctx.fillStyle = A.light; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
-      ctx.fillText(isYtd ? '2026*' : String(ys[i]), tx + tileW / 2, tileTop + Math.round(21 * f));
+      ctx.fillText(isYtd ? YTD_YEAR + '*' : String(ys[i]), tx + tileW / 2, tileTop + Math.round(21 * f));
       ctx.fillStyle = up ? A.red : A.green;
       ctx.fillRect(tx, tileTop + tileH, tileW, Math.max(1.5, Math.round(3 * f)));
     });
@@ -230,7 +230,7 @@
     if (st.terminal < Math.max(...nav) - 1e-10) line1 += '期末仍低于本段年末最高净值。';
     if (omit) line1 += `已将 ${ys[bestIdx]} 年的 ${pct(best, 1, true)} 改为 0%。`;
     const line2 = hasYtd
-      ? '2026 为年初至今（非完整年度），随每日更新自动刷新；年化按整段年数计，未按天数折算。'
+      ? `${YTD_YEAR} 为年初至今（非完整年度），随每日更新自动刷新；年化按整段年数计，未按天数折算。`
       : omit
         ? '事后压力测试：只检查收益有多集中，不代表能预知或避开那一年。'
         : '只连结年末观测点；「年末最大回撤」是实际最大回撤幅度的下界，不能替代日度风控。';
@@ -299,11 +299,11 @@
     if (lossFrac < 0.88) ctx.fillText('不亏 ' + pct(1 - lossFrac), bx + bandW * (0.5 + lossFrac / 2), bandTop + Math.round(11 * f));
     ctx.fillStyle = A.gray; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
     ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-    ctx.fillText(`${h} 年窗口：买入年 ${since}—${endY - h + 1}，期末年 ${since + h - 1}—${endY}* · 共 ${starts.length} 个起点 × 31 行业 · 列头上行=买入起点，下行=期末年（* 含 2026 YTD）`, bx, bandTop + Math.round(27 * f));
+    ctx.fillText(`${h} 年窗口：买入年 ${since}—${endY - h + 1}，期末年 ${since + h - 1}—${endY}* · 共 ${starts.length} 个起点 × 31 行业 · 列头上行=买入起点，下行=期末年（* 含 ${YTD_YEAR} YTD）`, bx, bandTop + Math.round(27 * f));
 
-    // ── 汇总表（3 / 5 / 7 年；末列 = 各持有期最新窗口，期末 2026*）──
+    // ── 汇总表（3 / 5 / 7 年；末列 = 各持有期最新窗口，期末 ytd_year*）──
     // 6 列等宽，左端 x=0、右端 x=W-20（1260），与下方热力图表格两端对齐
-    const cols = ['持有期', '亏损窗口占比', '年化中位数', '年化 10%—90% 分位', '年末回撤中位数', '最新窗口年化中位（至 2026*）'];
+    const cols = ['持有期', '亏损窗口占比', '年化中位数', '年化 10%—90% 分位', '年末回撤中位数', `最新窗口年化中位（至 ${YTD_YEAR}*）`];
     const nCols = cols.length, colW2 = (W - Math.round(20 * f)) / nCols;
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillStyle = A.light; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
@@ -402,7 +402,7 @@
           const b2 = Math.max(...rs), bi = rs.indexOf(b2);
           const st2 = pathStats(rs.map((r, i) => (stateA.omit && i === bi ? 0 : r)));
           const navV = st2.nav[idx];
-          const lab = idx === 0 ? String(stateA.start - 1) + '（起点）' : (hasYtd && idx === navN - 1 ? '2026（YTD）' : String(stateA.start + idx - 1));
+          const lab = idx === 0 ? String(stateA.start - 1) + '（起点）' : (hasYtd && idx === navN - 1 ? YTD_YEAR + '（YTD）' : String(stateA.start + idx - 1));
           window.AK.tooltip.show(ev, `<b>${esc(stateA.sector)}</b> · ${lab}<br>年末净值：<b>${navV.toFixed(3)}</b>`);
         } else window.AK.tooltip.hide();
       });
