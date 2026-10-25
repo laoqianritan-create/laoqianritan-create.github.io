@@ -383,3 +383,12 @@ body {
 }
 .cq-dl-btn svg { width: 15px; height: 15px; }
 .cq-dl-btn:hover { background: #274f79; }
+
+/* ── 新面板：行业买入体验模拟器 + 长期持有窗口 ── */
+.buy-sim-panel .panel-controls select,
+.hold-win-panel .panel-controls select {
+  appearance: none; -webkit-appearance: none;
+  padding: 4px 10px;
+}
+.buy-sim-panel .panel-body canvas,
+.hold-win-panel .panel-body canvas { display: block; width: 100%; height: auto; }

@@ -14,7 +14,7 @@
   <meta property="og:url" content="https://ashare.laoqianriritan.com/">
   <link rel="canonical" href="https://ashare.laoqianriritan.com/">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261024215005">
+  <link rel="stylesheet" href="css/style.css?v=20261025121421">
 </head>
 <body>
 
@@ -26,6 +26,8 @@
     <nav class="site-nav" aria-label="面板导航">
       <a class="nav-summary" href="summary.html" title="全部看板缩略图汇总"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg><span>汇总</span></a>
       <a href="#panel-heatmap">行业热力图</a>
+      <a href="#panel-buy-sim">买入体验</a>
+      <a href="#panel-hold-win">持有窗口</a>
       <a href="#panel-long">增长情况</a>
       <a href="#panel-huazheng">华证六因子</a>
       <a href="#panel-coverage">宽基覆盖</a>
@@ -88,7 +90,62 @@
     </details>
   </section>
 
-<!-- ═══════════ 面板 3：不同事物的增长情况 ═══════════ -->
+<!-- ═══════════ 面板 2：行业买入体验模拟器 ═══════════ -->
+  <section class="panel buy-sim-panel" id="panel-buy-sim">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title">行业买入体验模拟器</h2>
+        <p class="panel-desc">申万一级行业 · 年度持有路径 · 2005—2026（2026 为年初至今）</p>
+        <p class="panel-asof"></p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn-download js-export" data-canvas="buySim" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="panel-controls" id="buy-sim-controls"></div>
+      <canvas id="buySim" aria-label="行业买入体验模拟器：年末净值实际路径与 CAGR 匀速路径"></canvas>
+    </div>
+    <details class="panel-notes">
+      <summary>看板说明</summary>
+      <ul>
+        <li>数据与「申万一级行业年度涨跌幅 · 长期 CAGR」热力图同源：同一份 <code>sw_returns.json</code>（Wind 申万一级行业指数，2021 版回溯口径），每日 19:00 自动更新；热力图改数据这里同步变。</li>
+        <li>净值从 1 起算，每年乘以（1 + 当年收益）；区间年化 = 期末净值 ^(1/年数) − 1。「年末最大回撤」从包含初始点的年末净值历史最高点计算；「最长未创新高期」为连续低于此前峰值的年末观测数，期末仍未恢复的区间照计；「最长连续亏损」为年度收益严格小于 0 的连续年数。</li>
+        <li>结束年份可选 2026（年初至今，YTD）：该点使用行业当年 YTD 收益，随每日更新自动刷新；含 2026 时年化按整段年数计算，未按年内天数折算，仅作参考。</li>
+        <li>「最佳一年改为 0%（压力测试）」是保留持有年数的<u>事后</u>敏感性分析，不是「错过最好交易日」的模拟，不能据此导出择时买卖点。</li>
+        <li>只连结年末观测点，年内波动不可见；价格为行业指数年末收盘变动，不含股息、税费与 ETF 费用。原始收益仅保留一位小数。</li>
+      </ul>
+    </details>
+  </section>
+
+<!-- ═══════════ 面板 3：长期持有某个行业，体验就会变好吗？ ═══════════ -->
+  <section class="panel hold-win-panel" id="panel-hold-win">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title">长期持有某个行业，体验就会变好吗？</h2>
+        <p class="panel-asof"></p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn-download js-export" data-canvas="holdWin" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="panel-controls" id="hold-win-controls"></div>
+      <canvas id="holdWin" aria-label="长期持有窗口：期末亏损占比、年化分布与全部持有窗口热力图"></canvas>
+    </div>
+    <details class="panel-notes">
+      <summary>看板说明</summary>
+      <ul>
+        <li>枚举所选样本内所有完整年度起点，行业年初买入、期末卖出（如 5 年窗口：买入年 2015—2021，期末年 2019—2025）。窗口相互重叠，行业也共享行情；这些比例是历史窗口占比，不能当成未来亏损概率。</li>
+        <li>样本起点会显著影响分布：2015 年起（侧重近年）与 2005 起（全部历史）口径不同，切换即可对比。</li>
+        <li>热力图格子 = 某行业 × 某买入起点的持有窗口年化收益；红涨绿跌。点击格子，上方「行业买入体验模拟器」自动加载该行业与窗口路径。</li>
+        <li>滚动窗口覆盖 2005—2026*：期末落在 2026 的窗口使用年初至今（YTD）收益，热力图列头带 *；窗口年化按整段年数计（未按年内天数折算），仅作参考。数据每日自动更新。</li>
+        <li>年度波动率采用样本标准差；原始收益仅保留一位小数，价格口径不含股息、税费与 ETF 费用。</li>
+      </ul>
+    </details>
+  </section>
+
+<!-- ═══════════ 面板 4：不同事物的增长情况 ═══════════ -->
   <section class="panel" id="panel-long">
     <div class="panel-head">
       <div class="panel-head-text">
@@ -527,8 +584,9 @@
 
 
 
-<script defer src="js/all.js?v=20261024215005"></script>
-<!-- <script defer src="js/cashflow.js?v=20261024215005"></script> -->
+<script defer src="js/all.js?v=20261025121421"></script>
+<script defer src="js/buy-sim.js?v=20261025121421"></script>
+<!-- <script defer src="js/cashflow.js?v=20261025121421"></script> -->
 
 </body>
 </html>

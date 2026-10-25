@@ -4299,6 +4299,8 @@
 
   // ── 面板注册表：进入视口 → 拉数据 → 渲染（timing 与 fund 共用 fund_index.json）──
   const PANELS = [
+    { id: 'panel-buy-sim',   key: 'heatmap',      render: (d) => window.BS_boot(d) },
+    { id: 'panel-hold-win',  key: 'heatmap',      render: (d) => window.HW_boot(d) },
     { id: 'panel-long',      key: 'longgrowth',    render: (d) => window.LG_render(d) },
     { id: 'panel-huazheng',  key: 'huazheng',      render: (d) => window.HZ_render(d) },
     { id: 'panel-coverage',  key: 'coverage',      render: (d) => window.CV_render(d) },

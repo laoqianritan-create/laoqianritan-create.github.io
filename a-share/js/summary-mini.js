@@ -1171,11 +1171,193 @@
     ticks.forEach(function (t) { ctx.fillText(t[0], xs(t[1]), H - padB + 4); });
   }
 
+  /* ─── 卡片：行业买入体验模拟器（迷你：指标行 + 净值路径） ─── */
+
+  function pctMini(v, d) { d = d === undefined ? 1 : d; return (v * 100).toFixed(d) + '%'; }
+  function quantMini(a, q) {
+    var s = a.slice().sort(function (x, y) { return x - y; });
+    var p = (s.length - 1) * q, i = Math.floor(p);
+    return s[i] + (s[Math.ceil(p)] - s[i]) * (p - i);
+  }
+  function pathStatsMini(returns) {
+    var nav = [1];
+    returns.forEach(function (r) { nav.push(nav[nav.length - 1] * (1 + r)); });
+    var peak = 1, mdd = 0, lastHigh = 0, drought = 0, run = 0, maxLossRun = 0;
+    nav.slice(1).forEach(function (v, j) {
+      var t = j + 1;
+      if (v >= peak - 1e-12) { peak = v; lastHigh = t; } else drought = Math.max(drought, t - lastHigh);
+      mdd = Math.min(mdd, v / peak - 1);
+      if (returns[j] < 0) { run++; maxLossRun = Math.max(run, maxLossRun); } else run = 0;
+    });
+    return { nav: nav, cagr: nav[nav.length - 1] ** (1 / (returns.length || 1)) - 1, mdd: mdd, drought: drought, maxLossRun: maxLossRun };
+  }
+
+  function renderBuySim(canvas, raw) {
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    var ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, W, H);
+    if (!raw || !raw.data) return;
+
+    // 默认态：食品饮料 2019—2025
+    var years = raw.years || [], ytdYear = raw.ytd_year || years[years.length - 1] + 1;
+    var secName = '食品饮料';
+    var it = raw.data[secName];
+    if (!it) { secName = Object.keys(raw.data)[0]; it = raw.data[secName]; }
+    var retsAll = (it.rets || []).map(function (v) { return v / 100; });
+    var rs = [], ys = [];
+    for (var i = 0; i < years.length; i++) { var y = years[i]; if (y >= 2019 && y <= 2025) { rs.push(retsAll[i]); ys.push(y); } }
+    if (!rs.length) return;
+    var st = pathStatsMini(rs);
+    var nav = st.nav;
+
+    // 指标行
+    var chips = [
+      ['复合年化', pctMini(st.cagr)], ['年末最大回撤', pctMini(st.mdd)],
+      ['最长未创新高', st.drought + ' 年'], ['最长连续亏损', st.maxLossRun + ' 年']
+    ];
+    var cw = W / 4;
+    chips.forEach(function (c, j) {
+      var cx = j * cw;
+      if (j < 3) { ctx.strokeStyle = LINE; ctx.beginPath(); ctx.moveTo(cx + cw, 6); ctx.lineTo(cx + cw, 40); ctx.stroke(); }
+      ctx.fillStyle = GRAY; ctx.font = '8px NotoSansSC, sans-serif';
+      ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+      ctx.fillText(c[0], cx + 10, 6);
+      ctx.fillStyle = INK; ctx.font = '600 15px NotoSansSC, sans-serif';
+      ctx.fillText(c[1], cx + 10, 18);
+    });
+
+    // 净值路径
+    var padL = 24, padR = 10, chartTop = 50, chartH = 150, axisY = chartTop + chartH;
+    var n = nav.length, step = (W - padL - padR) / n;
+    var smooth = nav.map(function (_, k) { return Math.pow(1 + st.cagr, k); });
+    var allV = nav.concat(smooth);
+    var maxV = Math.max.apply(null, allV) * 1.09, minV = Math.min.apply(null, allV) * 0.8;
+    function X(k) { return padL + k * step; }
+    function Y(v) { return chartTop + 8 + (maxV - v) / (maxV - minV) * chartH; }
+    ctx.strokeStyle = LINE; ctx.lineWidth = 1; ctx.setLineDash([2, 4]);
+    for (var g = 0; g <= 3; g++) {
+      var gv = minV + (maxV - minV) * g / 3, gy = Y(gv);
+      ctx.beginPath(); ctx.moveTo(padL, gy); ctx.lineTo(W - padR, gy); ctx.stroke();
+      ctx.fillStyle = '#B0B4BC'; ctx.font = '7px NotoSansSC, sans-serif';
+      ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+      ctx.fillText(gv.toFixed(gv < 10 ? 1 : 0), padL - 4, gy);
+    }
+    ctx.setLineDash([]);
+    ctx.strokeStyle = RED; ctx.lineWidth = 1.4; ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    smooth.forEach(function (v, k) { k ? ctx.lineTo(X(k), Y(v)) : ctx.moveTo(X(k), Y(v)); });
+    ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle = INK; ctx.lineWidth = 2;
+    ctx.beginPath();
+    nav.forEach(function (v, k) { k ? ctx.lineTo(X(k), Y(v)) : ctx.moveTo(X(k), Y(v)); });
+    ctx.stroke();
+    // 年度轴 + 红涨绿跌底线
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    rs.forEach(function (r, k) {
+      if (k % 2 === 0 || k === n - 1) {
+        ctx.fillStyle = '#B0B4BC'; ctx.font = '7px NotoSansSC, sans-serif';
+        ctx.fillText(String(ys[k]), X(k) + step / 2, axisY + 4);
+      }
+      ctx.fillStyle = r >= 0 ? RED : GREEN;
+      ctx.fillRect(X(k) + step / 2 - 3, axisY - 2, 6, 2);
+    });
+  }
+
+  /* ─── 卡片：长期持有某个行业（迷你：指标行 + 窗口热力条） ─── */
+
+  function renderHoldWin(canvas, raw) {
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    var ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0, 0, W, H);
+    if (!raw || !raw.data) return;
+
+    var years = raw.years || [], ytdYear = raw.ytd_year || years[years.length - 1] + 1;
+    var names = Object.keys(raw.data);
+    var list = names.map(function (name) {
+      var item = raw.data[name];
+      var rets = (item.rets || []).map(function (v) { return v / 100; });
+      var ytd = item.ytd2026 != null ? item.ytd2026 / 100 : null;
+      return { name: name, rets: rets, ytd: ytd };
+    });
+    function wRows(start, end) {
+      return list.map(function (s) {
+        var rs = [];
+        for (var i = 0; i < years.length; i++) { var y = years[i]; if (y >= start && y <= end) rs.push(s.rets[i]); }
+        if (end === ytdYear && s.ytd != null) rs.push(s.ytd);
+        return { name: s.name, v: rs.length ? pathStatsMini(rs) : null };
+      });
+    }
+    function wins(h, since, end) {
+      var out = [];
+      for (var y = since; y <= end - h + 1; y++) wRows(y, y + h - 1).forEach(function (s) { out.push(s.v); });
+      return out;
+    }
+    // 默认态 5y/2015
+    var a = wins(5, 2015, ytdYear).filter(Boolean);
+    if (!a.length) return;
+    var lossFrac = a.filter(function (s) { return s.cagr < 0; }).length / a.length;
+    var medCagr = quantMini(a.map(function (s) { return s.cagr; }), 0.5);
+    var ddFrac = a.filter(function (s) { return s.mdd <= -0.3; }).length / a.length;
+    var medMdd = quantMini(a.map(function (s) { return s.mdd; }), 0.5);
+
+    // 指标行
+    var chips = [
+      ['期末亏损窗口', pctMini(lossFrac)], ['年化中位', pctMini(medCagr)],
+      ['回撤≥30%占比', pctMini(ddFrac)], ['回撤中位', pctMini(medMdd)]
+    ];
+    var cw = W / 4;
+    chips.forEach(function (c, j) {
+      var cx = j * cw;
+      if (j < 3) { ctx.strokeStyle = LINE; ctx.beginPath(); ctx.moveTo(cx + cw, 6); ctx.lineTo(cx + cw, 40); ctx.stroke(); }
+      ctx.fillStyle = GRAY; ctx.font = '8px NotoSansSC, sans-serif';
+      ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+      ctx.fillText(c[0], cx + 10, 6);
+      ctx.fillStyle = INK; ctx.font = '600 15px NotoSansSC, sans-serif';
+      ctx.fillText(c[1], cx + 10, 18);
+    });
+
+    // 迷你窗口热力条（31 行业 × 8 起点）
+    var padL = 14, padR = 6, top = 52, bot = H - 8;
+    var starts = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022];
+    var rows = starts.map(function (y) {
+      return list.map(function (s) {
+        var rs = [];
+        for (var i = 0; i < years.length; i++) { var yr = years[i]; if (yr >= y && yr <= y + 4) rs.push(s.rets[i]); }
+        if (y + 4 === ytdYear && s.ytd != null) rs.push(s.ytd);
+        return rs.length ? pathStatsMini(rs).cagr : null;
+      });
+    });
+    var colW = (W - padL - padR) / starts.length, rowH = (bot - top) / list.length;
+    rows.forEach(function (col, j) {
+      col.forEach(function (v, i) {
+        if (v === null || v === undefined || isNaN(v)) return;
+        var up = v >= 0;
+        var alpha = Math.min(0.72, Math.abs(v) * 1.8 + 0.06);
+        ctx.fillStyle = up ? 'rgba(230,90,86,' + alpha.toFixed(2) + ')' : 'rgba(47,191,113,' + alpha.toFixed(2) + ')';
+        ctx.fillRect(padL + j * colW, top + i * rowH, colW - 1, rowH - 1);
+      });
+    });
+    ctx.textAlign = 'center'; ctx.textBaseline = 'bottom';
+    ctx.font = '7px NotoSansSC, sans-serif';
+    starts.forEach(function (y, j) {
+      if (j % 2 === 0 || j === starts.length - 1) {
+        ctx.fillStyle = y + 4 === ytdYear ? RED : '#B0B4BC';
+        ctx.fillText(String(y) + (y + 4 === ytdYear ? '*' : ''), padL + (j + 0.5) * colW, top - 3);
+      }
+    });
+  }
+
   /* ─── 导出 ───────────────────────────────── */
 
   window.SM = {
     W: W, H: H,
     renderHeatmap: renderHeatmap,
+    renderBuySim: renderBuySim,
+    renderHoldWin: renderHoldWin,
     renderLonggrowth: renderLonggrowth,
     renderHuazheng: renderHuazheng,
     renderCoverage: renderCoverage,
