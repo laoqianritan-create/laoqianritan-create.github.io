@@ -263,7 +263,8 @@
     const bandTop = metricH + Math.round(14 * f);
     const sumTop = bandTop + Math.round(58 * f);
     const heatTop = sumTop + sumH + colHdrH;
-    const H = heatTop + rowH * sectors.length + Math.round(20 * f);
+    const rowTop = Math.round(30 * f);
+    const H = heatTop + rowTop + rowH * sectors.length + Math.round(20 * f);
     canvas.width = W * dpr; canvas.height = H * dpr;
     const ctx = canvas.getContext('2d');
     ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.scale(dpr, dpr);
@@ -338,7 +339,7 @@
       ctx.fillStyle = isYtd ? A.red : A.light; ctx.fillText(String(endYc) + (isYtd ? '*' : ''), padL + colW * (j + 0.5), heatTop + Math.round(18 * f));
     });
     sectors.forEach((s, i) => {
-      const ry = heatTop + Math.round(30 * f) + i * rowH;
+      const ry = heatTop + rowTop + i * rowH;
       ctx.fillStyle = A.gray; ctx.textAlign = 'right'; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
       ctx.fillText(s.name, padL - Math.round(10 * f), ry + rowH / 2);
       starts.forEach((y, j) => {
