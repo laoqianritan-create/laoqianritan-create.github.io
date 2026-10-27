@@ -168,17 +168,16 @@
     }
     ctx.setLineDash([]);
     ctx.fillStyle = A.light; ctx.textAlign = 'left'; ctx.fillText('净值 / 起点 = 1', padL, chartTop + Math.round(7 * f));
-    // x 轴年份标签：对齐折线年末点 X(i)，全部居中均匀；起点年左对齐贴 X0（避免与 Y 轴刻度重叠）
+    // x 轴年份标签：对齐色块中心（与色块内年份上下对齐），全部居中；起点年不单独标
     const xSkip = Math.max(1, Math.ceil(n / (W < 700 ? 6 : 12)));
     const yLab = chartTop + chartH - Math.round(32 * f);
     ctx.textBaseline = 'top';
-    const xLabels = [String(stateA.start - 1)].concat(ys.map(String));
-    xLabels.forEach((l, i) => {
-      if (i % xSkip === 0 || i === xLabels.length - 1) {
-        const isLast = hasYtd && i === xLabels.length - 1;
-        ctx.fillStyle = isLast ? A.red : A.light;
-        ctx.textAlign = (i === 0) ? 'left' : 'center';
-        ctx.fillText(l, padL + i * yearStep, yLab);
+    yearLabels.forEach((l, i) => {
+      if (i % xSkip === 0 || i === yearLabels.length - 1) {
+        const isYtdLab = hasYtd && i === yearLabels.length - 1;
+        ctx.textAlign = 'center';
+        ctx.fillStyle = isYtdLab ? A.red : A.light;
+        ctx.fillText(l, padL + (i + 0.5) * yearStep, yLab);
       }
     });
     // 曲线
