@@ -339,7 +339,7 @@
     });
     sectors.forEach((s, i) => {
       const ry = heatTop + rowTop + i * rowH;
-      ctx.fillStyle = A.gray; ctx.textAlign = 'right'; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
+      ctx.fillStyle = A.gray; ctx.textAlign = 'right'; ctx.textBaseline = 'middle'; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,"PingFang SC",sans-serif`;
       ctx.fillText(s.name, padL - Math.round(10 * f), ry + rowH / 2);
       starts.forEach((y, j) => {
         const b = a.find((x) => x.name === s.name && x.start === y);
@@ -353,7 +353,7 @@
           ctx.strokeRect(padL + j * colW + 0.5, ry + 0.5, colW - 1, rowH - 1);
         }
         ctx.fillStyle = '#222222'; ctx.font = `400 ${Math.round(11 * f)}px NotoSansSC,-apple-system,"Helvetica Neue",Arial,sans-serif`;
-        ctx.textAlign = 'center';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.fillText(pct(b.cagr, 1), padL + colW * (j + 0.5), ry + rowH / 2 + Math.round(0.5 * f));
       });
     });
