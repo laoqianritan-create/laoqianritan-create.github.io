@@ -143,7 +143,7 @@
     ctx.strokeStyle = A.red; ctx.lineWidth = 2; ctx.setLineDash([Math.round(5 * f), Math.round(5 * f)]);
     ctx.beginPath(); ctx.moveTo(dashX, legMid); ctx.lineTo(dashX + ln, legMid); ctx.stroke(); ctx.setLineDash([]);
     ctx.fillStyle = A.gray; ctx.fillText('CAGR 匀速路径（虚线）', dashX + ln + g1, legMid);
-    if (hasYtd) { ctx.fillStyle = A.red; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`; ctx.fillText(YTD_YEAR + '* = 年初至今 YTD', W - Math.round(30 * f), legMid); }
+    if (hasYtd) { ctx.fillStyle = A.red; ctx.font = `400 ${Math.round(10 * f)}px NotoSansSC,"PingFang SC",sans-serif`; ctx.textAlign = 'right'; ctx.fillText(YTD_YEAR + '* = 年初至今 YTD', W - Math.round(30 * f), legMid); }
 
     // ── 净值图：x 轴共用一条时间栅格（yearStep），折线与下方逐年色块严格对齐 ──
     const chartTop = metricH + legendH;
@@ -168,16 +168,17 @@
     }
     ctx.setLineDash([]);
     ctx.fillStyle = A.light; ctx.textAlign = 'left'; ctx.fillText('净值 / 起点 = 1', padL, chartTop + Math.round(7 * f));
-    // x 轴年份标签：锚点年贴左缘，其余年份对齐各自色块中心
+    // x 轴年份标签：对齐折线年末点 X(i)，全部居中均匀；起点年左对齐贴 X0（避免与 Y 轴刻度重叠）
     const xSkip = Math.max(1, Math.ceil(n / (W < 700 ? 6 : 12)));
     const yLab = chartTop + chartH - Math.round(32 * f);
     ctx.textBaseline = 'top';
-    ctx.textAlign = 'left'; ctx.fillStyle = A.light;
-    ctx.fillText(String(stateA.start - 1), padL, yLab);
-    yearLabels.forEach((l, i) => {
-      if (i % xSkip === 0 || i === yearLabels.length - 1) {
-        ctx.textAlign = 'center'; ctx.fillStyle = l.indexOf('*') >= 0 ? A.red : A.gray;
-        ctx.fillText(l, padL + (i + 0.5) * yearStep, yLab);
+    const xLabels = [String(stateA.start - 1)].concat(ys.map(String));
+    xLabels.forEach((l, i) => {
+      if (i % xSkip === 0 || i === xLabels.length - 1) {
+        const isLast = hasYtd && i === xLabels.length - 1;
+        ctx.fillStyle = isLast ? A.red : A.light;
+        ctx.textAlign = (i === 0) ? 'left' : 'center';
+        ctx.fillText(l, padL + i * yearStep, yLab);
       }
     });
     // 曲线
