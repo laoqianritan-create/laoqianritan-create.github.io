@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T01:51:10Z",
+  "updated": "2026-10-27T01:51:06Z",
   "source": "FRED OECD Long-Term Interest Rates · IRLTLT01* monthly series + DGS10 daily (US)；中债国债到期收益率:10年（月均，akshare/中国债券信息网）",
   "source_url": "https://fred.stlouisfed.org/release?rid=205",
   "frequency": "monthly_plus_us_daily",
@@ -13250,11 +13250,15 @@
     {
       "date": "2026-10-22",
       "value": 4.96
+    },
+    {
+      "date": "2026-10-23",
+      "value": 5.0
     }
   ],
   "us_daily_latest": {
-    "date": "2026-10-22",
-    "value": 4.96
+    "date": "2026-10-23",
+    "value": 5.0
   },
   "latest": {
     "by_country": {

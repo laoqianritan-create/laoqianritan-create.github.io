@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-26T01:42:30Z",
+  "updated": "2026-10-27T01:42:10Z",
   "source": "Treasury Fiscal Data API · MTS Table 4 (Receipts) + Table 5 (Outlays)",
   "year_range": [
     2015,
@@ -525,6 +525,9 @@
         "Other Defense Civil Programs": 65484461559.49,
         "General Services Administration": -974666395.59,
         "Office of Personnel Management": 135808863209.02,
+        "Environmental Protection Agency": 17365168363.24,
+        "Social Security Administration": 1733853189988.17,
+        "Independent Agencies": 3028156362.67,
         "Legislative Branch": 7048846626.9,
         "Judicial Branch": 9985272808.0,
         "Department of Commerce": 14837300292.27,
@@ -537,14 +540,11 @@
         "Department of State": 28828477980.42,
         "Department of the Treasury": 1580963564396.77,
         "Department of Veterans Affairs": 415574777773.02,
-        "Environmental Protection Agency": 17365168363.24,
         "Executive Office of the President": -1233611351.34,
         "International Assistance Programs": 20388048615.38,
         "National Aeronautics and Space Administration": 23357242203.53,
         "National Science Foundation": 8876811687.53,
-        "Small Business Administration": 11826793776.22,
-        "Social Security Administration": 1733853189988.17,
-        "Independent Agencies": 3028156362.67
+        "Small Business Administration": 11826793776.22
       },
       "outlays_total": 7395799983313.2295,
       "receipts_by_source": {
@@ -553,8 +553,8 @@
         "Individual Income Taxes": 2845526866159.55,
         "Customs Duties": 173218614643.4,
         "Miscellaneous Receipts": 46656595004.81,
-        "Estate and Gift Taxes": 38720146356.13,
-        "Excise Taxes": 105995126578.38
+        "Excise Taxes": 105995126578.38,
+        "Estate and Gift Taxes": 38720146356.13
       },
       "receipts_total": 5403326758960.81
     }
@@ -572,6 +572,9 @@
       "Other Defense Civil Programs": 65484461559.49,
       "General Services Administration": -974666395.59,
       "Office of Personnel Management": 135808863209.02,
+      "Environmental Protection Agency": 17365168363.24,
+      "Social Security Administration": 1733853189988.17,
+      "Independent Agencies": 3028156362.67,
       "Legislative Branch": 7048846626.9,
       "Judicial Branch": 9985272808.0,
       "Department of Commerce": 14837300292.27,
@@ -584,14 +587,11 @@
       "Department of State": 28828477980.42,
       "Department of the Treasury": 1580963564396.77,
       "Department of Veterans Affairs": 415574777773.02,
-      "Environmental Protection Agency": 17365168363.24,
       "Executive Office of the President": -1233611351.34,
       "International Assistance Programs": 20388048615.38,
       "National Aeronautics and Space Administration": 23357242203.53,
       "National Science Foundation": 8876811687.53,
-      "Small Business Administration": 11826793776.22,
-      "Social Security Administration": 1733853189988.17,
-      "Independent Agencies": 3028156362.67
+      "Small Business Administration": 11826793776.22
     },
     "outlays_total": 7395799983313.2295,
     "receipts_by_source": {
@@ -600,8 +600,8 @@
       "Individual Income Taxes": 2845526866159.55,
       "Customs Duties": 173218614643.4,
       "Miscellaneous Receipts": 46656595004.81,
-      "Estate and Gift Taxes": 38720146356.13,
-      "Excise Taxes": 105995126578.38
+      "Excise Taxes": 105995126578.38,
+      "Estate and Gift Taxes": 38720146356.13
     },
     "receipts_total": 5403326758960.81
   }
