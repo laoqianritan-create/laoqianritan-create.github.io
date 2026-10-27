@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-27 09:45:21",
+  "generated_at": "2026-10-27 11:14:46",
   "today": "2026-10-27",
   "overall": "warn",
-  "stale_count": 3,
+  "stale_count": 2,
   "sources": [
     {
       "file": "sp500_price.json",
@@ -51,11 +51,11 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-10-23",
-      "days_old": 4,
-      "status": "dead",
+      "updated": "2026-10-26",
+      "days_old": 1,
+      "status": "fresh",
       "series_end": {
-        "series": "2026-10-23"
+        "series": "2026-10-26"
       }
     },
     {
@@ -88,8 +88,8 @@
     {
       "file": "us_asset_ladder.json",
       "label": "衰退期资产累计涨幅",
-      "updated": "2026-10-26T01:44:50",
-      "days_old": 1,
+      "updated": "2026-10-27T03:05:23",
+      "days_old": 0,
       "status": "stale",
       "series_end": {
         "series": "2026-07-28"
@@ -97,7 +97,7 @@
       "lagging_series": {
         "series": {
           "end": "2026-07-28",
-          "lag_days": 90
+          "lag_days": 91
         }
       }
     },

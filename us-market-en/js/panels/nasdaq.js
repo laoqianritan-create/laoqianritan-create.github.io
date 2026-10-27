@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261027111142';
+} from '../utils.js?v=20261027111451';
 
 import {
   registerChart,
@@ -32,9 +32,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261027111142';
+} from '../chart-helpers.js?v=20261027111451';
 
-import { isMobile } from '../mobile.js?v=20261027111142';
+import { isMobile } from '../mobile.js?v=20261027111451';
 
 export function initNasdaq100CompaniesPanel(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartNasdaq100Companies')));
