@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27T01:42:10Z",
+  "updated": "2026-10-28T01:42:12Z",
   "source": "Treasury Fiscal Data API · MTS Table 4 (Receipts) + Table 5 (Outlays)",
   "year_range": [
     2015,
@@ -528,10 +528,10 @@
         "Environmental Protection Agency": 17365168363.24,
         "Social Security Administration": 1733853189988.17,
         "Independent Agencies": 3028156362.67,
+        "Department of Defense--Military Programs": 916836451162.99,
         "Legislative Branch": 7048846626.9,
         "Judicial Branch": 9985272808.0,
         "Department of Commerce": 14837300292.27,
-        "Department of Defense--Military Programs": 916836451162.99,
         "Department of Energy": 52001025628.49,
         "Department of Health and Human Services": 2003813410605.72,
         "Department of Homeland Security": 109528448164.37,
@@ -553,8 +553,8 @@
         "Individual Income Taxes": 2845526866159.55,
         "Customs Duties": 173218614643.4,
         "Miscellaneous Receipts": 46656595004.81,
-        "Excise Taxes": 105995126578.38,
-        "Estate and Gift Taxes": 38720146356.13
+        "Estate and Gift Taxes": 38720146356.13,
+        "Excise Taxes": 105995126578.38
       },
       "receipts_total": 5403326758960.81
     }
@@ -575,10 +575,10 @@
       "Environmental Protection Agency": 17365168363.24,
       "Social Security Administration": 1733853189988.17,
       "Independent Agencies": 3028156362.67,
+      "Department of Defense--Military Programs": 916836451162.99,
       "Legislative Branch": 7048846626.9,
       "Judicial Branch": 9985272808.0,
       "Department of Commerce": 14837300292.27,
-      "Department of Defense--Military Programs": 916836451162.99,
       "Department of Energy": 52001025628.49,
       "Department of Health and Human Services": 2003813410605.72,
       "Department of Homeland Security": 109528448164.37,
@@ -600,8 +600,8 @@
       "Individual Income Taxes": 2845526866159.55,
       "Customs Duties": 173218614643.4,
       "Miscellaneous Receipts": 46656595004.81,
-      "Excise Taxes": 105995126578.38,
-      "Estate and Gift Taxes": 38720146356.13
+      "Estate and Gift Taxes": 38720146356.13,
+      "Excise Taxes": 105995126578.38
     },
     "receipts_total": 5403326758960.81
   }
