@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-27",
+  "updated": "2026-10-28",
   "ticker": "QQQ",
   "note": "QQQ price / total return from yfinance; buyback yield aggregated from the top-25 constituents' annual yfinance cash-flow data, value-weighted.",
   "buybackCoverage": "6 years of buyback data (yfinance annual cashflow only goes back 4 years)",
@@ -162,7 +162,7 @@
       "year": 2022,
       "priceReturn": -33.07,
       "dividendReturn": 0.49,
-      "buybackYield": 1.13,
+      "buybackYield": 1.12,
       "totalReturn": -32.58
     },
     {
@@ -176,7 +176,7 @@
       "year": 2024,
       "priceReturn": 24.84,
       "dividendReturn": 0.74,
-      "buybackYield": 0.76,
+      "buybackYield": 0.75,
       "totalReturn": 25.58
     },
     {
@@ -188,20 +188,20 @@
     },
     {
       "year": 2026,
-      "priceReturn": 15.93,
+      "priceReturn": 17.41,
       "dividendReturn": 0.4,
       "buybackYield": 0.65,
-      "totalReturn": 16.33
+      "totalReturn": 17.81
     }
   ],
   "summary": {
     "startYear": 2000,
     "endYear": 2026,
     "years": 27,
-    "avgPriceReturn": 11.86,
+    "avgPriceReturn": 11.91,
     "avgDividendReturn": 0.75,
-    "avgBuybackYield": 0.7,
-    "avgTotalReturn": 12.61,
+    "avgBuybackYield": 0.69,
+    "avgTotalReturn": 12.66,
     "positiveTotalYears": 21,
     "bestYear": {
       "year": 2023,
