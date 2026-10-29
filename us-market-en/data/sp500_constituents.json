@@ -12,7 +12,7 @@
       "subsector": "Semiconductors",
       "return1y": 0.0403,
       "ytdReturn": 0.1405,
-      "weight": 6.9696
+      "weight": 6.9697
     },
     {
       "ticker": "AAPL",
@@ -38,7 +38,7 @@
       "subsector": "Interactive Media & Services",
       "return1y": 0.1833,
       "ytdReturn": 0.0309,
-      "weight": 5.321
+      "weight": 5.3211
     },
     {
       "ticker": "GOOG",
@@ -51,7 +51,7 @@
       "subsector": "Interactive Media & Services",
       "return1y": 0.1698,
       "ytdReturn": 0.0208,
-      "weight": 5.3076
+      "weight": 5.3077
     },
     {
       "ticker": "MSFT",
@@ -64,7 +64,7 @@
       "subsector": "Systems Software",
       "return1y": -0.0195,
       "ytdReturn": 0.1228,
-      "weight": 5.2808
+      "weight": 5.2809
     },
     {
       "ticker": "AMZN",
@@ -155,7 +155,7 @@
       "subsector": "Semiconductors",
       "return1y": 3.3385,
       "ytdReturn": 2.1172,
-      "weight": 1.4877
+      "weight": 1.4878
     },
     {
       "ticker": "AMD",
@@ -168,7 +168,7 @@
       "subsector": "Semiconductors",
       "return1y": 1.1883,
       "ytdReturn": 1.5884,
-      "weight": 1.2656
+      "weight": 1.2657
     },
     {
       "ticker": "WMT",
@@ -558,7 +558,7 @@
       "subsector": "Systems Software",
       "return1y": 0.9553,
       "ytdReturn": 1.3516,
-      "weight": 0.3667
+      "weight": 0.3668
     },
     {
       "ticker": "RTX",
@@ -1458,19 +1458,6 @@
       "weight": 0.1452
     },
     {
-      "ticker": "SO",
-      "name": "The Southern Company",
-      "nameEn": "The Southern Company",
-      "marketCap": 105280000000.0,
-      "price": 91.52,
-      "sector": "Utilities",
-      "sectorEn": "Utilities",
-      "subsector": "Electric Utilities",
-      "return1y": -0.0213,
-      "ytdReturn": 0.0498,
-      "weight": 0.1411
-    },
-    {
       "ticker": "CME",
       "name": "CME Group Inc.",
       "nameEn": "CME Group Inc.",
@@ -1481,6 +1468,19 @@
       "subsector": "Financial Exchanges & Data",
       "return1y": 0.1243,
       "ytdReturn": 0.0903,
+      "weight": 0.1411
+    },
+    {
+      "ticker": "SO",
+      "name": "The Southern Company",
+      "nameEn": "The Southern Company",
+      "marketCap": 105280000000.0,
+      "price": 91.52,
+      "sector": "Utilities",
+      "sectorEn": "Utilities",
+      "subsector": "Electric Utilities",
+      "return1y": -0.0213,
+      "ytdReturn": 0.0498,
       "weight": 0.1411
     },
     {
@@ -1656,14 +1656,14 @@
       "ticker": "CDNS",
       "name": "Cadence Design Systems, Inc.",
       "nameEn": "Cadence Design Systems, Inc.",
-      "marketCap": 94310000000.0,
+      "marketCap": 93960000000.0,
       "price": 342.46,
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
       "return1y": 0.003,
       "ytdReturn": 0.1033,
-      "weight": 0.1264
+      "weight": 0.1259
     },
     {
       "ticker": "EMR",
@@ -2423,7 +2423,7 @@
       "ticker": "AON",
       "name": "Aon plc",
       "nameEn": "Aon plc",
-      "marketCap": 66970000000.0,
+      "marketCap": 67000000000.0,
       "price": 315.72,
       "sector": "Financials",
       "sectorEn": "Financials",
@@ -2930,7 +2930,7 @@
       "ticker": "GRMN",
       "name": "Garmin Ltd.",
       "nameEn": "Garmin Ltd.",
-      "marketCap": 52550000000.0,
+      "marketCap": 52510000000.0,
       "price": 272.51,
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
@@ -3161,19 +3161,6 @@
       "weight": 0.0637
     },
     {
-      "ticker": "WAB",
-      "name": "Westinghouse Air Brake Technologies Corporation",
-      "nameEn": "Westinghouse Air Brake Technologies Corporation",
-      "marketCap": 47350000000.0,
-      "price": 282.18,
-      "sector": "Industrials",
-      "sectorEn": "Industrials",
-      "subsector": "Construction Machinery & Heavy Transportation Equipment",
-      "return1y": 0.4,
-      "ytdReturn": 0.3047,
-      "weight": 0.0635
-    },
-    {
       "ticker": "STT",
       "name": "State Street Corporation",
       "nameEn": "State Street Corporation",
@@ -3184,6 +3171,19 @@
       "subsector": "Asset Management & Custody Banks",
       "return1y": 0.4864,
       "ytdReturn": 0.3445,
+      "weight": 0.0635
+    },
+    {
+      "ticker": "WAB",
+      "name": "Westinghouse Air Brake Technologies Corporation",
+      "nameEn": "Westinghouse Air Brake Technologies Corporation",
+      "marketCap": 47350000000.0,
+      "price": 282.18,
+      "sector": "Industrials",
+      "sectorEn": "Industrials",
+      "subsector": "Construction Machinery & Heavy Transportation Equipment",
+      "return1y": 0.4,
+      "ytdReturn": 0.3047,
       "weight": 0.0635
     },
     {
@@ -3265,19 +3265,6 @@
       "weight": 0.0622
     },
     {
-      "ticker": "P",
-      "name": "Everpure, Inc.",
-      "nameEn": "Everpure, Inc.",
-      "marketCap": 46190000000.0,
-      "price": 138.6,
-      "sector": "Information Technology",
-      "sectorEn": "Information Technology",
-      "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 0.4204,
-      "ytdReturn": 1.0084,
-      "weight": 0.0619
-    },
-    {
       "ticker": "EXC",
       "name": "Exelon Corporation",
       "nameEn": "Exelon Corporation",
@@ -3288,6 +3275,19 @@
       "subsector": "Electric Utilities",
       "return1y": -0.0515,
       "ytdReturn": 0.0194,
+      "weight": 0.0619
+    },
+    {
+      "ticker": "P",
+      "name": "Everpure, Inc.",
+      "nameEn": "Everpure, Inc.",
+      "marketCap": 46190000000.0,
+      "price": 138.6,
+      "sector": "Information Technology",
+      "sectorEn": "Information Technology",
+      "subsector": "Technology Hardware, Storage & Peripherals",
+      "return1y": 0.4204,
+      "ytdReturn": 1.0084,
       "weight": 0.0619
     },
     {
@@ -3395,19 +3395,6 @@
       "weight": 0.058
     },
     {
-      "ticker": "AMP",
-      "name": "Ameriprise Financial, Inc.",
-      "nameEn": "Ameriprise Financial, Inc.",
-      "marketCap": 43270000000.0,
-      "price": 489.8,
-      "sector": "Financials",
-      "sectorEn": "Financials",
-      "subsector": "Asset Management & Custody Banks",
-      "return1y": 0.0235,
-      "ytdReturn": -0.008,
-      "weight": 0.058
-    },
-    {
       "ticker": "MCHP",
       "name": "Microchip Technology Incorporated",
       "nameEn": "Microchip Technology Incorporated",
@@ -3418,6 +3405,19 @@
       "subsector": "Semiconductors",
       "return1y": 0.2733,
       "ytdReturn": 0.2245,
+      "weight": 0.058
+    },
+    {
+      "ticker": "AMP",
+      "name": "Ameriprise Financial, Inc.",
+      "nameEn": "Ameriprise Financial, Inc.",
+      "marketCap": 43270000000.0,
+      "price": 489.8,
+      "sector": "Financials",
+      "sectorEn": "Financials",
+      "subsector": "Asset Management & Custody Banks",
+      "return1y": 0.0235,
+      "ytdReturn": -0.008,
       "weight": 0.058
     },
     {
@@ -3736,13 +3736,26 @@
       "ticker": "BIIB",
       "name": "Biogen Inc.",
       "nameEn": "Biogen Inc.",
-      "marketCap": 36060000000.0,
+      "marketCap": 36080000000.0,
       "price": 244.05,
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
       "return1y": 0.6505,
       "ytdReturn": 0.3725,
+      "weight": 0.0484
+    },
+    {
+      "ticker": "KMB",
+      "name": "Kimberly-Clark Corporation",
+      "nameEn": "Kimberly-Clark Corporation",
+      "marketCap": 36050000000.0,
+      "price": 108.4,
+      "sector": "Consumer Staples",
+      "sectorEn": "Consumer Staples",
+      "subsector": "Household Products",
+      "return1y": -0.0713,
+      "ytdReturn": 0.069,
       "weight": 0.0483
     },
     {
@@ -3756,19 +3769,6 @@
       "subsector": "Electric Utilities",
       "return1y": -0.0356,
       "ytdReturn": 0.0379,
-      "weight": 0.0483
-    },
-    {
-      "ticker": "KMB",
-      "name": "Kimberly-Clark Corporation",
-      "nameEn": "Kimberly-Clark Corporation",
-      "marketCap": 36050000000.0,
-      "price": 108.4,
-      "sector": "Consumer Staples",
-      "sectorEn": "Consumer Staples",
-      "subsector": "Household Products",
-      "return1y": -0.0713,
-      "ytdReturn": 0.069,
       "weight": 0.0483
     },
     {
@@ -3905,7 +3905,7 @@
       "ticker": "GEHC",
       "name": "GE HealthCare Technologies Inc.",
       "nameEn": "GE HealthCare Technologies Inc.",
-      "marketCap": 34250000000.0,
+      "marketCap": 34280000000.0,
       "price": 75.82,
       "sector": "Health Care",
       "sectorEn": "Health Care",
@@ -4243,7 +4243,7 @@
       "ticker": "LH",
       "name": "Labcorp Holdings Inc.",
       "nameEn": "Labcorp Holdings Inc.",
-      "marketCap": 29220000000.0,
+      "marketCap": 29250000000.0,
       "price": 360.25,
       "sector": "Health Care",
       "sectorEn": "Health Care",
@@ -4344,19 +4344,6 @@
       "weight": 0.0373
     },
     {
-      "ticker": "OTIS",
-      "name": "Otis Worldwide Corporation",
-      "nameEn": "Otis Worldwide Corporation",
-      "marketCap": 27740000000.0,
-      "price": 72.87,
-      "sector": "Industrials",
-      "sectorEn": "Industrials",
-      "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": -0.2196,
-      "ytdReturn": -0.1751,
-      "weight": 0.0372
-    },
-    {
       "ticker": "AWK",
       "name": "American Water Works Company, Inc.",
       "nameEn": "American Water Works Company, Inc.",
@@ -4367,6 +4354,19 @@
       "subsector": "Water Utilities",
       "return1y": 0.0748,
       "ytdReturn": 0.0727,
+      "weight": 0.0372
+    },
+    {
+      "ticker": "OTIS",
+      "name": "Otis Worldwide Corporation",
+      "nameEn": "Otis Worldwide Corporation",
+      "marketCap": 27740000000.0,
+      "price": 72.87,
+      "sector": "Industrials",
+      "sectorEn": "Industrials",
+      "subsector": "Industrial Machinery & Supplies & Components",
+      "return1y": -0.2196,
+      "ytdReturn": -0.1751,
       "weight": 0.0372
     },
     {
@@ -4474,19 +4474,6 @@
       "weight": 0.0362
     },
     {
-      "ticker": "FE",
-      "name": "FirstEnergy Corp.",
-      "nameEn": "FirstEnergy Corp.",
-      "marketCap": 26850000000.0,
-      "price": 46.4,
-      "sector": "Utilities",
-      "sectorEn": "Utilities",
-      "subsector": "Electric Utilities",
-      "return1y": 0.0131,
-      "ytdReturn": 0.0252,
-      "weight": 0.036
-    },
-    {
       "ticker": "CPRT",
       "name": "Copart, Inc.",
       "nameEn": "Copart, Inc.",
@@ -4497,6 +4484,19 @@
       "subsector": "Diversified Support Services",
       "return1y": -0.3186,
       "ytdReturn": -0.2333,
+      "weight": 0.036
+    },
+    {
+      "ticker": "FE",
+      "name": "FirstEnergy Corp.",
+      "nameEn": "FirstEnergy Corp.",
+      "marketCap": 26850000000.0,
+      "price": 46.4,
+      "sector": "Utilities",
+      "sectorEn": "Utilities",
+      "subsector": "Electric Utilities",
+      "return1y": 0.0131,
+      "ytdReturn": 0.0252,
       "weight": 0.036
     },
     {
@@ -5098,6 +5098,19 @@
       "weight": 0.0284
     },
     {
+      "ticker": "SW",
+      "name": "Smurfit Westrock Plc",
+      "nameEn": "Smurfit Westrock Plc",
+      "marketCap": 21130000000.0,
+      "price": 40.33,
+      "sector": "Materials",
+      "sectorEn": "Materials",
+      "subsector": "Paper & Plastic Packaging Products & Materials",
+      "return1y": 0.0658,
+      "ytdReturn": 0.0184,
+      "weight": 0.0283
+    },
+    {
       "ticker": "EXE",
       "name": "Expand Energy Corporation",
       "nameEn": "Expand Energy Corporation",
@@ -5121,19 +5134,6 @@
       "subsector": "Paper & Plastic Packaging Products & Materials",
       "return1y": 0.1415,
       "ytdReturn": 0.0859,
-      "weight": 0.0283
-    },
-    {
-      "ticker": "SW",
-      "name": "Smurfit Westrock Plc",
-      "nameEn": "Smurfit Westrock Plc",
-      "marketCap": 21130000000.0,
-      "price": 40.33,
-      "sector": "Materials",
-      "sectorEn": "Materials",
-      "subsector": "Paper & Plastic Packaging Products & Materials",
-      "return1y": 0.0658,
-      "ytdReturn": 0.0184,
       "weight": 0.0283
     },
     {
@@ -5800,19 +5800,6 @@
       "weight": 0.0201
     },
     {
-      "ticker": "MAS",
-      "name": "Masco Corporation",
-      "nameEn": "Masco Corporation",
-      "marketCap": 14940000000.0,
-      "price": 76.05,
-      "sector": "Industrials",
-      "sectorEn": "Industrials",
-      "subsector": "Building Products",
-      "return1y": 0.1661,
-      "ytdReturn": 0.1796,
-      "weight": 0.02
-    },
-    {
       "ticker": "EG",
       "name": "Everest Group, Ltd.",
       "nameEn": "Everest Group, Ltd.",
@@ -5850,6 +5837,19 @@
       "return1y": -0.0138,
       "ytdReturn": -0.2206,
       "weight": 0.0197
+    },
+    {
+      "ticker": "MAS",
+      "name": "Masco Corporation",
+      "nameEn": "Masco Corporation",
+      "marketCap": 14660000000.0,
+      "price": 76.05,
+      "sector": "Industrials",
+      "sectorEn": "Industrials",
+      "subsector": "Building Products",
+      "return1y": 0.1661,
+      "ytdReturn": 0.1796,
+      "weight": 0.0196
     },
     {
       "ticker": "GEN",
@@ -5904,6 +5904,19 @@
       "weight": 0.0187
     },
     {
+      "ticker": "IT",
+      "name": "Gartner, Inc.",
+      "nameEn": "Gartner, Inc.",
+      "marketCap": 13840000000.0,
+      "price": 219.16,
+      "sector": "Information Technology",
+      "sectorEn": "Information Technology",
+      "subsector": "IT Consulting & Other Services",
+      "return1y": -0.1224,
+      "ytdReturn": -0.0754,
+      "weight": 0.0186
+    },
+    {
       "ticker": "MAA",
       "name": "Mid-America Apartment Communities, Inc.",
       "nameEn": "Mid-America Apartment Communities, Inc.",
@@ -5915,19 +5928,6 @@
       "return1y": -0.0755,
       "ytdReturn": -0.1609,
       "weight": 0.0186
-    },
-    {
-      "ticker": "IT",
-      "name": "Gartner, Inc.",
-      "nameEn": "Gartner, Inc.",
-      "marketCap": 13840000000.0,
-      "price": 219.16,
-      "sector": "Information Technology",
-      "sectorEn": "Information Technology",
-      "subsector": "IT Consulting & Other Services",
-      "return1y": -0.1224,
-      "ytdReturn": -0.0754,
-      "weight": 0.0185
     },
     {
       "ticker": "WY",
