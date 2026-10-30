@@ -2,11 +2,11 @@
   "series_id": "GDPC1",
   "friendly": "real_gdp",
   "source": "FRED",
-  "fetched": "2026-10-29",
-  "count": 146,
+  "fetched": "2026-10-30",
+  "count": 147,
   "latest": {
-    "date": "2026-04-01",
-    "value": 24408.011
+    "date": "2026-07-01",
+    "value": 24611.077
   },
   "data": [
     {
@@ -592,6 +592,10 @@
     {
       "date": "2026-04-01",
       "value": 24408.011
+    },
+    {
+      "date": "2026-07-01",
+      "value": 24611.077
     }
   ]
 }
