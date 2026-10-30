@@ -535,6 +535,20 @@
       "recovery_date": "1995-09-07"
     },
     {
+      "period": "2026: Oct 6 – Oct 30",
+      "peak_date": "2026-10-06",
+      "trough_date": "2026-10-30",
+      "days": 24,
+      "high": 31224.47,
+      "low": 28669.91,
+      "decline": -0.082,
+      "category": "mechanical_scare",
+      "cause": "",
+      "active": true,
+      "recovery_days": null,
+      "recovery_date": null
+    },
+    {
       "period": "1996: Feb 22 – Mar 8",
       "peak_date": "1996-02-22",
       "trough_date": "1996-03-08",
@@ -603,20 +617,6 @@
       "active": false,
       "recovery_days": 33,
       "recovery_date": "2021-06-14"
-    },
-    {
-      "period": "2026: Oct 6 – Oct 23",
-      "peak_date": "2026-10-06",
-      "trough_date": "2026-10-23",
-      "days": 17,
-      "high": 31224.47,
-      "low": 28957.53,
-      "decline": -0.073,
-      "category": "mechanical_scare",
-      "cause": "",
-      "active": true,
-      "recovery_days": null,
-      "recovery_date": null
     },
     {
       "period": "2024: Mar 22 – Apr 19",

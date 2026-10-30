@@ -2,14 +2,14 @@
 // Six legs: US existing-home prices / S&P 500 / Nasdaq-100 / Gold / 10Y Treasury zero-coupon price approximation / Nominal GDP
 // Gray bands = NBER recession periods; methodology & anchors in data/us_asset_ladder.json caliber field.
 
-import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261030120008';
+import { CHART_FONT, cssVar, formatNumber } from '../utils.js?v=20261030220833';
 import {
   registerChart,
   buildMetricCard,
   renderMetricStrip,
   getDataZoom,
   buildRecessionOverlaySeries,
-} from '../chart-helpers.js?v=20261030120008';
+} from '../chart-helpers.js?v=20261030220833';
 
 const LEGS = [
   { key: 'housing', name: 'US Home Prices',   color: '#0f766e' },
