@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31 09:44:53",
+  "generated_at": "2026-10-31 10:12:49",
   "today": "2026-10-31",
   "overall": "warn",
   "stale_count": 2,
@@ -71,7 +71,7 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "复合增速路径",
-      "updated": "2026-10-31T09:43:38",
+      "updated": "2026-10-31T10:11:34",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -81,14 +81,14 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
-      "updated": "2026-10-31T09:43:38",
+      "updated": "2026-10-31T10:11:34",
       "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "us_asset_ladder.json",
       "label": "衰退期资产累计涨幅",
-      "updated": "2026-10-31T01:43:49",
+      "updated": "2026-10-31T02:11:46",
       "days_old": 0,
       "status": "stale",
       "series_end": {
