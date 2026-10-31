@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261031111241">
+<link rel="stylesheet" href="style.css?v=20261031201552">
 </head>
 <body>
 
@@ -21,6 +21,82 @@
 </div>
 
 <main style="max-width:1280px;margin:0 auto;padding:20px 24px 60px;">
+
+  <section class="panel" id="panel-cnn-fg" data-category="sentiment">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">CNN 恐惧贪婪指数</h2>
+          <p class="panel-desc">CNN Business 官方口径 · 7 分项等权合成 · 0—100 · 日频</p>
+          <p class="mini-desc">背景五档区间 · 可切七分项当前分数</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group">
+            <button type="button" class="btn active" data-cnnfg-view="total">综合指数</button>
+            <button type="button" class="btn" data-cnnfg-view="components">七分项</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartCnnFg" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartCnnFg"></div>
+      <div class="metric-strip" id="cnnFgSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-aaii" data-category="sentiment">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">AAII 个人投资者情绪</h2>
+          <p class="panel-desc">AAII 周度调查 · 看涨/中性/看跌占比 · 1987 至今 · 周频</p>
+          <p class="mini-desc">默认三线比例 · 可切牛熊价差</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group">
+            <button type="button" class="btn active" data-aaii-view="ratio">三线比例</button>
+            <button type="button" class="btn" data-aaii-view="spread">牛熊价差</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartAaii" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartAaii"></div>
+      <div class="metric-strip" id="aaiiSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-naaim" data-category="sentiment">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">NAAIM 暴露指数</h2>
+          <p class="panel-desc">主动管理人美股敞口均值 · -200%—200% · 周频</p>
+          <p class="mini-desc">虚线为四分位区间 · 序列截至 2026/07/29（官方已转订阅制）</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartNaaim" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartNaaim"></div>
+      <div class="metric-strip" id="naaimSummary"></div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-misery" data-category="sentiment">
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">美国痛苦指数</h2>
+          <p class="panel-desc">失业率 + CPI 同比 · FRED 季调 · 1948 至今 · 月频</p>
+          <p class="mini-desc">两层面积为两个分量，黑线为合计 · 灰带为 NBER 衰退期</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartMisery" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartMisery"></div>
+      <div class="metric-strip" id="miserySummary"></div>
+    </div>
+  </section>
 
   <section class="panel" id="panel-us-asset-ladder" data-category="cross">
     <div class="panel-inner">
@@ -41,6 +117,6 @@
 
 </main>
 
-<script type="module" src="js/preview.js?v=20261031111241"></script>
+<script type="module" src="js/preview.js?v=20261031201552"></script>
 </body>
 </html>
