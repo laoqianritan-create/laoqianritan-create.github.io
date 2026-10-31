@@ -1,7 +1,7 @@
 // panels/sentiment.js · 情绪四件套（CNN 恐惧贪婪 / AAII 散户情绪 / NAAIM 敞口 / 痛苦指数）
 //
 // 数据：
-//   data/cnn_fear_greed.json    CNN 官方 7 分项 z-score 合成，250 天日频
+//   data/cnn_fear_greed.json    CNN 官方 7 分项 z-score 合成，2011 至今日频（近 4000 天）
 //   data/aaii_sentiment.json    AAII 周度调查，1987 至今 2000+ 周
 //   data/naaim_exposure.json    NAAIM 主动管理人敞口，周频（2026-08 起官方订阅化）
 //   data/us_misery_index.json   FRED 失业率 + CPI 同比自算，1948 至今月频
@@ -10,7 +10,7 @@ import {
   CHART_FONT,
   cssVar,
   formatNumber,
-} from '../utils.js?v=20261031201552';
+} from '../utils.js?v=20261031205426';
 
 import {
   registerChart,
@@ -20,7 +20,7 @@ import {
   buildSingleMarkPoint,
   getLineLegendConfig,
   buildRecessionOverlaySeries,
-} from '../chart-helpers.js?v=20261031201552';
+} from '../chart-helpers.js?v=20261031205426';
 
 const BLACK = '#1a1a1a';
 const GREEN = '#389e0d';
@@ -95,7 +95,7 @@ function fmtDate(ts) {
 
 // ── 1. CNN 恐惧贪婪指数 ─────────────────────────────────────
 
-export function initCnnFearGreedPanel(data) {
+export function initCnnFearGreedPanel(data, sp500) {
   const dom = document.getElementById('chartCnnFg');
   if (!dom || !data?.history?.length) return;
 
@@ -108,20 +108,17 @@ export function initCnnFearGreedPanel(data) {
   const components = data.components || [];
 
   const seriesTotal = history.map(p => [p.date, p.score]);
+
+  // 叠加标普 500：只取本图区间内的收盘价，右轴对数刻度（15 年跨度 6 倍，线性轴会把前半段压平）
+  const spStart = history[0].date;
+  const spSeries = ((sp500 && sp500.series) || [])
+    .filter(r => r.date >= spStart)
+    .map(r => [r.date, r.close]);
   const markAreas = FG_BANDS.map(band => [
     {
       yAxis: band.min,
       itemStyle: { color: band.color, opacity: 0.09 },
-      label: {
-        show: true,
-        position: 'insideLeft',
-        formatter: band.label,
-        color: cssVar('--text-secondary') || '#666',
-        fontSize: 10,
-        fontFamily: CHART_FONT,
-        textBorderColor: cssVar('--card-bg') || '#fff',
-        textBorderWidth: 3,
-      },
+      label: { show: false },
     },
     { yAxis: band.max },
   ]);
@@ -218,59 +215,101 @@ export function initCnnFearGreedPanel(data) {
 
   function getOption() {
     if (view === 'components') return getComponentOption();
+    const hasSp = spSeries.length > 20;
     return {
       animation: false,
-      grid: { left: 52, right: 24, top: 36, bottom: 62 },
-      legend: { show: false },
+      grid: { left: 52, right: hasSp ? 58 : 24, top: 36, bottom: 62 },
+      legend: hasSp
+        ? getLineLegendConfig({ data: ['恐惧贪婪指数', '标普500'] })
+        : { show: false },
       tooltip: tooltipBase({
         formatter: params => {
           const list = Array.isArray(params) ? params : [params];
           if (!list.length) return '';
           let html = `<div style="font-weight:600;margin-bottom:4px;">${fmtDate(list[0].value[0])}</div>`;
           list.forEach(p => {
+            const isSp = p.seriesName === '标普500';
+            const v = isSp
+              ? formatNumber(p.value[1])
+              : Number(p.value[1]).toFixed(1);
             html += `<div style="display:flex;justify-content:space-between;gap:16px;">
               <span>${p.marker}${p.seriesName}</span>
-              <span style="font-weight:600;">${Number(p.value[1]).toFixed(1)}</span></div>`;
+              <span style="font-weight:600;">${v}</span></div>`;
           });
           return html;
         },
       }),
       xAxis: timeXAxis(gray),
-      yAxis: {
-        type: 'value',
-        min: 0,
-        max: 100,
-        ...axisBase(gray),
-        axisLabel: {
-          fontSize: 11,
-          color: gray,
-          fontFamily: CHART_FONT,
-          formatter: '{value}',
-        },
-      },
-      dataZoom: getDataZoom(gray),
-      series: [{
-            name: '恐惧贪婪指数',
-            type: 'line',
-            showSymbol: false,
-            smooth: true,
-            lineStyle: { width: 2, color: BLACK },
-            itemStyle: { color: BLACK },
-            data: seriesTotal,
-            markArea: { silent: true, data: markAreas },
-            markLine: {
-              silent: true,
-              symbol: 'none',
-              label: { show: false },
-              lineStyle: { type: 'dashed', color: LIGHT_GRAY, width: 1 },
-              data: FG_BANDS.slice(1).map(b => ({ yAxis: b.min, name: b.label })),
+      yAxis: hasSp
+        ? [
+            {
+              type: 'value',
+              min: 0,
+              max: 100,
+              ...axisBase(gray),
+              axisLabel: { fontSize: 11, color: gray, fontFamily: CHART_FONT, formatter: '{value}' },
             },
-            markPoint: (() => {
-              const mp = buildSingleMarkPoint(cur.timestamp?.slice(0, 10) || data.latest_date,
-                cur.score, `${cur.score} · ${cur.rating}`, BLACK, 'right');
-              return mp ? { silent: true, data: [mp] } : undefined;
-            })(),
-          }],
+            {
+              type: 'value',
+              min: 'dataMin',
+              splitNumber: 4,
+              ...axisBase(gray),
+              splitLine: { show: false },
+              axisLabel: {
+                fontSize: 11,
+                color: gray,
+                fontFamily: CHART_FONT,
+                formatter: v => (v >= 1000 ? `${(v / 1000).toFixed(1)}k` : v),
+              },
+            },
+          ]
+        : {
+            type: 'value',
+            min: 0,
+            max: 100,
+            ...axisBase(gray),
+            axisLabel: { fontSize: 11, color: gray, fontFamily: CHART_FONT, formatter: '{value}' },
+          },
+      dataZoom: getDataZoom(gray),
+      series: [
+        hasSp && {
+          name: '标普500',
+          type: 'line',
+          yAxisIndex: 1,
+          showSymbol: false,
+          smooth: false,
+          z: 1,
+          lineStyle: { width: 1.1, color: BLUE, opacity: 0.75 },
+          itemStyle: { color: BLUE },
+          data: spSeries,
+        },
+        {
+          name: '恐惧贪婪指数',
+          type: 'line',
+          yAxisIndex: 0,
+          showSymbol: false,
+          smooth: true,
+          z: 3,
+          lineStyle: { width: 2, color: BLACK },
+          itemStyle: { color: BLACK },
+          data: seriesTotal,
+          markArea: { silent: true, data: markAreas },
+          markLine: {
+            silent: true,
+            symbol: 'none',
+            label: { show: false },
+            lineStyle: { type: 'dashed', color: LIGHT_GRAY, width: 1 },
+            data: FG_BANDS.slice(1).map(b => ({ yAxis: b.min, name: b.label })),
+          },
+          markPoint: (() => {
+            const mp = buildSingleMarkPoint(cur.timestamp?.slice(0, 10) || data.latest_date,
+              cur.score, `${cur.score} · ${cur.rating}`, BLACK, 'left');
+            if (!mp) return undefined;
+            mp.label = { show: false };   // 图上是 4000 天全量，文字会压住标普线，读数看指标卡
+            return { silent: true, data: [mp] };
+          })(),
+        },
+      ].filter(Boolean),
     };
   }
 
@@ -284,7 +323,10 @@ export function initCnnFearGreedPanel(data) {
 
   renderMetricStrip('cnnFgSummary', [
     buildMetricCard('当前读数', `${cur.score}`, `${cur.rating} · ${data.latest_date}`),
-    buildMetricCard('一年分位', `${data.percentile}%`, '站内 250 个交易日样本'),
+    buildMetricCard('历史分位', `${data.percentile}%`,
+      data.coverage
+        ? `${data.coverage.start} 起 ${data.coverage.days} 个交易日`
+        : '全序列分位'),
     buildMetricCard('前一交易日', `${cmp.previous_close}`,
       `较前值 ${diff(cur.score, cmp.previous_close)}`),
     buildMetricCard('一周前', `${cmp.previous_1_week}`,
