@@ -12,7 +12,7 @@
       "subsector": "Technology Hardware, Storage & Peripherals",
       "return1y": 0.2747,
       "ytdReturn": 0.2717,
-      "weight": 6.9332
+      "weight": 6.9339
     },
     {
       "ticker": "NVDA",
@@ -25,7 +25,7 @@
       "subsector": "Semiconductors",
       "return1y": 0.0106,
       "ytdReturn": 0.0836,
-      "weight": 6.8091
+      "weight": 6.8098
     },
     {
       "ticker": "MSFT",
@@ -38,7 +38,7 @@
       "subsector": "Systems Software",
       "return1y": 0.0079,
       "ytdReturn": 0.1035,
-      "weight": 5.3481
+      "weight": 5.3486
     },
     {
       "ticker": "GOOGL",
@@ -51,7 +51,7 @@
       "subsector": "Interactive Media & Services",
       "return1y": -0.0048,
       "ytdReturn": -0.112,
-      "weight": 4.7416
+      "weight": 4.7421
     },
     {
       "ticker": "GOOG",
@@ -64,7 +64,7 @@
       "subsector": "Interactive Media & Services",
       "return1y": -0.0128,
       "ytdReturn": -0.1177,
-      "weight": 4.7278
+      "weight": 4.7283
     },
     {
       "ticker": "AMZN",
@@ -77,7 +77,7 @@
       "subsector": "Broadline Retail",
       "return1y": -0.0158,
       "ytdReturn": 0.0611,
-      "weight": 3.5837
+      "weight": 3.5841
     },
     {
       "ticker": "TSLA",
@@ -90,7 +90,7 @@
       "subsector": "Automobile Manufacturers",
       "return1y": -0.1243,
       "ytdReturn": -0.0873,
-      "weight": 2.1778
+      "weight": 2.178
     },
     {
       "ticker": "META",
@@ -103,7 +103,7 @@
       "subsector": "Interactive Media & Services",
       "return1y": -0.0515,
       "ytdReturn": -0.0545,
-      "weight": 2.164
+      "weight": 2.1643
     },
     {
       "ticker": "AVGO",
@@ -116,7 +116,7 @@
       "subsector": "Semiconductors",
       "return1y": -0.1178,
       "ytdReturn": -0.062,
-      "weight": 2.1502
+      "weight": 2.1505
     },
     {
       "ticker": "LLY",
@@ -129,7 +129,7 @@
       "subsector": "Pharmaceuticals",
       "return1y": 0.6428,
       "ytdReturn": 0.3121,
-      "weight": 1.7367
+      "weight": 1.7369
     },
     {
       "ticker": "BRK.B",
@@ -142,7 +142,7 @@
       "subsector": "Multi-Sector Holdings",
       "return1y": 0.136,
       "ytdReturn": 0.0919,
-      "weight": 1.5989
+      "weight": 1.5991
     },
     {
       "ticker": "MU",
@@ -155,7 +155,7 @@
       "subsector": "Semiconductors",
       "return1y": 2.9538,
       "ytdReturn": 1.805,
-      "weight": 1.3784
+      "weight": 1.3785
     },
     {
       "ticker": "WMT",
@@ -168,7 +168,7 @@
       "subsector": "Consumer Staples Merchandise Retail",
       "return1y": 0.2207,
       "ytdReturn": 0.0953,
-      "weight": 1.3507
+      "weight": 1.3508
     },
     {
       "ticker": "JPM",
@@ -181,7 +181,7 @@
       "subsector": "Diversified Banks",
       "return1y": 0.0833,
       "ytdReturn": 0.0355,
-      "weight": 1.2337
+      "weight": 1.2338
     },
     {
       "ticker": "AMD",
@@ -194,20 +194,7 @@
       "subsector": "Semiconductors",
       "return1y": 0.971,
       "ytdReturn": 1.2589,
-      "weight": 1.1359
-    },
-    {
-      "ticker": "XOM",
-      "name": "ExxonMobil Holdings Corporation",
-      "nameEn": "ExxonMobil Holdings Corporation",
-      "marketCap": 769960000000.0,
-      "price": 187.25,
-      "sector": "Energy",
-      "sectorEn": "Energy",
-      "subsector": "Integrated Oil & Gas",
-      "return1y": 0.6374,
-      "ytdReturn": 0.5267,
-      "weight": 1.0613
+      "weight": 1.136
     },
     {
       "ticker": "V",
@@ -220,7 +207,20 @@
       "subsector": "Transaction & Payment Processing Services",
       "return1y": 0.2138,
       "ytdReturn": 0.1937,
-      "weight": 1.0601
+      "weight": 1.0602
+    },
+    {
+      "ticker": "XOM",
+      "name": "ExxonMobil Holdings Corporation",
+      "nameEn": "ExxonMobil Holdings Corporation",
+      "marketCap": 763790000000.0,
+      "price": 187.25,
+      "sector": "Energy",
+      "sectorEn": "Energy",
+      "subsector": "Integrated Oil & Gas",
+      "return1y": 0.6374,
+      "ytdReturn": 0.5267,
+      "weight": 1.0529
     },
     {
       "ticker": "JNJ",
@@ -233,7 +233,7 @@
       "subsector": "Pharmaceuticals",
       "return1y": 0.4465,
       "ytdReturn": 0.3176,
-      "weight": 0.9065
+      "weight": 0.9066
     },
     {
       "ticker": "MA",
@@ -246,7 +246,7 @@
       "subsector": "Transaction & Payment Processing Services",
       "return1y": 0.1558,
       "ytdReturn": 0.133,
-      "weight": 0.7661
+      "weight": 0.7662
     },
     {
       "ticker": "ABBV",
@@ -259,20 +259,20 @@
       "subsector": "Biotechnology",
       "return1y": 0.3525,
       "ytdReturn": 0.286,
-      "weight": 0.7183
+      "weight": 0.7184
     },
     {
       "ticker": "CVX",
       "name": "Chevron Corporation",
       "nameEn": "Chevron Corporation",
-      "marketCap": 462000000000.0,
+      "marketCap": 459500000000.0,
       "price": 235.52,
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Integrated Oil & Gas",
       "return1y": 0.4933,
       "ytdReturn": 0.5107,
-      "weight": 0.6368
+      "weight": 0.6334
     },
     {
       "ticker": "COST",
@@ -285,7 +285,7 @@
       "subsector": "Consumer Staples Merchandise Retail",
       "return1y": 0.1106,
       "ytdReturn": 0.1846,
-      "weight": 0.6183
+      "weight": 0.6184
     },
     {
       "ticker": "PLTR",
@@ -298,7 +298,7 @@
       "subsector": "Application Software",
       "return1y": -0.0816,
       "ytdReturn": 0.0968,
-      "weight": 0.6098
+      "weight": 0.6099
     },
     {
       "ticker": "CSCO",
@@ -311,7 +311,7 @@
       "subsector": "Communications Equipment",
       "return1y": 0.4295,
       "ytdReturn": 0.3744,
-      "weight": 0.5671
+      "weight": 0.5672
     },
     {
       "ticker": "KO",
@@ -337,7 +337,7 @@
       "subsector": "Application Software",
       "return1y": -0.5024,
       "ytdReturn": -0.3323,
-      "weight": 0.546
+      "weight": 0.5461
     },
     {
       "ticker": "PG",
@@ -376,7 +376,7 @@
       "subsector": "Managed Health Care",
       "return1y": 0.1915,
       "ytdReturn": 0.2098,
-      "weight": 0.5035
+      "weight": 0.5036
     },
     {
       "ticker": "INTC",
@@ -389,7 +389,7 @@
       "subsector": "Semiconductors",
       "return1y": 0.6444,
       "ytdReturn": 0.6699,
-      "weight": 0.4813
+      "weight": 0.4814
     },
     {
       "ticker": "BAC",
@@ -415,7 +415,7 @@
       "subsector": "Home Improvement Retail",
       "return1y": -0.1327,
       "ytdReturn": -0.0481,
-      "weight": 0.4527
+      "weight": 0.4528
     },
     {
       "ticker": "PM",
@@ -519,7 +519,7 @@
       "subsector": "Semiconductors",
       "return1y": 0.8632,
       "ytdReturn": 0.6947,
-      "weight": 0.3789
+      "weight": 0.379
     },
     {
       "ticker": "GS",
@@ -532,7 +532,7 @@
       "subsector": "Investment Banking & Brokerage",
       "return1y": 0.1332,
       "ytdReturn": -0.0216,
-      "weight": 0.3733
+      "weight": 0.3734
     },
     {
       "ticker": "DELL",
@@ -558,7 +558,7 @@
       "subsector": "Aerospace & Defense",
       "return1y": 0.1193,
       "ytdReturn": 0.067,
-      "weight": 0.3716
+      "weight": 0.3717
     },
     {
       "ticker": "TMO",
@@ -571,7 +571,7 @@
       "subsector": "Life Sciences Tools & Services",
       "return1y": 0.2284,
       "ytdReturn": 0.1764,
-      "weight": 0.3552
+      "weight": 0.3553
     },
     {
       "ticker": "CRWD",
@@ -675,7 +675,7 @@
       "subsector": "Consumer Finance",
       "return1y": -0.1154,
       "ytdReturn": -0.1439,
-      "weight": 0.2949
+      "weight": 0.295
     },
     {
       "ticker": "ANET",
@@ -694,14 +694,14 @@
       "ticker": "GILD",
       "name": "Gilead Sciences, Inc.",
       "nameEn": "Gilead Sciences, Inc.",
-      "marketCap": 211640000000.0,
+      "marketCap": 211700000000.0,
       "price": 170.68,
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
       "return1y": 0.4248,
       "ytdReturn": 0.4036,
-      "weight": 0.2917
+      "weight": 0.2918
     },
     {
       "ticker": "KLAC",
@@ -753,7 +753,7 @@
       "subsector": "Electronic Components",
       "return1y": 0.1382,
       "ytdReturn": 0.1352,
-      "weight": 0.2695
+      "weight": 0.2696
     },
     {
       "ticker": "DIS",
@@ -766,7 +766,7 @@
       "subsector": "Movies & Entertainment",
       "return1y": -0.0149,
       "ytdReturn": -0.0081,
-      "weight": 0.264
+      "weight": 0.2641
     },
     {
       "ticker": "CRM",
@@ -811,7 +811,7 @@
       "ticker": "VZ",
       "name": "Verizon Communications Inc.",
       "nameEn": "Verizon Communications Inc.",
-      "marketCap": 185410000000.0,
+      "marketCap": 185390000000.0,
       "price": 44.73,
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
@@ -870,7 +870,7 @@
       "subsector": "Agricultural & Farm Machinery",
       "return1y": 0.4632,
       "ytdReturn": 0.447,
-      "weight": 0.251
+      "weight": 0.2511
     },
     {
       "ticker": "UNP",
@@ -961,7 +961,7 @@
       "subsector": "Technology Hardware, Storage & Peripherals",
       "return1y": 4.7738,
       "ytdReturn": 3.1814,
-      "weight": 0.2284
+      "weight": 0.2285
     },
     {
       "ticker": "TMUS",
@@ -1000,7 +1000,7 @@
       "subsector": "Apparel Retail",
       "return1y": 0.0012,
       "ytdReturn": -0.0905,
-      "weight": 0.2127
+      "weight": 0.2128
     },
     {
       "ticker": "ACN",
@@ -1117,7 +1117,7 @@
       "subsector": "Biotechnology",
       "return1y": 0.3133,
       "ytdReturn": 0.2361,
-      "weight": 0.1952
+      "weight": 0.1953
     },
     {
       "ticker": "CB",
@@ -1182,7 +1182,7 @@
       "subsector": "Property & Casualty Insurance",
       "return1y": 0.1227,
       "ytdReturn": 0.0903,
-      "weight": 0.1847
+      "weight": 0.1848
     },
     {
       "ticker": "UBER",
@@ -1234,7 +1234,7 @@
       "subsector": "Oil & Gas Refining & Marketing",
       "return1y": 1.2817,
       "ytdReturn": 1.693,
-      "weight": 0.1721
+      "weight": 0.1722
     },
     {
       "ticker": "PLD",
@@ -1260,7 +1260,7 @@
       "subsector": "Consumer Finance",
       "return1y": -0.0688,
       "ytdReturn": -0.1738,
-      "weight": 0.1698
+      "weight": 0.1699
     },
     {
       "ticker": "MDT",
@@ -1325,7 +1325,7 @@
       "subsector": "Health Care Distributors",
       "return1y": 0.2258,
       "ytdReturn": 0.2078,
-      "weight": 0.1598
+      "weight": 0.1599
     },
     {
       "ticker": "CVS",
@@ -1487,14 +1487,14 @@
       "ticker": "GD",
       "name": "General Dynamics Corporation",
       "nameEn": "General Dynamics Corporation",
-      "marketCap": 100660000000.0,
+      "marketCap": 100530000000.0,
       "price": 372.59,
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
       "return1y": 0.0803,
       "ytdReturn": 0.085,
-      "weight": 0.1387
+      "weight": 0.1386
     },
     {
       "ticker": "EQIX",
@@ -1546,7 +1546,7 @@
       "subsector": "Asset Management & Custody Banks",
       "return1y": 0.363,
       "ytdReturn": 0.2569,
-      "weight": 0.1364
+      "weight": 0.1365
     },
     {
       "ticker": "HCA",
@@ -1572,7 +1572,7 @@
       "subsector": "Application Software",
       "return1y": -0.2647,
       "ytdReturn": -0.2492,
-      "weight": 0.1342
+      "weight": 0.1343
     },
     {
       "ticker": "ABNB",
@@ -1640,6 +1640,19 @@
       "weight": 0.1289
     },
     {
+      "ticker": "REGN",
+      "name": "Regeneron Pharmaceuticals, Inc.",
+      "nameEn": "Regeneron Pharmaceuticals, Inc.",
+      "marketCap": 93110000000.0,
+      "price": 927.89,
+      "sector": "Health Care",
+      "sectorEn": "Health Care",
+      "subsector": "Biotechnology",
+      "return1y": 0.4236,
+      "ytdReturn": 0.1953,
+      "weight": 0.1284
+    },
+    {
       "ticker": "CEG",
       "name": "Constellation Energy Corporation",
       "nameEn": "Constellation Energy Corporation",
@@ -1692,19 +1705,6 @@
       "weight": 0.1277
     },
     {
-      "ticker": "REGN",
-      "name": "Regeneron Pharmaceuticals, Inc.",
-      "nameEn": "Regeneron Pharmaceuticals, Inc.",
-      "marketCap": 92650000000.0,
-      "price": 927.89,
-      "sector": "Health Care",
-      "sectorEn": "Health Care",
-      "subsector": "Biotechnology",
-      "return1y": 0.4236,
-      "ytdReturn": 0.1953,
-      "weight": 0.1277
-    },
-    {
       "ticker": "UPS",
       "name": "United Parcel Service, Inc.",
       "nameEn": "United Parcel Service, Inc.",
@@ -1715,7 +1715,7 @@
       "subsector": "Air Freight & Logistics",
       "return1y": 0.1227,
       "ytdReturn": 0.0716,
-      "weight": 0.1269
+      "weight": 0.127
     },
     {
       "ticker": "EMR",
@@ -1741,7 +1741,7 @@
       "subsector": "Application Software",
       "return1y": -0.489,
       "ytdReturn": -0.4581,
-      "weight": 0.1256
+      "weight": 0.1257
     },
     {
       "ticker": "WMB",
@@ -1754,7 +1754,7 @@
       "subsector": "Oil & Gas Storage & Transportation",
       "return1y": 0.2848,
       "ytdReturn": 0.2219,
-      "weight": 0.1253
+      "weight": 0.1254
     },
     {
       "ticker": "ELV",
@@ -1910,7 +1910,7 @@
       "subsector": "Telecom Tower REITs",
       "return1y": 0.0492,
       "ytdReturn": 0.0743,
-      "weight": 0.12
+      "weight": 0.1201
     },
     {
       "ticker": "EOG",
@@ -1975,7 +1975,7 @@
       "subsector": "Application Software",
       "return1y": 0.4451,
       "ytdReturn": 0.7588,
-      "weight": 0.1164
+      "weight": 0.1165
     },
     {
       "ticker": "SPG",
@@ -2001,7 +2001,7 @@
       "subsector": "Cable & Satellite",
       "return1y": -0.1101,
       "ytdReturn": -0.1613,
-      "weight": 0.1136
+      "weight": 0.1137
     },
     {
       "ticker": "MDLZ",
@@ -2027,7 +2027,7 @@
       "subsector": "Hotels, Resorts & Cruise Lines",
       "return1y": 0.0709,
       "ytdReturn": 0.0844,
-      "weight": 0.1132
+      "weight": 0.1133
     },
     {
       "ticker": "MSI",
@@ -2254,14 +2254,14 @@
       "ticker": "RSG",
       "name": "Republic Services, Inc.",
       "nameEn": "Republic Services, Inc.",
-      "marketCap": 74730000000.0,
+      "marketCap": 74340000000.0,
       "price": 244.04,
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Environmental & Facilities Services",
       "return1y": 0.1719,
       "ytdReturn": 0.161,
-      "weight": 0.103
+      "weight": 0.1025
     },
     {
       "ticker": "GM",
@@ -2358,14 +2358,14 @@
       "ticker": "AJG",
       "name": "Arthur J. Gallagher & Co.",
       "nameEn": "Arthur J. Gallagher & Co.",
-      "marketCap": 70770000000.0,
+      "marketCap": 70790000000.0,
       "price": 276.07,
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Insurance Brokers",
       "return1y": 0.1065,
       "ytdReturn": 0.0784,
-      "weight": 0.0975
+      "weight": 0.0976
     },
     {
       "ticker": "APD",
@@ -2392,6 +2392,19 @@
       "return1y": 0.665,
       "ytdReturn": 0.536,
       "weight": 0.0967
+    },
+    {
+      "ticker": "DLR",
+      "name": "Digital Realty Trust, Inc.",
+      "nameEn": "Digital Realty Trust, Inc.",
+      "marketCap": 69560000000.0,
+      "price": 180.7,
+      "sector": "Real Estate",
+      "sectorEn": "Real Estate",
+      "subsector": "Data Center REITs",
+      "return1y": 0.0604,
+      "ytdReturn": 0.1656,
+      "weight": 0.0959
     },
     {
       "ticker": "HON",
@@ -2446,19 +2459,6 @@
       "weight": 0.0941
     },
     {
-      "ticker": "DLR",
-      "name": "Digital Realty Trust, Inc.",
-      "nameEn": "Digital Realty Trust, Inc.",
-      "marketCap": 68239999999.99999,
-      "price": 180.7,
-      "sector": "Real Estate",
-      "sectorEn": "Real Estate",
-      "subsector": "Data Center REITs",
-      "return1y": 0.0604,
-      "ytdReturn": 0.1656,
-      "weight": 0.0941
-    },
-    {
       "ticker": "TRGP",
       "name": "Targa Resources Corp.",
       "nameEn": "Targa Resources Corp.",
@@ -2508,7 +2508,7 @@
       "subsector": "Industrial Machinery & Supplies & Components",
       "return1y": 0.3883,
       "ytdReturn": 0.354,
-      "weight": 0.0882
+      "weight": 0.0883
     },
     {
       "ticker": "OXY",
@@ -2768,7 +2768,7 @@
       "subsector": "Health Care Distributors",
       "return1y": 0.313,
       "ytdReturn": 0.2176,
-      "weight": 0.0799
+      "weight": 0.08
     },
     {
       "ticker": "NKE",
@@ -2963,7 +2963,7 @@
       "subsector": "Aerospace & Defense",
       "return1y": -0.0397,
       "ytdReturn": -0.0882,
-      "weight": 0.0712
+      "weight": 0.0713
     },
     {
       "ticker": "XEL",
@@ -3187,19 +3187,6 @@
       "weight": 0.064
     },
     {
-      "ticker": "ROP",
-      "name": "Roper Technologies, Inc.",
-      "nameEn": "Roper Technologies, Inc.",
-      "marketCap": 46190000000.0,
-      "price": 466.6,
-      "sector": "Information Technology",
-      "sectorEn": "Information Technology",
-      "subsector": "Electronic Equipment & Instruments",
-      "return1y": 0.0458,
-      "ytdReturn": 0.0738,
-      "weight": 0.0637
-    },
-    {
       "ticker": "STT",
       "name": "State Street Corporation",
       "nameEn": "State Street Corporation",
@@ -3210,6 +3197,19 @@
       "subsector": "Asset Management & Custody Banks",
       "return1y": 0.4678,
       "ytdReturn": 0.3153,
+      "weight": 0.0637
+    },
+    {
+      "ticker": "ROP",
+      "name": "Roper Technologies, Inc.",
+      "nameEn": "Roper Technologies, Inc.",
+      "marketCap": 46190000000.0,
+      "price": 466.6,
+      "sector": "Information Technology",
+      "sectorEn": "Information Technology",
+      "subsector": "Electronic Equipment & Instruments",
+      "return1y": 0.0458,
+      "ytdReturn": 0.0738,
       "weight": 0.0637
     },
     {
@@ -3327,7 +3327,7 @@
       "subsector": "Health Care Equipment",
       "return1y": -0.1244,
       "ytdReturn": -0.1773,
-      "weight": 0.0598
+      "weight": 0.0599
     },
     {
       "ticker": "ED",
@@ -3385,14 +3385,14 @@
       "ticker": "AMP",
       "name": "Ameriprise Financial, Inc.",
       "nameEn": "Ameriprise Financial, Inc.",
-      "marketCap": 42700000000.0,
+      "marketCap": 42610000000.0,
       "price": 490.83,
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
       "return1y": 0.0841,
       "ytdReturn": -0.006,
-      "weight": 0.0589
+      "weight": 0.0587
     },
     {
       "ticker": "YUM",
@@ -3574,7 +3574,7 @@
       "subsector": "Food Retail",
       "return1y": 0.0492,
       "ytdReturn": 0.0604,
-      "weight": 0.0543
+      "weight": 0.0544
     },
     {
       "ticker": "NTAP",
@@ -3668,6 +3668,19 @@
       "weight": 0.0517
     },
     {
+      "ticker": "KVUE",
+      "name": "Kenvue Inc.",
+      "nameEn": "Kenvue Inc.",
+      "marketCap": 37110000000.0,
+      "price": 19.31,
+      "sector": "Consumer Staples",
+      "sectorEn": "Consumer Staples",
+      "subsector": "Personal Care Products",
+      "return1y": 0.3438,
+      "ytdReturn": 0.1149,
+      "weight": 0.0512
+    },
+    {
       "ticker": "CBRE",
       "name": "CBRE Group, Inc.",
       "nameEn": "CBRE Group, Inc.",
@@ -3679,19 +3692,6 @@
       "return1y": -0.1547,
       "ytdReturn": -0.1956,
       "weight": 0.0512
-    },
-    {
-      "ticker": "KVUE",
-      "name": "Kenvue Inc.",
-      "nameEn": "Kenvue Inc.",
-      "marketCap": 37090000000.0,
-      "price": 19.31,
-      "sector": "Consumer Staples",
-      "sectorEn": "Consumer Staples",
-      "subsector": "Personal Care Products",
-      "return1y": 0.3438,
-      "ytdReturn": 0.1149,
-      "weight": 0.0511
     },
     {
       "ticker": "ADM",
@@ -3850,6 +3850,19 @@
       "weight": 0.0479
     },
     {
+      "ticker": "EQT",
+      "name": "EQT Corporation",
+      "nameEn": "EQT Corporation",
+      "marketCap": 34640000000.0,
+      "price": 55.38,
+      "sector": "Energy",
+      "sectorEn": "Energy",
+      "subsector": "Oil & Gas Exploration & Production",
+      "return1y": 0.0336,
+      "ytdReturn": 0.0359,
+      "weight": 0.0478
+    },
+    {
       "ticker": "IRM",
       "name": "Iron Mountain Incorporated",
       "nameEn": "Iron Mountain Incorporated",
@@ -3873,19 +3886,6 @@
       "subsector": "Property & Casualty Insurance",
       "return1y": 0.2323,
       "ytdReturn": 0.1332,
-      "weight": 0.0477
-    },
-    {
-      "ticker": "EQT",
-      "name": "EQT Corporation",
-      "nameEn": "EQT Corporation",
-      "marketCap": 34640000000.0,
-      "price": 55.38,
-      "sector": "Energy",
-      "sectorEn": "Energy",
-      "subsector": "Oil & Gas Exploration & Production",
-      "return1y": 0.0336,
-      "ytdReturn": 0.0359,
       "weight": 0.0477
     },
     {
@@ -3928,19 +3928,6 @@
       "weight": 0.0471
     },
     {
-      "ticker": "CNC",
-      "name": "Centene Corporation",
-      "nameEn": "Centene Corporation",
-      "marketCap": 33890000000.0,
-      "price": 68.45,
-      "sector": "Health Care",
-      "sectorEn": "Health Care",
-      "subsector": "Managed Health Care",
-      "return1y": 0.9353,
-      "ytdReturn": 0.6383,
-      "weight": 0.0467
-    },
-    {
       "ticker": "UAL",
       "name": "United Airlines Holdings, Inc.",
       "nameEn": "United Airlines Holdings, Inc.",
@@ -3951,6 +3938,19 @@
       "subsector": "Passenger Airlines",
       "return1y": 0.1085,
       "ytdReturn": -0.0776,
+      "weight": 0.0467
+    },
+    {
+      "ticker": "CNC",
+      "name": "Centene Corporation",
+      "nameEn": "Centene Corporation",
+      "marketCap": 33890000000.0,
+      "price": 68.45,
+      "sector": "Health Care",
+      "sectorEn": "Health Care",
+      "subsector": "Managed Health Care",
+      "return1y": 0.9353,
+      "ytdReturn": 0.6383,
       "weight": 0.0467
     },
     {
@@ -4175,19 +4175,6 @@
       "weight": 0.0412
     },
     {
-      "ticker": "WSM",
-      "name": "Williams-Sonoma, Inc.",
-      "nameEn": "Williams-Sonoma, Inc.",
-      "marketCap": 29770000000.0,
-      "price": 252.72,
-      "sector": "Consumer Discretionary",
-      "sectorEn": "Consumer Discretionary",
-      "subsector": "Homefurnishing Retail",
-      "return1y": 0.3004,
-      "ytdReturn": 0.3453,
-      "weight": 0.041
-    },
-    {
       "ticker": "EME",
       "name": "EMCOR Group, Inc.",
       "nameEn": "EMCOR Group, Inc.",
@@ -4198,6 +4185,19 @@
       "subsector": "Construction & Engineering",
       "return1y": 0.0056,
       "ytdReturn": 0.064,
+      "weight": 0.041
+    },
+    {
+      "ticker": "WSM",
+      "name": "Williams-Sonoma, Inc.",
+      "nameEn": "Williams-Sonoma, Inc.",
+      "marketCap": 29770000000.0,
+      "price": 252.72,
+      "sector": "Consumer Discretionary",
+      "sectorEn": "Consumer Discretionary",
+      "subsector": "Homefurnishing Retail",
+      "return1y": 0.3004,
+      "ytdReturn": 0.3453,
       "weight": 0.041
     },
     {
@@ -4214,19 +4214,6 @@
       "weight": 0.0404
     },
     {
-      "ticker": "ATO",
-      "name": "Atmos Energy Corporation",
-      "nameEn": "Atmos Energy Corporation",
-      "marketCap": 29140000000.0,
-      "price": 172.41,
-      "sector": "Utilities",
-      "sectorEn": "Utilities",
-      "subsector": "Gas Utilities",
-      "return1y": 0.004,
-      "ytdReturn": 0.018,
-      "weight": 0.0402
-    },
-    {
       "ticker": "DG",
       "name": "Dollar General Corporation",
       "nameEn": "Dollar General Corporation",
@@ -4237,6 +4224,19 @@
       "subsector": "Consumer Staples Merchandise Retail",
       "return1y": 0.341,
       "ytdReturn": -0.033,
+      "weight": 0.0402
+    },
+    {
+      "ticker": "ATO",
+      "name": "Atmos Energy Corporation",
+      "nameEn": "Atmos Energy Corporation",
+      "marketCap": 29140000000.0,
+      "price": 172.41,
+      "sector": "Utilities",
+      "sectorEn": "Utilities",
+      "subsector": "Gas Utilities",
+      "return1y": 0.004,
+      "ytdReturn": 0.018,
       "weight": 0.0402
     },
     {
@@ -4669,19 +4669,6 @@
       "weight": 0.0351
     },
     {
-      "ticker": "CASY",
-      "name": "Casey's General Stores, Inc.",
-      "nameEn": "Casey's General Stores, Inc.",
-      "marketCap": 25140000000.0,
-      "price": 680.19,
-      "sector": "Consumer Staples",
-      "sectorEn": "Consumer Staples",
-      "subsector": "Food Retail",
-      "return1y": 0.3254,
-      "ytdReturn": 0.2228,
-      "weight": 0.0347
-    },
-    {
       "ticker": "DOW",
       "name": "Dow Inc.",
       "nameEn": "Dow Inc.",
@@ -4692,6 +4679,19 @@
       "subsector": "Commodity Chemicals",
       "return1y": 0.4549,
       "ytdReturn": 0.4297,
+      "weight": 0.0348
+    },
+    {
+      "ticker": "CASY",
+      "name": "Casey's General Stores, Inc.",
+      "nameEn": "Casey's General Stores, Inc.",
+      "marketCap": 25140000000.0,
+      "price": 680.19,
+      "sector": "Consumer Staples",
+      "sectorEn": "Consumer Staples",
+      "subsector": "Food Retail",
+      "return1y": 0.3254,
+      "ytdReturn": 0.2228,
       "weight": 0.0347
     },
     {
@@ -4874,7 +4874,7 @@
       "subsector": "Homebuilding",
       "return1y": 0.0406,
       "ytdReturn": 0.0476,
-      "weight": 0.0316
+      "weight": 0.0317
     },
     {
       "ticker": "STZ",
@@ -4963,8 +4963,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": -0.0676,
-      "ytdReturn": -0.0536,
+      "return1y": -0.1012,
+      "ytdReturn": -0.0877,
       "weight": 0.0308
     },
     {
@@ -4997,7 +4997,7 @@
       "ticker": "LYB",
       "name": "LyondellBasell Industries N.V.",
       "nameEn": "LyondellBasell Industries N.V.",
-      "marketCap": 22170000000.0,
+      "marketCap": 22190000000.0,
       "price": 68.64,
       "sector": "Materials",
       "sectorEn": "Materials",
@@ -5005,19 +5005,6 @@
       "return1y": 0.4787,
       "ytdReturn": 0.5463,
       "weight": 0.0306
-    },
-    {
-      "ticker": "TROW",
-      "name": "T. Rowe Price Group, Inc.",
-      "nameEn": "T. Rowe Price Group, Inc.",
-      "marketCap": 22160000000.0,
-      "price": 103.9,
-      "sector": "Financials",
-      "sectorEn": "Financials",
-      "subsector": "Asset Management & Custody Banks",
-      "return1y": 0.0134,
-      "ytdReturn": -0.007,
-      "weight": 0.0305
     },
     {
       "ticker": "STE",
@@ -5030,6 +5017,19 @@
       "subsector": "Health Care Equipment",
       "return1y": -0.0364,
       "ytdReturn": -0.0917,
+      "weight": 0.0305
+    },
+    {
+      "ticker": "TROW",
+      "name": "T. Rowe Price Group, Inc.",
+      "nameEn": "T. Rowe Price Group, Inc.",
+      "marketCap": 22160000000.0,
+      "price": 103.9,
+      "sector": "Financials",
+      "sectorEn": "Financials",
+      "subsector": "Asset Management & Custody Banks",
+      "return1y": 0.0134,
+      "ytdReturn": -0.007,
       "weight": 0.0305
     },
     {
@@ -5111,19 +5111,6 @@
       "weight": 0.0295
     },
     {
-      "ticker": "XYL",
-      "name": "Xylem Inc.",
-      "nameEn": "Xylem Inc.",
-      "marketCap": 21190000000.0,
-      "price": 92.4,
-      "sector": "Industrials",
-      "sectorEn": "Industrials",
-      "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": -0.3875,
-      "ytdReturn": -0.3261,
-      "weight": 0.0292
-    },
-    {
       "ticker": "PTC",
       "name": "PTC Inc.",
       "nameEn": "PTC Inc.",
@@ -5134,6 +5121,19 @@
       "subsector": "Application Software",
       "return1y": -0.0151,
       "ytdReturn": 0.1496,
+      "weight": 0.0293
+    },
+    {
+      "ticker": "XYL",
+      "name": "Xylem Inc.",
+      "nameEn": "Xylem Inc.",
+      "marketCap": 21190000000.0,
+      "price": 92.4,
+      "sector": "Industrials",
+      "sectorEn": "Industrials",
+      "subsector": "Industrial Machinery & Supplies & Components",
+      "return1y": -0.3875,
+      "ytdReturn": -0.3261,
       "weight": 0.0292
     },
     {
@@ -5225,7 +5225,7 @@
       "subsector": "Computer & Electronics Retail",
       "return1y": 0.1645,
       "ytdReturn": 0.3826,
-      "weight": 0.0276
+      "weight": 0.0277
     },
     {
       "ticker": "TSN",
@@ -5241,19 +5241,6 @@
       "weight": 0.0276
     },
     {
-      "ticker": "SBAC",
-      "name": "SBA Communications Corporation",
-      "nameEn": "SBA Communications Corporation",
-      "marketCap": 19850000000.0,
-      "price": 187.15,
-      "sector": "Real Estate",
-      "sectorEn": "Real Estate",
-      "subsector": "Telecom Tower REITs",
-      "return1y": -0.0226,
-      "ytdReturn": -0.0277,
-      "weight": 0.0274
-    },
-    {
       "ticker": "FIS",
       "name": "Fidelity National Information Services, Inc.",
       "nameEn": "Fidelity National Information Services, Inc.",
@@ -5264,6 +5251,19 @@
       "subsector": "Transaction & Payment Processing Services",
       "return1y": -0.3834,
       "ytdReturn": -0.4125,
+      "weight": 0.0274
+    },
+    {
+      "ticker": "SBAC",
+      "name": "SBA Communications Corporation",
+      "nameEn": "SBA Communications Corporation",
+      "marketCap": 19850000000.0,
+      "price": 187.15,
+      "sector": "Real Estate",
+      "sectorEn": "Real Estate",
+      "subsector": "Telecom Tower REITs",
+      "return1y": -0.0226,
+      "ytdReturn": -0.0277,
       "weight": 0.0274
     },
     {
@@ -5303,7 +5303,7 @@
       "subsector": "Paper & Plastic Packaging Products & Materials",
       "return1y": -0.0587,
       "ytdReturn": -0.0964,
-      "weight": 0.0265
+      "weight": 0.0266
     },
     {
       "ticker": "FFIV",
@@ -5459,7 +5459,7 @@
       "subsector": "Construction & Engineering",
       "return1y": -0.0076,
       "ytdReturn": 0.1424,
-      "weight": 0.0249
+      "weight": 0.025
     },
     {
       "ticker": "ZBH",
@@ -5530,14 +5530,14 @@
       "ticker": "RDDT",
       "name": "Reddit, Inc.",
       "nameEn": "Reddit, Inc.",
-      "marketCap": 17650000000.0,
+      "marketCap": 17710000000.0,
       "price": 91.73,
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Interactive Media & Services",
       "return1y": -0.561,
       "ytdReturn": -0.6208,
-      "weight": 0.0243
+      "weight": 0.0244
     },
     {
       "ticker": "BALL",
@@ -5550,6 +5550,19 @@
       "subsector": "Metal, Glass & Plastic Containers",
       "return1y": 0.4143,
       "ytdReturn": 0.2459,
+      "weight": 0.0242
+    },
+    {
+      "ticker": "RVTY",
+      "name": "Revvity, Inc.",
+      "nameEn": "Revvity, Inc.",
+      "marketCap": 17520000000.0,
+      "price": 157.0,
+      "sector": "Health Care",
+      "sectorEn": "Health Care",
+      "subsector": "Health Care Equipment",
+      "return1y": 0.6775,
+      "ytdReturn": 0.5996,
       "weight": 0.0242
     },
     {
@@ -5579,19 +5592,6 @@
       "weight": 0.0242
     },
     {
-      "ticker": "RVTY",
-      "name": "Revvity, Inc.",
-      "nameEn": "Revvity, Inc.",
-      "marketCap": 17520000000.0,
-      "price": 157.0,
-      "sector": "Health Care",
-      "sectorEn": "Health Care",
-      "subsector": "Health Care Equipment",
-      "return1y": 0.6775,
-      "ytdReturn": 0.5996,
-      "weight": 0.0241
-    },
-    {
       "ticker": "GEN",
       "name": "Gen Digital Inc.",
       "nameEn": "Gen Digital Inc.",
@@ -5605,19 +5605,6 @@
       "weight": 0.0238
     },
     {
-      "ticker": "IEX",
-      "name": "IDEX Corporation",
-      "nameEn": "IDEX Corporation",
-      "marketCap": 17180000000.0,
-      "price": 233.84,
-      "sector": "Industrials",
-      "sectorEn": "Industrials",
-      "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.3638,
-      "ytdReturn": 0.3059,
-      "weight": 0.0237
-    },
-    {
       "ticker": "CRL",
       "name": "Charles River Laboratories International, Inc.",
       "nameEn": "Charles River Laboratories International, Inc.",
@@ -5628,6 +5615,19 @@
       "subsector": "Life Sciences Tools & Services",
       "return1y": 0.9959,
       "ytdReturn": 0.7756,
+      "weight": 0.0237
+    },
+    {
+      "ticker": "IEX",
+      "name": "IDEX Corporation",
+      "nameEn": "IDEX Corporation",
+      "marketCap": 17180000000.0,
+      "price": 233.84,
+      "sector": "Industrials",
+      "sectorEn": "Industrials",
+      "subsector": "Industrial Machinery & Supplies & Components",
+      "return1y": 0.3638,
+      "ytdReturn": 0.3059,
       "weight": 0.0237
     },
     {
@@ -5647,14 +5647,14 @@
       "ticker": "HAS",
       "name": "Hasbro, Inc.",
       "nameEn": "Hasbro, Inc.",
-      "marketCap": 16800000000.0,
+      "marketCap": 16660000000.0,
       "price": 119.09,
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Leisure Products",
       "return1y": 0.5606,
       "ytdReturn": 0.4353,
-      "weight": 0.0232
+      "weight": 0.023
     },
     {
       "ticker": "GPC",
@@ -5878,6 +5878,19 @@
       "weight": 0.02
     },
     {
+      "ticker": "CHRW",
+      "name": "C.H. Robinson Worldwide, Inc.",
+      "nameEn": "C.H. Robinson Worldwide, Inc.",
+      "marketCap": 14450000000.0,
+      "price": 124.61,
+      "sector": "Industrials",
+      "sectorEn": "Industrials",
+      "subsector": "Air Freight & Logistics",
+      "return1y": -0.1908,
+      "ytdReturn": -0.2389,
+      "weight": 0.0199
+    },
+    {
       "ticker": "AIZ",
       "name": "Assurant, Inc.",
       "nameEn": "Assurant, Inc.",
@@ -5902,19 +5915,6 @@
       "return1y": -0.0787,
       "ytdReturn": -0.0348,
       "weight": 0.0199
-    },
-    {
-      "ticker": "CHRW",
-      "name": "C.H. Robinson Worldwide, Inc.",
-      "nameEn": "C.H. Robinson Worldwide, Inc.",
-      "marketCap": 14390000000.0,
-      "price": 124.61,
-      "sector": "Industrials",
-      "sectorEn": "Industrials",
-      "subsector": "Air Freight & Logistics",
-      "return1y": -0.1908,
-      "ytdReturn": -0.2389,
-      "weight": 0.0198
     },
     {
       "ticker": "GDDY",
