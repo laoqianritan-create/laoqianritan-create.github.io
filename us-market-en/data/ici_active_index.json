@@ -1,9 +1,9 @@
 {
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "source": "Investment Company Institute · combined_mf_etf_esg_data.xls (+release page fallback)",
   "source_url": "https://www.ici.org/monthly-active-and-index-data",
   "xls_url": "https://www.ici.org/files/combined_mf_etf_esg_data.xls",
-  "latest_month": "2026-08",
+  "latest_month": "2026-09",
   "unit_tna": "billions of USD",
   "unit_flows": "millions of USD",
   "months": [
@@ -11392,6 +11392,95 @@
         "Total": {
           "active": 8906.0,
           "index": 2599.0
+        },
+        "Commodities": {
+          "active": null,
+          "index": null
+        }
+      }
+    },
+    {
+      "month": "2026-09",
+      "url": "https://www.ici.org/research/stats/combined-active-index-0926",
+      "source": "ici_release_html",
+      "tna_billions": {
+        "Domestic equity": {
+          "active": 8301.1,
+          "index": 15413.4,
+          "index_pct": 65.0
+        },
+        "World equity": {
+          "active": 3384.9,
+          "index": 3473.5,
+          "index_pct": 50.6
+        },
+        "Hybrid": {
+          "active": 1773.5,
+          "index": 88.1,
+          "index_pct": 4.7
+        },
+        "Bond": {
+          "active": 5011.3,
+          "index": 3162.0,
+          "index_pct": 38.7
+        },
+        "Total": {
+          "active": 18470.8,
+          "index": 22137.1,
+          "index_pct": 54.5
+        },
+        "Commodities": {
+          "active": null,
+          "index": null,
+          "index_pct": null
+        }
+      },
+      "flows_millions": {
+        "Domestic equity": {
+          "active": -38064.0,
+          "index": 556.0
+        },
+        "World equity": {
+          "active": -5896.0,
+          "index": 17082.0
+        },
+        "Hybrid": {
+          "active": -6163.0,
+          "index": 1847.0
+        },
+        "Bond": {
+          "active": -6273.0,
+          "index": 41066.0
+        },
+        "Total": {
+          "active": -56396.0,
+          "index": 60550.0
+        },
+        "Commodities": {
+          "active": null,
+          "index": null
+        }
+      },
+      "fund_counts": {
+        "Domestic equity": {
+          "active": 4379.0,
+          "index": 1378.0
+        },
+        "World equity": {
+          "active": 1538.0,
+          "index": 703.0
+        },
+        "Hybrid": {
+          "active": 693.0,
+          "index": 33.0
+        },
+        "Bond": {
+          "active": 2367.0,
+          "index": 508.0
+        },
+        "Total": {
+          "active": 8977.0,
+          "index": 2622.0
         },
         "Commodities": {
           "active": null,

@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261031101250';
+} from '../utils.js?v=20261031111241';
 
 import {
   registerChart,
@@ -33,9 +33,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261031101250';
+} from '../chart-helpers.js?v=20261031111241';
 
-import { isMobile } from '../mobile.js?v=20261031101250';
+import { isMobile } from '../mobile.js?v=20261031111241';
 
 export function initPanelPrice(data, recessionData, centuryData, equalWeightData, drawdownData) {
   const chart = registerChart(echarts.init(document.getElementById('chartPrice')));
