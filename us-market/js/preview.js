@@ -9,9 +9,9 @@ import {
   initAaiiPanel,
   initNaaimPanel,
   initMiseryPanel,
-} from './panels/sentiment.js?v=20261031205426';
-import { initUsAssetLadderPanel } from './panels/us_asset_ladder.js?v=20261031205426';
-import { initExportButtons } from './export-png.js?v=20261031205426';
+} from './panels/sentiment.js?v=20261031220835';
+import { initUsAssetLadderPanel } from './panels/us_asset_ladder.js?v=20261031220835';
+import { initExportButtons } from './export-png.js?v=20261031220835';
 
 async function fetchJSON(url) {
   const res = await fetch(url);
@@ -22,18 +22,18 @@ async function fetchJSON(url) {
 async function main() {
   const tasks = [
     ['cnn', () => Promise.all([
-      fetchJSON('data/cnn_fear_greed.json?v=20261031205426'),
-      fetchJSON('data/sp500_price.json?v=20261031205426').catch(() => null),
+      fetchJSON('data/cnn_fear_greed.json?v=20261031220835'),
+      fetchJSON('data/sp500_price.json?v=20261031220835').catch(() => null),
     ]).then(([d, sp]) => initCnnFearGreedPanel(d, sp))],
-    ['aaii', () => fetchJSON('data/aaii_sentiment.json?v=20261031205426').then(initAaiiPanel)],
-    ['naaim', () => fetchJSON('data/naaim_exposure.json?v=20261031205426').then(initNaaimPanel)],
+    ['aaii', () => fetchJSON('data/aaii_sentiment.json?v=20261031220835').then(initAaiiPanel)],
+    ['naaim', () => fetchJSON('data/naaim_exposure.json?v=20261031220835').then(initNaaimPanel)],
     ['misery', () => Promise.all([
-      fetchJSON('data/us_misery_index.json?v=20261031205426'),
-      fetchJSON('data/us_recessions.json?v=20261031205426').catch(() => null),
+      fetchJSON('data/us_misery_index.json?v=20261031220835'),
+      fetchJSON('data/us_recessions.json?v=20261031220835').catch(() => null),
     ]).then(([d, r]) => initMiseryPanel(d, r))],
     ['usAssetLadder', () => Promise.all([
-      fetchJSON('data/us_asset_ladder.json?v=20261031205426'),
-      fetchJSON('data/us_recessions.json?v=20261031205426'),
+      fetchJSON('data/us_asset_ladder.json?v=20261031220835'),
+      fetchJSON('data/us_recessions.json?v=20261031220835'),
     ]).then(([d, r]) => initUsAssetLadderPanel(d, r))],
   ];
 
