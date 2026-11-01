@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261101093830">
-<link rel="stylesheet" href="css/chronicle.css?v=20261101093830">
-<script defer src="js/mobile-nav.js?v=20261101093830"></script>
+<link rel="stylesheet" href="style.css?v=20261101135351">
+<link rel="stylesheet" href="css/chronicle.css?v=20261101135351">
+<script defer src="js/mobile-nav.js?v=20261101135351"></script>
 </head>
 <body>
 
@@ -32,6 +32,7 @@
       <div class="nav-group active" data-category="sp500">
         <a class="nav-item active" href="#panel-price" data-panel="panel-price">Trend</a>
         <a class="nav-item" href="#panel-capitalism" data-panel="panel-capitalism">Growth Curves</a>
+        <a class="nav-item" href="#panel-us-asset-ladder" data-panel="panel-us-asset-ladder">Asset Classes</a>
         <a class="nav-item" href="#panel-cagr-paths" data-panel="panel-cagr-paths">Growth Paths</a>
         <a class="nav-item" href="#panel-bull-runs" data-panel="panel-bull-runs">Bull Runs</a>
         <a class="nav-item" href="#panel-sector-rs" data-panel="panel-sector-rs">Sub-Industries</a>
@@ -81,6 +82,12 @@
         <a class="nav-item" href="#panel-ndx-scatter" data-panel="panel-ndx-scatter">Scatter</a>
         <a class="nav-item" href="#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">Constituents</a>
         <a class="nav-item" href="#panel-ndx-sectors" data-panel="panel-ndx-sectors">Industry Mix</a>
+      </div>
+      <div class="nav-group" data-category="sentiment">
+        <a class="nav-item active" href="#panel-cnn-fg" data-panel="panel-cnn-fg">Fear &amp; Greed</a>
+        <a class="nav-item" href="#panel-aaii" data-panel="panel-aaii">AAII Retail</a>
+        <a class="nav-item" href="#panel-naaim" data-panel="panel-naaim">NAAIM</a>
+        <a class="nav-item" href="#panel-misery" data-panel="panel-misery">Misery</a>
       </div>
       <div class="nav-group" data-category="style-etf">
         <a class="nav-item active" href="#panel-style-etf" data-panel="panel-style-etf">Style ETFs</a>
@@ -153,6 +160,7 @@
     </a>
     <button class="category-tab active" data-category="sp500">S&amp;P 500</button>
     <button class="category-tab" data-category="cross">Nasdaq 100 &amp; Dow Jones</button>
+    <button class="category-tab" data-category="sentiment">Market Sentiment</button>
     <a class="category-tab" href="daily-overview.html" style="text-decoration:none;display:inline-flex;align-items:center" title="Daily gain/loss heatmap of the three indices">Daily Overview</a>
     <button class="category-tab" data-category="style-etf">Style ETFs</button>
     <button class="category-tab" data-category="flows">Fund Flows</button>
@@ -248,6 +256,23 @@
           <div id="cgrDetailContent" style="display:none"></div>
         </aside>
       </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-us-asset-ladder" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">Long-Run Gains of Major USD Asset Classes</h2>
+          <p class="panel-desc">1995-01 = 1 · Log scale · Monthly</p>
+          <p class="mini-desc">Six legs = home prices / S&amp;P 500 / Nasdaq-100 / gold / 10Y zero-coupon / nominal GDP · Gray bands = NBER recessions</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartUsAssetLadder" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartUsAssetLadder"></div>
+      <div class="metric-strip" id="usAssetLadderSummary"></div>
     </div>
   </section>
 
@@ -1234,6 +1259,115 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-cnn-fg" data-category="sentiment" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">CNN Fear &amp; Greed Index</h2>
+          <p class="panel-desc">CNN Business official methodology · 7 equal-weighted components · 0—100 · Daily since 2011</p>
+          <p class="mini-desc">S&amp;P 500 overlay (right axis) · Five bands from Extreme Fear (bottom) to Extreme Greed · Switch to current component scores</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group">
+            <button type="button" class="btn active" data-cnnfg-view="total">Composite</button>
+            <button type="button" class="btn" data-cnnfg-view="components">Components</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartCnnFg" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartCnnFg"></div>
+      <div class="metric-strip" id="cnnFgSummary"></div>
+      <div class="panel-explain">
+        <p>• The CNN Fear &amp; Greed Index combines seven key indicators: market momentum, stock price strength, stock price breadth, put/call options sentiment, market volatility, safe-haven demand and junk bond demand; each is scored separately and then averaged into the total score.</p>
+        <p>• 0 - 25 (Extreme Fear): investors are overly worried; this is often a buy signal after an oversold bounce.</p>
+        <p>• 25 - 45 (Fear): risk appetite is subdued and trading is relatively cautious.</p>
+        <p>• 45 - 55 (Neutral): bulls and bears are balanced, waiting for a catalyst to pick a direction.</p>
+        <p>• 55 - 75 (Greed): sentiment is buoyant and money is accelerating into riskier assets.</p>
+        <p>• 75 - 100 (Extreme Greed): the market is in a FOMO frenzy; beware of a pullback at any time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-aaii" data-category="sentiment" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">AAII US Individual Investor Sentiment</h2>
+          <p class="panel-desc">AAII weekly survey · Bullish / neutral / bearish shares · Since 1987 · Weekly</p>
+          <p class="mini-desc">Three-line ratio by default · Switch to the bull-bear spread</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group">
+            <button type="button" class="btn active" data-aaii-view="ratio">Three lines</button>
+            <button type="button" class="btn" data-aaii-view="spread">Bull-bear spread</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartAaii" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartAaii"></div>
+      <div class="metric-strip" id="aaiiSummary"></div>
+      <div class="panel-explain">
+        <p>• The AAII Investor Sentiment Survey has been published weekly since 1987 by the American Association of Individual Investors, measuring the share of retail investors who are bullish, neutral or bearish on US stocks over the next six months — one of the longest sentiment datasets in existence.</p>
+        <p>• Voting opens every Thursday 00:01 ET through the following Wednesday 23:59 ET; results are released on AAII's website each Thursday and published in Barron's.</p>
+        <p>• The historical average for bullish sentiment is about 37.5%; readings well above that (typically more than one standard deviation) signal warming retail optimism.</p>
+        <p>• The historical average for bearish sentiment is about 31%; persistently elevated readings, especially above 40%–45%, often coincide with market bottoms and subsequent rallies.</p>
+        <p>• The historical average for neutral sentiment is about 31.5%; high readings reflect wait-and-see uncertainty, while low readings often accompany a polarised market where investors are forced to pick a side.</p>
+        <p>• The bull-bear spread = bullish − bearish, with a historical average of about +6.5 percentage points; positive means optimism dominates, negative means pessimism dominates.</p>
+        <p>• AAII is often used as a contrarian indicator: extreme retail pessimism tends to mark bottoms and extreme optimism tends to mark tops. Since 1987, when bearish readings have been more than two standard deviations above the historical average, the S&amp;P 500 has typically delivered excess returns over the following 6–12 months.</p>
+        <p>• Sentiment data should not be used in isolation; combine it with quantitative screening, fundamentals and asset allocation.</p>
+        <p>• Unlike Investors Intelligence (which surveys investment newsletter editors and leans trend-following), AAII captures retail psychology, so extreme readings have higher contrarian value.</p>
+        <p>• The CNN Fear &amp; Greed Index aggregates seven market signals and leans short-term momentum; NAAIM measures active fund positioning, and high exposure combined with extreme AAII pessimism often marks institutional accumulation after retail panic.</p>
+        <p>• Used together they are more complete: AAII as a medium-term contrarian signal, Fear &amp; Greed for short-term sentiment, and NAAIM for professional positioning.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-naaim" data-category="sentiment" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">NAAIM Exposure Index: Active Managers' Mood</h2>
+          <p class="panel-desc">Average US equity exposure of active managers · -200%—200% · Weekly</p>
+          <p class="mini-desc">Dashed lines = interquartile range · Series ends 2026/07/29 (official feed now subscription-only)</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartNaaim" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartNaaim"></div>
+      <div class="metric-strip" id="naaimSummary"></div>
+      <div class="panel-explain">
+        <p>• Published by the National Association of Active Investment Managers, a weekly survey of members' average equity exposure.</p>
+        <p>• Values range from -200% to 200%. A reading of -200% means extreme panic and leveraged shorting.</p>
+        <p>• A reading of -100% means panic and fully short; 0% means the market is balanced between longs and shorts.</p>
+        <p>• A reading of 100% means strong optimism and fully invested.</p>
+        <p>• A reading of 200% means euphoria and leveraged long.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-misery" data-category="sentiment" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">US Misery Index</h2>
+          <p class="panel-desc">Unemployment + CPI YoY · FRED, seasonally adjusted · Since 1948 · Monthly</p>
+          <p class="mini-desc">Two stacked areas are the components, black line is the total · Gray bands = NBER recessions</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartMisery" title="Export PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartMisery"></div>
+      <div class="metric-strip" id="miserySummary"></div>
+      <div class="panel-explain">
+        <p>• The Misery Index is the sum of US CPI year-over-year growth and the unemployment rate, used to gauge the economic pressure on households.</p>
+        <p>• The higher the reading, the greater the combined inflation and unemployment burden — the more "miserable" people feel.</p>
+        <p>• The lower the reading, the healthier the economy and the more stable employment.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-style-etf" data-category="style-etf" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -1448,9 +1582,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261101093830"></script>
-<script type="module" src="js/panels.js?v=20261101093830"></script>
-<script defer src="js/hero-curve.js?v=20261101093830"></script>
+<script src="js/freshness.js?v=20261101135351"></script>
+<script type="module" src="js/panels.js?v=20261101135351"></script>
+<script defer src="js/hero-curve.js?v=20261101135351"></script>
 
 </body>
 </html>

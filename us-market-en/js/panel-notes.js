@@ -20,6 +20,7 @@ const BLOCK_SELECTORS = [
   '.chronicle-source',  // 编年史来源与口径行
   'p.mini-desc',        // 各面板的口径 / 更新时间小字行
   '.chart-band-note',   // 图下口径注
+  '.panel-explain',     // 面板说明正文（2026-11-01 老钱指令：市场情绪 / 大类资产说明全折进来）
 ];
 
 // 折叠区里的内容容器用 flex/网格布局才不塌，指标条沿用它自己的 .metric-strip 样式即可。

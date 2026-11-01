@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261101093830">
-<link rel="stylesheet" href="css/chronicle.css?v=20261101093830">
-<script defer src="js/mobile-nav.js?v=20261101093830"></script>
+<link rel="stylesheet" href="style.css?v=20261101135351">
+<link rel="stylesheet" href="css/chronicle.css?v=20261101135351">
+<script defer src="js/mobile-nav.js?v=20261101135351"></script>
 </head>
 <body>
 
@@ -32,6 +32,7 @@
       <div class="nav-group active" data-category="sp500">
         <a class="nav-item active" href="index.html#panel-price" data-panel="panel-price">走势</a>
         <a class="nav-item" href="index.html#panel-capitalism" data-panel="panel-capitalism">增速曲线</a>
+        <a class="nav-item" href="index.html#panel-us-asset-ladder" data-panel="panel-us-asset-ladder">大类资产</a>
         <a class="nav-item" href="index.html#panel-cagr-paths" data-panel="panel-cagr-paths">增速路径</a>
         <a class="nav-item" href="index.html#panel-bull-runs" data-panel="panel-bull-runs">九轮牛市</a>
         <a class="nav-item" href="index.html#panel-sector-rs" data-panel="panel-sector-rs">子行业强弱</a>
@@ -82,6 +83,12 @@
         <a class="nav-item" href="index.html#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">成分股</a>
         <a class="nav-item" href="index.html#panel-ndx-sectors" data-panel="panel-ndx-sectors">行业分布</a>
       </div>
+      <div class="nav-group" data-category="sentiment">
+        <a class="nav-item active" href="index.html#panel-cnn-fg" data-panel="panel-cnn-fg">恐惧贪婪</a>
+        <a class="nav-item" href="index.html#panel-aaii" data-panel="panel-aaii">AAII 散户</a>
+        <a class="nav-item" href="index.html#panel-naaim" data-panel="panel-naaim">NAAIM 仓位</a>
+        <a class="nav-item" href="index.html#panel-misery" data-panel="panel-misery">痛苦指数</a>
+      </div>
       <div class="nav-group" data-category="style-etf">
         <a class="nav-item active" href="index.html#panel-style-etf" data-panel="panel-style-etf">主流风格ETF</a>
         <a class="nav-item" href="index.html#panel-style-etf-scatter" data-panel="panel-style-etf-scatter">风险收益平面</a>
@@ -112,6 +119,7 @@
     </a>
     <button class="category-tab active" data-category="sp500">标普500</button>
     <button class="category-tab" data-category="cross">纳斯达克100与道琼斯</button>
+    <button class="category-tab" data-category="sentiment">市场情绪</button>
     <a class="category-tab" href="daily-overview.html" style="text-decoration:none;display:inline-flex;align-items:center" title="三大指数日度涨跌纵向热力图">日度全貌</a>
     <button class="category-tab" data-category="style-etf">风格ETF</button>
     <button class="category-tab" data-category="flows">资金流</button>
@@ -130,7 +138,7 @@
   <div class="summary-wrap">
     <div class="summary-head">
       <h1 class="summary-title">美股看板 · 汇总页</h1>
-      <p class="summary-sub">全部 59 个面板的缩略总览。点任意卡片跳转到对应看板。</p>
+      <p class="summary-sub">全部 64 个面板的缩略总览。点任意卡片跳转到对应看板。</p>
     </div>
     <div id="summaryGrid" class="summary-grid" aria-live="polite">
       <div class="summary-loading">加载中…</div>
@@ -158,7 +166,7 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261101093830"></script>
-<script type="module" src="js/summary.js?v=20261101093830"></script>
+<script src="js/freshness.js?v=20261101135351"></script>
+<script type="module" src="js/summary.js?v=20261101135351"></script>
 </body>
 </html>

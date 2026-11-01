@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rock+Salt&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-<link rel="stylesheet" href="style.css?v=20261101093830">
-<link rel="stylesheet" href="css/chronicle.css?v=20261101093830">
-<script defer src="js/mobile-nav.js?v=20261101093830"></script>
+<link rel="stylesheet" href="style.css?v=20261101135351">
+<link rel="stylesheet" href="css/chronicle.css?v=20261101135351">
+<script defer src="js/mobile-nav.js?v=20261101135351"></script>
 </head>
 <body>
 
@@ -32,6 +32,7 @@
       <div class="nav-group active" data-category="sp500">
         <a class="nav-item active" href="#panel-price" data-panel="panel-price">走势</a>
         <a class="nav-item" href="#panel-capitalism" data-panel="panel-capitalism">增速曲线</a>
+        <a class="nav-item" href="#panel-us-asset-ladder" data-panel="panel-us-asset-ladder">大类资产</a>
         <a class="nav-item" href="#panel-cagr-paths" data-panel="panel-cagr-paths">增速路径</a>
         <a class="nav-item" href="#panel-bull-runs" data-panel="panel-bull-runs">九轮牛市</a>
         <a class="nav-item" href="#panel-sector-rs" data-panel="panel-sector-rs">子行业强弱</a>
@@ -81,6 +82,12 @@
         <a class="nav-item" href="#panel-ndx-scatter" data-panel="panel-ndx-scatter">收益散点</a>
         <a class="nav-item" href="#panel-nasdaq100-companies" data-panel="panel-nasdaq100-companies">成分股</a>
         <a class="nav-item" href="#panel-ndx-sectors" data-panel="panel-ndx-sectors">行业分布</a>
+      </div>
+      <div class="nav-group" data-category="sentiment">
+        <a class="nav-item active" href="#panel-cnn-fg" data-panel="panel-cnn-fg">恐惧贪婪</a>
+        <a class="nav-item" href="#panel-aaii" data-panel="panel-aaii">AAII 散户</a>
+        <a class="nav-item" href="#panel-naaim" data-panel="panel-naaim">NAAIM 仓位</a>
+        <a class="nav-item" href="#panel-misery" data-panel="panel-misery">痛苦指数</a>
       </div>
       <div class="nav-group" data-category="style-etf">
         <a class="nav-item active" href="#panel-style-etf" data-panel="panel-style-etf">主流风格ETF</a>
@@ -153,6 +160,7 @@
     </a>
     <button class="category-tab active" data-category="sp500">标普500</button>
     <button class="category-tab" data-category="cross">纳斯达克100与道琼斯</button>
+    <button class="category-tab" data-category="sentiment">市场情绪</button>
     <a class="category-tab" href="daily-overview.html" style="text-decoration:none;display:inline-flex;align-items:center" title="三大指数日度涨跌纵向热力图">日度全貌</a>
     <button class="category-tab" data-category="style-etf">风格ETF</button>
     <button class="category-tab" data-category="flows">资金流</button>
@@ -249,6 +257,23 @@
           <div id="cgrDetailContent" style="display:none"></div>
         </aside>
       </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-us-asset-ladder" data-category="sp500" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">美元计价大类资产长期涨幅</h2>
+          <p class="panel-desc">1995-01 = 1 · 对数刻度 · 月频</p>
+          <p class="mini-desc">六条腿＝房价 / 标普500 / 纳指100 / 黄金 / 10Y 美债零息价 / 名义 GDP · 灰带为 NBER 衰退期</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartUsAssetLadder" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartUsAssetLadder"></div>
+      <div class="metric-strip" id="usAssetLadderSummary"></div>
     </div>
   </section>
 
@@ -1252,6 +1277,115 @@
     </div>
   </section>
 
+  <section class="panel" id="panel-cnn-fg" data-category="sentiment" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">CNN 恐惧贪婪指数</h2>
+          <p class="panel-desc">CNN Business 官方口径 · 7 分项等权合成 · 0—100 · 2011 年至今日频</p>
+          <p class="mini-desc">叠加标普500（右轴）· 底色自下而上五档：极度恐惧→极度贪婪 · 可切七分项当前分数</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group">
+            <button type="button" class="btn active" data-cnnfg-view="total">综合指数</button>
+            <button type="button" class="btn" data-cnnfg-view="components">七分项</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartCnnFg" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartCnnFg"></div>
+      <div class="metric-strip" id="cnnFgSummary"></div>
+      <div class="panel-explain">
+        <p>• CNN 恐惧贪婪指数综合 7 项关键指标：市场动能、股价强度、股价宽度、期权情绪、市场波动率、避险需求和垃圾债需求；每项单独打分后再取平均值得到总分。</p>
+        <p>• 0 - 25（极度恐惧）：投资者过度担忧，常为市场超卖反弹的买入信号。</p>
+        <p>• 25 - 45（恐惧）：风险偏好受限，交投相对谨慎。</p>
+        <p>• 45 - 55（中性）：多空博弈均衡，等待催化剂选择方向。</p>
+        <p>• 55 - 75（贪婪）：市场情绪昂扬，资金加速流入高风险资产。</p>
+        <p>• 75 - 100（极度贪婪）：市场处于 FOMO 狂热状态，需防范随时回调风险。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-aaii" data-category="sentiment" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">AAII 美国个人投资者情绪指数</h2>
+          <p class="panel-desc">AAII 周度调查 · 看涨/中性/看跌占比 · 1987 至今 · 周频</p>
+          <p class="mini-desc">默认三线比例 · 可切牛熊价差</p>
+        </div>
+        <div class="panel-controls">
+          <div class="btn-group">
+            <button type="button" class="btn active" data-aaii-view="ratio">三线比例</button>
+            <button type="button" class="btn" data-aaii-view="spread">牛熊价差</button>
+          </div>
+          <button class="btn btn-export" data-chart="chartAaii" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartAaii"></div>
+      <div class="metric-strip" id="aaiiSummary"></div>
+      <div class="panel-explain">
+        <p>• AAII投资者情绪调查自1987年起由美国个人投资者协会每周发布，衡量散户对未来六个月美股走势看涨、中性、看跌的比例，是历史最长的情绪数据集之一。</p>
+        <p>• 调查每周四 00:01 至下周三 23:59（美东时间）开放投票，结果于周四在 AAII 官网更新，并刊于《巴伦周刊》。</p>
+        <p>• 看涨情绪历史均值约 37.5%；显著高于均值（通常超过一个标准差）表明散户乐观升温。</p>
+        <p>• 看跌情绪历史均值约 31%；持续偏高、尤其超过 40%–45% 时，常与市场底部及随后反弹重合。</p>
+        <p>• 中性情绪历史均值约 31.5%；偏高反映观望与不确定性，偏低则常伴随市场两极分化、投资者被迫选边。</p>
+        <p>• 牛熊价差 = 看涨 − 看跌，历史均值约 +6.5 个百分点；正值表示乐观占优，负值表示悲观占优。</p>
+        <p>• AAII 常被用作反向指标：散户极度悲观往往接近底部，极度乐观往往接近顶部；1987 年以来，看跌读数高于历史均值两个标准差以上时，随后 6–12 个月标普 500 常有超额回报。</p>
+        <p>• 情绪数据不宜单独使用，宜结合量化筛选、基本面与资产配置综合判断。</p>
+        <p>• 与 Investors Intelligence（调查投顾通讯编辑、偏顺势）不同，AAII 刻画散户心理，极端读数的反向参考价值更高。</p>
+        <p>• CNN 恐惧贪婪指数聚合七项市场信号、偏短线动量；NAAIM 衡量主动基金仓位，高仓位叠加 AAII 极度看跌往往对应机构吸筹、散户恐慌后的修复。</p>
+        <p>• 三者合用更完整：AAII 作中期反向信号，恐惧贪婪作短线情绪，NAAIM 读专业资金仓位。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-naaim" data-category="sentiment" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">NAAIM 暴露指数：美国主动性基金经理的情绪</h2>
+          <p class="panel-desc">主动管理人美股敞口均值 · -200%—200% · 周频</p>
+          <p class="mini-desc">虚线为四分位区间 · 序列截至 2026/07/29（官方已转订阅制）</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartNaaim" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartNaaim"></div>
+      <div class="metric-strip" id="naaimSummary"></div>
+      <div class="panel-explain">
+        <p>• 由美国主动投资经理协会发布，每周调查成员机构的平均股票敞口比例。</p>
+        <p>• 数值在-200%～200%之间变动，当数值达到-200%时代表市场极度恐慌，正在杠杆做空。</p>
+        <p>• 当数值达到-100%时代表市场恐慌中，正在完全做空，当数值达到0%时代表市场处于多空平衡的状态。</p>
+        <p>• 当数值达到100%时代表市场非常乐观，正在完全投资。</p>
+        <p>• 当数值达到200%时代表市场处于狂热中，正在杠杆做多。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="panel-misery" data-category="sentiment" hidden>
+    <div class="panel-inner">
+      <div class="panel-header">
+        <div>
+          <h2 class="panel-title">美国痛苦指数</h2>
+          <p class="panel-desc">失业率 + CPI 同比 · FRED 季调 · 1948 至今 · 月频</p>
+          <p class="mini-desc">两层面积为两个分量，黑线为合计 · 灰带为 NBER 衰退期</p>
+        </div>
+        <div class="panel-controls">
+          <button class="btn btn-export" data-chart="chartMisery" title="导出PNG">&#8681;</button>
+        </div>
+      </div>
+      <div class="chart-container chart-standard" id="chartMisery"></div>
+      <div class="metric-strip" id="miserySummary"></div>
+      <div class="panel-explain">
+        <p>• 痛苦指数由美国CPI同比增速与失业率相加得出，用于衡量一国经济中民众所承受的经济压力。</p>
+        <p>• 数值越高，代表通胀与失业的双重压力越大，民众生活越"痛苦"。</p>
+        <p>• 数值越低，代表经济越健康、就业越稳定。</p>
+      </div>
+    </div>
+  </section>
+
   <section class="panel" id="panel-style-etf" data-category="style-etf" hidden>
     <div class="panel-inner">
       <div class="panel-header">
@@ -1466,9 +1600,9 @@
   </div>
 </footer>
 
-<script src="js/freshness.js?v=20261101093830"></script>
-<script type="module" src="js/panels.js?v=20261101093830"></script>
-<script defer src="js/hero-curve.js?v=20261101093830"></script>
+<script src="js/freshness.js?v=20261101135351"></script>
+<script type="module" src="js/panels.js?v=20261101135351"></script>
+<script defer src="js/hero-curve.js?v=20261101135351"></script>
 
 </body>
 </html>

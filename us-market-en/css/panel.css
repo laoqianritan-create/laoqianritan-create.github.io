@@ -1247,3 +1247,13 @@ a.tr-dist-cell:hover {
 .panel-notes[open] summary::before { content: '▾ '; }
 .panel-notes summary:hover { color: var(--accent); }
 .panel-notes > *:not(summary) { margin-top: 10px; }
+
+/* ─── Panel explainer body (2026-11-01: all notes folded into Panel notes) ─── */
+.panel-explain {
+  margin-top: 12px;
+  font-size: 12.5px;
+  color: var(--gray);
+  line-height: 1.75;
+}
+.panel-explain p { margin: 0 0 5px; }
+.panel-explain p:last-child { margin-bottom: 0; }
