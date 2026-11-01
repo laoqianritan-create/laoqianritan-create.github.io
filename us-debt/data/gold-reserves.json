@@ -1,14 +1,14 @@
 {
-  "updated": "2026-10-31T01:42:30Z",
+  "updated": "2026-11-01T01:42:48Z",
   "source": "IMF IRFCL (open API, no login)",
   "source_url": "https://data.imf.org/ (IRFCL, Reserve Assets, open API)",
   "method": "imf-irfcl",
   "data_as_of": "per-country latest (2021-Q3 ~ 2026-Q3)",
   "note": "季度时序 = WGC 历史底座 + IMF IRFCL API 逐季续新（9 个命名国，免登录）；快照 = IMF IRFCL 开放 API 每国最新可得期（免登录，每日自动）；WGC 登录仅用于前移全域「其他」桶截止季与全量167国，非必需：重跑 login_wgc.py",
   "snapshot_buckets": {
-    "其他": 31384.0
+    "其他": 31447.9
   },
-  "snapshot_total_tons": 31384.0,
+  "snapshot_total_tons": 31447.9,
   "all_countries": [
     {
       "country": "United States",
@@ -28,7 +28,7 @@
     },
     {
       "country": "China",
-      "tons": 2346.4
+      "tons": 2409.6
     },
     {
       "country": "Russia",
@@ -68,7 +68,7 @@
     },
     {
       "country": "Kazakhstan",
-      "tons": 368.4
+      "tons": 381.9
     },
     {
       "country": "Saudi Arabia",
@@ -96,7 +96,7 @@
     },
     {
       "country": "Singapore",
-      "tons": 203.7
+      "tons": 203.6
     },
     {
       "country": "BRA",
@@ -104,7 +104,7 @@
     },
     {
       "country": "KOS",
-      "tons": 160.0
+      "tons": 146.3
     },
     {
       "country": "PHL",
@@ -148,7 +148,7 @@
     },
     {
       "country": "IDN",
-      "tons": 87.0
+      "tons": 87.1
     },
     {
       "country": "AUS",
@@ -179,11 +179,11 @@
       "tons": 53.9
     },
     {
-      "country": "Finland",
-      "tons": 43.9
+      "country": "MYS",
+      "tons": 44.8
     },
     {
-      "country": "MYS",
+      "country": "Finland",
       "tons": 43.9
     },
     {
