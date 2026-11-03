@@ -1260,9 +1260,18 @@ a.tr-dist-cell:hover {
 
 /* ─── 看板分享按钮（2026-11-03 ch.138）─── */
 /* 每个面板标题旁一个「复制链接」，复制出去的是 /p/<slug>/，带自己的 title/og，
-   这样知识星球等平台解析出来是看板名而不是全站名 Big Picture。 */
+   这样知识星球等平台解析出来是看板名而不是全站名 Big Picture。
+   按钮必须留在 .panel-title 外面（导出 PNG 时标题取 h2 的 textContent，
+   放进去会变成「美国痛苦指数 复制链接」），用 .panel-title-row 保持同一行。 */
+.panel-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+.panel-title-row .panel-title { min-width: 0; }
 .panel-share-btn {
-  margin-left: 10px;
   padding: 1px 8px;
   font-size: 12px;
   font-weight: 500;
@@ -1272,7 +1281,7 @@ a.tr-dist-cell:hover {
   border: 1px solid var(--border);
   border-radius: 4px;
   cursor: pointer;
-  vertical-align: 4px;
+  white-space: nowrap;
   transition: color .15s, border-color .15s, background .15s;
 }
 .panel-share-btn:hover {

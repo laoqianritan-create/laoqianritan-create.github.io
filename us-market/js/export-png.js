@@ -3,8 +3,8 @@
 // 标题 + 描述（panel-desc）+ 日期 + 内容居中 + footer URL 水印
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261103105358';
-import { chartInstances } from './chart-helpers.js?v=20261103105358';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261103110611';
+import { chartInstances } from './chart-helpers.js?v=20261103110611';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // 两侧留白
@@ -49,10 +49,20 @@ function wrapDescLines(descs, maxWidth, fontSize) {
   return lines;
 }
 
+// 取元素里的纯标题文字，剔除运行时注入的控件（分享按钮等）。
+// 2026-11-03 老钱报障：导出的 PNG 标题变成「美国痛苦指数 复制链接」——
+// 分享按钮一旦落进 .panel-title，textContent 就会把它当成标题。
+export function panelTitleText(el) {
+  if (!el) return '';
+  const clone = el.cloneNode(true);
+  clone.querySelectorAll('.panel-share-btn, button').forEach(n => n.remove());
+  return clone.textContent.trim();
+}
+
 // 从 panel 抽出标题 + 所有 .panel-desc 文本
 function getPanelMeta(panelEl) {
   if (!panelEl) return { title: 'Big Picture', descs: [] };
-  const title = panelEl.querySelector('.panel-title')?.textContent.trim() || 'Big Picture';
+  const title = panelTitleText(panelEl.querySelector('.panel-title')) || 'Big Picture';
   const descs = [...panelEl.querySelectorAll('.panel-desc')]
     .map(p => p.innerText.trim().replace(/\s+/g, ' '))
     .filter(Boolean);

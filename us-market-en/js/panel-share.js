@@ -79,8 +79,14 @@
           () => window.prompt(L.manual, url)
         );
       });
-      title.appendChild(document.createTextNode(' '));
-      title.appendChild(btn);
+      // 按钮必须挂在 h2 外面（2026-11-03 老钱报障：导出的 PNG 标题变成
+      // 「美国痛苦指数 复制链接」）。导出逻辑取 .panel-title 的 textContent，
+      // 按钮留在 h2 里就会被当成标题的一部分。用一层 row 保住同一行的位置。
+      const row = document.createElement('div');
+      row.className = 'panel-title-row';
+      title.parentNode.insertBefore(row, title);
+      row.appendChild(title);
+      row.appendChild(btn);
     });
   }
 
@@ -90,8 +96,7 @@
     const panel = document.getElementById(panelId);
     const h2 = panel && panel.querySelector('.panel-title');
     if (!h2) return;
-    const btn = h2.querySelector('.panel-share-btn');
-    const text = (btn ? h2.textContent.replace(btn.textContent, '') : h2.textContent).trim();
+    const text = h2.textContent.trim();
     document.title = text ? text + ' · ' + BASE_TITLE : BASE_TITLE;
   }
 

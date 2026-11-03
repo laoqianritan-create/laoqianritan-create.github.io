@@ -3,8 +3,8 @@
 // Title + description (panel-desc) + date + centered content + footer URL watermark
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261103105358';
-import { chartInstances } from './chart-helpers.js?v=20261103105358';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261103110611';
+import { chartInstances } from './chart-helpers.js?v=20261103110611';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // Horizontal padding
@@ -52,10 +52,20 @@ function wrapDescLines(descs, maxWidth, fontSize) {
   return lines;
 }
 
+// Title text without runtime-injected controls (share button etc.).
+// 2026-11-03: exported PNG title wrongly included "Copy link" once the
+// share button was injected inside .panel-title.
+export function panelTitleText(el) {
+  if (!el) return '';
+  const clone = el.cloneNode(true);
+  clone.querySelectorAll('.panel-share-btn, button').forEach(n => n.remove());
+  return clone.textContent.trim();
+}
+
 // Pull the title + all .panel-desc text from a panel
 function getPanelMeta(panelEl) {
   if (!panelEl) return { title: 'Big Picture', descs: [] };
-  const title = panelEl.querySelector('.panel-title')?.textContent.trim() || 'Big Picture';
+  const title = panelTitleText(panelEl.querySelector('.panel-title')) || 'Big Picture';
   const descs = [...panelEl.querySelectorAll('.panel-desc')]
     .map(p => p.innerText.trim().replace(/\s+/g, ' '))
     .filter(Boolean);

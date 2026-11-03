@@ -7,8 +7,8 @@
 //         follows the active quote, so short quotes don't sit in a tall empty box.
 // Data: data/bofa_longest_pictures_quotes.json (manually maintained, cf. sp500_rules.json).
 
-import { escapeHtml } from '../utils.js?v=20261103105358';
-import { exportQuoteAsPng } from '../export-png.js?v=20261103105358';
+import { escapeHtml } from '../utils.js?v=20261103110611';
+import { exportQuoteAsPng, panelTitleText } from '../export-png.js?v=20261103110611';
 
 export function initPanelQuotes(data) {
   const listEl = document.getElementById('quotesScroller');
@@ -162,7 +162,7 @@ export function initPanelQuotes(data) {
   applyTransform(false);
 
   // ── Per-page export button: exports this page (the button itself never enters the image) ──
-  const panelTitle = document.querySelector('#panel-quotes .panel-title')?.textContent.trim() || 'The Long Run in Words';
+  const panelTitle = panelTitleText(document.querySelector('#panel-quotes .panel-title')) || 'The Long Run in Words';
   listEl.querySelectorAll('.quote-export').forEach(btn => {
     btn.addEventListener('click', ev => {
       ev.preventDefault();
