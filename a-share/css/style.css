@@ -392,3 +392,31 @@ body {
 }
 .buy-sim-panel .panel-body canvas,
 .hold-win-panel .panel-body canvas { display: block; width: 100%; height: auto; }
+
+/* ─── 看板分享按钮（2026-11-03）─── */
+/* 每个面板右上角一个「复制看板链接」，复制出去的是 /p/<slug>/，带自己的 title/og，
+   知识星球等平台解析出来就是面板名，而不是整站名。
+   位置固定在 .panel-actions 内、下载按钮左边：.panel-title 的文本是导出 PNG 的标题，
+   任何控件都不能进 h2。 */
+.btn-share {
+  width: 34px; height: 34px; padding: 0; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; color: var(--ink);
+  border: 1px solid #D8D8D2; border-radius: 6px;
+  cursor: pointer;
+  transition: background .18s, color .18s, border-color .18s, transform .12s;
+}
+.btn-share:hover {
+  background: var(--ink); color: #fff; border-color: var(--ink);
+  transform: translateY(-1px);
+}
+.btn-share svg { width: 16px; height: 16px; display: block; }
+
+.share-toast {
+  position: fixed; left: 50%; bottom: 40px; transform: translateX(-50%);
+  padding: 9px 16px; background: rgba(26, 26, 26, .92); color: #fff;
+  font: 13px/1.5 "PingFang SC", "Noto Sans SC", sans-serif;
+  border-radius: 6px; z-index: 9999; opacity: 0;
+  transition: opacity .18s; pointer-events: none;
+}
+.share-toast.show { opacity: 1; }

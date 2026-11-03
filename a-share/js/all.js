@@ -186,8 +186,11 @@
           const panel = btn.closest('.panel') || btn.closest('section');
           const tEl = panel && panel.querySelector('.panel-title');
           const dEl = panel && panel.querySelector('.panel-desc');
+          // 标题里可能被注入控件（分享按钮等），克隆后剔除，避免导出的 PNG 标题带上按钮文案
+          const tClone = tEl ? tEl.cloneNode(true) : null;
+          if (tClone) tClone.querySelectorAll('.btn-share, button').forEach((n) => n.remove());
           const meta = {
-            title: tEl ? tEl.textContent.trim() : '',
+            title: tClone ? tClone.textContent.trim() : '',
             desc: dEl ? dEl.textContent.trim() : '',
             source: '数据来源：A股看板 · ashare.laoqianriritan.com'
           };
