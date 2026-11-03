@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-02",
+  "updated": "2026-11-03",
   "ticker": "^NDX",
   "drawdowns": [
     {
@@ -451,6 +451,20 @@
       "recovery_date": "2018-06-04"
     },
     {
+      "period": "2026: Oct 6 – Nov 2",
+      "peak_date": "2026-10-06",
+      "trough_date": "2026-11-02",
+      "days": 27,
+      "high": 31224.47,
+      "low": 27989.82,
+      "decline": -0.104,
+      "category": "narrative_break",
+      "cause": "",
+      "active": true,
+      "recovery_days": null,
+      "recovery_date": null
+    },
+    {
       "period": "1995: Sep 11 – Oct 9",
       "peak_date": "1995-09-11",
       "trough_date": "1995-10-09",
@@ -505,20 +519,6 @@
       "active": false,
       "recovery_days": 20,
       "recovery_date": "1998-06-23"
-    },
-    {
-      "period": "2026: Oct 6 – Oct 30",
-      "peak_date": "2026-10-06",
-      "trough_date": "2026-10-30",
-      "days": 24,
-      "high": 31224.47,
-      "low": 28384.85,
-      "decline": -0.091,
-      "category": "mechanical_scare",
-      "cause": "",
-      "active": true,
-      "recovery_days": null,
-      "recovery_date": null
     },
     {
       "period": "1999: Oct 11 – Oct 18",
