@@ -1257,3 +1257,42 @@ a.tr-dist-cell:hover {
 }
 .panel-explain p { margin: 0 0 5px; }
 .panel-explain p:last-child { margin-bottom: 0; }
+
+/* ─── 看板分享按钮（2026-11-03 ch.138）─── */
+/* 每个面板标题旁一个「复制链接」，复制出去的是 /p/<slug>/，带自己的 title/og，
+   这样知识星球等平台解析出来是看板名而不是全站名 Big Picture。 */
+.panel-share-btn {
+  margin-left: 10px;
+  padding: 1px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  vertical-align: 4px;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.panel-share-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+.panel-share-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  padding: 9px 16px;
+  background: rgba(26, 26, 26, .9);
+  color: #fff;
+  font-size: 13px;
+  border-radius: 6px;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity .18s;
+  pointer-events: none;
+}
+.panel-share-toast.show { opacity: 1; }
