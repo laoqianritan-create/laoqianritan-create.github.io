@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-03T09:37:38",
+  "updated": "2026-11-04T01:51:31",
   "base_date": "1995-01-28",
   "latest_date": "2026-08-28",
   "anchor_date": "2026-07-28",
@@ -10,7 +10,7 @@
     "gold": "2026-10",
     "t10y": "2026-10"
   },
-  "gold_mode": "fallback-gcf",
+  "gold_mode": "macrotrends",
   "latest": {
     "housing": {
       "date": "2026-08",
@@ -26,7 +26,7 @@
     },
     "gold": {
       "date": "2026-08",
-      "gain_pct": 1065.4
+      "gain_pct": 1075.9
     },
     "t10y": {
       "date": "2026-08",
@@ -37,7 +37,7 @@
       "gain_pct": 338.8
     }
   },
-  "caliber": "六条腿均为 1995-01=1 的累计倍数（对数轴），当前端点 2026-08：房价+320.8% / 标普500+1533.9% / 纳指100+7167.4% / 黄金+1065.4% / 10Y零息价+30.8% / 名义GDP+338.8%。端点月=六腿公共最新月（房价腿 CSUSHPINSA 发布滞后约 3 个月，是短板，端点由它决定）。历史对拍基准 2026-07：房价+321.5% / 标普500+1492.1% / 纳指100+6875.6% / 黄金+968.0% / 名义GDP+332.9%（该月及之前的历史不允许漂移，超容差即拒写）。房价=FRED CSUSHPINSA（季调月频）；标普/纳指=本地月末收盘（价格指数，不含股息）；黄金=主源失效，降级：1995-01~2026-08 用已入库 Macrotrends 名义月价，2026-09~2026-11 用 COMEX 黄金期货（GC=F）月末收盘，拼接校准系数 k=0.0026；10Y 美债=按 DGS10 月末收益率反推的 10 年期零息国债价格近似 100/(1+r)^10（免费源无 1995 起完整 10Y 总回报指数，用户确认接受近似口径，不含票息）；GDP=FRED 名义 GDP（季频年化，季值前向填充到月；基准月及之前沿用建面板口径，其后按「季首月 < 该月」的最近一季）。衰退灰带=本地 us_recessions.json（NBER/FRED USREC）。",
+  "caliber": "六条腿均为 1995-01=1 的累计倍数（对数轴），当前端点 2026-08：房价+320.8% / 标普500+1533.9% / 纳指100+7167.4% / 黄金+1075.9% / 10Y零息价+30.8% / 名义GDP+338.8%。端点月=六腿公共最新月（房价腿 CSUSHPINSA 发布滞后约 3 个月，是短板，端点由它决定）。历史对拍基准 2026-07：房价+321.5% / 标普500+1492.1% / 纳指100+6875.6% / 黄金+968.0% / 名义GDP+332.9%（该月及之前的历史不允许漂移，超容差即拒写）。房价=FRED CSUSHPINSA（季调月频）；标普/纳指=本地月末收盘（价格指数，不含股息）；黄金=Macrotrends 1333 iframe 名义月价（close1，1915 起）；聊天记录 +975% 为 LBMA 月均口径，本面板与之差约 7pp；10Y 美债=按 DGS10 月末收益率反推的 10 年期零息国债价格近似 100/(1+r)^10（免费源无 1995 起完整 10Y 总回报指数，用户确认接受近似口径，不含票息）；GDP=FRED 名义 GDP（季频年化，季值前向填充到月；基准月及之前沿用建面板口径，其后按「季首月 < 该月」的最近一季）。衰退灰带=本地 us_recessions.json（NBER/FRED USREC）。",
   "source": {
     "housing": {
       "name": "FRED CSUSHPINSA (Case-Shiller National, seasonally adjusted, monthly)",
@@ -52,8 +52,8 @@
       "file": "ndx_price.json"
     },
     "gold": {
-      "name": "已入库 Macrotrends 历史 + COMEX 黄金期货 GC=F 月末收盘（拼接校准）",
-      "url": "https://finance.yahoo.com/quote/GC=F"
+      "name": "Macrotrends nominal gold price (1333, monthly)",
+      "url": "https://www.macrotrends.net/1333/historical-gold-prices-100-year-chart"
     },
     "t10y": {
       "name": "FRED DGS10 (10-year Treasury yield, month-end) → zero-coupon price approximation",
@@ -3485,7 +3485,7 @@
       "housing": 4.207842,
       "sp500": 16.338889,
       "ndx": 72.674043,
-      "gold": 11.653751,
+      "gold": 11.758799,
       "t10y": 1.307924,
       "gdp": 4.388297
     }
