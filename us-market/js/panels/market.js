@@ -2,7 +2,8 @@
 
 import {
   CHART_FONT,
-  AXIS_END_2028_TS,
+  getAxisEndNextYearTS,
+  buildQuarterTicks,
   cssVar,
   formatNumber,
   formatPercent,
@@ -10,7 +11,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261104111549';
+} from '../utils.js?v=20261104123227';
 
 import {
   registerChart,
@@ -32,9 +33,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261104111549';
+} from '../chart-helpers.js?v=20261104123227';
 
-import { isMobile } from '../mobile.js?v=20261104111549';
+import { isMobile } from '../mobile.js?v=20261104123227';
 
 export function initPanelM7(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartM7')));
@@ -94,18 +95,30 @@ export function initPanelM7(data) {
       };
     });
     const latestIndexPoint = data.indexSeries[data.indexSeries.length - 1];
+    // X 轴右端＝下一年年末（t+1），跨年自动推进，不写死年份
+    const axisEnd = getAxisEndNextYearTS();
+    // 纵向参考线：自然季度（1/4/7/10 月 1 日），从数据起点一直铺到轴右端。
+    // mobile 375px 下季度线间距只有 12px 会糊成一片，降级为年线（每年 1 月 1 日）。
+    const gridTicks = buildQuarterTicks(
+      new Date(data.indexSeries[0].date).getTime(),
+      axisEnd,
+    ).filter(ts => !mobile || new Date(ts).getMonth() === 0);
+    const gridLines = gridTicks.map(ts => ({ xAxis: ts }));
+    // legend 显式列出 8 条数据线，避免「季度参考线」占一个图例位
+    const legendNames = ['M7 指数', ...data.members.map(member => member.ticker)];
 
     return {
       animation: false,
       // right 留白：desktop 下 8 条线 + M7 指数的右侧 markPoint 标签（最长如「M7 指数 +250%」约 110px）
-      // 叠加 x 轴 max=2028 的最右刻度标签，统一给到 130。mobile 下 markPoint 已禁用，仅给 2028 刻度留位。
+      // 叠加 x 轴右端（t+1 年末）的刻度标签，统一给到 130。mobile 下 markPoint 已禁用，只留刻度位。
       grid: mobile ? { left: 48, right: 24, top: 30, bottom: 60 } : { left: 60, right: 130, top: 30, bottom: 60 },
       legend: getLineLegendConfig({
         type: 'scroll',
+        data: legendNames,
       }),
       xAxis: {
         type: 'time',
-        max: AXIS_END_2028_TS,
+        max: axisEnd,
         axisLabel: { fontSize: mobile ? 10 : 11, color: grayColor, fontFamily: CHART_FONT, hideOverlap: true },
         splitLine: { show: false },
       },
@@ -150,6 +163,24 @@ export function initPanelM7(data) {
           z: 5,
         },
         ...memberSeries,
+        // 时间参考线（季度线／mobile 年线）：z:0 铺在所有数据线之下，只作时间标尺，不进 tooltip、不进图例
+        {
+          name: '时间参考线',
+          type: 'line',
+          data: [],
+          silent: true,
+          tooltip: { show: false },
+          markLine: {
+            silent: true,
+            symbol: 'none',
+            animation: false,
+            label: { show: false },
+            emphasis: { disabled: true },
+            lineStyle: { color: cssVar('--border') || '#e8e8e8', width: 1, type: 'solid' },
+            data: gridLines,
+          },
+          z: 0,
+        },
       ],
       tooltip: {
         trigger: 'axis',

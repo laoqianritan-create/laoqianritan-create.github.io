@@ -7,6 +7,26 @@ export const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
 export const DATA_VERSION = Date.now();
 export const AXIS_END_2028_TS = new Date('2028-12-31').getTime();
 
+// X 轴右端＝「下一个自然年年末」（t+1 年 12 月 31 日），不写死年份：
+// 2026-11 打开 → 2027-12-31；2027-01 打开 → 2028-12-31。
+export function getAxisEndNextYearTS(now = new Date()) {
+  return new Date(now.getFullYear() + 1, 11, 31).getTime();
+}
+
+// 自然季度刻度：每年 1/4/7/10 月 1 日里落在 (startTS, endTS] 的全部时间戳，供纵向参考线使用。
+export function buildQuarterTicks(startTS, endTS) {
+  const ticks = [];
+  const startYear = new Date(startTS).getFullYear();
+  const endYear = new Date(endTS).getFullYear();
+  for (let year = startYear; year <= endYear; year++) {
+    for (let quarter = 0; quarter < 4; quarter++) {
+      const ts = new Date(year, quarter * 3, 1).getTime();
+      if (ts > startTS && ts <= endTS) ticks.push(ts);
+    }
+  }
+  return ticks;
+}
+
 export function fetchJSON(url) {
   const sep = url.includes('?') ? '&' : '?';
   return fetch(`${url}${sep}v=${DATA_VERSION}`).then(response => {
