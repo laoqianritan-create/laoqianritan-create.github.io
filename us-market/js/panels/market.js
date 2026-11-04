@@ -11,7 +11,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261104123227';
+} from '../utils.js?v=20261104165414';
 
 import {
   registerChart,
@@ -20,7 +20,7 @@ import {
   getDataZoom,
   buildThresholdAreas,
   buildSingleMarkPoint,
-  resolveMarkPointOverlaps,
+  layoutMarkPointLabelsPx,
   buildRecessionAreas,
   buildRecessionOverlaySeries,
   getLineLegendConfig,
@@ -33,9 +33,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261104123227';
+} from '../chart-helpers.js?v=20261104165414';
 
-import { isMobile } from '../mobile.js?v=20261104123227';
+import { isMobile } from '../mobile.js?v=20261104165414';
 
 export function initPanelM7(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartM7')));
@@ -75,21 +75,15 @@ export function initPanelM7(data) {
           type: 'solid',
         },
         markPoint: (!mobile && latestPoint) ? {
-          data: [(() => {
-            const mp = buildSingleMarkPoint(
+          data: [
+            buildSingleMarkPoint(
               latestPoint[0],
               latestPoint[1],
               `${labelName} ${formatPercent(latestPoint[1] - 100, 1)}`,
               color,
               'right',
-            );
-            // META 值长期贴近 GOOGL，通用防重叠算法不够用，预先把 META 标签下推
-            if (mp && member.ticker === 'META') {
-              mp.label = mp.label || {};
-              mp.label.offset = [0, 20];
-            }
-            return mp;
-          })()],
+            ),
+          ],
         } : undefined,
         z: 2,
       };
@@ -203,9 +197,36 @@ export function initPanelM7(data) {
     };
   }
 
-  const m7OverlapOpts = { yAxis: 'log', chartHeight: 420, minGapPx: 18 };
-  chart.setOption(resolveMarkPointOverlaps(getOption(), m7OverlapOpts));
-  chart._refreshTheme = () => chart.setOption(resolveMarkPointOverlaps(getOption(), m7OverlapOpts), true);
+  // 右侧最新值标签：必须两趟渲染。第一趟正常布局，第二趟按 convertToPixel 拿到的
+  // 真实像素位置把 8 个标签从上到下（＝数值从高到低）单列排开，保证不重叠。
+  // 不能再用 resolveMarkPointOverlaps 的估算值：对数轴 extent 会被圆整到 10~1000，
+  // 按「数据极差 ÷ 固定画布高」算出来的间距只有实际的一半，标签照样糊在一起。
+  const m7LabelOpts = { minGapPx: 18, edgePadPx: 8 };
+
+  function renderM7(notMerge = false) {
+    const option = getOption();
+    chart.setOption(option, notMerge);
+    if (option.series.some(s => s.markPoint)) {
+      layoutMarkPointLabelsPx(chart, option, m7LabelOpts);
+      chart.setOption({ series: option.series });
+    }
+  }
+
+  // 只重算标签位置：不动 dataZoom 缩放和图例勾选
+  function relayoutM7Labels() {
+    const option = chart.getOption();
+    layoutMarkPointLabelsPx(chart, option, m7LabelOpts);
+    chart.setOption({ series: option.series });
+  }
+
+  renderM7();
+  chart._refreshTheme = () => renderM7(true);
+
+  let relayoutRaf = 0;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(relayoutRaf);
+    relayoutRaf = requestAnimationFrame(relayoutM7Labels);
+  });
 
   const strongest = data.members.slice().sort((a, b) => b.returnPct - a.returnPct)[0];
   const weakest = data.members.slice().sort((a, b) => a.returnPct - b.returnPct)[0];

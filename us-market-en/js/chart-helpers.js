@@ -3,7 +3,7 @@
 // Depends on utils (cssVar, escapeHtml, CHART_FONT) and the global echarts
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, CHART_FONT } from './utils.js?v=20261104123227';
+import { cssVar, escapeHtml, CHART_FONT } from './utils.js?v=20261104165414';
 
 // Registry of all chart instances; used for redraw / resize on theme changes
 export const chartInstances = [];
@@ -164,6 +164,90 @@ export function resolveMarkPointOverlaps(option, opts = {}) {
       curr.label.offset = [existingDx, existingDy + dy];
     }
   }
+
+  return option;
+}
+
+/**
+ * Stack markPoint labels top-to-bottom using real pixel coordinates so they never overlap.
+ *
+ * Why not resolveMarkPointOverlaps: that one estimates pixels from "data range / fixed
+ * canvas height". On a log axis ECharts rounds the extent up to whole orders of magnitude
+ * (e.g. 10~1000 instead of the data range) and the estimate ends up ~2x off, so labels
+ * still collide. This reads the actual position from chart.convertToPixel instead, which
+ * is exact for any axis type and any chart height.
+ *
+ * Two passes are required (pixel positions only exist after the first layout):
+ *   chart.setOption(option);                       // pass 1: normal layout
+ *   layoutMarkPointLabelsPx(chart, option, opts);  // mutates label.offset in place
+ *   chart.setOption({ series: option.series });    // pass 2: apply offsets
+ *
+ * @param {Object} chart - echarts instance (already laid out once)
+ * @param {Object} option - option object matching the current chart (mutated in place)
+ * @param {Object} [opts] - { minGapPx = 16, edgePadPx = 8 }
+ * @returns {Object} the same option object
+ */
+export function layoutMarkPointLabelsPx(chart, option, opts = {}) {
+  if (!chart || !option || !Array.isArray(option.series)) return option;
+
+  const MIN_GAP = opts.minGapPx ?? 16;
+  const EDGE_PAD = opts.edgePadPx ?? 8;
+
+  const entries = [];
+  for (const s of option.series) {
+    if (!s.markPoint || !Array.isArray(s.markPoint.data)) continue;
+    for (const mp of s.markPoint.data) {
+      if (mp && mp.coord && Number.isFinite(mp.value)) entries.push(mp);
+    }
+  }
+  if (entries.length < 2) return option;
+
+  // Plot area bounds; fall back to the whole canvas if the internal rect is unavailable
+  let rectTop = 0;
+  let rectBottom = chart.getHeight();
+  try {
+    const rect = chart.getModel().getComponent('grid').coordinateSystem.getRect();
+    if (rect && rect.height > 0) {
+      rectTop = rect.y;
+      rectBottom = rect.y + rect.height;
+    }
+  } catch (e) {
+    /* keep the fallback */
+  }
+
+  const rows = [];
+  for (const mp of entries) {
+    const x = mp.coord[0];
+    const ts = x instanceof Date ? x.getTime() : (typeof x === 'number' ? x : new Date(x).getTime());
+    const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [ts, mp.value]);
+    if (px && Number.isFinite(px[1])) rows.push({ mp, py: px[1] });
+  }
+  if (rows.length < 2) return option;
+
+  // Top to bottom; ties broken by higher value so the order is stable
+  rows.sort((a, b) => (a.py - b.py) || (b.mp.value - a.mp.value));
+
+  const lo = Math.ceil(rectTop + EDGE_PAD);
+  const hi = Math.floor(rectBottom - EDGE_PAD);
+  const avail = Math.max(hi - lo, 0);
+  // If there are too many labels to fit, share the available height evenly - never overlap
+  const gap = Math.max(1, Math.min(MIN_GAP, Math.floor(avail / Math.max(rows.length - 1, 1))));
+
+  const cys = rows.map(r => Math.round(r.py));
+  for (let i = 1; i < cys.length; i++) cys[i] = Math.max(cys[i], cys[i - 1] + gap);
+  if (cys[cys.length - 1] > hi) {
+    cys[cys.length - 1] = hi;
+    for (let i = cys.length - 2; i >= 0; i--) cys[i] = Math.min(cys[i], cys[i + 1] - gap);
+  }
+  for (let i = 0; i < cys.length; i++) cys[i] = Math.max(cys[i], lo);
+
+  rows.forEach((row, i) => {
+    if (!row.mp.label) row.mp.label = {};
+    const old = Array.isArray(row.mp.label.offset) ? row.mp.label.offset : [0, 0];
+    // Keep the offset fractional: the final anchor is py + offset, which lands exactly on
+    // the integer cys[i]. Rounding the offset would leave a .2~.8 remainder and jitter the gaps.
+    row.mp.label.offset = [old[0] || 0, cys[i] - row.py];
+  });
 
   return option;
 }

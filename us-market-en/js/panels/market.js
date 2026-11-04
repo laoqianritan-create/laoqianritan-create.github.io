@@ -11,7 +11,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261104123227';
+} from '../utils.js?v=20261104165414';
 
 import {
   registerChart,
@@ -20,7 +20,7 @@ import {
   getDataZoom,
   buildThresholdAreas,
   buildSingleMarkPoint,
-  resolveMarkPointOverlaps,
+  layoutMarkPointLabelsPx,
   buildRecessionAreas,
   buildRecessionOverlaySeries,
   getLineLegendConfig,
@@ -33,9 +33,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261104123227';
+} from '../chart-helpers.js?v=20261104165414';
 
-import { isMobile } from '../mobile.js?v=20261104123227';
+import { isMobile } from '../mobile.js?v=20261104165414';
 
 export function initPanelM7(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartM7')));
@@ -75,21 +75,15 @@ export function initPanelM7(data) {
           type: 'solid',
         },
         markPoint: (!mobile && latestPoint) ? {
-          data: [(() => {
-            const mp = buildSingleMarkPoint(
+          data: [
+            buildSingleMarkPoint(
               latestPoint[0],
               latestPoint[1],
               `${labelName} ${formatPercent(latestPoint[1] - 100, 1)}`,
               color,
               'right',
-            );
-            // META values hug GOOGL over the long run; the generic overlap-resolver is not enough, so nudge META down preemptively
-            if (mp && member.ticker === 'META') {
-              mp.label = mp.label || {};
-              mp.label.offset = [0, 20];
-            }
-            return mp;
-          })()],
+            ),
+          ],
         } : undefined,
         z: 2,
       };
@@ -202,9 +196,36 @@ export function initPanelM7(data) {
     };
   }
 
-  const m7OverlapOpts = { yAxis: 'log', chartHeight: 420, minGapPx: 18 };
-  chart.setOption(resolveMarkPointOverlaps(getOption(), m7OverlapOpts));
-  chart._refreshTheme = () => chart.setOption(resolveMarkPointOverlaps(getOption(), m7OverlapOpts), true);
+  // Latest-value labels need two render passes: pass 1 lays out normally, pass 2 stacks the
+  // eight labels top-to-bottom using the real pixel position from convertToPixel, so they
+  // can never overlap. The old resolveMarkPointOverlaps estimate was ~2x off here because
+  // the log axis extent gets rounded to 10~1000, not the data range.
+  const m7LabelOpts = { minGapPx: 18, edgePadPx: 8 };
+
+  function renderM7(notMerge = false) {
+    const option = getOption();
+    chart.setOption(option, notMerge);
+    if (option.series.some(s => s.markPoint)) {
+      layoutMarkPointLabelsPx(chart, option, m7LabelOpts);
+      chart.setOption({ series: option.series });
+    }
+  }
+
+  // Recompute label positions only: keeps dataZoom range and legend selection intact
+  function relayoutM7Labels() {
+    const option = chart.getOption();
+    layoutMarkPointLabelsPx(chart, option, m7LabelOpts);
+    chart.setOption({ series: option.series });
+  }
+
+  renderM7();
+  chart._refreshTheme = () => renderM7(true);
+
+  let relayoutRaf = 0;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(relayoutRaf);
+    relayoutRaf = requestAnimationFrame(relayoutM7Labels);
+  });
 
   const strongest = data.members.slice().sort((a, b) => b.returnPct - a.returnPct)[0];
   const weakest = data.members.slice().sort((a, b) => a.returnPct - b.returnPct)[0];

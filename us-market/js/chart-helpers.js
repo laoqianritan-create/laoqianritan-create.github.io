@@ -3,7 +3,7 @@
 // 依赖 utils（cssVar, escapeHtml, CHART_FONT）和全局 echarts
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, CHART_FONT } from './utils.js?v=20261104123227';
+import { cssVar, escapeHtml, CHART_FONT } from './utils.js?v=20261104165414';
 
 // 所有 chart 实例注册表，用于主题切换时重绘 / resize
 export const chartInstances = [];
@@ -164,6 +164,90 @@ export function resolveMarkPointOverlaps(option, opts = {}) {
       curr.label.offset = [existingDx, existingDy + dy];
     }
   }
+
+  return option;
+}
+
+/**
+ * 把 markPoint 标签按真实像素坐标从上到下单列排开，保证互不重叠。
+ *
+ * 与 resolveMarkPointOverlaps 的区别：后者用「数据极差 ÷ 固定画布高」估算像素，
+ * 遇到对数轴（ECharts 会自动把 extent 圆整到整量级，如 10~1000 而非数据区间）
+ * 或窗口高度变化时误差可达两倍以上，标签依然会糊在一起。本函数直接读
+ * chart.convertToPixel 的实际像素位置，任何轴型、任何窗口尺寸都准确。
+ *
+ * 调用顺序（必须两趟，因为像素坐标要在首次布局之后才拿得到）：
+ *   chart.setOption(option);                       // 第一趟：正常布局
+ *   layoutMarkPointLabelsPx(chart, option, opts);  // 就地改写 label.offset
+ *   chart.setOption({ series: option.series });    // 第二趟：应用偏移
+ *
+ * @param {Object} chart - echarts 实例（已完成一次 setOption）
+ * @param {Object} option - 与当前图表一致的 option 对象（就地修改）
+ * @param {Object} [opts] - { minGapPx = 16, edgePadPx = 8 }
+ * @returns {Object} 同一个 option 对象
+ */
+export function layoutMarkPointLabelsPx(chart, option, opts = {}) {
+  if (!chart || !option || !Array.isArray(option.series)) return option;
+
+  const MIN_GAP = opts.minGapPx ?? 16;
+  const EDGE_PAD = opts.edgePadPx ?? 8;
+
+  const entries = [];
+  for (const s of option.series) {
+    if (!s.markPoint || !Array.isArray(s.markPoint.data)) continue;
+    for (const mp of s.markPoint.data) {
+      if (mp && mp.coord && Number.isFinite(mp.value)) entries.push(mp);
+    }
+  }
+  if (entries.length < 2) return option;
+
+  // 绘图区上下边界（拿不到内部 rect 时退回整个画布高度）
+  let rectTop = 0;
+  let rectBottom = chart.getHeight();
+  try {
+    const rect = chart.getModel().getComponent('grid').coordinateSystem.getRect();
+    if (rect && rect.height > 0) {
+      rectTop = rect.y;
+      rectBottom = rect.y + rect.height;
+    }
+  } catch (e) {
+    /* 落在兜底值上 */
+  }
+
+  const rows = [];
+  for (const mp of entries) {
+    const x = mp.coord[0];
+    const ts = x instanceof Date ? x.getTime() : (typeof x === 'number' ? x : new Date(x).getTime());
+    const px = chart.convertToPixel({ xAxisIndex: 0, yAxisIndex: 0 }, [ts, mp.value]);
+    if (px && Number.isFinite(px[1])) rows.push({ mp, py: px[1] });
+  }
+  if (rows.length < 2) return option;
+
+  // 从上到下；同一像素高度时按数值降序，保证顺序稳定
+  rows.sort((a, b) => (a.py - b.py) || (b.mp.value - a.mp.value));
+
+  const lo = Math.ceil(rectTop + EDGE_PAD);
+  const hi = Math.floor(rectBottom - EDGE_PAD);
+  const avail = Math.max(hi - lo, 0);
+  // 标签太多、纵向放不下时按可用高度均分，绝不允许互相压盖。
+  // 间距取整，保证落到整数像素上仍严格大于一个字高，不会出现 15.4px 这种擦边值。
+  const gap = Math.max(1, Math.min(MIN_GAP, Math.floor(avail / Math.max(rows.length - 1, 1))));
+
+  const cys = rows.map(r => Math.round(r.py));
+  for (let i = 1; i < cys.length; i++) cys[i] = Math.max(cys[i], cys[i - 1] + gap);
+  if (cys[cys.length - 1] > hi) {
+    cys[cys.length - 1] = hi;
+    for (let i = cys.length - 2; i >= 0; i--) cys[i] = Math.min(cys[i], cys[i + 1] - gap);
+  }
+  for (let i = 0; i < cys.length; i++) cys[i] = Math.max(cys[i], lo);
+
+  rows.forEach((row, i) => {
+    if (!row.mp.label) row.mp.label = {};
+    const old = Array.isArray(row.mp.label.offset) ? row.mp.label.offset : [0, 0];
+    // 偏移量保留小数：标签最终落点是 py + offset，正好等于整数 cys[i]，
+    // 比把 offset 取整更准（取整会让落点带 .2~.8 的小数，间距在 15.4~16.6 之间抖）。
+    row.mp.label.offset = [old[0] || 0, cys[i] - row.py];
+  });
 
   return option;
 }
