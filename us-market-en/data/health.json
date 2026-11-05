@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05 10:10:45",
+  "generated_at": "2026-11-05 11:02:18",
   "today": "2026-11-05",
   "overall": "warn",
   "stale_count": 2,
@@ -45,11 +45,11 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-11-03",
-      "days_old": 2,
+      "updated": "2026-11-04",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-03"
+        "series": "2026-11-04"
       }
     },
     {
@@ -65,7 +65,7 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "Growth paths (TR vs price)",
-      "updated": "2026-11-05T10:05:04",
+      "updated": "2026-11-05T10:58:01",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -75,7 +75,7 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "Bull markets since 1966",
-      "updated": "2026-11-05T10:05:04",
+      "updated": "2026-11-05T10:58:01",
       "days_old": 0,
       "status": "fresh"
     },
@@ -92,11 +92,11 @@
     {
       "file": "buffett.json",
       "label": "Buffett Indicator",
-      "updated": "2026-11-03",
-      "days_old": 2,
+      "updated": "2026-11-04",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-03"
+        "series": "2026-11-04"
       }
     },
     {
@@ -174,7 +174,7 @@
     {
       "file": "cnn_fear_greed.json",
       "label": "CNN Fear & Greed Index",
-      "updated": "2026-11-05T10:07:52+08:00",
+      "updated": "2026-11-05T10:59:54+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -184,7 +184,7 @@
     {
       "file": "aaii_sentiment.json",
       "label": "AAII Individual Investor Sentiment",
-      "updated": "2026-11-05T10:08:30+08:00",
+      "updated": "2026-11-05T11:00:05+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -194,7 +194,7 @@
     {
       "file": "naaim_exposure.json",
       "label": "NAAIM Exposure Index",
-      "updated": "2026-11-05T10:08:30+08:00",
+      "updated": "2026-11-05T11:00:05+08:00",
       "days_old": 0,
       "status": "stale",
       "series_end": {
@@ -210,7 +210,7 @@
     {
       "file": "us_misery_index.json",
       "label": "US Misery Index",
-      "updated": "2026-11-05T10:08:45+08:00",
+      "updated": "2026-11-05T11:00:24+08:00",
       "days_old": 0,
       "status": "stale",
       "series_end": {
