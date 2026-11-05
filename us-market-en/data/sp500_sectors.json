@@ -1,16 +1,16 @@
 {
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
   "source": {
     "name": "State Street SPDR S&P 500 ETF Trust",
     "url": "https://finance.yahoo.com/quote/SPY/holdings",
-    "note": "Index Sector Breakdown as of 2026-11-04"
+    "note": "Index Sector Breakdown as of 2026-11-05"
   },
   "sectors": [
     {
       "id": "information-technology",
       "name": "Information Technology",
       "english": "Information Technology",
-      "weight": 40.45,
+      "weight": 38.23,
       "color": "#2563eb",
       "examples": [
         "NVIDIA",
@@ -23,7 +23,7 @@
       "id": "financials",
       "name": "Financials",
       "english": "Financials",
-      "weight": 11.2,
+      "weight": 12.03,
       "color": "#0f766e",
       "examples": [
         "Berkshire Hathaway",
@@ -33,23 +33,10 @@
       "note": "Insurance, payments, and banks form the second-largest block."
     },
     {
-      "id": "communication-services",
-      "name": "Communication Services",
-      "english": "Communication Services",
-      "weight": 9.95,
-      "color": "#7c3aed",
-      "examples": [
-        "Alphabet",
-        "Meta",
-        "Netflix"
-      ],
-      "note": "Concentrated in ad platforms and internet media."
-    },
-    {
       "id": "health-care",
       "name": "Health Care",
       "english": "Health Care",
-      "weight": 9.26,
+      "weight": 10.25,
       "color": "#dc2626",
       "examples": [
         "Eli Lilly",
@@ -62,7 +49,7 @@
       "id": "consumer-discretionary",
       "name": "Consumer Discretionary",
       "english": "Consumer Discretionary",
-      "weight": 8.74,
+      "weight": 9.19,
       "color": "#f97316",
       "examples": [
         "Amazon",
@@ -72,10 +59,23 @@
       "note": "Platform consumption, autos, and home improvement are core drivers."
     },
     {
+      "id": "communication-services",
+      "name": "Communication Services",
+      "english": "Communication Services",
+      "weight": 8.42,
+      "color": "#7c3aed",
+      "examples": [
+        "Alphabet",
+        "Meta",
+        "Netflix"
+      ],
+      "note": "Concentrated in ad platforms and internet media."
+    },
+    {
       "id": "industrials",
       "name": "Industrials",
       "english": "Industrials",
-      "weight": 7.54,
+      "weight": 7.61,
       "color": "#475569",
       "examples": [
         "GE Aerospace",
@@ -88,7 +88,7 @@
       "id": "consumer-staples",
       "name": "Consumer Staples",
       "english": "Consumer Staples",
-      "weight": 4.33,
+      "weight": 4.88,
       "color": "#65a30d",
       "examples": [
         "Walmart",
@@ -101,7 +101,7 @@
       "id": "energy",
       "name": "Energy",
       "english": "Energy",
-      "weight": 3.4,
+      "weight": 3.91,
       "color": "#b45309",
       "examples": [
         "Exxon Mobil",
@@ -114,7 +114,7 @@
       "id": "utilities",
       "name": "Utilities",
       "english": "Utilities",
-      "weight": 1.88,
+      "weight": 2.09,
       "color": "#0891b2",
       "examples": [
         "NextEra Energy",
@@ -127,7 +127,7 @@
       "id": "real-estate",
       "name": "Materials",
       "english": "Real Estate",
-      "weight": 1.7,
+      "weight": 1.8,
       "color": "#ec4899",
       "examples": [
         "Prologis",
@@ -140,7 +140,7 @@
       "id": "materials",
       "name": "Real Estate",
       "english": "Materials",
-      "weight": 1.56,
+      "weight": 1.58,
       "color": "#9333ea",
       "examples": [
         "Linde",

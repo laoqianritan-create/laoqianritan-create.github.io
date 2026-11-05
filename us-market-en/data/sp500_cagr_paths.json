@@ -1,17 +1,17 @@
 {
-  "updated": "2026-11-04T09:51:14",
-  "latest_date": "2026-11-03",
+  "updated": "2026-11-05T10:05:04",
+  "latest_date": "2026-11-04",
   "base_date": "1935-12-31",
   "latest": {
-    "date": "2026-11-03",
-    "price": 563.583,
-    "tr": 12369.49,
+    "date": "2026-11-04",
+    "price": 572.4959,
+    "tr": 12564.93,
     "dividend_yield": 1.05,
     "yield_asof": "2026-10-31"
   },
   "cagr": {
-    "price": 7.22,
-    "tr": 10.93,
+    "price": 7.24,
+    "tr": 10.95,
     "years": 90.8
   },
   "caliber": "Price index = local sp500_price month-end close ÷ Dec 1935 close (Dec 1935 = 1); total return = self-computed monthly dividend reinvestment using multpl/Shiller monthly dividend yields (TTM). Cross-checks: annual total returns 1988+ differ from ^SP500TR by 0.10–0.14pp on average, and 1936–2025 from Damodaran by 0.32pp. The gap vs the 17,194 shown on Yardeni/LSEG's chart is their proprietary caliber, not reproducible from public sources.",
@@ -5487,9 +5487,9 @@
       "t": 12376.78
     },
     {
-      "date": "2026-11-03",
-      "p": 563.583,
-      "t": 12369.49
+      "date": "2026-11-04",
+      "p": 572.4959,
+      "t": 12564.93
     }
   ]
 }
