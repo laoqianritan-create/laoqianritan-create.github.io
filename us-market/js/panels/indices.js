@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261106112011';
+} from '../utils.js?v=20261106163749';
 
 import {
   registerChart,
@@ -32,9 +32,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261106112011';
+} from '../chart-helpers.js?v=20261106163749';
 
-import { isMobile } from '../mobile.js?v=20261106112011';
+import { isMobile } from '../mobile.js?v=20261106163749';
 
 export function initPanelVix(priceData, vixData, recessionData, opts = {}) {
   const chartId = opts.chartId || 'chartVix';
@@ -472,7 +472,10 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
     });
 
     // 第二遍：筛标注 → 同类内做"距离 + 翻转"双轴错开
-    const ovKey = p => (p.seg.extreme || p.seg.end).date.slice(0, 7);
+    // 键必须用 markPoint 极值月（prepared.extremeDate），不能用 seg.end：
+    // 进行中牛市若已从峰值回撤，end 会漂移到最新月，导致 panels.js 里按峰值月写的 override 全部失效，
+    // 末段再被 stagger 推到 +xOff 就会从右边界裁切（2026-11 现场：峰值 2026-05，ovKey 误成 2026-11）。
+    const ovKey = p => p.extremeDate.slice(0, 7);
     const labeled = prepared.filter(p => {
       const ov = labelOverrides[ovKey(p)];
       if (ov?.force) return true;
@@ -507,6 +510,19 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
     stagger(labeled.filter(p => p.isBull), 'top');
     stagger(labeled.filter(p => !p.isBull), 'bottom');
 
+    // 右缘保护：距序列末 <24 个月的标注禁止保留正 xOff（stagger 往右推会出框）。
+    // override 仍可在下一遍覆盖为更精确的手工坐标。
+    const seriesEndMs = new Date(ordered[ordered.length - 1].date).getTime();
+    const RIGHT_EDGE_MONTHS = 24;
+    for (const p of labeled) {
+      if (!p.placement) continue;
+      const monthsFromEnd = (seriesEndMs - new Date(p.extremeDate).getTime())
+        / (30.4375 * 24 * 3600 * 1000);
+      if (monthsFromEnd < RIGHT_EDGE_MONTHS && p.placement.xOff > 0) {
+        p.placement.xOff = -p.placement.xOff;
+      }
+    }
+
     // 第三遍补丁：override 直接覆盖自动 stagger 的 placement
     // ov.position 可显式指定 'top'/'bottom'，比如 1935 熊市要打到曲线上方
     for (const p of labeled) {
@@ -527,6 +543,7 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
         type: 'line',
         data: segData,
         showSymbol: false,
+        clip: false,  // 段末标签允许画进 grid 边距，避免右/上硬裁
         lineStyle: { width: 1.4, color: isBull ? BULL_STROKE : BEAR_STROKE },
         areaStyle: {
           origin: 0,

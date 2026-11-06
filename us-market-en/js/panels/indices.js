@@ -10,7 +10,7 @@ import {
   escapeHtml,
   buildRollingAnnualizedSeries,
   buildLogYoySeries,
-} from '../utils.js?v=20261106112011';
+} from '../utils.js?v=20261106163749';
 
 import {
   registerChart,
@@ -32,9 +32,9 @@ import {
   hideAnnualizedMatrixTooltip,
   positionAnnualizedMatrixTooltip,
   bindAnnualizedMatrixTooltip,
-} from '../chart-helpers.js?v=20261106112011';
+} from '../chart-helpers.js?v=20261106163749';
 
-import { isMobile } from '../mobile.js?v=20261106112011';
+import { isMobile } from '../mobile.js?v=20261106163749';
 
 export function initPanelVix(priceData, vixData, recessionData, opts = {}) {
   const chartId = opts.chartId || 'chartVix';
@@ -472,7 +472,11 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
     });
 
     // Pass 2: select labels → within same mode, stagger via "distance + flip" on both axes
-    const ovKey = p => (p.seg.extreme || p.seg.end).date.slice(0, 7);
+    // ovKey must use the markPoint extreme month (prepared.extremeDate), not seg.end:
+    // for an ongoing bull that has pulled back from its peak, end drifts to the latest month and
+    // peak-month overrides in panels.js miss; stagger then pushes +xOff and the label clips on the right
+    // (repro 2026-11: peak 2026-05, ovKey wrongly became 2026-11).
+    const ovKey = p => p.extremeDate.slice(0, 7);
     const labeled = prepared.filter(p => {
       const ov = labelOverrides[ovKey(p)];
       if (ov?.force) return true;
@@ -507,6 +511,19 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
     stagger(labeled.filter(p => p.isBull), 'top');
     stagger(labeled.filter(p => !p.isBull), 'bottom');
 
+    // Right-edge guard: labels within 24 months of series end must not keep a positive xOff
+    // (stagger pushing right clips past the chart edge). Overrides below may still refine.
+    const seriesEndMs = new Date(ordered[ordered.length - 1].date).getTime();
+    const RIGHT_EDGE_MONTHS = 24;
+    for (const p of labeled) {
+      if (!p.placement) continue;
+      const monthsFromEnd = (seriesEndMs - new Date(p.extremeDate).getTime())
+        / (30.4375 * 24 * 3600 * 1000);
+      if (monthsFromEnd < RIGHT_EDGE_MONTHS && p.placement.xOff > 0) {
+        p.placement.xOff = -p.placement.xOff;
+      }
+    }
+
     // Pass 3 patch: overrides directly replace the auto-staggered placement
     // ov.position can explicitly set 'top'/'bottom' (e.g. the 1935 bear label needs to sit above the curve)
     for (const p of labeled) {
@@ -527,6 +544,7 @@ export function initLogYoyPanel(containerId, data, seriesName, labelOverrides = 
         type: 'line',
         data: segData,
         showSymbol: false,
+        clip: false,  // allow end labels into grid padding (avoid hard clip)
         lineStyle: { width: 1.4, color: isBull ? BULL_STROKE : BEAR_STROKE },
         areaStyle: {
           origin: 0,

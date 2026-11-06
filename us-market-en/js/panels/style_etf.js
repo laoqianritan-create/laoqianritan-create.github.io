@@ -4,8 +4,8 @@
 // View: 10Y rolling window, base = 100 (log scale) + 6-column stats table
 // ══════════════════════════════════════════════════════
 
-import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT, AXIS_END_2028_TS } from '../utils.js?v=20261106112011';
-import { registerChart, getDataZoom, buildSingleMarkPoint, resolveMarkPointOverlaps, getLineLegendConfig } from '../chart-helpers.js?v=20261106112011';
+import { cssVar, escapeHtml, formatCompactNumber, formatPercent, CHART_FONT, AXIS_END_2028_TS } from '../utils.js?v=20261106163749';
+import { registerChart, getDataZoom, buildSingleMarkPoint, resolveMarkPointOverlaps, getLineLegendConfig } from '../chart-helpers.js?v=20261106163749';
 
 function isMobile() {
   return typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
