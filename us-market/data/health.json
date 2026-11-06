@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-06 09:49:07",
+  "generated_at": "2026-11-06 11:20:11",
   "today": "2026-11-06",
   "overall": "warn",
   "stale_count": 1,
@@ -45,11 +45,11 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-11-04",
-      "days_old": 2,
+      "updated": "2026-11-05",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-04"
+        "series": "2026-11-05"
       }
     },
     {
@@ -75,7 +75,7 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
-      "updated": "2026-11-06T09:47:34",
+      "updated": "2026-11-06T11:15:37",
       "days_old": 0,
       "status": "fresh"
     },
@@ -92,11 +92,11 @@
     {
       "file": "buffett.json",
       "label": "巴菲特指标",
-      "updated": "2026-11-04",
-      "days_old": 2,
+      "updated": "2026-11-05",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-04"
+        "series": "2026-11-05"
       }
     },
     {
@@ -174,7 +174,7 @@
     {
       "file": "cnn_fear_greed.json",
       "label": "CNN 恐惧贪婪指数",
-      "updated": "2026-11-06T09:48:24+08:00",
+      "updated": "2026-11-06T11:17:15+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -184,7 +184,7 @@
     {
       "file": "aaii_sentiment.json",
       "label": "AAII 个人投资者情绪",
-      "updated": "2026-11-06T09:48:26+08:00",
+      "updated": "2026-11-06T11:18:28+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -194,7 +194,7 @@
     {
       "file": "naaim_exposure.json",
       "label": "NAAIM 暴露指数",
-      "updated": "2026-11-06T09:48:26+08:00",
+      "updated": "2026-11-06T11:18:28+08:00",
       "days_old": 0,
       "status": "stale",
       "series_end": {
