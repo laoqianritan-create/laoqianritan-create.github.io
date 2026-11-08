@@ -243,6 +243,18 @@
       "elapsed_sec": null,
       "started_at": null,
       "error": null
+    },
+    {
+      "name": "fed-core",
+      "ok": true,
+      "critical": false,
+      "panels": [
+        "fed-*"
+      ],
+      "latest_data": "2026-11-08",
+      "elapsed_sec": null,
+      "started_at": null,
+      "error": null
     }
   ],
   "summary": {
