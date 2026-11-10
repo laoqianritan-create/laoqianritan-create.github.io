@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-10T09:44:45+08:00",
-  "latest_date": "2026-09-01",
+  "updated": "2026-11-10T22:42:51+08:00",
+  "latest_date": "2026-10-01",
   "caliber": "Misery Index = CPI YoY (CPIAUCSL, SA, computed 12-month change) + unemployment rate (UNRATE, SA); both are percentages and are added directly. Monthly; dates are the first of the month per FRED's monthly convention.",
   "source": {
     "name": "FRED · CPIAUCSL / UNRATE (computed)",
@@ -8,18 +8,18 @@
     "unrate": "https://fred.stlouisfed.org/series/UNRATE"
   },
   "latest": {
-    "date": "2026-09-01",
-    "cpi_yoy": 4.02,
-    "unrate": 4.2,
-    "misery": 8.22,
-    "year_ago": 7.24,
-    "percentile": 47.7,
+    "date": "2026-10-01",
+    "cpi_yoy": 4.08,
+    "unrate": 4.1,
+    "misery": 8.18,
+    "year_ago": 7.42,
+    "percentile": 46.7,
     "peak": {
       "date": "1980-05-01",
       "value": 21.93
     }
   },
-  "average": 9.18,
+  "average": 9.17,
   "series": [
     {
       "date": "1948-01-01",
@@ -5684,6 +5684,12 @@
       "cpi_yoy": 4.02,
       "unrate": 4.2,
       "misery": 8.22
+    },
+    {
+      "date": "2026-10-01",
+      "cpi_yoy": 4.08,
+      "unrate": 4.1,
+      "misery": 8.18
     }
   ]
 }

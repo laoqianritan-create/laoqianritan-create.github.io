@@ -3,8 +3,8 @@
 // 标题 + 描述（panel-desc）+ 日期 + 内容居中 + footer URL 水印
 // ══════════════════════════════════════════════════════
 
-import { cssVar, getCurrentPageUrl } from './utils.js?v=20261110220823';
-import { chartInstances } from './chart-helpers.js?v=20261110220823';
+import { cssVar, getCurrentPageUrl } from './utils.js?v=20261110224324';
+import { chartInstances } from './chart-helpers.js?v=20261110224324';
 
 const EXPORT_W = 3300;
 const PAD = 80;                    // 两侧留白
