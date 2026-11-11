@@ -2,11 +2,11 @@
   "series_id": "T10YIE",
   "friendly": "breakeven_10y",
   "source": "FRED",
-  "fetched": "2026-11-10",
-  "count": 5968,
+  "fetched": "2026-11-11",
+  "count": 5969,
   "latest": {
-    "date": "2026-11-09",
-    "value": 2.22
+    "date": "2026-11-10",
+    "value": 2.2
   },
   "data": [
     {
@@ -23880,6 +23880,10 @@
     {
       "date": "2026-11-09",
       "value": 2.22
+    },
+    {
+      "date": "2026-11-10",
+      "value": 2.2
     }
   ]
 }
