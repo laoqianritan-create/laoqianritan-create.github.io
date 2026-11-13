@@ -1,4 +1,4 @@
-import { fetchJSON } from './utils.js?v=20261113154240';
+import { fetchJSON } from './utils.js?v=187f93bb7f';
 
 // site/js/hero-curve.js · Big Picture 顶部 hero banner 动态曲线
 // 渲染 SP500 1928+ 月线对数走势 SVG + 6 个历史事件标记 + 实时数据徽章
@@ -26,8 +26,8 @@ import { fetchJSON } from './utils.js?v=20261113154240';
   const PAD_Y = 12;
 
   Promise.all([
-    fetchJSON('data/sp500_century.json?v=20261113154240').catch(() => null),
-    fetchJSON('data/sp500_pe.json?v=20261113154240').catch(() => null),
+    fetchJSON('data/sp500_century.json?v=b84b25164a').catch(() => null),
+    fetchJSON('data/sp500_pe.json?v=525f45cb03').catch(() => null),
   ])
     .then(([centuryPayload, pePayload]) => {
       const series = (centuryPayload?.series || [])

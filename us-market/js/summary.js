@@ -8,9 +8,9 @@
 // 迷你图用页面已载入的 ECharts，剥掉坐标轴/图例/tooltip，进入视口才实例化（懒渲染）。
 // ══════════════════════════════════════════════════════
 
-import { fetchJSON, waitForEcharts, fillChartMessage } from './utils.js?v=20261113154240';
+import { fetchJSON, waitForEcharts, fillChartMessage } from './utils.js?v=187f93bb7f';
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261113154240';
+const DATA_URL = 'data/summary_thumbs.json?v=b75954172d';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 /* 分类主题色（老钱 2026-10-07 指定）：

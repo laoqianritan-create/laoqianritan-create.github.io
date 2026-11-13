@@ -88,7 +88,11 @@ async function loadDim(key) {
   const gName = '__DO_' + key.toUpperCase() + '__';
   if (!window[gName]) {
     const ver = window.__DO_VER__ || '';
-    await loadScript('js/' + DATA_FILES[key] + (ver ? '?v=' + ver : ''));
+    const file = DATA_FILES[key];
+    let q = '';
+    if (ver && typeof ver === 'object') q = ver[file] || '';
+    else if (ver && ver !== '__BUILD__') q = ver;
+    await loadScript('js/' + file + (q ? '?v=' + q : ''));
   }
   const raw = window[gName];
   if (!raw || !Array.isArray(raw.series)) throw new Error('内嵌数据缺失: ' + key);

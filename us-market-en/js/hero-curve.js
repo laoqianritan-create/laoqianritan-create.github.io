@@ -1,4 +1,4 @@
-import { fetchJSON } from './utils.js?v=20261113154240';
+import { fetchJSON } from './utils.js?v=5db286216f';
 
 // site/js/hero-curve.js · Animated hero curve for the Big Picture top banner
 // Renders an SVG of the S&P 500 monthly log trend from 1928 onward + 6 historical
@@ -27,8 +27,8 @@ import { fetchJSON } from './utils.js?v=20261113154240';
   const PAD_Y = 12;
 
   Promise.all([
-    fetchJSON('data/sp500_century.json?v=20261113154240').catch(() => null),
-    fetchJSON('data/sp500_pe.json?v=20261113154240').catch(() => null),
+    fetchJSON('data/sp500_century.json?v=b84b25164a').catch(() => null),
+    fetchJSON('data/sp500_pe.json?v=525f45cb03').catch(() => null),
   ])
     .then(([centuryPayload, pePayload]) => {
       const series = (centuryPayload?.series || [])

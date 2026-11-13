@@ -10,7 +10,7 @@ import {
   CHART_FONT,
   cssVar,
   formatNumber,
-} from '../utils.js?v=20261113154240';
+} from '../utils.js?v=187f93bb7f';
 
 import {
   registerChart,
@@ -20,7 +20,7 @@ import {
   buildSingleMarkPoint,
   getLineLegendConfig,
   buildRecessionOverlaySeries,
-} from '../chart-helpers.js?v=20261113154240';
+} from '../chart-helpers.js?v=15aa0c8d2c';
 
 const BLACK = '#1a1a1a';
 const GREEN = '#389e0d';
