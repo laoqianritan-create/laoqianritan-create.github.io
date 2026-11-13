@@ -228,7 +228,24 @@
   // ── Initialize the trend chart ──
   (function initChart() {
     const el = document.querySelector('[id^="chartYear"]');
-    if (!el || !window.echarts) return;
+    if (!el) return;
+    if (!window.echarts) {
+      el.innerHTML = '';
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;min-height:160px;gap:12px;font-size:14px;color:#4A4944;';
+      const p = document.createElement('p');
+      p.style.margin = '0';
+      p.textContent = 'Chart library failed to load.';
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = 'Refresh';
+      btn.style.cssText = 'cursor:pointer;background:#1C1C1A;color:#FAF9F6;border:0;border-radius:6px;padding:8px 16px;';
+      btn.addEventListener('click', function () { location.reload(); });
+      wrap.appendChild(p);
+      wrap.appendChild(btn);
+      el.appendChild(wrap);
+      return;
+    }
     const year = el.id.replace('chartYear', '');
     const chart = echarts.init(el);
     window._yearChart = chart;

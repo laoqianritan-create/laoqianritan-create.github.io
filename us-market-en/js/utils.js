@@ -4,7 +4,7 @@
 // ══════════════════════════════════════════════════════
 
 export const CHART_FONT = '"Inter", -apple-system, "PingFang SC", sans-serif';
-export const DATA_VERSION = Date.now();
+export const DATA_VERSION = '__BUILD__';
 export const AXIS_END_2028_TS = new Date('2028-12-31').getTime();
 
 // X axis right edge = end of next calendar year (t+1, Dec 31). Never hard-coded:
@@ -27,13 +27,145 @@ export function buildQuarterTicks(startTS, endTS) {
   return ticks;
 }
 
-export function fetchJSON(url) {
+
+const FETCH_TIMEOUT_MS = 15000;
+const FETCH_RETRIES = 2;
+const _jsonMemo = new Map(); // canonical URL → Promise, shared by hero-curve and panels so century/pe are fetched once
+
+/** If the URL already has ?v= (build stamp from stamp_cache_bust), do not append another, to avoid a second &v=Date.now(). */
+export function cacheBustedUrl(url) {
+  if (/[?&]v=/.test(url)) return url;
+  if (!DATA_VERSION || DATA_VERSION === '__BUILD__') return url;
   const sep = url.includes('?') ? '&' : '?';
-  return fetch(`${url}${sep}v=${DATA_VERSION}`).then(response => {
-    if (!response.ok) {
-      throw new Error(`${url} -> HTTP ${response.status}`);
+  return `${url}${sep}v=${DATA_VERSION}`;
+}
+
+function memoKey(url) {
+  return String(url).replace(/[?&]v=[^&]*/g, '').replace(/[?&]$/, '').replace(/\?&/, '?');
+}
+
+/**
+ * Fetch JSON: 15s timeout (AbortController) by default, then 2 retries with exponential backoff (1s, 2s).
+ * Concurrent requests for the same file share one Promise. Failures are not memoized, so "click to retry" works.
+ * opts.cache is passed to fetch (callers such as freshness can keep 'no-store'); opts.memo=false disables sharing.
+ */
+export function fetchJSON(url, opts = {}) {
+  const timeout = opts.timeout ?? FETCH_TIMEOUT_MS;
+  const retries = opts.retries ?? FETCH_RETRIES;
+  const memo = opts.memo !== false;
+  const key = memoKey(url);
+  if (memo && _jsonMemo.has(key)) return _jsonMemo.get(key);
+
+  const finalUrl = cacheBustedUrl(url);
+
+  async function attempt(remaining) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), timeout);
+    try {
+      const fetchOpts = { signal: ctrl.signal };
+      if (opts.cache) fetchOpts.cache = opts.cache;
+      const response = await fetch(finalUrl, fetchOpts);
+      if (!response.ok) {
+        throw new Error(`${url} -> HTTP ${response.status}`);
+      }
+      return await response.json();
+    } catch (err) {
+      if (remaining > 0) {
+        const tried = retries - remaining + 1;
+        const delay = 1000 * Math.pow(2, tried - 1);
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        return attempt(remaining - 1);
+      }
+      throw err;
+    } finally {
+      clearTimeout(timer);
     }
-    return response.json();
+  }
+
+  const pending = attempt(retries);
+  if (memo) {
+    _jsonMemo.set(key, pending);
+    pending.catch(() => { _jsonMemo.delete(key); });
+  }
+  return pending;
+}
+
+export function clearFetchJSON(url) {
+  if (url) _jsonMemo.delete(memoKey(url));
+  else _jsonMemo.clear();
+}
+
+export function isEnglishUI() {
+  return (document.documentElement.lang || '').toLowerCase().startsWith('en');
+}
+
+export function loadUiText(kind) {
+  const en = isEnglishUI();
+  if (kind === 'loading') return en ? 'Loading…' : '加载中…';
+  if (kind === 'data-fail') return en ? 'Failed to load data, click to retry' : '数据加载失败，点击重试';
+  if (kind === 'echarts-fail') return en ? 'Chart library failed to load.' : '图表库加载失败。';
+  if (kind === 'refresh') return en ? 'Refresh' : '刷新';
+  return '';
+}
+
+/** Render loading / failure / missing-library messages in a chart container. kind: 'loading' | 'data-fail' | 'echarts-fail' */
+export function fillChartMessage(el, kind, onRetry) {
+  if (!el) return;
+  el.innerHTML = '';
+  const wrap = document.createElement('div');
+  wrap.className = 'chart-load-msg';
+  wrap.setAttribute('data-kind', kind);
+  wrap.style.cssText = 'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;min-height:160px;color:#4A4944;font-size:14px;gap:12px;text-align:center;padding:16px;box-sizing:border-box;font-family:Inter,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;';
+  if (kind === 'loading') {
+    const p = document.createElement('p');
+    p.style.margin = '0';
+    p.textContent = loadUiText('loading');
+    wrap.appendChild(p);
+  } else if (kind === 'data-fail') {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = loadUiText('data-fail');
+    btn.style.cssText = 'cursor:pointer;background:#1C1C1A;color:#FAF9F6;border:0;border-radius:6px;padding:8px 16px;font-size:14px;font-family:inherit;';
+    btn.addEventListener('click', onRetry);
+    wrap.appendChild(btn);
+  } else if (kind === 'echarts-fail') {
+    const p = document.createElement('p');
+    p.style.margin = '0';
+    p.textContent = loadUiText('echarts-fail');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = loadUiText('refresh');
+    btn.style.cssText = 'cursor:pointer;background:#1C1C1A;color:#FAF9F6;border:0;border-radius:6px;padding:8px 16px;font-size:14px;font-family:inherit;';
+    btn.addEventListener('click', () => location.reload());
+    wrap.appendChild(p);
+    wrap.appendChild(btn);
+  }
+  el.appendChild(wrap);
+}
+
+export function panelChartHosts(panelId) {
+  const panel = document.getElementById(panelId);
+  if (!panel) return [];
+  return Array.from(panel.querySelectorAll('.chart-container'));
+}
+
+export function waitForEcharts(timeoutMs = 15000) {
+  if (typeof echarts !== 'undefined') return Promise.resolve();
+  const ready = window.__echartsReady;
+  const timeout = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error('echarts timeout')), timeoutMs);
+  });
+  if (ready && typeof ready.then === 'function') {
+    return Promise.race([ready, timeout]).then(() => {
+      if (typeof echarts === 'undefined') throw new Error('echarts missing');
+    });
+  }
+  return Promise.reject(new Error('echarts missing'));
+}
+
+export function showEchartsPageFailure() {
+  document.querySelectorAll('.chart-container').forEach((el) => {
+    fillChartMessage(el, 'echarts-fail');
   });
 }
 

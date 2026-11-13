@@ -8,7 +8,9 @@
 // 迷你图用页面已载入的 ECharts，剥掉坐标轴/图例/tooltip，进入视口才实例化（懒渲染）。
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261113111322';
+import { fetchJSON, waitForEcharts, fillChartMessage } from './utils.js?v=20261113154240';
+
+const DATA_URL = 'data/summary_thumbs.json?v=20261113154240';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 /* 分类主题色（老钱 2026-10-07 指定）：
@@ -204,10 +206,35 @@ function build(data) {
   });
 }
 
-fetch(DATA_URL, { cache: 'no-store' })
-  .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-  .then(build)
-  .catch(err => {
+async function startSummary() {
+  try {
+    await waitForEcharts();
+  } catch (e) {
+    console.error('[summary] echarts unavailable', e);
+    if (grid) {
+      grid.innerHTML = '';
+      const host = document.createElement('div');
+      host.className = 'chart-container';
+      host.style.minHeight = '200px';
+      grid.appendChild(host);
+      fillChartMessage(host, 'echarts-fail');
+    }
+    return;
+  }
+  try {
+    const data = await fetchJSON(DATA_URL);
+    build(data);
+  } catch (err) {
     console.warn('[summary] load failed', err);
-    grid.innerHTML = '<div class="summary-loading">缩略图数据加载失败，请稍后重试。</div>';
-  });
+    if (!grid) return;
+    grid.innerHTML = '';
+    const host = document.createElement('div');
+    host.className = 'chart-container';
+    host.style.minHeight = '200px';
+    grid.appendChild(host);
+    fillChartMessage(host, 'data-fail', () => startSummary());
+  }
+}
+
+startSummary();
+

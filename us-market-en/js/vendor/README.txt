@@ -1,0 +1,1 @@
+ECharts 5.6.0 (Apache-2.0), vendored 2026-11-13 from registry.npmmirror.com/echarts/5.6.0/files/dist/echarts.min.js (sha256 bf4a223524e40b77c304bec67e1222cf551f14880cf42c69dc046558e11c07b1). Same file as cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js. Do not run stamp_cache_bust on this directory.

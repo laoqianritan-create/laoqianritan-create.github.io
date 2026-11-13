@@ -6,10 +6,12 @@
 //         (same structure as the debt-board summary page); category info lives in a
 //         small chip on each card plus the top tabs used as filters.
 // Click a card → index.html#panel-xxx; click a category tab → filter; click Summary → show all.
-// Mini charts use ECharts (loaded from CDN), stripped of axes/legend/tooltip, lazily created.
+// Mini charts use ECharts (vendored locally), stripped of axes/legend/tooltip, lazily created.
 // ══════════════════════════════════════════════════════
 
-const DATA_URL = 'data/summary_thumbs.json?v=20261113111322';
+import { fetchJSON, waitForEcharts, fillChartMessage } from './utils.js?v=20261113154240';
+
+const DATA_URL = 'data/summary_thumbs.json?v=20261113154240';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 /* Per-category theme colours (set by 老钱 on 2026-10-07):
@@ -204,10 +206,35 @@ function build(data) {
   });
 }
 
-fetch(DATA_URL, { cache: 'no-store' })
-  .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-  .then(build)
-  .catch(err => {
+async function startSummary() {
+  try {
+    await waitForEcharts();
+  } catch (e) {
+    console.error('[summary] echarts unavailable', e);
+    if (grid) {
+      grid.innerHTML = '';
+      const host = document.createElement('div');
+      host.className = 'chart-container';
+      host.style.minHeight = '200px';
+      grid.appendChild(host);
+      fillChartMessage(host, 'echarts-fail');
+    }
+    return;
+  }
+  try {
+    const data = await fetchJSON(DATA_URL);
+    build(data);
+  } catch (err) {
     console.warn('[summary] load failed', err);
-    grid.innerHTML = '<div class="summary-loading">Failed to load summary data. Please retry later.</div>';
-  });
+    if (!grid) return;
+    grid.innerHTML = '';
+    const host = document.createElement('div');
+    host.className = 'chart-container';
+    host.style.minHeight = '200px';
+    grid.appendChild(host);
+    fillChartMessage(host, 'data-fail', () => startSummary());
+  }
+}
+
+startSummary();
+
