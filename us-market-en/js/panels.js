@@ -132,12 +132,12 @@ const FILES = {
   rules:          'data/sp500_rules.json?v=981ee0b3c9',
   quotes:         'data/bofa_longest_pictures_quotes.json?v=9ee32c8128',
   aiae:           'data/aiae.json?v=5522989c69',
-  breadth:        'data/sp500_breadth.json?v=9331949050',
+  breadth:        'data/sp500_breadth.json?v=35b4ab85e3',
   buffett:        'data/buffett.json?v=7dbdb3c491',
-  hindenburg:     'data/sp500_hindenburg.json?v=541787efad',
+  hindenburg:     'data/sp500_hindenburg.json?v=be5adf7a35',
   intrayearDd:    'data/sp500_intrayear_dd.json?v=fe686c5a01',
   annualTr:       'data/sp500_annual_tr.json?v=3eb32c6e28',
-  cagrPaths:      'data/sp500_cagr_paths.json?v=c29cbf233a',
+  cagrPaths:      'data/sp500_cagr_paths.json?v=81eae5ee4a',
   // Cross / NDX
   nasdaqComp:     'data/nasdaq_composite.json?v=caddf5ca27',
   nasdaq100:      'data/nasdaq100_panels.json?v=1fa64f4746',
@@ -154,9 +154,9 @@ const FILES = {
   ndxVxn:         'data/ndx_vxn.json?v=5f247d541a',
   qqqDetails:     'data/qqq_return_details.json?v=91728c7f96',
   equalWeight:    'data/sp500_equal_weight.json?v=1239d5dbae',
-  ndxBreadth:     'data/ndx_breadth.json?v=ac1cd11299',
+  ndxBreadth:     'data/ndx_breadth.json?v=f0d82226e8',
   // Style ETF
-  styleEtf:       'data/style_etf.json?v=0038f920f7',
+  styleEtf:       'data/style_etf.json?v=da1ea84068',
   // ICI Fund Flows
   iciFlows:       'data/ici_flows.json?v=de2994737c',
   iciMmf:         'data/ici_mmf.json?v=c8bea96a02',
@@ -165,12 +165,12 @@ const FILES = {
   // Fed hikes
   fedHikes:       'data/fed_hikes.json?v=93ec95f55b',
   // Major asset classes
-  assetLadder:    'data/us_asset_ladder.json?v=283b9e793d',
+  assetLadder:    'data/us_asset_ladder.json?v=8fc90ab4d6',
   // Sentiment suite
-  cnnFg:          'data/cnn_fear_greed.json?v=6f1506d909',
+  cnnFg:          'data/cnn_fear_greed.json?v=1c6a968bc1',
   aaii:           'data/aaii_sentiment.json?v=8a8fc114e2',
-  naaim:          'data/naaim_exposure.json?v=3715e6e8a1',
-  misery:         'data/us_misery_index.json?v=cb227ff753',
+  naaim:          'data/naaim_exposure.json?v=2c88b8b455',
+  misery:         'data/us_misery_index.json?v=4d53465301',
   // Chronicle
   chronicleYears: 'data/chronicle/years.json?v=4fb39a4722',
 };

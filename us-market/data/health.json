@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-14 09:45:14",
+  "generated_at": "2026-11-14 10:13:31",
   "today": "2026-11-14",
   "overall": "warn",
   "stale_count": 1,
@@ -65,7 +65,7 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "复合增速路径",
-      "updated": "2026-11-14T09:43:29",
+      "updated": "2026-11-14T10:11:51",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -75,7 +75,7 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
-      "updated": "2026-11-14T09:43:29",
+      "updated": "2026-11-14T10:11:51",
       "days_old": 0,
       "status": "fresh"
     },
@@ -174,7 +174,7 @@
     {
       "file": "cnn_fear_greed.json",
       "label": "CNN 恐惧贪婪指数",
-      "updated": "2026-11-14T09:44:15+08:00",
+      "updated": "2026-11-14T10:12:37+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -194,7 +194,7 @@
     {
       "file": "naaim_exposure.json",
       "label": "NAAIM 暴露指数",
-      "updated": "2026-11-14T09:44:35+08:00",
+      "updated": "2026-11-14T10:12:52+08:00",
       "days_old": 0,
       "status": "stale",
       "series_end": {
