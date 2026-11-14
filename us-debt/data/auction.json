@@ -1,6 +1,6 @@
 {
   "updated": "2026-11-14",
-  "source": "Treasury Fiscal Data auctions_query（bid_to_cover_ratio 自 2000 年起）",
+  "source": "Treasury Fiscal Data auctions_query（历史）+ treasury_securities_auctions_v2（2026-11-14 起，老表停更）",
   "weekly": [
     {
       "week": "2000-W01",
@@ -8389,6 +8389,30 @@
       "date": "2026-10-13",
       "avg_btc": 2.6,
       "amount_billion": 597.0
+    },
+    {
+      "week": "2026-W43",
+      "date": "2026-10-19",
+      "avg_btc": 2.83,
+      "amount_billion": 666.1
+    },
+    {
+      "week": "2026-W44",
+      "date": "2026-10-26",
+      "avg_btc": 2.81,
+      "amount_billion": 907.0
+    },
+    {
+      "week": "2026-W45",
+      "date": "2026-11-02",
+      "avg_btc": 2.84,
+      "amount_billion": 615.9
+    },
+    {
+      "week": "2026-W46",
+      "date": "2026-11-09",
+      "avg_btc": 2.64,
+      "amount_billion": 765.9
     }
   ]
 }
