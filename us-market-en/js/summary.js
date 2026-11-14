@@ -11,7 +11,7 @@
 
 import { fetchJSON, waitForEcharts, fillChartMessage } from './utils.js?v=5db286216f';
 
-const DATA_URL = 'data/summary_thumbs.json?v=390e5d8947';
+const DATA_URL = 'data/summary_thumbs.json?v=d3793a52d0';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 /* Per-category theme colours (set by 老钱 on 2026-10-07):
