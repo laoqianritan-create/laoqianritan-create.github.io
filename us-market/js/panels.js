@@ -140,7 +140,7 @@ const FILES = {
   cagrPaths:      'data/sp500_cagr_paths.json?v=0be3690d3f',
   // Cross / NDX
   nasdaqComp:     'data/nasdaq_composite.json?v=b5a7d2d3e6',
-  nasdaq100:      'data/nasdaq100_panels.json?v=6ef0cbd6f6',
+  nasdaq100:      'data/nasdaq100_panels.json?v=628ece5a30',
   dowCentury:     'data/dow_jones_century.json?v=5b71556b9e',
   ndxAnnualLong:  'data/ndx_annual_returns_long.json?v=9a16e4ac23',
   ndxAnnualTr:    'data/ndx_annual_tr.json?v=f6752f299e',
@@ -168,7 +168,7 @@ const FILES = {
   assetLadder:    'data/us_asset_ladder.json?v=6275a1b163',
   // 市场情绪四件套
   cnnFg:          'data/cnn_fear_greed.json?v=2f54236217',
-  aaii:           'data/aaii_sentiment.json?v=4ca1b1ec13',
+  aaii:           'data/aaii_sentiment.json?v=8e67830a6a',
   naaim:          'data/naaim_exposure.json?v=5d0a08c442',
   misery:         'data/us_misery_index.json?v=4ba0871dc5',
   // Chronicle
