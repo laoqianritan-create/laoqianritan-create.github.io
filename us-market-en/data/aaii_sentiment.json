@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-11T09:46:30+08:00",
-  "latest_date": "2026-11-05",
+  "updated": "2026-11-14T11:31:24+08:00",
+  "latest_date": "2026-11-12",
   "caliber": "AAII sentiment survey, official methodology: voting runs from Thursday 00:01 ET to the following Wednesday 23:59 ET, asking members for their six-month direction on US equities; results are published Thursday. Values are the share of member votes (%). Bull-bear spread = bullish − bearish (percentage points). Dates are the source table's report date.",
   "source": {
     "name": "AAII Investor Sentiment Survey (full history since 1987)",
@@ -9,18 +9,18 @@
   },
   "average": {
     "bull": 37.6,
-    "neutral": 30.94,
-    "bear": 31.46,
-    "spread": 6.14
+    "neutral": 30.93,
+    "bear": 31.47,
+    "spread": 6.12
   },
   "latest": {
-    "date": "2026-11-05",
-    "bull": 34.1,
-    "neutral": 17.5,
-    "bear": 48.4,
-    "sp500": 7688.62,
-    "spread": -14.3,
-    "spread_ma8": -10.0
+    "date": "2026-11-12",
+    "bull": 30.8,
+    "neutral": 17.8,
+    "bear": 51.4,
+    "sp500": 7619.38,
+    "spread": -20.6,
+    "spread_ma8": -9.5
   },
   "series": [
     {
@@ -18454,6 +18454,15 @@
       "sp500": 7688.62,
       "spread": -14.3,
       "spread_ma8": -10.0
+    },
+    {
+      "date": "2026-11-12",
+      "bull": 30.8,
+      "neutral": 17.8,
+      "bear": 51.4,
+      "sp500": 7619.38,
+      "spread": -20.6,
+      "spread_ma8": -9.5
     }
   ]
 }

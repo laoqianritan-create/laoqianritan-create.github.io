@@ -51,7 +51,7 @@
       "subsector": "Interactive Media & Services",
       "return1y": 0.07,
       "ytdReturn": -0.0615,
-      "weight": 5.0064
+      "weight": 5.0063
     },
     {
       "ticker": "GOOG",
@@ -62,8 +62,8 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Interactive Media & Services",
-      "return1y": 0.0663,
-      "ytdReturn": -0.0633,
+      "return1y": 0.0561,
+      "ytdReturn": -0.0723,
       "weight": 4.9788
     },
     {
@@ -101,8 +101,8 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Interactive Media & Services",
-      "return1y": 0.0232,
-      "ytdReturn": -0.0412,
+      "return1y": 0.0529,
+      "ytdReturn": -0.0134,
       "weight": 2.2556
     },
     {
@@ -257,8 +257,8 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
-      "return1y": 0.2672,
-      "ytdReturn": 0.2841,
+      "return1y": 0.2697,
+      "ytdReturn": 0.2866,
       "weight": 0.7173
     },
     {
@@ -309,8 +309,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.014,
-      "ytdReturn": 0.0222,
+      "return1y": -0.0346,
+      "ytdReturn": 0.0008,
       "weight": 0.5567
     },
     {
@@ -543,8 +543,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": 0.572,
-      "ytdReturn": 0.7989,
+      "return1y": 0.57,
+      "ytdReturn": 0.7965,
       "weight": 0.362
     },
     {
@@ -608,8 +608,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Communications Equipment",
-      "return1y": 0.5729,
-      "ytdReturn": 0.5466,
+      "return1y": 0.5018,
+      "ytdReturn": 0.4767,
       "weight": 0.3428
     },
     {
@@ -647,8 +647,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": 0.7105,
-      "ytdReturn": 1.0272,
+      "return1y": 0.6862,
+      "ytdReturn": 0.9984,
       "weight": 0.3198
     },
     {
@@ -660,8 +660,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 1.7749,
-      "ytdReturn": 1.9043,
+      "return1y": 1.5757,
+      "ytdReturn": 1.6959,
       "weight": 0.3013
     },
     {
@@ -686,8 +686,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Heavy Electrical Equipment",
-      "return1y": 0.4153,
-      "ytdReturn": 0.2045,
+      "return1y": 0.3888,
+      "ytdReturn": 0.1819,
       "weight": 0.2908
     },
     {
@@ -1063,8 +1063,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Passenger Ground Transportation",
-      "return1y": -0.2456,
-      "ytdReturn": -0.1658,
+      "return1y": -0.2394,
+      "ytdReturn": -0.1589,
       "weight": 0.1957
     },
     {
@@ -1167,8 +1167,8 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Advertising",
-      "return1y": -0.2941,
-      "ytdReturn": -0.3633,
+      "return1y": -0.2665,
+      "ytdReturn": -0.3384,
       "weight": 0.1864
     },
     {
@@ -1224,6 +1224,19 @@
       "weight": 0.1751
     },
     {
+      "ticker": "SNDK",
+      "name": "Sandisk Corporation",
+      "nameEn": "Sandisk Corporation",
+      "marketCap": 125930000000.0,
+      "price": 885.01,
+      "sector": "Information Technology",
+      "sectorEn": "Information Technology",
+      "subsector": "Technology Hardware, Storage & Peripherals",
+      "return1y": 2.4821,
+      "ytdReturn": 2.2154,
+      "weight": 0.1732
+    },
+    {
       "ticker": "MDT",
       "name": "Medtronic plc",
       "nameEn": "Medtronic plc",
@@ -1234,19 +1247,6 @@
       "subsector": "Health Care Equipment",
       "return1y": 0.0729,
       "ytdReturn": 0.0709,
-      "weight": 0.1732
-    },
-    {
-      "ticker": "SNDK",
-      "name": "Sandisk Corporation",
-      "nameEn": "Sandisk Corporation",
-      "marketCap": 125930000000.0,
-      "price": 885.01,
-      "sector": "Information Technology",
-      "sectorEn": "Information Technology",
-      "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 2.6885,
-      "ytdReturn": 2.406,
       "weight": 0.1732
     },
     {
@@ -1427,8 +1427,8 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": 0.4844,
-      "ytdReturn": 0.3618,
+      "return1y": 0.5307,
+      "ytdReturn": 0.4043,
       "weight": 0.1509
     },
     {
@@ -1466,8 +1466,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": -0.4082,
-      "ytdReturn": -0.3173,
+      "return1y": -0.3988,
+      "ytdReturn": -0.3065,
       "weight": 0.146
     },
     {
@@ -1518,8 +1518,8 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Refining & Marketing",
-      "return1y": 0.8473,
-      "ytdReturn": 1.0136,
+      "return1y": 0.8613,
+      "ytdReturn": 1.0288,
       "weight": 0.1421
     },
     {
@@ -1583,8 +1583,8 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": -0.1658,
-      "ytdReturn": -0.2289,
+      "return1y": -0.1723,
+      "ytdReturn": -0.2349,
       "weight": 0.1355
     },
     {
@@ -1817,8 +1817,8 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
-      "return1y": 8.3399,
-      "ytdReturn": 6.4968,
+      "return1y": 8.0178,
+      "ytdReturn": 6.2382,
       "weight": 0.1243
     },
     {
@@ -2051,8 +2051,8 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": 0.3822,
-      "ytdReturn": 0.2722,
+      "return1y": 0.3835,
+      "ytdReturn": 0.2734,
       "weight": 0.1142
     },
     {
@@ -2103,8 +2103,8 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Automotive Retail",
-      "return1y": 0.1128,
-      "ytdReturn": -0.1151,
+      "return1y": 0.1368,
+      "ytdReturn": -0.0959,
       "weight": 0.1111
     },
     {
@@ -2155,8 +2155,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Electrical Components & Equipment",
-      "return1y": 0.2262,
-      "ytdReturn": 0.1938,
+      "return1y": 0.1819,
+      "ytdReturn": 0.1507,
       "weight": 0.107
     },
     {
@@ -2207,8 +2207,8 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Specialized Consumer Services",
-      "return1y": -0.1661,
-      "ytdReturn": -0.2148,
+      "return1y": -0.1713,
+      "ytdReturn": -0.2197,
       "weight": 0.1028
     },
     {
@@ -2376,8 +2376,8 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Investment Banking & Brokerage",
-      "return1y": -0.3359,
-      "ytdReturn": -0.2939,
+      "return1y": -0.3644,
+      "ytdReturn": -0.3242,
       "weight": 0.0964
     },
     {
@@ -2493,8 +2493,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.003,
-      "ytdReturn": 0.3789,
+      "return1y": -0.0046,
+      "ytdReturn": 0.3767,
       "weight": 0.0914
     },
     {
@@ -2571,8 +2571,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 1.1971,
-      "ytdReturn": 1.0753,
+      "return1y": 1.1152,
+      "ytdReturn": 0.9979,
       "weight": 0.0882
     },
     {
@@ -2628,19 +2628,6 @@
       "weight": 0.0853
     },
     {
-      "ticker": "CRH",
-      "name": "CRH plc",
-      "nameEn": "CRH plc",
-      "marketCap": 61970000000.0,
-      "price": 93.16,
-      "sector": "Materials",
-      "sectorEn": "Materials",
-      "subsector": "Construction Materials",
-      "return1y": -0.1498,
-      "ytdReturn": -0.2632,
-      "weight": 0.0852
-    },
-    {
       "ticker": "CMI",
       "name": "Cummins Inc.",
       "nameEn": "Cummins Inc.",
@@ -2651,6 +2638,19 @@
       "subsector": "Construction Machinery & Heavy Transportation Equipment",
       "return1y": -0.0225,
       "ytdReturn": -0.1338,
+      "weight": 0.0852
+    },
+    {
+      "ticker": "CRH",
+      "name": "CRH plc",
+      "nameEn": "CRH plc",
+      "marketCap": 61970000000.0,
+      "price": 93.16,
+      "sector": "Materials",
+      "sectorEn": "Materials",
+      "subsector": "Construction Materials",
+      "return1y": -0.1498,
+      "ytdReturn": -0.2632,
       "weight": 0.0852
     },
     {
@@ -2740,8 +2740,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Electrical Components & Equipment",
-      "return1y": 0.8047,
-      "ytdReturn": 1.0461,
+      "return1y": 0.7159,
+      "ytdReturn": 0.9454,
       "weight": 0.0781
     },
     {
@@ -2883,8 +2883,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Communications Equipment",
-      "return1y": 1.6907,
-      "ytdReturn": 0.6178,
+      "return1y": 1.57,
+      "ytdReturn": 0.5452,
       "weight": 0.0744
     },
     {
@@ -2974,8 +2974,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": -0.1689,
-      "ytdReturn": -0.1689,
+      "return1y": -0.175,
+      "ytdReturn": -0.175,
       "weight": 0.0719
     },
     {
@@ -3000,8 +3000,8 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": 0.2212,
-      "ytdReturn": 0.196,
+      "return1y": 0.2395,
+      "ytdReturn": 0.2139,
       "weight": 0.071
     },
     {
@@ -3026,8 +3026,8 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": 0.3601,
-      "ytdReturn": 0.2626,
+      "return1y": 0.3985,
+      "ytdReturn": 0.2982,
       "weight": 0.0703
     },
     {
@@ -3039,8 +3039,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Equipment & Instruments",
-      "return1y": 0.699,
-      "ytdReturn": 0.4726,
+      "return1y": 0.6625,
+      "ytdReturn": 0.4409,
       "weight": 0.0697
     },
     {
@@ -3104,8 +3104,8 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": -0.0718,
-      "ytdReturn": 0.0028,
+      "return1y": -0.0562,
+      "ytdReturn": 0.0196,
       "weight": 0.0677
     },
     {
@@ -3156,8 +3156,8 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Technology",
-      "return1y": 0.0309,
-      "ytdReturn": 0.3778,
+      "return1y": 0.0278,
+      "ytdReturn": 0.3738,
       "weight": 0.0671
     },
     {
@@ -3169,8 +3169,8 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Agricultural Products & Services",
-      "return1y": 0.0557,
-      "ytdReturn": 0.0557,
+      "return1y": 0.0627,
+      "ytdReturn": 0.0627,
       "weight": 0.0666
     },
     {
@@ -3234,8 +3234,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.1741,
-      "ytdReturn": -0.0736,
+      "return1y": -0.1489,
+      "ytdReturn": -0.0454,
       "weight": 0.0651
     },
     {
@@ -3286,8 +3286,8 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": -0.23,
-      "ytdReturn": -0.1859,
+      "return1y": -0.2386,
+      "ytdReturn": -0.195,
       "weight": 0.0621
     },
     {
@@ -3338,8 +3338,8 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": -0.0895,
-      "ytdReturn": -0.1986,
+      "return1y": -0.0805,
+      "ytdReturn": -0.1907,
       "weight": 0.0611
     },
     {
@@ -3351,8 +3351,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Building Products",
-      "return1y": 0.005,
-      "ytdReturn": 0.0159,
+      "return1y": 0.0018,
+      "ytdReturn": 0.0127,
       "weight": 0.061
     },
     {
@@ -3377,8 +3377,8 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Life Sciences Tools & Services",
-      "return1y": 0.2289,
-      "ytdReturn": 0.203,
+      "return1y": 0.2018,
+      "ytdReturn": 0.1764,
       "weight": 0.0601
     },
     {
@@ -3585,8 +3585,8 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Broadcasting",
-      "return1y": 0.0134,
-      "ytdReturn": -0.1091,
+      "return1y": 0.0552,
+      "ytdReturn": -0.0724,
       "weight": 0.0533
     },
     {
@@ -3676,8 +3676,8 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": 0.1188,
-      "ytdReturn": -0.0118,
+      "return1y": 0.1349,
+      "ytdReturn": 0.0024,
       "weight": 0.0516
     },
     {
@@ -3702,8 +3702,8 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Broadcasting",
-      "return1y": 0.0043,
-      "ytdReturn": -0.1099,
+      "return1y": 0.0453,
+      "ytdReturn": -0.0735,
       "weight": 0.0511
     },
     {
@@ -3767,8 +3767,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 0.3016,
-      "ytdReturn": 0.5954,
+      "return1y": 0.2766,
+      "ytdReturn": 0.5648,
       "weight": 0.0495
     },
     {
@@ -3910,8 +3910,8 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Pharmaceuticals",
-      "return1y": -0.3134,
-      "ytdReturn": -0.3412,
+      "return1y": -0.3062,
+      "ytdReturn": -0.3343,
       "weight": 0.0468
     },
     {
@@ -3949,8 +3949,8 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Financial Exchanges & Data",
-      "return1y": -0.5399,
-      "ytdReturn": -0.4476,
+      "return1y": -0.5505,
+      "ytdReturn": -0.4603,
       "weight": 0.0465
     },
     {
@@ -4001,8 +4001,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": 0.6928,
-      "ytdReturn": 0.5338,
+      "return1y": 0.6848,
+      "ytdReturn": 0.5265,
       "weight": 0.0449
     },
     {
@@ -4027,8 +4027,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.1304,
-      "ytdReturn": 0.0696,
+      "return1y": 0.1271,
+      "ytdReturn": 0.0664,
       "weight": 0.0449
     },
     {
@@ -4066,8 +4066,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": 1.1746,
-      "ytdReturn": 1.1824,
+      "return1y": 1.1786,
+      "ytdReturn": 1.1864,
       "weight": 0.044
     },
     {
@@ -4235,8 +4235,8 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Packaged Foods & Meats",
-      "return1y": -0.0149,
-      "ytdReturn": 0.0037,
+      "return1y": 0.0105,
+      "ytdReturn": 0.0295,
       "weight": 0.0409
     },
     {
@@ -4287,8 +4287,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": -0.131,
-      "ytdReturn": -0.1268,
+      "return1y": -0.127,
+      "ytdReturn": -0.1227,
       "weight": 0.0406
     },
     {
@@ -4391,8 +4391,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Environmental & Facilities Services",
-      "return1y": 0.1894,
-      "ytdReturn": 0.1928,
+      "return1y": 0.1971,
+      "ytdReturn": 0.2005,
       "weight": 0.0395
     },
     {
@@ -4508,8 +4508,8 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Hotel & Resort REITs",
-      "return1y": -0.1831,
-      "ytdReturn": -0.119,
+      "return1y": -0.1762,
+      "ytdReturn": -0.1115,
       "weight": 0.0379
     },
     {
@@ -4521,8 +4521,8 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Regional Banks",
-      "return1y": 0.2548,
-      "ytdReturn": 0.0921,
+      "return1y": 0.2625,
+      "ytdReturn": 0.0988,
       "weight": 0.0376
     },
     {
@@ -4695,19 +4695,6 @@
       "weight": 0.0356
     },
     {
-      "ticker": "STE",
-      "name": "STERIS plc",
-      "nameEn": "STERIS plc",
-      "marketCap": 25670000000.0,
-      "price": 264.32,
-      "sector": "Health Care",
-      "sectorEn": "Health Care",
-      "subsector": "Health Care Equipment",
-      "return1y": 0.0229,
-      "ytdReturn": 0.0571,
-      "weight": 0.0353
-    },
-    {
       "ticker": "AXON",
       "name": "Axon Enterprise, Inc.",
       "nameEn": "Axon Enterprise, Inc.",
@@ -4718,6 +4705,19 @@
       "subsector": "Aerospace & Defense",
       "return1y": -0.431,
       "ytdReturn": -0.4402,
+      "weight": 0.0353
+    },
+    {
+      "ticker": "STE",
+      "name": "STERIS plc",
+      "nameEn": "STERIS plc",
+      "marketCap": 25670000000.0,
+      "price": 264.32,
+      "sector": "Health Care",
+      "sectorEn": "Health Care",
+      "subsector": "Health Care Equipment",
+      "return1y": 0.0229,
+      "ytdReturn": 0.0571,
       "weight": 0.0353
     },
     {
@@ -4755,8 +4755,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductor Materials & Equipment",
-      "return1y": 0.4697,
-      "ytdReturn": 0.4438,
+      "return1y": 0.4178,
+      "ytdReturn": 0.3928,
       "weight": 0.034
     },
     {
@@ -4846,8 +4846,8 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Commodity Chemicals",
-      "return1y": 0.4457,
-      "ytdReturn": 0.3659,
+      "return1y": 0.4409,
+      "ytdReturn": 0.3614,
       "weight": 0.033
     },
     {
@@ -4924,8 +4924,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.0119,
-      "ytdReturn": -0.0541,
+      "return1y": 0.0096,
+      "ytdReturn": -0.0563,
       "weight": 0.0318
     },
     {
@@ -4989,8 +4989,8 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Consumer Finance",
-      "return1y": -0.0196,
-      "ytdReturn": -0.1535,
+      "return1y": -0.0115,
+      "ytdReturn": -0.1465,
       "weight": 0.0309
     },
     {
@@ -5015,8 +5015,8 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Paper & Plastic Packaging Products & Materials",
-      "return1y": 0.2593,
-      "ytdReturn": 0.0904,
+      "return1y": 0.2351,
+      "ytdReturn": 0.0694,
       "weight": 0.0305
     },
     {
@@ -5132,8 +5132,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Distributors",
-      "return1y": 0.191,
-      "ytdReturn": 0.2976,
+      "return1y": 0.1831,
+      "ytdReturn": 0.2891,
       "weight": 0.0295
     },
     {
@@ -5210,8 +5210,8 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": -0.2514,
-      "ytdReturn": -0.2001,
+      "return1y": -0.2451,
+      "ytdReturn": -0.1935,
       "weight": 0.0281
     },
     {
@@ -5262,8 +5262,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.3152,
-      "ytdReturn": 0.225,
+      "return1y": 0.3165,
+      "ytdReturn": 0.2262,
       "weight": 0.0278
     },
     {
@@ -5301,8 +5301,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Cargo Ground Transportation",
-      "return1y": -0.1325,
-      "ytdReturn": -0.1325,
+      "return1y": -0.113,
+      "ytdReturn": -0.113,
       "weight": 0.0275
     },
     {
@@ -5392,8 +5392,8 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Interactive Media & Services",
-      "return1y": -0.485,
-      "ytdReturn": -0.5884,
+      "return1y": -0.4907,
+      "ytdReturn": -0.593,
       "weight": 0.0261
     },
     {
@@ -5717,8 +5717,8 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Building Products",
-      "return1y": 0.1787,
-      "ytdReturn": 0.1812,
+      "return1y": 0.1906,
+      "ytdReturn": 0.1931,
       "weight": 0.0223
     },
     {
@@ -5795,8 +5795,8 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Single-Family Residential REITs",
-      "return1y": -0.0613,
-      "ytdReturn": -0.0386,
+      "return1y": -0.0542,
+      "ytdReturn": -0.0314,
       "weight": 0.0214
     },
     {
@@ -5860,8 +5860,8 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Technology",
-      "return1y": 0.1738,
-      "ytdReturn": 0.1239,
+      "return1y": 0.1774,
+      "ytdReturn": 0.1273,
       "weight": 0.0208
     },
     {
@@ -5881,13 +5881,13 @@
       "ticker": "NWS",
       "name": "News Corporation",
       "nameEn": "News Corporation",
-      "marketCap": 14970000000.0,
+      "marketCap": 14990000000.0,
       "price": 29.89,
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Publishing",
-      "return1y": -0.0132,
-      "ytdReturn": -0.0202,
+      "return1y": 0.0112,
+      "ytdReturn": 0.004,
       "weight": 0.0206
     },
     {
@@ -5899,8 +5899,8 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Publishing",
-      "return1y": 0.0046,
-      "ytdReturn": 0.0031,
+      "return1y": 0.0314,
+      "ytdReturn": 0.0298,
       "weight": 0.0199
     },
     {
@@ -6016,8 +6016,8 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Internet Services & Infrastructure",
-      "return1y": -0.1339,
-      "ytdReturn": -0.0522,
+      "return1y": -0.1201,
+      "ytdReturn": -0.0371,
       "weight": 0.019
     },
     {
@@ -6497,8 +6497,8 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": -0.0126,
-      "ytdReturn": -0.2072,
+      "return1y": -0.018,
+      "ytdReturn": -0.2116,
       "weight": 0.0113
     },
     {
