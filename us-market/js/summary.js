@@ -10,7 +10,7 @@
 
 import { fetchJSON, waitForEcharts, fillChartMessage } from './utils.js?v=187f93bb7f';
 
-const DATA_URL = 'data/summary_thumbs.json?v=d3793a52d0';
+const DATA_URL = 'data/summary_thumbs.json?v=bfccca7186';
 const PALETTE = ['#2563eb', '#389e0d', '#cf1322', '#d48806', '#722ed1'];
 
 /* 分类主题色（老钱 2026-10-07 指定）：
