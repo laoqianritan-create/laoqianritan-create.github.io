@@ -168,7 +168,7 @@ const FILES = {
   assetLadder:    'data/us_asset_ladder.json?v=35c1626cd5',
   // Sentiment suite
   cnnFg:          'data/cnn_fear_greed.json?v=b6c34dd980',
-  aaii:           'data/aaii_sentiment.json?v=6d44bdc42c',
+  aaii:           'data/aaii_sentiment.json?v=6d4346ac79',
   naaim:          'data/naaim_exposure.json?v=ea25b02787',
   misery:         'data/us_misery_index.json?v=fd7f46f75c',
   // Chronicle

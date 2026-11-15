@@ -168,7 +168,7 @@ const FILES = {
   assetLadder:    'data/us_asset_ladder.json?v=6275a1b163',
   // 市场情绪四件套
   cnnFg:          'data/cnn_fear_greed.json?v=2f54236217',
-  aaii:           'data/aaii_sentiment.json?v=8e67830a6a',
+  aaii:           'data/aaii_sentiment.json?v=4b31df60de',
   naaim:          'data/naaim_exposure.json?v=5d0a08c442',
   misery:         'data/us_misery_index.json?v=4ba0871dc5',
   // Chronicle
