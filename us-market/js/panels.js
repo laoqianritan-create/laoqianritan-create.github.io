@@ -140,7 +140,7 @@ const FILES = {
   cagrPaths:      'data/sp500_cagr_paths.json?v=0be3690d3f',
   // Cross / NDX
   nasdaqComp:     'data/nasdaq_composite.json?v=b5a7d2d3e6',
-  nasdaq100:      'data/nasdaq100_panels.json?v=d879727d5b',
+  nasdaq100:      'data/nasdaq100_panels.json?v=c36b17b5e2',
   dowCentury:     'data/dow_jones_century.json?v=5b71556b9e',
   ndxAnnualLong:  'data/ndx_annual_returns_long.json?v=4e491395d1',
   ndxAnnualTr:    'data/ndx_annual_tr.json?v=31cf768e7f',
