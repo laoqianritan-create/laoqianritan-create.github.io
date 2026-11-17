@@ -27,7 +27,7 @@ import { fetchJSON } from './utils.js?v=187f93bb7f';
 
   Promise.all([
     fetchJSON('data/sp500_century.json?v=704eee28d7').catch(() => null),
-    fetchJSON('data/sp500_pe.json?v=577dc85f48').catch(() => null),
+    fetchJSON('data/sp500_pe.json?v=efa76322b7').catch(() => null),
   ])
     .then(([centuryPayload, pePayload]) => {
       const series = (centuryPayload?.series || [])
