@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16",
+  "updated": "2026-11-17",
   "source": "Treasury Fiscal Data auctions_query（历史）+ treasury_securities_auctions_v2（2026-11-14 起，老表停更）",
   "weekly": [
     {
@@ -8413,6 +8413,12 @@
       "date": "2026-11-09",
       "avg_btc": 2.64,
       "amount_billion": 765.9
+    },
+    {
+      "week": "2026-W47",
+      "date": "2026-11-16",
+      "avg_btc": 2.79,
+      "amount_billion": 189.6
     }
   ]
 }
