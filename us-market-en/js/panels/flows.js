@@ -163,7 +163,7 @@ export function initPanelIciDomesticWorld(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartIciDomesticWorld')));
 
   function getOption(freq) {
-    const rows = freq === 'weekly' ? data.weekly : data.monthly;
+    const rows = Array.isArray(data[freq]) ? data[freq] : [];
     const dates = rows.map(r => r.date);
     const labels = rows.map(r => shortLabel(r.date, freq));
 
@@ -184,9 +184,9 @@ export function initPanelIciDomesticWorld(data) {
         formatter: (params) => {
           const idx = params[0].dataIndex;
           const d = dates[idx];
-          let html = `<div style="font-weight:600">${d}</div>`;
+          let html = `<div style="font-weight:600">${freq === 'weekly' ? 'Week ended ' : 'Month ended '}${d}</div>`;
           params.forEach(p => {
-            const v = p.value == null ? '—' : `${p.value >= 0 ? '+' : ''}$${p.value.toFixed(1)}B`;
+            const v = p.value == null ? '—' : `${p.value >= 0 ? '+' : ''}$${p.value.toFixed(3)}B`;
             const color = (p.seriesName === 'Cumulative (Dom - World)') ? BLACK : (p.value >= 0 ? GREEN : RED);
             html += `<div style="display:flex;justify-content:space-between;gap:16px">
               <span>${p.marker} ${p.seriesName}</span><span style="font-variant-numeric:tabular-nums;color:${color}">${v}</span>
@@ -222,7 +222,7 @@ export function initPanelIciDomesticWorld(data) {
         { name: 'World', type: 'bar', yAxisIndex: 0,
           data: rows.map(r => r.equity_world == null ? null : r.equity_world / 1000),
           itemStyle: { color: CAT_COLORS.world }, barMaxWidth: 20 },
-        { name: 'Cumulative (Dom - World)', type: 'line', yAxisIndex: 1, smooth: true,
+        { name: 'Cumulative (Dom - World)', type: 'line', yAxisIndex: 1, smooth: false,
           data: diffCum, showSymbol: false,
           lineStyle: { color: BLACK, width: 2 }, itemStyle: { color: BLACK }, z: 5 },
       ],
@@ -230,21 +230,28 @@ export function initPanelIciDomesticWorld(data) {
     };
   }
 
-  chart.setOption(getOption('monthly'));
-  wireFreqToggle('iciDomesticWorldFreq', freq => chart.setOption(getOption(freq), true));
-
-  const latest = data.monthly[data.monthly.length - 1];
-  const cumMonths = data.monthly.length;
-  const cumDom = data.monthly.reduce((a, r) => a + (r.equity_domestic || 0), 0);
-  const cumWorld = data.monthly.reduce((a, r) => a + (r.equity_world || 0), 0);
-
-  const cards = [
-    buildMetricCard('Domestic', fmtB(latest.equity_domestic, 1), `Latest ${latest.date}`),
-    buildMetricCard('World', fmtB(latest.equity_world, 1), `Latest ${latest.date}`),
-    buildMetricCard(`Dom. cum. (${cumMonths} mo)`, fmtB(cumDom, 1), 'sum over window'),
-    buildMetricCard(`World cum. (${cumMonths} mo)`, fmtB(cumWorld, 1), 'sum over window'),
-  ];
-  renderMetricStrip('iciDomesticWorldSummary', cards);
+  function renderFrequency(freq) {
+    const rows = Array.isArray(data[freq]) ? data[freq] : [];
+    chart.setOption(getOption(freq), true);
+    if (!rows.length) {
+      renderMetricStrip('iciDomesticWorldSummary', [buildMetricCard('No data', '—', freq)]);
+      return;
+    }
+    const latest = rows[rows.length - 1];
+    const cumDom = rows.reduce((a, r) => a + r.equity_domestic, 0);
+    const cumWorld = rows.reduce((a, r) => a + r.equity_world, 0);
+    const period = freq === 'weekly' ? 'wk' : 'mo';
+    const endpoint = `${freq === 'weekly' ? 'Week ended' : 'Month ended'} ${latest.date}`;
+    const window = `Since ${rows[0].date} · ${rows.length} ${period}`;
+    renderMetricStrip('iciDomesticWorldSummary', [
+      buildMetricCard('Domestic', fmtB(latest.equity_domestic, 3), endpoint),
+      buildMetricCard('World (global/international)', fmtB(latest.equity_world, 3), endpoint),
+      buildMetricCard(`Dom. cum. (${rows.length} ${period})`, fmtB(cumDom, 3), window),
+      buildMetricCard(`World cum. (${rows.length} ${period})`, fmtB(cumWorld, 3), window),
+    ]);
+  }
+  renderFrequency('monthly');
+  wireFreqToggle('iciDomesticWorldFreq', renderFrequency);
 }
 
 

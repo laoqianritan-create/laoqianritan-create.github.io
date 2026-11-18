@@ -60,7 +60,7 @@ import { initAthPathsPanel } from './panels/ath_paths.js?v=77082314fb';
 import {
   initPanelIciRiskAppetite, initPanelIciDomesticWorld, initPanelIciMmf,
   initPanelIciActiveIndex, initPanelIciPassivization, initPanelOwnership,
-} from './panels/flows.js?v=c8093d78fb';
+} from './panels/flows.js?v=bf92011bc0';
 
 import { initUsAssetLadderPanel } from './panels/us_asset_ladder.js?v=696b72ae5b';
 import {
@@ -158,7 +158,7 @@ const FILES = {
   // Style ETF
   styleEtf:       'data/style_etf.json?v=63e994b947',
   // ICI Fund Flows
-  iciFlows:       'data/ici_flows.json?v=c4fb7975d7',
+  iciFlows:       'data/ici_flows.json?v=fedac7f547',
   iciMmf:         'data/ici_mmf.json?v=b8e2b7c1da',
   iciActiveIndex: 'data/ici_active_index.json?v=707fa4a9b4',
   ownership:      'data/ownership.json?v=a29a2fcc94',

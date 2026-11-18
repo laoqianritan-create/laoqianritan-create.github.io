@@ -96,7 +96,7 @@
       </div>
       <div class="nav-group" data-category="flows">
         <a class="nav-item active" href="#panel-ici-risk-appetite" data-panel="panel-ici-risk-appetite">权益·债券·混合</a>
-        <a class="nav-item" href="#panel-ici-domestic-world" data-panel="panel-ici-domestic-world">本土 vs 海外</a>
+        <a class="nav-item" href="#panel-ici-domestic-world" data-panel="panel-ici-domestic-world">Domestic vs World</a>
         <a class="nav-item" href="#panel-ici-mmf" data-panel="panel-ici-mmf">货币基金蓄水池</a>
         <a class="nav-item" href="#panel-ici-active-index" data-panel="panel-ici-active-index">主动 vs 指数</a>
         <a class="nav-item" href="#panel-ici-passivization" data-panel="panel-ici-passivization">被动化率</a>
@@ -1463,8 +1463,8 @@
     <div class="panel-inner">
       <div class="panel-header">
         <div>
-          <h2 class="panel-title">美股本土 vs 海外股票 资金流</h2>
-          <p class="panel-desc">美国投资者对本土股票（Domestic）与海外股票（World）基金的净流量对照。差值 = 「美国例外论」的资金端温度计。</p>
+          <h2 class="panel-title">Domestic vs World 股票基金资金流</h2>
+          <p class="panel-desc">长期共同基金净新现金流 + ETF 净发行（非跨境资金流）。Domestic 主要投资美国股票；World 含全球、国际及区域股票基金，不等于严格「非美」。</p>
         </div>
         <div class="panel-controls">
           <div class="btn-group" id="iciDomesticWorldFreq">
@@ -1476,6 +1476,8 @@
       </div>
       <div class="chart-container chart-hero" id="chartIciDomesticWorld"></div>
       <div class="metric-strip" id="iciDomesticWorldSummary"></div>
+      <p class="mini-desc">周度为周三结束的估计值，通常次周发布并可能修订；月度为另行调查的实际值，不能直接与周度求和等同。原始单位：百万美元；本图：亿美元。黑线为所选频率、所示样本起点以来 Domestic − World 的累计值。</p>
+      <p class="mini-desc">ICI 注：2026-10-14 当周本土股票共同基金流出主要由集体投资信托（CIT）相关活动驱动，而非个人投资者赎回；保留官方极端值，不作截断。 <a href="https://www.ici.org/research/stats/combined_flows" target="_blank" rel="noopener">ICI</a></p>
     </div>
   </section>
 
@@ -1603,7 +1605,7 @@
 
 <script src="js/freshness.js?v=7fbd3b15d0"></script>
 <script defer src="js/panel-share.js?v=6ae8a4949f"></script>
-<script type="module" src="js/panels.js?v=b71c75de78"></script>
+<script type="module" src="js/panels.js?v=1a4a85e93f"></script>
 <script type="module" src="js/hero-curve.js?v=e8968ba46a"></script>
 
 </body>

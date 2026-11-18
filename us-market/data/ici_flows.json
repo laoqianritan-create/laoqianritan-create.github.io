@@ -1,6 +1,6 @@
 {
   "updated": "2026-11-18",
-  "source": "Investment Company Institute · Weekly Combined Estimated ETF and Long-Term Fund Flows",
+  "source": "ICI Combined Estimated Long-Term Mutual Fund Flows and ETF Net Issuance",
   "source_url": "https://www.ici.org/research/statistics/etfs/weekly-combined-estimated-etf-and-longterm-flows",
   "xls_url": "https://www.ici.org/combined_flows_data_2026.xls",
   "unit": "millions of USD, net flows",
@@ -525,7 +525,6 @@
     },
     {
       "date": "2026-10-14",
-      "total": -471693.0,
       "equity": -476423.0,
       "equity_domestic": -479395.0,
       "equity_world": 2972.0,
@@ -533,11 +532,11 @@
       "bond": 7919.0,
       "bond_taxable": 6798.0,
       "bond_municipal": 1121.0,
-      "commodity": -850.0
+      "commodity": -850.0,
+      "total": -471693.0
     },
     {
       "date": "2026-10-21",
-      "total": 19094.0,
       "equity": 20665.0,
       "equity_domestic": 13845.0,
       "equity_world": 6820.0,
@@ -545,11 +544,11 @@
       "bond": -169.0,
       "bond_taxable": 429.0,
       "bond_municipal": -598.0,
-      "commodity": 686.0
+      "commodity": 691.0,
+      "total": 19099.0
     },
     {
       "date": "2026-10-28",
-      "total": 9363.0,
       "equity": 11081.0,
       "equity_domestic": 7096.0,
       "equity_world": 3985.0,
@@ -557,19 +556,44 @@
       "bond": 3164.0,
       "bond_taxable": 1445.0,
       "bond_municipal": 1719.0,
-      "commodity": -1889.0
+      "commodity": -1889.0,
+      "total": 9363.0
     },
     {
       "date": "2026-11-04",
-      "total": 17163.0,
-      "equity": 17432.0,
-      "equity_domestic": 11911.0,
+      "equity": 17434.0,
+      "equity_domestic": 11913.0,
       "equity_world": 5521.0,
       "hybrid": -2761.0,
-      "bond": 2362.0,
-      "bond_taxable": 2466.0,
+      "bond": 2353.0,
+      "bond_taxable": 2456.0,
       "bond_municipal": -104.0,
-      "commodity": 129.0
+      "commodity": 130.0,
+      "total": 17156.0
+    },
+    {
+      "date": "2026-11-11",
+      "equity": 37020.0,
+      "equity_domestic": 31505.0,
+      "equity_world": 5515.0,
+      "hybrid": -4147.0,
+      "bond": 1671.0,
+      "bond_taxable": 1183.0,
+      "bond_municipal": 488.0,
+      "commodity": -228.0,
+      "total": 34315.0
     }
-  ]
+  ],
+  "latest_date": "2026-11-11",
+  "latest_week_ended": "2026-11-11",
+  "latest_month": "2026-09-30",
+  "last_successful_fetch": "2026-11-18T17:55:55+00:00",
+  "source_release_date": "2026-11-18",
+  "weekly_source_url": "https://www.ici.org/research/stats/combined_flows",
+  "fetch_method": "official-release-WebFetch-readable-excerpt-import",
+  "caliber": "Combined long-term mutual fund net new cash flow plus ETF net issuance; Domestic = primarily US company stocks; World includes global, international and regional funds. Weekly dates are week ended (Wednesday), not publication dates. Weekly estimates may be revised; monthly actuals are collected separately. Positive = inflow, negative = outflow.",
+  "series_fetched_at": {
+    "weekly": "2026-11-18T17:55:55+00:00",
+    "monthly": "2026-11-18T01:43:59+00:00"
+  }
 }

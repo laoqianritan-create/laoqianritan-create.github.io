@@ -176,7 +176,7 @@ export function initPanelIciDomesticWorld(data) {
   const chart = registerChart(echarts.init(document.getElementById('chartIciDomesticWorld')));
 
   function getOption(freq) {
-    const rows = freq === 'weekly' ? data.weekly : data.monthly;
+    const rows = Array.isArray(data[freq]) ? data[freq] : [];
     const dates = rows.map(r => r.date);
     const labels = rows.map(r => shortLabel(r.date, freq));
 
@@ -198,12 +198,12 @@ export function initPanelIciDomesticWorld(data) {
         formatter: (params) => {
           const idx = params[0].dataIndex;
           const d = dates[idx];
-          let html = `<div style="font-weight:600">${d}</div>`;
+          let html = `<div style="font-weight:600">${freq === 'weekly' ? '周结束日 ' : '月结束日 '}${d}</div>`;
           params.forEach(p => {
             const v = p.value == null ? '—'
               : (p.seriesName === '累计差值 (Dom - World)'
-                  ? `${p.value >= 0 ? '+' : ''}${p.value.toFixed(0)} 亿`
-                  : `${p.value >= 0 ? '+' : ''}${p.value.toFixed(0)} 亿`);
+                  ? `${p.value >= 0 ? '+' : ''}${p.value.toFixed(2)} 亿`
+                  : `${p.value >= 0 ? '+' : ''}${p.value.toFixed(2)} 亿`);
             const color = (p.seriesName === '累计差值 (Dom - World)') ? BLACK : (p.value >= 0 ? GREEN : RED);
             html += `<div style="display:flex;justify-content:space-between;gap:16px">
               <span>${p.marker} ${p.seriesName}</span><span style="font-variant-numeric:tabular-nums;color:${color}">${v}</span>
@@ -236,10 +236,10 @@ export function initPanelIciDomesticWorld(data) {
         { name: 'Domestic 美股', type: 'bar', yAxisIndex: 0,
           data: rows.map(r => r.equity_domestic == null ? null : r.equity_domestic / 100),
           itemStyle: { color: CAT_COLORS.domestic }, barMaxWidth: 20 },
-        { name: 'World 海外', type: 'bar', yAxisIndex: 0,
+        { name: 'World 全球/国际', type: 'bar', yAxisIndex: 0,
           data: rows.map(r => r.equity_world == null ? null : r.equity_world / 100),
           itemStyle: { color: CAT_COLORS.world }, barMaxWidth: 20 },
-        { name: '累计差值 (Dom - World)', type: 'line', yAxisIndex: 1, smooth: true,
+        { name: '累计差值 (Dom - World)', type: 'line', yAxisIndex: 1, smooth: false,
           data: diffCum, showSymbol: false,
           lineStyle: { color: BLACK, width: 2 }, itemStyle: { color: BLACK }, z: 5 },
       ],
@@ -247,21 +247,28 @@ export function initPanelIciDomesticWorld(data) {
     };
   }
 
-  chart.setOption(getOption('monthly'));
-  wireFreqToggle('iciDomesticWorldFreq', freq => chart.setOption(getOption(freq), true));
-
-  const latest = data.monthly[data.monthly.length - 1];
-  const cumMonths = data.monthly.length;
-  const cumDom = data.monthly.reduce((a, r) => a + (r.equity_domestic || 0), 0);
-  const cumWorld = data.monthly.reduce((a, r) => a + (r.equity_world || 0), 0);
-
-  const cards = [
-    buildMetricCard('本土（Domestic）', fmt亿(latest.equity_domestic, 0) + '美元', `最新月 ${latest.date}`),
-    buildMetricCard('海外（World）', fmt亿(latest.equity_world, 0) + '美元', `最新月 ${latest.date}`),
-    buildMetricCard(`本土累计（${cumMonths} 月）`, fmt亿(cumDom, 0) + '美元', '同区间总流量'),
-    buildMetricCard(`海外累计（${cumMonths} 月）`, fmt亿(cumWorld, 0) + '美元', '同区间总流量'),
-  ];
-  renderMetricStrip('iciDomesticWorldSummary', cards);
+  function renderFrequency(freq) {
+    const rows = Array.isArray(data[freq]) ? data[freq] : [];
+    chart.setOption(getOption(freq), true);
+    if (!rows.length) {
+      renderMetricStrip('iciDomesticWorldSummary', [buildMetricCard('暂无数据', '—', freq === 'weekly' ? '周度' : '月度')]);
+      return;
+    }
+    const latest = rows[rows.length - 1];
+    const cumDom = rows.reduce((a, r) => a + r.equity_domestic, 0);
+    const cumWorld = rows.reduce((a, r) => a + r.equity_world, 0);
+    const period = freq === 'weekly' ? '周' : '月';
+    const endpoint = `${freq === 'weekly' ? '周结束日' : '月末'} ${latest.date}`;
+    const window = `自 ${rows[0].date} 起 · ${rows.length} ${period}`;
+    renderMetricStrip('iciDomesticWorldSummary', [
+      buildMetricCard('本土（Domestic）', fmt亿(latest.equity_domestic, 2) + '美元', endpoint),
+      buildMetricCard('全球/国际（World）', fmt亿(latest.equity_world, 2) + '美元', endpoint),
+      buildMetricCard(`本土累计（${rows.length} ${period}）`, fmt亿(cumDom, 2) + '美元', window),
+      buildMetricCard(`World 累计（${rows.length} ${period}）`, fmt亿(cumWorld, 2) + '美元', window),
+    ]);
+  }
+  renderFrequency('monthly');
+  wireFreqToggle('iciDomesticWorldFreq', renderFrequency);
 }
 
 
