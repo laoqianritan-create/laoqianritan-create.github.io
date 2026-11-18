@@ -133,7 +133,7 @@ const FILES = {
   quotes:         'data/bofa_longest_pictures_quotes.json?v=9ee32c8128',
   aiae:           'data/aiae.json?v=c32982c40f',
   breadth:        'data/sp500_breadth.json?v=87a7a15f5c',
-  buffett:        'data/buffett.json?v=e8380d6de9',
+  buffett:        'data/buffett.json?v=8da929f8a4',
   hindenburg:     'data/sp500_hindenburg.json?v=12df9328e2',
   intrayearDd:    'data/sp500_intrayear_dd.json?v=bfb071bdee',
   annualTr:       'data/sp500_annual_tr.json?v=2023371699',
@@ -153,7 +153,7 @@ const FILES = {
   ndxIntrayearDd: 'data/ndx_intrayear_dd.json?v=43127c28dc',
   ndxVxn:         'data/ndx_vxn.json?v=00da3026be',
   qqqDetails:     'data/qqq_return_details.json?v=933322ab60',
-  equalWeight:    'data/sp500_equal_weight.json?v=2f7d2cac3f',
+  equalWeight:    'data/sp500_equal_weight.json?v=2882784764',
   ndxBreadth:     'data/ndx_breadth.json?v=2cdcc2f740',
   // Style ETF
   styleEtf:       'data/style_etf.json?v=63e994b947',
