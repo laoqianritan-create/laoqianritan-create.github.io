@@ -60,7 +60,7 @@ import { initAthPathsPanel } from './panels/ath_paths.js?v=0eb0e6513b';
 import {
   initPanelIciRiskAppetite, initPanelIciDomesticWorld, initPanelIciMmf,
   initPanelIciActiveIndex, initPanelIciPassivization, initPanelOwnership,
-} from './panels/flows.js?v=2b0d53b96a';
+} from './panels/flows.js?v=5294210580';
 
 import { initUsAssetLadderPanel } from './panels/us_asset_ladder.js?v=0ee2e1fe89';
 import {
@@ -161,7 +161,7 @@ const FILES = {
   iciFlows:       'data/ici_flows.json?v=fedac7f547',
   iciMmf:         'data/ici_mmf.json?v=3fc8139a6a',
   iciActiveIndex: 'data/ici_active_index.json?v=2a7dd682f5',
-  ownership:      'data/ownership.json?v=4d9a532547',
+  ownership:      'data/ownership.json?v=9bd0f45df5',
   // Fed hikes（加息×股指）
   fedHikes:       'data/fed_hikes.json?v=93ec95f55b',
   // 大类资产长期涨幅

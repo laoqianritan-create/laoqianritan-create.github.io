@@ -628,13 +628,13 @@ export function initPanelIciPassivization(data) {
 
 // 7 类归并（原始 12 sector + 家庭残差 → 展示 7 类）
 const OWNERSHIP_GROUPS = [
-  { key: 'household',   name: '家庭直接持股',       color: BLUE,      keys: ['household'] },
+  { key: 'household',   name: '家庭（残差）',       color: BLUE,      keys: ['household'] },
   { key: 'foreign',     name: '外国投资者',         color: '#f59e0b', keys: ['foreign'] },
   { key: 'mutual_fund', name: '共同基金',           color: '#0891b2', keys: ['mutual_fund'] },
   { key: 'etf',         name: 'ETF',                color: GREEN,     keys: ['etf'] },
   { key: 'pension',     name: '养老金合计',         color: '#8b5cf6', keys: ['private_pension', 'state_pension', 'fed_pension'] },
   { key: 'insurance',   name: '保险公司',           color: '#d97706', keys: ['life_insurance', 'pc_insurance'] },
-  { key: 'other',       name: '其他',               color: '#94a3b8', keys: ['closed_end', 'broker_dealer', 'bank_mmf', 'nonfin_corp'] },
+  { key: 'other',       name: '其他（企业/政府/对冲基金等）', color: '#94a3b8', keys: ['closed_end', 'broker_dealer', 'bank_mmf', 'nonfin_corp', 'other_holders'] },
 ];
 
 // 里程碑标注（放在第一条 series 的 markLine）
@@ -644,6 +644,12 @@ const OWNERSHIP_MILESTONES = [
   { xAxis: '2010-01-01', label: '2010\n外资突破 15%' },
   { xAxis: '2020-01-01', label: '2020\n疫情放水' },
 ];
+
+function ownershipQuarterLabel(q, isoDate) {
+  if (q && /^\d{4}Q[1-4]$/.test(q)) return `${q.slice(0, 4)} ${q.slice(4)}`;
+  const m = /^(\d{4})-(\d{2})/.exec(isoDate || '');
+  return m ? `${m[1]} Q${Math.floor((Number(m[2]) - 1) / 3) + 1}` : (isoDate || '');
+}
 
 export function initPanelOwnership(data) {
   if (!data || !Array.isArray(data.ownership_pct) || !data.ownership_pct.length) return;
@@ -685,8 +691,10 @@ export function initPanelOwnership(data) {
 
   chart.setOption({
     animation: false,
-    grid: { left: 50, right: 30, top: 46, bottom: 66 },
-    legend: getLineLegendConfig({ top: 4, right: 8 }),
+    // 2026-11-19 视觉修正：图例单行 scroll（中英/手机都不换行），grid 顶部留出 y 轴标题位，
+    // y 轴标题左对齐到轴线，避免居中时左侧被容器裁掉。
+    grid: { left: 50, right: 30, top: 64, bottom: 66 },
+    legend: getLineLegendConfig({ type: 'scroll', top: 4, left: 8, right: 8 }),
     tooltip: {
       trigger: 'axis',
       axisPointer: { type: 'line' },
@@ -711,8 +719,8 @@ export function initPanelOwnership(data) {
     },
     yAxis: {
       type: 'value',
-      name: '占美股总市值 %', nameGap: 12,
-      nameTextStyle: { color: GRAY, fontFamily: CHART_FONT, fontSize: 11 },
+      name: '占美国发行股票市值 %', nameGap: 14,
+      nameTextStyle: { color: GRAY, fontFamily: CHART_FONT, fontSize: 11, align: 'left' },
       min: 0, max: 100,
       axisLabel: { fontSize: 11, color: GRAY, fontFamily: CHART_FONT, formatter: '{value}%' },
       splitLine: { lineStyle: { color: cssVar('--chart-grid') || '#f0f0f0' } },
@@ -728,17 +736,26 @@ export function initPanelOwnership(data) {
     }],
   });
 
-  // Summary strip：4 张卡片（家庭/外国/基金合计/养老金合计）+ 总市值
+  // Summary strip：总市值 + 家庭（残差）/外国/基金；末季与官方发布节奏单独一行
   const latest = groupedData[groupedData.length - 1];
+  const first = groupedData[0];
   const totalLatest = data.total_liability[data.total_liability.length - 1];
   const totalT = totalLatest.value_millions / 1e6;
   const fund_total = (latest.mutual_fund || 0) + (latest.etf || 0);
+  const quarter = ownershipQuarterLabel(data.latest_quarter, latest.date);
 
   const cards = [
-    buildMetricCard('总市值', `${totalT.toFixed(1)} 万亿美元`, `Fed Z.1 · ${latest.date}`),
-    buildMetricCard('家庭直接持股', `${latest.household.toFixed(1)}%`, `1945 年约 90%`),
+    buildMetricCard('美国发行股票总市值', `${totalT.toFixed(1)} 万亿美元`, `Fed Z.1 · ${quarter}`),
+    buildMetricCard('家庭（残差）', `${latest.household.toFixed(1)}%`, `1945 Q4 为 ${first.household.toFixed(1)}%`),
     buildMetricCard('外国投资者', `${latest.foreign.toFixed(1)}%`, `1970 年 < 5%`),
     buildMetricCard('共同基金 + ETF', `${fund_total.toFixed(1)}%`, `MF ${latest.mutual_fund.toFixed(1)}% + ETF ${latest.etf.toFixed(1)}%`),
   ];
+  const asOf = document.getElementById('ownershipAsOf');
+  if (asOf) {
+    const parts = [`数据截至 ${quarter}${data.quarter_end ? `（季末 ${data.quarter_end}）` : ''}`];
+    if (data.source_release_date) parts.push(`美联储 ${data.source_release_date} 发布`);
+    if (data.next_release_date) parts.push(`下一期预计 ${data.next_release_date} 发布`);
+    asOf.textContent = parts.join(' · ');
+  }
   renderMetricStrip('ownershipSummary', cards);
 }

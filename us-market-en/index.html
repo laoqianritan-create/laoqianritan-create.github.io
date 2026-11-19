@@ -1522,7 +1522,8 @@
         <div>
           <h2 class="panel-title">Who Owns US Equities · Ownership Breakdown</h2>
           <p class="panel-desc">Fed Z.1 Financial Accounts · Corporate Equities</p>
-            <p class="mini-desc">Quarterly from 1945-Q4 · 100% normalized · Household direct ownership computed as residual (Total − all sectors), per Fed Guide to Financial Accounts.</p>
+          <p class="panel-desc ownership-asof" id="ownershipAsOf"></p>
+            <p class="mini-desc">Table F51.1.s Corporate equities · quarterly from 1945-Q4 · Denominator = US-issued equities (all holdings − foreign equities held by US residents) · Households = residual (denominator − all non-household holders), which assigns all US-held foreign equities to households — an approximation.</p>
         </div>
         <div class="panel-controls">
           <button class="btn btn-export" data-chart="chartOwnership" title="Export PNG">&#8681;</button>
@@ -1587,7 +1588,7 @@
 
 <script src="js/freshness.js?v=ffac6fc94d"></script>
 <script defer src="js/panel-share.js?v=6ae8a4949f"></script>
-<script type="module" src="js/panels.js?v=6f7c230b13"></script>
+<script type="module" src="js/panels.js?v=a82c07b009"></script>
 <script type="module" src="js/hero-curve.js?v=fb0ed03cb4"></script>
 
 </body>

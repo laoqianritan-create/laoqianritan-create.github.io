@@ -1,15 +1,23 @@
 {
-  "updated": "2026-11-19",
-  "source": "Federal Reserve · Z.1 Financial Accounts of the United States",
+  "updated": "2026-04-01",
+  "latest_date": "2026-04-01",
+  "latest_quarter": "2026Q2",
+  "quarter_end": "2026-06-30",
+  "source_release_date": "2026-09-11",
+  "next_release_date": "2026-12-10",
+  "last_successful_fetch": "2026-11-19T08:32:24+00:00",
+  "source": "Federal Reserve · Z.1 Financial Accounts of the United States · Table F51.1.s Corporate equities",
   "source_url": "https://www.federalreserve.gov/releases/z1/",
-  "fred_search": "https://fred.stlouisfed.org/searchresults?st=BOGZ1LM+Corporate+Equities",
+  "table_url": "https://www.federalreserve.gov/releases/z1/20260911/html/f51_1_s.htm",
+  "csv_zip_url": "https://www.federalreserve.gov/releases/z1/20260911/z1_csv_files.zip",
   "unit": "millions of USD (market value level)",
-  "hh_method": "residual: household = total − sum(all sectors) · 与 Fed Guide to Financial Accounts 一致",
+  "denominator": "US-issued corporate equities = LM893064105 − LM263164105",
+  "hh_method": "residual: household = US-issued equities − all non-household holders; identity: = LM153064105 − LM263164105 (assumes all foreign equities held by US residents are household-held)",
   "categories": [
     {
       "key": "household",
-      "name_zh": "家庭直接持股",
-      "name_en": "Households (Directly Held)",
+      "name_zh": "家庭（残差）",
+      "name_en": "Households (Residual)",
       "series_id": "residual",
       "color": "#dc2626"
     },
@@ -17,85 +25,92 @@
       "key": "foreign",
       "name_zh": "外国投资者",
       "name_en": "Rest of the World",
-      "series_id": "BOGZ1LM263064105Q",
+      "series_id": "LM263064105",
       "color": "#f59e0b"
     },
     {
       "key": "mutual_fund",
       "name_zh": "共同基金",
       "name_en": "Mutual Funds",
-      "series_id": "BOGZ1LM653064100Q",
+      "series_id": "LM653064100",
       "color": "#2563eb"
     },
     {
       "key": "etf",
       "name_zh": "ETF",
       "name_en": "Exchange-Traded Funds",
-      "series_id": "BOGZ1LM563064100Q",
+      "series_id": "LM563064100",
       "color": "#22c55e"
     },
     {
       "key": "private_pension",
       "name_zh": "私营养老金",
       "name_en": "Private Pension Funds",
-      "series_id": "BOGZ1LM573064105Q",
+      "series_id": "LM573064105",
       "color": "#7c3aed"
     },
     {
       "key": "state_pension",
       "name_zh": "州与地方政府退休金",
       "name_en": "State & Local Government Retirement",
-      "series_id": "BOGZ1LM223064145Q",
+      "series_id": "LM223064145",
       "color": "#a78bfa"
     },
     {
       "key": "fed_pension",
       "name_zh": "联邦政府退休金",
       "name_en": "Federal Government Retirement",
-      "series_id": "BOGZ1LM343064105Q",
+      "series_id": "LM343064105",
       "color": "#c4b5fd"
     },
     {
       "key": "life_insurance",
       "name_zh": "寿险公司",
       "name_en": "Life Insurance",
-      "series_id": "BOGZ1LM543064105Q",
+      "series_id": "LM543064105",
       "color": "#0891b2"
     },
     {
       "key": "pc_insurance",
       "name_zh": "财产/意外险",
       "name_en": "Property-Casualty Insurance",
-      "series_id": "BOGZ1LM513064105Q",
+      "series_id": "LM513064105",
       "color": "#06b6d4"
     },
     {
       "key": "closed_end",
       "name_zh": "封闭式基金",
       "name_en": "Closed-End Funds",
-      "series_id": "BOGZ1LM553064103Q",
+      "series_id": "LM553064103",
       "color": "#94a3b8"
     },
     {
       "key": "broker_dealer",
       "name_zh": "券商自营",
       "name_en": "Broker-Dealers",
-      "series_id": "BOGZ1LM663064105Q",
+      "series_id": "LM663064105",
       "color": "#64748b"
     },
     {
       "key": "bank_mmf",
-      "name_zh": "银行 + 央行 + 货币基金",
-      "name_en": "Depository + Central Bank + MMF",
-      "series_id": "BOGZ1LM843064105Q",
+      "name_zh": "存款机构 + 央行",
+      "name_en": "Depository Institutions + Central Bank",
+      "series_id": "LM763064103+FL713064103+FL753064103",
       "color": "#475569"
     },
     {
       "key": "nonfin_corp",
-      "name_zh": "非金融企业互持",
-      "name_en": "Nonfinancial Corp Business",
-      "series_id": "BOGZ1LM763064105Q",
+      "name_zh": "非金融企业",
+      "name_en": "Nonfinancial Corporate Business",
+      "series_id": "LM103064103",
       "color": "#334155"
+    },
+    {
+      "key": "other_holders",
+      "name_zh": "政府 + 对冲/BDC/区间/私募债基金等",
+      "name_en": "Government + Hedge/BDC/Interval/Private-Debt Funds & Other",
+      "series_id": "LM313064105+LM213064103+LM453064103+LM463064105+LM623064105+LM443064100+FL503064105",
+      "color": "#cbd5e1"
     }
   ],
   "total_liability": [
@@ -14766,2446 +14781,3668 @@
     "nonfin_corp": [
       {
         "date": "1945-10-01",
-        "value_millions": 166.0
+        "value_millions": 0.0
       },
       {
         "date": "1946-10-01",
-        "value_millions": 180.0
+        "value_millions": 0.0
       },
       {
         "date": "1947-10-01",
-        "value_millions": 146.0
+        "value_millions": 0.0
       },
       {
         "date": "1948-10-01",
-        "value_millions": 157.0
+        "value_millions": 0.0
       },
       {
         "date": "1949-10-01",
-        "value_millions": 157.0
+        "value_millions": 0.0
       },
       {
         "date": "1950-10-01",
-        "value_millions": 181.0
+        "value_millions": 0.0
       },
       {
         "date": "1951-10-01",
-        "value_millions": 227.0
+        "value_millions": 0.0
       },
       {
         "date": "1952-01-01",
-        "value_millions": 249.0
+        "value_millions": 0.0
       },
       {
         "date": "1952-04-01",
-        "value_millions": 278.0
+        "value_millions": 0.0
       },
       {
         "date": "1952-07-01",
-        "value_millions": 302.0
+        "value_millions": 0.0
       },
       {
         "date": "1952-10-01",
-        "value_millions": 336.0
+        "value_millions": 0.0
       },
       {
         "date": "1953-01-01",
-        "value_millions": 357.0
+        "value_millions": 0.0
       },
       {
         "date": "1953-04-01",
-        "value_millions": 378.0
+        "value_millions": 0.0
       },
       {
         "date": "1953-07-01",
-        "value_millions": 399.0
+        "value_millions": 0.0
       },
       {
         "date": "1953-10-01",
-        "value_millions": 432.0
+        "value_millions": 0.0
       },
       {
         "date": "1954-01-01",
-        "value_millions": 467.0
+        "value_millions": 0.0
       },
       {
         "date": "1954-04-01",
-        "value_millions": 497.0
+        "value_millions": 0.0
       },
       {
         "date": "1954-07-01",
-        "value_millions": 531.0
+        "value_millions": 0.0
       },
       {
         "date": "1954-10-01",
-        "value_millions": 572.0
+        "value_millions": 0.0
       },
       {
         "date": "1955-01-01",
-        "value_millions": 612.0
+        "value_millions": 0.0
       },
       {
         "date": "1955-04-01",
-        "value_millions": 691.0
+        "value_millions": 0.0
       },
       {
         "date": "1955-07-01",
-        "value_millions": 762.0
+        "value_millions": 0.0
       },
       {
         "date": "1955-10-01",
-        "value_millions": 808.0
+        "value_millions": 0.0
       },
       {
         "date": "1956-01-01",
-        "value_millions": 855.0
+        "value_millions": 0.0
       },
       {
         "date": "1956-04-01",
-        "value_millions": 836.0
+        "value_millions": 0.0
       },
       {
         "date": "1956-07-01",
-        "value_millions": 822.0
+        "value_millions": 0.0
       },
       {
         "date": "1956-10-01",
-        "value_millions": 837.0
+        "value_millions": 0.0
       },
       {
         "date": "1957-01-01",
-        "value_millions": 833.0
+        "value_millions": 0.0
       },
       {
         "date": "1957-04-01",
-        "value_millions": 891.0
+        "value_millions": 0.0
       },
       {
         "date": "1957-07-01",
-        "value_millions": 877.0
+        "value_millions": 0.0
       },
       {
         "date": "1957-10-01",
-        "value_millions": 872.0
+        "value_millions": 0.0
       },
       {
         "date": "1958-01-01",
-        "value_millions": 909.0
+        "value_millions": 0.0
       },
       {
         "date": "1958-04-01",
-        "value_millions": 969.0
+        "value_millions": 0.0
       },
       {
         "date": "1958-07-01",
-        "value_millions": 1039.0
+        "value_millions": 0.0
       },
       {
         "date": "1958-10-01",
-        "value_millions": 1099.0
+        "value_millions": 0.0
       },
       {
         "date": "1959-01-01",
-        "value_millions": 1102.0
+        "value_millions": 0.0
       },
       {
         "date": "1959-04-01",
-        "value_millions": 1110.0
+        "value_millions": 0.0
       },
       {
         "date": "1959-07-01",
-        "value_millions": 1068.0
+        "value_millions": 0.0
       },
       {
         "date": "1959-10-01",
-        "value_millions": 1070.0
+        "value_millions": 0.0
       },
       {
         "date": "1960-01-01",
-        "value_millions": 1013.0
+        "value_millions": 0.0
       },
       {
         "date": "1960-04-01",
-        "value_millions": 1021.0
+        "value_millions": 0.0
       },
       {
         "date": "1960-07-01",
-        "value_millions": 990.0
+        "value_millions": 0.0
       },
       {
         "date": "1960-10-01",
-        "value_millions": 1040.0
+        "value_millions": 0.0
       },
       {
         "date": "1961-01-01",
-        "value_millions": 1103.0
+        "value_millions": 0.0
       },
       {
         "date": "1961-04-01",
-        "value_millions": 1108.0
+        "value_millions": 0.0
       },
       {
         "date": "1961-07-01",
-        "value_millions": 1133.0
+        "value_millions": 0.0
       },
       {
         "date": "1961-10-01",
-        "value_millions": 1195.0
+        "value_millions": 0.0
       },
       {
         "date": "1962-01-01",
-        "value_millions": 1207.0
+        "value_millions": 0.0
       },
       {
         "date": "1962-04-01",
-        "value_millions": 1098.0
+        "value_millions": 0.0
       },
       {
         "date": "1962-07-01",
-        "value_millions": 1161.0
+        "value_millions": 0.0
       },
       {
         "date": "1962-10-01",
-        "value_millions": 1251.0
+        "value_millions": 0.0
       },
       {
         "date": "1963-01-01",
-        "value_millions": 1309.0
+        "value_millions": 11691.0
       },
       {
         "date": "1963-04-01",
-        "value_millions": 1358.0
+        "value_millions": 12026.0
       },
       {
         "date": "1963-07-01",
-        "value_millions": 1400.0
+        "value_millions": 12268.0
       },
       {
         "date": "1963-10-01",
-        "value_millions": 1442.0
+        "value_millions": 12666.0
       },
       {
         "date": "1964-01-01",
-        "value_millions": 1494.0
+        "value_millions": 13226.0
       },
       {
         "date": "1964-04-01",
-        "value_millions": 1525.0
+        "value_millions": 13568.0
       },
       {
         "date": "1964-07-01",
-        "value_millions": 1556.0
+        "value_millions": 13866.0
       },
       {
         "date": "1964-10-01",
-        "value_millions": 1584.0
+        "value_millions": 13844.0
       },
       {
         "date": "1965-01-01",
-        "value_millions": 1625.0
+        "value_millions": 14085.0
       },
       {
         "date": "1965-04-01",
-        "value_millions": 1636.0
+        "value_millions": 13763.0
       },
       {
         "date": "1965-07-01",
-        "value_millions": 1754.0
+        "value_millions": 14731.0
       },
       {
         "date": "1965-10-01",
-        "value_millions": 1809.0
+        "value_millions": 15148.0
       },
       {
         "date": "1966-01-01",
-        "value_millions": 1795.0
+        "value_millions": 15646.0
       },
       {
         "date": "1966-04-01",
-        "value_millions": 1744.0
+        "value_millions": 15829.0
       },
       {
         "date": "1966-07-01",
-        "value_millions": 1646.0
+        "value_millions": 15179.0
       },
       {
         "date": "1966-10-01",
-        "value_millions": 1701.0
+        "value_millions": 16847.0
       },
       {
         "date": "1967-01-01",
-        "value_millions": 1845.0
+        "value_millions": 18608.0
       },
       {
         "date": "1967-04-01",
-        "value_millions": 1907.0
+        "value_millions": 18388.0
       },
       {
         "date": "1967-07-01",
-        "value_millions": 2021.0
+        "value_millions": 19289.0
       },
       {
         "date": "1967-10-01",
-        "value_millions": 2041.0
+        "value_millions": 18911.0
       },
       {
         "date": "1968-01-01",
-        "value_millions": 1967.0
+        "value_millions": 18496.0
       },
       {
         "date": "1968-04-01",
-        "value_millions": 2083.0
+        "value_millions": 21318.0
       },
       {
         "date": "1968-07-01",
-        "value_millions": 2096.0
+        "value_millions": 22906.0
       },
       {
         "date": "1968-10-01",
-        "value_millions": 2131.0
+        "value_millions": 24109.0
       },
       {
         "date": "1969-01-01",
-        "value_millions": 2137.0
+        "value_millions": 25548.0
       },
       {
         "date": "1969-04-01",
-        "value_millions": 2189.0
+        "value_millions": 26502.0
       },
       {
         "date": "1969-07-01",
-        "value_millions": 2223.0
+        "value_millions": 27077.0
       },
       {
         "date": "1969-10-01",
-        "value_millions": 2303.0
+        "value_millions": 28569.0
       },
       {
         "date": "1970-01-01",
-        "value_millions": 2349.0
+        "value_millions": 28802.0
       },
       {
         "date": "1970-04-01",
-        "value_millions": 2174.0
+        "value_millions": 24169.0
       },
       {
         "date": "1970-07-01",
-        "value_millions": 2429.0
+        "value_millions": 28916.0
       },
       {
         "date": "1970-10-01",
-        "value_millions": 2624.0
+        "value_millions": 32658.0
       },
       {
         "date": "1971-01-01",
-        "value_millions": 2863.0
+        "value_millions": 35609.0
       },
       {
         "date": "1971-04-01",
-        "value_millions": 2925.0
+        "value_millions": 35451.0
       },
       {
         "date": "1971-07-01",
-        "value_millions": 3033.0
+        "value_millions": 35026.0
       },
       {
         "date": "1971-10-01",
-        "value_millions": 3215.0
+        "value_millions": 36422.0
       },
       {
         "date": "1972-01-01",
-        "value_millions": 3474.0
+        "value_millions": 37700.0
       },
       {
         "date": "1972-04-01",
-        "value_millions": 3614.0
+        "value_millions": 37135.0
       },
       {
         "date": "1972-07-01",
-        "value_millions": 3778.0
+        "value_millions": 37755.0
       },
       {
         "date": "1972-10-01",
-        "value_millions": 4045.0
+        "value_millions": 39717.0
       },
       {
         "date": "1973-01-01",
-        "value_millions": 4016.0
+        "value_millions": 41532.0
       },
       {
         "date": "1973-04-01",
-        "value_millions": 3965.0
+        "value_millions": 42579.0
       },
       {
         "date": "1973-07-01",
-        "value_millions": 4208.0
+        "value_millions": 48182.0
       },
       {
         "date": "1973-10-01",
-        "value_millions": 4041.0
+        "value_millions": 46857.0
       },
       {
         "date": "1974-01-01",
-        "value_millions": 4269.0
+        "value_millions": 52182.0
       },
       {
         "date": "1974-04-01",
-        "value_millions": 4145.0
+        "value_millions": 54194.0
       },
       {
         "date": "1974-07-01",
-        "value_millions": 3612.0
+        "value_millions": 44800.0
       },
       {
         "date": "1974-10-01",
-        "value_millions": 3851.0
+        "value_millions": 53476.0
       },
       {
         "date": "1975-01-01",
-        "value_millions": 4266.0
+        "value_millions": 62821.0
       },
       {
         "date": "1975-04-01",
-        "value_millions": 4617.0
+        "value_millions": 69226.0
       },
       {
         "date": "1975-07-01",
-        "value_millions": 4223.0
+        "value_millions": 58781.0
       },
       {
         "date": "1975-10-01",
-        "value_millions": 4295.0
+        "value_millions": 60832.0
       },
       {
         "date": "1976-01-01",
-        "value_millions": 4525.0
+        "value_millions": 68056.0
       },
       {
         "date": "1976-04-01",
-        "value_millions": 4416.0
+        "value_millions": 67776.0
       },
       {
         "date": "1976-07-01",
-        "value_millions": 4303.0
+        "value_millions": 67108.0
       },
       {
         "date": "1976-10-01",
-        "value_millions": 4329.0
+        "value_millions": 67205.0
       },
       {
         "date": "1977-01-01",
-        "value_millions": 4261.0
+        "value_millions": 64801.0
       },
       {
         "date": "1977-04-01",
-        "value_millions": 4502.0
+        "value_millions": 69475.0
       },
       {
         "date": "1977-07-01",
-        "value_millions": 4604.0
+        "value_millions": 69931.0
       },
       {
         "date": "1977-10-01",
-        "value_millions": 4711.0
+        "value_millions": 72035.0
       },
       {
         "date": "1978-01-01",
-        "value_millions": 4667.0
+        "value_millions": 67468.0
       },
       {
         "date": "1978-04-01",
-        "value_millions": 4814.0
+        "value_millions": 72135.0
       },
       {
         "date": "1978-07-01",
-        "value_millions": 4927.0
+        "value_millions": 77307.0
       },
       {
         "date": "1978-10-01",
-        "value_millions": 4744.0
+        "value_millions": 72345.0
       },
       {
         "date": "1979-01-01",
-        "value_millions": 4847.0
+        "value_millions": 76954.0
       },
       {
         "date": "1979-04-01",
-        "value_millions": 4825.0
+        "value_millions": 78445.0
       },
       {
         "date": "1979-07-01",
-        "value_millions": 4867.0
+        "value_millions": 83852.0
       },
       {
         "date": "1979-10-01",
-        "value_millions": 4672.0
+        "value_millions": 83307.0
       },
       {
         "date": "1980-01-01",
-        "value_millions": 4251.0
+        "value_millions": 80503.0
       },
       {
         "date": "1980-04-01",
-        "value_millions": 4306.0
+        "value_millions": 91998.0
       },
       {
         "date": "1980-07-01",
-        "value_millions": 4282.0
+        "value_millions": 103136.0
       },
       {
         "date": "1980-10-01",
-        "value_millions": 4150.0
+        "value_millions": 113879.0
       },
       {
         "date": "1981-01-01",
-        "value_millions": 3975.0
+        "value_millions": 115801.0
       },
       {
         "date": "1981-04-01",
-        "value_millions": 3722.0
+        "value_millions": 113383.0
       },
       {
         "date": "1981-07-01",
-        "value_millions": 3474.0
+        "value_millions": 101866.0
       },
       {
         "date": "1981-10-01",
-        "value_millions": 3418.0
+        "value_millions": 109002.0
       },
       {
         "date": "1982-01-01",
-        "value_millions": 3191.0
+        "value_millions": 100296.0
       },
       {
         "date": "1982-04-01",
-        "value_millions": 3063.0
+        "value_millions": 98889.0
       },
       {
         "date": "1982-07-01",
-        "value_millions": 3051.0
+        "value_millions": 109408.0
       },
       {
         "date": "1982-10-01",
-        "value_millions": 3095.0
+        "value_millions": 128675.0
       },
       {
         "date": "1983-01-01",
-        "value_millions": 3241.0
+        "value_millions": 141890.0
       },
       {
         "date": "1983-04-01",
-        "value_millions": 3442.0
+        "value_millions": 158078.0
       },
       {
         "date": "1983-07-01",
-        "value_millions": 3543.0
+        "value_millions": 158269.0
       },
       {
         "date": "1983-10-01",
-        "value_millions": 3612.0
+        "value_millions": 159277.0
       },
       {
         "date": "1984-01-01",
-        "value_millions": 3639.0
+        "value_millions": 156938.0
       },
       {
         "date": "1984-04-01",
-        "value_millions": 3564.0
+        "value_millions": 154115.0
       },
       {
         "date": "1984-07-01",
-        "value_millions": 3586.0
+        "value_millions": 170467.0
       },
       {
         "date": "1984-10-01",
-        "value_millions": 3447.0
+        "value_millions": 175013.0
       },
       {
         "date": "1985-01-01",
-        "value_millions": 3625.0
+        "value_millions": 187569.0
       },
       {
         "date": "1985-04-01",
-        "value_millions": 3804.0
+        "value_millions": 197608.0
       },
       {
         "date": "1985-07-01",
-        "value_millions": 3715.0
+        "value_millions": 186046.0
       },
       {
         "date": "1985-10-01",
-        "value_millions": 3681.0
+        "value_millions": 214143.0
       },
       {
         "date": "1986-01-01",
-        "value_millions": 4032.0
+        "value_millions": 247091.0
       },
       {
         "date": "1986-04-01",
-        "value_millions": 4675.0
+        "value_millions": 264642.0
       },
       {
         "date": "1986-07-01",
-        "value_millions": 5253.0
+        "value_millions": 248845.0
       },
       {
         "date": "1986-10-01",
-        "value_millions": 5694.0
+        "value_millions": 265538.0
       },
       {
         "date": "1987-01-01",
-        "value_millions": 6707.0
+        "value_millions": 321289.0
       },
       {
         "date": "1987-04-01",
-        "value_millions": 7026.0
+        "value_millions": 336338.0
       },
       {
         "date": "1987-07-01",
-        "value_millions": 7290.0
+        "value_millions": 357654.0
       },
       {
         "date": "1987-10-01",
-        "value_millions": 6638.0
+        "value_millions": 275803.0
       },
       {
         "date": "1988-01-01",
-        "value_millions": 7383.0
+        "value_millions": 270421.0
       },
       {
         "date": "1988-04-01",
-        "value_millions": 7875.0
+        "value_millions": 266069.0
       },
       {
         "date": "1988-07-01",
-        "value_millions": 8186.0
+        "value_millions": 245024.0
       },
       {
         "date": "1988-10-01",
-        "value_millions": 8437.0
+        "value_millions": 230344.0
       },
       {
         "date": "1989-01-01",
-        "value_millions": 11067.0
+        "value_millions": 243434.0
       },
       {
         "date": "1989-04-01",
-        "value_millions": 11260.0
+        "value_millions": 261289.0
       },
       {
         "date": "1989-07-01",
-        "value_millions": 11346.0
+        "value_millions": 285558.0
       },
       {
         "date": "1989-10-01",
-        "value_millions": 11207.0
+        "value_millions": 287674.0
       },
       {
         "date": "1990-01-01",
-        "value_millions": 10436.0
+        "value_millions": 278230.0
       },
       {
         "date": "1990-04-01",
-        "value_millions": 10030.0
+        "value_millions": 294621.0
       },
       {
         "date": "1990-07-01",
-        "value_millions": 8747.0
+        "value_millions": 253215.0
       },
       {
         "date": "1990-10-01",
-        "value_millions": 6227.0
+        "value_millions": 274682.0
       },
       {
         "date": "1991-01-01",
-        "value_millions": 8047.0
+        "value_millions": 313678.0
       },
       {
         "date": "1991-04-01",
-        "value_millions": 7366.0
+        "value_millions": 311831.0
       },
       {
         "date": "1991-07-01",
-        "value_millions": 7304.0
+        "value_millions": 327479.0
       },
       {
         "date": "1991-10-01",
-        "value_millions": 7467.0
+        "value_millions": 353898.0
       },
       {
         "date": "1992-01-01",
-        "value_millions": 7262.0
+        "value_millions": 334622.0
       },
       {
         "date": "1992-04-01",
-        "value_millions": 7241.0
+        "value_millions": 330317.0
       },
       {
         "date": "1992-07-01",
-        "value_millions": 6757.0
+        "value_millions": 329952.0
       },
       {
         "date": "1992-10-01",
-        "value_millions": 7598.0
+        "value_millions": 335563.0
       },
       {
         "date": "1993-01-01",
-        "value_millions": 7988.0
+        "value_millions": 359409.0
       },
       {
         "date": "1993-04-01",
-        "value_millions": 8121.0
+        "value_millions": 370027.0
       },
       {
         "date": "1993-07-01",
-        "value_millions": 9188.0
+        "value_millions": 388666.0
       },
       {
         "date": "1993-10-01",
-        "value_millions": 10073.0
+        "value_millions": 406967.0
       },
       {
         "date": "1994-01-01",
-        "value_millions": 8758.0
+        "value_millions": 381249.0
       },
       {
         "date": "1994-04-01",
-        "value_millions": 7758.0
+        "value_millions": 372317.0
       },
       {
         "date": "1994-07-01",
-        "value_millions": 7425.0
+        "value_millions": 379788.0
       },
       {
         "date": "1994-10-01",
-        "value_millions": 6806.0
+        "value_millions": 369073.0
       },
       {
         "date": "1995-01-01",
-        "value_millions": 6942.0
+        "value_millions": 401714.0
       },
       {
         "date": "1995-04-01",
-        "value_millions": 7871.0
+        "value_millions": 436328.0
       },
       {
         "date": "1995-07-01",
-        "value_millions": 9716.0
+        "value_millions": 467322.0
       },
       {
         "date": "1995-10-01",
-        "value_millions": 10338.0
+        "value_millions": 491714.0
       },
       {
         "date": "1996-01-01",
-        "value_millions": 11506.0
+        "value_millions": 521977.0
       },
       {
         "date": "1996-04-01",
-        "value_millions": 11792.0
+        "value_millions": 549214.0
       },
       {
         "date": "1996-07-01",
-        "value_millions": 12390.0
+        "value_millions": 569961.0
       },
       {
         "date": "1996-10-01",
-        "value_millions": 13551.0
+        "value_millions": 621908.0
       },
       {
         "date": "1997-01-01",
-        "value_millions": 9028.0
+        "value_millions": 655484.0
       },
       {
         "date": "1997-04-01",
-        "value_millions": 9606.0
+        "value_millions": 789496.0
       },
       {
         "date": "1997-07-01",
-        "value_millions": 9800.0
+        "value_millions": 869725.0
       },
       {
         "date": "1997-10-01",
-        "value_millions": 10734.0
+        "value_millions": 916390.0
       },
       {
         "date": "1998-01-01",
-        "value_millions": 12475.0
+        "value_millions": 1072297.0
       },
       {
         "date": "1998-04-01",
-        "value_millions": 13296.0
+        "value_millions": 1136358.0
       },
       {
         "date": "1998-07-01",
-        "value_millions": 13056.0
+        "value_millions": 1048714.0
       },
       {
         "date": "1998-10-01",
-        "value_millions": 15185.0
+        "value_millions": 1303141.0
       },
       {
         "date": "1999-01-01",
-        "value_millions": 16259.0
+        "value_millions": 1476972.0
       },
       {
         "date": "1999-04-01",
-        "value_millions": 16229.0
+        "value_millions": 1696963.0
       },
       {
         "date": "1999-07-01",
-        "value_millions": 15834.0
+        "value_millions": 1698637.0
       },
       {
         "date": "1999-10-01",
-        "value_millions": 17720.0
+        "value_millions": 2075021.0
       },
       {
         "date": "2000-01-01",
-        "value_millions": 18238.0
+        "value_millions": 2074707.0
       },
       {
         "date": "2000-04-01",
-        "value_millions": 18006.0
+        "value_millions": 1973307.0
       },
       {
         "date": "2000-07-01",
-        "value_millions": 19168.0
+        "value_millions": 1908758.0
       },
       {
         "date": "2000-10-01",
-        "value_millions": 18568.0
+        "value_millions": 1717546.0
       },
       {
         "date": "2001-01-01",
-        "value_millions": 17961.0
+        "value_millions": 1457214.0
       },
       {
         "date": "2001-04-01",
-        "value_millions": 19281.0
+        "value_millions": 1482561.0
       },
       {
         "date": "2001-07-01",
-        "value_millions": 19371.0
+        "value_millions": 1213521.0
       },
       {
         "date": "2001-10-01",
-        "value_millions": 20542.0
+        "value_millions": 1286722.0
       },
       {
         "date": "2002-01-01",
-        "value_millions": 20151.0
+        "value_millions": 1285382.0
       },
       {
         "date": "2002-04-01",
-        "value_millions": 18844.0
+        "value_millions": 1108373.0
       },
       {
         "date": "2002-07-01",
-        "value_millions": 16904.0
+        "value_millions": 912525.0
       },
       {
         "date": "2002-10-01",
-        "value_millions": 19154.0
+        "value_millions": 984329.0
       },
       {
         "date": "2003-01-01",
-        "value_millions": 18931.0
+        "value_millions": 922711.0
       },
       {
         "date": "2003-04-01",
-        "value_millions": 21944.0
+        "value_millions": 1030006.0
       },
       {
         "date": "2003-07-01",
-        "value_millions": 23629.0
+        "value_millions": 1021911.0
       },
       {
         "date": "2003-10-01",
-        "value_millions": 25204.0
+        "value_millions": 1106509.0
       },
       {
         "date": "2004-01-01",
-        "value_millions": 26437.0
+        "value_millions": 1122544.0
       },
       {
         "date": "2004-04-01",
-        "value_millions": 25573.0
+        "value_millions": 1138964.0
       },
       {
         "date": "2004-07-01",
-        "value_millions": 25367.0
+        "value_millions": 1114543.0
       },
       {
         "date": "2004-10-01",
-        "value_millions": 26346.0
+        "value_millions": 1213832.0
       },
       {
         "date": "2005-01-01",
-        "value_millions": 25434.0
+        "value_millions": 1137185.0
       },
       {
         "date": "2005-04-01",
-        "value_millions": 26451.0
+        "value_millions": 1101851.0
       },
       {
         "date": "2005-07-01",
-        "value_millions": 26974.0
+        "value_millions": 1089399.0
       },
       {
         "date": "2005-10-01",
-        "value_millions": 27008.0
+        "value_millions": 1058806.0
       },
       {
         "date": "2006-01-01",
-        "value_millions": 28124.0
+        "value_millions": 1043745.0
       },
       {
         "date": "2006-04-01",
-        "value_millions": 26987.0
+        "value_millions": 970391.0
       },
       {
         "date": "2006-07-01",
-        "value_millions": 27784.0
+        "value_millions": 964281.0
       },
       {
         "date": "2006-10-01",
-        "value_millions": 30535.0
+        "value_millions": 964060.0
       },
       {
         "date": "2007-01-01",
-        "value_millions": 29515.0
+        "value_millions": 974300.0
       },
       {
         "date": "2007-04-01",
-        "value_millions": 32002.0
+        "value_millions": 1039857.0
       },
       {
         "date": "2007-07-01",
-        "value_millions": 34531.0
+        "value_millions": 1065175.0
       },
       {
         "date": "2007-10-01",
-        "value_millions": 33625.0
+        "value_millions": 1033221.0
       },
       {
         "date": "2008-01-01",
-        "value_millions": 31886.0
+        "value_millions": 987843.0
       },
       {
         "date": "2008-04-01",
-        "value_millions": 30946.0
+        "value_millions": 1011226.0
       },
       {
         "date": "2008-07-01",
-        "value_millions": 25978.0
+        "value_millions": 971814.0
       },
       {
         "date": "2008-10-01",
-        "value_millions": 22193.0
+        "value_millions": 791594.0
       },
       {
         "date": "2009-01-01",
-        "value_millions": 24237.0
+        "value_millions": 678830.0
       },
       {
         "date": "2009-04-01",
-        "value_millions": 23807.0
+        "value_millions": 758642.0
       },
       {
         "date": "2009-07-01",
-        "value_millions": 25183.0
+        "value_millions": 845283.0
       },
       {
         "date": "2009-10-01",
-        "value_millions": 34126.0
+        "value_millions": 863153.0
       },
       {
         "date": "2010-01-01",
-        "value_millions": 34397.0
+        "value_millions": 892125.0
       },
       {
         "date": "2010-04-01",
-        "value_millions": 28308.0
+        "value_millions": 774768.0
       },
       {
         "date": "2010-07-01",
-        "value_millions": 30231.0
+        "value_millions": 845055.0
       },
       {
         "date": "2010-10-01",
-        "value_millions": 35060.0
+        "value_millions": 917209.0
       },
       {
         "date": "2011-01-01",
-        "value_millions": 34444.0
+        "value_millions": 973102.0
       },
       {
         "date": "2011-04-01",
-        "value_millions": 38310.0
+        "value_millions": 975429.0
       },
       {
         "date": "2011-07-01",
-        "value_millions": 32855.0
+        "value_millions": 840928.0
       },
       {
         "date": "2011-10-01",
-        "value_millions": 34080.0
+        "value_millions": 940555.0
       },
       {
         "date": "2012-01-01",
-        "value_millions": 27425.0
+        "value_millions": 1046924.0
       },
       {
         "date": "2012-04-01",
-        "value_millions": 28099.0
+        "value_millions": 1006139.0
       },
       {
         "date": "2012-07-01",
-        "value_millions": 29894.0
+        "value_millions": 1057400.0
       },
       {
         "date": "2012-10-01",
-        "value_millions": 30466.0
+        "value_millions": 1040110.0
       },
       {
         "date": "2013-01-01",
-        "value_millions": 32330.0
+        "value_millions": 1146896.0
       },
       {
         "date": "2013-04-01",
-        "value_millions": 31361.0
+        "value_millions": 1176561.0
       },
       {
         "date": "2013-07-01",
-        "value_millions": 33429.0
+        "value_millions": 1234370.0
       },
       {
         "date": "2013-10-01",
-        "value_millions": 35821.0
+        "value_millions": 1359761.0
       },
       {
         "date": "2014-01-01",
-        "value_millions": 35646.0
+        "value_millions": 1386292.0
       },
       {
         "date": "2014-04-01",
-        "value_millions": 37000.0
+        "value_millions": 1460674.0
       },
       {
         "date": "2014-07-01",
-        "value_millions": 36458.0
+        "value_millions": 1479025.0
       },
       {
         "date": "2014-10-01",
-        "value_millions": 37995.0
+        "value_millions": 1553751.0
       },
       {
         "date": "2015-01-01",
-        "value_millions": 37766.0
+        "value_millions": 1549779.0
       },
       {
         "date": "2015-04-01",
-        "value_millions": 38214.0
+        "value_millions": 1535465.0
       },
       {
         "date": "2015-07-01",
-        "value_millions": 35474.0
+        "value_millions": 1418991.0
       },
       {
         "date": "2015-10-01",
-        "value_millions": 37579.0
+        "value_millions": 1499935.0
       },
       {
         "date": "2016-01-01",
-        "value_millions": 30444.0
+        "value_millions": 1527627.0
       },
       {
         "date": "2016-04-01",
-        "value_millions": 30816.0
+        "value_millions": 1573044.0
       },
       {
         "date": "2016-07-01",
-        "value_millions": 31703.0
+        "value_millions": 1642010.0
       },
       {
         "date": "2016-10-01",
-        "value_millions": 33388.0
+        "value_millions": 1712941.0
       },
       {
         "date": "2017-01-01",
-        "value_millions": 33757.0
+        "value_millions": 1786453.0
       },
       {
         "date": "2017-04-01",
-        "value_millions": 34583.0
+        "value_millions": 1810517.0
       },
       {
         "date": "2017-07-01",
-        "value_millions": 34680.0
+        "value_millions": 1859513.0
       },
       {
         "date": "2017-10-01",
-        "value_millions": 36521.0
+        "value_millions": 1949283.0
       },
       {
         "date": "2018-01-01",
-        "value_millions": 38406.0
+        "value_millions": 1915449.0
       },
       {
         "date": "2018-04-01",
-        "value_millions": 38099.0
+        "value_millions": 1961404.0
       },
       {
         "date": "2018-07-01",
-        "value_millions": 38720.0
+        "value_millions": 2091549.0
       },
       {
         "date": "2018-10-01",
-        "value_millions": 34893.0
+        "value_millions": 1789868.0
       },
       {
         "date": "2019-01-01",
-        "value_millions": 39560.0
+        "value_millions": 2026146.0
       },
       {
         "date": "2019-04-01",
-        "value_millions": 41144.0
+        "value_millions": 2105393.0
       },
       {
         "date": "2019-07-01",
-        "value_millions": 40337.0
+        "value_millions": 2132960.0
       },
       {
         "date": "2019-10-01",
-        "value_millions": 43521.0
+        "value_millions": 2317738.0
       },
       {
         "date": "2020-01-01",
-        "value_millions": 33365.0
+        "value_millions": 1832349.0
       },
       {
         "date": "2020-04-01",
-        "value_millions": 38869.0
+        "value_millions": 2165023.0
       },
       {
         "date": "2020-07-01",
-        "value_millions": 42074.0
+        "value_millions": 2312758.0
       },
       {
         "date": "2020-10-01",
-        "value_millions": 49008.0
+        "value_millions": 2543177.0
       },
       {
         "date": "2021-01-01",
-        "value_millions": 53666.0
+        "value_millions": 2691108.0
       },
       {
         "date": "2021-04-01",
-        "value_millions": 57908.0
+        "value_millions": 2885874.0
       },
       {
         "date": "2021-07-01",
-        "value_millions": 55881.0
+        "value_millions": 2867443.0
       },
       {
         "date": "2021-10-01",
-        "value_millions": 60401.0
+        "value_millions": 3144897.0
       },
       {
         "date": "2022-01-01",
-        "value_millions": 59243.0
+        "value_millions": 2946674.0
       },
       {
         "date": "2022-04-01",
-        "value_millions": 49546.0
+        "value_millions": 2429344.0
       },
       {
         "date": "2022-07-01",
-        "value_millions": 45846.0
+        "value_millions": 2270125.0
       },
       {
         "date": "2022-10-01",
-        "value_millions": 51376.0
+        "value_millions": 2397646.0
       },
       {
         "date": "2023-01-01",
-        "value_millions": 51691.0
+        "value_millions": 2571331.0
       },
       {
         "date": "2023-04-01",
-        "value_millions": 54686.0
+        "value_millions": 2762731.0
       },
       {
         "date": "2023-07-01",
-        "value_millions": 54208.0
+        "value_millions": 2640743.0
       },
       {
         "date": "2023-10-01",
-        "value_millions": 59717.0
+        "value_millions": 2913842.0
       },
       {
         "date": "2024-01-01",
-        "value_millions": 75819.0
+        "value_millions": 3141341.0
       },
       {
         "date": "2024-04-01",
-        "value_millions": 75046.0
+        "value_millions": 3185393.0
       },
       {
         "date": "2024-07-01",
-        "value_millions": 82017.0
+        "value_millions": 3278004.0
       },
       {
         "date": "2024-10-01",
-        "value_millions": 79844.0
+        "value_millions": 3260492.0
       },
       {
         "date": "2025-01-01",
-        "value_millions": 81210.0
+        "value_millions": 3077324.0
       },
       {
         "date": "2025-04-01",
-        "value_millions": 84978.0
+        "value_millions": 3360377.0
       },
       {
         "date": "2025-07-01",
-        "value_millions": 91062.0
+        "value_millions": 3576762.0
       },
       {
         "date": "2025-10-01",
-        "value_millions": 96211.0
+        "value_millions": 3614207.0
       },
       {
         "date": "2026-01-01",
-        "value_millions": 95645.0
+        "value_millions": 3403770.0
       },
       {
         "date": "2026-04-01",
-        "value_millions": 102471.0
+        "value_millions": 3866853.0
+      }
+    ],
+    "other_holders": [
+      {
+        "date": "1945-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1946-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1947-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1948-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1949-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1950-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1951-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1952-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1952-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1952-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1952-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1953-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1953-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1953-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1953-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1954-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1954-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1954-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1954-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1955-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1955-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1955-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1955-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1956-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1956-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1956-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1956-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1957-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1957-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1957-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1957-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1958-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1958-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1958-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1958-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1959-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1959-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1959-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1959-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1960-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1960-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1960-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1960-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1961-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1961-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1961-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1961-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1962-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1962-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1962-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1962-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1963-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1963-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1963-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1963-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1964-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1964-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1964-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1964-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1965-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1965-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1965-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1965-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1966-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1966-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1966-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1966-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1967-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1967-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1967-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1967-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1968-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1968-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1968-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1968-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1969-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1969-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1969-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1969-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1970-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1970-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1970-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1970-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1971-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1971-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1971-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1971-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1972-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1972-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1972-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1972-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1973-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1973-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1973-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1973-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1974-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1974-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1974-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1974-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1975-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1975-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1975-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1975-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1976-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1976-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1976-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1976-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1977-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1977-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1977-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1977-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1978-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1978-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1978-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1978-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1979-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1979-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1979-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1979-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1980-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1980-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1980-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1980-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1981-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1981-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1981-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1981-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1982-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1982-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1982-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1982-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1983-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1983-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1983-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1983-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1984-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1984-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1984-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1984-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1985-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1985-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1985-07-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1985-10-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1986-01-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1986-04-01",
+        "value_millions": 0.0
+      },
+      {
+        "date": "1986-07-01",
+        "value_millions": 86.0
+      },
+      {
+        "date": "1986-10-01",
+        "value_millions": 219.0
+      },
+      {
+        "date": "1987-01-01",
+        "value_millions": 367.0
+      },
+      {
+        "date": "1987-04-01",
+        "value_millions": 500.0
+      },
+      {
+        "date": "1987-07-01",
+        "value_millions": 609.0
+      },
+      {
+        "date": "1987-10-01",
+        "value_millions": 687.0
+      },
+      {
+        "date": "1988-01-01",
+        "value_millions": 796.0
+      },
+      {
+        "date": "1988-04-01",
+        "value_millions": 1000.0
+      },
+      {
+        "date": "1988-07-01",
+        "value_millions": 1297.0
+      },
+      {
+        "date": "1988-10-01",
+        "value_millions": 1688.0
+      },
+      {
+        "date": "1989-01-01",
+        "value_millions": 2110.0
+      },
+      {
+        "date": "1989-04-01",
+        "value_millions": 2500.0
+      },
+      {
+        "date": "1989-07-01",
+        "value_millions": 2875.0
+      },
+      {
+        "date": "1989-10-01",
+        "value_millions": 3250.0
+      },
+      {
+        "date": "1990-01-01",
+        "value_millions": 3625.0
+      },
+      {
+        "date": "1990-04-01",
+        "value_millions": 4000.0
+      },
+      {
+        "date": "1990-07-01",
+        "value_millions": 4375.0
+      },
+      {
+        "date": "1990-10-01",
+        "value_millions": 4750.0
+      },
+      {
+        "date": "1991-01-01",
+        "value_millions": 5125.0
+      },
+      {
+        "date": "1991-04-01",
+        "value_millions": 5500.0
+      },
+      {
+        "date": "1991-07-01",
+        "value_millions": 5875.0
+      },
+      {
+        "date": "1991-10-01",
+        "value_millions": 6250.0
+      },
+      {
+        "date": "1992-01-01",
+        "value_millions": 6625.0
+      },
+      {
+        "date": "1992-04-01",
+        "value_millions": 7000.0
+      },
+      {
+        "date": "1992-07-01",
+        "value_millions": 7375.0
+      },
+      {
+        "date": "1992-10-01",
+        "value_millions": 7750.0
+      },
+      {
+        "date": "1993-01-01",
+        "value_millions": 8128.0
+      },
+      {
+        "date": "1993-04-01",
+        "value_millions": 8506.0
+      },
+      {
+        "date": "1993-07-01",
+        "value_millions": 8891.0
+      },
+      {
+        "date": "1993-10-01",
+        "value_millions": 9286.0
+      },
+      {
+        "date": "1994-01-01",
+        "value_millions": 9673.0
+      },
+      {
+        "date": "1994-04-01",
+        "value_millions": 10041.0
+      },
+      {
+        "date": "1994-07-01",
+        "value_millions": 10376.0
+      },
+      {
+        "date": "1994-10-01",
+        "value_millions": 10670.0
+      },
+      {
+        "date": "1995-01-01",
+        "value_millions": 11005.0
+      },
+      {
+        "date": "1995-04-01",
+        "value_millions": 11544.0
+      },
+      {
+        "date": "1995-07-01",
+        "value_millions": 20246.0
+      },
+      {
+        "date": "1995-10-01",
+        "value_millions": 26739.0
+      },
+      {
+        "date": "1996-01-01",
+        "value_millions": 31055.0
+      },
+      {
+        "date": "1996-04-01",
+        "value_millions": 36950.0
+      },
+      {
+        "date": "1996-07-01",
+        "value_millions": 41521.0
+      },
+      {
+        "date": "1996-10-01",
+        "value_millions": 47524.0
+      },
+      {
+        "date": "1997-01-01",
+        "value_millions": 50261.0
+      },
+      {
+        "date": "1997-04-01",
+        "value_millions": 61006.0
+      },
+      {
+        "date": "1997-07-01",
+        "value_millions": 71464.0
+      },
+      {
+        "date": "1997-10-01",
+        "value_millions": 79669.0
+      },
+      {
+        "date": "1998-01-01",
+        "value_millions": 88981.0
+      },
+      {
+        "date": "1998-04-01",
+        "value_millions": 95633.0
+      },
+      {
+        "date": "1998-07-01",
+        "value_millions": 85995.0
+      },
+      {
+        "date": "1998-10-01",
+        "value_millions": 102777.0
+      },
+      {
+        "date": "1999-01-01",
+        "value_millions": 102772.0
+      },
+      {
+        "date": "1999-04-01",
+        "value_millions": 102189.0
+      },
+      {
+        "date": "1999-07-01",
+        "value_millions": 101505.0
+      },
+      {
+        "date": "1999-10-01",
+        "value_millions": 102545.0
+      },
+      {
+        "date": "2000-01-01",
+        "value_millions": 101804.0
+      },
+      {
+        "date": "2000-04-01",
+        "value_millions": 100168.0
+      },
+      {
+        "date": "2000-07-01",
+        "value_millions": 99171.0
+      },
+      {
+        "date": "2000-10-01",
+        "value_millions": 97289.0
+      },
+      {
+        "date": "2001-01-01",
+        "value_millions": 95681.0
+      },
+      {
+        "date": "2001-04-01",
+        "value_millions": 95300.0
+      },
+      {
+        "date": "2001-07-01",
+        "value_millions": 92532.0
+      },
+      {
+        "date": "2001-10-01",
+        "value_millions": 91828.0
+      },
+      {
+        "date": "2002-01-01",
+        "value_millions": 89472.0
+      },
+      {
+        "date": "2002-04-01",
+        "value_millions": 87041.0
+      },
+      {
+        "date": "2002-07-01",
+        "value_millions": 84153.0
+      },
+      {
+        "date": "2002-10-01",
+        "value_millions": 82753.0
+      },
+      {
+        "date": "2003-01-01",
+        "value_millions": 82710.0
+      },
+      {
+        "date": "2003-04-01",
+        "value_millions": 87538.0
+      },
+      {
+        "date": "2003-07-01",
+        "value_millions": 88992.0
+      },
+      {
+        "date": "2003-10-01",
+        "value_millions": 93976.0
+      },
+      {
+        "date": "2004-01-01",
+        "value_millions": 97991.0
+      },
+      {
+        "date": "2004-04-01",
+        "value_millions": 92425.0
+      },
+      {
+        "date": "2004-07-01",
+        "value_millions": 101322.0
+      },
+      {
+        "date": "2004-10-01",
+        "value_millions": 91015.0
+      },
+      {
+        "date": "2005-01-01",
+        "value_millions": 88525.0
+      },
+      {
+        "date": "2005-04-01",
+        "value_millions": 94628.0
+      },
+      {
+        "date": "2005-07-01",
+        "value_millions": 104150.0
+      },
+      {
+        "date": "2005-10-01",
+        "value_millions": 103688.0
+      },
+      {
+        "date": "2006-01-01",
+        "value_millions": 96047.0
+      },
+      {
+        "date": "2006-04-01",
+        "value_millions": 98501.0
+      },
+      {
+        "date": "2006-07-01",
+        "value_millions": 103987.0
+      },
+      {
+        "date": "2006-10-01",
+        "value_millions": 106573.0
+      },
+      {
+        "date": "2007-01-01",
+        "value_millions": 112676.0
+      },
+      {
+        "date": "2007-04-01",
+        "value_millions": 104754.0
+      },
+      {
+        "date": "2007-07-01",
+        "value_millions": 114259.0
+      },
+      {
+        "date": "2007-10-01",
+        "value_millions": 115028.0
+      },
+      {
+        "date": "2008-01-01",
+        "value_millions": 112205.0
+      },
+      {
+        "date": "2008-04-01",
+        "value_millions": 106761.0
+      },
+      {
+        "date": "2008-07-01",
+        "value_millions": 150108.0
+      },
+      {
+        "date": "2008-10-01",
+        "value_millions": 366594.0
+      },
+      {
+        "date": "2009-01-01",
+        "value_millions": 419341.0
+      },
+      {
+        "date": "2009-04-01",
+        "value_millions": 389686.0
+      },
+      {
+        "date": "2009-07-01",
+        "value_millions": 411648.0
+      },
+      {
+        "date": "2009-10-01",
+        "value_millions": 353365.0
+      },
+      {
+        "date": "2010-01-01",
+        "value_millions": 357963.0
+      },
+      {
+        "date": "2010-04-01",
+        "value_millions": 371034.0
+      },
+      {
+        "date": "2010-07-01",
+        "value_millions": 378866.0
+      },
+      {
+        "date": "2010-10-01",
+        "value_millions": 359730.0
+      },
+      {
+        "date": "2011-01-01",
+        "value_millions": 327320.0
+      },
+      {
+        "date": "2011-04-01",
+        "value_millions": 313528.0
+      },
+      {
+        "date": "2011-07-01",
+        "value_millions": 300138.0
+      },
+      {
+        "date": "2011-10-01",
+        "value_millions": 310618.0
+      },
+      {
+        "date": "2012-01-01",
+        "value_millions": 290585.0
+      },
+      {
+        "date": "2012-04-01",
+        "value_millions": 272839.0
+      },
+      {
+        "date": "2012-07-01",
+        "value_millions": 242691.0
+      },
+      {
+        "date": "2012-10-01",
+        "value_millions": 569526.0
+      },
+      {
+        "date": "2013-01-01",
+        "value_millions": 605341.0
+      },
+      {
+        "date": "2013-04-01",
+        "value_millions": 633070.0
+      },
+      {
+        "date": "2013-07-01",
+        "value_millions": 656459.0
+      },
+      {
+        "date": "2013-10-01",
+        "value_millions": 690028.0
+      },
+      {
+        "date": "2014-01-01",
+        "value_millions": 672343.0
+      },
+      {
+        "date": "2014-04-01",
+        "value_millions": 691157.0
+      },
+      {
+        "date": "2014-07-01",
+        "value_millions": 672657.0
+      },
+      {
+        "date": "2014-10-01",
+        "value_millions": 689764.0
+      },
+      {
+        "date": "2015-01-01",
+        "value_millions": 728313.0
+      },
+      {
+        "date": "2015-04-01",
+        "value_millions": 716446.0
+      },
+      {
+        "date": "2015-07-01",
+        "value_millions": 673418.0
+      },
+      {
+        "date": "2015-10-01",
+        "value_millions": 678812.0
+      },
+      {
+        "date": "2016-01-01",
+        "value_millions": 661871.0
+      },
+      {
+        "date": "2016-04-01",
+        "value_millions": 671709.0
+      },
+      {
+        "date": "2016-07-01",
+        "value_millions": 697531.0
+      },
+      {
+        "date": "2016-10-01",
+        "value_millions": 699473.0
+      },
+      {
+        "date": "2017-01-01",
+        "value_millions": 735326.0
+      },
+      {
+        "date": "2017-04-01",
+        "value_millions": 748586.0
+      },
+      {
+        "date": "2017-07-01",
+        "value_millions": 774632.0
+      },
+      {
+        "date": "2017-10-01",
+        "value_millions": 839813.0
+      },
+      {
+        "date": "2018-01-01",
+        "value_millions": 826493.0
+      },
+      {
+        "date": "2018-04-01",
+        "value_millions": 841031.0
+      },
+      {
+        "date": "2018-07-01",
+        "value_millions": 874510.0
+      },
+      {
+        "date": "2018-10-01",
+        "value_millions": 789338.0
+      },
+      {
+        "date": "2019-01-01",
+        "value_millions": 845725.0
+      },
+      {
+        "date": "2019-04-01",
+        "value_millions": 849153.0
+      },
+      {
+        "date": "2019-07-01",
+        "value_millions": 847463.0
+      },
+      {
+        "date": "2019-10-01",
+        "value_millions": 898797.0
+      },
+      {
+        "date": "2020-01-01",
+        "value_millions": 779875.0
+      },
+      {
+        "date": "2020-04-01",
+        "value_millions": 872349.0
+      },
+      {
+        "date": "2020-07-01",
+        "value_millions": 922784.0
+      },
+      {
+        "date": "2020-10-01",
+        "value_millions": 1021335.0
+      },
+      {
+        "date": "2021-01-01",
+        "value_millions": 1082660.0
+      },
+      {
+        "date": "2021-04-01",
+        "value_millions": 1140809.0
+      },
+      {
+        "date": "2021-07-01",
+        "value_millions": 1186515.0
+      },
+      {
+        "date": "2021-10-01",
+        "value_millions": 1279833.0
+      },
+      {
+        "date": "2022-01-01",
+        "value_millions": 1206107.0
+      },
+      {
+        "date": "2022-04-01",
+        "value_millions": 1121060.0
+      },
+      {
+        "date": "2022-07-01",
+        "value_millions": 1096809.0
+      },
+      {
+        "date": "2022-10-01",
+        "value_millions": 1116000.0
+      },
+      {
+        "date": "2023-01-01",
+        "value_millions": 1134319.0
+      },
+      {
+        "date": "2023-04-01",
+        "value_millions": 1168658.0
+      },
+      {
+        "date": "2023-07-01",
+        "value_millions": 1170468.0
+      },
+      {
+        "date": "2023-10-01",
+        "value_millions": 1231723.0
+      },
+      {
+        "date": "2024-01-01",
+        "value_millions": 1309358.0
+      },
+      {
+        "date": "2024-04-01",
+        "value_millions": 1332643.0
+      },
+      {
+        "date": "2024-07-01",
+        "value_millions": 1418858.0
+      },
+      {
+        "date": "2024-10-01",
+        "value_millions": 1487372.0
+      },
+      {
+        "date": "2025-01-01",
+        "value_millions": 1470409.0
+      },
+      {
+        "date": "2025-04-01",
+        "value_millions": 1571301.0
+      },
+      {
+        "date": "2025-07-01",
+        "value_millions": 1680516.0
+      },
+      {
+        "date": "2025-10-01",
+        "value_millions": 1762818.0
+      },
+      {
+        "date": "2026-01-01",
+        "value_millions": 1733942.0
+      },
+      {
+        "date": "2026-04-01",
+        "value_millions": 1941215.0
       }
     ]
   },
   "household_residual": [
     {
       "date": "1945-10-01",
-      "value_millions": 143747.0
+      "value_millions": 143913.0
     },
     {
       "date": "1946-10-01",
-      "value_millions": 137334.0
+      "value_millions": 137514.0
     },
     {
       "date": "1947-10-01",
-      "value_millions": 135287.0
+      "value_millions": 135433.0
     },
     {
       "date": "1948-10-01",
-      "value_millions": 134385.0
+      "value_millions": 134542.0
     },
     {
       "date": "1949-10-01",
-      "value_millions": 141590.0
+      "value_millions": 141747.0
     },
     {
       "date": "1950-10-01",
-      "value_millions": 163340.0
+      "value_millions": 163521.0
     },
     {
       "date": "1951-10-01",
-      "value_millions": 183081.0
+      "value_millions": 183308.0
     },
     {
       "date": "1952-01-01",
-      "value_millions": 185770.0
+      "value_millions": 186019.0
     },
     {
       "date": "1952-04-01",
-      "value_millions": 191487.0
+      "value_millions": 191765.0
     },
     {
       "date": "1952-07-01",
-      "value_millions": 190622.0
+      "value_millions": 190924.0
     },
     {
       "date": "1952-10-01",
-      "value_millions": 179312.0
+      "value_millions": 179648.0
     },
     {
       "date": "1953-01-01",
-      "value_millions": 176001.0
+      "value_millions": 176358.0
     },
     {
       "date": "1953-04-01",
-      "value_millions": 166798.0
+      "value_millions": 167176.0
     },
     {
       "date": "1953-07-01",
-      "value_millions": 162152.0
+      "value_millions": 162551.0
     },
     {
       "date": "1953-10-01",
-      "value_millions": 175810.0
+      "value_millions": 176242.0
     },
     {
       "date": "1954-01-01",
-      "value_millions": 186691.0
+      "value_millions": 187158.0
     },
     {
       "date": "1954-04-01",
-      "value_millions": 201723.0
+      "value_millions": 202220.0
     },
     {
       "date": "1954-07-01",
-      "value_millions": 219570.0
+      "value_millions": 220101.0
     },
     {
       "date": "1954-10-01",
-      "value_millions": 220454.0
+      "value_millions": 221026.0
     },
     {
       "date": "1955-01-01",
-      "value_millions": 226683.0
+      "value_millions": 227295.0
     },
     {
       "date": "1955-04-01",
-      "value_millions": 247120.0
+      "value_millions": 247811.0
     },
     {
       "date": "1955-07-01",
-      "value_millions": 260973.0
+      "value_millions": 261735.0
     },
     {
       "date": "1955-10-01",
-      "value_millions": 262099.0
+      "value_millions": 262907.0
     },
     {
       "date": "1956-01-01",
-      "value_millions": 278071.0
+      "value_millions": 278926.0
     },
     {
       "date": "1956-04-01",
-      "value_millions": 269016.0
+      "value_millions": 269852.0
     },
     {
       "date": "1956-07-01",
-      "value_millions": 264018.0
+      "value_millions": 264840.0
     },
     {
       "date": "1956-10-01",
-      "value_millions": 284292.0
+      "value_millions": 285129.0
     },
     {
       "date": "1957-01-01",
-      "value_millions": 270892.0
+      "value_millions": 271725.0
     },
     {
       "date": "1957-04-01",
-      "value_millions": 287035.0
+      "value_millions": 287926.0
     },
     {
       "date": "1957-07-01",
-      "value_millions": 261687.0
+      "value_millions": 262564.0
     },
     {
       "date": "1957-10-01",
-      "value_millions": 263257.0
+      "value_millions": 264129.0
     },
     {
       "date": "1958-01-01",
-      "value_millions": 277304.0
+      "value_millions": 278213.0
     },
     {
       "date": "1958-04-01",
-      "value_millions": 291491.0
+      "value_millions": 292460.0
     },
     {
       "date": "1958-07-01",
-      "value_millions": 320006.0
+      "value_millions": 321045.0
     },
     {
       "date": "1958-10-01",
-      "value_millions": 329508.0
+      "value_millions": 330607.0
     },
     {
       "date": "1959-01-01",
-      "value_millions": 335697.0
+      "value_millions": 336799.0
     },
     {
       "date": "1959-04-01",
-      "value_millions": 347057.0
+      "value_millions": 348167.0
     },
     {
       "date": "1959-07-01",
-      "value_millions": 341182.0
+      "value_millions": 342250.0
     },
     {
       "date": "1959-10-01",
-      "value_millions": 360013.0
+      "value_millions": 361083.0
     },
     {
       "date": "1960-01-01",
-      "value_millions": 339810.0
+      "value_millions": 340823.0
     },
     {
       "date": "1960-04-01",
-      "value_millions": 345581.0
+      "value_millions": 346602.0
     },
     {
       "date": "1960-07-01",
-      "value_millions": 321514.0
+      "value_millions": 322504.0
     },
     {
       "date": "1960-10-01",
-      "value_millions": 359789.0
+      "value_millions": 360829.0
     },
     {
       "date": "1961-01-01",
-      "value_millions": 397920.0
+      "value_millions": 399023.0
     },
     {
       "date": "1961-04-01",
-      "value_millions": 397811.0
+      "value_millions": 398919.0
     },
     {
       "date": "1961-07-01",
-      "value_millions": 407315.0
+      "value_millions": 408448.0
     },
     {
       "date": "1961-10-01",
-      "value_millions": 437525.0
+      "value_millions": 438720.0
     },
     {
       "date": "1962-01-01",
-      "value_millions": 427340.0
+      "value_millions": 428547.0
     },
     {
       "date": "1962-04-01",
-      "value_millions": 324978.0
+      "value_millions": 326076.0
     },
     {
       "date": "1962-07-01",
-      "value_millions": 343229.0
+      "value_millions": 344390.0
     },
     {
       "date": "1962-10-01",
-      "value_millions": 425514.0
+      "value_millions": 426765.0
     },
     {
       "date": "1963-01-01",
-      "value_millions": 449676.0
+      "value_millions": 439294.0
     },
     {
       "date": "1963-04-01",
-      "value_millions": 471207.0
+      "value_millions": 460539.0
     },
     {
       "date": "1963-07-01",
-      "value_millions": 491255.0
+      "value_millions": 480387.0
     },
     {
       "date": "1963-10-01",
-      "value_millions": 463666.0
+      "value_millions": 452442.0
     },
     {
       "date": "1964-01-01",
-      "value_millions": 493045.0
+      "value_millions": 481313.0
     },
     {
       "date": "1964-04-01",
-      "value_millions": 508633.0
+      "value_millions": 496590.0
     },
     {
       "date": "1964-07-01",
-      "value_millions": 525835.0
+      "value_millions": 513525.0
     },
     {
       "date": "1964-10-01",
-      "value_millions": 537689.0
+      "value_millions": 525429.0
     },
     {
       "date": "1965-01-01",
-      "value_millions": 551444.0
+      "value_millions": 538984.0
     },
     {
       "date": "1965-04-01",
-      "value_millions": 528489.0
+      "value_millions": 516362.0
     },
     {
       "date": "1965-07-01",
-      "value_millions": 574751.0
+      "value_millions": 561774.0
     },
     {
       "date": "1965-10-01",
-      "value_millions": 609730.0
+      "value_millions": 596391.0
     },
     {
       "date": "1966-01-01",
-      "value_millions": 590373.0
+      "value_millions": 576522.0
     },
     {
       "date": "1966-04-01",
-      "value_millions": 565180.0
+      "value_millions": 551095.0
     },
     {
       "date": "1966-07-01",
-      "value_millions": 507237.0
+      "value_millions": 493704.0
     },
     {
       "date": "1966-10-01",
-      "value_millions": 542538.0
+      "value_millions": 527392.0
     },
     {
       "date": "1967-01-01",
-      "value_millions": 611221.0
+      "value_millions": 594458.0
     },
     {
       "date": "1967-04-01",
-      "value_millions": 616595.0
+      "value_millions": 600114.0
     },
     {
       "date": "1967-07-01",
-      "value_millions": 653241.0
+      "value_millions": 635973.0
     },
     {
       "date": "1967-10-01",
-      "value_millions": 675308.0
+      "value_millions": 658438.0
     },
     {
       "date": "1968-01-01",
-      "value_millions": 626225.0
+      "value_millions": 609696.0
     },
     {
       "date": "1968-04-01",
-      "value_millions": 711212.0
+      "value_millions": 691977.0
     },
     {
       "date": "1968-07-01",
-      "value_millions": 719981.0
+      "value_millions": 699171.0
     },
     {
       "date": "1968-10-01",
-      "value_millions": 807020.0
+      "value_millions": 785042.0
     },
     {
       "date": "1969-01-01",
-      "value_millions": 762085.0
+      "value_millions": 738674.0
     },
     {
       "date": "1969-04-01",
-      "value_millions": 725161.0
+      "value_millions": 700848.0
     },
     {
       "date": "1969-07-01",
-      "value_millions": 704268.0
+      "value_millions": 679414.0
     },
     {
       "date": "1969-10-01",
-      "value_millions": 658297.0
+      "value_millions": 632031.0
     },
     {
       "date": "1970-01-01",
-      "value_millions": 634612.0
+      "value_millions": 608159.0
     },
     {
       "date": "1970-04-01",
-      "value_millions": 501543.0
+      "value_millions": 479548.0
     },
     {
       "date": "1970-07-01",
-      "value_millions": 584937.0
+      "value_millions": 558450.0
     },
     {
       "date": "1970-10-01",
-      "value_millions": 641192.0
+      "value_millions": 611158.0
     },
     {
       "date": "1971-01-01",
-      "value_millions": 702985.0
+      "value_millions": 670239.0
     },
     {
       "date": "1971-04-01",
-      "value_millions": 698339.0
+      "value_millions": 665813.0
     },
     {
       "date": "1971-07-01",
-      "value_millions": 683676.0
+      "value_millions": 651683.0
     },
     {
       "date": "1971-10-01",
-      "value_millions": 733153.0
+      "value_millions": 699946.0
     },
     {
       "date": "1972-01-01",
-      "value_millions": 774088.0
+      "value_millions": 739862.0
     },
     {
       "date": "1972-04-01",
-      "value_millions": 769022.0
+      "value_millions": 735501.0
     },
     {
       "date": "1972-07-01",
-      "value_millions": 788676.0
+      "value_millions": 754699.0
     },
     {
       "date": "1972-10-01",
-      "value_millions": 907257.0
+      "value_millions": 871585.0
     },
     {
       "date": "1973-01-01",
-      "value_millions": 837525.0
+      "value_millions": 800009.0
     },
     {
       "date": "1973-04-01",
-      "value_millions": 771078.0
+      "value_millions": 732464.0
     },
     {
       "date": "1973-07-01",
-      "value_millions": 817901.0
+      "value_millions": 773927.0
     },
     {
       "date": "1973-10-01",
-      "value_millions": 679963.0
+      "value_millions": 637147.0
     },
     {
       "date": "1974-01-01",
-      "value_millions": 649722.0
+      "value_millions": 601809.0
     },
     {
       "date": "1974-04-01",
-      "value_millions": 578097.0
+      "value_millions": 528048.0
     },
     {
       "date": "1974-07-01",
-      "value_millions": 428468.0
+      "value_millions": 387280.0
     },
     {
       "date": "1974-10-01",
-      "value_millions": 432022.0
+      "value_millions": 382397.0
     },
     {
       "date": "1975-01-01",
-      "value_millions": 532446.0
+      "value_millions": 473891.0
     },
     {
       "date": "1975-04-01",
-      "value_millions": 610639.0
+      "value_millions": 546030.0
     },
     {
       "date": "1975-07-01",
-      "value_millions": 531474.0
+      "value_millions": 476916.0
     },
     {
       "date": "1975-10-01",
-      "value_millions": 570825.0
+      "value_millions": 514288.0
     },
     {
       "date": "1976-01-01",
-      "value_millions": 663868.0
+      "value_millions": 600337.0
     },
     {
       "date": "1976-04-01",
-      "value_millions": 682815.0
+      "value_millions": 619455.0
     },
     {
       "date": "1976-07-01",
-      "value_millions": 693625.0
+      "value_millions": 630820.0
     },
     {
       "date": "1976-10-01",
-      "value_millions": 717454.0
+      "value_millions": 654578.0
     },
     {
       "date": "1977-01-01",
-      "value_millions": 659738.0
+      "value_millions": 599198.0
     },
     {
       "date": "1977-04-01",
-      "value_millions": 677217.0
+      "value_millions": 612244.0
     },
     {
       "date": "1977-07-01",
-      "value_millions": 646573.0
+      "value_millions": 581246.0
     },
     {
       "date": "1977-10-01",
-      "value_millions": 616239.0
+      "value_millions": 548915.0
     },
     {
       "date": "1978-01-01",
-      "value_millions": 577826.0
+      "value_millions": 515025.0
     },
     {
       "date": "1978-04-01",
-      "value_millions": 615697.0
+      "value_millions": 548376.0
     },
     {
       "date": "1978-07-01",
-      "value_millions": 655461.0
+      "value_millions": 583081.0
     },
     {
       "date": "1978-10-01",
-      "value_millions": 624206.0
+      "value_millions": 556605.0
     },
     {
       "date": "1979-01-01",
-      "value_millions": 662377.0
+      "value_millions": 590270.0
     },
     {
       "date": "1979-04-01",
-      "value_millions": 675384.0
+      "value_millions": 601764.0
     },
     {
       "date": "1979-07-01",
-      "value_millions": 717288.0
+      "value_millions": 638303.0
     },
     {
       "date": "1979-10-01",
-      "value_millions": 748444.0
+      "value_millions": 669809.0
     },
     {
       "date": "1980-01-01",
-      "value_millions": 689068.0
+      "value_millions": 612816.0
     },
     {
       "date": "1980-04-01",
-      "value_millions": 788278.0
+      "value_millions": 700586.0
     },
     {
       "date": "1980-07-01",
-      "value_millions": 889033.0
+      "value_millions": 790179.0
     },
     {
       "date": "1980-10-01",
-      "value_millions": 992554.0
+      "value_millions": 882825.0
     },
     {
       "date": "1981-01-01",
-      "value_millions": 994779.0
+      "value_millions": 882953.0
     },
     {
       "date": "1981-04-01",
-      "value_millions": 974128.0
+      "value_millions": 864467.0
     },
     {
       "date": "1981-07-01",
-      "value_millions": 820993.0
+      "value_millions": 722601.0
     },
     {
       "date": "1981-10-01",
-      "value_millions": 890040.0
+      "value_millions": 784456.0
     },
     {
       "date": "1982-01-01",
-      "value_millions": 760718.0
+      "value_millions": 663613.0
     },
     {
       "date": "1982-04-01",
-      "value_millions": 732314.0
+      "value_millions": 636488.0
     },
     {
       "date": "1982-07-01",
-      "value_millions": 785010.0
+      "value_millions": 678653.0
     },
     {
       "date": "1982-10-01",
-      "value_millions": 953426.0
+      "value_millions": 827846.0
     },
     {
       "date": "1983-01-01",
-      "value_millions": 1042743.0
+      "value_millions": 904094.0
     },
     {
       "date": "1983-04-01",
-      "value_millions": 1161243.0
+      "value_millions": 1006607.0
     },
     {
       "date": "1983-07-01",
-      "value_millions": 1126909.0
+      "value_millions": 972183.0
     },
     {
       "date": "1983-10-01",
-      "value_millions": 1069108.0
+      "value_millions": 913443.0
     },
     {
       "date": "1984-01-01",
-      "value_millions": 1002254.0
+      "value_millions": 848955.0
     },
     {
       "date": "1984-04-01",
-      "value_millions": 940443.0
+      "value_millions": 789892.0
     },
     {
       "date": "1984-07-01",
-      "value_millions": 990607.0
+      "value_millions": 823726.0
     },
     {
       "date": "1984-10-01",
-      "value_millions": 992592.0
+      "value_millions": 821026.0
     },
     {
       "date": "1985-01-01",
-      "value_millions": 1049104.0
+      "value_millions": 865160.0
     },
     {
       "date": "1985-04-01",
-      "value_millions": 1109753.0
+      "value_millions": 915949.0
     },
     {
       "date": "1985-07-01",
-      "value_millions": 1024593.0
+      "value_millions": 842262.0
     },
     {
       "date": "1985-10-01",
-      "value_millions": 1199158.0
+      "value_millions": 988696.0
     },
     {
       "date": "1986-01-01",
-      "value_millions": 1345790.0
+      "value_millions": 1102731.0
     },
     {
       "date": "1986-04-01",
-      "value_millions": 1401902.0
+      "value_millions": 1141935.0
     },
     {
       "date": "1986-07-01",
-      "value_millions": 1258869.0
+      "value_millions": 1015191.0
     },
     {
       "date": "1986-10-01",
-      "value_millions": 1437406.0
+      "value_millions": 1177343.0
     },
     {
       "date": "1987-01-01",
-      "value_millions": 1692893.0
+      "value_millions": 1377944.0
     },
     {
       "date": "1987-04-01",
-      "value_millions": 1670541.0
+      "value_millions": 1340729.0
     },
     {
       "date": "1987-07-01",
-      "value_millions": 1745596.0
+      "value_millions": 1394623.0
     },
     {
       "date": "1987-10-01",
-      "value_millions": 1385906.0
+      "value_millions": 1116054.0
     },
     {
       "date": "1988-01-01",
-      "value_millions": 1473141.0
+      "value_millions": 1209307.0
     },
     {
       "date": "1988-04-01",
-      "value_millions": 1555473.0
+      "value_millions": 1296279.0
     },
     {
       "date": "1988-07-01",
-      "value_millions": 1561525.0
+      "value_millions": 1323390.0
     },
     {
       "date": "1988-10-01",
-      "value_millions": 1647469.0
+      "value_millions": 1423874.0
     },
     {
       "date": "1989-01-01",
-      "value_millions": 1723634.0
+      "value_millions": 1489157.0
     },
     {
       "date": "1989-04-01",
-      "value_millions": 1818134.0
+      "value_millions": 1565605.0
     },
     {
       "date": "1989-07-01",
-      "value_millions": 1940937.0
+      "value_millions": 1663850.0
     },
     {
       "date": "1989-10-01",
-      "value_millions": 1996060.0
+      "value_millions": 1716343.0
     },
     {
       "date": "1990-01-01",
-      "value_millions": 1909088.0
+      "value_millions": 1637669.0
     },
     {
       "date": "1990-04-01",
-      "value_millions": 1958287.0
+      "value_millions": 1669696.0
     },
     {
       "date": "1990-07-01",
-      "value_millions": 1621858.0
+      "value_millions": 1373015.0
     },
     {
       "date": "1990-10-01",
-      "value_millions": 1810306.0
+      "value_millions": 1537101.0
     },
     {
       "date": "1991-01-01",
-      "value_millions": 2120342.0
+      "value_millions": 1809586.0
     },
     {
       "date": "1991-04-01",
-      "value_millions": 2087646.0
+      "value_millions": 1777681.0
     },
     {
       "date": "1991-07-01",
-      "value_millions": 2193495.0
+      "value_millions": 1867445.0
     },
     {
       "date": "1991-10-01",
-      "value_millions": 2565030.0
+      "value_millions": 2212349.0
     },
     {
       "date": "1992-01-01",
-      "value_millions": 2496105.0
+      "value_millions": 2162120.0
     },
     {
       "date": "1992-04-01",
-      "value_millions": 2445541.0
+      "value_millions": 2115465.0
     },
     {
       "date": "1992-07-01",
-      "value_millions": 2513342.0
+      "value_millions": 2182772.0
     },
     {
       "date": "1992-10-01",
-      "value_millions": 2831574.0
+      "value_millions": 2495859.0
     },
     {
       "date": "1993-01-01",
-      "value_millions": 2871611.0
+      "value_millions": 2512062.0
     },
     {
       "date": "1993-04-01",
-      "value_millions": 2818208.0
+      "value_millions": 2447796.0
     },
     {
       "date": "1993-07-01",
-      "value_millions": 2874872.0
+      "value_millions": 2486503.0
     },
     {
       "date": "1993-10-01",
-      "value_millions": 2972517.0
+      "value_millions": 2566337.0
     },
     {
       "date": "1994-01-01",
-      "value_millions": 2785485.0
+      "value_millions": 2403321.0
     },
     {
       "date": "1994-04-01",
-      "value_millions": 2676699.0
+      "value_millions": 2302099.0
     },
     {
       "date": "1994-07-01",
-      "value_millions": 2729504.0
+      "value_millions": 2346765.0
     },
     {
       "date": "1994-10-01",
-      "value_millions": 2759998.0
+      "value_millions": 2387061.0
     },
     {
       "date": "1995-01-01",
-      "value_millions": 2993436.0
+      "value_millions": 2587659.0
     },
     {
       "date": "1995-04-01",
-      "value_millions": 3211579.0
+      "value_millions": 2771578.0
     },
     {
       "date": "1995-07-01",
-      "value_millions": 3458443.0
+      "value_millions": 2980591.0
     },
     {
       "date": "1995-10-01",
-      "value_millions": 3746575.0
+      "value_millions": 3238460.0
     },
     {
       "date": "1996-01-01",
-      "value_millions": 3848414.0
+      "value_millions": 3306888.0
     },
     {
       "date": "1996-04-01",
-      "value_millions": 3961918.0
+      "value_millions": 3387546.0
     },
     {
       "date": "1996-07-01",
-      "value_millions": 3937621.0
+      "value_millions": 3338529.0
     },
     {
       "date": "1996-10-01",
-      "value_millions": 4161660.0
+      "value_millions": 3505779.0
     },
     {
       "date": "1997-01-01",
-      "value_millions": 4239102.0
+      "value_millions": 3542385.0
     },
     {
       "date": "1997-04-01",
-      "value_millions": 4896599.0
+      "value_millions": 4055703.0
     },
     {
       "date": "1997-07-01",
-      "value_millions": 5282259.0
+      "value_millions": 4350870.0
     },
     {
       "date": "1997-10-01",
-      "value_millions": 5507350.0
+      "value_millions": 4522025.0
     },
     {
       "date": "1998-01-01",
-      "value_millions": 6233580.0
+      "value_millions": 5084777.0
     },
     {
       "date": "1998-04-01",
-      "value_millions": 6382788.0
+      "value_millions": 5164093.0
     },
     {
       "date": "1998-07-01",
-      "value_millions": 5745868.0
+      "value_millions": 4624215.0
     },
     {
       "date": "1998-10-01",
-      "value_millions": 6764242.0
+      "value_millions": 5373509.0
     },
     {
       "date": "1999-01-01",
-      "value_millions": 6886897.0
+      "value_millions": 5323412.0
     },
     {
       "date": "1999-04-01",
-      "value_millions": 7523077.0
+      "value_millions": 5740154.0
     },
     {
       "date": "1999-07-01",
-      "value_millions": 7117810.0
+      "value_millions": 5333502.0
     },
     {
       "date": "1999-10-01",
-      "value_millions": 8505915.0
+      "value_millions": 6346069.0
     },
     {
       "date": "2000-01-01",
-      "value_millions": 8742056.0
+      "value_millions": 6583783.0
     },
     {
       "date": "2000-04-01",
-      "value_millions": 8253601.0
+      "value_millions": 6198132.0
     },
     {
       "date": "2000-07-01",
-      "value_millions": 8180721.0
+      "value_millions": 6191960.0
     },
     {
       "date": "2000-10-01",
-      "value_millions": 7114407.0
+      "value_millions": 5318140.0
     },
     {
       "date": "2001-01-01",
-      "value_millions": 6278480.0
+      "value_millions": 4743546.0
     },
     {
       "date": "2001-04-01",
-      "value_millions": 6685913.0
+      "value_millions": 5127333.0
     },
     {
       "date": "2001-07-01",
-      "value_millions": 5560525.0
+      "value_millions": 4273843.0
     },
     {
       "date": "2001-10-01",
-      "value_millions": 6163326.0
+      "value_millions": 4805318.0
     },
     {
       "date": "2002-01-01",
-      "value_millions": 6213794.0
+      "value_millions": 4859091.0
     },
     {
       "date": "2002-04-01",
-      "value_millions": 5467248.0
+      "value_millions": 4290678.0
     },
     {
       "date": "2002-07-01",
-      "value_millions": 4469216.0
+      "value_millions": 3489442.0
     },
     {
       "date": "2002-10-01",
-      "value_millions": 4686487.0
+      "value_millions": 3638559.0
     },
     {
       "date": "2003-01-01",
-      "value_millions": 4395840.0
+      "value_millions": 3409350.0
     },
     {
       "date": "2003-04-01",
-      "value_millions": 5068253.0
+      "value_millions": 3972653.0
     },
     {
       "date": "2003-07-01",
-      "value_millions": 5231423.0
+      "value_millions": 4144149.0
     },
     {
       "date": "2003-10-01",
-      "value_millions": 5722946.0
+      "value_millions": 4547665.0
     },
     {
       "date": "2004-01-01",
-      "value_millions": 5990592.0
+      "value_millions": 4796494.0
     },
     {
       "date": "2004-04-01",
-      "value_millions": 5992246.0
+      "value_millions": 4786430.0
     },
     {
       "date": "2004-07-01",
-      "value_millions": 5817693.0
+      "value_millions": 4627195.0
     },
     {
       "date": "2004-10-01",
-      "value_millions": 6091490.0
+      "value_millions": 4812989.0
     },
     {
       "date": "2005-01-01",
-      "value_millions": 5977038.0
+      "value_millions": 4776762.0
     },
     {
       "date": "2005-04-01",
-      "value_millions": 6145247.0
+      "value_millions": 4975219.0
     },
     {
       "date": "2005-07-01",
-      "value_millions": 6171180.0
+      "value_millions": 5004605.0
     },
     {
       "date": "2005-10-01",
-      "value_millions": 6010814.0
+      "value_millions": 4875328.0
     },
     {
       "date": "2006-01-01",
-      "value_millions": 6860577.0
+      "value_millions": 5748909.0
     },
     {
       "date": "2006-04-01",
-      "value_millions": 6523913.0
+      "value_millions": 5482008.0
     },
     {
       "date": "2006-07-01",
-      "value_millions": 6654825.0
+      "value_millions": 5614341.0
     },
     {
       "date": "2006-10-01",
-      "value_millions": 6862144.0
+      "value_millions": 5822046.0
     },
     {
       "date": "2007-01-01",
-      "value_millions": 7096050.0
+      "value_millions": 6038589.0
     },
     {
       "date": "2007-04-01",
-      "value_millions": 6854500.0
+      "value_millions": 5741891.0
     },
     {
       "date": "2007-07-01",
-      "value_millions": 6542490.0
+      "value_millions": 5397587.0
     },
     {
       "date": "2007-10-01",
-      "value_millions": 5843401.0
+      "value_millions": 4728777.0
     },
     {
       "date": "2008-01-01",
-      "value_millions": 5413332.0
+      "value_millions": 4345170.0
     },
     {
       "date": "2008-04-01",
-      "value_millions": 4898547.0
+      "value_millions": 3811506.0
     },
     {
       "date": "2008-07-01",
-      "value_millions": 4919103.0
+      "value_millions": 3823159.0
     },
     {
       "date": "2008-10-01",
-      "value_millions": 4263262.0
+      "value_millions": 3127267.0
     },
     {
       "date": "2009-01-01",
-      "value_millions": 3810151.0
+      "value_millions": 2736217.0
     },
     {
       "date": "2009-04-01",
-      "value_millions": 4234128.0
+      "value_millions": 3109607.0
     },
     {
       "date": "2009-07-01",
-      "value_millions": 4737502.0
+      "value_millions": 3505754.0
     },
     {
       "date": "2009-10-01",
-      "value_millions": 4640368.0
+      "value_millions": 3457976.0
     },
     {
       "date": "2010-01-01",
-      "value_millions": 4927447.0
+      "value_millions": 3711756.0
     },
     {
       "date": "2010-04-01",
-      "value_millions": 4536344.0
+      "value_millions": 3418850.0
     },
     {
       "date": "2010-07-01",
-      "value_millions": 4746724.0
+      "value_millions": 3553034.0
     },
     {
       "date": "2010-10-01",
-      "value_millions": 5150451.0
+      "value_millions": 3908572.0
     },
     {
       "date": "2011-01-01",
-      "value_millions": 5532622.0
+      "value_millions": 4266644.0
     },
     {
       "date": "2011-04-01",
-      "value_millions": 5353621.0
+      "value_millions": 4102974.0
     },
     {
       "date": "2011-07-01",
-      "value_millions": 4639360.0
+      "value_millions": 3531149.0
     },
     {
       "date": "2011-10-01",
-      "value_millions": 5063014.0
+      "value_millions": 3845921.0
     },
     {
       "date": "2012-01-01",
-      "value_millions": 5623080.0
+      "value_millions": 4312996.0
     },
     {
       "date": "2012-04-01",
-      "value_millions": 5590651.0
+      "value_millions": 4339772.0
     },
     {
       "date": "2012-07-01",
-      "value_millions": 5752056.0
+      "value_millions": 4481859.0
     },
     {
       "date": "2012-10-01",
-      "value_millions": 6049823.0
+      "value_millions": 4470653.0
     },
     {
       "date": "2013-01-01",
-      "value_millions": 7295758.0
+      "value_millions": 5575851.0
     },
     {
       "date": "2013-04-01",
-      "value_millions": 7638133.0
+      "value_millions": 5859863.0
     },
     {
       "date": "2013-07-01",
-      "value_millions": 7770369.0
+      "value_millions": 5912969.0
     },
     {
       "date": "2013-10-01",
-      "value_millions": 8246700.0
+      "value_millions": 6232732.0
     },
     {
       "date": "2014-01-01",
-      "value_millions": 8837364.0
+      "value_millions": 6814375.0
     },
     {
       "date": "2014-04-01",
-      "value_millions": 9204909.0
+      "value_millions": 7090078.0
     },
     {
       "date": "2014-07-01",
-      "value_millions": 9206553.0
+      "value_millions": 7091329.0
     },
     {
       "date": "2014-10-01",
-      "value_millions": 9998734.0
+      "value_millions": 7793214.0
     },
     {
       "date": "2015-01-01",
-      "value_millions": 9810872.0
+      "value_millions": 7570546.0
     },
     {
       "date": "2015-04-01",
-      "value_millions": 9695249.0
+      "value_millions": 7481552.0
     },
     {
       "date": "2015-07-01",
-      "value_millions": 9176615.0
+      "value_millions": 7119680.0
     },
     {
       "date": "2015-10-01",
-      "value_millions": 9606431.0
+      "value_millions": 7465263.0
     },
     {
       "date": "2016-01-01",
-      "value_millions": 10030216.0
+      "value_millions": 7871162.0
     },
     {
       "date": "2016-04-01",
-      "value_millions": 10464753.0
+      "value_millions": 8250816.0
     },
     {
       "date": "2016-07-01",
-      "value_millions": 10541353.0
+      "value_millions": 8233515.0
     },
     {
       "date": "2016-10-01",
-      "value_millions": 10908176.0
+      "value_millions": 8529150.0
     },
     {
       "date": "2017-01-01",
-      "value_millions": 11294771.0
+      "value_millions": 8806749.0
     },
     {
       "date": "2017-04-01",
-      "value_millions": 11325754.0
+      "value_millions": 8801234.0
     },
     {
       "date": "2017-07-01",
-      "value_millions": 11330664.0
+      "value_millions": 8731199.0
     },
     {
       "date": "2017-10-01",
-      "value_millions": 12140635.0
+      "value_millions": 9388060.0
     },
     {
       "date": "2018-01-01",
-      "value_millions": 11930496.0
+      "value_millions": 9226960.0
     },
     {
       "date": "2018-04-01",
-      "value_millions": 12541077.0
+      "value_millions": 9776741.0
     },
     {
       "date": "2018-07-01",
-      "value_millions": 13325606.0
+      "value_millions": 10398267.0
     },
     {
       "date": "2018-10-01",
-      "value_millions": 11553006.0
+      "value_millions": 9008693.0
     },
     {
       "date": "2019-01-01",
-      "value_millions": 13314385.0
+      "value_millions": 10482074.0
     },
     {
       "date": "2019-04-01",
-      "value_millions": 13644247.0
+      "value_millions": 10730845.0
     },
     {
       "date": "2019-07-01",
-      "value_millions": 13765448.0
+      "value_millions": 10825362.0
     },
     {
       "date": "2019-10-01",
-      "value_millions": 14629700.0
+      "value_millions": 11456686.0
     },
     {
       "date": "2020-01-01",
-      "value_millions": 11323607.0
+      "value_millions": 8744748.0
     },
     {
       "date": "2020-04-01",
-      "value_millions": 14272176.0
+      "value_millions": 11273673.0
     },
     {
       "date": "2020-07-01",
-      "value_millions": 15946914.0
+      "value_millions": 12753446.0
     },
     {
       "date": "2020-10-01",
-      "value_millions": 18764947.0
+      "value_millions": 15249443.0
     },
     {
       "date": "2021-01-01",
-      "value_millions": 20872808.0
+      "value_millions": 17152706.0
     },
     {
       "date": "2021-04-01",
-      "value_millions": 22961488.0
+      "value_millions": 18992713.0
     },
     {
       "date": "2021-07-01",
-      "value_millions": 23541968.0
+      "value_millions": 19543891.0
     },
     {
       "date": "2021-10-01",
-      "value_millions": 25056287.0
+      "value_millions": 20691958.0
     },
     {
       "date": "2022-01-01",
-      "value_millions": 24348913.0
+      "value_millions": 20255375.0
     },
     {
       "date": "2022-04-01",
-      "value_millions": 20032197.0
+      "value_millions": 16531339.0
     },
     {
       "date": "2022-07-01",
-      "value_millions": 19622235.0
+      "value_millions": 16301147.0
     },
     {
       "date": "2022-10-01",
-      "value_millions": 20078518.0
+      "value_millions": 16616248.0
     },
     {
       "date": "2023-01-01",
-      "value_millions": 21427255.0
+      "value_millions": 17773296.0
     },
     {
       "date": "2023-04-01",
-      "value_millions": 23139698.0
+      "value_millions": 19262995.0
     },
     {
       "date": "2023-07-01",
-      "value_millions": 22453571.0
+      "value_millions": 18696568.0
     },
     {
       "date": "2023-10-01",
-      "value_millions": 24874436.0
+      "value_millions": 20788588.0
     },
     {
       "date": "2024-01-01",
-      "value_millions": 27129698.0
+      "value_millions": 22754818.0
     },
     {
       "date": "2024-04-01",
-      "value_millions": 28051176.0
+      "value_millions": 23608186.0
     },
     {
       "date": "2024-07-01",
-      "value_millions": 30032875.0
+      "value_millions": 25418030.0
     },
     {
       "date": "2024-10-01",
-      "value_millions": 31492181.0
+      "value_millions": 26824161.0
     },
     {
       "date": "2025-01-01",
-      "value_millions": 30411725.0
+      "value_millions": 25945202.0
     },
     {
       "date": "2025-04-01",
-      "value_millions": 32729841.0
+      "value_millions": 27883141.0
     },
     {
       "date": "2025-07-01",
-      "value_millions": 35569535.0
+      "value_millions": 30403319.0
     },
     {
       "date": "2025-10-01",
-      "value_millions": 36531614.0
+      "value_millions": 31250800.0
     },
     {
       "date": "2026-01-01",
-      "value_millions": 36045100.0
+      "value_millions": 31003033.0
     },
     {
       "date": "2026-04-01",
-      "value_millions": 43382233.0
+      "value_millions": 37676636.0
     }
   ],
   "ownership_pct": [
@@ -17222,8 +18459,9 @@
       "closed_end": 0.511,
       "broker_dealer": 0.365,
       "bank_mmf": 0.11,
-      "nonfin_corp": 0.109,
-      "household": 94.626
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 94.736
     },
     {
       "date": "1946-10-01",
@@ -17238,8 +18476,9 @@
       "closed_end": 0.549,
       "broker_dealer": 0.309,
       "bank_mmf": 0.124,
-      "nonfin_corp": 0.124,
-      "household": 94.287
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 94.411
     },
     {
       "date": "1947-10-01",
@@ -17254,8 +18493,9 @@
       "closed_end": 0.723,
       "broker_dealer": 0.32,
       "bank_mmf": 0.102,
-      "nonfin_corp": 0.101,
-      "household": 94.043
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 94.144
     },
     {
       "date": "1948-10-01",
@@ -17270,8 +18510,9 @@
       "closed_end": 0.783,
       "broker_dealer": 0.324,
       "bank_mmf": 0.11,
-      "nonfin_corp": 0.11,
-      "household": 93.933
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 94.043
     },
     {
       "date": "1949-10-01",
@@ -17286,8 +18527,9 @@
       "closed_end": 0.888,
       "broker_dealer": 0.424,
       "bank_mmf": 0.103,
-      "nonfin_corp": 0.103,
-      "household": 92.497
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 92.599
     },
     {
       "date": "1950-10-01",
@@ -17302,8 +18544,9 @@
       "closed_end": 0.907,
       "broker_dealer": 0.289,
       "bank_mmf": 0.103,
-      "nonfin_corp": 0.103,
-      "household": 92.621
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 92.724
     },
     {
       "date": "1951-10-01",
@@ -17318,8 +18561,9 @@
       "closed_end": 0.89,
       "broker_dealer": 0.278,
       "bank_mmf": 0.115,
-      "nonfin_corp": 0.115,
-      "household": 92.609
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 92.724
     },
     {
       "date": "1952-01-01",
@@ -17334,8 +18578,9 @@
       "closed_end": 0.899,
       "broker_dealer": 0.222,
       "bank_mmf": 0.124,
-      "nonfin_corp": 0.123,
-      "household": 92.109
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 92.232
     },
     {
       "date": "1952-04-01",
@@ -17350,8 +18595,9 @@
       "closed_end": 0.902,
       "broker_dealer": 0.212,
       "bank_mmf": 0.135,
-      "nonfin_corp": 0.134,
-      "household": 92.074
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 92.208
     },
     {
       "date": "1952-07-01",
@@ -17366,8 +18612,9 @@
       "closed_end": 0.935,
       "broker_dealer": 0.312,
       "bank_mmf": 0.147,
-      "nonfin_corp": 0.146,
-      "household": 91.918
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 92.063
     },
     {
       "date": "1952-10-01",
@@ -17382,8 +18629,9 @@
       "closed_end": 1.014,
       "broker_dealer": 0.31,
       "bank_mmf": 0.171,
-      "nonfin_corp": 0.17,
-      "household": 90.92
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 91.091
     },
     {
       "date": "1953-01-01",
@@ -17398,8 +18646,9 @@
       "closed_end": 1.063,
       "broker_dealer": 0.32,
       "bank_mmf": 0.185,
-      "nonfin_corp": 0.184,
-      "household": 90.836
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 91.02
     },
     {
       "date": "1953-04-01",
@@ -17414,8 +18663,9 @@
       "closed_end": 1.148,
       "broker_dealer": 0.347,
       "bank_mmf": 0.206,
-      "nonfin_corp": 0.205,
-      "household": 90.345
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 90.55
     },
     {
       "date": "1953-07-01",
@@ -17430,8 +18680,9 @@
       "closed_end": 1.21,
       "broker_dealer": 0.377,
       "bank_mmf": 0.223,
-      "nonfin_corp": 0.221,
-      "household": 89.987
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 90.208
     },
     {
       "date": "1953-10-01",
@@ -17446,8 +18697,9 @@
       "closed_end": 1.148,
       "broker_dealer": 0.309,
       "bank_mmf": 0.223,
-      "nonfin_corp": 0.221,
-      "household": 90.125
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 90.346
     },
     {
       "date": "1954-01-01",
@@ -17462,8 +18714,9 @@
       "closed_end": 1.108,
       "broker_dealer": 0.26,
       "bank_mmf": 0.227,
-      "nonfin_corp": 0.225,
-      "household": 90.015
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 90.24
     },
     {
       "date": "1954-04-01",
@@ -17478,8 +18731,9 @@
       "closed_end": 1.052,
       "broker_dealer": 0.282,
       "bank_mmf": 0.224,
-      "nonfin_corp": 0.222,
-      "household": 90.11
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 90.332
     },
     {
       "date": "1954-07-01",
@@ -17494,8 +18748,9 @@
       "closed_end": 0.991,
       "broker_dealer": 0.294,
       "bank_mmf": 0.22,
-      "nonfin_corp": 0.218,
-      "household": 90.159
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 90.377
     },
     {
       "date": "1954-10-01",
@@ -17510,8 +18765,9 @@
       "closed_end": 1.006,
       "broker_dealer": 0.297,
       "bank_mmf": 0.234,
-      "nonfin_corp": 0.232,
-      "household": 89.438
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 89.67
     },
     {
       "date": "1955-01-01",
@@ -17526,8 +18782,9 @@
       "closed_end": 1.007,
       "broker_dealer": 0.233,
       "bank_mmf": 0.243,
-      "nonfin_corp": 0.241,
-      "household": 89.333
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 89.574
     },
     {
       "date": "1955-04-01",
@@ -17542,8 +18799,9 @@
       "closed_end": 0.95,
       "broker_dealer": 0.258,
       "bank_mmf": 0.251,
-      "nonfin_corp": 0.249,
-      "household": 89.084
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 89.333
     },
     {
       "date": "1955-07-01",
@@ -17558,8 +18816,9 @@
       "closed_end": 0.928,
       "broker_dealer": 0.208,
       "bank_mmf": 0.262,
-      "nonfin_corp": 0.26,
-      "household": 89.055
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 89.315
     },
     {
       "date": "1955-10-01",
@@ -17574,8 +18833,9 @@
       "closed_end": 0.945,
       "broker_dealer": 0.299,
       "bank_mmf": 0.275,
-      "nonfin_corp": 0.273,
-      "household": 88.477
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 88.75
     },
     {
       "date": "1956-01-01",
@@ -17590,8 +18850,9 @@
       "closed_end": 0.915,
       "broker_dealer": 0.236,
       "bank_mmf": 0.274,
-      "nonfin_corp": 0.272,
-      "household": 88.393
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 88.664
     },
     {
       "date": "1956-04-01",
@@ -17606,8 +18867,9 @@
       "closed_end": 0.968,
       "broker_dealer": 0.247,
       "bank_mmf": 0.276,
-      "nonfin_corp": 0.274,
-      "household": 88.174
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 88.448
     },
     {
       "date": "1956-07-01",
@@ -17622,8 +18884,9 @@
       "closed_end": 1.013,
       "broker_dealer": 0.222,
       "bank_mmf": 0.277,
-      "nonfin_corp": 0.275,
-      "household": 88.195
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 88.47
     },
     {
       "date": "1956-10-01",
@@ -17638,8 +18901,9 @@
       "closed_end": 0.972,
       "broker_dealer": 0.214,
       "bank_mmf": 0.263,
-      "nonfin_corp": 0.261,
-      "household": 88.566
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 88.827
     },
     {
       "date": "1957-01-01",
@@ -17654,8 +18918,9 @@
       "closed_end": 1.047,
       "broker_dealer": 0.17,
       "bank_mmf": 0.274,
-      "nonfin_corp": 0.272,
-      "household": 88.299
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 88.57
     },
     {
       "date": "1957-04-01",
@@ -17670,8 +18935,9 @@
       "closed_end": 1.016,
       "broker_dealer": 0.164,
       "bank_mmf": 0.275,
-      "nonfin_corp": 0.273,
-      "household": 88.039
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 88.313
     },
     {
       "date": "1957-07-01",
@@ -17686,8 +18952,9 @@
       "closed_end": 1.143,
       "broker_dealer": 0.188,
       "bank_mmf": 0.296,
-      "nonfin_corp": 0.294,
-      "household": 87.643
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 87.937
     },
     {
       "date": "1957-10-01",
@@ -17702,8 +18969,9 @@
       "closed_end": 1.177,
       "broker_dealer": 0.258,
       "bank_mmf": 0.295,
-      "nonfin_corp": 0.292,
-      "household": 88.004
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 88.296
     },
     {
       "date": "1958-01-01",
@@ -17718,8 +18986,9 @@
       "closed_end": 1.153,
       "broker_dealer": 0.199,
       "bank_mmf": 0.291,
-      "nonfin_corp": 0.289,
-      "household": 88.052
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 88.341
     },
     {
       "date": "1958-04-01",
@@ -17734,8 +19003,9 @@
       "closed_end": 1.128,
       "broker_dealer": 0.231,
       "bank_mmf": 0.294,
-      "nonfin_corp": 0.292,
-      "household": 87.694
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 87.986
     },
     {
       "date": "1958-07-01",
@@ -17750,8 +19020,9 @@
       "closed_end": 1.061,
       "broker_dealer": 0.117,
       "bank_mmf": 0.288,
-      "nonfin_corp": 0.285,
-      "household": 87.762
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 88.047
     },
     {
       "date": "1958-10-01",
@@ -17766,8 +19037,9 @@
       "closed_end": 1.051,
       "broker_dealer": 0.129,
       "bank_mmf": 0.293,
-      "nonfin_corp": 0.29,
-      "household": 86.952
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 87.242
     },
     {
       "date": "1959-01-01",
@@ -17782,8 +19054,9 @@
       "closed_end": 1.046,
       "broker_dealer": 0.054,
       "bank_mmf": 0.288,
-      "nonfin_corp": 0.285,
-      "household": 86.847
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 87.132
     },
     {
       "date": "1959-04-01",
@@ -17798,8 +19071,9 @@
       "closed_end": 1.033,
       "broker_dealer": 0.064,
       "bank_mmf": 0.279,
-      "nonfin_corp": 0.277,
-      "household": 86.507
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 86.784
     },
     {
       "date": "1959-07-01",
@@ -17814,8 +19088,9 @@
       "closed_end": 1.078,
       "broker_dealer": 0.092,
       "bank_mmf": 0.273,
-      "nonfin_corp": 0.271,
-      "household": 86.42
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 86.691
     },
     {
       "date": "1959-10-01",
@@ -17830,8 +19105,9 @@
       "closed_end": 1.05,
       "broker_dealer": 0.136,
       "bank_mmf": 0.259,
-      "nonfin_corp": 0.257,
-      "household": 86.307
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 86.563
     },
     {
       "date": "1960-01-01",
@@ -17846,8 +19122,9 @@
       "closed_end": 1.086,
       "broker_dealer": 0.067,
       "bank_mmf": 0.26,
-      "nonfin_corp": 0.257,
-      "household": 86.183
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 86.44
     },
     {
       "date": "1960-04-01",
@@ -17862,8 +19139,9 @@
       "closed_end": 1.138,
       "broker_dealer": 0.074,
       "bank_mmf": 0.257,
-      "nonfin_corp": 0.253,
-      "household": 85.752
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 86.005
     },
     {
       "date": "1960-07-01",
@@ -17878,8 +19156,9 @@
       "closed_end": 1.186,
       "broker_dealer": 0.117,
       "bank_mmf": 0.267,
-      "nonfin_corp": 0.263,
-      "household": 85.369
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 85.632
     },
     {
       "date": "1960-10-01",
@@ -17894,8 +19173,9 @@
       "closed_end": 1.179,
       "broker_dealer": 0.127,
       "bank_mmf": 0.251,
-      "nonfin_corp": 0.247,
-      "household": 85.446
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 85.693
     },
     {
       "date": "1961-01-01",
@@ -17910,8 +19190,9 @@
       "closed_end": 1.075,
       "broker_dealer": 0.002,
       "bank_mmf": 0.24,
-      "nonfin_corp": 0.236,
-      "household": 85.293
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 85.529
     },
     {
       "date": "1961-04-01",
@@ -17926,8 +19207,9 @@
       "closed_end": 1.037,
       "broker_dealer": 0.033,
       "bank_mmf": 0.24,
-      "nonfin_corp": 0.237,
-      "household": 85.069
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 85.305
     },
     {
       "date": "1961-07-01",
@@ -17942,8 +19224,9 @@
       "closed_end": 0.992,
       "broker_dealer": 0.016,
       "bank_mmf": 0.24,
-      "nonfin_corp": 0.236,
-      "household": 84.912
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 85.148
     },
     {
       "date": "1961-10-01",
@@ -17958,8 +19241,9 @@
       "closed_end": 0.907,
       "broker_dealer": 0.038,
       "bank_mmf": 0.235,
-      "nonfin_corp": 0.232,
-      "household": 84.76
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 84.992
     },
     {
       "date": "1962-01-01",
@@ -17974,8 +19258,9 @@
       "closed_end": 0.918,
       "broker_dealer": 0.004,
       "bank_mmf": 0.242,
-      "nonfin_corp": 0.239,
-      "household": 84.526
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 84.765
     },
     {
       "date": "1962-04-01",
@@ -17990,8 +19275,9 @@
       "closed_end": 0.959,
       "broker_dealer": 0.025,
       "bank_mmf": 0.289,
-      "nonfin_corp": 0.284,
-      "household": 84.11
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 84.395
     },
     {
       "date": "1962-07-01",
@@ -18006,8 +19292,9 @@
       "closed_end": 0.959,
       "broker_dealer": 0.057,
       "bank_mmf": 0.288,
-      "nonfin_corp": 0.284,
-      "household": 84.024
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 84.308
     },
     {
       "date": "1962-10-01",
@@ -18022,8 +19309,9 @@
       "closed_end": 0.874,
       "broker_dealer": 0.051,
       "bank_mmf": 0.254,
-      "nonfin_corp": 0.251,
-      "household": 85.255
+      "nonfin_corp": 0.0,
+      "other_holders": 0.0,
+      "household": 85.505
     },
     {
       "date": "1963-01-01",
@@ -18038,8 +19326,9 @@
       "closed_end": 0.88,
       "broker_dealer": 0.005,
       "bank_mmf": 0.251,
-      "nonfin_corp": 0.248,
-      "household": 85.184
+      "nonfin_corp": 2.215,
+      "other_holders": 0.0,
+      "household": 83.217
     },
     {
       "date": "1963-04-01",
@@ -18054,8 +19343,9 @@
       "closed_end": 0.892,
       "broker_dealer": 0.028,
       "bank_mmf": 0.248,
-      "nonfin_corp": 0.245,
-      "household": 85.065
+      "nonfin_corp": 2.171,
+      "other_holders": 0.0,
+      "household": 83.139
     },
     {
       "date": "1963-07-01",
@@ -18070,8 +19360,9 @@
       "closed_end": 0.903,
       "broker_dealer": 0.018,
       "bank_mmf": 0.246,
-      "nonfin_corp": 0.243,
-      "household": 85.113
+      "nonfin_corp": 2.126,
+      "other_holders": 0.0,
+      "household": 83.23
     },
     {
       "date": "1963-10-01",
@@ -18086,8 +19377,9 @@
       "closed_end": 0.988,
       "broker_dealer": 0.087,
       "bank_mmf": 0.264,
-      "nonfin_corp": 0.261,
-      "household": 83.796
+      "nonfin_corp": 2.289,
+      "other_holders": 0.0,
+      "household": 81.767
     },
     {
       "date": "1964-01-01",
@@ -18102,8 +19394,9 @@
       "closed_end": 0.948,
       "broker_dealer": 0.031,
       "bank_mmf": 0.257,
-      "nonfin_corp": 0.254,
-      "household": 83.863
+      "nonfin_corp": 2.25,
+      "other_holders": 0.0,
+      "household": 81.868
     },
     {
       "date": "1964-04-01",
@@ -18118,8 +19411,9 @@
       "closed_end": 0.939,
       "broker_dealer": 0.071,
       "bank_mmf": 0.254,
-      "nonfin_corp": 0.251,
-      "household": 83.806
+      "nonfin_corp": 2.236,
+      "other_holders": 0.0,
+      "household": 81.821
     },
     {
       "date": "1964-07-01",
@@ -18134,8 +19428,9 @@
       "closed_end": 0.922,
       "broker_dealer": 0.023,
       "bank_mmf": 0.251,
-      "nonfin_corp": 0.248,
-      "household": 83.748
+      "nonfin_corp": 2.208,
+      "other_holders": 0.0,
+      "household": 81.788
     },
     {
       "date": "1964-10-01",
@@ -18150,8 +19445,9 @@
       "closed_end": 0.91,
       "broker_dealer": 0.14,
       "bank_mmf": 0.25,
-      "nonfin_corp": 0.247,
-      "household": 83.755
+      "nonfin_corp": 2.156,
+      "other_holders": 0.0,
+      "household": 81.846
     },
     {
       "date": "1965-01-01",
@@ -18166,8 +19462,9 @@
       "closed_end": 0.876,
       "broker_dealer": 0.105,
       "bank_mmf": 0.251,
-      "nonfin_corp": 0.247,
-      "household": 83.796
+      "nonfin_corp": 2.14,
+      "other_holders": 0.0,
+      "household": 81.902
     },
     {
       "date": "1965-04-01",
@@ -18182,8 +19479,9 @@
       "closed_end": 0.854,
       "broker_dealer": 0.17,
       "bank_mmf": 0.263,
-      "nonfin_corp": 0.258,
-      "household": 83.484
+      "nonfin_corp": 2.174,
+      "other_holders": 0.0,
+      "household": 81.568
     },
     {
       "date": "1965-07-01",
@@ -18198,8 +19496,9 @@
       "closed_end": 0.818,
       "broker_dealer": 0.096,
       "bank_mmf": 0.259,
-      "nonfin_corp": 0.255,
-      "household": 83.457
+      "nonfin_corp": 2.139,
+      "other_holders": 0.0,
+      "household": 81.573
     },
     {
       "date": "1965-10-01",
@@ -18214,8 +19513,9 @@
       "closed_end": 0.763,
       "broker_dealer": 0.165,
       "bank_mmf": 0.252,
-      "nonfin_corp": 0.248,
-      "household": 83.539
+      "nonfin_corp": 2.075,
+      "other_holders": 0.0,
+      "household": 81.711
     },
     {
       "date": "1966-01-01",
@@ -18230,8 +19530,9 @@
       "closed_end": 0.766,
       "broker_dealer": 0.092,
       "bank_mmf": 0.258,
-      "nonfin_corp": 0.253,
-      "household": 83.201
+      "nonfin_corp": 2.205,
+      "other_holders": 0.0,
+      "household": 81.249
     },
     {
       "date": "1966-04-01",
@@ -18246,8 +19547,9 @@
       "closed_end": 0.786,
       "broker_dealer": 0.17,
       "bank_mmf": 0.261,
-      "nonfin_corp": 0.256,
-      "household": 82.982
+      "nonfin_corp": 2.324,
+      "other_holders": 0.0,
+      "household": 80.914
     },
     {
       "date": "1966-07-01",
@@ -18262,8 +19564,9 @@
       "closed_end": 0.766,
       "broker_dealer": 0.109,
       "bank_mmf": 0.275,
-      "nonfin_corp": 0.269,
-      "household": 82.938
+      "nonfin_corp": 2.482,
+      "other_holders": 0.0,
+      "household": 80.725
     },
     {
       "date": "1966-10-01",
@@ -18278,8 +19581,9 @@
       "closed_end": 0.801,
       "broker_dealer": 0.201,
       "bank_mmf": 0.266,
-      "nonfin_corp": 0.259,
-      "household": 82.691
+      "nonfin_corp": 2.568,
+      "other_holders": 0.0,
+      "household": 80.383
     },
     {
       "date": "1967-01-01",
@@ -18294,8 +19598,9 @@
       "closed_end": 0.792,
       "broker_dealer": 0.1,
       "bank_mmf": 0.254,
-      "nonfin_corp": 0.249,
-      "household": 82.325
+      "nonfin_corp": 2.506,
+      "other_holders": 0.0,
+      "household": 80.067
     },
     {
       "date": "1967-04-01",
@@ -18310,8 +19615,9 @@
       "closed_end": 0.755,
       "broker_dealer": 0.17,
       "bank_mmf": 0.259,
-      "nonfin_corp": 0.253,
-      "household": 81.708
+      "nonfin_corp": 2.437,
+      "other_holders": 0.0,
+      "household": 79.524
     },
     {
       "date": "1967-07-01",
@@ -18326,8 +19632,9 @@
       "closed_end": 0.714,
       "broker_dealer": 0.182,
       "bank_mmf": 0.257,
-      "nonfin_corp": 0.251,
-      "household": 81.195
+      "nonfin_corp": 2.398,
+      "other_holders": 0.0,
+      "household": 79.049
     },
     {
       "date": "1967-10-01",
@@ -18342,8 +19649,9 @@
       "closed_end": 0.646,
       "broker_dealer": 0.204,
       "bank_mmf": 0.252,
-      "nonfin_corp": 0.246,
-      "household": 81.375
+      "nonfin_corp": 2.279,
+      "other_holders": 0.0,
+      "household": 79.342
     },
     {
       "date": "1968-01-01",
@@ -18358,8 +19666,9 @@
       "closed_end": 0.643,
       "broker_dealer": 0.178,
       "bank_mmf": 0.262,
-      "nonfin_corp": 0.255,
-      "household": 81.214
+      "nonfin_corp": 2.399,
+      "other_holders": 0.0,
+      "household": 79.071
     },
     {
       "date": "1968-04-01",
@@ -18374,8 +19683,9 @@
       "closed_end": 0.669,
       "broker_dealer": 0.116,
       "bank_mmf": 0.244,
-      "nonfin_corp": 0.237,
-      "household": 80.934
+      "nonfin_corp": 2.426,
+      "other_holders": 0.0,
+      "household": 78.745
     },
     {
       "date": "1968-07-01",
@@ -18390,8 +19700,9 @@
       "closed_end": 0.679,
       "broker_dealer": 0.144,
       "bank_mmf": 0.241,
-      "nonfin_corp": 0.234,
-      "household": 80.416
+      "nonfin_corp": 2.558,
+      "other_holders": 0.0,
+      "household": 78.091
     },
     {
       "date": "1968-10-01",
@@ -18406,8 +19717,9 @@
       "closed_end": 0.64,
       "broker_dealer": 0.152,
       "bank_mmf": 0.222,
-      "nonfin_corp": 0.215,
-      "household": 81.547
+      "nonfin_corp": 2.436,
+      "other_holders": 0.0,
+      "household": 79.327
     },
     {
       "date": "1969-01-01",
@@ -18422,8 +19734,9 @@
       "closed_end": 0.639,
       "broker_dealer": 0.11,
       "bank_mmf": 0.234,
-      "nonfin_corp": 0.227,
-      "household": 81.092
+      "nonfin_corp": 2.718,
+      "other_holders": 0.0,
+      "household": 78.6
     },
     {
       "date": "1969-04-01",
@@ -18438,8 +19751,9 @@
       "closed_end": 0.665,
       "broker_dealer": 0.187,
       "bank_mmf": 0.25,
-      "nonfin_corp": 0.243,
-      "household": 80.47
+      "nonfin_corp": 2.941,
+      "other_holders": 0.0,
+      "household": 77.772
     },
     {
       "date": "1969-07-01",
@@ -18454,8 +19768,9 @@
       "closed_end": 0.674,
       "broker_dealer": 0.132,
       "bank_mmf": 0.262,
-      "nonfin_corp": 0.254,
-      "household": 80.41
+      "nonfin_corp": 3.092,
+      "other_holders": 0.0,
+      "household": 77.572
     },
     {
       "date": "1969-10-01",
@@ -18470,8 +19785,9 @@
       "closed_end": 0.721,
       "broker_dealer": 0.224,
       "bank_mmf": 0.285,
-      "nonfin_corp": 0.276,
-      "household": 78.965
+      "nonfin_corp": 3.427,
+      "other_holders": 0.0,
+      "household": 75.814
     },
     {
       "date": "1970-01-01",
@@ -18486,8 +19802,9 @@
       "closed_end": 0.7,
       "broker_dealer": 0.126,
       "bank_mmf": 0.3,
-      "nonfin_corp": 0.291,
-      "household": 78.516
+      "nonfin_corp": 3.563,
+      "other_holders": 0.0,
+      "household": 75.243
     },
     {
       "date": "1970-04-01",
@@ -18502,8 +19819,9 @@
       "closed_end": 0.695,
       "broker_dealer": 0.254,
       "bank_mmf": 0.351,
-      "nonfin_corp": 0.338,
-      "household": 78.036
+      "nonfin_corp": 3.761,
+      "other_holders": 0.0,
+      "household": 74.614
     },
     {
       "date": "1970-07-01",
@@ -18518,8 +19836,9 @@
       "closed_end": 0.445,
       "broker_dealer": 0.203,
       "bank_mmf": 0.336,
-      "nonfin_corp": 0.324,
-      "household": 78.129
+      "nonfin_corp": 3.862,
+      "other_holders": 0.0,
+      "household": 74.591
     },
     {
       "date": "1970-10-01",
@@ -18534,8 +19853,9 @@
       "closed_end": 0.521,
       "broker_dealer": 0.24,
       "bank_mmf": 0.329,
-      "nonfin_corp": 0.318,
-      "household": 77.752
+      "nonfin_corp": 3.96,
+      "other_holders": 0.0,
+      "household": 74.11
     },
     {
       "date": "1971-01-01",
@@ -18550,8 +19870,9 @@
       "closed_end": 0.527,
       "broker_dealer": 0.219,
       "bank_mmf": 0.324,
-      "nonfin_corp": 0.314,
-      "household": 77.013
+      "nonfin_corp": 3.901,
+      "other_holders": 0.0,
+      "household": 73.426
     },
     {
       "date": "1971-04-01",
@@ -18566,8 +19887,9 @@
       "closed_end": 0.556,
       "broker_dealer": 0.189,
       "bank_mmf": 0.331,
-      "nonfin_corp": 0.321,
-      "household": 76.618
+      "nonfin_corp": 3.89,
+      "other_holders": 0.0,
+      "household": 73.05
     },
     {
       "date": "1971-07-01",
@@ -18582,8 +19904,9 @@
       "closed_end": 0.608,
       "broker_dealer": 0.115,
       "bank_mmf": 0.345,
-      "nonfin_corp": 0.336,
-      "household": 75.64
+      "nonfin_corp": 3.875,
+      "other_holders": 0.0,
+      "household": 72.1
     },
     {
       "date": "1971-10-01",
@@ -18598,8 +19921,9 @@
       "closed_end": 0.555,
       "broker_dealer": 0.218,
       "bank_mmf": 0.341,
-      "nonfin_corp": 0.332,
-      "household": 75.799
+      "nonfin_corp": 3.766,
+      "other_holders": 0.0,
+      "household": 72.366
     },
     {
       "date": "1972-01-01",
@@ -18614,8 +19938,9 @@
       "closed_end": 0.55,
       "broker_dealer": 0.121,
       "bank_mmf": 0.348,
-      "nonfin_corp": 0.339,
-      "household": 75.451
+      "nonfin_corp": 3.675,
+      "other_holders": 0.0,
+      "household": 72.115
     },
     {
       "date": "1972-04-01",
@@ -18630,8 +19955,9 @@
       "closed_end": 0.549,
       "broker_dealer": 0.119,
       "bank_mmf": 0.364,
-      "nonfin_corp": 0.353,
-      "household": 75.109
+      "nonfin_corp": 3.627,
+      "other_holders": 0.0,
+      "household": 71.835
     },
     {
       "date": "1972-07-01",
@@ -18646,8 +19972,9 @@
       "closed_end": 0.525,
       "broker_dealer": 0.066,
       "bank_mmf": 0.37,
-      "nonfin_corp": 0.36,
-      "household": 75.176
+      "nonfin_corp": 3.599,
+      "other_holders": 0.0,
+      "household": 71.937
     },
     {
       "date": "1972-10-01",
@@ -18662,8 +19989,9 @@
       "closed_end": 0.482,
       "broker_dealer": 0.202,
       "bank_mmf": 0.348,
-      "nonfin_corp": 0.339,
-      "household": 76.065
+      "nonfin_corp": 3.33,
+      "other_holders": 0.0,
+      "household": 73.074
     },
     {
       "date": "1973-01-01",
@@ -18678,8 +20006,9 @@
       "closed_end": 0.532,
       "broker_dealer": 0.098,
       "bank_mmf": 0.374,
-      "nonfin_corp": 0.363,
-      "household": 75.756
+      "nonfin_corp": 3.757,
+      "other_holders": 0.0,
+      "household": 72.363
     },
     {
       "date": "1973-04-01",
@@ -18694,8 +20023,9 @@
       "closed_end": 0.587,
       "broker_dealer": 0.132,
       "bank_mmf": 0.398,
-      "nonfin_corp": 0.388,
-      "household": 75.488
+      "nonfin_corp": 4.168,
+      "other_holders": 0.0,
+      "household": 71.708
     },
     {
       "date": "1973-07-01",
@@ -18710,8 +20040,9 @@
       "closed_end": 0.593,
       "broker_dealer": 0.084,
       "bank_mmf": 0.396,
-      "nonfin_corp": 0.385,
-      "household": 74.875
+      "nonfin_corp": 4.411,
+      "other_holders": 0.0,
+      "household": 70.85
     },
     {
       "date": "1973-10-01",
@@ -18726,8 +20057,9 @@
       "closed_end": 0.711,
       "broker_dealer": 0.298,
       "bank_mmf": 0.452,
-      "nonfin_corp": 0.435,
-      "household": 73.247
+      "nonfin_corp": 5.048,
+      "other_holders": 0.0,
+      "household": 68.635
     },
     {
       "date": "1974-01-01",
@@ -18742,8 +20074,9 @@
       "closed_end": 0.718,
       "broker_dealer": 0.206,
       "bank_mmf": 0.492,
-      "nonfin_corp": 0.474,
-      "household": 72.098
+      "nonfin_corp": 5.791,
+      "other_holders": 0.0,
+      "household": 66.782
     },
     {
       "date": "1974-04-01",
@@ -18758,8 +20091,9 @@
       "closed_end": 0.776,
       "broker_dealer": 0.316,
       "bank_mmf": 0.534,
-      "nonfin_corp": 0.513,
-      "household": 71.574
+      "nonfin_corp": 6.71,
+      "other_holders": 0.0,
+      "household": 65.377
     },
     {
       "date": "1974-07-01",
@@ -18774,8 +20108,9 @@
       "closed_end": 0.87,
       "broker_dealer": 0.352,
       "bank_mmf": 0.628,
-      "nonfin_corp": 0.6,
-      "household": 71.139
+      "nonfin_corp": 7.438,
+      "other_holders": 0.0,
+      "household": 64.3
     },
     {
       "date": "1974-10-01",
@@ -18790,8 +20125,9 @@
       "closed_end": 0.948,
       "broker_dealer": 0.347,
       "bank_mmf": 0.645,
-      "nonfin_corp": 0.618,
-      "household": 69.292
+      "nonfin_corp": 8.577,
+      "other_holders": 0.0,
+      "household": 61.333
     },
     {
       "date": "1975-01-01",
@@ -18806,8 +20142,9 @@
       "closed_end": 0.912,
       "broker_dealer": 0.197,
       "bank_mmf": 0.582,
-      "nonfin_corp": 0.558,
-      "household": 69.636
+      "nonfin_corp": 8.216,
+      "other_holders": 0.0,
+      "household": 61.978
     },
     {
       "date": "1975-04-01",
@@ -18822,8 +20159,9 @@
       "closed_end": 0.858,
       "broker_dealer": 0.248,
       "bank_mmf": 0.542,
-      "nonfin_corp": 0.523,
-      "household": 69.202
+      "nonfin_corp": 7.845,
+      "other_holders": 0.0,
+      "household": 61.88
     },
     {
       "date": "1975-07-01",
@@ -18838,8 +20176,9 @@
       "closed_end": 0.826,
       "broker_dealer": 0.213,
       "bank_mmf": 0.567,
-      "nonfin_corp": 0.546,
-      "household": 68.692
+      "nonfin_corp": 7.597,
+      "other_holders": 0.0,
+      "household": 61.641
     },
     {
       "date": "1975-10-01",
@@ -18854,8 +20193,9 @@
       "closed_end": 0.701,
       "broker_dealer": 0.406,
       "bank_mmf": 0.539,
-      "nonfin_corp": 0.518,
-      "household": 68.791
+      "nonfin_corp": 7.331,
+      "other_holders": 0.0,
+      "household": 61.978
     },
     {
       "date": "1976-01-01",
@@ -18870,8 +20210,9 @@
       "closed_end": 0.709,
       "broker_dealer": 0.136,
       "bank_mmf": 0.497,
-      "nonfin_corp": 0.472,
-      "household": 69.248
+      "nonfin_corp": 7.099,
+      "other_holders": 0.0,
+      "household": 62.621
     },
     {
       "date": "1976-04-01",
@@ -18886,8 +20227,9 @@
       "closed_end": 0.657,
       "broker_dealer": 0.136,
       "bank_mmf": 0.475,
-      "nonfin_corp": 0.451,
-      "household": 69.792
+      "nonfin_corp": 6.928,
+      "other_holders": 0.0,
+      "household": 63.316
     },
     {
       "date": "1976-07-01",
@@ -18902,8 +20244,9 @@
       "closed_end": 0.628,
       "broker_dealer": 0.131,
       "bank_mmf": 0.457,
-      "nonfin_corp": 0.435,
-      "household": 70.093
+      "nonfin_corp": 6.781,
+      "other_holders": 0.0,
+      "household": 63.746
     },
     {
       "date": "1976-10-01",
@@ -18918,8 +20261,9 @@
       "closed_end": 0.582,
       "broker_dealer": 0.15,
       "bank_mmf": 0.443,
-      "nonfin_corp": 0.422,
-      "household": 70.011
+      "nonfin_corp": 6.558,
+      "other_holders": 0.0,
+      "household": 63.875
     },
     {
       "date": "1977-01-01",
@@ -18934,8 +20278,9 @@
       "closed_end": 0.574,
       "broker_dealer": 0.148,
       "bank_mmf": 0.475,
-      "nonfin_corp": 0.449,
-      "household": 69.592
+      "nonfin_corp": 6.835,
+      "other_holders": 0.0,
+      "household": 63.206
     },
     {
       "date": "1977-04-01",
@@ -18950,8 +20295,9 @@
       "closed_end": 0.556,
       "broker_dealer": 0.162,
       "bank_mmf": 0.485,
-      "nonfin_corp": 0.461,
-      "household": 69.332
+      "nonfin_corp": 7.113,
+      "other_holders": 0.0,
+      "household": 62.68
     },
     {
       "date": "1977-07-01",
@@ -18966,8 +20312,9 @@
       "closed_end": 0.525,
       "broker_dealer": 0.169,
       "bank_mmf": 0.516,
-      "nonfin_corp": 0.491,
-      "household": 68.95
+      "nonfin_corp": 7.457,
+      "other_holders": 0.0,
+      "household": 61.984
     },
     {
       "date": "1977-10-01",
@@ -18982,8 +20329,9 @@
       "closed_end": 0.517,
       "broker_dealer": 0.202,
       "bank_mmf": 0.543,
-      "nonfin_corp": 0.516,
-      "household": 67.535
+      "nonfin_corp": 7.895,
+      "other_holders": 0.0,
+      "household": 60.157
     },
     {
       "date": "1978-01-01",
@@ -18998,8 +20346,9 @@
       "closed_end": 0.5,
       "broker_dealer": 0.193,
       "bank_mmf": 0.571,
-      "nonfin_corp": 0.539,
-      "household": 66.766
+      "nonfin_corp": 7.796,
+      "other_holders": 0.0,
+      "household": 59.509
     },
     {
       "date": "1978-04-01",
@@ -19014,8 +20363,9 @@
       "closed_end": 0.481,
       "broker_dealer": 0.217,
       "bank_mmf": 0.545,
-      "nonfin_corp": 0.516,
-      "household": 65.992
+      "nonfin_corp": 7.732,
+      "other_holders": 0.0,
+      "household": 58.777
     },
     {
       "date": "1978-07-01",
@@ -19030,8 +20380,9 @@
       "closed_end": 0.465,
       "broker_dealer": 0.227,
       "bank_mmf": 0.518,
-      "nonfin_corp": 0.49,
-      "household": 65.193
+      "nonfin_corp": 7.689,
+      "other_holders": 0.0,
+      "household": 57.994
     },
     {
       "date": "1978-10-01",
@@ -19046,8 +20397,9 @@
       "closed_end": 0.528,
       "broker_dealer": 0.2,
       "bank_mmf": 0.507,
-      "nonfin_corp": 0.495,
-      "household": 65.131
+      "nonfin_corp": 7.549,
+      "other_holders": 0.0,
+      "household": 58.078
     },
     {
       "date": "1979-01-01",
@@ -19062,8 +20414,9 @@
       "closed_end": 0.49,
       "broker_dealer": 0.205,
       "bank_mmf": 0.487,
-      "nonfin_corp": 0.475,
-      "household": 64.948
+      "nonfin_corp": 7.546,
+      "other_holders": 0.0,
+      "household": 57.877
     },
     {
       "date": "1979-04-01",
@@ -19078,8 +20431,9 @@
       "closed_end": 0.476,
       "broker_dealer": 0.215,
       "bank_mmf": 0.476,
-      "nonfin_corp": 0.464,
-      "household": 64.961
+      "nonfin_corp": 7.545,
+      "other_holders": 0.0,
+      "household": 57.88
     },
     {
       "date": "1979-07-01",
@@ -19094,8 +20448,9 @@
       "closed_end": 0.442,
       "broker_dealer": 0.225,
       "bank_mmf": 0.451,
-      "nonfin_corp": 0.44,
-      "household": 64.799
+      "nonfin_corp": 7.575,
+      "other_holders": 0.0,
+      "household": 57.663
     },
     {
       "date": "1979-10-01",
@@ -19110,8 +20465,9 @@
       "closed_end": 0.43,
       "broker_dealer": 0.227,
       "bank_mmf": 0.424,
-      "nonfin_corp": 0.413,
-      "household": 66.091
+      "nonfin_corp": 7.356,
+      "other_holders": 0.0,
+      "household": 59.147
     },
     {
       "date": "1980-01-01",
@@ -19126,8 +20482,9 @@
       "closed_end": 0.415,
       "broker_dealer": 0.016,
       "bank_mmf": 0.415,
-      "nonfin_corp": 0.403,
-      "household": 65.272
+      "nonfin_corp": 7.626,
+      "other_holders": 0.0,
+      "household": 58.049
     },
     {
       "date": "1980-04-01",
@@ -19142,8 +20499,9 @@
       "closed_end": 0.368,
       "broker_dealer": -0.017,
       "bank_mmf": 0.369,
-      "nonfin_corp": 0.359,
-      "household": 65.704
+      "nonfin_corp": 7.668,
+      "other_holders": 0.0,
+      "household": 58.395
     },
     {
       "date": "1980-07-01",
@@ -19158,8 +20516,9 @@
       "closed_end": 0.331,
       "broker_dealer": 0.021,
       "bank_mmf": 0.328,
-      "nonfin_corp": 0.319,
-      "household": 66.232
+      "nonfin_corp": 7.684,
+      "other_holders": 0.0,
+      "household": 58.868
     },
     {
       "date": "1980-10-01",
@@ -19174,8 +20533,9 @@
       "closed_end": 0.333,
       "broker_dealer": -0.125,
       "bank_mmf": 0.289,
-      "nonfin_corp": 0.281,
-      "household": 67.246
+      "nonfin_corp": 7.715,
+      "other_holders": 0.0,
+      "household": 59.812
     },
     {
       "date": "1981-01-01",
@@ -19190,8 +20550,9 @@
       "closed_end": 0.334,
       "broker_dealer": 0.024,
       "bank_mmf": 0.273,
-      "nonfin_corp": 0.267,
-      "household": 66.827
+      "nonfin_corp": 7.779,
+      "other_holders": 0.0,
+      "household": 59.315
     },
     {
       "date": "1981-04-01",
@@ -19206,8 +20567,9 @@
       "closed_end": 0.329,
       "broker_dealer": 0.001,
       "bank_mmf": 0.26,
-      "nonfin_corp": 0.254,
-      "household": 66.593
+      "nonfin_corp": 7.751,
+      "other_holders": 0.0,
+      "household": 59.096
     },
     {
       "date": "1981-07-01",
@@ -19222,8 +20584,9 @@
       "closed_end": 0.336,
       "broker_dealer": -0.04,
       "bank_mmf": 0.281,
-      "nonfin_corp": 0.275,
-      "household": 64.935
+      "nonfin_corp": 8.057,
+      "other_holders": 0.0,
+      "household": 57.153
     },
     {
       "date": "1981-10-01",
@@ -19238,8 +20601,9 @@
       "closed_end": 0.305,
       "broker_dealer": -0.109,
       "bank_mmf": 0.255,
-      "nonfin_corp": 0.25,
-      "household": 65.178
+      "nonfin_corp": 7.982,
+      "other_holders": 0.0,
+      "household": 57.446
     },
     {
       "date": "1982-01-01",
@@ -19254,8 +20618,9 @@
       "closed_end": 0.31,
       "broker_dealer": -0.034,
       "bank_mmf": 0.267,
-      "nonfin_corp": 0.261,
-      "household": 62.139
+      "nonfin_corp": 8.193,
+      "other_holders": 0.0,
+      "household": 54.207
     },
     {
       "date": "1982-04-01",
@@ -19270,8 +20635,9 @@
       "closed_end": 0.299,
       "broker_dealer": -0.067,
       "bank_mmf": 0.262,
-      "nonfin_corp": 0.256,
-      "household": 61.249
+      "nonfin_corp": 8.271,
+      "other_holders": 0.0,
+      "household": 53.234
     },
     {
       "date": "1982-07-01",
@@ -19286,8 +20652,9 @@
       "closed_end": 0.287,
       "broker_dealer": -0.198,
       "bank_mmf": 0.238,
-      "nonfin_corp": 0.232,
-      "household": 59.816
+      "nonfin_corp": 8.337,
+      "other_holders": 0.0,
+      "household": 51.712
     },
     {
       "date": "1982-10-01",
@@ -19302,8 +20669,9 @@
       "closed_end": 0.267,
       "broker_dealer": -0.163,
       "bank_mmf": 0.205,
-      "nonfin_corp": 0.2,
-      "household": 61.709
+      "nonfin_corp": 8.328,
+      "other_holders": 0.0,
+      "household": 53.581
     },
     {
       "date": "1983-01-01",
@@ -19318,8 +20686,9 @@
       "closed_end": 0.249,
       "broker_dealer": -0.089,
       "bank_mmf": 0.195,
-      "nonfin_corp": 0.19,
-      "household": 61.006
+      "nonfin_corp": 8.301,
+      "other_holders": 0.0,
+      "household": 52.895
     },
     {
       "date": "1983-04-01",
@@ -19334,8 +20703,9 @@
       "closed_end": 0.238,
       "broker_dealer": 0.012,
       "bank_mmf": 0.183,
-      "nonfin_corp": 0.179,
-      "household": 60.366
+      "nonfin_corp": 8.217,
+      "other_holders": 0.0,
+      "household": 52.327
     },
     {
       "date": "1983-07-01",
@@ -19350,8 +20720,9 @@
       "closed_end": 0.235,
       "broker_dealer": -0.014,
       "bank_mmf": 0.192,
-      "nonfin_corp": 0.187,
-      "household": 59.62
+      "nonfin_corp": 8.373,
+      "other_holders": 0.0,
+      "household": 51.434
     },
     {
       "date": "1983-10-01",
@@ -19366,8 +20737,9 @@
       "closed_end": 0.235,
       "broker_dealer": 0.023,
       "bank_mmf": 0.202,
-      "nonfin_corp": 0.197,
-      "household": 58.427
+      "nonfin_corp": 8.705,
+      "other_holders": 0.0,
+      "household": 49.92
     },
     {
       "date": "1984-01-01",
@@ -19382,8 +20754,9 @@
       "closed_end": 0.236,
       "broker_dealer": -0.132,
       "bank_mmf": 0.216,
-      "nonfin_corp": 0.212,
-      "household": 58.256
+      "nonfin_corp": 9.122,
+      "other_holders": 0.0,
+      "household": 49.345
     },
     {
       "date": "1984-04-01",
@@ -19398,8 +20771,9 @@
       "closed_end": 0.237,
       "broker_dealer": -0.097,
       "bank_mmf": 0.224,
-      "nonfin_corp": 0.219,
-      "household": 57.72
+      "nonfin_corp": 9.459,
+      "other_holders": 0.0,
+      "household": 48.48
     },
     {
       "date": "1984-07-01",
@@ -19414,8 +20788,9 @@
       "closed_end": 0.227,
       "broker_dealer": -0.056,
       "bank_mmf": 0.21,
-      "nonfin_corp": 0.206,
-      "household": 56.809
+      "nonfin_corp": 9.776,
+      "other_holders": 0.0,
+      "household": 47.238
     },
     {
       "date": "1984-10-01",
@@ -19430,8 +20805,9 @@
       "closed_end": 0.211,
       "broker_dealer": -0.139,
       "bank_mmf": 0.196,
-      "nonfin_corp": 0.196,
-      "household": 56.296
+      "nonfin_corp": 9.926,
+      "other_holders": 0.0,
+      "household": 46.565
     },
     {
       "date": "1985-01-01",
@@ -19446,8 +20822,9 @@
       "closed_end": 0.206,
       "broker_dealer": -0.08,
       "bank_mmf": 0.194,
-      "nonfin_corp": 0.19,
-      "household": 55.049
+      "nonfin_corp": 9.842,
+      "other_holders": 0.0,
+      "household": 45.397
     },
     {
       "date": "1985-04-01",
@@ -19462,8 +20839,9 @@
       "closed_end": 0.2,
       "broker_dealer": -0.07,
       "bank_mmf": 0.193,
-      "nonfin_corp": 0.189,
-      "household": 55.152
+      "nonfin_corp": 9.821,
+      "other_holders": 0.0,
+      "household": 45.521
     },
     {
       "date": "1985-07-01",
@@ -19478,8 +20856,9 @@
       "closed_end": 0.202,
       "broker_dealer": -0.198,
       "bank_mmf": 0.201,
-      "nonfin_corp": 0.197,
-      "household": 54.329
+      "nonfin_corp": 9.865,
+      "other_holders": 0.0,
+      "household": 44.661
     },
     {
       "date": "1985-10-01",
@@ -19494,8 +20873,9 @@
       "closed_end": 0.189,
       "broker_dealer": -0.212,
       "bank_mmf": 0.169,
-      "nonfin_corp": 0.165,
-      "household": 53.87
+      "nonfin_corp": 9.62,
+      "other_holders": 0.0,
+      "household": 44.415
     },
     {
       "date": "1986-01-01",
@@ -19510,8 +20890,9 @@
       "closed_end": 0.233,
       "broker_dealer": 0.037,
       "bank_mmf": 0.164,
-      "nonfin_corp": 0.16,
-      "household": 53.531
+      "nonfin_corp": 9.829,
+      "other_holders": 0.0,
+      "household": 43.863
     },
     {
       "date": "1986-04-01",
@@ -19526,8 +20907,9 @@
       "closed_end": 0.26,
       "broker_dealer": -0.012,
       "bank_mmf": 0.181,
-      "nonfin_corp": 0.178,
-      "household": 53.475
+      "nonfin_corp": 10.095,
+      "other_holders": 0.0,
+      "household": 43.559
     },
     {
       "date": "1986-07-01",
@@ -19542,8 +20924,9 @@
       "closed_end": 0.287,
       "broker_dealer": -0.042,
       "bank_mmf": 0.224,
-      "nonfin_corp": 0.221,
-      "household": 52.845
+      "nonfin_corp": 10.446,
+      "other_holders": 0.004,
+      "household": 42.616
     },
     {
       "date": "1986-10-01",
@@ -19558,8 +20941,9 @@
       "closed_end": 0.287,
       "broker_dealer": -0.042,
       "bank_mmf": 0.222,
-      "nonfin_corp": 0.218,
-      "household": 55.077
+      "nonfin_corp": 10.175,
+      "other_holders": 0.008,
+      "household": 45.112
     },
     {
       "date": "1987-01-01",
@@ -19574,8 +20958,9 @@
       "closed_end": 0.342,
       "broker_dealer": -0.058,
       "bank_mmf": 0.217,
-      "nonfin_corp": 0.214,
-      "household": 53.978
+      "nonfin_corp": 10.244,
+      "other_holders": 0.012,
+      "household": 43.936
     },
     {
       "date": "1987-04-01",
@@ -19590,8 +20975,9 @@
       "closed_end": 0.378,
       "broker_dealer": -0.029,
       "bank_mmf": 0.223,
-      "nonfin_corp": 0.22,
-      "household": 52.222
+      "nonfin_corp": 10.514,
+      "other_holders": 0.016,
+      "household": 41.912
     },
     {
       "date": "1987-07-01",
@@ -19606,8 +20992,9 @@
       "closed_end": 0.39,
       "broker_dealer": 0.008,
       "bank_mmf": 0.22,
-      "nonfin_corp": 0.217,
-      "household": 51.9
+      "nonfin_corp": 10.634,
+      "other_holders": 0.018,
+      "household": 41.465
     },
     {
       "date": "1987-10-01",
@@ -19622,8 +21009,9 @@
       "closed_end": 0.397,
       "broker_dealer": -0.386,
       "bank_mmf": 0.254,
-      "nonfin_corp": 0.254,
-      "household": 52.986
+      "nonfin_corp": 10.545,
+      "other_holders": 0.026,
+      "household": 42.669
     },
     {
       "date": "1988-01-01",
@@ -19638,8 +21026,9 @@
       "closed_end": 0.407,
       "broker_dealer": -0.433,
       "bank_mmf": 0.267,
-      "nonfin_corp": 0.266,
-      "household": 53.137
+      "nonfin_corp": 9.754,
+      "other_holders": 0.029,
+      "household": 43.62
     },
     {
       "date": "1988-04-01",
@@ -19654,8 +21043,9 @@
       "closed_end": 0.423,
       "broker_dealer": -0.496,
       "bank_mmf": 0.272,
-      "nonfin_corp": 0.272,
-      "household": 53.644
+      "nonfin_corp": 9.176,
+      "other_holders": 0.034,
+      "household": 44.706
     },
     {
       "date": "1988-07-01",
@@ -19670,8 +21060,9 @@
       "closed_end": 0.462,
       "broker_dealer": -0.501,
       "bank_mmf": 0.286,
-      "nonfin_corp": 0.286,
-      "household": 54.53
+      "nonfin_corp": 8.557,
+      "other_holders": 0.045,
+      "household": 46.214
     },
     {
       "date": "1988-10-01",
@@ -19686,8 +21077,9 @@
       "closed_end": 0.487,
       "broker_dealer": -0.489,
       "bank_mmf": 0.286,
-      "nonfin_corp": 0.286,
-      "household": 55.904
+      "nonfin_corp": 7.816,
+      "other_holders": 0.057,
+      "household": 48.317
     },
     {
       "date": "1989-01-01",
@@ -19702,8 +21094,9 @@
       "closed_end": 0.423,
       "broker_dealer": -0.544,
       "bank_mmf": 0.358,
-      "nonfin_corp": 0.358,
-      "household": 55.737
+      "nonfin_corp": 7.872,
+      "other_holders": 0.068,
+      "household": 48.154
     },
     {
       "date": "1989-04-01",
@@ -19718,8 +21111,9 @@
       "closed_end": 0.429,
       "broker_dealer": -0.43,
       "bank_mmf": 0.341,
-      "nonfin_corp": 0.341,
-      "household": 55.03
+      "nonfin_corp": 7.908,
+      "other_holders": 0.076,
+      "household": 47.386
     },
     {
       "date": "1989-07-01",
@@ -19734,8 +21128,9 @@
       "closed_end": 0.436,
       "broker_dealer": -0.369,
       "bank_mmf": 0.319,
-      "nonfin_corp": 0.318,
-      "household": 54.448
+      "nonfin_corp": 8.011,
+      "other_holders": 0.081,
+      "household": 46.675
     },
     {
       "date": "1989-10-01",
@@ -19750,8 +21145,9 @@
       "closed_end": 0.473,
       "broker_dealer": -0.366,
       "bank_mmf": 0.31,
-      "nonfin_corp": 0.31,
-      "household": 55.207
+      "nonfin_corp": 7.956,
+      "other_holders": 0.09,
+      "household": 47.47
     },
     {
       "date": "1990-01-01",
@@ -19766,8 +21162,9 @@
       "closed_end": 0.499,
       "broker_dealer": -0.51,
       "bank_mmf": 0.303,
-      "nonfin_corp": 0.302,
-      "household": 55.33
+      "nonfin_corp": 8.064,
+      "other_holders": 0.105,
+      "household": 47.463
     },
     {
       "date": "1990-04-01",
@@ -19782,8 +21179,9 @@
       "closed_end": 0.462,
       "broker_dealer": -0.466,
       "bank_mmf": 0.28,
-      "nonfin_corp": 0.279,
-      "household": 54.569
+      "nonfin_corp": 8.21,
+      "other_holders": 0.111,
+      "household": 46.527
     },
     {
       "date": "1990-07-01",
@@ -19798,8 +21196,9 @@
       "closed_end": 0.531,
       "broker_dealer": -0.808,
       "bank_mmf": 0.291,
-      "nonfin_corp": 0.291,
-      "household": 53.87
+      "nonfin_corp": 8.411,
+      "other_holders": 0.145,
+      "household": 45.605
     },
     {
       "date": "1990-10-01",
@@ -19814,8 +21213,9 @@
       "closed_end": 0.486,
       "broker_dealer": -0.594,
       "bank_mmf": 0.187,
-      "nonfin_corp": 0.187,
-      "household": 54.303
+      "nonfin_corp": 8.24,
+      "other_holders": 0.142,
+      "household": 46.108
     },
     {
       "date": "1991-01-01",
@@ -19830,8 +21230,9 @@
       "closed_end": 0.445,
       "broker_dealer": -0.529,
       "bank_mmf": 0.209,
-      "nonfin_corp": 0.209,
-      "household": 55.038
+      "nonfin_corp": 8.142,
+      "other_holders": 0.133,
+      "household": 46.972
     },
     {
       "date": "1991-04-01",
@@ -19846,8 +21247,9 @@
       "closed_end": 0.491,
       "broker_dealer": -0.576,
       "bank_mmf": 0.193,
-      "nonfin_corp": 0.193,
-      "household": 54.59
+      "nonfin_corp": 8.154,
+      "other_holders": 0.144,
+      "household": 46.485
     },
     {
       "date": "1991-07-01",
@@ -19862,8 +21264,9 @@
       "closed_end": 0.507,
       "broker_dealer": -0.463,
       "bank_mmf": 0.181,
-      "nonfin_corp": 0.18,
-      "household": 54.188
+      "nonfin_corp": 8.09,
+      "other_holders": 0.145,
+      "household": 46.134
     },
     {
       "date": "1991-10-01",
@@ -19878,8 +21281,9 @@
       "closed_end": 0.476,
       "broker_dealer": -0.37,
       "bank_mmf": 0.164,
-      "nonfin_corp": 0.163,
-      "household": 56.142
+      "nonfin_corp": 7.746,
+      "other_holders": 0.137,
+      "household": 48.423
     },
     {
       "date": "1992-01-01",
@@ -19894,8 +21298,9 @@
       "closed_end": 0.5,
       "broker_dealer": -0.502,
       "bank_mmf": 0.162,
-      "nonfin_corp": 0.161,
-      "household": 55.452
+      "nonfin_corp": 7.434,
+      "other_holders": 0.147,
+      "household": 48.032
     },
     {
       "date": "1992-04-01",
@@ -19910,8 +21315,9 @@
       "closed_end": 0.51,
       "broker_dealer": -0.594,
       "bank_mmf": 0.162,
-      "nonfin_corp": 0.161,
-      "household": 54.535
+      "nonfin_corp": 7.366,
+      "other_holders": 0.156,
+      "household": 47.175
     },
     {
       "date": "1992-07-01",
@@ -19926,8 +21332,9 @@
       "closed_end": 0.504,
       "broker_dealer": -0.719,
       "bank_mmf": 0.147,
-      "nonfin_corp": 0.147,
-      "household": 54.589
+      "nonfin_corp": 7.166,
+      "other_holders": 0.16,
+      "household": 47.409
     },
     {
       "date": "1992-10-01",
@@ -19942,8 +21349,9 @@
       "closed_end": 0.466,
       "broker_dealer": -0.515,
       "bank_mmf": 0.149,
-      "nonfin_corp": 0.149,
-      "household": 55.437
+      "nonfin_corp": 6.57,
+      "other_holders": 0.152,
+      "household": 48.865
     },
     {
       "date": "1993-01-01",
@@ -19958,8 +21366,9 @@
       "closed_end": 0.425,
       "broker_dealer": -0.611,
       "bank_mmf": 0.151,
-      "nonfin_corp": 0.151,
-      "household": 54.131
+      "nonfin_corp": 6.775,
+      "other_holders": 0.153,
+      "household": 47.353
     },
     {
       "date": "1993-04-01",
@@ -19974,8 +21383,9 @@
       "closed_end": 0.441,
       "broker_dealer": -0.507,
       "bank_mmf": 0.155,
-      "nonfin_corp": 0.152,
-      "household": 52.855
+      "nonfin_corp": 6.94,
+      "other_holders": 0.16,
+      "household": 45.908
     },
     {
       "date": "1993-07-01",
@@ -19990,8 +21400,9 @@
       "closed_end": 0.458,
       "broker_dealer": -0.588,
       "bank_mmf": 0.166,
-      "nonfin_corp": 0.166,
-      "household": 51.956
+      "nonfin_corp": 7.024,
+      "other_holders": 0.161,
+      "household": 44.937
     },
     {
       "date": "1993-10-01",
@@ -20006,8 +21417,9 @@
       "closed_end": 0.46,
       "broker_dealer": -0.463,
       "bank_mmf": 0.175,
-      "nonfin_corp": 0.175,
-      "household": 51.669
+      "nonfin_corp": 7.074,
+      "other_holders": 0.161,
+      "household": 44.609
     },
     {
       "date": "1994-01-01",
@@ -20022,8 +21434,9 @@
       "closed_end": 0.496,
       "broker_dealer": -0.678,
       "bank_mmf": 0.159,
-      "nonfin_corp": 0.159,
-      "household": 50.56
+      "nonfin_corp": 6.92,
+      "other_holders": 0.176,
+      "household": 43.623
     },
     {
       "date": "1994-04-01",
@@ -20038,8 +21451,9 @@
       "closed_end": 0.515,
       "broker_dealer": -0.647,
       "bank_mmf": 0.143,
-      "nonfin_corp": 0.143,
-      "household": 49.254
+      "nonfin_corp": 6.851,
+      "other_holders": 0.185,
+      "household": 42.361
     },
     {
       "date": "1994-07-01",
@@ -20054,8 +21468,9 @@
       "closed_end": 0.541,
       "broker_dealer": -0.67,
       "bank_mmf": 0.131,
-      "nonfin_corp": 0.131,
-      "household": 48.023
+      "nonfin_corp": 6.682,
+      "other_holders": 0.183,
+      "household": 41.289
     },
     {
       "date": "1994-10-01",
@@ -20070,8 +21485,9 @@
       "closed_end": 0.56,
       "broker_dealer": -0.509,
       "bank_mmf": 0.12,
-      "nonfin_corp": 0.12,
-      "household": 48.5
+      "nonfin_corp": 6.486,
+      "other_holders": 0.187,
+      "household": 41.946
     },
     {
       "date": "1995-01-01",
@@ -20086,8 +21502,9 @@
       "closed_end": 0.559,
       "broker_dealer": -0.473,
       "bank_mmf": 0.113,
-      "nonfin_corp": 0.113,
-      "household": 48.627
+      "nonfin_corp": 6.526,
+      "other_holders": 0.179,
+      "household": 42.036
     },
     {
       "date": "1995-04-01",
@@ -20102,8 +21519,9 @@
       "closed_end": 0.558,
       "broker_dealer": -0.349,
       "bank_mmf": 0.118,
-      "nonfin_corp": 0.118,
-      "household": 48.091
+      "nonfin_corp": 6.534,
+      "other_holders": 0.173,
+      "household": 41.502
     },
     {
       "date": "1995-07-01",
@@ -20118,8 +21536,9 @@
       "closed_end": 0.557,
       "broker_dealer": -0.338,
       "bank_mmf": 0.134,
-      "nonfin_corp": 0.134,
-      "household": 47.846
+      "nonfin_corp": 6.465,
+      "other_holders": 0.28,
+      "household": 41.235
     },
     {
       "date": "1995-10-01",
@@ -20134,8 +21553,9 @@
       "closed_end": 0.544,
       "broker_dealer": -0.176,
       "bank_mmf": 0.135,
-      "nonfin_corp": 0.134,
-      "household": 48.716
+      "nonfin_corp": 6.394,
+      "other_holders": 0.348,
+      "household": 42.109
     },
     {
       "date": "1996-01-01",
@@ -20150,8 +21570,9 @@
       "closed_end": 0.539,
       "broker_dealer": -0.343,
       "bank_mmf": 0.143,
-      "nonfin_corp": 0.143,
-      "household": 47.922
+      "nonfin_corp": 6.5,
+      "other_holders": 0.387,
+      "household": 41.179
     },
     {
       "date": "1996-04-01",
@@ -20166,8 +21587,9 @@
       "closed_end": 0.53,
       "broker_dealer": -0.278,
       "bank_mmf": 0.141,
-      "nonfin_corp": 0.141,
-      "household": 47.392
+      "nonfin_corp": 6.57,
+      "other_holders": 0.442,
+      "household": 40.522
     },
     {
       "date": "1996-07-01",
@@ -20182,8 +21604,9 @@
       "closed_end": 0.525,
       "broker_dealer": -0.333,
       "bank_mmf": 0.146,
-      "nonfin_corp": 0.146,
-      "household": 46.268
+      "nonfin_corp": 6.697,
+      "other_holders": 0.488,
+      "household": 39.229
     },
     {
       "date": "1996-10-01",
@@ -20198,8 +21621,9 @@
       "closed_end": 0.518,
       "broker_dealer": -0.214,
       "bank_mmf": 0.15,
-      "nonfin_corp": 0.15,
-      "household": 45.96
+      "nonfin_corp": 6.868,
+      "other_holders": 0.525,
+      "household": 38.717
     },
     {
       "date": "1997-01-01",
@@ -20214,8 +21638,9 @@
       "closed_end": 0.487,
       "broker_dealer": -0.304,
       "bank_mmf": 0.099,
-      "nonfin_corp": 0.099,
-      "household": 46.384
+      "nonfin_corp": 7.172,
+      "other_holders": 0.55,
+      "household": 38.761
     },
     {
       "date": "1997-04-01",
@@ -20230,8 +21655,9 @@
       "closed_end": 0.466,
       "broker_dealer": -0.207,
       "bank_mmf": 0.091,
-      "nonfin_corp": 0.091,
-      "household": 46.311
+      "nonfin_corp": 7.467,
+      "other_holders": 0.577,
+      "household": 38.358
     },
     {
       "date": "1997-07-01",
@@ -20246,8 +21672,9 @@
       "closed_end": 0.446,
       "broker_dealer": -0.171,
       "bank_mmf": 0.085,
-      "nonfin_corp": 0.085,
-      "household": 45.803
+      "nonfin_corp": 7.541,
+      "other_holders": 0.62,
+      "household": 37.726
     },
     {
       "date": "1997-10-01",
@@ -20262,8 +21689,9 @@
       "closed_end": 0.42,
       "broker_dealer": -0.064,
       "bank_mmf": 0.091,
-      "nonfin_corp": 0.091,
-      "household": 46.724
+      "nonfin_corp": 7.775,
+      "other_holders": 0.676,
+      "household": 38.364
     },
     {
       "date": "1998-01-01",
@@ -20278,8 +21706,9 @@
       "closed_end": 0.395,
       "broker_dealer": -0.03,
       "bank_mmf": 0.093,
-      "nonfin_corp": 0.093,
-      "household": 46.444
+      "nonfin_corp": 7.989,
+      "other_holders": 0.663,
+      "household": 37.885
     },
     {
       "date": "1998-04-01",
@@ -20294,8 +21723,9 @@
       "closed_end": 0.372,
       "broker_dealer": -0.015,
       "bank_mmf": 0.097,
-      "nonfin_corp": 0.097,
-      "household": 46.623
+      "nonfin_corp": 8.301,
+      "other_holders": 0.699,
+      "household": 37.721
     },
     {
       "date": "1998-07-01",
@@ -20310,8 +21740,9 @@
       "closed_end": 0.344,
       "broker_dealer": -0.056,
       "bank_mmf": 0.108,
-      "nonfin_corp": 0.108,
-      "household": 47.437
+      "nonfin_corp": 8.658,
+      "other_holders": 0.71,
+      "household": 38.177
     },
     {
       "date": "1998-10-01",
@@ -20326,8 +21757,9 @@
       "closed_end": 0.329,
       "broker_dealer": 0.022,
       "bank_mmf": 0.105,
-      "nonfin_corp": 0.105,
-      "household": 46.847
+      "nonfin_corp": 9.025,
+      "other_holders": 0.712,
+      "household": 37.215
     },
     {
       "date": "1999-01-01",
@@ -20342,8 +21774,9 @@
       "closed_end": 0.34,
       "broker_dealer": 0.013,
       "bank_mmf": 0.11,
-      "nonfin_corp": 0.11,
-      "household": 46.394
+      "nonfin_corp": 9.95,
+      "other_holders": 0.692,
+      "household": 35.861
     },
     {
       "date": "1999-04-01",
@@ -20358,8 +21791,9 @@
       "closed_end": 0.349,
       "broker_dealer": -0.005,
       "bank_mmf": 0.101,
-      "nonfin_corp": 0.101,
-      "household": 46.748
+      "nonfin_corp": 10.545,
+      "other_holders": 0.635,
+      "household": 35.669
     },
     {
       "date": "1999-07-01",
@@ -20374,8 +21808,9 @@
       "closed_end": 0.242,
       "broker_dealer": -0.08,
       "bank_mmf": 0.105,
-      "nonfin_corp": 0.105,
-      "household": 46.978
+      "nonfin_corp": 11.211,
+      "other_holders": 0.67,
+      "household": 35.201
     },
     {
       "date": "1999-10-01",
@@ -20390,8 +21825,9 @@
       "closed_end": 0.229,
       "broker_dealer": -0.007,
       "bank_mmf": 0.099,
-      "nonfin_corp": 0.099,
-      "household": 47.325
+      "nonfin_corp": 11.545,
+      "other_holders": 0.571,
+      "household": 35.308
     },
     {
       "date": "2000-01-01",
@@ -20406,8 +21842,9 @@
       "closed_end": 0.222,
       "broker_dealer": 0.026,
       "bank_mmf": 0.097,
-      "nonfin_corp": 0.097,
-      "household": 46.29
+      "nonfin_corp": 10.986,
+      "other_holders": 0.539,
+      "household": 34.862
     },
     {
       "date": "2000-04-01",
@@ -20422,8 +21859,9 @@
       "closed_end": 0.226,
       "broker_dealer": 0.044,
       "bank_mmf": 0.099,
-      "nonfin_corp": 0.099,
-      "household": 45.444
+      "nonfin_corp": 10.865,
+      "other_holders": 0.552,
+      "household": 34.127
     },
     {
       "date": "2000-07-01",
@@ -20438,8 +21876,9 @@
       "closed_end": 0.215,
       "broker_dealer": 0.091,
       "bank_mmf": 0.105,
-      "nonfin_corp": 0.105,
-      "household": 44.878
+      "nonfin_corp": 10.471,
+      "other_holders": 0.544,
+      "household": 33.968
     },
     {
       "date": "2000-10-01",
@@ -20454,8 +21893,9 @@
       "closed_end": 0.223,
       "broker_dealer": 0.102,
       "bank_mmf": 0.113,
-      "nonfin_corp": 0.113,
-      "household": 43.403
+      "nonfin_corp": 10.478,
+      "other_holders": 0.594,
+      "household": 32.445
     },
     {
       "date": "2001-01-01",
@@ -20470,8 +21910,9 @@
       "closed_end": 0.224,
       "broker_dealer": 0.093,
       "bank_mmf": 0.124,
-      "nonfin_corp": 0.124,
-      "household": 43.24
+      "nonfin_corp": 10.036,
+      "other_holders": 0.659,
+      "household": 32.669
     },
     {
       "date": "2001-04-01",
@@ -20486,8 +21927,9 @@
       "closed_end": 0.217,
       "broker_dealer": 0.101,
       "bank_mmf": 0.124,
-      "nonfin_corp": 0.124,
-      "household": 42.86
+      "nonfin_corp": 9.504,
+      "other_holders": 0.611,
+      "household": 32.868
     },
     {
       "date": "2001-07-01",
@@ -20502,8 +21944,9 @@
       "closed_end": 0.22,
       "broker_dealer": 0.016,
       "bank_mmf": 0.147,
-      "nonfin_corp": 0.147,
-      "household": 42.084
+      "nonfin_corp": 9.184,
+      "other_holders": 0.7,
+      "household": 32.346
     },
     {
       "date": "2001-10-01",
@@ -20518,8 +21961,9 @@
       "closed_end": 0.21,
       "broker_dealer": 0.088,
       "bank_mmf": 0.139,
-      "nonfin_corp": 0.139,
-      "household": 41.716
+      "nonfin_corp": 8.709,
+      "other_holders": 0.622,
+      "household": 32.524
     },
     {
       "date": "2002-01-01",
@@ -20534,8 +21978,9 @@
       "closed_end": 0.207,
       "broker_dealer": 0.017,
       "bank_mmf": 0.135,
-      "nonfin_corp": 0.135,
-      "household": 41.543
+      "nonfin_corp": 8.594,
+      "other_holders": 0.598,
+      "household": 32.486
     },
     {
       "date": "2002-04-01",
@@ -20550,8 +21995,9 @@
       "closed_end": 0.229,
       "broker_dealer": 0.039,
       "bank_mmf": 0.143,
-      "nonfin_corp": 0.143,
-      "household": 41.351
+      "nonfin_corp": 8.383,
+      "other_holders": 0.658,
+      "household": 32.452
     },
     {
       "date": "2002-07-01",
@@ -20566,8 +22012,9 @@
       "closed_end": 0.277,
       "broker_dealer": -0.102,
       "bank_mmf": 0.153,
-      "nonfin_corp": 0.153,
-      "household": 40.326
+      "nonfin_corp": 8.234,
+      "other_holders": 0.759,
+      "household": 31.485
     },
     {
       "date": "2002-10-01",
@@ -20582,8 +22029,9 @@
       "closed_end": 0.284,
       "broker_dealer": 0.045,
       "bank_mmf": 0.162,
-      "nonfin_corp": 0.162,
-      "household": 39.651
+      "nonfin_corp": 8.328,
+      "other_holders": 0.7,
+      "household": 30.785
     },
     {
       "date": "2003-01-01",
@@ -20598,8 +22046,9 @@
       "closed_end": 0.294,
       "broker_dealer": -0.056,
       "bank_mmf": 0.165,
-      "nonfin_corp": 0.165,
-      "household": 38.386
+      "nonfin_corp": 8.057,
+      "other_holders": 0.722,
+      "household": 29.772
     },
     {
       "date": "2003-04-01",
@@ -20614,8 +22063,9 @@
       "closed_end": 0.303,
       "broker_dealer": -0.011,
       "bank_mmf": 0.166,
-      "nonfin_corp": 0.166,
-      "household": 38.353
+      "nonfin_corp": 7.794,
+      "other_holders": 0.662,
+      "household": 30.062
     },
     {
       "date": "2003-07-01",
@@ -20630,8 +22080,9 @@
       "closed_end": 0.332,
       "broker_dealer": -0.007,
       "bank_mmf": 0.172,
-      "nonfin_corp": 0.172,
-      "household": 38.106
+      "nonfin_corp": 7.444,
+      "other_holders": 0.648,
+      "household": 30.186
     },
     {
       "date": "2003-10-01",
@@ -20646,8 +22097,9 @@
       "closed_end": 0.346,
       "broker_dealer": 0.047,
       "bank_mmf": 0.165,
-      "nonfin_corp": 0.165,
-      "household": 37.529
+      "nonfin_corp": 7.256,
+      "other_holders": 0.616,
+      "household": 29.822
     },
     {
       "date": "2004-01-01",
@@ -20662,8 +22114,9 @@
       "closed_end": 0.422,
       "broker_dealer": 0.109,
       "bank_mmf": 0.167,
-      "nonfin_corp": 0.167,
-      "household": 37.8
+      "nonfin_corp": 7.083,
+      "other_holders": 0.618,
+      "household": 30.265
     },
     {
       "date": "2004-04-01",
@@ -20678,8 +22131,9 @@
       "closed_end": 0.443,
       "broker_dealer": -0.008,
       "bank_mmf": 0.159,
-      "nonfin_corp": 0.159,
-      "household": 37.37
+      "nonfin_corp": 7.103,
+      "other_holders": 0.576,
+      "household": 29.85
     },
     {
       "date": "2004-07-01",
@@ -20694,8 +22148,9 @@
       "closed_end": 0.473,
       "broker_dealer": -0.027,
       "bank_mmf": 0.161,
-      "nonfin_corp": 0.161,
-      "household": 36.904
+      "nonfin_corp": 7.07,
+      "other_holders": 0.643,
+      "household": 29.352
     },
     {
       "date": "2004-10-01",
@@ -20710,8 +22165,9 @@
       "closed_end": 0.474,
       "broker_dealer": 0.124,
       "bank_mmf": 0.153,
-      "nonfin_corp": 0.153,
-      "household": 35.333
+      "nonfin_corp": 7.041,
+      "other_holders": 0.528,
+      "household": 27.917
     },
     {
       "date": "2005-01-01",
@@ -20726,8 +22182,9 @@
       "closed_end": 0.517,
       "broker_dealer": 0.103,
       "bank_mmf": 0.15,
-      "nonfin_corp": 0.15,
-      "household": 35.136
+      "nonfin_corp": 6.685,
+      "other_holders": 0.52,
+      "household": 28.08
     },
     {
       "date": "2005-04-01",
@@ -20742,8 +22199,9 @@
       "closed_end": 0.547,
       "broker_dealer": 0.087,
       "bank_mmf": 0.152,
-      "nonfin_corp": 0.152,
-      "household": 35.252
+      "nonfin_corp": 6.321,
+      "other_holders": 0.543,
+      "household": 28.54
     },
     {
       "date": "2005-07-01",
@@ -20758,8 +22216,9 @@
       "closed_end": 0.573,
       "broker_dealer": 0.08,
       "bank_mmf": 0.15,
-      "nonfin_corp": 0.15,
-      "household": 34.332
+      "nonfin_corp": 6.061,
+      "other_holders": 0.579,
+      "household": 27.842
     },
     {
       "date": "2005-10-01",
@@ -20774,8 +22233,9 @@
       "closed_end": 0.576,
       "broker_dealer": 0.318,
       "bank_mmf": 0.148,
-      "nonfin_corp": 0.148,
-      "household": 33.027
+      "nonfin_corp": 5.818,
+      "other_holders": 0.57,
+      "household": 26.788
     },
     {
       "date": "2006-01-01",
@@ -20790,8 +22250,9 @@
       "closed_end": 0.562,
       "broker_dealer": 0.37,
       "bank_mmf": 0.145,
-      "nonfin_corp": 0.145,
-      "household": 35.371
+      "nonfin_corp": 5.381,
+      "other_holders": 0.495,
+      "household": 29.64
     },
     {
       "date": "2006-04-01",
@@ -20806,8 +22267,9 @@
       "closed_end": 0.57,
       "broker_dealer": 0.296,
       "bank_mmf": 0.143,
-      "nonfin_corp": 0.143,
-      "household": 34.683
+      "nonfin_corp": 5.159,
+      "other_holders": 0.524,
+      "household": 29.144
     },
     {
       "date": "2006-07-01",
@@ -20822,8 +22284,9 @@
       "closed_end": 0.574,
       "broker_dealer": 0.308,
       "bank_mmf": 0.143,
-      "nonfin_corp": 0.143,
-      "household": 34.235
+      "nonfin_corp": 4.961,
+      "other_holders": 0.535,
+      "household": 28.882
     },
     {
       "date": "2006-10-01",
@@ -20838,8 +22301,9 @@
       "closed_end": 0.589,
       "broker_dealer": 0.414,
       "bank_mmf": 0.148,
-      "nonfin_corp": 0.148,
-      "household": 33.238
+      "nonfin_corp": 4.67,
+      "other_holders": 0.516,
+      "household": 28.2
     },
     {
       "date": "2007-01-01",
@@ -20854,8 +22318,9 @@
       "closed_end": 0.643,
       "broker_dealer": 0.422,
       "bank_mmf": 0.139,
-      "nonfin_corp": 0.139,
-      "household": 33.453
+      "nonfin_corp": 4.593,
+      "other_holders": 0.531,
+      "household": 28.467
     },
     {
       "date": "2007-04-01",
@@ -20870,8 +22335,9 @@
       "closed_end": 0.665,
       "broker_dealer": 0.454,
       "bank_mmf": 0.145,
-      "nonfin_corp": 0.145,
-      "household": 31.116
+      "nonfin_corp": 4.72,
+      "other_holders": 0.476,
+      "household": 26.065
     },
     {
       "date": "2007-07-01",
@@ -20886,8 +22352,9 @@
       "closed_end": 0.69,
       "broker_dealer": 0.537,
       "bank_mmf": 0.156,
-      "nonfin_corp": 0.156,
-      "household": 29.62
+      "nonfin_corp": 4.822,
+      "other_holders": 0.517,
+      "household": 24.436
     },
     {
       "date": "2007-10-01",
@@ -20902,8 +22369,9 @@
       "closed_end": 0.69,
       "broker_dealer": 0.655,
       "bank_mmf": 0.16,
-      "nonfin_corp": 0.16,
-      "household": 27.755
+      "nonfin_corp": 4.908,
+      "other_holders": 0.546,
+      "household": 22.461
     },
     {
       "date": "2008-01-01",
@@ -20918,8 +22386,9 @@
       "closed_end": 0.674,
       "broker_dealer": 0.4,
       "bank_mmf": 0.166,
-      "nonfin_corp": 0.166,
-      "household": 28.115
+      "nonfin_corp": 5.131,
+      "other_holders": 0.583,
+      "household": 22.567
     },
     {
       "date": "2008-04-01",
@@ -20934,8 +22403,9 @@
       "closed_end": 0.664,
       "broker_dealer": 0.558,
       "bank_mmf": 0.166,
-      "nonfin_corp": 0.166,
-      "household": 26.263
+      "nonfin_corp": 5.422,
+      "other_holders": 0.572,
+      "household": 20.435
     },
     {
       "date": "2008-07-01",
@@ -20950,8 +22420,9 @@
       "closed_end": 0.578,
       "broker_dealer": 0.496,
       "bank_mmf": 0.152,
-      "nonfin_corp": 0.152,
-      "household": 28.719
+      "nonfin_corp": 5.674,
+      "other_holders": 0.876,
+      "household": 22.321
     },
     {
       "date": "2008-10-01",
@@ -20966,8 +22437,9 @@
       "closed_end": 0.526,
       "broker_dealer": 0.514,
       "bank_mmf": 0.162,
-      "nonfin_corp": 0.162,
-      "household": 31.044
+      "nonfin_corp": 5.764,
+      "other_holders": 2.669,
+      "household": 22.772
     },
     {
       "date": "2009-01-01",
@@ -20982,8 +22454,9 @@
       "closed_end": 0.531,
       "broker_dealer": 0.244,
       "bank_mmf": 0.198,
-      "nonfin_corp": 0.198,
-      "household": 31.181
+      "nonfin_corp": 5.555,
+      "other_holders": 3.432,
+      "household": 22.393
     },
     {
       "date": "2009-04-01",
@@ -20998,8 +22471,9 @@
       "closed_end": 0.531,
       "broker_dealer": 0.278,
       "bank_mmf": 0.169,
-      "nonfin_corp": 0.169,
-      "household": 30.022
+      "nonfin_corp": 5.379,
+      "other_holders": 2.763,
+      "household": 22.049
     },
     {
       "date": "2009-07-01",
@@ -21014,8 +22488,9 @@
       "closed_end": 0.512,
       "broker_dealer": 0.284,
       "bank_mmf": 0.154,
-      "nonfin_corp": 0.154,
-      "household": 29.003
+      "nonfin_corp": 5.175,
+      "other_holders": 2.52,
+      "household": 21.462
     },
     {
       "date": "2009-10-01",
@@ -21030,8 +22505,9 @@
       "closed_end": 0.514,
       "broker_dealer": 0.411,
       "bank_mmf": 0.348,
-      "nonfin_corp": 0.201,
-      "household": 27.276
+      "nonfin_corp": 5.074,
+      "other_holders": 2.077,
+      "household": 20.326
     },
     {
       "date": "2010-01-01",
@@ -21046,8 +22522,9 @@
       "closed_end": 0.497,
       "broker_dealer": 0.211,
       "bank_mmf": 0.334,
-      "nonfin_corp": 0.192,
-      "household": 27.489
+      "nonfin_corp": 4.977,
+      "other_holders": 1.997,
+      "household": 20.707
     },
     {
       "date": "2010-04-01",
@@ -21062,8 +22539,9 @@
       "closed_end": 0.508,
       "broker_dealer": 0.129,
       "bank_mmf": 0.335,
-      "nonfin_corp": 0.175,
-      "household": 28.113
+      "nonfin_corp": 4.801,
+      "other_holders": 2.299,
+      "household": 21.188
     },
     {
       "date": "2010-07-01",
@@ -21078,8 +22556,9 @@
       "closed_end": 0.519,
       "broker_dealer": 0.122,
       "bank_mmf": 0.317,
-      "nonfin_corp": 0.17,
-      "household": 26.758
+      "nonfin_corp": 4.764,
+      "other_holders": 2.136,
+      "household": 20.029
     },
     {
       "date": "2010-10-01",
@@ -21094,8 +22573,9 @@
       "closed_end": 0.495,
       "broker_dealer": 0.232,
       "bank_mmf": 0.315,
-      "nonfin_corp": 0.18,
-      "household": 26.375
+      "nonfin_corp": 4.697,
+      "other_holders": 1.842,
+      "household": 20.016
     },
     {
       "date": "2011-01-01",
@@ -21110,8 +22590,9 @@
       "closed_end": 0.485,
       "broker_dealer": 0.235,
       "bank_mmf": 0.167,
-      "nonfin_corp": 0.166,
-      "household": 26.722
+      "nonfin_corp": 4.7,
+      "other_holders": 1.581,
+      "household": 20.608
     },
     {
       "date": "2011-04-01",
@@ -21126,8 +22607,9 @@
       "closed_end": 0.492,
       "broker_dealer": 0.236,
       "bank_mmf": 0.187,
-      "nonfin_corp": 0.187,
-      "household": 26.096
+      "nonfin_corp": 4.755,
+      "other_holders": 1.528,
+      "household": 19.999
     },
     {
       "date": "2011-07-01",
@@ -21142,8 +22624,9 @@
       "closed_end": 0.544,
       "broker_dealer": 0.053,
       "bank_mmf": 0.188,
-      "nonfin_corp": 0.188,
-      "household": 26.545
+      "nonfin_corp": 4.812,
+      "other_holders": 1.717,
+      "household": 20.204
     },
     {
       "date": "2011-10-01",
@@ -21158,8 +22641,9 @@
       "closed_end": 0.501,
       "broker_dealer": 0.207,
       "bank_mmf": 0.178,
-      "nonfin_corp": 0.178,
-      "household": 26.439
+      "nonfin_corp": 4.912,
+      "other_holders": 1.622,
+      "household": 20.083
     },
     {
       "date": "2012-01-01",
@@ -21174,8 +22658,9 @@
       "closed_end": 0.456,
       "broker_dealer": 0.229,
       "bank_mmf": 0.128,
-      "nonfin_corp": 0.128,
-      "household": 26.19
+      "nonfin_corp": 4.876,
+      "other_holders": 1.353,
+      "household": 20.088
     },
     {
       "date": "2012-04-01",
@@ -21190,8 +22675,9 @@
       "closed_end": 0.463,
       "broker_dealer": 0.194,
       "bank_mmf": 0.135,
-      "nonfin_corp": 0.135,
-      "household": 26.927
+      "nonfin_corp": 4.846,
+      "other_holders": 1.314,
+      "household": 20.902
     },
     {
       "date": "2012-07-01",
@@ -21206,8 +22692,9 @@
       "closed_end": 0.461,
       "broker_dealer": 0.273,
       "bank_mmf": 0.137,
-      "nonfin_corp": 0.137,
-      "household": 26.401
+      "nonfin_corp": 4.853,
+      "other_holders": 1.114,
+      "household": 20.571
     },
     {
       "date": "2012-10-01",
@@ -21222,8 +22709,9 @@
       "closed_end": 0.463,
       "broker_dealer": 0.342,
       "bank_mmf": 0.14,
-      "nonfin_corp": 0.14,
-      "household": 27.83
+      "nonfin_corp": 4.785,
+      "other_holders": 2.62,
+      "household": 20.565
     },
     {
       "date": "2013-01-01",
@@ -21238,8 +22726,9 @@
       "closed_end": 0.444,
       "broker_dealer": 0.24,
       "bank_mmf": 0.133,
-      "nonfin_corp": 0.133,
-      "household": 29.964
+      "nonfin_corp": 4.71,
+      "other_holders": 2.486,
+      "household": 22.9
     },
     {
       "date": "2013-04-01",
@@ -21254,8 +22743,9 @@
       "closed_end": 0.433,
       "broker_dealer": 0.224,
       "bank_mmf": 0.126,
-      "nonfin_corp": 0.126,
-      "household": 30.677
+      "nonfin_corp": 4.725,
+      "other_holders": 2.543,
+      "household": 23.535
     },
     {
       "date": "2013-07-01",
@@ -21270,8 +22760,9 @@
       "closed_end": 0.42,
       "broker_dealer": 0.221,
       "bank_mmf": 0.128,
-      "nonfin_corp": 0.128,
-      "household": 29.652
+      "nonfin_corp": 4.71,
+      "other_holders": 2.505,
+      "household": 22.564
     },
     {
       "date": "2013-10-01",
@@ -21286,8 +22777,9 @@
       "closed_end": 0.404,
       "broker_dealer": 0.408,
       "bank_mmf": 0.127,
-      "nonfin_corp": 0.127,
-      "household": 29.147
+      "nonfin_corp": 4.806,
+      "other_holders": 2.439,
+      "household": 22.029
     },
     {
       "date": "2014-01-01",
@@ -21302,8 +22794,9 @@
       "closed_end": 0.402,
       "broker_dealer": 0.281,
       "bank_mmf": 0.122,
-      "nonfin_corp": 0.122,
-      "household": 30.282
+      "nonfin_corp": 4.75,
+      "other_holders": 2.304,
+      "household": 23.35
     },
     {
       "date": "2014-04-01",
@@ -21318,8 +22811,9 @@
       "closed_end": 0.408,
       "broker_dealer": 0.324,
       "bank_mmf": 0.122,
-      "nonfin_corp": 0.122,
-      "household": 30.256
+      "nonfin_corp": 4.801,
+      "other_holders": 2.272,
+      "household": 23.304
     },
     {
       "date": "2014-07-01",
@@ -21334,8 +22828,9 @@
       "closed_end": 0.408,
       "broker_dealer": 0.37,
       "bank_mmf": 0.12,
-      "nonfin_corp": 0.12,
-      "household": 30.393
+      "nonfin_corp": 4.883,
+      "other_holders": 2.221,
+      "household": 23.41
     },
     {
       "date": "2014-10-01",
@@ -21350,8 +22845,9 @@
       "closed_end": 0.377,
       "broker_dealer": 0.42,
       "bank_mmf": 0.12,
-      "nonfin_corp": 0.12,
-      "household": 31.586
+      "nonfin_corp": 4.908,
+      "other_holders": 2.179,
+      "household": 24.619
     },
     {
       "date": "2015-01-01",
@@ -21366,8 +22862,9 @@
       "closed_end": 0.372,
       "broker_dealer": 0.327,
       "bank_mmf": 0.119,
-      "nonfin_corp": 0.119,
-      "household": 30.784
+      "nonfin_corp": 4.863,
+      "other_holders": 2.285,
+      "household": 23.755
     },
     {
       "date": "2015-04-01",
@@ -21382,8 +22879,9 @@
       "closed_end": 0.366,
       "broker_dealer": 0.322,
       "bank_mmf": 0.12,
-      "nonfin_corp": 0.12,
-      "household": 30.56
+      "nonfin_corp": 4.84,
+      "other_holders": 2.258,
+      "household": 23.583
     },
     {
       "date": "2015-07-01",
@@ -21398,8 +22896,9 @@
       "closed_end": 0.346,
       "broker_dealer": 0.239,
       "bank_mmf": 0.121,
-      "nonfin_corp": 0.121,
-      "household": 31.295
+      "nonfin_corp": 4.839,
+      "other_holders": 2.297,
+      "household": 24.28
     },
     {
       "date": "2015-10-01",
@@ -21414,8 +22913,9 @@
       "closed_end": 0.326,
       "broker_dealer": 0.353,
       "bank_mmf": 0.123,
-      "nonfin_corp": 0.123,
-      "household": 31.371
+      "nonfin_corp": 4.898,
+      "other_holders": 2.217,
+      "household": 24.379
     },
     {
       "date": "2016-01-01",
@@ -21430,8 +22930,9 @@
       "closed_end": 0.317,
       "broker_dealer": 0.218,
       "bank_mmf": 0.099,
-      "nonfin_corp": 0.099,
-      "household": 32.55
+      "nonfin_corp": 4.957,
+      "other_holders": 2.148,
+      "household": 25.543
     },
     {
       "date": "2016-04-01",
@@ -21446,8 +22947,9 @@
       "closed_end": 0.324,
       "broker_dealer": 0.244,
       "bank_mmf": 0.098,
-      "nonfin_corp": 0.098,
-      "household": 33.282
+      "nonfin_corp": 5.003,
+      "other_holders": 2.136,
+      "household": 26.241
     },
     {
       "date": "2016-07-01",
@@ -21462,8 +22964,9 @@
       "closed_end": 0.32,
       "broker_dealer": 0.283,
       "bank_mmf": 0.098,
-      "nonfin_corp": 0.098,
-      "household": 32.535
+      "nonfin_corp": 5.068,
+      "other_holders": 2.153,
+      "household": 25.412
     },
     {
       "date": "2016-10-01",
@@ -21478,8 +22981,9 @@
       "closed_end": 0.307,
       "broker_dealer": 0.374,
       "bank_mmf": 0.101,
-      "nonfin_corp": 0.101,
-      "household": 32.868
+      "nonfin_corp": 5.161,
+      "other_holders": 2.108,
+      "household": 25.699
     },
     {
       "date": "2017-01-01",
@@ -21494,8 +22998,9 @@
       "closed_end": 0.302,
       "broker_dealer": 0.303,
       "bank_mmf": 0.097,
-      "nonfin_corp": 0.097,
-      "household": 32.323
+      "nonfin_corp": 5.112,
+      "other_holders": 2.104,
+      "household": 25.203
     },
     {
       "date": "2017-04-01",
@@ -21510,8 +23015,9 @@
       "closed_end": 0.297,
       "broker_dealer": 0.353,
       "bank_mmf": 0.097,
-      "nonfin_corp": 0.097,
-      "household": 31.712
+      "nonfin_corp": 5.069,
+      "other_holders": 2.096,
+      "household": 24.643
     },
     {
       "date": "2017-07-01",
@@ -21526,8 +23032,9 @@
       "closed_end": 0.294,
       "broker_dealer": 0.364,
       "bank_mmf": 0.094,
-      "nonfin_corp": 0.094,
-      "household": 30.717
+      "nonfin_corp": 5.041,
+      "other_holders": 2.1,
+      "household": 23.67
     },
     {
       "date": "2017-10-01",
@@ -21542,8 +23049,9 @@
       "closed_end": 0.28,
       "broker_dealer": 0.317,
       "bank_mmf": 0.094,
-      "nonfin_corp": 0.094,
-      "household": 31.109
+      "nonfin_corp": 4.995,
+      "other_holders": 2.152,
+      "household": 24.056
     },
     {
       "date": "2018-01-01",
@@ -21558,8 +23066,9 @@
       "closed_end": 0.267,
       "broker_dealer": 0.318,
       "bank_mmf": 0.099,
-      "nonfin_corp": 0.099,
-      "household": 30.848
+      "nonfin_corp": 4.953,
+      "other_holders": 2.137,
+      "household": 23.858
     },
     {
       "date": "2018-04-01",
@@ -21574,8 +23083,9 @@
       "closed_end": 0.262,
       "broker_dealer": 0.332,
       "bank_mmf": 0.096,
-      "nonfin_corp": 0.096,
-      "household": 31.522
+      "nonfin_corp": 4.93,
+      "other_holders": 2.114,
+      "household": 24.574
     },
     {
       "date": "2018-07-01",
@@ -21590,8 +23100,9 @@
       "closed_end": 0.253,
       "broker_dealer": 0.379,
       "bank_mmf": 0.092,
-      "nonfin_corp": 0.092,
-      "household": 31.816
+      "nonfin_corp": 4.994,
+      "other_holders": 2.088,
+      "household": 24.826
     },
     {
       "date": "2018-10-01",
@@ -21606,8 +23117,9 @@
       "closed_end": 0.252,
       "broker_dealer": 0.267,
       "bank_mmf": 0.097,
-      "nonfin_corp": 0.097,
-      "household": 31.974
+      "nonfin_corp": 4.954,
+      "other_holders": 2.185,
+      "household": 24.932
     },
     {
       "date": "2019-01-01",
@@ -21622,8 +23134,9 @@
       "closed_end": 0.25,
       "broker_dealer": 0.246,
       "bank_mmf": 0.097,
-      "nonfin_corp": 0.097,
-      "household": 32.682
+      "nonfin_corp": 4.973,
+      "other_holders": 2.076,
+      "household": 25.73
     },
     {
       "date": "2019-04-01",
@@ -21638,8 +23151,9 @@
       "closed_end": 0.247,
       "broker_dealer": 0.275,
       "bank_mmf": 0.098,
-      "nonfin_corp": 0.098,
-      "household": 32.483
+      "nonfin_corp": 5.012,
+      "other_holders": 2.022,
+      "household": 25.547
     },
     {
       "date": "2019-07-01",
@@ -21654,8 +23168,9 @@
       "closed_end": 0.244,
       "broker_dealer": 0.293,
       "bank_mmf": 0.096,
-      "nonfin_corp": 0.096,
-      "household": 32.642
+      "nonfin_corp": 5.058,
+      "other_holders": 2.01,
+      "household": 25.67
     },
     {
       "date": "2019-10-01",
@@ -21670,8 +23185,9 @@
       "closed_end": 0.237,
       "broker_dealer": 0.244,
       "bank_mmf": 0.096,
-      "nonfin_corp": 0.096,
-      "household": 32.334
+      "nonfin_corp": 5.123,
+      "other_holders": 1.986,
+      "household": 25.321
     },
     {
       "date": "2020-01-01",
@@ -21686,8 +23202,9 @@
       "closed_end": 0.223,
       "broker_dealer": 0.222,
       "bank_mmf": 0.094,
-      "nonfin_corp": 0.094,
-      "household": 31.765
+      "nonfin_corp": 5.14,
+      "other_holders": 2.188,
+      "household": 24.53
     },
     {
       "date": "2020-04-01",
@@ -21702,8 +23219,9 @@
       "closed_end": 0.212,
       "broker_dealer": 0.252,
       "bank_mmf": 0.09,
-      "nonfin_corp": 0.09,
-      "household": 32.891
+      "nonfin_corp": 4.989,
+      "other_holders": 2.01,
+      "household": 25.98
     },
     {
       "date": "2020-07-01",
@@ -21718,8 +23236,9 @@
       "closed_end": 0.201,
       "broker_dealer": 0.295,
       "bank_mmf": 0.089,
-      "nonfin_corp": 0.089,
-      "household": 33.597
+      "nonfin_corp": 4.872,
+      "other_holders": 1.944,
+      "household": 26.869
     },
     {
       "date": "2020-10-01",
@@ -21734,8 +23253,9 @@
       "closed_end": 0.193,
       "broker_dealer": 0.25,
       "bank_mmf": 0.089,
-      "nonfin_corp": 0.089,
-      "household": 34.168
+      "nonfin_corp": 4.631,
+      "other_holders": 1.86,
+      "household": 27.767
     },
     {
       "date": "2021-01-01",
@@ -21750,8 +23270,9 @@
       "closed_end": 0.194,
       "broker_dealer": 0.248,
       "bank_mmf": 0.091,
-      "nonfin_corp": 0.091,
-      "household": 35.311
+      "nonfin_corp": 4.553,
+      "other_holders": 1.832,
+      "household": 29.017
     },
     {
       "date": "2021-04-01",
@@ -21766,8 +23287,9 @@
       "closed_end": 0.189,
       "broker_dealer": 0.227,
       "bank_mmf": 0.09,
-      "nonfin_corp": 0.09,
-      "household": 35.872
+      "nonfin_corp": 4.509,
+      "other_holders": 1.782,
+      "household": 29.672
     },
     {
       "date": "2021-07-01",
@@ -21782,8 +23304,9 @@
       "closed_end": 0.189,
       "broker_dealer": 0.179,
       "bank_mmf": 0.087,
-      "nonfin_corp": 0.087,
-      "household": 36.616
+      "nonfin_corp": 4.46,
+      "other_holders": 1.845,
+      "household": 30.398
     },
     {
       "date": "2021-10-01",
@@ -21798,8 +23321,9 @@
       "closed_end": 0.177,
       "broker_dealer": 0.152,
       "bank_mmf": 0.087,
-      "nonfin_corp": 0.087,
-      "household": 36.141
+      "nonfin_corp": 4.536,
+      "other_holders": 1.846,
+      "household": 29.846
     },
     {
       "date": "2022-01-01",
@@ -21814,8 +23338,9 @@
       "closed_end": 0.175,
       "broker_dealer": 0.115,
       "bank_mmf": 0.09,
-      "nonfin_corp": 0.09,
-      "household": 36.938
+      "nonfin_corp": 4.47,
+      "other_holders": 1.83,
+      "household": 30.728
     },
     {
       "date": "2022-04-01",
@@ -21830,8 +23355,9 @@
       "closed_end": 0.181,
       "broker_dealer": 0.015,
       "bank_mmf": 0.09,
-      "nonfin_corp": 0.09,
-      "household": 36.396
+      "nonfin_corp": 4.414,
+      "other_holders": 2.037,
+      "household": 30.035
     },
     {
       "date": "2022-07-01",
@@ -21846,8 +23372,9 @@
       "closed_end": 0.177,
       "broker_dealer": 0.091,
       "bank_mmf": 0.087,
-      "nonfin_corp": 0.087,
-      "household": 37.319
+      "nonfin_corp": 4.317,
+      "other_holders": 2.086,
+      "household": 31.003
     },
     {
       "date": "2022-10-01",
@@ -21862,8 +23389,9 @@
       "closed_end": 0.178,
       "broker_dealer": 0.086,
       "bank_mmf": 0.093,
-      "nonfin_corp": 0.093,
-      "household": 36.272
+      "nonfin_corp": 4.331,
+      "other_holders": 2.016,
+      "household": 30.018
     },
     {
       "date": "2023-01-01",
@@ -21878,8 +23406,9 @@
       "closed_end": 0.168,
       "broker_dealer": 0.13,
       "bank_mmf": 0.088,
-      "nonfin_corp": 0.088,
-      "household": 36.512
+      "nonfin_corp": 4.382,
+      "other_holders": 1.933,
+      "household": 30.286
     },
     {
       "date": "2023-04-01",
@@ -21894,8 +23423,9 @@
       "closed_end": 0.161,
       "broker_dealer": 0.172,
       "bank_mmf": 0.087,
-      "nonfin_corp": 0.087,
-      "household": 36.829
+      "nonfin_corp": 4.397,
+      "other_holders": 1.86,
+      "household": 30.659
     },
     {
       "date": "2023-07-01",
@@ -21910,8 +23440,9 @@
       "closed_end": 0.157,
       "broker_dealer": 0.14,
       "bank_mmf": 0.089,
-      "nonfin_corp": 0.089,
-      "household": 37.036
+      "nonfin_corp": 4.356,
+      "other_holders": 1.931,
+      "household": 30.839
     },
     {
       "date": "2023-10-01",
@@ -21926,8 +23457,9 @@
       "closed_end": 0.148,
       "broker_dealer": 0.173,
       "bank_mmf": 0.089,
-      "nonfin_corp": 0.089,
-      "household": 37.023
+      "nonfin_corp": 4.337,
+      "other_holders": 1.833,
+      "household": 30.942
     },
     {
       "date": "2024-01-01",
@@ -21942,8 +23474,9 @@
       "closed_end": 0.142,
       "broker_dealer": 0.159,
       "bank_mmf": 0.103,
-      "nonfin_corp": 0.103,
-      "household": 36.923
+      "nonfin_corp": 4.275,
+      "other_holders": 1.782,
+      "household": 30.969
     },
     {
       "date": "2024-04-01",
@@ -21958,8 +23491,9 @@
       "closed_end": 0.136,
       "broker_dealer": 0.174,
       "bank_mmf": 0.1,
-      "nonfin_corp": 0.1,
-      "household": 37.214
+      "nonfin_corp": 4.226,
+      "other_holders": 1.768,
+      "household": 31.319
     },
     {
       "date": "2024-07-01",
@@ -21974,8 +23508,9 @@
       "closed_end": 0.135,
       "broker_dealer": 0.195,
       "bank_mmf": 0.102,
-      "nonfin_corp": 0.102,
-      "household": 37.509
+      "nonfin_corp": 4.094,
+      "other_holders": 1.772,
+      "household": 31.745
     },
     {
       "date": "2024-10-01",
@@ -21990,8 +23525,9 @@
       "closed_end": 0.127,
       "broker_dealer": 0.174,
       "bank_mmf": 0.097,
-      "nonfin_corp": 0.097,
-      "household": 38.319
+      "nonfin_corp": 3.967,
+      "other_holders": 1.81,
+      "household": 32.639
     },
     {
       "date": "2025-01-01",
@@ -22006,8 +23542,9 @@
       "closed_end": 0.13,
       "broker_dealer": 0.188,
       "bank_mmf": 0.103,
-      "nonfin_corp": 0.103,
-      "household": 38.466
+      "nonfin_corp": 3.892,
+      "other_holders": 1.86,
+      "household": 32.816
     },
     {
       "date": "2025-04-01",
@@ -22022,8 +23559,9 @@
       "closed_end": 0.124,
       "broker_dealer": 0.21,
       "bank_mmf": 0.098,
-      "nonfin_corp": 0.098,
-      "household": 37.846
+      "nonfin_corp": 3.886,
+      "other_holders": 1.817,
+      "household": 32.242
     },
     {
       "date": "2025-07-01",
@@ -22038,8 +23576,9 @@
       "closed_end": 0.12,
       "broker_dealer": 0.182,
       "bank_mmf": 0.098,
-      "nonfin_corp": 0.098,
-      "household": 38.194
+      "nonfin_corp": 3.841,
+      "other_holders": 1.805,
+      "household": 32.647
     },
     {
       "date": "2025-10-01",
@@ -22054,8 +23593,9 @@
       "closed_end": 0.117,
       "broker_dealer": 0.147,
       "bank_mmf": 0.101,
-      "nonfin_corp": 0.101,
-      "household": 38.196
+      "nonfin_corp": 3.779,
+      "other_holders": 1.843,
+      "household": 32.674
     },
     {
       "date": "2026-01-01",
@@ -22070,8 +23610,9 @@
       "closed_end": 0.12,
       "broker_dealer": 0.2,
       "bank_mmf": 0.103,
-      "nonfin_corp": 0.103,
-      "household": 38.742
+      "nonfin_corp": 3.658,
+      "other_holders": 1.864,
+      "household": 33.323
     },
     {
       "date": "2026-04-01",
@@ -22086,8 +23627,9 @@
       "closed_end": 0.112,
       "broker_dealer": 0.166,
       "bank_mmf": 0.094,
-      "nonfin_corp": 0.094,
-      "household": 39.711
+      "nonfin_corp": 3.54,
+      "other_holders": 1.777,
+      "household": 34.488
     }
   ]
 }

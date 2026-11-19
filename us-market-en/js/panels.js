@@ -60,7 +60,7 @@ import { initAthPathsPanel } from './panels/ath_paths.js?v=77082314fb';
 import {
   initPanelIciRiskAppetite, initPanelIciDomesticWorld, initPanelIciMmf,
   initPanelIciActiveIndex, initPanelIciPassivization, initPanelOwnership,
-} from './panels/flows.js?v=bf92011bc0';
+} from './panels/flows.js?v=337ef96172';
 
 import { initUsAssetLadderPanel } from './panels/us_asset_ladder.js?v=696b72ae5b';
 import {
@@ -161,7 +161,7 @@ const FILES = {
   iciFlows:       'data/ici_flows.json?v=fedac7f547',
   iciMmf:         'data/ici_mmf.json?v=3fc8139a6a',
   iciActiveIndex: 'data/ici_active_index.json?v=2a7dd682f5',
-  ownership:      'data/ownership.json?v=4d9a532547',
+  ownership:      'data/ownership.json?v=9bd0f45df5',
   // Fed hikes
   fedHikes:       'data/fed_hikes.json?v=93ec95f55b',
   // Major asset classes

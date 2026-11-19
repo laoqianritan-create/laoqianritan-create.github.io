@@ -505,13 +505,13 @@ export function initPanelIciPassivization(data) {
 // Source: data/ownership.json (fetch_ownership.py → FRED Z.1 · 14 series)
 
 const OWNERSHIP_GROUPS = [
-  { key: 'household',   name: 'Households (Direct)', color: BLUE,      keys: ['household'] },
+  { key: 'household',   name: 'Households (Residual)', color: BLUE,    keys: ['household'] },
   { key: 'foreign',     name: 'Foreign Investors',   color: '#f59e0b', keys: ['foreign'] },
   { key: 'mutual_fund', name: 'Mutual Funds',        color: '#0891b2', keys: ['mutual_fund'] },
   { key: 'etf',         name: 'ETFs',                color: GREEN,     keys: ['etf'] },
   { key: 'pension',     name: 'Pension Funds',       color: '#8b5cf6', keys: ['private_pension', 'state_pension', 'fed_pension'] },
   { key: 'insurance',   name: 'Insurance Companies', color: '#d97706', keys: ['life_insurance', 'pc_insurance'] },
-  { key: 'other',       name: 'Other',               color: '#94a3b8', keys: ['closed_end', 'broker_dealer', 'bank_mmf', 'nonfin_corp'] },
+  { key: 'other',       name: 'Other (Corporates/Govt/Hedge Funds etc.)', color: '#94a3b8', keys: ['closed_end', 'broker_dealer', 'bank_mmf', 'nonfin_corp', 'other_holders'] },
 ];
 
 const OWNERSHIP_MILESTONES = [
@@ -520,6 +520,12 @@ const OWNERSHIP_MILESTONES = [
   { xAxis: '2010-01-01', label: '2010\nForeign > 15%' },
   { xAxis: '2020-01-01', label: '2020\nPandemic liquidity' },
 ];
+
+function ownershipQuarterLabel(q, isoDate) {
+  if (q && /^\d{4}Q[1-4]$/.test(q)) return `${q.slice(0, 4)} ${q.slice(4)}`;
+  const m = /^(\d{4})-(\d{2})/.exec(isoDate || '');
+  return m ? `${m[1]} Q${Math.floor((Number(m[2]) - 1) / 3) + 1}` : (isoDate || '');
+}
 
 export function initPanelOwnership(data) {
   if (!data || !Array.isArray(data.ownership_pct) || !data.ownership_pct.length) return;
@@ -552,8 +558,10 @@ export function initPanelOwnership(data) {
 
   chart.setOption({
     animation: false,
-    grid: { left: 50, right: 30, top: 46, bottom: 66 },
-    legend: getLineLegendConfig({ top: 4, right: 8 }),
+    // 2026-11-19 视觉修正：图例单行 scroll（中英/手机都不换行），grid 顶部留出 y 轴标题位，
+    // y 轴标题左对齐到轴线，避免居中时左侧被容器裁掉。
+    grid: { left: 50, right: 30, top: 64, bottom: 66 },
+    legend: getLineLegendConfig({ type: 'scroll', top: 4, left: 8, right: 8 }),
     tooltip: {
       trigger: 'axis', axisPointer: { type: 'line' },
       formatter: (params) => {
@@ -577,8 +585,8 @@ export function initPanelOwnership(data) {
     },
     yAxis: {
       type: 'value',
-      name: '% of Total US Equity', nameGap: 12,
-      nameTextStyle: { color: GRAY, fontFamily: CHART_FONT, fontSize: 11 },
+      name: '% of US-Issued Equity', nameGap: 14,
+      nameTextStyle: { color: GRAY, fontFamily: CHART_FONT, fontSize: 11, align: 'left' },
       min: 0, max: 100,
       axisLabel: { fontSize: 11, color: GRAY, fontFamily: CHART_FONT, formatter: '{value}%' },
       splitLine: { lineStyle: { color: cssVar('--chart-grid') || '#f0f0f0' } },
@@ -595,15 +603,24 @@ export function initPanelOwnership(data) {
   });
 
   const latest = groupedData[groupedData.length - 1];
+  const first = groupedData[0];
   const totalLatest = data.total_liability[data.total_liability.length - 1];
   const totalT = totalLatest.value_millions / 1e6;
   const fund_total = (latest.mutual_fund || 0) + (latest.etf || 0);
+  const quarter = ownershipQuarterLabel(data.latest_quarter, latest.date);
 
   const cards = [
-    buildMetricCard('Total US Equity', `$${totalT.toFixed(1)}T`, `Fed Z.1 · ${latest.date}`),
-    buildMetricCard('Households Direct', `${latest.household.toFixed(1)}%`, `~90% in 1945`),
+    buildMetricCard('US-Issued Equity', `$${totalT.toFixed(1)}T`, `Fed Z.1 · ${quarter}`),
+    buildMetricCard('Households (Residual)', `${latest.household.toFixed(1)}%`, `${first.household.toFixed(1)}% in 1945 Q4`),
     buildMetricCard('Foreign', `${latest.foreign.toFixed(1)}%`, `<5% in 1970`),
     buildMetricCard('Mutual Funds + ETFs', `${fund_total.toFixed(1)}%`, `MF ${latest.mutual_fund.toFixed(1)}% + ETF ${latest.etf.toFixed(1)}%`),
   ];
+  const asOf = document.getElementById('ownershipAsOf');
+  if (asOf) {
+    const parts = [`Data through ${quarter}${data.quarter_end ? ` (quarter end ${data.quarter_end})` : ''}`];
+    if (data.source_release_date) parts.push(`Fed release ${data.source_release_date}`);
+    if (data.next_release_date) parts.push(`next release expected ${data.next_release_date}`);
+    asOf.textContent = parts.join(' · ');
+  }
   renderMetricStrip('ownershipSummary', cards);
 }
