@@ -1966,7 +1966,7 @@
       const fy = H - 60;
       ctx.fillStyle = '#888888'; ctx.font = '300 22px NotoSansSC, sans-serif';
       ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-      const asOf = (payload.generated || '').slice(0, 10);
+      const asOf = (payload.dataAsOf || payload.generated || '').slice(0, 10);
       ctx.fillText(`数据截至 ${asOf} · 一级行业 1999 起 / 二级 2024 起 · 样本<120 日置空`, padL, fy);
       ctx.textAlign = 'right';
     }
@@ -2130,8 +2130,12 @@
     wrap.appendChild(canvas);
 
     // 排序一级行业（按名称）：一级 = 不在 parentMap 中的代码（parentMap 只含 131 个二级）
+    // 2026-11-19：优先用 JSON 显式层级 lv（1/2）；旧数据无 lv 时才回退 parentMap 推断。
+    // 旧逻辑在 parentMap 为空（乐咕宕机）时把 131 个二级全部当一级铺出来（11-18 线上事故）。
+    const hasLv = Object.values(payload.metrics).some((m) => m && m.lv);
     sortedL1 = Object.keys(payload.metrics).filter((c) =>
-      payload.levels['1'] && !(payload.parentMap && Object.prototype.hasOwnProperty.call(payload.parentMap, c))
+      hasLv ? payload.metrics[c].lv === 1
+            : (payload.levels['1'] && !(payload.parentMap && Object.prototype.hasOwnProperty.call(payload.parentMap, c)))
     );
     sortedL1.sort((a, b) => payload.metrics[a].name.localeCompare(payload.metrics[b].name, 'zh'));
 
@@ -4374,7 +4378,8 @@
 
   function applyAsOf(panelId, d) {
     if (!d || typeof d !== 'object') return;
-    const v = d.generated || d.asOf || d.updated;
+    // 2026-11-19：dataAsOf = 数据真实截止日（目前仅行业热度提供），优先于生成时间，避免「生成日新、数据旧」被掩盖
+    const v = d.dataAsOf || d.generated || d.asOf || d.updated;
     if (!v) return;
     const el = document.querySelector('#' + panelId + ' .panel-asof');
     if (el) el.textContent = '数据截至 ' + String(v).slice(0, 10);
