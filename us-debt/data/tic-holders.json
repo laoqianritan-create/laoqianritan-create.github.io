@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18T02:05:16Z",
+  "updated": "2026-11-19T01:41:33Z",
   "source": "Treasury TIC · Major Foreign Holders (mfhhis01.txt 历史归档 + slt_table5.txt 最近13月)",
   "source_url": "https://ticdata.treasury.gov/Publish/mfhhis01.txt ; https://ticdata.treasury.gov/resource-center/data-chart-center/tic/Documents/slt_table5.txt",
   "year_range": [
@@ -1285,6 +1285,10 @@
         {
           "date": "2026-08",
           "value": 1068.3
+        },
+        {
+          "date": "2026-09",
+          "value": 1063.1
         }
       ],
       "china": [
@@ -2554,7 +2558,7 @@
         },
         {
           "date": "2026-06",
-          "value": 889.2
+          "value": 889.1
         },
         {
           "date": "2026-07",
@@ -2563,6 +2567,10 @@
         {
           "date": "2026-08",
           "value": 852.2
+        },
+        {
+          "date": "2026-09",
+          "value": 813.1
         }
       ],
       "uk_offshore": [
@@ -3792,7 +3800,7 @@
         },
         {
           "date": "2025-08",
-          "value": 2915.6
+          "value": 2914.7
         },
         {
           "date": "2025-09",
@@ -3840,7 +3848,11 @@
         },
         {
           "date": "2026-08",
-          "value": 3160.9
+          "value": 3145.9
+        },
+        {
+          "date": "2026-09",
+          "value": 3167.8
         }
       ],
       "oil": [
@@ -5070,7 +5082,7 @@
         },
         {
           "date": "2025-08",
-          "value": 456.6
+          "value": 515.8
         },
         {
           "date": "2025-09",
@@ -5119,6 +5131,10 @@
         {
           "date": "2026-08",
           "value": 471.3
+        },
+        {
+          "date": "2026-09",
+          "value": 453.4
         }
       ],
       "other": [
@@ -6348,7 +6364,7 @@
         },
         {
           "date": "2025-08",
-          "value": 3741.6
+          "value": 3682.5
         },
         {
           "date": "2025-09",
@@ -6397,6 +6413,10 @@
         {
           "date": "2026-08",
           "value": 3778.9
+        },
+        {
+          "date": "2026-09",
+          "value": 3744.0
         }
       ]
     },
@@ -7627,7 +7647,7 @@
       },
       {
         "date": "2025-08",
-        "value": 9249.1
+        "value": 9248.5
       },
       {
         "date": "2025-09",
@@ -7675,7 +7695,11 @@
       },
       {
         "date": "2026-08",
-        "value": 9331.7
+        "value": 9316.7
+      },
+      {
+        "date": "2026-09",
+        "value": 9241.2
       }
     ]
   },
@@ -7814,8 +7838,8 @@
         },
         {
           "year": 2026,
-          "month": 8,
-          "value": 1068.3
+          "month": 9,
+          "value": 1063.1
         }
       ],
       "china": [
@@ -7951,8 +7975,8 @@
         },
         {
           "year": 2026,
-          "month": 8,
-          "value": 852.2
+          "month": 9,
+          "value": 813.1
         }
       ],
       "uk_offshore": [
@@ -8088,8 +8112,8 @@
         },
         {
           "year": 2026,
-          "month": 8,
-          "value": 3160.9
+          "month": 9,
+          "value": 3167.8
         }
       ],
       "oil": [
@@ -8225,8 +8249,8 @@
         },
         {
           "year": 2026,
-          "month": 8,
-          "value": 471.3
+          "month": 9,
+          "value": 453.4
         }
       ],
       "other": [
@@ -8362,8 +8386,8 @@
         },
         {
           "year": 2026,
-          "month": 8,
-          "value": 3778.9
+          "month": 9,
+          "value": 3744.0
         }
       ]
     },
@@ -8500,8 +8524,8 @@
       },
       {
         "year": 2026,
-        "month": 8,
-        "value": 9331.7
+        "month": 9,
+        "value": 9241.2
       }
     ]
   }
