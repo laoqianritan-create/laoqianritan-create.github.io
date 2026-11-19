@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>超视距作战 · 领先—同步—滞后指标地图（预览）</title>
+<style>
+  @font-face { font-family: 'NotoSansSC'; src: url('../fonts/NotoSansSC-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+  @font-face { font-family: 'NotoSansSC'; src: url('../fonts/NotoSansSC-Light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
+  @font-face { font-family: 'AlibabaPuHuiTi'; src: url('../fonts/Alibaba-PuHuiTi-Heavy.woff2') format('woff2'); font-weight: 900; font-display: swap; }
+
+  :root{
+    --ink:#1A1A1A; --gray:#777777; --light:#999999; --line:#E5E5E5;
+    --lead:#5AAEF3; --sync:#E65A56; --lag:#888888; --red:#E65A56;
+    --bg:#FBFBF9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'NotoSansSC',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.6;
+  }
+  .wrap{max-width:1320px;margin:0 auto;padding:38px 28px 64px}
+  .kicker{font-size:11.5px;letter-spacing:.18em;color:var(--light);text-transform:uppercase}
+  h1{font-family:'AlibabaPuHuiTi',sans-serif;font-weight:900;font-size:33px;letter-spacing:.5px;margin:10px 0 8px}
+  .sub{font-size:14px;color:var(--gray);max-width:760px}
+  .hint{font-size:13px;color:var(--light);margin-top:10px}
+  .top-stats{display:flex;flex-wrap:wrap;gap:26px;margin:22px 0 6px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stat{min-width:82px}
+  .stat b{display:block;font-size:26px;line-height:1.1;font-weight:400}
+  .stat span{font-size:12px;color:var(--light)}
+
+  .board{display:grid;grid-template-columns:minmax(0,1fr) 388px;gap:26px;margin-top:18px;align-items:start}
+  .board>*{min-width:0}
+  .chart-card,.side,.detail{min-width:0}
+  .chart-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 18px 10px;box-shadow:0 1px 3px rgba(0,0,0,.04);position:relative}
+  .chart-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+  .chart-head h2{font-size:16px;font-weight:400;letter-spacing:.02em}
+  .chart-head p{font-size:12px;color:var(--light);margin-top:2px}
+  .btn{width:32px;height:32px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;color:#666}
+  .btn:hover{background:#f7f7f4}
+  .plot-wrap{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch}
+  .plot-wrap::-webkit-scrollbar{height:6px}
+  .plot-wrap::-webkit-scrollbar-thumb{background:#DDDDD6;border-radius:3px}
+  #scatter{display:block;width:100%;height:auto;touch-action:manipulation}
+  #mini{display:block;height:auto}
+
+  .side{position:sticky;top:18px}
+  .detail{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px 20px 18px;box-shadow:0 1px 3px rgba(0,0,0,.04);min-height:420px}
+  .detail .empty{color:var(--light);font-size:13px;padding:16px 2px;line-height:2}
+  .detail .empty b{color:var(--gray);font-weight:400}
+  .cat{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--gray)}
+  .dot{width:8px;height:8px;border-radius:50%}
+  .d-title{font-size:23px;font-weight:700;letter-spacing:.02em;margin:8px 0 2px;line-height:1.35}
+  .d-sub{font-size:12px;color:var(--light)}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .badge{font-size:11px;line-height:1.9;padding:0 8px;border-radius:4px;background:#F1F1EC;color:#55554F}
+  .badge.warn{background:#FBF0DE;color:#8A5A12}
+  .badge.good{background:#E8F3EC;color:#1E6B45}
+  .stats3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 4px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .stats3 div b{display:block;font-size:22px;font-weight:400;line-height:1.2}
+  .stats3 div span{font-size:11px;color:var(--light)}
+  .latest{margin-top:14px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+  .latest .v{font-size:38px;font-weight:300;line-height:1;letter-spacing:-.5px}
+  .latest .m{font-size:12px;color:var(--light);text-align:right}
+  .mini-wrap{margin-top:10px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  #mini{display:block;height:auto}
+  .mini-legend{display:flex;gap:16px;font-size:11px;color:var(--gray);margin-top:6px;align-items:center}
+  .lg{display:inline-flex;align-items:center;gap:5px}
+  .lg i{width:12px;height:2px;display:inline-block;border-radius:1px}
+  .note{font-size:12px;color:var(--gray);line-height:1.75;margin-top:12px;padding-top:12px;border-top:1px dashed #E8E8E3}
+
+
+  .notes{margin-top:26px;font-size:12.5px;color:var(--gray)}
+  .notes details{border-top:1px solid var(--line);padding-top:14px}
+  .notes summary{cursor:pointer;color:var(--ink);font-size:13px;list-style:none}
+  .notes summary::-webkit-details-marker{display:none}
+  .notes summary::before{content:"＋ ";color:var(--light)}
+  .notes ul{margin:12px 0 0 18px;line-height:1.9}
+  .foot{margin-top:28px;font-size:11.5px;color:var(--light);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  @media (max-width:720px){
+    #scatter{width:900px;max-width:none}
+    .plot-wrap::after{content:'← 左右滑动查看 →';display:block;font-size:11px;color:var(--light);text-align:center;padding:4px 0 2px}
+  }
+  @media (max-width:980px){
+    .board{grid-template-columns:minmax(0,1fr)}
+    .top-stats{gap:16px 20px}
+    .side{position:static}
+    .detail{min-height:0}
+    h1{font-size:26px}
+    .wrap{padding:26px 16px 48px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">A 股看板 · 老钱日日谈</p>
+  <h1>A股指标散点图</h1>
+
+  <div class="board">
+    <div class="chart-card">
+      <div class="chart-head">
+        <div>
+          <h2>指标地图 · 与中证全指同比的最大相关性 × 最优时滞</h2>
+          <p id="chartDesc">2017-01 至今 · 月度 · 时滞扫描 -15~+15 个月</p>
+        </div>
+        <button class="btn js-export" id="btnExport" title="下载高清图" aria-label="下载高清图">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </button>
+      </div>
+      <canvas id="scatter" width="1200" height="820"></canvas>
+    </div>
+
+    <div class="side">
+      <div class="detail" id="detail"></div>
+    </div>
+  </div>
+
+  <div class="notes">
+    <details>
+      <summary>看板说明</summary>
+      <ul id="methodList"></ul>
+    </details>
+  </div>
+
+  <div class="foot">
+    <span>数据：央行 / 统计局 / 中证指数 / 乐咕 / akshare / FRED</span>
+    <span>ashare.laoqianriritan.com · 每交易日更新</span>
+  </div>
+</div>
+
+<script src="./data.js"></script>
+<script>
+(function(){
+  const D = window.SH_DATA;
+  if(!D){ document.getElementById('detail').innerHTML = '<div class="empty">没有找到数据文件 data.js。</div>'; return; }
+
+  const CANVAS_W = 1200, CANVAS_H = 820;
+  const PAD = {l:70, r:44, t:26, b:52};
+  const cvs = document.getElementById('scatter');
+  const ctx = cvs.getContext('2d');
+  const mini = document.getElementById('mini');
+
+  const COLORS = { '领先':'#5AAEF3', '同步':'#E65A56', '滞后':'#888888' };
+  const COLOR_SOFT = { '领先':'rgba(90,174,243,.13)', '同步':'rgba(230,90,86,.09)', '滞后':'rgba(136,136,136,.07)' };
+
+  const data = D.indicators;
+  const Y_DOM = [-15, 15];
+  const X_DOM = [0.20, 0.85];
+
+  let selected = null, hover = null, hoverPos = null, layoutCache = null;
+
+  // ── 尺寸 / 坐标 ─────────────────────────────
+  function resize(){
+    const cssW = Math.round(cvs.getBoundingClientRect().width) || (cvs.parentElement.clientWidth);
+    const cssH = Math.round(cssW * CANVAS_H / CANVAS_W);
+    cvs.style.height = cssH + 'px';
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cvs.width = Math.round(cssW * dpr);
+    cvs.height = Math.round(cssH * dpr);
+    ctx.setTransform(dpr * cssW / CANVAS_W, 0, 0, dpr * cssH / CANVAS_H, 0, 0);
+    draw();
+  }
+
+  const xPix = v => PAD.l + (v - X_DOM[0]) / (X_DOM[1] - X_DOM[0]) * (CANVAS_W - PAD.l - PAD.r);
+  const yPix = v => PAD.t + (Y_DOM[1] - v) / (Y_DOM[1] - Y_DOM[0]) * (CANVAS_H - PAD.t - PAD.b);
+
+  function roundRect(c,x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,CANVAS_W,CANVAS_H);
+    ctx.fillStyle = '#FFFFFF'; ctx.fillRect(0,0,CANVAS_W,CANVAS_H);
+
+    // 背景分区（上蓝 / 中橙 / 下灰）
+    ctx.fillStyle = 'rgba(90,174,243,.10)';
+    ctx.fillRect(PAD.l, PAD.t, CANVAS_W-PAD.l-PAD.r, yPix(2)-PAD.t);
+    ctx.fillStyle = 'rgba(230,90,86,.07)';
+    ctx.fillRect(PAD.l, yPix(2), CANVAS_W-PAD.l-PAD.r, yPix(-2)-yPix(2));
+    ctx.fillStyle = 'rgba(136,136,136,.05)';
+    ctx.fillRect(PAD.l, yPix(-2), CANVAS_W-PAD.l-PAD.r, CANVAS_H-PAD.b-yPix(-2));
+
+    // 网格
+    ctx.strokeStyle = '#EDEDED'; ctx.lineWidth = 1;
+    ctx.font = "300 13px 'NotoSansSC', sans-serif";
+    ctx.fillStyle = '#8A8A82'; ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
+    for(let v=-15; v<=15; v+=3){
+      const y = yPix(v);
+      ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(CANVAS_W-PAD.r, y); ctx.stroke();
+      ctx.fillText(v>0? '+'+v : String(v), PAD.l-12, y);
+    }
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    for(let v=0.2; v<=0.85; v+=0.1){
+      const x = xPix(v);
+      ctx.beginPath(); ctx.moveTo(x, PAD.t); ctx.lineTo(x, CANVAS_H-PAD.b); ctx.stroke();
+      ctx.fillText(v.toFixed(1), x, CANVAS_H-PAD.b+10);
+    }
+
+    // 0 线
+    ctx.strokeStyle = '#BBBBBB'; ctx.setLineDash([6,5]); ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.moveTo(PAD.l, yPix(0)); ctx.lineTo(CANVAS_W-PAD.r, yPix(0)); ctx.stroke();
+    ctx.setLineDash([]);
+
+    // 分区角标
+    ctx.textAlign = 'right'; ctx.textBaseline = 'top';
+    ctx.font = "400 14px 'NotoSansSC', sans-serif"; ctx.fillStyle = '#3C78AE';
+    ctx.fillText('领先：前瞻线盯的', CANVAS_W-PAD.r-6, PAD.t+8);
+    ctx.font = "300 11.5px 'NotoSansSC', sans-serif"; ctx.fillStyle = '#7FA6C8';
+    ctx.fillText('指标先动，中证全指后动', CANVAS_W-PAD.r-6, PAD.t+28);
+    ctx.font = "400 14px 'NotoSansSC', sans-serif"; ctx.fillStyle = '#C0453F';
+    ctx.fillText('同步：和指数一起动', CANVAS_W-PAD.r-6, yPix(2)+8);
+    ctx.font = "400 14px 'NotoSansSC', sans-serif"; ctx.fillStyle = '#777777';
+    ctx.fillText('滞后：中证全指先动，它们后确认', CANVAS_W-PAD.r-6, yPix(-2)+10);
+    ctx.font = "300 11.5px 'NotoSansSC', sans-serif"; ctx.fillStyle = '#777777';
+    ctx.fillText('滞后 2~16 个月：看确认、反着用', CANVAS_W-PAD.r-6, yPix(-2)+30);
+
+    // 轴标题
+    ctx.save();
+    ctx.translate(18, (PAD.t + CANVAS_H-PAD.b)/2);
+    ctx.rotate(-Math.PI/2);
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.font = "300 12.5px 'NotoSansSC', sans-serif"; ctx.fillStyle = '#777777';
+    ctx.fillText('领先 / 滞后中证全指同比的月数（正 = 领先，0 = 同步）', 0, 0);
+    ctx.restore();
+    ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    ctx.font = "300 12.5px 'NotoSansSC', sans-serif"; ctx.fillStyle = '#777777';
+    ctx.fillText('和中证全指同比的相关（2017 起）→ 越右越可靠', (PAD.l+CANVAS_W-PAD.r)/2, CANVAS_H-22);
+
+    // 点 + 标签（先算标签位置，避免互相压）
+    const labels = [];
+    const textW = t => ctx.measureText(t).width;
+    data.forEach(d=>{
+      const px = xPix(Math.min(Math.max(d.absCorr, X_DOM[0]), X_DOM[1]));
+      const py = yPix(Math.min(Math.max(d.lag, Y_DOM[0]), Y_DOM[1]));
+      d._x = px; d._y = py; d._jitter = 0;
+    });
+    // 坐标几乎一样的点（如 M1 与 M1-M2）轻微错开，否则两个点叠成一个
+    for(let i=0;i<data.length;i++){
+      for(let j=0;j<i;j++){
+        const a=data[i], b=data[j];
+        const dx=a._x-b._x, dy=a._y-b._y;
+        if(Math.hypot(dx,dy) < 14){
+          const seq = (i%3)-1;
+          a._x += (i%2? 10 : -10);
+          a._y += 5 * (seq||1);
+          a._jitter = 1;
+        }
+      }
+    }
+
+    ctx.font = "400 12.5px 'NotoSansSC', sans-serif";
+    const boxes = [];
+    data.forEach(d=>{
+      const w = textW(d.short), h = 15;
+      const cands = [];
+      // 以点为圆心向外一圈圈找空位：12 个方向 × 7 个半径
+      for(const r of [11, 20, 30, 42, 56, 72, 90]){
+        for(let ai=0; ai<12; ai++){
+          const ang = (ai/12) * Math.PI * 2 - Math.PI/2;
+          cands.push([Math.cos(ang)*r, Math.sin(ang)*r]);
+        }
+      }
+      let best = null;
+      for(const c of cands){
+        const ox = c[0], oy = c[1];
+        const ax = d._x + ox, ay = d._y + oy;
+        const align = ox > 6 ? 'left' : (ox < -6 ? 'right' : 'center');
+        let lx = align==='left' ? ax : (align==='right' ? ax - w : ax - w/2);
+        let ly = ay;
+        const box = {x:lx-2, y:ly-h/2-1, w:w+4, h:h+2};
+        if(box.x < PAD.l+2 || box.x+box.w > CANVAS_W-PAD.r-2 || box.y < PAD.t+2 || box.y+box.h > CANVAS_H-PAD.b-2) continue;
+        // 避让已放好的标签
+        if(boxes.some(b=>!(box.x+box.w < b.x || box.x > b.x+b.w || box.y+box.h < b.y || box.y > b.y+b.h))) continue;
+        // 避让所有圆点（留 3px 边）
+        if(data.some(o=>{
+          const px = Math.min(Math.max(o._x, box.x), box.x+box.w);
+          const py = Math.min(Math.max(o._y, box.y), box.y+box.h);
+          return Math.hypot(o._x-px, o._y-py) < 10;
+        })) continue;
+        best = {box, align, va:'middle', lx, ly};
+        break;
+      }
+      if(!best){
+        const box = {x:d._x+10,y:d._y-22,w:w+4,h:17};
+        best = {box, align:'left', va:'bottom', lx:d._x+10, ly:d._y-5};
+      }
+      boxes.push(best.box);
+      const cx = d._x, cy = d._y;
+      const bx = Math.min(Math.max(cx, best.box.x), best.box.x + best.box.w);
+      const by = Math.min(Math.max(cy, best.box.y), best.box.y + best.box.h);
+      const leader = Math.hypot(cx-bx, cy-by) > 20;
+      labels.push({d, ...best, leader, bx, by});
+    });
+
+    // 点
+    data.forEach(d=>{
+      const color = COLORS[d.category] || '#4A4A4A';
+      const r = d.robust ? 7.4 : 5.2;
+      const isSel = selected && selected.key === d.key;
+      const isHov = hover && hover.key === d.key;
+      if(isSel || isHov){
+        ctx.beginPath(); ctx.arc(d._x, d._y, r+5, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(26,26,26,.07)'; ctx.fill();
+      }
+      ctx.beginPath(); ctx.arc(d._x, d._y, r, 0, Math.PI*2);
+      ctx.fillStyle = color; ctx.fill();
+      if(d.robust){
+        ctx.beginPath(); ctx.arc(d._x, d._y, r+3.2, 0, Math.PI*2);
+        ctx.strokeStyle = color; ctx.lineWidth = 1.4; ctx.stroke();
+      }
+      if(isSel){
+        ctx.beginPath(); ctx.arc(d._x, d._y, r+8, 0, Math.PI*2);
+        ctx.strokeStyle = '#1A1A1A'; ctx.lineWidth = 1.2; ctx.stroke();
+      }
+    });
+
+    // 标签：离点较远时加一根细引导线，避免认错归属
+    ctx.strokeStyle = 'rgba(120,120,112,.35)'; ctx.lineWidth = 1;
+    labels.forEach(L=>{
+      if(!L.leader) return;
+      ctx.beginPath(); ctx.moveTo(L.d._x, L.d._y); ctx.lineTo(L.bx, L.by); ctx.stroke();
+    });
+
+    ctx.font = "400 12.5px 'NotoSansSC', sans-serif";
+    labels.forEach(L=>{
+      const isSel = selected && selected.key === L.d.key;
+      const isHov = hover && hover.key === L.d.key;
+      ctx.fillStyle = isSel ? '#1A1A1A' : (isHov ? '#1A1A1A' : '#55554F');
+      ctx.textAlign = L.align; ctx.textBaseline = L.va;
+      ctx.fillText(L.d.short, L.lx, L.ly);
+    });
+
+    // hover 提示
+    if(hover && hoverPos){
+      const t1 = hover.name + (hover.robust ? ' · 稳健' : '');
+      const t2 = (hover.lag===0 ? '同步' : (hover.lag>0?'领先 ':'滞后 ') + Math.abs(hover.lag) + ' 个月') + ' · |ρ| ' + hover.absCorr.toFixed(2);
+      ctx.font = "400 13px 'NotoSansSC', sans-serif";
+      const w = Math.max(textW(t1), textW(t2)) + 22;
+      let bx = hoverPos.x + 14, by = hoverPos.y - 46;
+      if(bx + w > CANVAS_W-8) bx = hoverPos.x - w - 14;
+      if(by < 6) by = hoverPos.y + 14;
+      ctx.fillStyle = 'rgba(26,26,26,.92)'; roundRect(ctx,bx,by,w,48,6); ctx.fill();
+      ctx.fillStyle = '#fff'; ctx.textAlign='left'; ctx.textBaseline='top';
+      ctx.font = "400 12.5px 'NotoSansSC', sans-serif"; ctx.fillText(t1, bx+11, by+8);
+      ctx.fillStyle = '#D8D8D2'; ctx.font = "300 11.5px 'NotoSansSC', sans-serif"; ctx.fillText(t2, bx+11, by+26);
+    }
+
+    layoutCache = labels;
+  }
+
+  // ── 命中 ────────────────────────────────
+  function localPt(ev){
+    const rect = cvs.getBoundingClientRect();
+    const x = (ev.clientX - rect.left) * CANVAS_W / rect.width;
+    const y = (ev.clientY - rect.top) * CANVAS_H / rect.height;
+    return {x,y};
+  }
+  function hitTest(x,y){
+    let best = null, bestD = 1e9;
+    data.forEach(d=>{
+      const dist = Math.hypot(x-d._x, y-d._y);
+      if(dist < 16 && dist < bestD){ best = d; bestD = dist; }
+    });
+    if(best) return best;
+    if(layoutCache){
+      for(const L of layoutCache){
+        const b = L.box;
+        if(x>=b.x && x<=b.x+b.w && y>=b.y && y<=b.y+b.h) return L.d;
+      }
+    }
+    return null;
+  }
+
+  cvs.addEventListener('mousemove', ev=>{
+    const {x,y} = localPt(ev);
+    const h = hitTest(x,y);
+    if((h&&h.key)!==(hover&&hover.key) || (h && !hoverPos)){
+      hover = h;
+      hoverPos = h ? {x, y} : null;
+      cvs.style.cursor = h ? 'pointer' : 'default';
+      draw();
+    } else if(h){
+      hoverPos = {x,y};
+    }
+  });
+  cvs.addEventListener('mouseleave', ()=>{ if(hover){ hover=null; hoverPos=null; cvs.style.cursor='default'; draw(); }});
+  cvs.addEventListener('click', ev=>{
+    const {x,y} = localPt(ev);
+    const h = hitTest(x,y);
+    select(h);
+  });
+
+  function select(d){
+    selected = d || null;
+    renderDetail(d);
+    draw();
+    if(d && !new URLSearchParams(location.search).get('still')){
+      document.getElementById('detail').scrollIntoView({behavior:'smooth', block:'nearest'});
+    }
+  }
+
+  // ── 详情卡 ────────────────────────────────
+  function renderDetail(d){
+    const el = document.getElementById('detail');
+    if(!d){
+      el.innerHTML = '<div class="cat"><span class="dot" style="background:#5AAEF3"></span>等待选择</div>'
+        + '<div class="empty"><b>点左边任意一个圆点</b><br>这里会换成该指标的走势缩略图、最新值和回测结论。<br><br>'
+        + '圆点越大、带外圈 = 前后两段同号且样本外仍然有效；只有一个点 = 后续段失效，只能当背景音。</div>';
+      return;
+    }
+    const c = COLORS[d.category];
+    const dirText = d.direction < 0 ? '反向指标（数值下行 ≈ 利多）' : '正向指标（数值上行 ≈ 利多）';
+    const lagText = d.lag === 0 ? '同步' : (d.lag > 0 ? '领先 ' + d.lag + ' 个月' : '滞后 ' + Math.abs(d.lag) + ' 个月');
+    const stale = d.staleMonths >= 3 ? '<span class="badge warn">数据滞后 ' + d.staleMonths + ' 个月</span>' : '';
+    const robust = d.robust ? '<span class="badge good">样本外稳健</span>' : '<span class="badge">样本外未确认</span>';
+    const modelTxt = d.model === '3 个月变化' ? '回测用 3 个月变化' : (d.model === '12 个月变化' ? '回测用 12 个月变化' : '回测用原序列');
+
+    el.innerHTML = `
+      <div class="cat"><span class="dot" style="background:${c}"></span>${d.category}指标 · ${d.dispUnit}</div>
+      <div class="d-title">${d.name}</div>
+      <div class="d-sub">${dirText}</div>
+      <div class="badges">${robust}${stale}<span class="badge">${lagText}</span><span class="badge">${modelTxt}</span></div>
+
+      <div class="stats3">
+        <div><b>${d.corr>0?'+':''}${d.corr.toFixed(2)}</b><span>全样本 ρ</span></div>
+        <div><b>${d.corrOOS==null?'—':(d.corrOOS>0?'+':'')+d.corrOOS.toFixed(2)}</b><span>2022 后样本外 ρ</span></div>
+        <div><b>${d.n}</b><span>月度样本</span></div>
+      </div>
+
+      <div class="latest">
+        <div class="v">${d.latest.display}</div>
+        <div class="m">${d.latest.month}<br>最新值</div>
+      </div>
+
+      <div class="mini-wrap"><canvas id="mini" width="700" height="260"></canvas></div>
+      <div class="mini-legend">
+        <span class="lg"><i style="background:#333"></i>${d.short}（标准化）</span>
+        <span class="lg"><i style="background:#E65A56"></i>中证全指同比（按 ${d.lag>0?'+':''}${d.lag} 月对齐）</span>
+      </div>
+      <div class="note">${d.note}</div>
+    `;
+    drawMini(d);
+  }
+
+  // ── 缩略图 ────────────────────────────────
+  let miniState = {d:null, idx:null};
+  function drawMini(d){
+    const mc = document.getElementById('mini');
+    if(!mc) return;
+    const wrapW = Math.round(mc.parentElement.clientWidth) || 360;
+    const MW = Math.min(460, Math.max(300, wrapW - 2)), MH = 196, MP = {l:30, r:44, t:14, b:24};
+    const dpr = Math.min(3, Math.max(2, window.devicePixelRatio || 1));
+    mc.style.width = MW + 'px'; mc.style.height = MH + 'px';
+    mc.width = MW*dpr; mc.height = MH*dpr;
+    const g = mc.getContext('2d');
+    g.setTransform(dpr,0,0,dpr,0,0);
+
+    const s = d.series, a = d.aligned;
+    if(!s || s.length < 3) return;
+    const z = arr => {
+      const vals = arr.map(p=>p[1]);
+      const mean = vals.reduce((x,y)=>x+y,0)/vals.length;
+      const sd = Math.sqrt(vals.reduce((x,y)=>x+(y-mean)*(y-mean),0)/vals.length) || 1;
+      return arr.map(p=>[p[0], (p[1]-mean)/sd]);
+    };
+    const zs = z(s), za = z(a);
+    const all = zs.concat(za);
+    const ymin = Math.min(...all.map(p=>p[1])), ymax = Math.max(...all.map(p=>p[1]));
+    const pad = (ymax-ymin)*0.12 || 1;
+    const y0 = ymin - pad, y1 = ymax + pad;
+    const n = zs.length;
+
+    const X = i => MP.l + i/(n-1)*(MW-MP.l-MP.r);
+    const Y = v => MP.t + (y1-v)/(y1-y0)*(MH-MP.t-MP.b);
+
+    g.clearRect(0,0,MW,MH);
+    g.fillStyle = '#fff'; g.fillRect(0,0,MW,MH);
+
+    // 网格
+    g.strokeStyle = '#EDEDED'; g.lineWidth = 1;
+    [y1, (y0+y1)/2, y0].forEach(v=>{
+      g.beginPath(); g.moveTo(MP.l, Y(v)); g.lineTo(MW-MP.r, Y(v)); g.stroke();
+    });
+    g.font = "400 10.5px 'NotoSansSC', sans-serif"; g.fillStyle = '#888888';
+    g.textAlign = 'left'; g.textBaseline = 'middle';
+    [[1,'+1σ'],[0,'0'],[-1,'-1σ']].forEach(([v,lab])=>{
+      if(v>=y0 && v<=y1){
+        g.strokeStyle = '#E5E5E5';
+        g.beginPath(); g.moveTo(MP.l, Y(v)); g.lineTo(MW-MP.r, Y(v)); g.stroke();
+        g.fillText(lab, 2, Y(v));
+      }
+    });
+
+    // 中证全指（红，浅）
+    g.beginPath();
+    za.forEach((p,i)=>{ const x=X(i), y=Y(p[1]); i?g.lineTo(x,y):g.moveTo(x,y); });
+    g.strokeStyle = '#E65A56'; g.lineWidth = 1.8; g.stroke();
+
+    // 指标（黑）
+    g.beginPath();
+    zs.forEach((p,i)=>{ const x=X(i), y=Y(p[1]); i?g.lineTo(x,y):g.moveTo(x,y); });
+    g.strokeStyle = '#333333'; g.lineWidth = 2.2; g.stroke();
+
+    // 末端点（数值已在卡片上方大字显示，图内不再放标签避免压线）
+    const lastI = n-1;
+    g.beginPath(); g.arc(X(lastI), Y(zs[lastI][1]), 3, 0, Math.PI*2); g.fillStyle='#333333'; g.fill();
+
+    // 月份刻度
+    g.font = "400 10.5px 'NotoSansSC', sans-serif"; g.fillStyle = '#999999'; g.textAlign='center'; g.textBaseline='top';
+    const step = Math.max(1, Math.floor(n/4));
+    for(let i=0;i<n;i+=step){ g.fillText(zs[i][0], X(i), MH-MP.b+7); }
+
+    // hover 十字线
+    miniState = {d, idx:null, geom:{X,Y,n,MW,MH,MP,zs,za}};
+  }
+
+  // hover on mini
+  document.addEventListener('mousemove', ev=>{
+    const mc = document.getElementById('mini');
+    if(!mc || !miniState.geom || miniState.d !== selected) return;
+    const rect = mc.getBoundingClientRect();
+    if(ev.clientX < rect.left || ev.clientX > rect.right || ev.clientY < rect.top || ev.clientY > rect.bottom) return;
+    const g = miniState.geom;
+    const x = (ev.clientX-rect.left)*g.MW/rect.width;
+    const i = Math.round((x-g.MP.l)/((g.MW-g.MP.l-g.MP.r)/(g.n-1)));
+    if(i<0||i>=g.n) return;
+    if(miniState.idx===i) return;
+    miniState.idx = i;
+    // 重绘 + 竖线 + 数值
+    drawMini(selected);
+    const mc2 = document.getElementById('mini'); const ctx2 = mc2.getContext('2d');
+    const g2 = miniState.geom;
+    ctx2.strokeStyle = '#BBBBBB'; ctx2.setLineDash([4,4]); ctx2.lineWidth = 1.5;
+    ctx2.beginPath(); ctx2.moveTo(g2.X(i), g2.MP.t); ctx2.lineTo(g2.X(i), g2.MH-g2.MP.b); ctx2.stroke(); ctx2.setLineDash([]);
+    ctx2.font = "400 10.5px 'NotoSansSC', sans-serif"; ctx2.textAlign='left'; ctx2.textBaseline='top';
+    const t = g2.zs[i][0];
+    ctx2.fillStyle = '#333'; ctx2.fillText(t + ' · 指标 ' + (g2.zs[i][1]).toFixed(2) + 'σ', Math.min(g2.X(i)+6, g2.MW-150), g2.MP.t+2);
+    ctx2.fillStyle = '#E65A56'; ctx2.fillText('全指 ' + (g2.za[i]?g2.za[i][1].toFixed(2):'—') + 'σ', Math.min(g2.X(i)+6, g2.MW-150), g2.MP.t+18);
+  });
+
+  // 窗口尺寸变化时按新宽度重绘缩略图
+  let _rsz;
+  window.addEventListener('resize', ()=>{
+    if(!selected) return;
+    clearTimeout(_rsz);
+    _rsz = setTimeout(()=>{ if(selected) drawMini(selected); }, 120);
+  });
+
+  // ── 导出（3000px 宽） ─────────────────────
+  document.getElementById('btnExport').addEventListener('click', ()=>{
+    const scale = 3000 / CANVAS_W;
+    const tmp = document.createElement('canvas');
+    tmp.width = 3000; tmp.height = Math.round(CANVAS_H*scale);
+    const tc = tmp.getContext('2d');
+    tc.fillStyle = '#fff'; tc.fillRect(0,0,tmp.width,tmp.height);
+    tc.drawImage(cvs, 0, 0, tmp.width, tmp.height);
+    tc.font = "300 13px 'NotoSansSC', sans-serif"; tc.fillStyle = '#9A9A92'; tc.textAlign='right'; tc.textBaseline='bottom';
+    tc.fillText('ashare.laoqianriritan.com', tmp.width-24, tmp.height-16);
+    const a = document.createElement('a');
+    a.download = 'A股指标散点图.png';
+    a.href = tmp.toDataURL('image/png');
+    a.click();
+  });
+
+  // ── 顶部统计 ─────────────────────────────
+  function renderTop(){
+    document.getElementById('chartDesc').textContent =
+      '2017-01 至今 · 月度 · 时滞扫描 -15~+15 个月 · 目标是中证全指同比（最新 '+D.target.latest[1].toFixed(1)+'%）';
+    document.getElementById('methodList').innerHTML = D.method.map(m=>`<li>${m}</li>`).join('')
+      + `<li>${D.disclaimer}</li>`;
+  }
+
+  renderTop();
+  renderDetail(null);
+  const params = new URLSearchParams(location.search);
+  const selKey = params.get('sel');
+  if(selKey){
+    const d = data.find(x=>x.key===selKey);
+    if(d){ selected = d; renderDetail(d); }
+  }
+  window.addEventListener('resize', resize);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(resize); } else { resize(); }
+})();
+</script>
+</body>
+</html>

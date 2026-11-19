@@ -48,6 +48,7 @@
     { title: '神奇择时指标', anchor: 'panel-fund', dataKey: 'fundIndex', render: 'renderFundIndex' },
     { title: '偏股混合基金滚动年化', anchor: 'panel-timing', dataKey: 'fundIndex', render: 'renderTiming' },
     { title: '投资者结构', anchor: 'panel-investor', dataKey: 'investor', render: 'renderInvestor' },
+    { title: 'A股指标散点图', href: 'superhorizon/index.html', dataKey: null, render: 'superhorizonSvg' },
     { title: '个股走势图', anchor: 'panel-chart', dataKey: null, render: 'chartSvg' }
   ];
 
@@ -69,6 +70,24 @@
       '<text x="275" y="248" font-size="10" fill="#b0b4bc" text-anchor="middle">任意个股 / ETF</text>' +
       '<text x="480" y="248" font-size="10" fill="#b0b4bc" text-anchor="end">今</text>' +
       '</svg>';
+  }
+
+  /** 指标散点图：静态示意图（横轴相关性 / 纵轴时滞） */
+  function superhorizonSvg(host) {
+    const dots = [[150,70,'#5AAEF3'],[210,92,'#5AAEF3'],[300,78,'#5AAEF3'],[380,110,'#5AAEF3'],
+                  [170,150,'#E65A56'],[240,166,'#E65A56'],[330,148,'#E65A56'],[410,162,'#E65A56'],
+                  [220,210,'#888888'],[300,224,'#888888'],[390,205,'#888888']];
+    let svg = '<svg viewBox="0 0 560 280" style="width:100%;height:100%;display:block">' +
+      '<rect width="560" height="280" fill="#fff"/>' +
+      '<rect x="120" y="40" width="400" height="80" fill="rgba(90,174,243,.10)"/>' +
+      '<rect x="120" y="120" width="400" height="70" fill="rgba(230,90,86,.07)"/>' +
+      '<rect x="120" y="190" width="400" height="50" fill="rgba(136,136,136,.05)"/>' +
+      '<line x1="120" y1="185" x2="520" y2="185" stroke="#BBBBBB" stroke-dasharray="6 4" stroke-width="1"/>';
+    dots.forEach(([x,y,c]) => { svg += '<circle cx="'+x+'" cy="'+y+'" r="4.5" fill="'+c+'"/>'; });
+    svg += '<text x="120" y="262" font-size="10" fill="#B0B4BC">相关性 →</text>' +
+      '<text x="520" y="262" font-size="10" fill="#B0B4BC" text-anchor="end">29 个指标</text>' +
+      '</svg>';
+    host.innerHTML = svg;
   }
 
   /** 三种「合适」：静态示意图，无数据 → 内联 SVG 线稿缩略（储蓄阶梯 / 牛熊波浪 / 恐贪表盘） */
@@ -112,7 +131,7 @@
     CARDS.forEach((c) => {
       const a = document.createElement('a');
       a.className = 'sm-card';
-      a.href = 'index.html#' + c.anchor;
+      a.href = c.href || ('index.html#' + c.anchor);
       a.title = c.title;
 
       const head = document.createElement('div');
@@ -167,6 +186,10 @@
         try {
           if (c.render === 'chartSvg') {
             chartSvg(body);
+            return;
+          }
+          if (c.render === 'superhorizonSvg') {
+            superhorizonSvg(body);
             return;
           }
           if (c.render === 'threeClocksSvg') {
