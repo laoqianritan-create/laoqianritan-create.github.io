@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-18",
+  "updated": "2026-11-19",
   "label": "Nasdaq 100 Intrayear Max Drawdown vs. Full-Year Return (1986+)",
   "source": "ndx_daily.json (^NDX daily)",
   "ticker": "^NDX",
@@ -7,7 +7,7 @@
     "year_range": "1985-2026",
     "n_years": 42,
     "avg_dd": -0.1958,
-    "avg_tr": 0.18,
+    "avg_tr": 0.1801,
     "positive_years": 35,
     "positive_years_pct": 83.3
   },
@@ -425,10 +425,10 @@
     {
       "year": 2026,
       "dd": -0.1471,
-      "tr": 0.0694,
+      "tr": 0.0739,
       "trough_date": "2026-11-05",
-      "year_end_close": 27001.78,
-      "year_end_date": "2026-11-17",
+      "year_end_close": 27116.26,
+      "year_end_date": "2026-11-18",
       "ongoing": true,
       "ath": 23
     }
