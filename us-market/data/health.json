@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19 02:07:09",
+  "generated_at": "2026-11-19 10:47:32",
   "today": "2026-11-19",
   "overall": "warn",
   "stale_count": 2,
@@ -7,32 +7,32 @@
     {
       "file": "sp500_price.json",
       "label": "标普 500 日线",
-      "updated": "2026-11-17",
-      "days_old": 2,
+      "updated": "2026-11-18",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-17"
+        "series": "2026-11-18"
       }
     },
     {
       "file": "sp500_century.json",
       "label": "标普 500 月线百年",
-      "updated": "2026-11-17",
-      "days_old": 2,
+      "updated": "2026-11-18",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-17"
+        "series": "2026-11-18"
       }
     },
     {
       "file": "sp500_pe.json",
       "label": "席勒市盈率",
-      "updated": "2026-11-17",
-      "days_old": 2,
+      "updated": "2026-11-18",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "pe": "2026-11-17",
-        "cape": "2026-11-17"
+        "pe": "2026-11-18",
+        "cape": "2026-11-18"
       }
     },
     {
@@ -45,18 +45,18 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-11-16",
-      "days_old": 3,
-      "status": "recent",
+      "updated": "2026-11-18",
+      "days_old": 1,
+      "status": "fresh",
       "series_end": {
-        "series": "2026-11-16"
+        "series": "2026-11-18"
       }
     },
     {
       "file": "sp500_annual_returns_long.json",
       "label": "标普 500 年回报",
-      "updated": "2026-11-18",
-      "days_old": 1,
+      "updated": "2026-11-19",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
         "series": "2026-12-31"
@@ -65,18 +65,18 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "复合增速路径",
-      "updated": "2026-11-18T09:43:45",
-      "days_old": 1,
+      "updated": "2026-11-19T10:45:44",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-17"
+        "series": "2026-11-18"
       }
     },
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
-      "updated": "2026-11-18T09:43:45",
-      "days_old": 1,
+      "updated": "2026-11-19T10:45:44",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -92,55 +92,55 @@
     {
       "file": "buffett.json",
       "label": "巴菲特指标",
-      "updated": "2026-11-17",
-      "days_old": 2,
+      "updated": "2026-11-18",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-17"
+        "series": "2026-11-18"
       }
     },
     {
       "file": "aiae.json",
       "label": "AIAE 仓位",
-      "updated": "2026-11-18",
-      "days_old": 1,
+      "updated": "2026-11-19",
+      "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ndx_daily.json",
       "label": "纳指 100 日线",
-      "updated": "2026-11-18",
-      "days_old": 1,
+      "updated": "2026-11-19",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-17"
+        "series": "2026-11-18"
       }
     },
     {
       "file": "nasdaq100_panels.json",
       "label": "纳指 100 成分股",
-      "updated": "2026-11-17",
-      "days_old": 2,
+      "updated": "2026-11-18",
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "nasdaq_composite.json",
       "label": "纳指综指月线",
-      "updated": "2026-11-18",
-      "days_old": 1,
+      "updated": "2026-11-19",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-17"
+        "series": "2026-11-18"
       }
     },
     {
       "file": "dow_jones_century.json",
       "label": "道指百年",
-      "updated": "2026-11-17",
-      "days_old": 2,
+      "updated": "2026-11-18",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-17"
+        "series": "2026-11-18"
       }
     },
     {
@@ -151,8 +151,8 @@
       "status": "stale",
       "ici_details": {
         "last_fetch_failure": {
-          "failed_at": "2026-11-18T18:07:08+00:00",
-          "error": "HTTP Error 403: Forbidden",
+          "failed_at": "2026-11-19T02:45:57+00:00",
+          "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>",
           "source_url": "https://www.ici.org/research/stats/combined_flows",
           "last_successful_fetch": "2026-11-18T17:55:55+00:00"
         },
@@ -179,7 +179,7 @@
         "fetch_age_days": 0,
         "status": "STALE",
         "problems": [
-          "last fetch failed at 2026-11-18T18:07:08+00:00: HTTP Error 403: Forbidden"
+          "last fetch failed at 2026-11-19T02:45:57+00:00: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
         ]
       },
       "series_end": {
@@ -191,39 +191,39 @@
     {
       "file": "ici_mmf.json",
       "label": "ICI 货币基金蓄水池",
-      "updated": "2026-11-18",
-      "days_old": 1,
+      "updated": "2026-11-19",
+      "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ici_active_index.json",
       "label": "ICI 主动 vs 指数",
-      "updated": "2026-11-18",
-      "days_old": 1,
+      "updated": "2026-11-19",
+      "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ownership.json",
       "label": "美股所有权结构（Fed Z.1）",
-      "updated": "2026-11-18",
-      "days_old": 1,
+      "updated": "2026-11-19",
+      "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "cnn_fear_greed.json",
       "label": "CNN 恐惧贪婪指数",
-      "updated": "2026-11-18T09:44:32+08:00",
-      "days_old": 1,
+      "updated": "2026-11-19T10:46:32+08:00",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "history": "2026-11-17"
+        "history": "2026-11-18"
       }
     },
     {
       "file": "aaii_sentiment.json",
       "label": "AAII 个人投资者情绪",
-      "updated": "2026-11-18T09:44:52+08:00",
-      "days_old": 1,
+      "updated": "2026-11-19T10:46:50+08:00",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
         "series": "2026-11-12"
@@ -232,8 +232,8 @@
     {
       "file": "naaim_exposure.json",
       "label": "NAAIM 暴露指数",
-      "updated": "2026-11-18T09:44:52+08:00",
-      "days_old": 1,
+      "updated": "2026-11-19T10:46:50+08:00",
+      "days_old": 0,
       "status": "stale",
       "series_end": {
         "series": "2026-07-29"
@@ -241,7 +241,7 @@
       "lagging_series": {
         "series": {
           "end": "2026-07-29",
-          "lag_days": 112
+          "lag_days": 113
         }
       }
     },
