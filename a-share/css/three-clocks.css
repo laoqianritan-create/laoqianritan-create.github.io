@@ -1,0 +1,64 @@
+/* ═══ 看板：普通人投资的三种「合适」（panel-three-clocks · 2026-11-19）═══
+   静态示意图：三栏 SVG 线稿 + 悬停/点击黄色便利贴。所有样式限定在 #panel-three-clocks 内。 */
+#panel-three-clocks { --tc-txt:#1F1E1C; --tc-mut:rgba(31,30,28,.60); --tc-grid:rgba(31,30,28,.16); --tc-hero:#F5572F; --tc-note:#FFE57A; }
+#panel-three-clocks .tc-clocks { display:grid; grid-template-columns:repeat(3,1fr); position:relative; }
+#panel-three-clocks .tc-col { position:relative; padding:6px 14px 4px; cursor:pointer; border-radius:12px; transition:background .25s; }
+#panel-three-clocks .tc-col + .tc-col::before { content:""; position:absolute; left:0; top:20px; bottom:20px; border-left:2px dashed var(--tc-grid); }
+#panel-three-clocks .tc-col:hover, #panel-three-clocks .tc-col.open { background:rgba(31,30,28,.025); }
+#panel-three-clocks .tc-head { display:flex; gap:10px; align-items:center; min-height:52px; }
+#panel-three-clocks .tc-head svg { flex:0 0 40px; width:40px; height:40px; }
+#panel-three-clocks .tc-title { font-size:17px; font-weight:700; line-height:1.3; color:var(--tc-txt); }
+#panel-three-clocks .tc-desc { font-size:12.5px; color:var(--tc-mut); margin-top:2px; line-height:1.4; }
+#panel-three-clocks .tc-chart { display:block; width:100%; height:auto; margin-top:4px; }
+#panel-three-clocks .tc-foot { display:flex; align-items:center; gap:14px; padding:10px 14px 2px; border-top:2px dashed var(--tc-grid); margin:6px 8px 0; }
+#panel-three-clocks .tc-foot svg { flex:0 0 78px; height:52px; }
+#panel-three-clocks .tc-foot-text { font-size:16px; color:var(--tc-txt); line-height:1.5; }
+#panel-three-clocks .tc-foot-text b { color:var(--tc-hero); font-weight:700; }
+#panel-three-clocks .tc-src { text-align:right; font-size:11px; letter-spacing:.06em; color:rgba(31,30,28,.32); padding:6px 14px 0; }
+
+/* 黄色便利贴 */
+#panel-three-clocks .tc-sticky { position:absolute; left:50%; top:78px; width:90%; z-index:5;
+  background:var(--tc-note); color:#2B2A24; padding:24px 20px 18px 22px; border-radius:3px 3px 14px 3px;
+  font-size:15.5px; line-height:1.7; text-align:left;
+  box-shadow:0 1px 1px rgba(0,0,0,.08), 0 14px 26px -8px rgba(70,55,0,.35);
+  opacity:0; pointer-events:none; --tc-rot:-2.4deg; transform:translate(-50%,14px) rotate(var(--tc-rot));
+  transition:opacity .22s ease, transform .28s cubic-bezier(.2,.7,.3,1); }
+#panel-three-clocks .tc-col:nth-child(2) .tc-sticky { --tc-rot:1.8deg; }
+#panel-three-clocks .tc-col:nth-child(3) .tc-sticky { --tc-rot:-1.6deg; }
+#panel-three-clocks .tc-sticky::after { content:""; position:absolute; right:0; bottom:0; width:24px; height:24px;
+  background:linear-gradient(135deg, rgba(0,0,0,0) 50%, rgba(150,120,20,.22) 50%); border-radius:0 0 14px 0; }
+#panel-three-clocks .tc-sticky h4 { font-size:17.5px; font-weight:700; margin:0 0 6px; line-height:1.4; letter-spacing:.01em; }
+#panel-three-clocks .tc-sticky p { margin:0; }
+#panel-three-clocks .tc-sticky p + p { margin-top:5px; }
+#panel-three-clocks .tc-clip { position:absolute; left:4px; top:-32px; width:32px; height:78px; transform:rotate(-16deg); overflow:visible; }
+@media (hover:hover) {
+  #panel-three-clocks .tc-col:hover .tc-sticky { opacity:1; transform:translate(-50%,0) rotate(var(--tc-rot)); }
+}
+#panel-three-clocks .tc-col.open .tc-sticky { opacity:1; transform:translate(-50%,0) rotate(var(--tc-rot)); }
+
+/* mono-tokens 入场动画（含 reduced-motion 降级） */
+#panel-three-clocks .pop { transform-box:fill-box; transform-origin:center; animation:tcPop .5s cubic-bezier(.2,.7,.3,1.3) both; }
+@keyframes tcPop { from { transform:scale(0); } to { transform:none; } }
+#panel-three-clocks .fade { animation:tcFade .9s ease both; }
+@keyframes tcFade { from { opacity:0; } }
+#panel-three-clocks .draw { stroke-dasharray:1; stroke-dashoffset:1; animation:tcDraw 1s cubic-bezier(.4,0,.2,1) both; }
+@keyframes tcDraw { to { stroke-dashoffset:0; } }
+@media (prefers-reduced-motion:reduce) {
+  #panel-three-clocks .pop, #panel-three-clocks .fade { animation:none; }
+  #panel-three-clocks .draw { animation:none; stroke-dasharray:none; stroke-dashoffset:0; }
+  #panel-three-clocks .tc-sticky { transition:none; }
+}
+html.tc-still #panel-three-clocks .pop, html.tc-still #panel-three-clocks .fade { animation:none !important; }
+html.tc-still #panel-three-clocks .draw { animation:none !important; stroke-dasharray:none !important; stroke-dashoffset:0 !important; }
+html.tc-still #panel-three-clocks .tc-sticky { transition:none !important; }
+
+/* 手机：三栏竖排，便利贴点击弹出（不做横向滚动） */
+@media (max-width: 768px) {
+  #panel-three-clocks .panel-body { overflow-x:visible; }
+  #panel-three-clocks .tc-clocks { grid-template-columns:1fr; }
+  #panel-three-clocks .tc-col { padding:8px 4px 6px; }
+  #panel-three-clocks .tc-col + .tc-col::before { left:8px; right:8px; top:0; bottom:auto; border-left:0; border-top:2px dashed var(--tc-grid); }
+  #panel-three-clocks .tc-sticky { top:70px; width:92%; font-size:15px; }
+  #panel-three-clocks .tc-foot { margin:6px 0 0; padding:10px 4px 2px; }
+  #panel-three-clocks .tc-foot-text { font-size:15px; }
+}

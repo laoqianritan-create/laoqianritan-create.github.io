@@ -29,6 +29,7 @@
 
   // 卡片定义：标题 + 主页面锚点 + 迷你渲染函数名（顺序与 index.html 一致）
   const CARDS = [
+    { title: '普通人投资的三种「合适」', anchor: 'panel-three-clocks', dataKey: null, render: 'threeClocksSvg' },
     { title: '申万一级行业年度涨跌幅 · 长期 CAGR', anchor: 'panel-heatmap', dataKey: 'heatmap', render: 'renderHeatmap' },
     { title: '行业买入体验模拟器', anchor: 'panel-buy-sim', dataKey: 'heatmap', render: 'renderBuySim' },
     { title: '长期持有某个行业，体验就会变好吗？', anchor: 'panel-hold-win', dataKey: 'heatmap', render: 'renderHoldWin' },
@@ -67,6 +68,38 @@
       '<text x="80" y="248" font-size="10" fill="#b0b4bc">2005</text>' +
       '<text x="275" y="248" font-size="10" fill="#b0b4bc" text-anchor="middle">任意个股 / ETF</text>' +
       '<text x="480" y="248" font-size="10" fill="#b0b4bc" text-anchor="end">今</text>' +
+      '</svg>';
+  }
+
+  /** 三种「合适」：静态示意图，无数据 → 内联 SVG 线稿缩略（储蓄阶梯 / 牛熊波浪 / 恐贪表盘） */
+  function threeClocksSvg(host) {
+    let stairs = 'M30 230', x = 30, y = 230;
+    for (let i = 0; i < 12; i++) { y -= 10; stairs += ` L${x} ${y}`; x += 11; stairs += ` L${x} ${y}`; }
+    let wave = '';
+    for (let i = 0; i <= 60; i++) {
+      const t = i / 60, v = Math.sin(2 * Math.PI * (t * 2.2 + 0.08));
+      const yy = 150 - (v > 0 ? v * v * 70 : -Math.pow(-v, 0.6) * 38);
+      wave += (i ? ' L' : 'M') + (200 + t * 160).toFixed(1) + ' ' + yy.toFixed(1);
+    }
+    let ticks = '';
+    for (let k = 0; k < 24; k++) {
+      const a = Math.PI + (k + 0.5) / 24 * Math.PI, c = Math.cos(a), s = Math.sin(a);
+      ticks += `<line x1="${(465 + 52 * c).toFixed(1)}" y1="${(200 + 52 * s).toFixed(1)}" x2="${(465 + 64 * c).toFixed(1)}" y2="${(200 + 64 * s).toFixed(1)}" stroke="${k < 12 ? '#8F8E86' : '#22211F'}" stroke-width="2" stroke-linecap="round"/>`;
+    }
+    host.innerHTML =
+      '<svg viewBox="0 0 560 280" style="width:100%;height:100%;display:block">' +
+      '<rect width="560" height="280" fill="#fff"/>' +
+      '<line x1="186" y1="50" x2="186" y2="250" stroke="#e5e5e5" stroke-dasharray="5 5"/>' +
+      '<line x1="380" y1="50" x2="380" y2="250" stroke="#e5e5e5" stroke-dasharray="5 5"/>' +
+      `<path d="${stairs}" fill="none" stroke="#22211F" stroke-width="2.5" stroke-linejoin="round"/>` +
+      '<line x1="162" y1="240" x2="162" y2="80" stroke="#F5572F" stroke-width="3" stroke-linecap="round"/>' +
+      '<path d="M162 80 L186 88 L162 96 Z" fill="#F5572F"/>' +
+      '<line x1="196" y1="150" x2="366" y2="150" stroke="#C0BFB7" stroke-dasharray="5 5"/>' +
+      `<path d="${wave}" fill="none" stroke="#22211F" stroke-width="2.5" stroke-linejoin="round"/>` +
+      ticks +
+      '<line x1="465" y1="200" x2="498" y2="166" stroke="#F5572F" stroke-width="4" stroke-linecap="round"/>' +
+      '<circle cx="465" cy="200" r="6" fill="#fff" stroke="#22211F" stroke-width="2"/>' +
+      '<text x="280" y="40" font-size="13" fill="#9a9a9a" text-anchor="middle">储蓄 · 周期 · 心理承受力</text>' +
       '</svg>';
   }
 
@@ -134,6 +167,10 @@
         try {
           if (c.render === 'chartSvg') {
             chartSvg(body);
+            return;
+          }
+          if (c.render === 'threeClocksSvg') {
+            threeClocksSvg(body);
             return;
           }
           const fn = SM && SM[c.render];
