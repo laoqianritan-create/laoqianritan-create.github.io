@@ -30,6 +30,7 @@
   // 卡片定义：标题 + 主页面锚点 + 迷你渲染函数名（顺序与 index.html 一致）
   const CARDS = [
     { title: '普通人投资的三种「合适」', anchor: 'panel-three-clocks', dataKey: null, render: 'threeClocksSvg' },
+    { title: '三顶的顺序：两种剧本', anchor: 'panel-three-peaks', dataKey: null, render: 'threePeaksSvg' },
     { title: '指标地图', anchor: 'panel-superhorizon', dataKey: null, render: 'superhorizonSvg' },
     { title: '申万一级行业年度涨跌幅 · 长期 CAGR', anchor: 'panel-heatmap', dataKey: 'heatmap', render: 'renderHeatmap' },
     { title: '行业买入体验模拟器', anchor: 'panel-buy-sim', dataKey: 'heatmap', render: 'renderBuySim' },
@@ -122,6 +123,63 @@
       '</svg>';
   }
 
+  /** 三顶顺序：静态双面板缩略图（A 型估值先顶 / B 型业绩先顶） */
+  function threePeaksSvg(host) {
+    const A = {
+      val: [[20,200],[45,193],[65,180],[80,155],[95,120],[102,90],[105,55],[110,70],[120,95],[140,120],[170,145],[200,165],[235,170],[270,172]],
+      growth: [[20,212],[45,208],[70,196],[95,180],[125,145],[150,105],[160,75],[165,55],[170,68],[185,75],[205,120],[230,165],[255,190],[270,198]],
+      price: [[20,205],[45,196],[65,185],[80,175],[105,165],[130,155],[155,145],[180,128],[205,105],[225,80],[232,65],[240,55],[255,85],[270,110]]
+    };
+    const B = {
+      growth: [[290,205],[310,198],[325,185],[340,155],[350,105],[352,75],[355,55],[360,65],[370,70],[390,110],[415,155],[440,185],[470,198],[505,205],[540,210]],
+      val: [[290,195],[315,185],[340,175],[365,160],[390,140],[415,115],[435,80],[440,65],[445,55],[450,62],[460,70],[480,100],[505,135],[530,155],[540,160]],
+      price: [[290,200],[315,190],[340,180],[365,165],[390,145],[415,115],[435,80],[440,65],[445,55],[450,62],[460,85],[480,115],[505,145],[530,160],[540,165]]
+    };
+    const miniPath = (pts) => {
+      let d = `M${pts[0][0]} ${pts[0][1]}`;
+      for (let i = 0; i < pts.length - 1; i++) {
+        const p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
+        const cp1x = p1[0] + (p2[0] - p0[0]) / 6;
+        const cp1y = p1[1] + (p2[1] - p0[1]) / 6;
+        const cp2x = p2[0] - (p3[0] - p1[0]) / 6;
+        const cp2y = p2[1] - (p3[1] - p1[1]) / 6;
+        d += ` C${cp1x} ${cp1y} ${cp2x} ${cp2y} ${p2[0]} ${p2[1]}`;
+      }
+      return d;
+    };
+    const line = (pts, color) =>
+      `<path d="${miniPath(pts)}" fill="none" stroke="${color}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>`;
+    const peak = (x, y, type, ring) => {
+      if (ring) return `<circle cx="${x}" cy="${y}" r="7" fill="none" stroke="#5AAEF3" stroke-width="2"/>`;
+      if (type === 'val') return `<path d="M${x} ${y - 5} L${x + 5} ${y} L${x} ${y + 5} L${x - 5} ${y} Z" fill="#333333"/>`;
+      if (type === 'growth') return `<rect x="${x - 4}" y="${y - 4}" width="8" height="8" fill="#E65A56"/>`;
+      return `<circle cx="${x}" cy="${y}" r="4.5" fill="#5AAEF3"/>`;
+    };
+    host.innerHTML =
+      '<svg viewBox="0 0 560 280" style="width:100%;height:100%;display:block">' +
+      '<rect width="560" height="280" fill="#fff"/>' +
+      '<line x1="280" y1="18" x2="280" y2="242" stroke="#E8E8E8" stroke-dasharray="4 4"/>' +
+      '<text x="20" y="24" font-size="10.5" font-weight="700" fill="#1A1A1A">A 型 · 估值先顶 <tspan font-weight="400" fill="#999999">55%</tspan></text>' +
+      '<text x="290" y="24" font-size="10.5" font-weight="700" fill="#1A1A1A">B 型 · 业绩先顶 <tspan font-weight="400" fill="#999999">45%</tspan></text>' +
+      line(A.growth, '#E65A56') + line(A.val, '#333333') + line(A.price, '#5AAEF3') +
+      line(B.growth, '#E65A56') + line(B.val, '#333333') + line(B.price, '#5AAEF3') +
+      peak(105, 55, 'val') + peak(165, 55, 'growth') + peak(240, 55, 'price') +
+      peak(355, 55, 'growth') + peak(445, 55, 'val') + peak(445, 55, 'price', true) +
+      '<text x="105" y="48" font-size="8" font-weight="700" fill="#333333" text-anchor="middle">V</text>' +
+      '<text x="165" y="48" font-size="8" font-weight="700" fill="#E65A56" text-anchor="middle">G</text>' +
+      '<text x="240" y="48" font-size="8" font-weight="700" fill="#5AAEF3" text-anchor="middle">P</text>' +
+      '<text x="355" y="48" font-size="8" font-weight="700" fill="#E65A56" text-anchor="middle">G</text>' +
+      '<text x="445" y="47" font-size="8" font-weight="700" fill="#333333" text-anchor="middle">V≈P</text>' +
+      '<line x1="20" y1="257" x2="38" y2="257" stroke="#333333" stroke-width="2"/>' +
+      '<text x="43" y="261" font-size="9" fill="#777777">估值</text>' +
+      '<line x1="110" y1="257" x2="128" y2="257" stroke="#5AAEF3" stroke-width="2"/>' +
+      '<text x="133" y="261" font-size="9" fill="#777777">股价</text>' +
+      '<line x1="200" y1="257" x2="218" y2="257" stroke="#E65A56" stroke-width="2"/>' +
+      '<text x="223" y="261" font-size="9" fill="#777777">增速</text>' +
+      '<text x="540" y="261" font-size="8" fill="#AAAAAA" text-anchor="end">峰值 = 100</text>' +
+      '</svg>';
+  }
+
   function buildGrid() {
     const grid = document.getElementById('smGrid');
     if (!grid) return;
@@ -194,6 +252,10 @@
           }
           if (c.render === 'threeClocksSvg') {
             threeClocksSvg(body);
+            return;
+          }
+          if (c.render === 'threePeaksSvg') {
+            threePeaksSvg(body);
             return;
           }
           const fn = SM && SM[c.render];

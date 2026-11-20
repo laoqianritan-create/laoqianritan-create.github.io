@@ -1,0 +1,30 @@
+/* ═══ 看板：三顶的顺序：两种剧本（panel-three-peaks · 2026-11-20）═══
+   双面板静态示意图：左 A 型（估值先顶），右 B 型（业绩先顶）。
+   三条曲线：估值黑、股价蓝、增速红；所有样式限定在 #panel-three-peaks 内。 */
+#panel-three-peaks .tp-body { padding: 2px 0 0; }
+#panel-three-peaks .tp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+#panel-three-peaks .tp-col { position: relative; min-width: 0; }
+#panel-three-peaks .tp-col + .tp-col::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 18px;
+  bottom: 18px;
+  border-left: 1px dashed #E8E8E8;
+}
+#panel-three-peaks .tp-svg { display: block; width: 100%; height: auto; }
+
+/* 手机 / 窄屏：两面板竖排，图保持最小可读宽度，横向滚动 */
+@media (max-width: 900px) {
+  #panel-three-peaks .tp-grid { grid-template-columns: 1fr; gap: 18px; }
+  #panel-three-peaks .tp-col + .tp-col::before {
+    left: 8px;
+    right: 8px;
+    top: -9px;
+    bottom: auto;
+    border-left: 0;
+    border-top: 1px dashed #E8E8E8;
+  }
+  #panel-three-peaks .tp-body { overflow-x: auto; }
+  #panel-three-peaks .tp-svg { min-width: 660px; }
+}

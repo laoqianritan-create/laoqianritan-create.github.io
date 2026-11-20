@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>A股看板 · 老钱日日谈</title>
-  <meta name="description" content="A股看板（老钱日日谈）：申万行业年度涨跌幅热力图、宽基指数估值分位、宽基指数全收益净值、行业交易热度、全市场成交与换手、股债性价比、华证六因子、A股恐贪指数、市场趋势温度、指标散点图等 19 个市场监测看板，每交易日 19:00 自动更新。">
+  <meta name="description" content="A股看板（老钱日日谈）：申万行业年度涨跌幅热力图、宽基指数估值分位、宽基指数全收益净值、行业交易热度、全市场成交与换手、股债性价比、华证六因子、A股恐贪指数、市场趋势温度、指标散点图等 A 股市场监测看板，每交易日 19:00 自动更新。">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="180x180" href="favicon-180.png">
   <meta property="og:type" content="website">
   <meta property="og:title" content="A股看板 · 老钱日日谈">
-  <meta property="og:description" content="19 个 A 股市场监测看板：行业热力图、宽基估值与净值、指标散点图、恐贪指数等，每交易日 19:00 自动更新。">
+  <meta property="og:description" content="A 股市场监测看板：行业热力图、宽基估值与净值、指标散点图、恐贪指数等，每交易日 19:00 自动更新。">
   <meta property="og:image" content="https://ashare.laoqianriritan.com/og-card.png">
   <meta property="og:url" content="https://ashare.laoqianriritan.com/">
   <link rel="canonical" href="https://ashare.laoqianriritan.com/">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261120112425">
-  <link rel="stylesheet" href="css/three-clocks.css?v=20261120112425">
+  <link rel="stylesheet" href="css/style.css?v=20261120124229">
+  <link rel="stylesheet" href="css/three-clocks.css?v=20261120124229">
+  <link rel="stylesheet" href="css/three-peaks.css?v=20261120124229">
 </head>
 <body>
 
@@ -27,6 +28,7 @@
     <nav class="site-nav" aria-label="面板导航">
       <a class="nav-summary" href="summary.html" title="全部看板缩略图汇总"><svg viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg><span>汇总</span></a>
       <a href="#panel-three-clocks">三种合适</a>
+      <a href="#panel-three-peaks">三顶顺序</a>
       <a href="#panel-heatmap">行业热力图</a>
       <a href="#panel-buy-sim">买入体验</a>
       <a href="#panel-hold-win">持有窗口</a>
@@ -89,6 +91,30 @@
     </details>
   </section>
 
+
+
+<!-- ═══════════ 面板：三顶的顺序：两种剧本（静态示意图 · 无实时数据 · 2026-11-20）═══════════ -->
+  <section class="panel" id="panel-three-peaks">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title">三顶的顺序：两种剧本</h2>
+        <p class="panel-desc">463 只个股 · 1,037 个价格顶 · 2010–2026 · 滞后取中位数</p>
+      </div>
+      <div class="panel-actions">
+        <button class="btn-download tp-export" type="button" aria-label="下载高清图" title="下载高清图"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
+      </div>
+    </div>
+    <div class="panel-body tp-body"></div>
+    <details class="panel-notes">
+      <summary>看板说明</summary>
+      <ul>
+        <li>样本：463 只非金融 A 股、1,037 个价格顶；只有 31.1% 的价格顶能找到清晰的业绩顶，66.3% 找不到，2.6% 见顶时业绩仍在加速。</li>
+        <li>A 型（约 55%）：估值顶→增速顶约 11 个月，增速顶→股价顶约 11 个月；B 型（约 45%）：增速顶→估值顶≈股价顶约 11 个月。</li>
+        <li>曲线为示意图，纵轴各自峰值=100，横轴不按真实月份等比例；估值黑、股价蓝、增速红。估值口径为 PE_TTM；周期股 PE 会失真，PB 更贴近股价顶。</li>
+        <li>数据来自理杏仁与 Finance Data Hub。</li>
+      </ul>
+    </details>
+  </section>
 
 
 <!-- ═══════════ 看板：指标地图（嵌入独立页 · 2026-11-20）═══════════ -->
@@ -643,11 +669,12 @@
 
 
 
-<script defer src="js/all.js?v=20261120112425"></script>
-<script defer src="js/three-clocks.js?v=20261120112425"></script>
-<script defer src="js/panel-share.js?v=20261120112425"></script>
-<script defer src="js/buy-sim.js?v=20261120112425"></script>
-<!-- <script defer src="js/cashflow.js?v=20261120112425"></script> -->
+<script defer src="js/all.js?v=20261120124229"></script>
+<script defer src="js/three-clocks.js?v=20261120124229"></script>
+<script defer src="js/three-peaks.js?v=20261120124229"></script>
+<script defer src="js/panel-share.js?v=20261120124229"></script>
+<script defer src="js/buy-sim.js?v=20261120124229"></script>
+<!-- <script defer src="js/cashflow.js?v=20261120124229"></script> -->
 
 </body>
 </html>
