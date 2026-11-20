@@ -186,7 +186,7 @@
 
   window.IV_render = function (data) {
     const payload = data || {};
-    const items = payload.items || payload;  // JSON 为 { asOf, items } 包装时解包
+    const items = Array.isArray(payload) ? payload : (Array.isArray(payload.items) ? payload.items : []);
     const asOf = payload.asOf || '';
     const wrap = document.getElementById('panelValuationBody');
     if (!wrap) return;
@@ -194,7 +194,20 @@
     const canvas = document.createElement('canvas');
     canvas.id = 'indexValuation';
     wrap.appendChild(canvas);
-    draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf });
+    const paint = (arr, dt) => {
+      draw(canvas, arr, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: dt || asOf });
+      // 首屏偶尔在面板高度尚未稳定时绘制，canvas 高度会是 0；补一次重绘兜底
+      if (!canvas.height) {
+        setTimeout(async () => {
+          try {
+            const fresh = await window.AK.fetchJSON('data/index_valuation.json?retry=' + Date.now());
+            const arr2 = Array.isArray(fresh) ? fresh : (fresh.items || []);
+            if (arr2.length) draw(canvas, arr2, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: fresh.asOf || asOf });
+          } catch (e) {}
+        }, 200);
+      }
+    };
+    if (items.length) paint(items, asOf);
 
     let rafId = null;
     window.addEventListener('resize', () => {
