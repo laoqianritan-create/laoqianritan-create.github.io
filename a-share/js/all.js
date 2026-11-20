@@ -1719,7 +1719,7 @@
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
     });
 
     window.AK.bindExportButtons({
@@ -2401,7 +2401,7 @@
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
     });
 
     window.AK.bindExportButtons({
@@ -2799,7 +2799,7 @@
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
     });
 
     window.AK.bindExportButtons({
@@ -3056,7 +3056,7 @@
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
     });
 
     window.AK.bindExportButtons({
@@ -3336,7 +3336,7 @@
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
     });
 
     window.AK.bindExportButtons({
@@ -4097,7 +4097,7 @@
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
     });
 
     window.AK.bindExportButtons({
@@ -4270,7 +4270,7 @@
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
     });
 
     window.AK.bindExportButtons({
@@ -4870,7 +4870,7 @@
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
     });
 
     window.AK.bindExportButtons({
@@ -5333,7 +5333,7 @@
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf }));
+      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
     });
 
     window.AK.bindExportButtons({
