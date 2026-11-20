@@ -199,7 +199,7 @@
     let rafId = null;
     window.addEventListener('resize', () => {
       if (rafId) cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 }));
+      rafId = requestAnimationFrame(() => draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf }));
     });
 
     window.AK.bindExportButtons({
