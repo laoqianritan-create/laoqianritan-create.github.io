@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-19",
+  "updated": "2026-11-20",
   "source": "ICI Weekly Money Market Fund Assets + FRED MMMFFAQ027S",
   "source_url": "https://www.ici.org/weekly-money-market-mutual-fund-assets",
   "xls_url": "https://www.ici.org/mm_summary_data_2026.xls",
@@ -266,6 +266,15 @@
       "gov_treasury_repo": 2449730.0,
       "gov_treasury_agency": 4139896.0,
       "prime": 1230492.0
+    },
+    {
+      "date": "2026-11-18",
+      "total": 7976441.0,
+      "tax_exempt": 161662.0,
+      "government": 6588393.0,
+      "gov_treasury_repo": 2484290.0,
+      "gov_treasury_agency": 4104103.0,
+      "prime": 1226386.0
     }
   ],
   "quarterly": [
