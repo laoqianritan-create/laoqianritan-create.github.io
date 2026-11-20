@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20 15:11:55",
+  "generated_at": "2026-11-20 21:52:01",
   "today": "2026-11-20",
   "overall": "warn",
   "stale_count": 1,
@@ -65,7 +65,7 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "复合增速路径",
-      "updated": "2026-11-20T15:10:35",
+      "updated": "2026-11-20T21:50:37",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -75,7 +75,7 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
-      "updated": "2026-11-20T15:10:35",
+      "updated": "2026-11-20T21:50:37",
       "days_old": 0,
       "status": "fresh"
     },
@@ -147,29 +147,29 @@
       "file": "ici_flows.json",
       "label": "ICI 基金资金流（周+月）",
       "updated": "2026-11-11",
-      "days_old": 8,
+      "days_old": 9,
       "status": "fresh",
       "ici_details": {
         "last_fetch_failure": null,
-        "as_of": "2026-11-19",
+        "as_of": "2026-11-20",
         "timezone": "America/Los_Angeles",
         "series": {
           "weekly": {
             "end": "2026-11-11",
-            "age_days": 8,
+            "age_days": 9,
             "max_age_days": 21,
-            "last_successful_fetch": "2026-11-20T07:10:45+00:00",
+            "last_successful_fetch": "2026-11-20T13:50:52+00:00",
             "status": "OK"
           },
           "monthly": {
             "end": "2026-09-30",
-            "age_days": 50,
+            "age_days": 51,
             "max_age_days": 90,
-            "last_successful_fetch": "2026-11-20T07:10:45+00:00",
+            "last_successful_fetch": "2026-11-20T13:50:52+00:00",
             "status": "OK"
           }
         },
-        "last_successful_fetch": "2026-11-20T07:10:45+00:00",
+        "last_successful_fetch": "2026-11-20T13:50:52+00:00",
         "source_release_date": null,
         "fetch_age_days": 0,
         "status": "OK",
@@ -179,7 +179,7 @@
         "weekly": "2026-11-11",
         "monthly": "2026-09-30"
       },
-      "last_successful_fetch": "2026-11-20T07:10:45+00:00"
+      "last_successful_fetch": "2026-11-20T13:50:52+00:00"
     },
     {
       "file": "ici_mmf.json",
@@ -209,7 +209,7 @@
         "max_quarter_end_age_days": 165,
         "source_release_date": "2026-09-11",
         "next_release_date": "2026-12-10",
-        "last_successful_fetch": "2026-11-20T07:10:58+00:00",
+        "last_successful_fetch": "2026-11-20T13:51:04+00:00",
         "fetch_age_days": 0,
         "last_fetch_failure": null,
         "status": "OK",
@@ -218,12 +218,12 @@
       "series_end": {
         "ownership_pct": "2026-06-30"
       },
-      "last_successful_fetch": "2026-11-20T07:10:58+00:00"
+      "last_successful_fetch": "2026-11-20T13:51:04+00:00"
     },
     {
       "file": "cnn_fear_greed.json",
       "label": "CNN 恐惧贪婪指数",
-      "updated": "2026-11-20T15:11:00+08:00",
+      "updated": "2026-11-20T21:51:06+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -233,7 +233,7 @@
     {
       "file": "aaii_sentiment.json",
       "label": "AAII 个人投资者情绪",
-      "updated": "2026-11-20T15:11:15+08:00",
+      "updated": "2026-11-20T21:51:20+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -243,7 +243,7 @@
     {
       "file": "naaim_exposure.json",
       "label": "NAAIM 暴露指数",
-      "updated": "2026-11-20T15:11:15+08:00",
+      "updated": "2026-11-20T21:51:20+08:00",
       "days_old": 0,
       "status": "stale",
       "series_end": {

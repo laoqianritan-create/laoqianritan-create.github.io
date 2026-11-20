@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20T15:11:00+08:00",
+  "updated": "2026-11-20T21:51:06+08:00",
   "latest_date": "2026-11-20",
   "caliber": "CNN Fear & Greed Index, official methodology: seven equal-weighted z-scored components mapped linearly to 0—100. 0—24 Extreme Fear / 25—44 Fear / 45—55 Neutral / 56—75 Greed / 76—100 Extreme Greed. Daily; the data date is updated after the US close. History starts 2011-01-03; before 2021-02-01 CNN used the legacy methodology (integer scores, old weights), so comparisons across that date should note the regime change — after it, the current seven-component equal-weighted method applies.",
   "source": {
@@ -16,14 +16,14 @@
     "pre_break_days": 2536,
     "post_break_days": 1459,
     "archive_rows": 3972,
-    "prior_local_rows": 3994,
+    "prior_local_rows": 3995,
     "official_window": 251,
     "gapfilled": 0
   },
   "current": {
-    "score": 18.59,
+    "score": 15.27,
     "rating": "Extreme Fear",
-    "timestamp": "2026-11-20T01:00:00+00:00"
+    "timestamp": "2026-11-20T13:32:23+00:00"
   },
   "compare": {
     "previous_close": 18.68,
@@ -31,7 +31,7 @@
     "previous_1_month": 28.74,
     "previous_1_year": 5.17
   },
-  "percentile": 9.8,
+  "percentile": 7.3,
   "percentile_scope": "3995 trading days since 2011-01-03",
   "history": [
     {
@@ -20023,12 +20023,12 @@
     },
     {
       "date": "2026-11-19",
-      "score": 18.59,
+      "score": 15.27,
       "rating": "Extreme Fear"
     },
     {
       "date": "2026-11-20",
-      "score": 18.59,
+      "score": 15.27,
       "rating": "Extreme Fear"
     }
   ],
@@ -21046,7 +21046,7 @@
       "key": "stock_price_strength",
       "short": "Stock price strength",
       "name": "52-week highs vs. number of new highs",
-      "score": 31.2,
+      "score": 29.2,
       "rating": "Fear",
       "history": [
         {
@@ -22048,6 +22048,10 @@
         {
           "date": "2026-11-19",
           "raw": -5.5
+        },
+        {
+          "date": "2026-11-20",
+          "raw": -6.09
         }
       ]
     },
@@ -22055,8 +22059,8 @@
       "key": "stock_price_breadth",
       "short": "Market breadth",
       "name": "McClellan Volume Summation Index",
-      "score": 30.8,
-      "rating": "Fear",
+      "score": 19.6,
+      "rating": "Extreme Fear",
       "history": [
         {
           "date": "2025-11-20",
@@ -23057,6 +23061,10 @@
         {
           "date": "2026-11-19",
           "raw": 433.43
+        },
+        {
+          "date": "2026-11-20",
+          "raw": 329.06
         }
       ]
     },
@@ -24066,6 +24074,10 @@
         {
           "date": "2026-11-19",
           "raw": 0.9
+        },
+        {
+          "date": "2026-11-20",
+          "raw": 0.91
         }
       ]
     },
@@ -24073,7 +24085,7 @@
       "key": "market_volatility_vix",
       "short": "VIX volatility",
       "name": "VIX deviation from its 50-day moving average",
-      "score": 13.33,
+      "score": 3.29,
       "rating": "Extreme Fear",
       "history": [
         {
@@ -25075,6 +25087,10 @@
         {
           "date": "2026-11-19",
           "raw": 28.44
+        },
+        {
+          "date": "2026-11-20",
+          "raw": 31.03
         }
       ]
     },
