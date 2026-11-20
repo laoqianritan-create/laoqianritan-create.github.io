@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>超视距作战 · 领先—同步—滞后指标地图（预览）</title>
+<title>指标地图 · A股看板</title>
 <style>
   @font-face { font-family: 'NotoSansSC'; src: url('../fonts/NotoSansSC-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
   @font-face { font-family: 'NotoSansSC'; src: url('../fonts/NotoSansSC-Light.woff2') format('woff2'); font-weight: 300; font-display: swap; }
@@ -96,7 +96,7 @@
 <body>
 <div class="wrap">
   <p class="kicker">A 股看板 · 老钱日日谈</p>
-  <h1>A股指标散点图</h1>
+  <h1>指标地图</h1>
 
   <div class="board">
     <div class="chart-card">
@@ -136,7 +136,8 @@
   const D = window.SH_DATA;
   if(!D){ document.getElementById('detail').innerHTML = '<div class="empty">没有找到数据文件 data.js。</div>'; return; }
 
-  const CANVAS_W = 1200, CANVAS_H = 820;
+  const EMBED = new URLSearchParams(location.search).get('embed')==='1';
+  const CANVAS_W = EMBED ? 980 : 1200, CANVAS_H = EMBED ? 820 : 820;
   const PAD = {l:70, r:44, t:26, b:52};
   const cvs = document.getElementById('scatter');
   const ctx = cvs.getContext('2d');
@@ -561,7 +562,7 @@
     tc.font = "300 13px 'NotoSansSC', sans-serif"; tc.fillStyle = '#9A9A92'; tc.textAlign='right'; tc.textBaseline='bottom';
     tc.fillText('ashare.laoqianriritan.com', tmp.width-24, tmp.height-16);
     const a = document.createElement('a');
-    a.download = 'A股指标散点图.png';
+    a.download = '指标地图.png';
     a.href = tmp.toDataURL('image/png');
     a.click();
   });

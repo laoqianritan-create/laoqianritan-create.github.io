@@ -14,8 +14,8 @@
   <meta property="og:url" content="https://ashare.laoqianriritan.com/">
   <link rel="canonical" href="https://ashare.laoqianriritan.com/">
   <link rel="preload" href="fonts/Alibaba-PuHuiTi-Heavy.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261120024706">
-  <link rel="stylesheet" href="css/three-clocks.css?v=20261120024706">
+  <link rel="stylesheet" href="css/style.css?v=20261120104251">
+  <link rel="stylesheet" href="css/three-clocks.css?v=20261120104251">
 </head>
 <body>
 
@@ -45,7 +45,7 @@
       <a href="#panel-fund">神奇择时</a>
       <a href="#panel-timing">偏股滚动</a>
       <a href="#panel-investor">投资者结构</a>
-      <a href="superhorizon/index.html">指标散点图</a>
+      <a href="#panel-superhorizon">指标地图</a>
       <a href="#panel-chart">个股走势</a>
       <!-- <a href="#panel-cashflow">自由现金流（预览）</a> -->
     </nav>
@@ -89,6 +89,40 @@
     </details>
   </section>
 
+
+
+<!-- ═══════════ 看板：指标地图（嵌入独立页 · 2026-11-20）═══════════ -->
+  <section class="panel" id="panel-superhorizon">
+    <div class="panel-head">
+      <div class="panel-head-text">
+        <h2 class="panel-title">指标地图</h2>
+        <p class="panel-desc">宏观与流动性指标 × 中证全指同比 · 横轴相关性、纵轴领先/滞后月数，点选看走势</p>
+      </div>
+      <div class="panel-actions"></div>
+    </div>
+    <div class="panel-body">
+      <iframe id="superhorizonFrame" src="superhorizon/embed.html?embed=1" title="指标地图" loading="lazy" style="width:100%;height:700px;border:0;display:block;background:#fff;border-radius:8px"></iframe>
+    </div>
+    <details class="panel-notes">
+      <summary>看板说明</summary>
+      <ul>
+        <li>每个圆点是一个指标：横轴是与中证全指同比的最大相关系数（ρ），纵轴是最优时滞，正数为领先、0 为同步、负数为滞后。</li>
+        <li>圆点越大、带外圈 = 前后两段同号且样本外仍然有效；单个小点 = 后续段失效，只当背景音。</li>
+        <li>点击任一圆点或指标名，右侧给出该指标标准化走势与中证全指同比的缩略图、最新值和回测结论。</li>
+      </ul>
+    </details>
+  </section>
+  <script>
+  (function(){
+    var f=document.getElementById('superhorizonFrame');
+    window.addEventListener('message', function(e){
+      if(e.data && e.data.type==='superhorizon-height' && e.data.h){
+        var h=Math.max(480, Math.min(1500, e.data.h));
+        if(Math.abs(parseInt(f.style.height)-h)>4) f.style.height=h+'px';
+      }
+    });
+  })();
+  </script>
 
 <!-- ═══════════ 面板 1：申万行业年度涨跌幅热力图 ═══════════ -->
   <section class="panel" id="panel-heatmap">
@@ -610,11 +644,11 @@
 
 
 
-<script defer src="js/all.js?v=20261120024706"></script>
-<script defer src="js/three-clocks.js?v=20261120024706"></script>
-<script defer src="js/panel-share.js?v=20261120024706"></script>
-<script defer src="js/buy-sim.js?v=20261120024706"></script>
-<!-- <script defer src="js/cashflow.js?v=20261120024706"></script> -->
+<script defer src="js/all.js?v=20261120104251"></script>
+<script defer src="js/three-clocks.js?v=20261120104251"></script>
+<script defer src="js/panel-share.js?v=20261120104251"></script>
+<script defer src="js/buy-sim.js?v=20261120104251"></script>
+<!-- <script defer src="js/cashflow.js?v=20261120104251"></script> -->
 
 </body>
 </html>

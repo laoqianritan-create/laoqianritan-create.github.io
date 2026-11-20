@@ -30,6 +30,7 @@
   // 卡片定义：标题 + 主页面锚点 + 迷你渲染函数名（顺序与 index.html 一致）
   const CARDS = [
     { title: '普通人投资的三种「合适」', anchor: 'panel-three-clocks', dataKey: null, render: 'threeClocksSvg' },
+    { title: '指标地图', anchor: 'panel-superhorizon', dataKey: null, render: 'superhorizonSvg' },
     { title: '申万一级行业年度涨跌幅 · 长期 CAGR', anchor: 'panel-heatmap', dataKey: 'heatmap', render: 'renderHeatmap' },
     { title: '行业买入体验模拟器', anchor: 'panel-buy-sim', dataKey: 'heatmap', render: 'renderBuySim' },
     { title: '长期持有某个行业，体验就会变好吗？', anchor: 'panel-hold-win', dataKey: 'heatmap', render: 'renderHoldWin' },
@@ -48,7 +49,6 @@
     { title: '神奇择时指标', anchor: 'panel-fund', dataKey: 'fundIndex', render: 'renderFundIndex' },
     { title: '偏股混合基金滚动年化', anchor: 'panel-timing', dataKey: 'fundIndex', render: 'renderTiming' },
     { title: '投资者结构', anchor: 'panel-investor', dataKey: 'investor', render: 'renderInvestor' },
-    { title: 'A股指标散点图', href: 'superhorizon/index.html', dataKey: null, render: 'superhorizonSvg' },
     { title: '个股走势图', anchor: 'panel-chart', dataKey: null, render: 'chartSvg' }
   ];
 
