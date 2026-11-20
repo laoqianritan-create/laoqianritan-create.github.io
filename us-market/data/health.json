@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-19 16:33:36",
+  "generated_at": "2026-11-19 22:43:21",
   "today": "2026-11-19",
   "overall": "warn",
-  "stale_count": 2,
+  "stale_count": 3,
   "sources": [
     {
       "file": "sp500_price.json",
@@ -65,7 +65,7 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "复合增速路径",
-      "updated": "2026-11-19T10:45:44",
+      "updated": "2026-11-19T22:41:59",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -75,7 +75,7 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
-      "updated": "2026-11-19T10:45:44",
+      "updated": "2026-11-19T22:41:59",
       "days_old": 0,
       "status": "fresh"
     },
@@ -113,7 +113,7 @@
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-18"
+        "series": "2026-11-19"
       }
     },
     {
@@ -130,7 +130,7 @@
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-18"
+        "series": "2026-11-19"
       }
     },
     {
@@ -151,7 +151,7 @@
       "status": "stale",
       "ici_details": {
         "last_fetch_failure": {
-          "failed_at": "2026-11-19T03:09:46+00:00",
+          "failed_at": "2026-11-19T14:42:15+00:00",
           "error": "HTTP Error 403: Forbidden",
           "source_url": "https://www.ici.org/research/stats/combined_flows",
           "last_successful_fetch": "2026-11-18T17:55:55+00:00"
@@ -179,7 +179,7 @@
         "fetch_age_days": 1,
         "status": "STALE",
         "problems": [
-          "last fetch failed at 2026-11-19T03:09:46+00:00: HTTP Error 403: Forbidden"
+          "last fetch failed at 2026-11-19T14:42:15+00:00: HTTP Error 403: Forbidden"
         ]
       },
       "series_end": {
@@ -207,7 +207,7 @@
       "label": "美股所有权结构（Fed Z.1）",
       "updated": "2026-06-30",
       "days_old": 142,
-      "status": "fresh",
+      "status": "stale",
       "ownership_details": {
         "as_of": "2026-11-19",
         "latest_quarter": "2026Q2",
@@ -218,9 +218,17 @@
         "next_release_date": "2026-12-10",
         "last_successful_fetch": "2026-11-19T08:32:24+00:00",
         "fetch_age_days": 0,
-        "last_fetch_failure": null,
-        "status": "OK",
-        "problems": []
+        "last_fetch_failure": {
+          "failed_at": "2026-11-19T14:42:25+00:00",
+          "error": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>",
+          "source_url": "https://www.federalreserve.gov/releases/z1/",
+          "last_successful_fetch": "2026-11-19T08:32:24+00:00",
+          "data_latest_quarter": "2026Q2"
+        },
+        "status": "STALE",
+        "problems": [
+          "最近一次抓取失败 2026-11-19T14:42:25+00:00: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1082)>"
+        ]
       },
       "series_end": {
         "ownership_pct": "2026-06-30"
@@ -230,17 +238,17 @@
     {
       "file": "cnn_fear_greed.json",
       "label": "CNN 恐惧贪婪指数",
-      "updated": "2026-11-19T10:46:32+08:00",
+      "updated": "2026-11-19T22:42:27+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "history": "2026-11-18"
+        "history": "2026-11-19"
       }
     },
     {
       "file": "aaii_sentiment.json",
       "label": "AAII 个人投资者情绪",
-      "updated": "2026-11-19T10:46:50+08:00",
+      "updated": "2026-11-19T22:42:41+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -250,7 +258,7 @@
     {
       "file": "naaim_exposure.json",
       "label": "NAAIM 暴露指数",
-      "updated": "2026-11-19T10:46:50+08:00",
+      "updated": "2026-11-19T22:42:41+08:00",
       "days_old": 0,
       "status": "stale",
       "series_end": {
