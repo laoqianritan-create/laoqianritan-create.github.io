@@ -77,7 +77,7 @@
 
   function applyAsOf(panelId, d) {
     if (!d || typeof d !== 'object') return;
-    const v = d.generated || d.asOf || d.updated;
+    const v = d.asOf || d.generated || d.updated;
     if (!v) return;
     const el = document.querySelector('#' + panelId + ' .panel-asof');
     if (el) el.textContent = '数据截至 ' + String(v).slice(0, 10);

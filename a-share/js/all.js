@@ -4379,7 +4379,7 @@
   function applyAsOf(panelId, d) {
     if (!d || typeof d !== 'object') return;
     // 2026-11-19：dataAsOf = 数据真实截止日（目前仅行业热度提供），优先于生成时间，避免「生成日新、数据旧」被掩盖
-    const v = d.dataAsOf || d.generated || d.asOf || d.updated;
+    const v = d.dataAsOf || d.asOf || d.generated || d.updated;
     if (!v) return;
     const el = document.querySelector('#' + panelId + ' .panel-asof');
     if (el) el.textContent = '数据截至 ' + String(v).slice(0, 10);
@@ -4900,6 +4900,13 @@
     return `rgb(${c.map((v) => Math.round(v)).join(',')})`;
   }
 
+  function fmtPct(p) {
+    if (p === null || p === undefined || isNaN(p)) return '—';
+    if (p < 0.5) return '<1%';
+    if (p > 99.5) return '>99%';
+    return p.toFixed(0) + '%';
+  }
+
   function draw(canvas, data, opts) {
     const exportMode = opts.exportMode;
     const scale = opts.scale || 1;
@@ -4947,7 +4954,7 @@
     ctx.fillStyle = '#AAAAAA';
     ctx.font = (exportMode ? 20 : 10) + 'px NotoSansSC, sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillText('历史分位 %', plotRight + (exportMode ? 16 : 10), plotBottom + (exportMode ? 16 : 8));
+    ctx.fillText('近10年分位 %', plotRight + (exportMode ? 16 : 10), plotBottom + (exportMode ? 16 : 8));
 
     // 行
     items.forEach((it, i) => {
@@ -4956,7 +4963,8 @@
       ctx.fillStyle = '#333333';
       ctx.font = (exportMode ? 30 : 14) + 'px NotoSansSC, sans-serif';
       ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
-      ctx.fillText(it.name, plotLeft - (exportMode ? 24 : 14), cy);
+      const shortFlag = (it.flag_codes || []).indexOf('short') >= 0;
+      ctx.fillText(it.name + (shortFlag ? '*' : ''), plotLeft - (exportMode ? 24 : 14), cy);
 
       // 背景轨（历史范围）
       ctx.fillStyle = '#F4F4F4';
@@ -4984,12 +4992,25 @@
       ctx.lineTo(xv, cy + barH / 2 + (exportMode ? 6 : 3));
       ctx.stroke();
 
-      // 数值标签：PE + 分位
-      ctx.fillStyle = '#1A1A1A';
+      // 数值标签：PE + 分位；靠右放不下就移到刻度左侧，并垫白底防止压在深红轨道上
       ctx.font = (exportMode ? 30 : 14) + 'px NotoSansSC, sans-serif';
       ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-      const label = `${it.pe_ttm.toFixed(1)}x · ${it.pct.toFixed(0)}%`;
-      ctx.fillText(label, xv + (exportMode ? 18 : 10), cy);
+      const basis = it.basis_label || '历史';
+      const label = `${it.pe_ttm.toFixed(1)}x · ${basis} ${fmtPct(it.pct)}`;
+      const tw = ctx.measureText(label).width;
+      const lx0 = xv + (exportMode ? 18 : 10);
+      let lx = lx0;
+      let overflow = false;
+      if (lx0 + tw > plotRight - 6) {
+        lx = Math.max(plotLeft + 6, xv - (exportMode ? 18 : 10) - tw);
+        overflow = true;
+      }
+      if (overflow) {
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(lx - (exportMode ? 6 : 4), cy - (exportMode ? 16 : 9), tw + (exportMode ? 12 : 8), exportMode ? 32 : 18);
+      }
+      ctx.fillStyle = '#1A1A1A';
+      ctx.fillText(label, lx, cy);
 
       // 历史最小/最大参考线（可选：分位锚点）
       if (it.n_hist > 0) {
@@ -5011,8 +5032,8 @@
       ctx.fillStyle = '#888888';
       ctx.font = '300 24px NotoSansSC, sans-serif';
       ctx.textAlign = 'left';
-      const latest = items[0] ? items[0].hist[items[0].hist.length - 1][0] : '';
-      ctx.fillText(`数据截至 ${latest} · 乐咕乐股 legulegu PE-TTM 月度`, padL, H - 40);
+      const latest = opts.dataAsOf || (items[0] && items[0].pe_date) || (items[0] ? items[0].hist[items[0].hist.length - 1][0] : '');
+      ctx.fillText(`数据截至 ${latest} · 单一口径 PE-TTM 月度（乐咕 / Wind）`, padL, H - 40);
       ctx.textAlign = 'right';
     }
 
@@ -5031,9 +5052,12 @@
           const it = D.items[i];
           window.AK.tooltip.show(ev,
             `<b>${it.name}</b><br>` +
-            `PE-TTM：<b>${it.pe_ttm.toFixed(2)}x</b><br>` +
-            `历史分位：<b>${it.pct.toFixed(1)}%</b><br>` +
-            `样本：${it.n_hist} 期（${it.hist[0][0]} — ${it.hist[it.hist.length - 1][0]}）`);
+            `PE-TTM：<b>${it.pe_ttm.toFixed(2)}x</b>（${it.pe_date || '—'}）<br>` +
+            `${it.basis_label || '历史'}分位：<b>${it.pct.toFixed(1)}%</b>` +
+            (it.pct_full !== undefined ? `　全历史：${it.pct_full.toFixed(1)}%` : '') + `<br>` +
+            `样本：${it.n_hist} 期（${it.sample_start || it.hist[0][0]} — ${it.sample_end || it.hist[it.hist.length - 1][0]}）<br>` +
+            `来源：${it.source || '—'}` +
+            (it.flags && it.flags.length ? `<br><span style="color:#B26A00">⚠ ${it.flags.join('；')}</span>` : ''));
         });
         canvas.addEventListener('mouseleave', () => window.AK.tooltip.hide());
       }
@@ -5041,14 +5065,16 @@
   }
 
   window.IV_render = function (data) {
-    data = (data && data.items) || data;  // JSON 为 { generated, items } 包装时解包
+    const payload = data || {};
+    const items = payload.items || payload;  // JSON 为 { asOf, items } 包装时解包
+    const asOf = payload.asOf || '';
     const wrap = document.getElementById('panelValuationBody');
     if (!wrap) return;
     wrap.innerHTML = '';
     const canvas = document.createElement('canvas');
     canvas.id = 'indexValuation';
     wrap.appendChild(canvas);
-    draw(canvas, data, { exportMode: false, scale: window.devicePixelRatio || 1 });
+    draw(canvas, items, { exportMode: false, scale: window.devicePixelRatio || 1, dataAsOf: asOf });
 
     let rafId = null;
     window.addEventListener('resize', () => {
@@ -5057,7 +5083,7 @@
     });
 
     window.AK.bindExportButtons({
-      indexValuation: (off) => draw(off, data, { exportMode: true, scale: 1 })
+      indexValuation: (off) => draw(off, items, { exportMode: true, scale: 1, dataAsOf: asOf })
     });
   };
 })();
