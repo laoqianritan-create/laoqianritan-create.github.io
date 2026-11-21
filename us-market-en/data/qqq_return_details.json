@@ -188,21 +188,21 @@
     },
     {
       "year": 2026,
-      "priceReturn": 5.0,
-      "dividendReturn": 0.36,
+      "priceReturn": -0.95,
+      "dividendReturn": 0.33,
       "buybackYield": 1.06,
-      "totalReturn": 5.36
+      "totalReturn": -0.62
     }
   ],
   "summary": {
     "startYear": 2000,
     "endYear": 2026,
     "years": 27,
-    "avgPriceReturn": 11.45,
+    "avgPriceReturn": 11.23,
     "avgDividendReturn": 0.75,
     "avgBuybackYield": 0.83,
-    "avgTotalReturn": 12.2,
-    "positiveTotalYears": 21,
+    "avgTotalReturn": 11.98,
+    "positiveTotalYears": 20,
     "bestYear": {
       "year": 2023,
       "priceReturn": 53.79,

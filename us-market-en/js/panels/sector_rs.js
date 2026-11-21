@@ -183,8 +183,8 @@ export function initSectorRsPanel(rsData, sectorsData) {
   };
 
   renderMetricStrip('sectorRsSummary', [
-    buildMetricCard('Strongest', `${top.zh} ${formatNumber(top.v, 1)}`, `Base June 2018 = 100 · as of ${top.last}`),
-    buildMetricCard('Weakest', `${bottom.zh} ${formatNumber(bottom.v, 1)}`, 'Below 100 = long-run laggard'),
+    buildMetricCard('Strongest', `${top.en || top.zh} ${formatNumber(top.v, 1)}`, `Base June 2018 = 100 · as of ${top.last}`),
+    buildMetricCard('Weakest', `${bottom.en || bottom.zh} ${formatNumber(bottom.v, 1)}`, 'Below 100 = long-run laggard'),
     buildMetricCard('Best 1Y', yoy[0] ? `${yoy[0].zh} ${formatNumber(yoy[0].chg * 100, 1)}%` : '—', 'Change in the RS index over the last 12 months'),
     buildMetricCard('Worst 1Y', yoy[yoy.length - 1] ? `${yoy[yoy.length - 1].zh} ${formatNumber(yoy[yoy.length - 1].chg * 100, 1)}%` : '—', 'Same caliber'),
     buildMetricCard('Caliber', '11 SPDR ETFs ÷ SPY', 'Total-return cumulative ratio ×100, weekly; the original uses LSEG sector indices ÷ S&P 500 from 1990'),

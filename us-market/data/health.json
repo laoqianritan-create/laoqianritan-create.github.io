@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-21 10:13:33",
+  "generated_at": "2026-11-21 21:52:16",
   "today": "2026-11-21",
-  "overall": "warn",
-  "stale_count": 1,
+  "overall": "healthy",
+  "stale_count": 0,
   "sources": [
     {
       "file": "sp500_price.json",
@@ -45,11 +45,11 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-11-19",
-      "days_old": 2,
+      "updated": "2026-11-20",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-19"
+        "series": "2026-11-20"
       }
     },
     {
@@ -65,7 +65,7 @@
     {
       "file": "sp500_cagr_paths.json",
       "label": "复合增速路径",
-      "updated": "2026-11-21T10:12:10",
+      "updated": "2026-11-21T21:50:56",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -75,7 +75,7 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
-      "updated": "2026-11-21T10:12:10",
+      "updated": "2026-11-21T21:50:56",
       "days_old": 0,
       "status": "fresh"
     },
@@ -92,11 +92,11 @@
     {
       "file": "buffett.json",
       "label": "巴菲特指标",
-      "updated": "2026-11-19",
-      "days_old": 2,
+      "updated": "2026-11-20",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-19"
+        "series": "2026-11-20"
       }
     },
     {
@@ -147,29 +147,29 @@
       "file": "ici_flows.json",
       "label": "ICI 基金资金流（周+月）",
       "updated": "2026-11-11",
-      "days_old": 9,
+      "days_old": 10,
       "status": "fresh",
       "ici_details": {
         "last_fetch_failure": null,
-        "as_of": "2026-11-20",
+        "as_of": "2026-11-21",
         "timezone": "America/Los_Angeles",
         "series": {
           "weekly": {
             "end": "2026-11-11",
-            "age_days": 9,
+            "age_days": 10,
             "max_age_days": 21,
-            "last_successful_fetch": "2026-11-21T02:12:23+00:00",
+            "last_successful_fetch": "2026-11-21T13:51:10+00:00",
             "status": "OK"
           },
           "monthly": {
             "end": "2026-09-30",
-            "age_days": 51,
+            "age_days": 52,
             "max_age_days": 90,
-            "last_successful_fetch": "2026-11-21T02:12:23+00:00",
+            "last_successful_fetch": "2026-11-21T13:51:10+00:00",
             "status": "OK"
           }
         },
-        "last_successful_fetch": "2026-11-21T02:12:23+00:00",
+        "last_successful_fetch": "2026-11-21T13:51:10+00:00",
         "source_release_date": null,
         "fetch_age_days": 0,
         "status": "OK",
@@ -179,7 +179,7 @@
         "weekly": "2026-11-11",
         "monthly": "2026-09-30"
       },
-      "last_successful_fetch": "2026-11-21T02:12:23+00:00"
+      "last_successful_fetch": "2026-11-21T13:51:10+00:00"
     },
     {
       "file": "ici_mmf.json",
@@ -209,7 +209,7 @@
         "max_quarter_end_age_days": 165,
         "source_release_date": "2026-09-11",
         "next_release_date": "2026-12-10",
-        "last_successful_fetch": "2026-11-21T02:12:35+00:00",
+        "last_successful_fetch": "2026-11-21T13:51:22+00:00",
         "fetch_age_days": 0,
         "last_fetch_failure": null,
         "status": "OK",
@@ -218,12 +218,12 @@
       "series_end": {
         "ownership_pct": "2026-06-30"
       },
-      "last_successful_fetch": "2026-11-21T02:12:35+00:00"
+      "last_successful_fetch": "2026-11-21T13:51:22+00:00"
     },
     {
       "file": "cnn_fear_greed.json",
       "label": "CNN 恐惧贪婪指数",
-      "updated": "2026-11-21T10:12:37+08:00",
+      "updated": "2026-11-21T21:51:25+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -233,7 +233,7 @@
     {
       "file": "aaii_sentiment.json",
       "label": "AAII 个人投资者情绪",
-      "updated": "2026-11-21T10:12:52+08:00",
+      "updated": "2026-11-21T21:51:38+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -243,17 +243,12 @@
     {
       "file": "naaim_exposure.json",
       "label": "NAAIM 暴露指数",
-      "updated": "2026-11-21T10:12:52+08:00",
+      "updated": "2026-11-21T21:51:38+08:00",
       "days_old": 0,
-      "status": "stale",
+      "status": "upstream_frozen",
+      "upstream_note": "NAAIM went subscription-only on 2026-08-01 and the public feed was retired; the series is frozen at 2026-07-29. Upstream froze, this is not a local fetch failure. Continuing the series would require a Professional Partner subscription (600 USD/year), not purchased.",
       "series_end": {
         "series": "2026-07-29"
-      },
-      "lagging_series": {
-        "series": {
-          "end": "2026-07-29",
-          "lag_days": 115
-        }
       }
     },
     {
