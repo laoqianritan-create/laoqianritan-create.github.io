@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "ticker": "^NDX",
   "drawdowns": [
     {
@@ -115,6 +115,20 @@
       "recovery_date": "2025-06-24"
     },
     {
+      "period": "2026: Oct 6 – Nov 20",
+      "peak_date": "2026-10-06",
+      "trough_date": "2026-11-20",
+      "days": 45,
+      "high": 31224.47,
+      "low": 25028.98,
+      "decline": -0.198,
+      "category": "policy_shift",
+      "cause": "",
+      "active": true,
+      "recovery_days": null,
+      "recovery_date": null
+    },
+    {
       "period": "1992: Feb 12 – Jun 26",
       "peak_date": "1992-02-12",
       "trough_date": "1992-06-26",
@@ -211,20 +225,6 @@
       "active": false,
       "recovery_days": 33,
       "recovery_date": "1997-05-05"
-    },
-    {
-      "period": "2026: Oct 6 – Nov 19",
-      "peak_date": "2026-10-06",
-      "trough_date": "2026-11-19",
-      "days": 44,
-      "high": 31224.47,
-      "low": 26517.05,
-      "decline": -0.151,
-      "category": "policy_shift",
-      "cause": "",
-      "active": true,
-      "recovery_days": null,
-      "recovery_date": null
     },
     {
       "period": "1996: Jun 5 – Jul 23",

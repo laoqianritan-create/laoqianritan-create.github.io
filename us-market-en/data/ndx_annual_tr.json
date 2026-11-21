@@ -1,12 +1,12 @@
 {
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "ticker": "^NDX",
   "source": "Year-end levels from ndx_daily.json (price-return basis, excluding dividends)",
   "latestYear": 2026,
-  "latestDate": "2026-11-19",
+  "latestDate": "2026-11-20",
   "latestIsYtd": true,
-  "average": 17.96,
-  "positiveYears": 34,
+  "average": 17.81,
+  "positiveYears": 33,
   "totalYears": 41,
   "withinAvgPlusMinus2": 4,
   "buckets": [
@@ -53,7 +53,8 @@
       "min": -10,
       "max": 0,
       "years": [
-        2018
+        2018,
+        2026
       ]
     },
     {
@@ -69,8 +70,7 @@
         2006,
         2011,
         2015,
-        2016,
-        2026
+        2016
       ]
     },
     {
@@ -302,7 +302,7 @@
     },
     {
       "year": 2026,
-      "value": 5.02
+      "value": -0.87
     }
   ]
 }
