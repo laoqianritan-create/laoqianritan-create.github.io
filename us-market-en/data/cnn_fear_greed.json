@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-21T21:51:25+08:00",
+  "updated": "2026-11-23T09:44:09+08:00",
   "latest_date": "2026-11-20",
   "caliber": "CNN Fear & Greed Index, official methodology: seven equal-weighted z-scored components mapped linearly to 0—100. 0—24 Extreme Fear / 25—44 Fear / 45—55 Neutral / 56—75 Greed / 76—100 Extreme Greed. Daily; the data date is updated after the US close. History starts 2011-01-03; before 2021-02-01 CNN used the legacy methodology (integer scores, old weights), so comparisons across that date should note the regime change — after it, the current seven-component equal-weighted method applies.",
   "source": {
@@ -17,7 +17,7 @@
     "post_break_days": 1459,
     "archive_rows": 3973,
     "prior_local_rows": 3995,
-    "official_window": 250,
+    "official_window": 249,
     "gapfilled": 0
   },
   "current": {
@@ -20041,10 +20041,6 @@
       "rating": "Extreme Fear",
       "history": [
         {
-          "date": "2025-11-21",
-          "raw": 6602.99
-        },
-        {
           "date": "2025-11-24",
           "raw": 6705.12
         },
@@ -21049,10 +21045,6 @@
       "score": 27.2,
       "rating": "Fear",
       "history": [
-        {
-          "date": "2025-11-21",
-          "raw": -0.67
-        },
         {
           "date": "2025-11-24",
           "raw": -0.86
@@ -22059,10 +22051,6 @@
       "rating": "Extreme Fear",
       "history": [
         {
-          "date": "2025-11-21",
-          "raw": 804.73
-        },
-        {
           "date": "2025-11-24",
           "raw": 794.36
         },
@@ -23067,10 +23055,6 @@
       "score": 2.0,
       "rating": "Extreme Fear",
       "history": [
-        {
-          "date": "2025-11-21",
-          "raw": 0.82
-        },
         {
           "date": "2025-11-24",
           "raw": 0.8
@@ -24077,10 +24061,6 @@
       "rating": "Extreme Fear",
       "history": [
         {
-          "date": "2025-11-21",
-          "raw": 23.43
-        },
-        {
           "date": "2025-11-24",
           "raw": 20.52
         },
@@ -25086,10 +25066,6 @@
       "rating": "Extreme Fear",
       "history": [
         {
-          "date": "2025-11-21",
-          "raw": 1.38
-        },
-        {
           "date": "2025-11-24",
           "raw": 1.39
         },
@@ -26094,10 +26070,6 @@
       "score": 0.8,
       "rating": "Extreme Fear",
       "history": [
-        {
-          "date": "2025-11-21",
-          "raw": -3.51
-        },
         {
           "date": "2025-11-24",
           "raw": -2.4
