@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24 09:45:17",
+  "generated_at": "2026-11-24 22:09:05",
   "today": "2026-11-24",
   "overall": "critical",
   "stale_count": 1,
@@ -147,23 +147,23 @@
       "file": "ici_flows.json",
       "label": "ICI 基金资金流（周+月）",
       "updated": "2026-11-11",
-      "days_old": 12,
+      "days_old": 13,
       "status": "fresh",
       "ici_details": {
         "last_fetch_failure": null,
-        "as_of": "2026-11-23",
+        "as_of": "2026-11-24",
         "timezone": "America/Los_Angeles",
         "series": {
           "weekly": {
             "end": "2026-11-11",
-            "age_days": 12,
+            "age_days": 13,
             "max_age_days": 21,
             "last_successful_fetch": "2026-11-24T01:44:03+00:00",
             "status": "OK"
           },
           "monthly": {
             "end": "2026-09-30",
-            "age_days": 54,
+            "age_days": 55,
             "max_age_days": 90,
             "last_successful_fetch": "2026-11-24T01:44:03+00:00",
             "status": "OK"
@@ -171,7 +171,7 @@
         },
         "last_successful_fetch": "2026-11-24T01:44:03+00:00",
         "source_release_date": null,
-        "fetch_age_days": 0,
+        "fetch_age_days": 1,
         "status": "OK",
         "problems": []
       },

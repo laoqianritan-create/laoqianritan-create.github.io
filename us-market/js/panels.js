@@ -140,7 +140,7 @@ const FILES = {
   cagrPaths:      'data/sp500_cagr_paths.json?v=9d2e0d0833',
   // Cross / NDX
   nasdaqComp:     'data/nasdaq_composite.json?v=0b7c34f008',
-  nasdaq100:      'data/nasdaq100_panels.json?v=51e2836372',
+  nasdaq100:      'data/nasdaq100_panels.json?v=73f0331014',
   dowCentury:     'data/dow_jones_century.json?v=1a7dc826e3',
   ndxAnnualLong:  'data/ndx_annual_returns_long.json?v=4b8826ef15',
   ndxAnnualTr:    'data/ndx_annual_tr.json?v=d5a725ae50',
@@ -152,7 +152,7 @@ const FILES = {
   ndxRolling5y:   'data/ndx_rolling5y.json?v=82beb37b91',
   ndxIntrayearDd: 'data/ndx_intrayear_dd.json?v=335ef855a5',
   ndxVxn:         'data/ndx_vxn.json?v=d6d6ff0b3a',
-  qqqDetails:     'data/qqq_return_details.json?v=487397092a',
+  qqqDetails:     'data/qqq_return_details.json?v=945fec5cde',
   equalWeight:    'data/sp500_equal_weight.json?v=e50f075592',
   ndxBreadth:     'data/ndx_breadth.json?v=aef2ceb487',
   // Style ETF
