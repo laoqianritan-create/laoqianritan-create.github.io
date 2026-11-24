@@ -1,24 +1,24 @@
 {
-  "generated_at": "2026-11-23 22:08:32",
-  "today": "2026-11-23",
-  "overall": "healthy",
-  "stale_count": 0,
+  "generated_at": "2026-11-24 09:38:28",
+  "today": "2026-11-24",
+  "overall": "critical",
+  "stale_count": 1,
   "sources": [
     {
       "file": "sp500_price.json",
       "label": "标普 500 日线",
-      "updated": "2026-11-20",
-      "days_old": 3,
-      "status": "recent",
+      "updated": "2026-11-23",
+      "days_old": 1,
+      "status": "fresh",
       "series_end": {
-        "series": "2026-11-20"
+        "series": "2026-11-23"
       }
     },
     {
       "file": "sp500_century.json",
       "label": "标普 500 月线百年",
       "updated": "2026-11-20",
-      "days_old": 3,
+      "days_old": 4,
       "status": "recent",
       "series_end": {
         "series": "2026-11-20"
@@ -28,7 +28,7 @@
       "file": "sp500_pe.json",
       "label": "席勒市盈率",
       "updated": "2026-11-20",
-      "days_old": 3,
+      "days_old": 4,
       "status": "recent",
       "series_end": {
         "pe": "2026-11-20",
@@ -39,15 +39,15 @@
       "file": "sp500_eps.json",
       "label": "标普 500 EPS",
       "updated": "2026-06-30",
-      "days_old": 146,
+      "days_old": 147,
       "status": "recent"
     },
     {
       "file": "sp500_vix.json",
       "label": "VIX",
       "updated": "2026-11-20",
-      "days_old": 3,
-      "status": "recent",
+      "days_old": 4,
+      "status": "dead",
       "series_end": {
         "series": "2026-11-20"
       }
@@ -56,7 +56,7 @@
       "file": "sp500_annual_returns_long.json",
       "label": "标普 500 年回报",
       "updated": "2026-11-23",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
         "series": "2026-12-31"
@@ -66,7 +66,7 @@
       "file": "sp500_cagr_paths.json",
       "label": "复合增速路径",
       "updated": "2026-11-23T09:43:42",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
         "series": "2026-11-20"
@@ -76,14 +76,14 @@
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
       "updated": "2026-11-23T09:43:42",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "us_asset_ladder.json",
       "label": "美元计价大类资产长期涨幅",
       "updated": "2026-08-28",
-      "days_old": 87,
+      "days_old": 88,
       "status": "recent",
       "series_end": {
         "series": "2026-08-28"
@@ -93,7 +93,7 @@
       "file": "buffett.json",
       "label": "巴菲特指标",
       "updated": "2026-11-20",
-      "days_old": 3,
+      "days_old": 4,
       "status": "recent",
       "series_end": {
         "series": "2026-11-20"
@@ -103,31 +103,31 @@
       "file": "aiae.json",
       "label": "AIAE 仓位",
       "updated": "2026-11-23",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ndx_daily.json",
       "label": "纳指 100 日线",
-      "updated": "2026-11-23",
+      "updated": "2026-11-24",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-20"
+        "series": "2026-11-23"
       }
     },
     {
       "file": "nasdaq100_panels.json",
       "label": "纳指 100 成分股",
-      "updated": "2026-11-20",
-      "days_old": 3,
-      "status": "recent"
+      "updated": "2026-11-23",
+      "days_old": 1,
+      "status": "fresh"
     },
     {
       "file": "nasdaq_composite.json",
       "label": "纳指综指月线",
       "updated": "2026-11-23",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
         "series": "2026-11-20"
@@ -137,7 +137,7 @@
       "file": "dow_jones_century.json",
       "label": "道指百年",
       "updated": "2026-11-20",
-      "days_old": 3,
+      "days_old": 4,
       "status": "recent",
       "series_end": {
         "series": "2026-11-20"
@@ -185,32 +185,32 @@
       "file": "ici_mmf.json",
       "label": "ICI 货币基金蓄水池",
       "updated": "2026-11-23",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ici_active_index.json",
       "label": "ICI 主动 vs 指数",
       "updated": "2026-11-23",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ownership.json",
       "label": "美股所有权结构（Fed Z.1）",
       "updated": "2026-06-30",
-      "days_old": 146,
+      "days_old": 147,
       "status": "fresh",
       "ownership_details": {
-        "as_of": "2026-11-23",
+        "as_of": "2026-11-24",
         "latest_quarter": "2026Q2",
         "quarter_end": "2026-06-30",
-        "quarter_end_age_days": 146,
+        "quarter_end_age_days": 147,
         "max_quarter_end_age_days": 165,
         "source_release_date": "2026-09-11",
         "next_release_date": "2026-12-10",
         "last_successful_fetch": "2026-11-23T01:44:07+00:00",
-        "fetch_age_days": 0,
+        "fetch_age_days": 1,
         "last_fetch_failure": null,
         "status": "OK",
         "problems": []
@@ -224,7 +224,7 @@
       "file": "cnn_fear_greed.json",
       "label": "CNN 恐惧贪婪指数",
       "updated": "2026-11-23T09:44:09+08:00",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
         "history": "2026-11-20"
@@ -234,7 +234,7 @@
       "file": "aaii_sentiment.json",
       "label": "AAII 个人投资者情绪",
       "updated": "2026-11-23T09:44:24+08:00",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
         "series": "2026-11-19"
@@ -244,7 +244,7 @@
       "file": "naaim_exposure.json",
       "label": "NAAIM 暴露指数",
       "updated": "2026-11-23T09:44:24+08:00",
-      "days_old": 0,
+      "days_old": 1,
       "status": "upstream_frozen",
       "upstream_note": "NAAIM went subscription-only on 2026-08-01 and the public feed was retired; the series is frozen at 2026-07-29. Upstream froze, this is not a local fetch failure. Continuing the series would require a Professional Partner subscription (600 USD/year), not purchased.",
       "series_end": {
@@ -255,7 +255,7 @@
       "file": "us_misery_index.json",
       "label": "美国痛苦指数",
       "updated": "2026-10-01",
-      "days_old": 53,
+      "days_old": 54,
       "status": "recent",
       "series_end": {
         "series": "2026-10-01"
