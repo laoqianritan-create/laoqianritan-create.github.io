@@ -2,11 +2,11 @@
   "series_id": "DFII10",
   "friendly": "real_10y",
   "source": "FRED",
-  "fetched": "2026-11-23",
-  "count": 5975,
+  "fetched": "2026-11-24",
+  "count": 5976,
   "latest": {
-    "date": "2026-11-19",
-    "value": 2.88
+    "date": "2026-11-20",
+    "value": 2.77
   },
   "data": [
     {
@@ -23908,6 +23908,10 @@
     {
       "date": "2026-11-19",
       "value": 2.88
+    },
+    {
+      "date": "2026-11-20",
+      "value": 2.77
     }
   ]
 }
