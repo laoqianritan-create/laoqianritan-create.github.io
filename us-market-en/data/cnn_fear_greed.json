@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-24T09:44:19+08:00",
-  "latest_date": "2026-11-23",
+  "updated": "2026-11-25T09:46:12+08:00",
+  "latest_date": "2026-11-24",
   "caliber": "CNN Fear & Greed Index, official methodology: seven equal-weighted z-scored components mapped linearly to 0—100. 0—24 Extreme Fear / 25—44 Fear / 45—55 Neutral / 56—75 Greed / 76—100 Extreme Greed. Daily; the data date is updated after the US close. History starts 2011-01-03; before 2021-02-01 CNN used the legacy methodology (integer scores, old weights), so comparisons across that date should note the regime change — after it, the current seven-component equal-weighted method applies.",
   "source": {
     "name": "CNN Business · Fear and Greed Index",
@@ -10,29 +10,29 @@
   },
   "coverage": {
     "start": "2011-01-03",
-    "end": "2026-11-23",
-    "days": 3996,
+    "end": "2026-11-24",
+    "days": 3997,
     "caliber_break": "2021-02-01",
     "pre_break_days": 2536,
-    "post_break_days": 1460,
-    "archive_rows": 3973,
-    "prior_local_rows": 3995,
+    "post_break_days": 1461,
+    "archive_rows": 3975,
+    "prior_local_rows": 3996,
     "official_window": 250,
     "gapfilled": 0
   },
   "current": {
-    "score": 16.97,
+    "score": 17.42,
     "rating": "Extreme Fear",
-    "timestamp": "2026-11-23T23:59:56+00:00"
+    "timestamp": "2026-11-24T23:59:52+00:00"
   },
   "compare": {
-    "previous_close": 9.67,
-    "previous_1_week": 31.07,
+    "previous_close": 16.97,
+    "previous_1_week": 25.95,
     "previous_1_month": 16.69,
-    "previous_1_year": 5.66
+    "previous_1_year": 13.69
   },
-  "percentile": 8.3,
-  "percentile_scope": "3996 trading days since 2011-01-03",
+  "percentile": 8.8,
+  "percentile_scope": "3997 trading days since 2011-01-03",
   "history": [
     {
       "date": "2011-01-03",
@@ -20033,7 +20033,12 @@
     },
     {
       "date": "2026-11-23",
-      "score": 16.97,
+      "score": 14.88,
+      "rating": "Extreme Fear"
+    },
+    {
+      "date": "2026-11-24",
+      "score": 17.42,
       "rating": "Extreme Fear"
     }
   ],
@@ -20042,13 +20047,9 @@
       "key": "market_momentum_sp500",
       "short": "Stock price momentum",
       "name": "S&P 500 deviation from its 125-day moving average",
-      "score": 3.2,
+      "score": 3.0,
       "rating": "Extreme Fear",
       "history": [
-        {
-          "date": "2025-11-24",
-          "raw": 6705.12
-        },
         {
           "date": "2025-11-25",
           "raw": 6765.88
@@ -21044,6 +21045,10 @@
         {
           "date": "2026-11-23",
           "raw": 7237.17
+        },
+        {
+          "date": "2026-11-24",
+          "raw": 7201.09
         }
       ]
     },
@@ -21054,10 +21059,6 @@
       "score": 28.4,
       "rating": "Fear",
       "history": [
-        {
-          "date": "2025-11-24",
-          "raw": -0.86
-        },
         {
           "date": "2025-11-25",
           "raw": -0.82
@@ -22053,6 +22054,10 @@
         {
           "date": "2026-11-23",
           "raw": -6.33
+        },
+        {
+          "date": "2026-11-24",
+          "raw": -6.41
         }
       ]
     },
@@ -22060,13 +22065,9 @@
       "key": "stock_price_breadth",
       "short": "Market breadth",
       "name": "McClellan Volume Summation Index",
-      "score": 17.0,
+      "score": 16.6,
       "rating": "Extreme Fear",
       "history": [
-        {
-          "date": "2025-11-24",
-          "raw": 794.36
-        },
         {
           "date": "2025-11-25",
           "raw": 815.47
@@ -23062,6 +23063,10 @@
         {
           "date": "2026-11-23",
           "raw": 288.02
+        },
+        {
+          "date": "2026-11-24",
+          "raw": 261.21
         }
       ]
     },
@@ -23069,13 +23074,9 @@
       "key": "put_call_options",
       "short": "Put/call ratio",
       "name": "Put/call volume ratio",
-      "score": 6.6,
+      "score": 8.8,
       "rating": "Extreme Fear",
       "history": [
-        {
-          "date": "2025-11-24",
-          "raw": 0.8
-        },
         {
           "date": "2025-11-25",
           "raw": 0.79
@@ -24071,6 +24072,10 @@
         {
           "date": "2026-11-23",
           "raw": 0.91
+        },
+        {
+          "date": "2026-11-24",
+          "raw": 0.9
         }
       ]
     },
@@ -24078,13 +24083,9 @@
       "key": "market_volatility_vix",
       "short": "VIX volatility",
       "name": "VIX deviation from its 50-day moving average",
-      "score": 38.96,
+      "score": 42.95,
       "rating": "Fear",
       "history": [
-        {
-          "date": "2025-11-24",
-          "raw": 20.52
-        },
         {
           "date": "2025-11-25",
           "raw": 18.56
@@ -25080,6 +25081,10 @@
         {
           "date": "2026-11-23",
           "raw": 26.62
+        },
+        {
+          "date": "2026-11-24",
+          "raw": 26.36
         }
       ]
     },
@@ -25087,13 +25092,9 @@
       "key": "junk_bond_demand",
       "short": "Junk bond demand",
       "name": "High-yield vs. Treasury spread",
-      "score": 18.2,
+      "score": 17.8,
       "rating": "Extreme Fear",
       "history": [
-        {
-          "date": "2025-11-24",
-          "raw": 1.39
-        },
         {
           "date": "2025-11-25",
           "raw": 1.39
@@ -26089,6 +26090,10 @@
         {
           "date": "2026-11-23",
           "raw": 1.27
+        },
+        {
+          "date": "2026-11-24",
+          "raw": 1.27
         }
       ]
     },
@@ -26096,13 +26101,9 @@
       "key": "safe_haven_demand",
       "short": "Safe-haven demand",
       "name": "Stock vs. Treasury yield spread",
-      "score": 6.4,
+      "score": 4.4,
       "rating": "Extreme Fear",
       "history": [
-        {
-          "date": "2025-11-24",
-          "raw": -2.4
-        },
         {
           "date": "2025-11-25",
           "raw": -2.45
@@ -27097,7 +27098,11 @@
         },
         {
           "date": "2026-11-23",
-          "raw": -6.75
+          "raw": -6.74
+        },
+        {
+          "date": "2026-11-24",
+          "raw": -7.79
         }
       ]
     }
