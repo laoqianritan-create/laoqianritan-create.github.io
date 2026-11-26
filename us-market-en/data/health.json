@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26 19:17:42",
+  "generated_at": "2026-11-26 21:52:21",
   "today": "2026-11-26",
   "overall": "healthy",
   "stale_count": 0,
@@ -45,11 +45,11 @@
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-11-24",
-      "days_old": 2,
+      "updated": "2026-11-25",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-24"
+        "series": "2026-11-25"
       }
     },
     {
@@ -75,7 +75,7 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "Bull markets since 1966",
-      "updated": "2026-11-26T09:45:54",
+      "updated": "2026-11-26T21:50:50",
       "days_old": 0,
       "status": "fresh"
     },
@@ -92,11 +92,11 @@
     {
       "file": "buffett.json",
       "label": "Buffett Indicator",
-      "updated": "2026-11-24",
-      "days_old": 2,
+      "updated": "2026-11-25",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-24"
+        "series": "2026-11-25"
       }
     },
     {
@@ -158,20 +158,20 @@
             "end": "2026-11-18",
             "age_days": 8,
             "max_age_days": 21,
-            "last_successful_fetch": "2026-11-26T01:46:11+00:00",
+            "last_successful_fetch": "2026-11-26T13:51:04+00:00",
             "status": "OK"
           },
           "monthly": {
             "end": "2026-09-30",
             "age_days": 57,
             "max_age_days": 90,
-            "last_successful_fetch": "2026-11-26T01:46:11+00:00",
+            "last_successful_fetch": "2026-11-26T13:51:04+00:00",
             "status": "OK"
           }
         },
-        "last_successful_fetch": "2026-11-26T01:46:11+00:00",
+        "last_successful_fetch": "2026-11-26T13:51:04+00:00",
         "source_release_date": null,
-        "fetch_age_days": 1,
+        "fetch_age_days": 0,
         "status": "OK",
         "problems": []
       },
@@ -179,7 +179,7 @@
         "weekly": "2026-11-18",
         "monthly": "2026-09-30"
       },
-      "last_successful_fetch": "2026-11-26T01:46:11+00:00"
+      "last_successful_fetch": "2026-11-26T13:51:04+00:00"
     },
     {
       "file": "ici_mmf.json",
@@ -209,7 +209,7 @@
         "max_quarter_end_age_days": 165,
         "source_release_date": "2026-09-11",
         "next_release_date": "2026-12-10",
-        "last_successful_fetch": "2026-11-26T01:46:29+00:00",
+        "last_successful_fetch": "2026-11-26T13:51:16+00:00",
         "fetch_age_days": 0,
         "last_fetch_failure": null,
         "status": "OK",
@@ -218,22 +218,22 @@
       "series_end": {
         "ownership_pct": "2026-06-30"
       },
-      "last_successful_fetch": "2026-11-26T01:46:29+00:00"
+      "last_successful_fetch": "2026-11-26T13:51:16+00:00"
     },
     {
       "file": "cnn_fear_greed.json",
       "label": "CNN Fear & Greed Index",
-      "updated": "2026-11-26T09:46:32+08:00",
+      "updated": "2026-11-26T21:51:18+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "history": "2026-11-25"
+        "history": "2026-11-26"
       }
     },
     {
       "file": "aaii_sentiment.json",
       "label": "AAII Individual Investor Sentiment",
-      "updated": "2026-11-26T09:46:52+08:00",
+      "updated": "2026-11-26T21:51:41+08:00",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
@@ -243,7 +243,7 @@
     {
       "file": "naaim_exposure.json",
       "label": "NAAIM Exposure Index",
-      "updated": "2026-11-26T09:46:52+08:00",
+      "updated": "2026-11-26T21:51:41+08:00",
       "days_old": 0,
       "status": "upstream_frozen",
       "upstream_note": "NAAIM went subscription-only on 2026-08-01 and the public feed was retired; the series is frozen at 2026-07-29. Upstream froze, this is not a local fetch failure. Continuing the series would require a Professional Partner subscription (600 USD/year), not purchased.",
