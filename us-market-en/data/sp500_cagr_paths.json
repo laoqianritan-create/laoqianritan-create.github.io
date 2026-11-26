@@ -1,17 +1,17 @@
 {
-  "updated": "2026-11-23T09:43:42",
-  "latest_date": "2026-11-20",
+  "updated": "2026-11-26T19:07:11",
+  "latest_date": "2026-11-25",
   "base_date": "1935-12-31",
   "latest": {
-    "date": "2026-11-20",
-    "price": 514.5488,
-    "tr": 11294.47,
+    "date": "2026-11-25",
+    "price": 534.831,
+    "tr": 11739.23,
     "dividend_yield": 1.08,
     "yield_asof": "2026-11-30"
   },
   "cagr": {
-    "price": 7.11,
-    "tr": 10.81,
+    "price": 7.16,
+    "tr": 10.86,
     "years": 90.9
   },
   "caliber": "Price index = local sp500_price month-end close ÷ Dec 1935 close (Dec 1935 = 1); total return = self-computed monthly dividend reinvestment using multpl/Shiller monthly dividend yields (TTM). Cross-checks: annual total returns 1988+ differ from ^SP500TR by 0.10–0.14pp on average, and 1936–2025 from Damodaran by 0.32pp. The gap vs the 17,194 shown on Yardeni/LSEG's chart is their proprietary caliber, not reproducible from public sources.",
@@ -30,6 +30,9 @@
       "url": "https://fred.stlouisfed.org/series/USREC"
     }
   },
+  "notes": [
+    "multpl was unreachable this run and no official yield cache younger than 45 days was on hand; the price leg in the same month was rolled forward with the last official dividend contribution; no yield was invented"
+  ],
   "series": [
     {
       "date": "1935-12-31",
@@ -5487,9 +5490,9 @@
       "t": 12376.78
     },
     {
-      "date": "2026-11-20",
-      "p": 514.5488,
-      "t": 11294.47
+      "date": "2026-11-25",
+      "p": 534.831,
+      "t": 11739.23
     }
   ]
 }

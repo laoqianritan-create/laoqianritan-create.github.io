@@ -137,7 +137,7 @@ const FILES = {
   hindenburg:     'data/sp500_hindenburg.json?v=ca659b42bd',
   intrayearDd:    'data/sp500_intrayear_dd.json?v=1043b97c68',
   annualTr:       'data/sp500_annual_tr.json?v=7770ef6256',
-  cagrPaths:      'data/sp500_cagr_paths.json?v=9d2e0d0833',
+  cagrPaths:      'data/sp500_cagr_paths.json?v=cdf44f4d30',
   // Cross / NDX
   nasdaqComp:     'data/nasdaq_composite.json?v=c512e49b18',
   nasdaq100:      'data/nasdaq100_panels.json?v=617e033123',
