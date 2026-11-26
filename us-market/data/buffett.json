@@ -1,16 +1,16 @@
 {
-  "as_of": "2026-11-23",
+  "as_of": "2026-11-24",
   "current": {
-    "ratio_classic": 217.29,
-    "ratio_modified": 180.44,
-    "tmc": 71727.76,
-    "gdp": 33010.04,
+    "ratio_classic": 216.11,
+    "ratio_modified": 179.51,
+    "tmc": 71439.05,
+    "gdp": 33056.2,
     "fed_ta": 6741.45
   },
   "extremes": {
     "classic_peak": {
-      "date": "2026-08-31",
-      "value": 231.28
+      "date": "2026-05-29",
+      "value": 230.98
     },
     "classic_trough": {
       "date": "1982-04-28",
@@ -18,7 +18,7 @@
     },
     "modified_peak": {
       "date": "2026-08-31",
-      "value": 192.11
+      "value": 191.89
     },
     "modified_trough": {
       "date": "2009-02-27",
@@ -5513,42 +5513,42 @@
     {
       "date": "2026-07-31",
       "tmc": 74340.3,
-      "gdp": 33010.04,
+      "gdp": 33056.2,
       "fed_ta": 6738.19,
-      "ratio_classic": 225.21,
-      "ratio_modified": 187.03
+      "ratio_classic": 224.89,
+      "ratio_modified": 186.81
     },
     {
       "date": "2026-08-31",
       "tmc": 76347.15,
-      "gdp": 33010.04,
+      "gdp": 33056.2,
       "fed_ta": 6730.91,
-      "ratio_classic": 231.28,
-      "ratio_modified": 192.11
+      "ratio_classic": 230.96,
+      "ratio_modified": 191.89
     },
     {
       "date": "2026-09-30",
       "tmc": 75557.73,
-      "gdp": 33010.04,
+      "gdp": 33056.2,
       "fed_ta": 6743.03,
-      "ratio_classic": 228.89,
-      "ratio_modified": 190.07
+      "ratio_classic": 228.57,
+      "ratio_modified": 189.85
     },
     {
       "date": "2026-10-30",
       "tmc": 75018.67,
-      "gdp": 33010.04,
+      "gdp": 33056.2,
       "fed_ta": 6745.64,
-      "ratio_classic": 227.26,
-      "ratio_modified": 188.7
+      "ratio_classic": 226.94,
+      "ratio_modified": 188.48
     },
     {
-      "date": "2026-11-23",
-      "tmc": 71727.76,
-      "gdp": 33010.04,
+      "date": "2026-11-24",
+      "tmc": 71439.05,
+      "gdp": 33056.2,
       "fed_ta": 6741.45,
-      "ratio_classic": 217.29,
-      "ratio_modified": 180.44
+      "ratio_classic": 216.11,
+      "ratio_modified": 179.51
     }
   ],
   "source": {

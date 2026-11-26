@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25T01:45:52",
+  "updated": "2026-11-26T01:46:08",
   "base_date": "1995-01-28",
   "latest_date": "2026-09-28",
   "anchor_date": "2026-07-28",
@@ -34,7 +34,7 @@
     },
     "gdp": {
       "date": "2026-09",
-      "gain_pct": 338.8
+      "gain_pct": 339.4
     }
   },
   "caliber": "Methodology and cross-check anchors. All six legs are cumulative multiples with 1995-01 = 1 (log scale); the endpoint month is the latest common month across the six legs, set by the housing leg (FRED CSUSHPINSA), which lags about three months. Housing = FRED CSUSHPINSA (seasonally adjusted, monthly); S&P 500 / Nasdaq 100 = local month-end closes (price index, dividends excluded); gold = macrotrends; 10Y Treasury = 10-year zero-coupon price approximated as 100/(1+r)^10 from the DGS10 month-end yield (no free total-return series back to 1995, dividends excluded); nominal GDP = FRED nominal GDP (quarterly, annualized, forward-filled to month). Recession bands = local us_recessions.json (NBER / FRED USREC).",
@@ -3487,7 +3487,7 @@
       "ndx": 72.674043,
       "gold": 11.758799,
       "t10y": 1.307924,
-      "gdp": 4.388297
+      "gdp": 4.394434
     },
     {
       "date": "2026-09-28",
@@ -3496,7 +3496,7 @@
       "ndx": 75.021587,
       "gold": 10.98219,
       "t10y": 1.242371,
-      "gdp": 4.388297
+      "gdp": 4.394434
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26 09:39:41",
+  "generated_at": "2026-11-26 09:47:41",
   "today": "2026-11-26",
   "overall": "healthy",
   "stale_count": 0,
@@ -17,11 +17,11 @@
     {
       "file": "sp500_century.json",
       "label": "标普 500 月线百年",
-      "updated": "2026-11-24",
-      "days_old": 2,
+      "updated": "2026-11-25",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-24"
+        "series": "2026-11-25"
       }
     },
     {
@@ -55,8 +55,8 @@
     {
       "file": "sp500_annual_returns_long.json",
       "label": "标普 500 年回报",
-      "updated": "2026-11-25",
-      "days_old": 1,
+      "updated": "2026-11-26",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
         "series": "2026-12-31"
@@ -75,8 +75,8 @@
     {
       "file": "sp500_bull_markets.json",
       "label": "九轮牛市对比",
-      "updated": "2026-11-25T09:45:39",
-      "days_old": 1,
+      "updated": "2026-11-26T09:45:54",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -92,18 +92,18 @@
     {
       "file": "buffett.json",
       "label": "巴菲特指标",
-      "updated": "2026-11-23",
-      "days_old": 3,
-      "status": "recent",
+      "updated": "2026-11-24",
+      "days_old": 2,
+      "status": "fresh",
       "series_end": {
-        "series": "2026-11-23"
+        "series": "2026-11-24"
       }
     },
     {
       "file": "aiae.json",
       "label": "AIAE 仓位",
-      "updated": "2026-11-25",
-      "days_old": 1,
+      "updated": "2026-11-26",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -126,28 +126,28 @@
     {
       "file": "nasdaq_composite.json",
       "label": "纳指综指月线",
-      "updated": "2026-11-25",
-      "days_old": 1,
+      "updated": "2026-11-26",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-24"
+        "series": "2026-11-25"
       }
     },
     {
       "file": "dow_jones_century.json",
       "label": "道指百年",
-      "updated": "2026-11-24",
-      "days_old": 2,
+      "updated": "2026-11-25",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-24"
+        "series": "2026-11-25"
       }
     },
     {
       "file": "ici_flows.json",
       "label": "ICI 基金资金流（周+月）",
-      "updated": "2026-11-11",
-      "days_old": 14,
+      "updated": "2026-11-18",
+      "days_old": 7,
       "status": "fresh",
       "ici_details": {
         "last_fetch_failure": null,
@@ -155,44 +155,44 @@
         "timezone": "America/Los_Angeles",
         "series": {
           "weekly": {
-            "end": "2026-11-11",
-            "age_days": 14,
+            "end": "2026-11-18",
+            "age_days": 7,
             "max_age_days": 21,
-            "last_successful_fetch": "2026-11-25T01:45:56+00:00",
+            "last_successful_fetch": "2026-11-26T01:46:11+00:00",
             "status": "OK"
           },
           "monthly": {
             "end": "2026-09-30",
             "age_days": 56,
             "max_age_days": 90,
-            "last_successful_fetch": "2026-11-25T01:45:56+00:00",
+            "last_successful_fetch": "2026-11-26T01:46:11+00:00",
             "status": "OK"
           }
         },
-        "last_successful_fetch": "2026-11-25T01:45:56+00:00",
+        "last_successful_fetch": "2026-11-26T01:46:11+00:00",
         "source_release_date": null,
-        "fetch_age_days": 1,
+        "fetch_age_days": 0,
         "status": "OK",
         "problems": []
       },
       "series_end": {
-        "weekly": "2026-11-11",
+        "weekly": "2026-11-18",
         "monthly": "2026-09-30"
       },
-      "last_successful_fetch": "2026-11-25T01:45:56+00:00"
+      "last_successful_fetch": "2026-11-26T01:46:11+00:00"
     },
     {
       "file": "ici_mmf.json",
       "label": "ICI 货币基金蓄水池",
-      "updated": "2026-11-25",
-      "days_old": 1,
+      "updated": "2026-11-26",
+      "days_old": 0,
       "status": "fresh"
     },
     {
       "file": "ici_active_index.json",
       "label": "ICI 主动 vs 指数",
-      "updated": "2026-11-25",
-      "days_old": 1,
+      "updated": "2026-11-26",
+      "days_old": 0,
       "status": "fresh"
     },
     {
@@ -209,8 +209,8 @@
         "max_quarter_end_age_days": 165,
         "source_release_date": "2026-09-11",
         "next_release_date": "2026-12-10",
-        "last_successful_fetch": "2026-11-25T01:46:10+00:00",
-        "fetch_age_days": 1,
+        "last_successful_fetch": "2026-11-26T01:46:29+00:00",
+        "fetch_age_days": 0,
         "last_fetch_failure": null,
         "status": "OK",
         "problems": []
@@ -218,23 +218,23 @@
       "series_end": {
         "ownership_pct": "2026-06-30"
       },
-      "last_successful_fetch": "2026-11-25T01:46:10+00:00"
+      "last_successful_fetch": "2026-11-26T01:46:29+00:00"
     },
     {
       "file": "cnn_fear_greed.json",
       "label": "CNN 恐惧贪婪指数",
-      "updated": "2026-11-25T09:46:12+08:00",
-      "days_old": 1,
+      "updated": "2026-11-26T09:46:32+08:00",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "history": "2026-11-24"
+        "history": "2026-11-25"
       }
     },
     {
       "file": "aaii_sentiment.json",
       "label": "AAII 个人投资者情绪",
-      "updated": "2026-11-25T09:46:27+08:00",
-      "days_old": 1,
+      "updated": "2026-11-26T09:46:52+08:00",
+      "days_old": 0,
       "status": "fresh",
       "series_end": {
         "series": "2026-11-19"
@@ -243,8 +243,8 @@
     {
       "file": "naaim_exposure.json",
       "label": "NAAIM 暴露指数",
-      "updated": "2026-11-25T09:46:27+08:00",
-      "days_old": 1,
+      "updated": "2026-11-26T09:46:52+08:00",
+      "days_old": 0,
       "status": "upstream_frozen",
       "upstream_note": "NAAIM went subscription-only on 2026-08-01 and the public feed was retired; the series is frozen at 2026-07-29. Upstream froze, this is not a local fetch failure. Continuing the series would require a Professional Partner subscription (600 USD/year), not purchased.",
       "series_end": {
