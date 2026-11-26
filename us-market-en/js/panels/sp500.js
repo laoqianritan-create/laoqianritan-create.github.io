@@ -515,14 +515,19 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
     // edge and forced the axis to start at 1 day. Next shortest event: 2018-01-26 (14d).
     // (Scatter only; the table below still lists that event.)
     const SCATTER_MIN_DAYS = 10;
+    // Label priority (ch.154): ongoing and latest-year events claim label space first, then deepest-first
+    const latestYear = majorDrawdowns.reduce((y, item) => Math.max(y, +(item.peak_date || '0').slice(0, 4)), 0);
+    const labelRank = item => (item.active ? 0 : (+(item.peak_date || '0').slice(0, 4) >= latestYear ? 1 : 2));
     const scatterData = majorDrawdowns
       .filter(item => (item.days ?? 0) >= SCATTER_MIN_DAYS)
+      .slice()
+      .sort((a, b) => labelRank(a) - labelRank(b) || a.decline - b.decline)
       .map((item) => {
       const days = Math.max(item.days, 1);
       const pct = Math.abs(item.decline) * 100;
       // Labels come from peak_date (language-agnostic; CN periods embed CJK month glyphs)
       const labelText = item.peak_date
-        ? `${item.peak_date.slice(0, 4)}.${item.peak_date.slice(5, 7)}`
+        ? `${item.peak_date.slice(0, 4)}.${item.peak_date.slice(5, 7)}${item.active ? ' - ?' : ''}`
         : item.period;
       const x = PLOT.left + (Math.log10(days) / Math.log10(10000)) * (CH_W - PLOT.left - PLOT.right);
       // 0% at top, deeper drawdowns further down (same orientation as the drawdown area chart)
@@ -659,7 +664,9 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
   let tableExpanded = false;
   function renderDrawdownTable() {
     tbody.innerHTML = '';
-    const rows = tableExpanded ? majorDrawdowns : majorDrawdowns.slice(0, TABLE_COLLAPSED_COUNT);
+    // Table is newest-first so the collapsed view really shows the most recent events (ch.154)
+    const byRecent = majorDrawdowns.slice().sort((a, b) => (b.peak_date || '').localeCompare(a.peak_date || ''));
+    const rows = tableExpanded ? byRecent : byRecent.slice(0, TABLE_COLLAPSED_COUNT);
     rows.forEach(item => {
       const absDecline = Math.abs(item.decline);
       const alpha = 0.18 + Math.min(absDecline / 0.6, 1) * 0.28;
@@ -715,8 +722,10 @@ export function initPanelDrawdown(priceData, drawdownData, opts = {}) {
       th._sortDir = asc ? 'asc' : 'desc';
 
       rows.sort((a, b) => {
-        const aValue = parseFloat(a.children[key === 'days' ? 1 : 4].textContent);
-        const bValue = parseFloat(b.children[key === 'days' ? 1 : 4].textContent);
+        const col = { days: 3, decline: 4, recovery_days: 5 }[key] ?? 4;
+        const parse = cell => { const v = parseFloat(cell.textContent); return Number.isNaN(v) ? Infinity : v; };
+        const aValue = parse(a.children[col]);
+        const bValue = parse(b.children[col]);
         return asc ? aValue - bValue : bValue - aValue;
       });
 

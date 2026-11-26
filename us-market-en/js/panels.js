@@ -22,7 +22,7 @@ import {
   initPanelAnnualizedMatrix, initPanelScatter, initPanelPe, initPanelEps,
   initPanelRoe, initPanelRolling, initAnnualReturnsPanel, initReturnDetailsPanel,
   initIntrayearDdPanel, initSp500AnnualDistPanel, initCapitalismPanel,
-} from './panels/sp500.js?v=8dc6d89ba6';
+} from './panels/sp500.js?v=b313c34652';
 
 import {
   initPanelVix, initPanelVixeq, initLogYoyPanel, initLongRunIndexPanel, initPanelAiae,
@@ -148,7 +148,7 @@ const FILES = {
   ndxPrice:       'data/ndx_price.json?v=c30538552c',
   ndxVolatility:  'data/ndx_volatility.json?v=2571c7b422',
   ndxMonthly:     'data/ndx_monthly.json?v=247c07ac84',
-  ndxDrawdowns:   'data/ndx_drawdowns.json?v=022b96a0c7',
+  ndxDrawdowns:   'data/ndx_drawdowns.json?v=75242133ec',
   ndxRolling5y:   'data/ndx_rolling5y.json?v=c74cd33ad7',
   ndxIntrayearDd: 'data/ndx_intrayear_dd.json?v=b95cfeee47',
   ndxVxn:         'data/ndx_vxn.json?v=d6ad7649d8',
