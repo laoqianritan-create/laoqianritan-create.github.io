@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25T06:09:21Z",
+  "updated": "2026-11-26T01:57:11Z",
   "source": "Treasury Fiscal Data auctions_query (monthly gross issuance, total_accepted) + FRED GDP (nominal SAAR)",
   "source_url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/auctions_query",
   "frequency": "monthly",
@@ -3923,22 +3923,22 @@
     {
       "month": "2026-07",
       "issuance": 3006.98,
-      "gdp_saar": 33010.0,
-      "pct_gdp": 9.11,
+      "gdp_saar": 33056.2,
+      "pct_gdp": 9.1,
       "partial": false
     },
     {
       "month": "2026-08",
       "issuance": 2970.73,
-      "gdp_saar": 33010.0,
-      "pct_gdp": 9.0,
+      "gdp_saar": 33056.2,
+      "pct_gdp": 8.99,
       "partial": false
     },
     {
       "month": "2026-09",
       "issuance": 2821.76,
-      "gdp_saar": 33010.0,
-      "pct_gdp": 8.55,
+      "gdp_saar": 33056.2,
+      "pct_gdp": 8.54,
       "partial": false
     },
     {
@@ -3959,15 +3959,15 @@
   "latest_pct_gdp": {
     "month": "2026-09",
     "issuance": 2821.76,
-    "gdp_saar": 33010.0,
-    "pct_gdp": 8.55,
+    "gdp_saar": 33056.2,
+    "pct_gdp": 8.54,
     "partial": false
   },
   "peak_issuance": {
     "month": "2026-07",
     "issuance": 3006.98,
-    "gdp_saar": 33010.0,
-    "pct_gdp": 9.11,
+    "gdp_saar": 33056.2,
+    "pct_gdp": 9.1,
     "partial": false
   }
 }
