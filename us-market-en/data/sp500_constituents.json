@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "stocks": [
     {
       "ticker": "AAPL",
@@ -10,9 +10,9 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 0.2811,
+      "return1y": 0.2752,
       "ytdReturn": 0.3121,
-      "weight": 7.4931
+      "weight": 7.4932
     },
     {
       "ticker": "MSFT",
@@ -23,7 +23,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": 0.0091,
+      "return1y": -0.0042,
       "ytdReturn": 0.0359,
       "weight": 5.2756
     },
@@ -36,9 +36,9 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": -0.1718,
+      "return1y": -0.1565,
       "ytdReturn": -0.2094,
-      "weight": 5.2321
+      "weight": 5.2322
     },
     {
       "ticker": "GOOGL",
@@ -49,7 +49,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Interactive Media & Services",
-      "return1y": -0.1464,
+      "return1y": -0.147,
       "ytdReturn": -0.1334,
       "weight": 4.8698
     },
@@ -62,7 +62,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Interactive Media & Services",
-      "return1y": -0.1539,
+      "return1y": -0.1535,
       "ytdReturn": -0.1406,
       "weight": 4.8553
     },
@@ -75,7 +75,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Broadline Retail",
-      "return1y": 0.0666,
+      "return1y": 0.0481,
       "ytdReturn": 0.0792,
       "weight": 3.8263
     },
@@ -88,7 +88,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Interactive Media & Services",
-      "return1y": -0.0374,
+      "return1y": -0.0587,
       "ytdReturn": -0.0623,
       "weight": 2.261
     },
@@ -101,7 +101,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Automobile Manufacturers",
-      "return1y": -0.1089,
+      "return1y": -0.1163,
       "ytdReturn": -0.1322,
       "weight": 2.174
     },
@@ -114,7 +114,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": -0.2433,
+      "return1y": -0.2534,
       "ytdReturn": -0.1345,
       "weight": 2.0871
     },
@@ -127,7 +127,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Pharmaceuticals",
-      "return1y": 0.2607,
+      "return1y": 0.2945,
       "ytdReturn": 0.2887,
       "weight": 1.7972
     },
@@ -140,7 +140,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Multi-Sector Holdings",
-      "return1y": 0.1332,
+      "return1y": 0.1275,
       "ytdReturn": 0.166,
       "weight": 1.7827
     },
@@ -153,7 +153,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Consumer Staples Merchandise Retail",
-      "return1y": 0.2093,
+      "return1y": 0.1939,
       "ytdReturn": 0.1701,
       "weight": 1.5218
     },
@@ -166,7 +166,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Diversified Banks",
-      "return1y": 0.0296,
+      "return1y": 0.0117,
       "ytdReturn": -0.0269,
       "weight": 1.2191
     },
@@ -179,9 +179,9 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": 0.2714,
+      "return1y": 0.269,
       "ytdReturn": 0.2249,
-      "weight": 1.1602
+      "weight": 1.1603
     },
     {
       "ticker": "MU",
@@ -192,7 +192,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 1.6112,
+      "return1y": 1.5425,
       "ytdReturn": 0.9062,
       "weight": 0.989
     },
@@ -205,7 +205,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.8952,
+      "return1y": 0.8665,
       "ytdReturn": 0.8169,
       "weight": 0.9747
     },
@@ -218,7 +218,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Pharmaceuticals",
-      "return1y": 0.3198,
+      "return1y": 0.3239,
       "ytdReturn": 0.3211,
       "weight": 0.9558
     },
@@ -231,7 +231,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Integrated Oil & Gas",
-      "return1y": 0.3774,
+      "return1y": 0.3637,
       "ytdReturn": 0.2889,
       "weight": 0.9346
     },
@@ -244,7 +244,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": 0.2111,
+      "return1y": 0.1988,
       "ytdReturn": 0.172,
       "weight": 0.8333
     },
@@ -257,7 +257,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
-      "return1y": 0.2935,
+      "return1y": 0.2933,
       "ytdReturn": 0.2842,
       "weight": 0.7544
     },
@@ -270,7 +270,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Consumer Staples Merchandise Retail",
-      "return1y": 0.1966,
+      "return1y": 0.1896,
       "ytdReturn": 0.2719,
       "weight": 0.698
     },
@@ -283,7 +283,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Soft Drinks & Non-alcoholic Beverages",
-      "return1y": 0.3391,
+      "return1y": 0.3347,
       "ytdReturn": 0.4119,
       "weight": 0.6085
     },
@@ -296,7 +296,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Integrated Oil & Gas",
-      "return1y": 0.4109,
+      "return1y": 0.3958,
       "ytdReturn": 0.3531,
       "weight": 0.5966
     },
@@ -309,7 +309,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Personal Care Products",
-      "return1y": 0.1685,
+      "return1y": 0.1692,
       "ytdReturn": 0.2217,
       "weight": 0.5819
     },
@@ -322,7 +322,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.0132,
+      "return1y": -0.0289,
       "ytdReturn": -0.0254,
       "weight": 0.5713
     },
@@ -335,7 +335,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Communications Equipment",
-      "return1y": 0.2383,
+      "return1y": 0.2243,
       "ytdReturn": 0.2388,
       "weight": 0.5383
     },
@@ -348,7 +348,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Home Improvement Retail",
-      "return1y": 0.0163,
+      "return1y": 0.0122,
       "ytdReturn": 0.0446,
       "weight": 0.5225
     },
@@ -361,7 +361,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Pharmaceuticals",
-      "return1y": 0.3408,
+      "return1y": 0.3383,
       "ytdReturn": 0.3179,
       "weight": 0.5013
     },
@@ -374,7 +374,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Diversified Banks",
-      "return1y": -0.084,
+      "return1y": -0.0952,
       "ytdReturn": -0.1324,
       "weight": 0.4854
     },
@@ -387,7 +387,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": 0.0686,
+      "return1y": 0.0621,
       "ytdReturn": -0.0118,
       "weight": 0.4747
     },
@@ -400,7 +400,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.4932,
+      "return1y": -0.4856,
       "ytdReturn": -0.4692,
       "weight": 0.4694
     },
@@ -413,7 +413,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Managed Health Care",
-      "return1y": 0.05,
+      "return1y": 0.0498,
       "ytdReturn": 0.0291,
       "weight": 0.4496
     },
@@ -426,7 +426,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": 0.9214,
+      "return1y": 0.8731,
       "ytdReturn": 0.9855,
       "weight": 0.4238
     },
@@ -439,7 +439,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.4798,
+      "return1y": 0.3429,
       "ytdReturn": 0.3832,
       "weight": 0.4196
     },
@@ -452,7 +452,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Tobacco",
-      "return1y": 0.1778,
+      "return1y": 0.1704,
       "ytdReturn": 0.1498,
       "weight": 0.4164
     },
@@ -465,7 +465,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": 0.1328,
+      "return1y": 0.1217,
       "ytdReturn": 0.0477,
       "weight": 0.3837
     },
@@ -478,7 +478,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Investment Banking & Brokerage",
-      "return1y": -0.0023,
+      "return1y": -0.0124,
       "ytdReturn": -0.0789,
       "weight": 0.3796
     },
@@ -491,7 +491,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Life Sciences Tools & Services",
-      "return1y": 0.1555,
+      "return1y": 0.1603,
       "ytdReturn": 0.157,
       "weight": 0.3681
     },
@@ -504,7 +504,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
-      "return1y": 0.3618,
+      "return1y": 0.3583,
       "ytdReturn": 0.4322,
       "weight": 0.3679
     },
@@ -517,7 +517,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Construction Machinery & Heavy Transportation Equipment",
-      "return1y": -0.0524,
+      "return1y": -0.0557,
       "ytdReturn": -0.0914,
       "weight": 0.3603
     },
@@ -530,7 +530,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductor Materials & Equipment",
-      "return1y": 0.2449,
+      "return1y": 0.2336,
       "ytdReturn": 0.1574,
       "weight": 0.3579
     },
@@ -543,7 +543,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.634,
+      "return1y": 0.6057,
       "ytdReturn": 0.522,
       "weight": 0.3578
     },
@@ -556,7 +556,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Movies & Entertainment",
-      "return1y": -0.4403,
+      "return1y": -0.4478,
       "ytdReturn": -0.3471,
       "weight": 0.3536
     },
@@ -569,7 +569,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Diversified Banks",
-      "return1y": -0.054,
+      "return1y": -0.0572,
       "ytdReturn": -0.1498,
       "weight": 0.3521
     },
@@ -582,7 +582,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Industrial Gases",
-      "return1y": 0.2861,
+      "return1y": 0.2785,
       "ytdReturn": 0.2226,
       "weight": 0.3491
     },
@@ -595,7 +595,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Investment Banking & Brokerage",
-      "return1y": -0.0184,
+      "return1y": -0.0303,
       "ytdReturn": -0.1239,
       "weight": 0.3483
     },
@@ -608,7 +608,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductor Materials & Equipment",
-      "return1y": 0.1925,
+      "return1y": 0.186,
       "ytdReturn": -0.0003,
       "weight": 0.335
     },
@@ -621,7 +621,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "IT Consulting & Other Services",
-      "return1y": -0.197,
+      "return1y": -0.211,
       "ytdReturn": -0.1648,
       "weight": 0.3335
     },
@@ -634,7 +634,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
-      "return1y": 0.3861,
+      "return1y": 0.4045,
       "ytdReturn": 0.4535,
       "weight": 0.3177
     },
@@ -647,7 +647,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": 0.6693,
+      "return1y": 0.6443,
       "ytdReturn": 0.8458,
       "weight": 0.3126
     },
@@ -660,7 +660,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Movies & Entertainment",
-      "return1y": 0.2143,
+      "return1y": 0.2023,
       "ytdReturn": 0.1229,
       "weight": 0.3109
     },
@@ -673,7 +673,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Consumer Finance",
-      "return1y": -0.1417,
+      "return1y": -0.1448,
       "ytdReturn": -0.1619,
       "weight": 0.3036
     },
@@ -686,7 +686,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Communications Equipment",
-      "return1y": 0.2847,
+      "return1y": 0.2549,
       "ytdReturn": 0.2275,
       "weight": 0.3003
     },
@@ -699,7 +699,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Restaurants",
-      "return1y": -0.0925,
+      "return1y": -0.0908,
       "ytdReturn": -0.0652,
       "weight": 0.29
     },
@@ -712,9 +712,9 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Soft Drinks & Non-alcoholic Beverages",
-      "return1y": -0.0274,
+      "return1y": -0.0323,
       "ytdReturn": 0.012,
-      "weight": 0.2875
+      "weight": 0.2876
     },
     {
       "ticker": "VZ",
@@ -725,7 +725,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Integrated Telecommunication Services",
-      "return1y": 0.1566,
+      "return1y": 0.1501,
       "ytdReturn": 0.1668,
       "weight": 0.284
     },
@@ -738,7 +738,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 1.2292,
+      "return1y": 1.2277,
       "ytdReturn": 1.3244,
       "weight": 0.2737
     },
@@ -751,7 +751,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Heavy Electrical Equipment",
-      "return1y": 0.2124,
+      "return1y": 0.1921,
       "ytdReturn": 0.0522,
       "weight": 0.2728
     },
@@ -764,7 +764,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Diversified Banks",
-      "return1y": 0.1057,
+      "return1y": 0.0939,
       "ytdReturn": -0.0452,
       "weight": 0.2719
     },
@@ -777,7 +777,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": -0.1598,
+      "return1y": -0.1621,
       "ytdReturn": -0.1304,
       "weight": 0.2711
     },
@@ -790,7 +790,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": 0.0979,
+      "return1y": 0.0903,
       "ytdReturn": 0.0523,
       "weight": 0.2682
     },
@@ -803,7 +803,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Health Care REITs",
-      "return1y": 0.1936,
+      "return1y": 0.1823,
       "ytdReturn": 0.3169,
       "weight": 0.2618
     },
@@ -816,7 +816,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.0213,
+      "return1y": 0.0034,
       "ytdReturn": -0.025,
       "weight": 0.2616
     },
@@ -829,7 +829,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Components",
-      "return1y": 0.0536,
+      "return1y": 0.0373,
       "ytdReturn": 0.0462,
       "weight": 0.2615
     },
@@ -842,7 +842,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": -0.0015,
+      "return1y": -0.0102,
       "ytdReturn": 0.0554,
       "weight": 0.2596
     },
@@ -855,7 +855,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Rail Transportation",
-      "return1y": 0.2936,
+      "return1y": 0.2871,
       "ytdReturn": 0.2866,
       "weight": 0.257
     },
@@ -868,7 +868,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Wireless Telecommunication Services",
-      "return1y": -0.1958,
+      "return1y": -0.2046,
       "ytdReturn": -0.167,
       "weight": 0.2552
     },
@@ -881,7 +881,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductor Materials & Equipment",
-      "return1y": 0.1578,
+      "return1y": 0.1417,
       "ytdReturn": 0.053,
       "weight": 0.2534
     },
@@ -894,7 +894,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Agricultural & Farm Machinery",
-      "return1y": 0.3642,
+      "return1y": 0.3801,
       "ytdReturn": 0.3732,
       "weight": 0.2505
     },
@@ -907,7 +907,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.1356,
+      "return1y": -0.1446,
       "ytdReturn": -0.2224,
       "weight": 0.2352
     },
@@ -920,7 +920,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Pharmaceuticals",
-      "return1y": 0.107,
+      "return1y": 0.1057,
       "ytdReturn": 0.1303,
       "weight": 0.2351
     },
@@ -933,7 +933,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Investment Banking & Brokerage",
-      "return1y": 0.018,
+      "return1y": 0.0078,
       "ytdReturn": -0.0799,
       "weight": 0.2338
     },
@@ -946,7 +946,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.2915,
+      "return1y": 0.2554,
       "ytdReturn": 0.2169,
       "weight": 0.233
     },
@@ -959,7 +959,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Apparel Retail",
-      "return1y": -0.046,
+      "return1y": -0.0384,
       "ytdReturn": -0.0531,
       "weight": 0.2329
     },
@@ -972,7 +972,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Life Sciences Tools & Services",
-      "return1y": -0.0049,
+      "return1y": 0.0025,
       "ytdReturn": -0.0132,
       "weight": 0.2318
     },
@@ -985,7 +985,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": 0.5504,
+      "return1y": 0.5224,
       "ytdReturn": 0.3963,
       "weight": 0.2314
     },
@@ -998,7 +998,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Integrated Telecommunication Services",
-      "return1y": -0.1104,
+      "return1y": -0.1172,
       "ytdReturn": -0.0647,
       "weight": 0.2243
     },
@@ -1011,7 +1011,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": -0.2561,
+      "return1y": -0.2551,
       "ytdReturn": -0.2399,
       "weight": 0.2146
     },
@@ -1024,7 +1024,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": -0.1792,
+      "return1y": -0.1876,
       "ytdReturn": -0.2509,
       "weight": 0.2144
     },
@@ -1037,7 +1037,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Property & Casualty Insurance",
-      "return1y": 0.2773,
+      "return1y": 0.2847,
       "ytdReturn": 0.2272,
       "weight": 0.2107
     },
@@ -1050,7 +1050,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
-      "return1y": 0.3053,
+      "return1y": 0.301,
       "ytdReturn": 0.2477,
       "weight": 0.2073
     },
@@ -1063,7 +1063,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "IT Consulting & Other Services",
-      "return1y": -0.0297,
+      "return1y": -0.038,
       "ytdReturn": -0.0749,
       "weight": 0.2059
     },
@@ -1076,7 +1076,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": 0.3194,
+      "return1y": 0.3088,
       "ytdReturn": 0.2055,
       "weight": 0.2006
     },
@@ -1089,7 +1089,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Property & Casualty Insurance",
-      "return1y": 0.0417,
+      "return1y": 0.0433,
       "ytdReturn": 0.1253,
       "weight": 0.2004
     },
@@ -1102,7 +1102,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Passenger Ground Transportation",
-      "return1y": -0.2254,
+      "return1y": -0.2421,
       "ytdReturn": -0.1993,
       "weight": 0.1964
     },
@@ -1115,7 +1115,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Financial Exchanges & Data",
-      "return1y": -0.0174,
+      "return1y": -0.0237,
       "ytdReturn": -0.05,
       "weight": 0.1936
     },
@@ -1128,7 +1128,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Home Improvement Retail",
-      "return1y": -0.0247,
+      "return1y": -0.0282,
       "ytdReturn": -0.0455,
       "weight": 0.1916
     },
@@ -1141,7 +1141,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": -0.1198,
+      "return1y": -0.1295,
       "ytdReturn": -0.2776,
       "weight": 0.189
     },
@@ -1154,7 +1154,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Tobacco",
-      "return1y": 0.2997,
+      "return1y": 0.2927,
       "ytdReturn": 0.331,
       "weight": 0.1839
     },
@@ -1167,7 +1167,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": -0.1058,
+      "return1y": -0.1031,
       "ytdReturn": -0.0439,
       "weight": 0.1837
     },
@@ -1180,7 +1180,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Pharmaceuticals",
-      "return1y": 0.2499,
+      "return1y": 0.2512,
       "ytdReturn": 0.1515,
       "weight": 0.1824
     },
@@ -1193,7 +1193,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Advertising",
-      "return1y": -0.3537,
+      "return1y": -0.3679,
       "ytdReturn": -0.3871,
       "weight": 0.182
     },
@@ -1206,7 +1206,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Human Resource & Employment Services",
-      "return1y": 0.2453,
+      "return1y": 0.2406,
       "ytdReturn": 0.2525,
       "weight": 0.1812
     },
@@ -1219,7 +1219,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Distributors",
-      "return1y": 0.2191,
+      "return1y": 0.2227,
       "ytdReturn": 0.3083,
       "weight": 0.1803
     },
@@ -1232,7 +1232,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Electrical Components & Equipment",
-      "return1y": -0.0699,
+      "return1y": -0.0812,
       "ytdReturn": -0.029,
       "weight": 0.179
     },
@@ -1245,7 +1245,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Industrial REITs",
-      "return1y": -0.0088,
+      "return1y": -0.0117,
       "ytdReturn": -0.0157,
       "weight": 0.1786
     },
@@ -1258,7 +1258,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Restaurants",
-      "return1y": 0.2427,
+      "return1y": 0.2368,
       "ytdReturn": 0.2831,
       "weight": 0.178
     },
@@ -1271,7 +1271,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": -0.0853,
+      "return1y": -0.088,
       "ytdReturn": 0.0001,
       "weight": 0.1704
     },
@@ -1284,7 +1284,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.4926,
+      "return1y": 0.4645,
       "ytdReturn": 0.4647,
       "weight": 0.1666
     },
@@ -1297,7 +1297,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": 0.0527,
+      "return1y": 0.0426,
       "ytdReturn": 0.0897,
       "weight": 0.1658
     },
@@ -1310,7 +1310,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.0423,
+      "return1y": 0.042,
       "ytdReturn": 0.0044,
       "weight": 0.1641
     },
@@ -1323,7 +1323,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Financial Exchanges & Data",
-      "return1y": 0.1099,
+      "return1y": 0.1076,
       "ytdReturn": 0.156,
       "weight": 0.1617
     },
@@ -1336,7 +1336,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": -0.2391,
+      "return1y": -0.2395,
       "ytdReturn": -0.2979,
       "weight": 0.1611
     },
@@ -1349,7 +1349,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Consumer Finance",
-      "return1y": -0.1607,
+      "return1y": -0.1668,
       "ytdReturn": -0.2638,
       "weight": 0.1591
     },
@@ -1362,7 +1362,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 0.7347,
+      "return1y": 0.7071,
       "ytdReturn": 0.6427,
       "weight": 0.1572
     },
@@ -1375,7 +1375,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": 0.3647,
+      "return1y": 0.3641,
       "ytdReturn": 0.3266,
       "weight": 0.1552
     },
@@ -1388,7 +1388,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Gold",
-      "return1y": 0.1206,
+      "return1y": 0.118,
       "ytdReturn": 0.0022,
       "weight": 0.1524
     },
@@ -1401,7 +1401,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Services",
-      "return1y": 0.015,
+      "return1y": 0.0087,
       "ytdReturn": 0.0116,
       "weight": 0.1503
     },
@@ -1414,7 +1414,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Insurance Brokers",
-      "return1y": 0.1859,
+      "return1y": 0.181,
       "ytdReturn": 0.1874,
       "weight": 0.1493
     },
@@ -1427,7 +1427,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": 0.0686,
+      "return1y": 0.0642,
       "ytdReturn": 0.1231,
       "weight": 0.1491
     },
@@ -1440,7 +1440,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Facilities",
-      "return1y": -0.0461,
+      "return1y": -0.034,
       "ytdReturn": 0.0438,
       "weight": 0.1487
     },
@@ -1453,7 +1453,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 0.7272,
+      "return1y": 0.6681,
       "ytdReturn": 0.4515,
       "weight": 0.1478
     },
@@ -1466,7 +1466,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": 0.4746,
+      "return1y": 0.4715,
       "ytdReturn": 0.2943,
       "weight": 0.1466
     },
@@ -1479,7 +1479,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Financial Exchanges & Data",
-      "return1y": 0.1377,
+      "return1y": 0.1304,
       "ytdReturn": 0.1114,
       "weight": 0.144
     },
@@ -1492,7 +1492,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": 0.6755,
+      "return1y": 0.6635,
       "ytdReturn": 0.7329,
       "weight": 0.1437
     },
@@ -1505,7 +1505,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": 0.3211,
+      "return1y": 0.3128,
       "ytdReturn": 0.2573,
       "weight": 0.1435
     },
@@ -1518,7 +1518,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
-      "return1y": 0.2514,
+      "return1y": 0.2585,
       "ytdReturn": 0.2648,
       "weight": 0.1428
     },
@@ -1531,7 +1531,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Environmental & Facilities Services",
-      "return1y": 0.1378,
+      "return1y": 0.135,
       "ytdReturn": 0.1323,
       "weight": 0.1425
     },
@@ -1544,7 +1544,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Conglomerates",
-      "return1y": 0.1114,
+      "return1y": 0.1033,
       "ytdReturn": 0.1731,
       "weight": 0.1422
     },
@@ -1557,7 +1557,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": 0.0595,
+      "return1y": 0.0546,
       "ytdReturn": 0.0491,
       "weight": 0.1409
     },
@@ -1570,7 +1570,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Data Center REITs",
-      "return1y": 0.3036,
+      "return1y": 0.2986,
       "ytdReturn": 0.2802,
       "weight": 0.1403
     },
@@ -1583,7 +1583,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": -0.426,
+      "return1y": -0.4328,
       "ytdReturn": -0.375,
       "weight": 0.1386
     },
@@ -1596,7 +1596,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Air Freight & Logistics",
-      "return1y": 0.1652,
+      "return1y": 0.1637,
       "ytdReturn": 0.1034,
       "weight": 0.1376
     },
@@ -1609,7 +1609,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Refining & Marketing",
-      "return1y": 0.8059,
+      "return1y": 0.7874,
       "ytdReturn": 1.0968,
       "weight": 0.1366
     },
@@ -1622,7 +1622,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Rail Transportation",
-      "return1y": 0.4493,
+      "return1y": 0.4468,
       "ytdReturn": 0.4105,
       "weight": 0.1366
     },
@@ -1635,7 +1635,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Refining & Marketing",
-      "return1y": 0.7493,
+      "return1y": 0.7237,
       "ytdReturn": 0.8081,
       "weight": 0.1335
     },
@@ -1648,7 +1648,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Cable & Satellite",
-      "return1y": 0.0333,
+      "return1y": 0.0286,
       "ytdReturn": -0.0706,
       "weight": 0.1324
     },
@@ -1661,7 +1661,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Diversified Banks",
-      "return1y": 0.1961,
+      "return1y": 0.1937,
       "ytdReturn": 0.0857,
       "weight": 0.1322
     },
@@ -1674,7 +1674,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.2667,
+      "return1y": -0.2727,
       "ytdReturn": -0.3014,
       "weight": 0.1313
     },
@@ -1687,7 +1687,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Diversified Support Services",
-      "return1y": 0.2332,
+      "return1y": 0.2238,
       "ytdReturn": 0.2313,
       "weight": 0.131
     },
@@ -1700,7 +1700,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Refining & Marketing",
-      "return1y": 0.8513,
+      "return1y": 0.8273,
       "ytdReturn": 0.9539,
       "weight": 0.1306
     },
@@ -1713,7 +1713,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Communications Equipment",
-      "return1y": 0.4641,
+      "return1y": 0.4634,
       "ytdReturn": 0.4199,
       "weight": 0.1296
     },
@@ -1726,7 +1726,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
-      "return1y": 7.8301,
+      "return1y": 7.5004,
       "ytdReturn": 6.1562,
       "weight": 0.1295
     },
@@ -1739,7 +1739,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Retail REITs",
-      "return1y": 0.2609,
+      "return1y": 0.2558,
       "ytdReturn": 0.2718,
       "weight": 0.1283
     },
@@ -1752,7 +1752,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Building Products",
-      "return1y": -0.0385,
+      "return1y": -0.0427,
       "ytdReturn": 0.0138,
       "weight": 0.128
     },
@@ -1765,7 +1765,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Diversified Banks",
-      "return1y": 0.1483,
+      "return1y": 0.1553,
       "ytdReturn": 0.0419,
       "weight": 0.1267
     },
@@ -1778,7 +1778,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Specialty Chemicals",
-      "return1y": 0.0513,
+      "return1y": 0.0504,
       "ytdReturn": 0.1012,
       "weight": 0.1257
     },
@@ -1791,7 +1791,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Specialty Chemicals",
-      "return1y": 0.1233,
+      "return1y": 0.1226,
       "ytdReturn": 0.1761,
       "weight": 0.1256
     },
@@ -1804,7 +1804,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Components",
-      "return1y": 0.199,
+      "return1y": 0.1905,
       "ytdReturn": 0.1055,
       "weight": 0.1252
     },
@@ -1817,7 +1817,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Electrical Components & Equipment",
-      "return1y": 0.1962,
+      "return1y": 0.1788,
       "ytdReturn": 0.1576,
       "weight": 0.125
     },
@@ -1830,7 +1830,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Packaged Foods & Meats",
-      "return1y": 0.1853,
+      "return1y": 0.1779,
       "ytdReturn": 0.2639,
       "weight": 0.1244
     },
@@ -1843,7 +1843,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Telecom Tower REITs",
-      "return1y": 0.0185,
+      "return1y": 0.0183,
       "ytdReturn": 0.056,
       "weight": 0.1241
     },
@@ -1856,7 +1856,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Construction & Engineering",
-      "return1y": 0.2281,
+      "return1y": 0.2164,
       "ytdReturn": 0.2861,
       "weight": 0.1235
     },
@@ -1869,7 +1869,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Managed Health Care",
-      "return1y": 0.1512,
+      "return1y": 0.1521,
       "ytdReturn": 0.1001,
       "weight": 0.122
     },
@@ -1882,7 +1882,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": 0.1822,
+      "return1y": 0.1798,
       "ytdReturn": 0.1089,
       "weight": 0.1218
     },
@@ -1895,7 +1895,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": -0.2212,
+      "return1y": -0.2306,
       "ytdReturn": -0.27,
       "weight": 0.1217
     },
@@ -1908,7 +1908,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": 0.0315,
+      "return1y": 0.0317,
       "ytdReturn": -0.003,
       "weight": 0.1216
     },
@@ -1921,7 +1921,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 2.5117,
+      "return1y": 2.3821,
       "ytdReturn": 1.7436,
       "weight": 0.1214
     },
@@ -1934,7 +1934,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Financial Exchanges & Data",
-      "return1y": -0.003,
+      "return1y": -0.0104,
       "ytdReturn": -0.0266,
       "weight": 0.1214
     },
@@ -1947,7 +1947,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Soft Drinks & Non-alcoholic Beverages",
-      "return1y": 0.1354,
+      "return1y": 0.1362,
       "ytdReturn": 0.1187,
       "weight": 0.1209
     },
@@ -1960,7 +1960,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Property & Casualty Insurance",
-      "return1y": 0.3814,
+      "return1y": 0.3893,
       "ytdReturn": 0.4266,
       "weight": 0.1208
     },
@@ -1973,7 +1973,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Storage & Transportation",
-      "return1y": 0.1035,
+      "return1y": 0.0906,
       "ytdReturn": 0.092,
       "weight": 0.1204
     },
@@ -1986,7 +1986,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": -0.3448,
+      "return1y": -0.3543,
       "ytdReturn": -0.3576,
       "weight": 0.1199
     },
@@ -1999,7 +1999,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Building Products",
-      "return1y": 0.1738,
+      "return1y": 0.1736,
       "ytdReturn": 0.116,
       "weight": 0.1187
     },
@@ -2012,7 +2012,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": 0.2815,
+      "return1y": 0.2848,
       "ytdReturn": 0.2499,
       "weight": 0.1181
     },
@@ -2025,7 +2025,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.1449,
+      "return1y": 0.1436,
       "ytdReturn": 0.1426,
       "weight": 0.1174
     },
@@ -2038,7 +2038,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.0374,
+      "return1y": -0.0544,
       "ytdReturn": -0.05,
       "weight": 0.1173
     },
@@ -2051,7 +2051,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Household Products",
-      "return1y": 0.2451,
+      "return1y": 0.2397,
       "ytdReturn": 0.2828,
       "weight": 0.1148
     },
@@ -2064,7 +2064,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": -0.02,
+      "return1y": -0.0288,
       "ytdReturn": -0.051,
       "weight": 0.1144
     },
@@ -2077,7 +2077,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Consumer Staples Merchandise Retail",
-      "return1y": 0.9178,
+      "return1y": 0.9005,
       "ytdReturn": 0.7135,
       "weight": 0.113
     },
@@ -2090,7 +2090,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.0112,
+      "return1y": -0.0309,
       "ytdReturn": -0.1568,
       "weight": 0.1125
     },
@@ -2103,7 +2103,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Automotive Retail",
-      "return1y": -0.0475,
+      "return1y": -0.0493,
       "ytdReturn": 0.0703,
       "weight": 0.1124
     },
@@ -2116,7 +2116,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Environmental & Facilities Services",
-      "return1y": 0.1693,
+      "return1y": 0.1709,
       "ytdReturn": 0.2091,
       "weight": 0.1122
     },
@@ -2129,7 +2129,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": 0.3965,
+      "return1y": 0.3752,
       "ytdReturn": 0.3826,
       "weight": 0.1115
     },
@@ -2142,7 +2142,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Automotive Retail",
-      "return1y": -0.0507,
+      "return1y": -0.0943,
       "ytdReturn": -0.1525,
       "weight": 0.1097
     },
@@ -2155,7 +2155,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Insurance Brokers",
-      "return1y": 0.1765,
+      "return1y": 0.1808,
       "ytdReturn": 0.1421,
       "weight": 0.1087
     },
@@ -2168,7 +2168,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Insurance Brokers",
-      "return1y": -0.0145,
+      "return1y": -0.0182,
       "ytdReturn": 0.0094,
       "weight": 0.1068
     },
@@ -2181,7 +2181,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Rail Transportation",
-      "return1y": 0.1258,
+      "return1y": 0.1178,
       "ytdReturn": 0.1344,
       "weight": 0.1063
     },
@@ -2194,9 +2194,9 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Specialized Consumer Services",
-      "return1y": -0.1509,
+      "return1y": -0.1612,
       "ytdReturn": -0.2429,
-      "weight": 0.1051
+      "weight": 0.1052
     },
     {
       "ticker": "FDX",
@@ -2207,7 +2207,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Air Freight & Logistics",
-      "return1y": 0.3897,
+      "return1y": 0.3904,
       "ytdReturn": 0.3076,
       "weight": 0.1048
     },
@@ -2215,14 +2215,14 @@
       "ticker": "INTU",
       "name": "Intuit Inc.",
       "nameEn": "Intuit Inc.",
-      "marketCap": 71740000000.0,
+      "marketCap": 71590000000.0,
       "price": 271.72,
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.5681,
+      "return1y": -0.5715,
       "ytdReturn": -0.5683,
-      "weight": 0.104
+      "weight": 0.1038
     },
     {
       "ticker": "SLB",
@@ -2233,7 +2233,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Equipment & Services",
-      "return1y": 0.3606,
+      "return1y": 0.3389,
       "ytdReturn": 0.207,
       "weight": 0.1038
     },
@@ -2246,7 +2246,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Services",
-      "return1y": -0.0249,
+      "return1y": -0.0211,
       "ytdReturn": -0.0276,
       "weight": 0.1037
     },
@@ -2259,7 +2259,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Conglomerates",
-      "return1y": 0.1297,
+      "return1y": 0.1168,
       "ytdReturn": 0.0957,
       "weight": 0.1035
     },
@@ -2272,7 +2272,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Apparel Retail",
-      "return1y": 0.2565,
+      "return1y": 0.2659,
       "ytdReturn": 0.2217,
       "weight": 0.1034
     },
@@ -2285,7 +2285,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": -0.0752,
+      "return1y": -0.0862,
       "ytdReturn": -0.1782,
       "weight": 0.1031
     },
@@ -2298,7 +2298,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Automobile Manufacturers",
-      "return1y": 0.1536,
+      "return1y": 0.1424,
       "ytdReturn": 0.0372,
       "weight": 0.1027
     },
@@ -2311,7 +2311,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Storage & Transportation",
-      "return1y": 0.1759,
+      "return1y": 0.16,
       "ytdReturn": 0.1436,
       "weight": 0.1023
     },
@@ -2324,7 +2324,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Industrial Gases",
-      "return1y": 0.2135,
+      "return1y": 0.2038,
       "ytdReturn": 0.2547,
       "weight": 0.1014
     },
@@ -2337,7 +2337,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Copper",
-      "return1y": 0.1518,
+      "return1y": 0.1296,
       "ytdReturn": -0.0651,
       "weight": 0.101
     },
@@ -2350,7 +2350,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": 0.0397,
+      "return1y": 0.0309,
       "ytdReturn": 0.1017,
       "weight": 0.1007
     },
@@ -2363,7 +2363,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Distributors",
-      "return1y": -0.0393,
+      "return1y": -0.0403,
       "ytdReturn": 0.0448,
       "weight": 0.0977
     },
@@ -2376,7 +2376,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Household Products",
-      "return1y": 0.0107,
+      "return1y": 0.003,
       "ytdReturn": 0.0794,
       "weight": 0.0974
     },
@@ -2389,7 +2389,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Property & Casualty Insurance",
-      "return1y": 0.2689,
+      "return1y": 0.2743,
       "ytdReturn": 0.3315,
       "weight": 0.0973
     },
@@ -2402,7 +2402,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Electrical Components & Equipment",
-      "return1y": 0.0078,
+      "return1y": -0.0354,
       "ytdReturn": -0.0128,
       "weight": 0.0968
     },
@@ -2415,7 +2415,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.4981,
+      "return1y": 0.4926,
       "ytdReturn": 0.4105,
       "weight": 0.0961
     },
@@ -2428,7 +2428,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Self-Storage REITs",
-      "return1y": 0.2326,
+      "return1y": 0.2311,
       "ytdReturn": 0.3078,
       "weight": 0.0951
     },
@@ -2441,7 +2441,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Distributors",
-      "return1y": 0.3273,
+      "return1y": 0.3328,
       "ytdReturn": 0.3752,
       "weight": 0.0948
     },
@@ -2454,7 +2454,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": -0.5531,
+      "return1y": -0.5558,
       "ytdReturn": -0.5236,
       "weight": 0.0948
     },
@@ -2467,7 +2467,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Construction Materials",
-      "return1y": -0.1869,
+      "return1y": -0.1889,
       "ytdReturn": -0.2305,
       "weight": 0.0938
     },
@@ -2480,7 +2480,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Data Center REITs",
-      "return1y": 0.0473,
+      "return1y": 0.0394,
       "ytdReturn": 0.0735,
       "weight": 0.0929
     },
@@ -2493,7 +2493,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Life & Health Insurance",
-      "return1y": 0.1534,
+      "return1y": 0.1559,
       "ytdReturn": 0.1567,
       "weight": 0.0914
     },
@@ -2506,7 +2506,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Trading Companies & Distributors",
-      "return1y": 0.2463,
+      "return1y": 0.246,
       "ytdReturn": 0.202,
       "weight": 0.0911
     },
@@ -2519,7 +2519,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": -0.1508,
+      "return1y": -0.154,
       "ytdReturn": -0.153,
       "weight": 0.091
     },
@@ -2532,7 +2532,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Life & Health Insurance",
-      "return1y": 0.3072,
+      "return1y": 0.3033,
       "ytdReturn": 0.2423,
       "weight": 0.0909
     },
@@ -2545,7 +2545,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.2539,
+      "return1y": 0.2463,
       "ytdReturn": 0.098,
       "weight": 0.0888
     },
@@ -2558,7 +2558,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Storage & Transportation",
-      "return1y": 0.6492,
+      "return1y": 0.6287,
       "ytdReturn": 0.5288,
       "weight": 0.0888
     },
@@ -2571,7 +2571,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": 0.2261,
+      "return1y": 0.2272,
       "ytdReturn": 0.2465,
       "weight": 0.0886
     },
@@ -2584,7 +2584,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Trading Companies & Distributors",
-      "return1y": 0.3134,
+      "return1y": 0.3101,
       "ytdReturn": 0.3089,
       "weight": 0.088
     },
@@ -2597,7 +2597,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Manufacturing Services",
-      "return1y": -0.059,
+      "return1y": -0.0649,
       "ytdReturn": -0.0932,
       "weight": 0.0879
     },
@@ -2610,7 +2610,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": 0.4514,
+      "return1y": 0.4505,
       "ytdReturn": 0.4436,
       "weight": 0.0869
     },
@@ -2623,7 +2623,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": 0.0871,
+      "return1y": 0.0832,
       "ytdReturn": 0.1477,
       "weight": 0.0867
     },
@@ -2636,7 +2636,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Financial Exchanges & Data",
-      "return1y": 0.1899,
+      "return1y": 0.1776,
       "ytdReturn": 0.1077,
       "weight": 0.0861
     },
@@ -2649,7 +2649,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Investment Banking & Brokerage",
-      "return1y": -0.4869,
+      "return1y": -0.4881,
       "ytdReturn": -0.429,
       "weight": 0.0858
     },
@@ -2662,7 +2662,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.2916,
+      "return1y": 0.2871,
       "ytdReturn": 0.2759,
       "weight": 0.0844
     },
@@ -2675,7 +2675,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Construction Machinery & Heavy Transportation Equipment",
-      "return1y": -0.1537,
+      "return1y": -0.1551,
       "ytdReturn": -0.1941,
       "weight": 0.0836
     },
@@ -2688,7 +2688,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Retail REITs",
-      "return1y": 0.0544,
+      "return1y": 0.0458,
       "ytdReturn": 0.0513,
       "weight": 0.0833
     },
@@ -2701,7 +2701,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Diversified Banks",
-      "return1y": 0.0357,
+      "return1y": 0.0299,
       "ytdReturn": -0.0372,
       "weight": 0.0832
     },
@@ -2714,7 +2714,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.0009,
+      "return1y": -0.011,
       "ytdReturn": 0.183,
       "weight": 0.0828
     },
@@ -2727,7 +2727,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Construction Machinery & Heavy Transportation Equipment",
-      "return1y": 0.0286,
+      "return1y": 0.024,
       "ytdReturn": -0.0324,
       "weight": 0.0824
     },
@@ -2740,7 +2740,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Steel",
-      "return1y": 0.5606,
+      "return1y": 0.5571,
       "ytdReturn": 0.466,
       "weight": 0.081
     },
@@ -2753,7 +2753,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": -0.0615,
+      "return1y": -0.0577,
       "ytdReturn": 0.0589,
       "weight": 0.081
     },
@@ -2766,7 +2766,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Automotive Retail",
-      "return1y": -0.142,
+      "return1y": -0.1391,
       "ytdReturn": 0.0305,
       "weight": 0.0794
     },
@@ -2779,7 +2779,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Storage & Transportation",
-      "return1y": 0.2089,
+      "return1y": 0.1872,
       "ytdReturn": 0.1629,
       "weight": 0.079
     },
@@ -2792,7 +2792,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Apparel, Accessories & Luxury Goods",
-      "return1y": -0.4301,
+      "return1y": -0.4328,
       "ytdReturn": -0.4207,
       "weight": 0.0789
     },
@@ -2805,7 +2805,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Passenger Airlines",
-      "return1y": 0.2906,
+      "return1y": 0.2941,
       "ytdReturn": 0.2011,
       "weight": 0.0787
     },
@@ -2818,7 +2818,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": 0.3025,
+      "return1y": 0.2845,
       "ytdReturn": 0.273,
       "weight": 0.0782
     },
@@ -2831,7 +2831,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Consumer Electronics",
-      "return1y": 0.4362,
+      "return1y": 0.4323,
       "ytdReturn": 0.3819,
       "weight": 0.0781
     },
@@ -2844,7 +2844,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 0.896,
+      "return1y": 0.8665,
       "ytdReturn": 0.6889,
       "weight": 0.0779
     },
@@ -2857,7 +2857,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Electrical Components & Equipment",
-      "return1y": 0.159,
+      "return1y": 0.1496,
       "ytdReturn": 0.0877,
       "weight": 0.0756
     },
@@ -2870,7 +2870,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": -0.0017,
+      "return1y": -0.0122,
       "ytdReturn": 0.0861,
       "weight": 0.0755
     },
@@ -2883,7 +2883,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": -0.1567,
+      "return1y": -0.165,
       "ytdReturn": -0.1184,
       "weight": 0.075
     },
@@ -2891,14 +2891,14 @@
       "ticker": "ADSK",
       "name": "Autodesk, Inc.",
       "nameEn": "Autodesk, Inc.",
-      "marketCap": 51580000000.0,
+      "marketCap": 51330000000.0,
       "price": 246.79,
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.1811,
+      "return1y": -0.1864,
       "ytdReturn": -0.1393,
-      "weight": 0.0748
+      "weight": 0.0744
     },
     {
       "ticker": "ETR",
@@ -2909,7 +2909,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": 0.1115,
+      "return1y": 0.1005,
       "ytdReturn": 0.1434,
       "weight": 0.0743
     },
@@ -2922,7 +2922,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Soft Drinks & Non-alcoholic Beverages",
-      "return1y": 0.2872,
+      "return1y": 0.2771,
       "ytdReturn": 0.2849,
       "weight": 0.0737
     },
@@ -2935,7 +2935,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Broadline Retail",
-      "return1y": 0.4007,
+      "return1y": 0.3956,
       "ytdReturn": 0.3271,
       "weight": 0.0735
     },
@@ -2948,7 +2948,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Multi-Family Residential REITs",
-      "return1y": 0.0609,
+      "return1y": 0.058,
       "ytdReturn": 0.0532,
       "weight": 0.0734
     },
@@ -2961,7 +2961,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Life Sciences Tools & Services",
-      "return1y": 0.1559,
+      "return1y": 0.1625,
       "ytdReturn": 0.2935,
       "weight": 0.0729
     },
@@ -2974,7 +2974,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": 0.2066,
+      "return1y": 0.1806,
       "ytdReturn": 0.1826,
       "weight": 0.0729
     },
@@ -3000,7 +3000,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Trading Companies & Distributors",
-      "return1y": 0.0176,
+      "return1y": 0.0211,
       "ytdReturn": 0.1421,
       "weight": 0.0721
     },
@@ -3013,7 +3013,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Managed Health Care",
-      "return1y": 0.6525,
+      "return1y": 0.654,
       "ytdReturn": 0.537,
       "weight": 0.0708
     },
@@ -3026,7 +3026,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": -0.0516,
+      "return1y": -0.0603,
       "ytdReturn": -0.1399,
       "weight": 0.0707
     },
@@ -3039,7 +3039,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Automobile Manufacturers",
-      "return1y": -0.0773,
+      "return1y": -0.0836,
       "ytdReturn": -0.0877,
       "weight": 0.0704
     },
@@ -3052,7 +3052,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": 0.1662,
+      "return1y": 0.1454,
       "ytdReturn": 0.1209,
       "weight": 0.0701
     },
@@ -3065,7 +3065,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Construction Machinery & Heavy Transportation Equipment",
-      "return1y": 0.3843,
+      "return1y": 0.379,
       "ytdReturn": 0.3297,
       "weight": 0.0699
     },
@@ -3078,7 +3078,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": -0.0013,
+      "return1y": -0.0129,
       "ytdReturn": 0.059,
       "weight": 0.0698
     },
@@ -3091,7 +3091,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": -0.065,
+      "return1y": -0.0778,
       "ytdReturn": -0.0057,
       "weight": 0.0696
     },
@@ -3104,7 +3104,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Equipment & Instruments",
-      "return1y": 0.083,
+      "return1y": 0.0826,
       "ytdReturn": 0.1117,
       "weight": 0.0693
     },
@@ -3117,7 +3117,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Restaurants",
-      "return1y": 0.099,
+      "return1y": 0.0834,
       "ytdReturn": -0.0024,
       "weight": 0.0686
     },
@@ -3130,7 +3130,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Regional Banks",
-      "return1y": 0.1934,
+      "return1y": 0.1898,
       "ytdReturn": 0.0838,
       "weight": 0.0677
     },
@@ -3143,7 +3143,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Health Care REITs",
-      "return1y": 0.0909,
+      "return1y": 0.0835,
       "ytdReturn": 0.1297,
       "weight": 0.0674
     },
@@ -3169,7 +3169,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Equipment & Services",
-      "return1y": -0.064,
+      "return1y": -0.0765,
       "ytdReturn": -0.0165,
       "weight": 0.0667
     },
@@ -3182,7 +3182,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": 0.1702,
+      "return1y": 0.1392,
       "ytdReturn": 0.1681,
       "weight": 0.0667
     },
@@ -3195,7 +3195,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Equipment & Instruments",
-      "return1y": 0.3644,
+      "return1y": 0.3523,
       "ytdReturn": 0.2958,
       "weight": 0.0659
     },
@@ -3208,7 +3208,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Financial Exchanges & Data",
-      "return1y": 0.1249,
+      "return1y": 0.1229,
       "ytdReturn": 0.1199,
       "weight": 0.0656
     },
@@ -3221,7 +3221,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Electrical Components & Equipment",
-      "return1y": 0.5117,
+      "return1y": 0.3996,
       "ytdReturn": 0.5492,
       "weight": 0.0655
     },
@@ -3234,7 +3234,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Restaurants",
-      "return1y": 0.0866,
+      "return1y": 0.0908,
       "ytdReturn": 0.1105,
       "weight": 0.065
     },
@@ -3247,7 +3247,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Life Sciences Tools & Services",
-      "return1y": 0.1174,
+      "return1y": 0.1277,
       "ytdReturn": 0.191,
       "weight": 0.0648
     },
@@ -3260,7 +3260,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": 0.202,
+      "return1y": 0.1994,
       "ytdReturn": 0.2038,
       "weight": 0.0648
     },
@@ -3273,7 +3273,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": -0.1334,
+      "return1y": -0.1461,
       "ytdReturn": -0.1947,
       "weight": 0.0641
     },
@@ -3286,7 +3286,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Building Products",
-      "return1y": -0.0085,
+      "return1y": -0.0179,
       "ytdReturn": 0.0071,
       "weight": 0.0639
     },
@@ -3299,7 +3299,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": 0.3771,
+      "return1y": 0.3614,
       "ytdReturn": 0.2554,
       "weight": 0.0639
     },
@@ -3312,7 +3312,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Technology",
-      "return1y": 0.1298,
+      "return1y": 0.1315,
       "ytdReturn": 0.2388,
       "weight": 0.0638
     },
@@ -3325,7 +3325,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": 0.1136,
+      "return1y": 0.108,
       "ytdReturn": 0.0227,
       "weight": 0.0635
     },
@@ -3338,7 +3338,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Communications Equipment",
-      "return1y": 0.5459,
+      "return1y": 0.4657,
       "ytdReturn": 0.2343,
       "weight": 0.0626
     },
@@ -3351,7 +3351,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.1621,
+      "return1y": -0.1632,
       "ytdReturn": -0.1232,
       "weight": 0.0622
     },
@@ -3364,7 +3364,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Multi-line Insurance",
-      "return1y": 0.0814,
+      "return1y": 0.0797,
       "ytdReturn": -0.0242,
       "weight": 0.0618
     },
@@ -3377,7 +3377,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Interactive Home Entertainment",
-      "return1y": -0.0669,
+      "return1y": -0.0761,
       "ytdReturn": -0.0964,
       "weight": 0.0617
     },
@@ -3390,7 +3390,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Movies & Entertainment",
-      "return1y": 0.3867,
+      "return1y": 0.3825,
       "ytdReturn": 0.2506,
       "weight": 0.0614
     },
@@ -3403,7 +3403,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Electrical Components & Equipment",
-      "return1y": -0.023,
+      "return1y": -0.0277,
       "ytdReturn": -0.0342,
       "weight": 0.0612
     },
@@ -3416,7 +3416,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Human Resource & Employment Services",
-      "return1y": 0.0635,
+      "return1y": 0.0609,
       "ytdReturn": 0.0911,
       "weight": 0.0611
     },
@@ -3429,7 +3429,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Homebuilding",
-      "return1y": 0.0007,
+      "return1y": -0.0135,
       "ytdReturn": 0.0765,
       "weight": 0.0608
     },
@@ -3442,7 +3442,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Life Sciences Tools & Services",
-      "return1y": 0.0833,
+      "return1y": 0.0918,
       "ytdReturn": 0.1143,
       "weight": 0.06
     },
@@ -3455,7 +3455,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Life & Health Insurance",
-      "return1y": 0.1135,
+      "return1y": 0.1106,
       "ytdReturn": 0.0558,
       "weight": 0.0598
     },
@@ -3468,7 +3468,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Food Retail",
-      "return1y": 0.0418,
+      "return1y": 0.0379,
       "ytdReturn": 0.1091,
       "weight": 0.0598
     },
@@ -3481,7 +3481,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": -0.3138,
+      "return1y": -0.3217,
       "ytdReturn": -0.2658,
       "weight": 0.0597
     },
@@ -3494,7 +3494,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Food Distributors",
-      "return1y": 0.0773,
+      "return1y": 0.0731,
       "ytdReturn": 0.126,
       "weight": 0.0583
     },
@@ -3507,7 +3507,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Real Estate Services",
-      "return1y": -0.1499,
+      "return1y": -0.1479,
       "ytdReturn": -0.1392,
       "weight": 0.0576
     },
@@ -3520,7 +3520,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Personal Care Products",
-      "return1y": 0.1698,
+      "return1y": 0.1652,
       "ytdReturn": 0.0267,
       "weight": 0.0576
     },
@@ -3533,7 +3533,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": 0.061,
+      "return1y": 0.0626,
       "ytdReturn": 0.1185,
       "weight": 0.0568
     },
@@ -3546,7 +3546,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
-      "return1y": 0.437,
+      "return1y": 0.4358,
       "ytdReturn": 0.4703,
       "weight": 0.056
     },
@@ -3559,7 +3559,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Components",
-      "return1y": 0.274,
+      "return1y": 0.1944,
       "ytdReturn": 0.0096,
       "weight": 0.056
     },
@@ -3572,7 +3572,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Construction & Engineering",
-      "return1y": 0.1325,
+      "return1y": 0.1255,
       "ytdReturn": 0.0956,
       "weight": 0.0557
     },
@@ -3585,7 +3585,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Construction Materials",
-      "return1y": -0.1381,
+      "return1y": -0.1391,
       "ytdReturn": -0.1543,
       "weight": 0.0553
     },
@@ -3598,7 +3598,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": 0.0335,
+      "return1y": 0.0418,
       "ytdReturn": 0.0062,
       "weight": 0.0546
     },
@@ -3611,7 +3611,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": 0.1011,
+      "return1y": 0.0861,
       "ytdReturn": -0.0944,
       "weight": 0.0546
     },
@@ -3624,7 +3624,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": -0.0968,
+      "return1y": -0.0997,
       "ytdReturn": -0.0716,
       "weight": 0.0543
     },
@@ -3637,7 +3637,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Property & Casualty Insurance",
-      "return1y": 0.0174,
+      "return1y": 0.0201,
       "ytdReturn": 0.0195,
       "weight": 0.0542
     },
@@ -3650,7 +3650,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Construction Materials",
-      "return1y": -0.0139,
+      "return1y": -0.0211,
       "ytdReturn": -0.0057,
       "weight": 0.0541
     },
@@ -3663,7 +3663,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Financial Exchanges & Data",
-      "return1y": 0.3629,
+      "return1y": 0.3627,
       "ytdReturn": 0.4179,
       "weight": 0.0532
     },
@@ -3676,7 +3676,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Packaged Foods & Meats",
-      "return1y": -0.0299,
+      "return1y": -0.0293,
       "ytdReturn": 0.0009,
       "weight": 0.0532
     },
@@ -3689,7 +3689,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Broadcasting",
-      "return1y": -0.0065,
+      "return1y": -0.0133,
       "ytdReturn": -0.1238,
       "weight": 0.053
     },
@@ -3702,7 +3702,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Movies & Entertainment",
-      "return1y": -0.01,
+      "return1y": -0.0126,
       "ytdReturn": -0.0749,
       "weight": 0.0523
     },
@@ -3715,7 +3715,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Cargo Ground Transportation",
-      "return1y": 0.2946,
+      "return1y": 0.291,
       "ytdReturn": 0.0972,
       "weight": 0.0522
     },
@@ -3728,7 +3728,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Property & Casualty Insurance",
-      "return1y": 0.1683,
+      "return1y": 0.1743,
       "ytdReturn": 0.175,
       "weight": 0.0518
     },
@@ -3741,7 +3741,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Telecom Tower REITs",
-      "return1y": -0.0764,
+      "return1y": -0.0838,
       "ytdReturn": -0.0572,
       "weight": 0.0516
     },
@@ -3754,7 +3754,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": 1.5046,
+      "return1y": 1.5118,
       "ytdReturn": 1.4124,
       "weight": 0.0511
     },
@@ -3767,7 +3767,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Self-Storage REITs",
-      "return1y": 0.2108,
+      "return1y": 0.2119,
       "ytdReturn": 0.2323,
       "weight": 0.051
     },
@@ -3780,7 +3780,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Broadcasting",
-      "return1y": -0.0022,
+      "return1y": -0.0046,
       "ytdReturn": -0.1208,
       "weight": 0.0509
     },
@@ -3793,7 +3793,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": -0.0366,
+      "return1y": -0.0396,
       "ytdReturn": 0.0036,
       "weight": 0.0501
     },
@@ -3806,7 +3806,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Communications Equipment",
-      "return1y": 0.2122,
+      "return1y": 0.1889,
       "ytdReturn": -0.0133,
       "weight": 0.0499
     },
@@ -3819,7 +3819,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Passenger Airlines",
-      "return1y": 0.0288,
+      "return1y": 0.0251,
       "ytdReturn": -0.0751,
       "weight": 0.0492
     },
@@ -3832,7 +3832,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Investment Banking & Brokerage",
-      "return1y": 0.1644,
+      "return1y": 0.1495,
       "ytdReturn": 0.1117,
       "weight": 0.0491
     },
@@ -3845,7 +3845,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Pharmaceuticals",
-      "return1y": -0.3531,
+      "return1y": -0.3556,
       "ytdReturn": -0.344,
       "weight": 0.0486
     },
@@ -3858,7 +3858,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductor Materials & Equipment",
-      "return1y": 0.1827,
+      "return1y": 0.1664,
       "ytdReturn": 0.0221,
       "weight": 0.048
     },
@@ -3871,7 +3871,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Life Sciences Tools & Services",
-      "return1y": 0.1197,
+      "return1y": 0.1272,
       "ytdReturn": 0.1794,
       "weight": 0.048
     },
@@ -3884,7 +3884,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Movies & Entertainment",
-      "return1y": -0.5864,
+      "return1y": -0.5924,
       "ytdReturn": -0.5046,
       "weight": 0.0477
     },
@@ -3897,7 +3897,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Insurance Brokers",
-      "return1y": 0.0975,
+      "return1y": 0.0983,
       "ytdReturn": 0.0806,
       "weight": 0.0471
     },
@@ -3910,7 +3910,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 0.5103,
+      "return1y": 0.479,
       "ytdReturn": 0.5497,
       "weight": 0.047
     },
@@ -3923,7 +3923,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": -0.1266,
+      "return1y": -0.1533,
       "ytdReturn": -0.0361,
       "weight": 0.0467
     },
@@ -3936,7 +3936,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Managed Health Care",
-      "return1y": 0.6406,
+      "return1y": 0.6457,
       "ytdReturn": 0.5495,
       "weight": 0.0465
     },
@@ -3949,7 +3949,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.0409,
+      "return1y": 0.0349,
       "ytdReturn": 0.0424,
       "weight": 0.0463
     },
@@ -3962,7 +3962,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": 0.0836,
+      "return1y": 0.0802,
       "ytdReturn": 0.139,
       "weight": 0.0461
     },
@@ -3975,7 +3975,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": -0.0168,
+      "return1y": -0.0275,
       "ytdReturn": -0.0886,
       "weight": 0.0461
     },
@@ -3988,7 +3988,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Agricultural Products & Services",
-      "return1y": 0.1009,
+      "return1y": 0.0975,
       "ytdReturn": 0.1289,
       "weight": 0.046
     },
@@ -4001,7 +4001,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": 0.3568,
+      "return1y": 0.3367,
       "ytdReturn": 0.275,
       "weight": 0.0459
     },
@@ -4014,7 +4014,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 0.104,
+      "return1y": 0.0644,
       "ytdReturn": 0.3721,
       "weight": 0.0457
     },
@@ -4027,7 +4027,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": -0.1093,
+      "return1y": -0.1154,
       "ytdReturn": -0.1235,
       "weight": 0.0455
     },
@@ -4040,7 +4040,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.0968,
+      "return1y": 0.0761,
       "ytdReturn": -0.1133,
       "weight": 0.0455
     },
@@ -4053,7 +4053,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Packaged Foods & Meats",
-      "return1y": 0.0355,
+      "return1y": 0.0392,
       "ytdReturn": 0.0869,
       "weight": 0.0455
     },
@@ -4066,7 +4066,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Investment Banking & Brokerage",
-      "return1y": 0.0455,
+      "return1y": 0.0402,
       "ytdReturn": -0.0046,
       "weight": 0.0451
     },
@@ -4079,7 +4079,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Other Specialized REITs",
-      "return1y": 0.2069,
+      "return1y": 0.2051,
       "ytdReturn": 0.2501,
       "weight": 0.0449
     },
@@ -4092,7 +4092,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Regional Banks",
-      "return1y": 0.1328,
+      "return1y": 0.1329,
       "ytdReturn": 0.0562,
       "weight": 0.0448
     },
@@ -4105,7 +4105,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Steel",
-      "return1y": 0.3015,
+      "return1y": 0.2921,
       "ytdReturn": 0.2317,
       "weight": 0.0447
     },
@@ -4118,7 +4118,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Property & Casualty Insurance",
-      "return1y": 0.0219,
+      "return1y": 0.0212,
       "ytdReturn": 0.1439,
       "weight": 0.0447
     },
@@ -4131,7 +4131,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Consumer Staples Merchandise Retail",
-      "return1y": 0.2804,
+      "return1y": 0.272,
       "ytdReturn": 0.0179,
       "weight": 0.0445
     },
@@ -4144,7 +4144,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Diversified Support Services",
-      "return1y": -0.144,
+      "return1y": -0.1491,
       "ytdReturn": -0.1218,
       "weight": 0.0445
     },
@@ -4157,7 +4157,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": 0.2789,
+      "return1y": 0.2792,
       "ytdReturn": 0.2063,
       "weight": 0.0441
     },
@@ -4170,7 +4170,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Water Utilities",
-      "return1y": 0.1771,
+      "return1y": 0.1751,
       "ytdReturn": 0.1728,
       "weight": 0.0441
     },
@@ -4183,7 +4183,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Life Sciences Tools & Services",
-      "return1y": 0.5437,
+      "return1y": 0.5245,
       "ytdReturn": 0.4916,
       "weight": 0.0439
     },
@@ -4196,7 +4196,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": -0.1092,
+      "return1y": -0.112,
       "ytdReturn": -0.1069,
       "weight": 0.0435
     },
@@ -4209,7 +4209,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Regional Banks",
-      "return1y": -0.0854,
+      "return1y": -0.0871,
       "ytdReturn": -0.1487,
       "weight": 0.0435
     },
@@ -4222,7 +4222,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Services",
-      "return1y": 0.3753,
+      "return1y": 0.3727,
       "ytdReturn": 0.4661,
       "weight": 0.0434
     },
@@ -4235,7 +4235,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Property & Casualty Insurance",
-      "return1y": 0.1415,
+      "return1y": 0.1476,
       "ytdReturn": 0.1909,
       "weight": 0.0428
     },
@@ -4248,7 +4248,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Gas Utilities",
-      "return1y": -0.0141,
+      "return1y": -0.0176,
       "ytdReturn": 0.023,
       "weight": 0.0427
     },
@@ -4261,7 +4261,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Services",
-      "return1y": 0.4004,
+      "return1y": 0.4042,
       "ytdReturn": 0.5285,
       "weight": 0.0424
     },
@@ -4274,9 +4274,9 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Environmental & Facilities Services",
-      "return1y": 0.1868,
+      "return1y": 0.1874,
       "ytdReturn": 0.2202,
-      "weight": 0.0423
+      "weight": 0.0424
     },
     {
       "ticker": "CPAY",
@@ -4287,7 +4287,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": 0.5488,
+      "return1y": 0.5359,
       "ytdReturn": 0.5115,
       "weight": 0.0421
     },
@@ -4300,7 +4300,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Equipment & Instruments",
-      "return1y": 0.2641,
+      "return1y": 0.2594,
       "ytdReturn": 0.2127,
       "weight": 0.042
     },
@@ -4313,7 +4313,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": 0.0072,
+      "return1y": 0.0053,
       "ytdReturn": 0.0568,
       "weight": 0.0416
     },
@@ -4326,7 +4326,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": -0.0635,
+      "return1y": -0.0564,
       "ytdReturn": -0.1473,
       "weight": 0.0415
     },
@@ -4339,7 +4339,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Internet Services & Infrastructure",
-      "return1y": 0.2644,
+      "return1y": 0.2678,
       "ytdReturn": 0.3282,
       "weight": 0.0415
     },
@@ -4352,7 +4352,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Consumer Staples Merchandise Retail",
-      "return1y": 0.3869,
+      "return1y": 0.3736,
       "ytdReturn": 0.1919,
       "weight": 0.041
     },
@@ -4365,7 +4365,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "IT Consulting & Other Services",
-      "return1y": -0.1782,
+      "return1y": -0.1852,
       "ytdReturn": -0.221,
       "weight": 0.041
     },
@@ -4378,7 +4378,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": 0.299,
+      "return1y": 0.2756,
       "ytdReturn": 0.4082,
       "weight": 0.0407
     },
@@ -4391,7 +4391,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": -0.3566,
+      "return1y": -0.3649,
       "ytdReturn": -0.3912,
       "weight": 0.0405
     },
@@ -4404,7 +4404,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": 0.4234,
+      "return1y": 0.394,
       "ytdReturn": 0.3067,
       "weight": 0.0405
     },
@@ -4417,7 +4417,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Hotel & Resort REITs",
-      "return1y": -0.1287,
+      "return1y": -0.1284,
       "ytdReturn": -0.1076,
       "weight": 0.0401
     },
@@ -4430,7 +4430,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": 0.0055,
+      "return1y": -0.0021,
       "ytdReturn": 0.0521,
       "weight": 0.04
     },
@@ -4443,7 +4443,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Specialty Chemicals",
-      "return1y": 0.2475,
+      "return1y": 0.2456,
       "ytdReturn": 0.1942,
       "weight": 0.0399
     },
@@ -4456,7 +4456,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Construction & Engineering",
-      "return1y": 0.0295,
+      "return1y": 0.0222,
       "ytdReturn": -0.0155,
       "weight": 0.0399
     },
@@ -4469,7 +4469,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Other Specialty Retail",
-      "return1y": 0.2008,
+      "return1y": 0.1927,
       "ytdReturn": 0.0364,
       "weight": 0.0398
     },
@@ -4482,7 +4482,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Financial Exchanges & Data",
-      "return1y": -0.6086,
+      "return1y": -0.6198,
       "ytdReturn": -0.5615,
       "weight": 0.0398
     },
@@ -4495,7 +4495,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.1029,
+      "return1y": 0.1083,
       "ytdReturn": 0.049,
       "weight": 0.0396
     },
@@ -4508,7 +4508,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Restaurants",
-      "return1y": 0.3398,
+      "return1y": 0.3429,
       "ytdReturn": 0.2882,
       "weight": 0.0396
     },
@@ -4521,7 +4521,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": 0.0877,
+      "return1y": 0.0799,
       "ytdReturn": 0.066,
       "weight": 0.0396
     },
@@ -4534,7 +4534,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Household Products",
-      "return1y": 0.3402,
+      "return1y": 0.3306,
       "ytdReturn": 0.3711,
       "weight": 0.0388
     },
@@ -4547,7 +4547,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": 0.011,
+      "return1y": 0.0103,
       "ytdReturn": 0.0429,
       "weight": 0.0388
     },
@@ -4560,7 +4560,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": -0.0362,
+      "return1y": -0.0412,
       "ytdReturn": 0.0077,
       "weight": 0.0386
     },
@@ -4573,7 +4573,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Research & Consulting Services",
-      "return1y": -0.0854,
+      "return1y": -0.0902,
       "ytdReturn": -0.0736,
       "weight": 0.0381
     },
@@ -4586,7 +4586,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Equipment & Services",
-      "return1y": 0.2257,
+      "return1y": 0.2056,
       "ytdReturn": 0.0679,
       "weight": 0.0379
     },
@@ -4599,7 +4599,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Supplies",
-      "return1y": 0.3457,
+      "return1y": 0.3451,
       "ytdReturn": 0.3493,
       "weight": 0.0377
     },
@@ -4612,7 +4612,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Insurance Brokers",
-      "return1y": -0.0251,
+      "return1y": -0.0249,
       "ytdReturn": 0.0104,
       "weight": 0.0377
     },
@@ -4625,7 +4625,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Regional Banks",
-      "return1y": 0.1441,
+      "return1y": 0.1416,
       "ytdReturn": 0.0399,
       "weight": 0.0375
     },
@@ -4638,7 +4638,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Food Retail",
-      "return1y": 0.2225,
+      "return1y": 0.224,
       "ytdReturn": 0.2553,
       "weight": 0.0374
     },
@@ -4651,7 +4651,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Air Freight & Logistics",
-      "return1y": 0.3449,
+      "return1y": 0.3491,
       "ytdReturn": 0.3051,
       "weight": 0.0371
     },
@@ -4664,7 +4664,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Apparel, Accessories & Luxury Goods",
-      "return1y": 0.1707,
+      "return1y": 0.1859,
       "ytdReturn": 0.0041,
       "weight": 0.0369
     },
@@ -4677,7 +4677,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": -0.0213,
+      "return1y": -0.0192,
       "ytdReturn": 0.0445,
       "weight": 0.0368
     },
@@ -4690,7 +4690,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": 0.2809,
+      "return1y": 0.2676,
       "ytdReturn": 0.2714,
       "weight": 0.0368
     },
@@ -4703,7 +4703,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Wireless Telecommunication Services",
-      "return1y": 0.2097,
+      "return1y": 0.1699,
       "ytdReturn": -0.2357,
       "weight": 0.0362
     },
@@ -4716,7 +4716,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Biotechnology",
-      "return1y": 0.1581,
+      "return1y": 0.1713,
       "ytdReturn": 0.2064,
       "weight": 0.0361
     },
@@ -4729,7 +4729,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Casinos & Gaming",
-      "return1y": -0.4174,
+      "return1y": -0.4167,
       "ytdReturn": -0.3903,
       "weight": 0.0361
     },
@@ -4742,7 +4742,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Homebuilding",
-      "return1y": 0.0568,
+      "return1y": 0.0601,
       "ytdReturn": 0.1324,
       "weight": 0.036
     },
@@ -4755,7 +4755,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Homefurnishing Retail",
-      "return1y": 0.1726,
+      "return1y": 0.1799,
       "ytdReturn": 0.1306,
       "weight": 0.036
     },
@@ -4768,7 +4768,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Manufacturing Services",
-      "return1y": 0.1512,
+      "return1y": 0.1374,
       "ytdReturn": 0.0557,
       "weight": 0.036
     },
@@ -4781,7 +4781,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Advertising",
-      "return1y": 0.2685,
+      "return1y": 0.2664,
       "ytdReturn": 0.1153,
       "weight": 0.0359
     },
@@ -4794,7 +4794,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": 0.0724,
+      "return1y": 0.0764,
       "ytdReturn": 0.0404,
       "weight": 0.0353
     },
@@ -4807,7 +4807,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.2587,
+      "return1y": 0.2436,
       "ytdReturn": 0.1019,
       "weight": 0.0352
     },
@@ -4820,7 +4820,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Cable & Satellite",
-      "return1y": -0.2629,
+      "return1y": -0.2641,
       "ytdReturn": -0.2963,
       "weight": 0.0349
     },
@@ -4833,7 +4833,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Distillers & Vintners",
-      "return1y": 0.0377,
+      "return1y": 0.0263,
       "ytdReturn": -0.0085,
       "weight": 0.0343
     },
@@ -4846,7 +4846,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Apparel, Accessories & Luxury Goods",
-      "return1y": 0.0794,
+      "return1y": 0.0909,
       "ytdReturn": 0.1053,
       "weight": 0.0343
     },
@@ -4872,7 +4872,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Manufacturing Services",
-      "return1y": 0.1009,
+      "return1y": 0.0827,
       "ytdReturn": -0.051,
       "weight": 0.034
     },
@@ -4885,7 +4885,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Life & Health Insurance",
-      "return1y": 0.2889,
+      "return1y": 0.2855,
       "ytdReturn": 0.2194,
       "weight": 0.0336
     },
@@ -4898,7 +4898,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Pharmaceuticals",
-      "return1y": 0.8637,
+      "return1y": 0.855,
       "ytdReturn": 0.5915,
       "weight": 0.0329
     },
@@ -4911,7 +4911,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductor Materials & Equipment",
-      "return1y": 0.3684,
+      "return1y": 0.337,
       "ytdReturn": 0.2758,
       "weight": 0.0328
     },
@@ -4924,7 +4924,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.0006,
+      "return1y": -0.0062,
       "ytdReturn": -0.0741,
       "weight": 0.0328
     },
@@ -4937,7 +4937,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Passenger Airlines",
-      "return1y": 0.3106,
+      "return1y": 0.32,
       "ytdReturn": 0.1126,
       "weight": 0.0326
     },
@@ -4950,7 +4950,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": -0.0488,
+      "return1y": -0.0509,
       "ytdReturn": 0.0168,
       "weight": 0.0326
     },
@@ -4963,7 +4963,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Multi-line Insurance",
-      "return1y": 0.0264,
+      "return1y": 0.0301,
       "ytdReturn": 0.0617,
       "weight": 0.0326
     },
@@ -4976,7 +4976,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": -0.3168,
+      "return1y": -0.3146,
       "ytdReturn": -0.2968,
       "weight": 0.032
     },
@@ -4989,7 +4989,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": 0.0143,
+      "return1y": 0.0114,
       "ytdReturn": -0.0103,
       "weight": 0.032
     },
@@ -5002,7 +5002,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Paper & Plastic Packaging Products & Materials",
-      "return1y": 0.2132,
+      "return1y": 0.2097,
       "ytdReturn": 0.1693,
       "weight": 0.0317
     },
@@ -5015,7 +5015,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Distributors",
-      "return1y": 0.2117,
+      "return1y": 0.2132,
       "ytdReturn": 0.314,
       "weight": 0.0317
     },
@@ -5028,7 +5028,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Packaged Foods & Meats",
-      "return1y": 0.0969,
+      "return1y": 0.0942,
       "ytdReturn": 0.0944,
       "weight": 0.0317
     },
@@ -5041,7 +5041,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Paper & Plastic Packaging Products & Materials",
-      "return1y": 0.1641,
+      "return1y": 0.167,
       "ytdReturn": 0.0518,
       "weight": 0.0316
     },
@@ -5054,7 +5054,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Research & Consulting Services",
-      "return1y": -0.127,
+      "return1y": -0.1257,
       "ytdReturn": -0.1325,
       "weight": 0.0315
     },
@@ -5067,7 +5067,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": 0.0309,
+      "return1y": 0.0222,
       "ytdReturn": 0.07,
       "weight": 0.0314
     },
@@ -5080,7 +5080,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Specialty Chemicals",
-      "return1y": 0.234,
+      "return1y": 0.2393,
       "ytdReturn": 0.2658,
       "weight": 0.0312
     },
@@ -5093,7 +5093,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Commodity Chemicals",
-      "return1y": 0.2405,
+      "return1y": 0.2436,
       "ytdReturn": 0.2221,
       "weight": 0.0312
     },
@@ -5106,7 +5106,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Computer & Electronics Retail",
-      "return1y": 0.2667,
+      "return1y": 0.2939,
       "ytdReturn": 0.4828,
       "weight": 0.0312
     },
@@ -5119,7 +5119,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Consumer Finance",
-      "return1y": -0.1068,
+      "return1y": -0.1116,
       "ytdReturn": -0.1881,
       "weight": 0.031
     },
@@ -5132,7 +5132,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": 0.1299,
+      "return1y": 0.1173,
       "ytdReturn": 0.1523,
       "weight": 0.031
     },
@@ -5145,7 +5145,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Regional Banks",
-      "return1y": 0.0989,
+      "return1y": 0.1001,
       "ytdReturn": -0.0362,
       "weight": 0.0309
     },
@@ -5158,7 +5158,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Cargo Ground Transportation",
-      "return1y": 0.3144,
+      "return1y": 0.3102,
       "ytdReturn": 0.1582,
       "weight": 0.0308
     },
@@ -5171,7 +5171,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Data Processing & Outsourced Services",
-      "return1y": -0.1777,
+      "return1y": -0.1795,
       "ytdReturn": -0.1512,
       "weight": 0.0307
     },
@@ -5184,7 +5184,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Paper & Plastic Packaging Products & Materials",
-      "return1y": 0.0538,
+      "return1y": 0.0662,
       "ytdReturn": 0.0801,
       "weight": 0.0304
     },
@@ -5197,7 +5197,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Other Specialty Retail",
-      "return1y": -0.261,
+      "return1y": -0.2631,
       "ytdReturn": -0.2058,
       "weight": 0.0303
     },
@@ -5210,7 +5210,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": 0.1282,
+      "return1y": 0.1286,
       "ytdReturn": 0.2226,
       "weight": 0.0302
     },
@@ -5223,7 +5223,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Homebuilding",
-      "return1y": -0.3389,
+      "return1y": -0.339,
       "ytdReturn": -0.1672,
       "weight": 0.0299
     },
@@ -5236,7 +5236,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": 0.1382,
+      "return1y": 0.1303,
       "ytdReturn": 0.201,
       "weight": 0.0298
     },
@@ -5249,7 +5249,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Conglomerates",
-      "return1y": 0.2983,
+      "return1y": 0.2876,
       "ytdReturn": 0.2529,
       "weight": 0.0295
     },
@@ -5262,7 +5262,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": -0.2694,
+      "return1y": -0.2884,
       "ytdReturn": -0.2095,
       "weight": 0.029
     },
@@ -5275,7 +5275,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.242,
+      "return1y": 0.2362,
       "ytdReturn": 0.1935,
       "weight": 0.0285
     },
@@ -5288,7 +5288,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Packaged Foods & Meats",
-      "return1y": -0.2315,
+      "return1y": -0.2344,
       "ytdReturn": -0.2071,
       "weight": 0.0281
     },
@@ -5301,7 +5301,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Independent Power Producers & Energy Traders",
-      "return1y": -0.4545,
+      "return1y": -0.4575,
       "ytdReturn": -0.4467,
       "weight": 0.028
     },
@@ -5314,7 +5314,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": 0.2551,
+      "return1y": 0.2435,
       "ytdReturn": 0.2734,
       "weight": 0.0279
     },
@@ -5327,7 +5327,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Electric Utilities",
-      "return1y": 0.0572,
+      "return1y": 0.0528,
       "ytdReturn": 0.1151,
       "weight": 0.0275
     },
@@ -5340,7 +5340,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.0584,
+      "return1y": 0.06,
       "ytdReturn": 0.027,
       "weight": 0.0269
     },
@@ -5353,7 +5353,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Multi-Family Residential REITs",
-      "return1y": 0.0652,
+      "return1y": 0.0591,
       "ytdReturn": 0.0869,
       "weight": 0.0269
     },
@@ -5366,7 +5366,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Specialty Chemicals",
-      "return1y": 0.1764,
+      "return1y": 0.1627,
       "ytdReturn": 0.2832,
       "weight": 0.0267
     },
@@ -5379,7 +5379,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Environmental & Facilities Services",
-      "return1y": -0.3748,
+      "return1y": -0.3746,
       "ytdReturn": -0.3484,
       "weight": 0.0266
     },
@@ -5392,7 +5392,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Telecom Tower REITs",
-      "return1y": -0.103,
+      "return1y": -0.1006,
       "ytdReturn": -0.0922,
       "weight": 0.0265
     },
@@ -5405,7 +5405,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Communications Equipment",
-      "return1y": 0.3309,
+      "return1y": 0.3257,
       "ytdReturn": 0.2354,
       "weight": 0.0262
     },
@@ -5418,7 +5418,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": -0.0913,
+      "return1y": -0.0928,
       "ytdReturn": -0.1228,
       "weight": 0.0261
     },
@@ -5431,7 +5431,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.3488,
+      "return1y": 0.3508,
       "ytdReturn": 0.3319,
       "weight": 0.0259
     },
@@ -5444,7 +5444,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Systems Software",
-      "return1y": 0.1498,
+      "return1y": 0.1441,
       "ytdReturn": 0.1573,
       "weight": 0.0259
     },
@@ -5470,7 +5470,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Interactive Media & Services",
-      "return1y": -0.5591,
+      "return1y": -0.5773,
       "ytdReturn": -0.6217,
       "weight": 0.0256
     },
@@ -5483,7 +5483,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Metal, Glass & Plastic Containers",
-      "return1y": 0.3536,
+      "return1y": 0.3563,
       "ytdReturn": 0.2592,
       "weight": 0.0253
     },
@@ -5496,7 +5496,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Retail REITs",
-      "return1y": 0.2633,
+      "return1y": 0.2609,
       "ytdReturn": 0.2986,
       "weight": 0.0252
     },
@@ -5509,7 +5509,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Hotel & Resort REITs",
-      "return1y": 0.4025,
+      "return1y": 0.4112,
       "ytdReturn": 0.37,
       "weight": 0.025
     },
@@ -5522,7 +5522,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Fertilizers & Agricultural Chemicals",
-      "return1y": 0.4985,
+      "return1y": 0.493,
       "ytdReturn": 0.4664,
       "weight": 0.0249
     },
@@ -5535,7 +5535,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": 0.492,
+      "return1y": 0.4874,
       "ytdReturn": 0.4118,
       "weight": 0.0249
     },
@@ -5548,7 +5548,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Distributors",
-      "return1y": -0.046,
+      "return1y": -0.05,
       "ytdReturn": -0.001,
       "weight": 0.0248
     },
@@ -5561,7 +5561,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Paper & Plastic Packaging Products & Materials",
-      "return1y": -0.185,
+      "return1y": -0.1874,
       "ytdReturn": -0.203,
       "weight": 0.0246
     },
@@ -5574,7 +5574,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Agricultural Products & Services",
-      "return1y": -0.0863,
+      "return1y": -0.0824,
       "ytdReturn": -0.0485,
       "weight": 0.0246
     },
@@ -5587,7 +5587,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Construction & Engineering",
-      "return1y": 0.0709,
+      "return1y": 0.0792,
       "ytdReturn": 0.0749,
       "weight": 0.0245
     },
@@ -5600,7 +5600,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": 0.441,
+      "return1y": 0.4445,
       "ytdReturn": 0.5366,
       "weight": 0.0244
     },
@@ -5613,7 +5613,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Building Products",
-      "return1y": 0.3494,
+      "return1y": 0.3401,
       "ytdReturn": 0.3484,
       "weight": 0.0243
     },
@@ -5626,7 +5626,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Air Freight & Logistics",
-      "return1y": -0.0923,
+      "return1y": -0.0884,
       "ytdReturn": -0.1154,
       "weight": 0.0243
     },
@@ -5639,7 +5639,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.098,
+      "return1y": -0.1051,
       "ytdReturn": -0.0357,
       "weight": 0.0242
     },
@@ -5652,7 +5652,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.2963,
+      "return1y": 0.2951,
       "ytdReturn": 0.258,
       "weight": 0.024
     },
@@ -5665,7 +5665,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Building Products",
-      "return1y": 0.1601,
+      "return1y": 0.1576,
       "ytdReturn": 0.1945,
       "weight": 0.0235
     },
@@ -5678,7 +5678,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": 0.5205,
+      "return1y": 0.5271,
       "ytdReturn": 0.4283,
       "weight": 0.0235
     },
@@ -5691,7 +5691,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Reinsurance",
-      "return1y": 0.3897,
+      "return1y": 0.3797,
       "ytdReturn": 0.2965,
       "weight": 0.0233
     },
@@ -5704,7 +5704,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Single-Family Residential REITs",
-      "return1y": -0.0039,
+      "return1y": -0.0135,
       "ytdReturn": 0.0036,
       "weight": 0.0233
     },
@@ -5717,7 +5717,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Multi-line Insurance",
-      "return1y": 0.4254,
+      "return1y": 0.4276,
       "ytdReturn": 0.3702,
       "weight": 0.0232
     },
@@ -5730,7 +5730,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Diversified Support Services",
-      "return1y": -0.3138,
+      "return1y": -0.3165,
       "ytdReturn": -0.2881,
       "weight": 0.0231
     },
@@ -5743,7 +5743,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Life Sciences Tools & Services",
-      "return1y": 0.8558,
+      "return1y": 0.8642,
       "ytdReturn": 0.6405,
       "weight": 0.0231
     },
@@ -5756,7 +5756,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Homebuilding",
-      "return1y": -0.2048,
+      "return1y": -0.1985,
       "ytdReturn": -0.1734,
       "weight": 0.0231
     },
@@ -5769,7 +5769,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Semiconductors",
-      "return1y": -0.4567,
+      "return1y": -0.4582,
       "ytdReturn": -0.461,
       "weight": 0.023
     },
@@ -5782,7 +5782,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Leisure Products",
-      "return1y": 0.3376,
+      "return1y": 0.3387,
       "ytdReturn": 0.3328,
       "weight": 0.0224
     },
@@ -5795,7 +5795,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Technology Hardware, Storage & Peripherals",
-      "return1y": -0.29,
+      "return1y": -0.3114,
       "ytdReturn": -0.2471,
       "weight": 0.0223
     },
@@ -5808,7 +5808,7 @@
       "sector": "Energy",
       "sectorEn": "Energy",
       "subsector": "Oil & Gas Exploration & Production",
-      "return1y": 0.8435,
+      "return1y": 0.8214,
       "ytdReturn": 0.7934,
       "weight": 0.0221
     },
@@ -5821,7 +5821,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Electronic Equipment & Instruments",
-      "return1y": 0.2709,
+      "return1y": 0.2596,
       "ytdReturn": 0.2822,
       "weight": 0.0217
     },
@@ -5834,7 +5834,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.6106,
+      "return1y": -0.6125,
       "ytdReturn": -0.5741,
       "weight": 0.0217
     },
@@ -5847,7 +5847,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Timber REITs",
-      "return1y": -0.0782,
+      "return1y": -0.0761,
       "ytdReturn": -0.1378,
       "weight": 0.0214
     },
@@ -5860,7 +5860,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Technology",
-      "return1y": 0.0222,
+      "return1y": 0.0223,
       "ytdReturn": 0.103,
       "weight": 0.0214
     },
@@ -5873,7 +5873,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Insurance Brokers",
-      "return1y": -0.049,
+      "return1y": -0.053,
       "ytdReturn": 0.0072,
       "weight": 0.0212
     },
@@ -5886,7 +5886,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Health Care REITs",
-      "return1y": 0.1367,
+      "return1y": 0.1342,
       "ytdReturn": 0.2784,
       "weight": 0.0211
     },
@@ -5899,7 +5899,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Paper & Plastic Packaging Products & Materials",
-      "return1y": 0.1128,
+      "return1y": 0.1118,
       "ytdReturn": 0.0504,
       "weight": 0.021
     },
@@ -5912,7 +5912,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Publishing",
-      "return1y": -0.013,
+      "return1y": -0.0166,
       "ytdReturn": -0.0279,
       "weight": 0.021
     },
@@ -5925,7 +5925,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": -0.5772,
+      "return1y": -0.5797,
       "ytdReturn": -0.5788,
       "weight": 0.0207
     },
@@ -5938,7 +5938,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": 0.4416,
+      "return1y": 0.4546,
       "ytdReturn": 0.3979,
       "weight": 0.0204
     },
@@ -5951,7 +5951,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Retail REITs",
-      "return1y": 0.0598,
+      "return1y": 0.0613,
       "ytdReturn": 0.1112,
       "weight": 0.0204
     },
@@ -5964,7 +5964,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Multi-Family Residential REITs",
-      "return1y": -0.1322,
+      "return1y": -0.1346,
       "ytdReturn": -0.1547,
       "weight": 0.0203
     },
@@ -5977,7 +5977,7 @@
       "sector": "Communication Services",
       "sectorEn": "Communication Services",
       "subsector": "Publishing",
-      "return1y": 0.0195,
+      "return1y": 0.0156,
       "ytdReturn": -0.0042,
       "weight": 0.0203
     },
@@ -5990,7 +5990,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Packaged Foods & Meats",
-      "return1y": 0.2605,
+      "return1y": 0.2484,
       "ytdReturn": 0.346,
       "weight": 0.0202
     },
@@ -6003,7 +6003,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": -0.026,
+      "return1y": -0.0274,
       "ytdReturn": -0.0709,
       "weight": 0.0199
     },
@@ -6016,7 +6016,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Real Estate Services",
-      "return1y": -0.4984,
+      "return1y": -0.5055,
       "ytdReturn": -0.4821,
       "weight": 0.0198
     },
@@ -6029,7 +6029,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Distillers & Vintners",
-      "return1y": 0.0342,
+      "return1y": 0.0221,
       "ytdReturn": 0.1331,
       "weight": 0.0197
     },
@@ -6042,7 +6042,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Household Products",
-      "return1y": 0.0296,
+      "return1y": 0.0278,
       "ytdReturn": 0.1,
       "weight": 0.0195
     },
@@ -6055,7 +6055,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Packaged Foods & Meats",
-      "return1y": -0.2593,
+      "return1y": -0.2613,
       "ytdReturn": -0.2591,
       "weight": 0.0194
     },
@@ -6068,7 +6068,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Internet Services & Infrastructure",
-      "return1y": -0.1725,
+      "return1y": -0.1777,
       "ytdReturn": -0.1129,
       "weight": 0.0185
     },
@@ -6081,7 +6081,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Internet Services & Infrastructure",
-      "return1y": -0.0088,
+      "return1y": -0.0096,
       "ytdReturn": 0.0418,
       "weight": 0.0185
     },
@@ -6094,7 +6094,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Transaction & Payment Processing Services",
-      "return1y": 0.0469,
+      "return1y": 0.0436,
       "ytdReturn": 0.0209,
       "weight": 0.0184
     },
@@ -6107,7 +6107,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "Application Software",
-      "return1y": -0.3202,
+      "return1y": -0.3214,
       "ytdReturn": -0.2947,
       "weight": 0.0184
     },
@@ -6120,7 +6120,7 @@
       "sector": "Consumer Staples",
       "sectorEn": "Consumer Staples",
       "subsector": "Packaged Foods & Meats",
-      "return1y": -0.006,
+      "return1y": -0.0052,
       "ytdReturn": -0.0128,
       "weight": 0.0184
     },
@@ -6133,7 +6133,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Multi-Utilities",
-      "return1y": 0.1396,
+      "return1y": 0.1363,
       "ytdReturn": 0.1713,
       "weight": 0.0181
     },
@@ -6146,7 +6146,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Multi-Family Residential REITs",
-      "return1y": 0.0161,
+      "return1y": 0.0069,
       "ytdReturn": -0.0005,
       "weight": 0.018
     },
@@ -6159,7 +6159,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Asset Management & Custody Banks",
-      "return1y": 0.1455,
+      "return1y": 0.1493,
       "ytdReturn": 0.0431,
       "weight": 0.0179
     },
@@ -6172,7 +6172,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Heavy Electrical Equipment",
-      "return1y": 0.3707,
+      "return1y": 0.3453,
       "ytdReturn": 0.4457,
       "weight": 0.0174
     },
@@ -6185,7 +6185,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Building Products",
-      "return1y": -0.2907,
+      "return1y": -0.2985,
       "ytdReturn": -0.2985,
       "weight": 0.0173
     },
@@ -6198,7 +6198,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Supplies",
-      "return1y": -0.2008,
+      "return1y": -0.2007,
       "ytdReturn": -0.232,
       "weight": 0.0172
     },
@@ -6211,7 +6211,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Restaurants",
-      "return1y": -0.1301,
+      "return1y": -0.1385,
       "ytdReturn": -0.1499,
       "weight": 0.0172
     },
@@ -6224,7 +6224,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Apparel, Accessories & Luxury Goods",
-      "return1y": -0.4095,
+      "return1y": -0.4167,
       "ytdReturn": -0.4903,
       "weight": 0.0172
     },
@@ -6237,7 +6237,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Aerospace & Defense",
-      "return1y": -0.0476,
+      "return1y": -0.0455,
       "ytdReturn": -0.1441,
       "weight": 0.0171
     },
@@ -6250,7 +6250,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Life & Health Insurance",
-      "return1y": 0.1544,
+      "return1y": 0.1556,
       "ytdReturn": 0.1248,
       "weight": 0.017
     },
@@ -6263,7 +6263,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Industrial Machinery & Supplies & Components",
-      "return1y": -0.313,
+      "return1y": -0.3075,
       "ytdReturn": -0.309,
       "weight": 0.0169
     },
@@ -6276,7 +6276,7 @@
       "sector": "Information Technology",
       "sectorEn": "Information Technology",
       "subsector": "IT Consulting & Other Services",
-      "return1y": -0.2009,
+      "return1y": -0.206,
       "ytdReturn": -0.2204,
       "weight": 0.0169
     },
@@ -6289,7 +6289,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Supplies",
-      "return1y": 0.1234,
+      "return1y": 0.1237,
       "ytdReturn": 0.0601,
       "weight": 0.0169
     },
@@ -6302,7 +6302,7 @@
       "sector": "Financials",
       "sectorEn": "Financials",
       "subsector": "Financial Exchanges & Data",
-      "return1y": 0.1699,
+      "return1y": 0.1705,
       "ytdReturn": 0.1392,
       "weight": 0.0166
     },
@@ -6315,7 +6315,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Footwear",
-      "return1y": -0.0187,
+      "return1y": -0.0281,
       "ytdReturn": -0.1988,
       "weight": 0.0166
     },
@@ -6328,7 +6328,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Life Sciences Tools & Services",
-      "return1y": 0.1241,
+      "return1y": 0.1262,
       "ytdReturn": 0.2179,
       "weight": 0.0165
     },
@@ -6341,7 +6341,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Office REITs",
-      "return1y": -0.1195,
+      "return1y": -0.1153,
       "ytdReturn": -0.056,
       "weight": 0.0165
     },
@@ -6354,7 +6354,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Facilities",
-      "return1y": -0.2196,
+      "return1y": -0.2178,
       "ytdReturn": -0.1333,
       "weight": 0.0159
     },
@@ -6367,7 +6367,7 @@
       "sector": "Utilities",
       "sectorEn": "Utilities",
       "subsector": "Independent Power Producers & Energy Traders",
-      "return1y": 0.0798,
+      "return1y": 0.0683,
       "ytdReturn": 0.0135,
       "weight": 0.0155
     },
@@ -6380,7 +6380,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Services",
-      "return1y": 0.3553,
+      "return1y": 0.36,
       "ytdReturn": 0.4214,
       "weight": 0.0148
     },
@@ -6393,7 +6393,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Multi-Family Residential REITs",
-      "return1y": -0.0639,
+      "return1y": -0.0667,
       "ytdReturn": -0.0991,
       "weight": 0.0146
     },
@@ -6406,7 +6406,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Equipment",
-      "return1y": -0.5634,
+      "return1y": -0.5639,
       "ytdReturn": -0.4957,
       "weight": 0.0143
     },
@@ -6419,7 +6419,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Retail REITs",
-      "return1y": 0.1591,
+      "return1y": 0.1572,
       "ytdReturn": 0.1537,
       "weight": 0.0143
     },
@@ -6432,7 +6432,7 @@
       "sector": "Health Care",
       "sectorEn": "Health Care",
       "subsector": "Health Care Distributors",
-      "return1y": 0.1791,
+      "return1y": 0.1899,
       "ytdReturn": 0.155,
       "weight": 0.0142
     },
@@ -6445,7 +6445,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Specialty Chemicals",
-      "return1y": -0.3578,
+      "return1y": -0.373,
       "ytdReturn": -0.4338,
       "weight": 0.0139
     },
@@ -6458,7 +6458,7 @@
       "sector": "Industrials",
       "sectorEn": "Industrials",
       "subsector": "Building Products",
-      "return1y": 0.0143,
+      "return1y": 0.0197,
       "ytdReturn": -0.0152,
       "weight": 0.0131
     },
@@ -6471,7 +6471,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Casinos & Gaming",
-      "return1y": -0.0037,
+      "return1y": -0.0181,
       "ytdReturn": -0.0504,
       "weight": 0.0127
     },
@@ -6484,7 +6484,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Casinos & Gaming",
-      "return1y": -0.3351,
+      "return1y": -0.3311,
       "ytdReturn": -0.2977,
       "weight": 0.0126
     },
@@ -6497,7 +6497,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Hotels, Resorts & Cruise Lines",
-      "return1y": -0.0726,
+      "return1y": -0.0791,
       "ytdReturn": -0.2537,
       "weight": 0.0113
     },
@@ -6510,7 +6510,7 @@
       "sector": "Consumer Discretionary",
       "sectorEn": "Consumer Discretionary",
       "subsector": "Automotive Parts & Equipment",
-      "return1y": -0.5113,
+      "return1y": -0.5158,
       "ytdReturn": -0.5213,
       "weight": 0.011
     },
@@ -6523,7 +6523,7 @@
       "sector": "Real Estate",
       "sectorEn": "Real Estate",
       "subsector": "Office REITs",
-      "return1y": -0.1956,
+      "return1y": -0.1971,
       "ytdReturn": -0.1201,
       "weight": 0.0109
     },
@@ -6536,7 +6536,7 @@
       "sector": "Materials",
       "sectorEn": "Materials",
       "subsector": "Fertilizers & Agricultural Chemicals",
-      "return1y": -0.1612,
+      "return1y": -0.169,
       "ytdReturn": -0.1867,
       "weight": 0.0094
     }
@@ -6550,6 +6550,6 @@
     "legacyBase": "legacy LiXinRen CSV base (2025-04-09), used only to backfill missing values",
     "specialCases": "Delisted / M&A tickers converted with cash consideration, exchange ratio or successor price."
   },
-  "latest_date": "2026-11-26",
-  "as_of": "2026-11-26"
+  "latest_date": "2026-11-27",
+  "as_of": "2026-11-27"
 }
