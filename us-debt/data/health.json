@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T04:55:04Z",
+  "updated": "2026-11-27T05:03:18Z",
   "sources": [
     {
       "name": "debt-total",
@@ -9,8 +9,8 @@
         "panel-debt-total"
       ],
       "latest_data": "2026-11-24",
-      "elapsed_sec": 245.8,
-      "started_at": "2026-11-27T04:32:02Z",
+      "elapsed_sec": 89.8,
+      "started_at": "2026-11-27T04:34:41Z",
       "error": null
     },
     {
@@ -21,8 +21,8 @@
         "panel-global-debt"
       ],
       "latest_data": "2026-11-24",
-      "elapsed_sec": 6.9,
-      "started_at": "2026-11-27T04:36:08Z",
+      "elapsed_sec": 6.8,
+      "started_at": "2026-11-27T04:36:11Z",
       "error": null
     },
     {
@@ -33,8 +33,8 @@
         "panel-auction"
       ],
       "latest_data": "2026-11-23",
-      "elapsed_sec": 23.0,
-      "started_at": "2026-11-27T04:36:14Z",
+      "elapsed_sec": 22.8,
+      "started_at": "2026-11-27T04:36:18Z",
       "error": null
     },
     {
@@ -45,8 +45,8 @@
         "panel-rate-by-type"
       ],
       "latest_data": "2026-10-01",
-      "elapsed_sec": 3.2,
-      "started_at": "2026-11-27T04:36:37Z",
+      "elapsed_sec": 3.6,
+      "started_at": "2026-11-27T04:36:41Z",
       "error": null
     },
     {
@@ -57,8 +57,8 @@
         "panel-yield-curve"
       ],
       "latest_data": "2026-11-24",
-      "elapsed_sec": 27.3,
-      "started_at": "2026-11-27T04:36:41Z",
+      "elapsed_sec": 26.8,
+      "started_at": "2026-11-27T04:36:44Z",
       "error": null
     },
     {
@@ -73,8 +73,8 @@
         "panel-debt-gdp"
       ],
       "latest_data": "2026-09-30",
-      "elapsed_sec": 8.3,
-      "started_at": "2026-11-27T04:37:08Z",
+      "elapsed_sec": 7.7,
+      "started_at": "2026-11-27T04:37:11Z",
       "error": null
     },
     {
@@ -85,8 +85,8 @@
         "panel-holders-foreign"
       ],
       "latest_data": "2026-09-01",
-      "elapsed_sec": 24.8,
-      "started_at": "2026-11-27T04:37:16Z",
+      "elapsed_sec": 22.7,
+      "started_at": "2026-11-27T04:37:19Z",
       "error": null
     },
     {
@@ -97,8 +97,8 @@
         "panel-mandatory"
       ],
       "latest_data": "2026-01-01",
-      "elapsed_sec": 34.3,
-      "started_at": "2026-11-27T04:37:41Z",
+      "elapsed_sec": 3.0,
+      "started_at": "2026-11-27T04:37:42Z",
       "error": null
     },
     {
@@ -109,8 +109,8 @@
         "panel-reserve-currency"
       ],
       "latest_data": "2026-06-01",
-      "elapsed_sec": 77.9,
-      "started_at": "2026-11-27T04:38:15Z",
+      "elapsed_sec": 74.5,
+      "started_at": "2026-11-27T04:37:45Z",
       "error": null
     },
     {
@@ -123,8 +123,8 @@
         "panel-sankey"
       ],
       "latest_data": "2026-01-01",
-      "elapsed_sec": 74.7,
-      "started_at": "2026-11-27T04:39:33Z",
+      "elapsed_sec": 76.6,
+      "started_at": "2026-11-27T04:38:59Z",
       "error": null
     },
     {
@@ -135,8 +135,8 @@
         "panel-gold-reserves"
       ],
       "latest_data": "2026-09-01",
-      "elapsed_sec": 68.0,
-      "started_at": "2026-11-27T04:40:48Z",
+      "elapsed_sec": 65.4,
+      "started_at": "2026-11-27T04:40:16Z",
       "error": null
     },
     {
@@ -150,7 +150,7 @@
       ],
       "latest_data": "2026-10-31",
       "elapsed_sec": 10.6,
-      "started_at": "2026-11-27T04:41:56Z",
+      "started_at": "2026-11-27T04:41:21Z",
       "error": null
     },
     {
@@ -162,7 +162,7 @@
       ],
       "latest_data": "2026-06-01",
       "elapsed_sec": 0.1,
-      "started_at": "2026-11-27T04:42:07Z",
+      "started_at": "2026-11-27T04:41:32Z",
       "error": null
     },
     {
@@ -174,8 +174,8 @@
         "P29-P37"
       ],
       "latest_data": null,
-      "elapsed_sec": 24.6,
-      "started_at": "2026-11-27T04:42:07Z",
+      "elapsed_sec": 26.4,
+      "started_at": "2026-11-27T04:41:32Z",
       "error": null
     },
     {
@@ -186,8 +186,8 @@
         "lab-bills-coupons"
       ],
       "latest_data": "2026-09-30",
-      "elapsed_sec": 452.5,
-      "started_at": "2026-11-27T04:42:31Z",
+      "elapsed_sec": 444.6,
+      "started_at": "2026-11-27T04:41:58Z",
       "error": null
     },
     {
@@ -198,8 +198,8 @@
         "lab-g7-yields"
       ],
       "latest_data": "2026-11-24",
-      "elapsed_sec": 256.5,
-      "started_at": "2026-11-27T04:50:04Z",
+      "elapsed_sec": 256.0,
+      "started_at": "2026-11-27T04:49:23Z",
       "error": null
     },
     {
@@ -210,8 +210,8 @@
         "panel-treasury-issuance"
       ],
       "latest_data": "2026-10-01",
-      "elapsed_sec": 29.3,
-      "started_at": "2026-11-27T04:54:20Z",
+      "elapsed_sec": 29.6,
+      "started_at": "2026-11-27T04:53:39Z",
       "error": null
     },
     {
@@ -224,7 +224,7 @@
       ],
       "latest_data": "2026-11-24",
       "elapsed_sec": 3.6,
-      "started_at": "2026-11-27T04:54:50Z",
+      "started_at": "2026-11-27T04:54:09Z",
       "error": null
     },
     {
@@ -235,8 +235,8 @@
         "fed-*"
       ],
       "latest_data": "2026-11-27",
-      "elapsed_sec": 10.0,
-      "started_at": "2026-11-27T04:54:53Z",
+      "elapsed_sec": 10.2,
+      "started_at": "2026-11-27T04:54:12Z",
       "error": null
     },
     {
@@ -245,8 +245,8 @@
       "critical": false,
       "panels": [],
       "latest_data": null,
-      "elapsed_sec": 0.2,
-      "started_at": "2026-11-27T04:55:03Z",
+      "elapsed_sec": 0.1,
+      "started_at": "2026-11-27T04:54:22Z",
       "error": null
     },
     {
@@ -256,7 +256,7 @@
       "panels": [],
       "latest_data": null,
       "elapsed_sec": 0.2,
-      "started_at": "2026-11-27T04:55:04Z",
+      "started_at": "2026-11-27T04:54:23Z",
       "error": null
     },
     {
@@ -271,18 +271,18 @@
     },
     {
       "name": "duckdb-archive",
-      "ok": false,
+      "ok": true,
       "critical": false,
       "panels": [],
       "latest_data": null,
-      "elapsed_sec": 0.1,
-      "started_at": "2026-11-27T04:55:04Z",
-      "error": "exit 1"
+      "elapsed_sec": 534.8,
+      "started_at": "2026-11-27T04:54:23Z",
+      "error": null
     }
   ],
   "summary": {
-    "ok": 22,
-    "fail": 1,
+    "ok": 23,
+    "fail": 0,
     "total": 23
   }
 }
