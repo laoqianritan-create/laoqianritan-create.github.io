@@ -133,7 +133,7 @@ const FILES = {
   quotes:         'data/bofa_longest_pictures_quotes.json?v=ed54a89f69',
   aiae:           'data/aiae.json?v=1a8a7af291',
   breadth:        'data/sp500_breadth.json?v=60fd5f1d0b',
-  buffett:        'data/buffett.json?v=d10494d36f',
+  buffett:        'data/buffett.json?v=1d74b4df97',
   hindenburg:     'data/sp500_hindenburg.json?v=4ba86a4a69',
   intrayearDd:    'data/sp500_intrayear_dd.json?v=814ae17030',
   annualTr:       'data/sp500_annual_tr.json?v=d6eb454555',
@@ -153,10 +153,10 @@ const FILES = {
   ndxIntrayearDd: 'data/ndx_intrayear_dd.json?v=f482c034af',
   ndxVxn:         'data/ndx_vxn.json?v=88a60f805c',
   qqqDetails:     'data/qqq_return_details.json?v=2b3868f1a8',
-  equalWeight:    'data/sp500_equal_weight.json?v=1562f53321',
+  equalWeight:    'data/sp500_equal_weight.json?v=f492b0bc57',
   ndxBreadth:     'data/ndx_breadth.json?v=463ab5e6e1',
   // Style ETF
-  styleEtf:       'data/style_etf.json?v=f28d91fe31',
+  styleEtf:       'data/style_etf.json?v=4e509ad6ae',
   // ICI Flows（资金流）
   iciFlows:       'data/ici_flows.json?v=858f15bac8',
   iciMmf:         'data/ici_mmf.json?v=f6a5844f24',
