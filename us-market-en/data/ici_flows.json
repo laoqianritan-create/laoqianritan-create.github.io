@@ -599,13 +599,13 @@
   "latest_date": "2026-11-18",
   "latest_week_ended": "2026-11-18",
   "latest_month": "2026-09-30",
-  "last_successful_fetch": "2026-11-28T01:43:53+00:00",
+  "last_successful_fetch": "2026-11-28T02:12:24+00:00",
   "source_release_date": null,
   "weekly_source_url": "https://www.ici.org/combined_flows_data_2026.xls",
   "fetch_method": "curl_cffi-chrome",
   "caliber": "Combined long-term mutual fund net new cash flow plus ETF net issuance; Domestic = primarily US company stocks; World includes global, international and regional funds. Weekly dates are week ended (Wednesday), not publication dates. Weekly estimates may be revised; monthly actuals are collected separately. Positive = inflow, negative = outflow.",
   "series_fetched_at": {
-    "weekly": "2026-11-28T01:43:53+00:00",
-    "monthly": "2026-11-28T01:43:53+00:00"
+    "weekly": "2026-11-28T02:12:24+00:00",
+    "monthly": "2026-11-28T02:12:24+00:00"
   }
 }
