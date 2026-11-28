@@ -1,25 +1,25 @@
 {
-  "generated_at": "2026-11-27 22:08:31",
-  "today": "2026-11-27",
-  "overall": "healthy",
-  "stale_count": 0,
+  "generated_at": "2026-11-28 09:38:28",
+  "today": "2026-11-28",
+  "overall": "warn",
+  "stale_count": 2,
   "sources": [
     {
       "file": "sp500_price.json",
       "label": "S&P 500 Daily",
-      "updated": "2026-11-25",
-      "days_old": 2,
+      "updated": "2026-11-27",
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-25"
+        "series": "2026-11-27"
       }
     },
     {
       "file": "sp500_century.json",
       "label": "S&P 500 Monthly (Century)",
       "updated": "2026-11-25",
-      "days_old": 2,
-      "status": "fresh",
+      "days_old": 3,
+      "status": "recent",
       "series_end": {
         "series": "2026-11-25"
       }
@@ -28,8 +28,8 @@
       "file": "sp500_pe.json",
       "label": "Shiller PE",
       "updated": "2026-11-20",
-      "days_old": 7,
-      "status": "recent",
+      "days_old": 8,
+      "status": "stale",
       "series_end": {
         "pe": "2026-11-20",
         "cape": "2026-11-20"
@@ -39,24 +39,24 @@
       "file": "sp500_eps.json",
       "label": "S&P 500 EPS",
       "updated": "2026-06-30",
-      "days_old": 150,
-      "status": "recent"
+      "days_old": 151,
+      "status": "dead"
     },
     {
       "file": "sp500_vix.json",
       "label": "VIX",
-      "updated": "2026-11-25",
+      "updated": "2026-11-26",
       "days_old": 2,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-25"
+        "series": "2026-11-26"
       }
     },
     {
       "file": "sp500_annual_returns_long.json",
       "label": "S&P 500 Annual Returns",
       "updated": "2026-11-27",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
         "series": "2026-12-31"
@@ -66,7 +66,7 @@
       "file": "sp500_cagr_paths.json",
       "label": "Growth paths (TR vs price)",
       "updated": "2026-11-26T19:07:11",
-      "days_old": 1,
+      "days_old": 2,
       "status": "fresh",
       "series_end": {
         "series": "2026-11-25"
@@ -76,14 +76,14 @@
       "file": "sp500_bull_markets.json",
       "label": "Bull markets since 1966",
       "updated": "2026-11-27T09:45:31",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "us_asset_ladder.json",
       "label": "Long-Run Gains of Major USD Asset Classes",
       "updated": "2026-09-28",
-      "days_old": 60,
+      "days_old": 61,
       "status": "recent",
       "series_end": {
         "series": "2026-09-28"
@@ -93,8 +93,8 @@
       "file": "buffett.json",
       "label": "Buffett Indicator",
       "updated": "2026-11-25",
-      "days_old": 2,
-      "status": "fresh",
+      "days_old": 3,
+      "status": "recent",
       "series_end": {
         "series": "2026-11-25"
       }
@@ -103,31 +103,31 @@
       "file": "aiae.json",
       "label": "AIAE Allocation",
       "updated": "2026-11-27",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ndx_daily.json",
       "label": "Nasdaq 100 Daily",
-      "updated": "2026-11-27",
+      "updated": "2026-11-28",
       "days_old": 0,
       "status": "fresh",
       "series_end": {
-        "series": "2026-11-25"
+        "series": "2026-11-27"
       }
     },
     {
       "file": "nasdaq100_panels.json",
       "label": "Nasdaq 100 Constituents",
-      "updated": "2026-11-25",
-      "days_old": 2,
+      "updated": "2026-11-27",
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "nasdaq_composite.json",
       "label": "Nasdaq Composite Monthly",
       "updated": "2026-11-27",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
         "series": "2026-11-25"
@@ -137,8 +137,8 @@
       "file": "dow_jones_century.json",
       "label": "Dow Jones Century",
       "updated": "2026-11-25",
-      "days_old": 2,
-      "status": "fresh",
+      "days_old": 3,
+      "status": "recent",
       "series_end": {
         "series": "2026-11-25"
       }
@@ -185,32 +185,32 @@
       "file": "ici_mmf.json",
       "label": "ICI money market fund cash pool",
       "updated": "2026-11-27",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ici_active_index.json",
       "label": "ICI active vs. index",
       "updated": "2026-11-27",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh"
     },
     {
       "file": "ownership.json",
       "label": "US ownership structure (Fed Z.1)",
       "updated": "2026-06-30",
-      "days_old": 150,
+      "days_old": 151,
       "status": "fresh",
       "ownership_details": {
-        "as_of": "2026-11-27",
+        "as_of": "2026-11-28",
         "latest_quarter": "2026Q2",
         "quarter_end": "2026-06-30",
-        "quarter_end_age_days": 150,
+        "quarter_end_age_days": 151,
         "max_quarter_end_age_days": 165,
         "source_release_date": "2026-09-11",
         "next_release_date": "2026-12-10",
         "last_successful_fetch": "2026-11-27T01:45:58+00:00",
-        "fetch_age_days": 0,
+        "fetch_age_days": 1,
         "last_fetch_failure": null,
         "status": "OK",
         "problems": []
@@ -224,7 +224,7 @@
       "file": "cnn_fear_greed.json",
       "label": "CNN Fear & Greed Index",
       "updated": "2026-11-27T09:46:00+08:00",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
         "history": "2026-11-26"
@@ -234,7 +234,7 @@
       "file": "aaii_sentiment.json",
       "label": "AAII Individual Investor Sentiment",
       "updated": "2026-11-27T09:46:16+08:00",
-      "days_old": 0,
+      "days_old": 1,
       "status": "fresh",
       "series_end": {
         "series": "2026-11-19"
@@ -244,7 +244,7 @@
       "file": "naaim_exposure.json",
       "label": "NAAIM Exposure Index",
       "updated": "2026-11-27T09:46:16+08:00",
-      "days_old": 0,
+      "days_old": 1,
       "status": "upstream_frozen",
       "upstream_note": "NAAIM went subscription-only on 2026-08-01 and the public feed was retired; the series is frozen at 2026-07-29. Upstream froze, this is not a local fetch failure. Continuing the series would require a Professional Partner subscription (600 USD/year), not purchased.",
       "series_end": {
@@ -255,7 +255,7 @@
       "file": "us_misery_index.json",
       "label": "US Misery Index",
       "updated": "2026-10-01",
-      "days_old": 57,
+      "days_old": 58,
       "status": "recent",
       "series_end": {
         "series": "2026-10-01"

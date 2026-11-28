@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27",
+  "updated": "2026-11-28",
   "ticker": "^NDX",
   "caliber": "Close-to-close, peak to trough; the peak is the prior high within the range and recovery is the first close back at that peak. Each trough-to-recovery stretch is rescanned, so a fresh decline inside a long unrecovered drawdown (e.g. Oct 2007 → Nov 2008) counts as its own event. Events ≥5% are recorded; the panel shows ≥10%.",
   "drawdowns": [
